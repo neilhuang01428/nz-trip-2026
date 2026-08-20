@@ -536,6 +536,18 @@ details[open] summary{margin-bottom:9px}
   .pl.has-img .pl-btns{padding:0 17px 17px}
 }
 
+/* ── 日期篩選鈕：顯示幾月幾號 ── */
+.fchip.day{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1px;line-height:1.15;padding:6px 12px}
+.fchip.day b{font-family:var(--mono);font-size:.86rem;font-weight:700;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fchip.day span{font-family:var(--mono);font-size:.63rem;opacity:.72;letter-spacing:.02em}
+@media(max-width:780px){
+  .fchip.day{padding:7px 13px;min-height:44px}
+  .fchip.day b{font-size:.9rem}
+  .fchip.day span{font-size:.66rem}
+}
+
 </style>
 </head>
 <body>
@@ -2865,9 +2877,12 @@ details[open] summary{margin-bottom:9px}
   var gDay = el('div', 'grp');
   gDay.appendChild(el('span', 'lbl', '日期'));
   daysPresent.forEach(function (d) {
-    var b = el('button', 'fchip day', 'D' + String(d).padStart(2, '0'));
+    var info = dayByNum[d] || {};
+    var b = el('button', 'fchip day',
+      '<b>' + esc(info.date || '') + '</b>' +
+      '<span>D' + String(d).padStart(2, '0') + (info.wd ? ' ' + esc(info.wd) : '') + '</span>');
     b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.title = (dayByNum[d] || {}).title || '';
+    b.title = (info.date || '') + '（' + (info.wd || '') + '）' + (info.title || '');
     b.onclick = function () {
       state.days.has(d) ? state.days.delete(d) : state.days.add(d);
       b.setAttribute('aria-pressed', state.days.has(d));
