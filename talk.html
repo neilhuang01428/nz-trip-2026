@@ -3213,7 +3213,7 @@ body.mapmode .totop{display:none!important}
    "roma": "HI-we're-here-to-CHECK-in-we-have-a-BOOKING-under-HUANG-for-the-TEN-o'clock-JUMP-four-PEOPLE",
    "zhsound": "嗨 位兒 厚爾 兔 切克 因 位 黑夫 呃 布金 安得 黃 佛 惹 天 歐克拉克 醬普 佛 批波",
    "when": "跳傘、冰川健行、遊船、觀星都是這句開場。把 <b>jump</b> 換成 <b>heli-hike</b>（冰川健行）、<b>cruise</b>（遊船）、<b>tour</b>（行程）即可。對方會要你們簽切結書（<b>waiver</b>）並出示證件。",
-   "note": "Skydive Mt Cook 報到要出示政府核發的照片證件，帶護照就好。建議提早 15 分鐘到，冰川健行的場次要求提前 15 分鐘報到。"
+   "note": "跳傘報到要出示政府核發的照片證件，帶護照就好。建議提早 15 分鐘到，冰川健行的場次要求提前 15 分鐘報到。"
   },
   {
    "id": "book-going-ahead",
@@ -3225,7 +3225,7 @@ body.mapmode .totop{display:none!important}
    "roma": "is-it-going-a-HEAD-to-DAY",
    "zhsound": "意思 一特 勾影 阿黑得 特跌",
    "when": "打電話或到現場最先問的一句。<b>going ahead</b> 就是「照計畫進行」，紐西蘭戶外業者天天在講。對方可能回 <b>It's looking good.</b>（看起來沒問題）、<b>We're on weather hold.</b>（因天候待命中）、<b>We've had to call it off.</b>（取消了）。",
-   "note": "跳傘和冰川健行都極度看天氣。Skydive Mt Cook 是起跳前約 1 小時通知；Mt Cook 的直升機冰川健行官方明說<b>起飛前 10 分鐘</b>才做最終天候判斷——所以人到了現場還可能被取消，這是山區直升機作業常態。"
+   "note": "跳傘和冰川健行都極度看天氣。跳傘業者多半是起跳前約 1 小時通知（Skydive Mt Cook 官方明載）；Mt Cook 的直升機冰川健行官方明說<b>起飛前 10 分鐘</b>才做最終天候判斷——所以人到了現場還可能被取消，這是山區直升機作業常態。"
   },
   {
    "id": "book-weather-hold",
@@ -3243,13 +3243,13 @@ body.mapmode .totop{display:none!important}
    "id": "book-reschedule",
    "sec": "book",
    "lang": "en",
-   "t": "If it's cancelled today, can we move it to the twenty-ninth?",
-   "zh": "如果今天取消，可以改到 29 號嗎？",
-   "say": "If it's cancelled today can we move it to the twenty ninth",
+   "t": "If it's cancelled today, can we move it to tomorrow?",
+   "zh": "如果今天取消，可以改到明天嗎？",
+   "say": "if it's cancelled today can we move it to tomorrow",
    "roma": "if-it's-CAN-celled-to-DAY-can-we-MOVE-it-to-the-twenty-NINTH",
    "zhsound": "一夫 一次 卡恩色得 特跌 堪 位 木夫 一特 兔 惹 湍踢 耐恩斯",
-   "when": "天候取消時最重要的一句。你們 9/29 皇后鎮那天是跳傘和冰川健行共同的備案日。官方政策是改期或全額退款，所以問改期一定不會虧。",
-   "note": "要記得的是：如果 9/27 跳傘和 9/28 冰川健行都被取消，9/29 只能二選一。真的撞在一起，先跟業者講 <b>We can only do one — which one is more likely to fly?</b>（我們只能選一個，哪個比較有機會飛）。"
+   "when": "天候取消時最重要的一句。<b>跳傘定在 10/01（四）皇后鎮，10/02（五）是唯一的補跳日</b>——10/03 就往蒂阿瑙走，之後沒有跳傘場了。官方政策是改期或全額退款，所以問改期一定不會虧。",
+   "note": "跳傘如果 10/01 被取消，除了問改 10/02，還可以問<b>能不能改去 Wanaka 的跳傘場</b>（NZONE 官方寫明會盡力改日期<b>或改地點</b>）——瓦納卡跟皇后鎮的天氣常常不一樣。冰川健行則是另一回事：<b>9/28 取消的話 9/29 是唯一的機會</b>，過了 Mt Cook 就沒有第二次。"
   },
   {
    "id": "book-weight",
@@ -3762,12 +3762,45 @@ body.mapmode .totop{display:none!important}
     if (!fromMap && m && map) {
       var mob = isMobile();
       if (mob) setView('map');
+      else revealMap();          // 桌機：把整張地圖捲進畫面
       setTimeout(function () {
         map.invalidateSize();
         map.setView(m.getLatLng(), Math.max(map.getZoom(), 12), { animate: !mob });
         m.openPopup();
       }, mob ? 160 : 0);
     }
+  }
+
+  /* 把地圖整張捲進可視範圍。
+     頂列是 sticky 的，所以要扣掉它的高度，否則地圖上緣會被蓋住。 */
+  function revealMap() {
+    var box = root.querySelector('.mapbox');
+    if (!box) return;
+    var bar = document.querySelector('.topbar');
+    var barH = (bar && getComputedStyle(bar).position === 'sticky')
+      ? bar.getBoundingClientRect().height : 0;
+    var r = box.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var PAD = 12;
+
+    // 已經完整看得到就不要亂動，避免畫面無故跳動
+    if (r.top >= barH - 1 && r.bottom <= vh + 1) return;
+
+    var docTop = r.top + window.scrollY;          // 絕對位置，不受之後的捲動影響
+    var top;
+    if (r.height + barH + PAD * 2 <= vh) {
+      // 整張放得下：在頂列下方的空間裡置中
+      top = docTop - barH - (vh - barH - r.height) / 2;
+    } else {
+      // 放不下：至少讓上緣貼齊頂列下方
+      top = docTop - barH - PAD;
+    }
+    var max = document.documentElement.scrollHeight - vh;
+    top = Math.min(Math.max(0, Math.round(top)), max);
+    // 瀏覽器會因為按鈕取得焦點而自己捲一次，所以排到下一幀再捲，確保我們最後生效
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
   }
 
   /* ── 卡片 ── */

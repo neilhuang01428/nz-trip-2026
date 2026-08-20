@@ -1562,12 +1562,45 @@ body.mapmode .totop{display:none!important}
     if (!fromMap && m && map) {
       var mob = isMobile();
       if (mob) setView('map');
+      else revealMap();          // 桌機：把整張地圖捲進畫面
       setTimeout(function () {
         map.invalidateSize();
         map.setView(m.getLatLng(), Math.max(map.getZoom(), 12), { animate: !mob });
         m.openPopup();
       }, mob ? 160 : 0);
     }
+  }
+
+  /* 把地圖整張捲進可視範圍。
+     頂列是 sticky 的，所以要扣掉它的高度，否則地圖上緣會被蓋住。 */
+  function revealMap() {
+    var box = root.querySelector('.mapbox');
+    if (!box) return;
+    var bar = document.querySelector('.topbar');
+    var barH = (bar && getComputedStyle(bar).position === 'sticky')
+      ? bar.getBoundingClientRect().height : 0;
+    var r = box.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var PAD = 12;
+
+    // 已經完整看得到就不要亂動，避免畫面無故跳動
+    if (r.top >= barH - 1 && r.bottom <= vh + 1) return;
+
+    var docTop = r.top + window.scrollY;          // 絕對位置，不受之後的捲動影響
+    var top;
+    if (r.height + barH + PAD * 2 <= vh) {
+      // 整張放得下：在頂列下方的空間裡置中
+      top = docTop - barH - (vh - barH - r.height) / 2;
+    } else {
+      // 放不下：至少讓上緣貼齊頂列下方
+      top = docTop - barH - PAD;
+    }
+    var max = document.documentElement.scrollHeight - vh;
+    top = Math.min(Math.max(0, Math.round(top)), max);
+    // 瀏覽器會因為按鈕取得焦點而自己捲一次，所以排到下一幀再捲，確保我們最後生效
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
   }
 
   /* ── 卡片 ── */
