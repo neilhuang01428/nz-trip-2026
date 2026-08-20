@@ -614,11 +614,12 @@ th .twd,.pop-h .twd{display:none}
   transition:background .18s,border-color .18s;min-height:44px}
 .pl-more:hover{background:rgba(192,138,62,.16);border-color:rgba(192,138,62,.5)}
 .pl-more .dm-ic{flex:none;line-height:1.4}
-.pl-more .dm-t{flex:1;font-weight:600;color:#7A5A16}
+.pl-more .dm-t{flex:1 1 auto;min-width:0;font-weight:600;color:#7A5A16;
+  overflow-wrap:anywhere;word-break:break-word}
 .pl-more .dm-a{flex:none;color:var(--tussock);font-size:.9rem;line-height:1.5;
   transition:transform .22s}
 .pl-more.open .dm-a{transform:rotate(180deg)}
-.pl.has-img .pl-more{margin:0 18px 11px}
+.pl.has-img .pl-more{margin:0 18px 11px;width:calc(100% - 36px)}
 
 .pl-deep{border-left:3px solid var(--tussock);background:var(--paper-2);
   border-radius:0 10px 10px 0;padding:13px 16px;margin:0 0 12px;
@@ -635,7 +636,7 @@ th .twd,.pop-h .twd{display:none}
 @keyframes deepIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.pl-deep{animation:none}.pl-more .dm-a{transition:none}}
 @media(max-width:600px){
-  .pl.has-img .pl-more{margin:0 17px 11px}
+  .pl.has-img .pl-more{margin:0 17px 11px;width:calc(100% - 34px)}
   .pl.has-img .pl-deep{margin:0 17px 12px}
   .pl-more{font-size:.88rem;padding:12px 13px;min-height:48px}
   .pl-deep p{font-size:.91rem}
@@ -713,6 +714,80 @@ body.mapmode .totop{display:none!important}
 }
 @media(prefers-color-scheme:dark){.totop{background:rgba(18,34,44,.95)}}
 
+/* ══════════ 會話頁（talk.html） ══════════ */
+.voicebar{background:var(--ice);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin:0 0 14px;display:grid;gap:9px}
+.vb-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.vb-k{font-size:.8rem;color:var(--ink-2);font-weight:600;flex:none;min-width:80px}
+.voicebar select{font:inherit;font-size:16px;padding:7px 9px;border-radius:9px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);
+  max-width:100%;flex:1 1 190px;min-height:40px}
+.vb-tag{font-size:.72rem;color:var(--pounamu);background:rgba(31,91,78,.1);
+  padding:3px 9px;border-radius:20px;flex:none}
+.vb-ctl{justify-content:space-between}
+.vb-slow{display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--ink-2);
+  cursor:pointer;min-height:38px}
+.vb-slow input{width:18px;height:18px;accent-color:var(--pounamu)}
+.voicebar button#v-test{font:inherit;font-size:.82rem;padding:8px 15px;border-radius:9px;
+  border:1px solid var(--pukaki);background:var(--card);color:var(--pukaki-dk);
+  cursor:pointer;min-height:38px;font-weight:600}
+.voicebar button#v-test:active{background:var(--pukaki);color:#fff}
+.vb-none{font-size:.85rem;color:var(--ink-2);line-height:1.65}
+.vb-none b{color:var(--ink)}
+
+.tk-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin:4px 0 14px;font-size:.84rem;color:var(--ink-soft);font-family:var(--mono)}
+.tk-stop{font:inherit;font-size:.78rem;padding:7px 13px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-2);min-height:36px}
+
+.tk-h{font-family:var(--serif);font-size:1.22rem;margin:26px 0 12px;padding-left:11px;
+  border-left:4px solid var(--line);font-variant-numeric:lining-nums}
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px}
+.tk{display:flex;gap:13px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:15px 16px;box-shadow:var(--shadow)}
+.tk-play{flex:none;width:50px;height:50px;border-radius:50%;cursor:pointer;
+  border:1px solid var(--pukaki);background:var(--ice);color:var(--pukaki-dk);
+  display:flex;align-items:center;justify-content:center;font-size:1.24rem;
+  transition:transform .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.tk-play:active{transform:scale(.93)}
+.tk-play.on{background:var(--pukaki);border-color:var(--pukaki);
+  animation:tkpulse 1.1s ease-in-out infinite}
+.tk-play.fail{border-color:var(--rata);background:rgba(190,59,43,.12)}
+@keyframes tkpulse{0%,100%{box-shadow:0 0 0 0 rgba(62,157,184,.55)}
+  70%{box-shadow:0 0 0 11px rgba(62,157,184,0)}}
+@media(prefers-reduced-motion:reduce){.tk-play.on{animation:none}}
+.tk-b{min-width:0;flex:1}
+.tk-sec{font-size:.68rem;font-family:var(--mono);letter-spacing:.05em;display:block;
+  margin-bottom:3px}
+.tk-t{font-family:var(--serif);font-size:1.3rem;margin:0 0 3px;line-height:1.25;
+  color:var(--ink);font-variant-numeric:lining-nums;word-break:break-word}
+.tk-zh{margin:0 0 7px;font-size:.92rem;color:var(--ink-2);font-weight:600}
+.tk-say{display:flex;flex-wrap:wrap;gap:5px 10px;margin-bottom:8px;align-items:baseline}
+.tk-roma{font-family:var(--mono);font-size:.8rem;color:var(--pukaki-dk);
+  background:var(--ice);padding:2px 8px;border-radius:6px;letter-spacing:.02em}
+.tk-zs{font-size:.8rem;color:var(--ink-soft)}
+.tk-when{margin:0;font-size:.86rem;line-height:1.62;color:var(--ink-2);
+  padding-top:8px;border-top:1px dashed var(--line-2)}
+.tk-note{margin:7px 0 0;font-size:.82rem;line-height:1.6;color:var(--ink-soft)}
+.tk-when b,.tk-note b{color:var(--ink)}
+
+@media(max-width:560px){
+  .tk-grid{grid-template-columns:1fr;gap:11px}
+  .tk{padding:13px 14px;gap:11px}
+  .tk-play{width:46px;height:46px;font-size:1.14rem}
+  .tk-t{font-size:1.2rem}
+  .vb-k{min-width:100%}
+  .voicebar select{flex:1 1 100%}
+}
+.tk-ext{display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+  font-size:.82rem;font-weight:600;color:var(--pukaki-dk);text-decoration:none;
+  background:var(--ice);border:1px solid var(--line);border-radius:9px;
+  padding:8px 12px;min-height:38px;box-sizing:border-box;
+  transition:background .15s,border-color .15s}
+.tk-ext:hover{background:var(--card);border-color:var(--pukaki)}
+.tk-ext:active{background:var(--pukaki);color:#fff;border-color:var(--pukaki)}
+.tk-ext .ex{font-size:.72rem;opacity:.65}
+
 </style>
 <style>
 /* ── 本頁專用：高度尺 ── */
@@ -786,6 +861,7 @@ body.mapmode .totop{display:none!important}
 <a href="skydive.html" class="on">🪂 跳傘</a>
 <a href="glacier.html">🚁 冰川</a>
 <a href="culture.html">🗿 文化</a>
+<a href="talk.html">💬 會話</a>
 <a href="prepare.html">🎒 行前</a>
 <a href="itinerary.html">🗓 行程</a>
 </nav></div></header>
@@ -1345,6 +1421,7 @@ body.mapmode .totop{display:none!important}
 <a href="skydive.html" class="on"><span>🪂</span>跳傘</a>
 <a href="glacier.html"><span>🚁</span>冰川</a>
 <a href="culture.html"><span>🗿</span>文化</a>
+<a href="talk.html"><span>💬</span>會話</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
 </div>
 <script id="places-data" type="application/json">
@@ -1822,7 +1899,7 @@ body.mapmode .totop{display:none!important}
   },
   {
    "id": "mtcook-village",
-   "name": "Aoraki / Mount Cook Village",
+   "name": "Aoraki/Mount Cook Village",
    "zh": "Mt Cook 村",
    "cat": "sight",
    "day": 5,
@@ -5337,6 +5414,417 @@ body.mapmode .totop{display:none!important}
   addEventListener('scroll', function () {
     b.classList.toggle('show', window.scrollY > 700);
   }, { passive: true });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   會話頁：詞條清單 ＋ 語音朗讀
+   語音用瀏覽器內建的 SpeechSynthesis，不需要任何 API 金鑰、
+   不連外部服務，離線也能唸（聲音來自作業系統）。
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var root = document.getElementById('talk');
+  var raw = document.getElementById('talk-data');
+  if (!root || !raw) return;
+
+  var DB = JSON.parse(raw.textContent);
+  var SECS = DB.meta.secs || {};
+  var LIST = DB.entries || [];
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  // 內文允許 <b>，其餘一律跳脫
+  function rich(s) {
+    return esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+  }
+
+  /* ─────── 語音引擎 ─────── */
+  var SS = window.speechSynthesis;
+  var voices = [];
+  var chosen = { mi: null, en: null };   // 使用者手動指定時記在這
+  var slow = false;
+  try {
+    var saved = JSON.parse(localStorage.getItem('nz-voice') || '{}');
+    if (saved.mi) chosen.mi = saved.mi;
+    if (saved.en) chosen.en = saved.en;
+    slow = !!saved.slow;
+  } catch (e) {}
+  function remember() {
+    try {
+      localStorage.setItem('nz-voice',
+        JSON.stringify({ mi: chosen.mi, en: chosen.en, slow: slow }));
+    } catch (e) {}
+  }
+
+  // 毛利語的五個母音跟印尼語幾乎一樣（同屬南島語系），
+  // h 會發音、ng 是 /ŋ/，所以印尼語的聲音唸毛利語比英語聲音準得多。
+  // 西班牙語／義大利語母音也對，但它們的 h 不發音，所以排在後面。
+  var PREF = {
+    mi: ['mi-NZ', 'mi', 'id-ID', 'id', 'ms-MY', 'fil-PH', 'tl-PH',
+         'it-IT', 'es-ES', 'es-MX', 'pt-BR', 'en-NZ', 'en-AU', 'en-GB', 'en-US'],
+    en: ['en-NZ', 'en-AU', 'en-GB', 'en-IE', 'en-US', 'en']
+  };
+
+  function norm(l) { return String(l || '').replace('_', '-'); }
+
+  function pick(lang) {
+    if (chosen[lang]) {
+      var m = voices.filter(function (v) { return v.voiceURI === chosen[lang]; });
+      if (m.length) return m[0];
+    }
+    var prefs = PREF[lang] || PREF.en;
+    for (var i = 0; i < prefs.length; i++) {
+      var want = prefs[i];
+      // 先找完全相符，再找前綴相符
+      var exact = voices.filter(function (v) { return norm(v.lang) === want; });
+      if (exact.length) return best(exact);
+      var pre = voices.filter(function (v) { return norm(v.lang).indexOf(want + '-') === 0; });
+      if (pre.length) return best(pre);
+    }
+    // 全都沒有時，退而求其次：任何英語 → 任何拉丁字母語言 → 第一個
+    var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+    if (en.length) return best(en);
+    var latin = voices.filter(function (v) {
+      return !/^(zh|ja|ko|th|ar|he|ru|uk|bg|el|hi|km|my|ta|te|fa|ur)/i.test(v.lang);
+    });
+    if (latin.length) return best(latin);
+    return voices[0] || null;
+  }
+  // 同語言有多個聲音時，優先本機（不需連網）與非 novelty 的
+  function best(vs) {
+    var good = vs.filter(function (v) { return !/eloquence|novelty|whisper|bells|organ/i.test(v.name); });
+    var pool = good.length ? good : vs;
+    var local = pool.filter(function (v) { return v.localService; });
+    return (local.length ? local : pool)[0];
+  }
+
+  function loadVoices() {
+    if (!SS) return;
+    var had = voices.length;
+    voices = SS.getVoices() || [];
+    renderVoiceBar();
+    if (!had && voices.length && root.querySelector('#tk-list')) render();
+  }
+  if (SS) {
+    loadVoices();
+    if (typeof SS.onvoiceschanged !== 'undefined') SS.onvoiceschanged = loadVoices;
+    // Safari 有時要等一下才吐出清單
+    setTimeout(loadVoices, 400);
+    setTimeout(loadVoices, 1600);
+  }
+
+  function canSpeak() {
+    return !!(SS && window.SpeechSynthesisUtterance && voices.length);
+  }
+
+  // 兩位研究員給的 say 欄寫法不同：一份是毛利語原拼法，一份是英文近似拼法。
+  // 而念毛利語的聲音可能是印尼語（母音純）也可能是英語（母音會飄），
+  // 兩者需要餵不同的字串，所以在這裡按實際選到的聲音決定。
+  var PUREVOWEL = /^(mi|id|ms|fil|tl|jv|su|haw|it|es|pt|ca|ro|eu|sw|fi|tr)/i;
+  // 毛利語只用 a e i o u h k m n p r t w（含 ng wh），出現其他字母的就是英文
+  function isMaoriWord(x) {
+    return /[a-z]/.test(x) && !/[bcdfgjlqsvxyz]/.test(x);
+  }
+  function fromMaori(t) {
+    // 「Aoraki/Mount Cook」只留毛利語那半；「Tāne / Wāhine」兩半都留
+    var parts = String(t).split('/').map(function (x) {
+      return x.toLowerCase()
+        .replace(/[āăâà]/g, 'a').replace(/[ēĕêè]/g, 'e').replace(/[īĭîì]/g, 'i')
+        .replace(/[ōŏôò]/g, 'o').replace(/[ūŭûù]/g, 'u')
+        .replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }).filter(isMaoriWord);
+    if (!parts.length) parts = [String(t).toLowerCase()];
+    return parts.join(' ')
+      .replace(/[āăâà]/g, 'a').replace(/[ēĕêè]/g, 'e').replace(/[īĭîì]/g, 'i')
+      .replace(/[ōŏôò]/g, 'o').replace(/[ūŭûù]/g, 'u')
+      .replace(/[āăâà]/g, 'a').replace(/[ēĕêè]/g, 'e').replace(/[īĭîì]/g, 'i')
+      .replace(/[ōŏôò]/g, 'o').replace(/[ūŭûù]/g, 'u')
+      .replace(/wh/g, 'f')            // 毛利語的 wh 是 /f/
+      .replace(/[^a-z\s]/g, ' ')
+      .replace(/\s+/g, ' ').trim();
+  }
+  function textFor(e, v) {
+    var fallback = e.say || e.t;
+    if ((e.lang || 'en') !== 'mi') return fallback;
+    if (e.sec === 'rules') return fallback;               // 規則卡的 t 是中文標題
+    if (!/[A-Za-z]/.test(String(e.t))) return fallback;
+    var pure = v && PUREVOWEL.test(norm(v.lang));
+    if (!pure) return fallback;                           // 英語聲音 → 用英文近似拼法
+    var d = fromMaori(e.t);
+    return d || fallback;
+  }
+
+  var playingBtn = null;
+  function stopAll() {
+    if (SS) { try { SS.cancel(); } catch (e) {} }
+    if (playingBtn) { playingBtn.classList.remove('on'); playingBtn = null; }
+  }
+
+  function say(entry, btn) {
+    if (!SS || !window.SpeechSynthesisUtterance) return false;
+    stopAll();
+    var lang = (entry.lang || 'en');
+    var v = pick(lang);
+    var u = new SpeechSynthesisUtterance(textFor(entry, v));
+    if (v) { u.voice = v; u.lang = v.lang; }
+    else { u.lang = lang === 'mi' ? 'mi-NZ' : 'en-NZ'; }
+    u.rate = slow ? 0.55 : (lang === 'mi' ? 0.82 : 0.9);
+    u.pitch = 1;
+    if (btn) {
+      btn.classList.add('on'); playingBtn = btn;
+      u.onend = u.onerror = function () {
+        btn.classList.remove('on');
+        if (playingBtn === btn) playingBtn = null;
+      };
+    }
+    try { SS.speak(u); } catch (e) { return false; }
+    if (voices.length < 2) setTimeout(loadVoices, 300);   // iOS 首次朗讀後才給清單
+    return true;
+  }
+
+  /* ─────── 狀態與篩選 ─────── */
+  var state = { sec: '', q: '' };
+  var byId = {};
+  LIST.forEach(function (e) { byId[e.id] = e; });
+
+  function terms() {
+    return state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  }
+  function haystack(e) {
+    if (e._hay) return e._hay;
+    e._hay = [e.t, e.zh, e.roma, e.zhsound, e.when, e.note,
+              (SECS[e.sec] || {}).label, (SECS[e.sec] || {}).group]
+      .filter(Boolean).join(' ').toLowerCase();
+    return e._hay;
+  }
+  function hl(s) {
+    var t = rich(s), ts = terms();
+    if (!ts.length) return t;
+    ts.forEach(function (k) {
+      var re = new RegExp('(' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      t = t.replace(re, '<mark>$1</mark>');
+    });
+    return t;
+  }
+  function match(e) {
+    if (state.sec && e.sec !== state.sec) return false;
+    var ts = terms();
+    if (!ts.length) return true;
+    var h = haystack(e);
+    return ts.every(function (k) { return h.indexOf(k) >= 0; });
+  }
+
+  /* ─────── 畫面 ─────── */
+  function groupsOf() {
+    var g = [], seen = {};
+    LIST.forEach(function (e) {
+      var s = SECS[e.sec]; if (!s) return;
+      var name = s.group || '其他';
+      if (!seen[name]) { seen[name] = { name: name, secs: [] }; g.push(seen[name]); }
+      if (seen[name].secs.indexOf(e.sec) < 0) seen[name].secs.push(e.sec);
+    });
+    return g;
+  }
+
+  function renderVoiceBar() {
+    var bar = root.querySelector('#voicebar');
+    if (!bar) return;
+    if (!SS || !voices.length) {
+      bar.innerHTML = '<div class="vb-none">這台裝置沒有內建語音，所以卡片上沒有 🔊 鈕。' +
+        '每一條下面都有<b>「聽發音」的連結</b>——毛利語連到 <b>Te Aka 辭典</b>（母語者真人錄音）、' +
+        '英語連到 <b>Google 翻譯</b>，點進去按播放就好。' +
+        '也可以直接看<b>音節切分</b>與<b>中文近似音</b>照著念。</div>';
+      return;
+    }
+    var mi = pick('mi'), en = pick('en');
+    var opt = function (sel) {
+      return voices.map(function (v) {
+        return '<option value="' + esc(v.voiceURI) + '"' +
+          (sel && v.voiceURI === sel.voiceURI ? ' selected' : '') + '>' +
+          esc(v.name) + '（' + esc(v.lang) + '）</option>';
+      }).join('');
+    };
+    var miTag = mi ? (/^mi/i.test(mi.lang) ? '毛利語語音'
+      : (/^(id|ms|fil|tl)/i.test(mi.lang) ? '用南島語系的聲音代打'
+        : (/^(it|es|pt)/i.test(mi.lang) ? '用拉丁語系的聲音代打' : '只能用英語聲音代打'))) : '';
+    bar.innerHTML =
+      '<div class="vb-row"><span class="vb-k">🗿 毛利語用</span>' +
+      '<select id="v-mi" aria-label="毛利語使用的語音">' + opt(mi) + '</select>' +
+      (miTag ? '<span class="vb-tag">' + miTag + '</span>' : '') + '</div>' +
+      '<div class="vb-row"><span class="vb-k">🇳🇿 英語用</span>' +
+      '<select id="v-en" aria-label="英語使用的語音">' + opt(en) + '</select></div>' +
+      '<div class="vb-row vb-ctl">' +
+      '<label class="vb-slow"><input type="checkbox" id="v-slow"' + (slow ? ' checked' : '') +
+      '> 慢速朗讀</label>' +
+      '<button type="button" id="v-test">▶ 試聽 Kia ora</button></div>';
+    bar.querySelector('#v-mi').onchange = function () { chosen.mi = this.value; remember(); renderVoiceBar(); };
+    bar.querySelector('#v-en').onchange = function () { chosen.en = this.value; remember(); renderVoiceBar(); };
+    bar.querySelector('#v-slow').onchange = function () { slow = this.checked; remember(); };
+    bar.querySelector('#v-test').onclick = function () {
+      say({ id: '_t', lang: 'mi', t: 'Kia ora', say: 'kia ora' }, null);
+    };
+  }
+
+  // 毛利語沒有任何線上服務有合成語音（Google 翻譯 tl=mi 直接回 400），
+  // 但 Te Aka 辭典有母語者的真人錄音，所以毛利語一律連 Te Aka。
+  function extLink(e) {
+    // 發音規則那一區的標題是說明不是單字，查辭典沒有意義
+    if (e.sec === 'rules') return '';
+    var mi = (e.lang || 'en') === 'mi';
+    var raw = String(e.t).split('/')[0].replace(/\(.*?\)/g, '')
+      .replace(/[?!.,;:\u3000-\u303f\uff00-\uffef]/g, ' ').trim();
+    // 標題是中文的（例如發音規則），沒有東西可查，就不放連結
+    if (!/[A-Za-z\u0100-\u017f]/.test(raw)) return '';
+
+    if (mi) {
+      var w = raw.split(/\s+/).filter(Boolean);
+      var term = raw, label = '📖 到 Te Aka 聽母語者念';
+      if (w.length > 3) {
+        // Te Aka 是辭典，整句查多半沒結果；改查句子裡最長的那個實詞
+        term = w.slice().sort(function (a, b) { return b.length - a.length; })[0];
+        label = '📖 到 Te Aka 聽「' + term + '」的真人發音';
+      }
+      return '<a class="tk-ext" target="_blank" rel="noopener" ' +
+        'href="https://maoridictionary.co.nz/search?keywords=' +
+        encodeURIComponent(term) + '">' + esc(label) + '<span class="ex">↗</span></a>';
+    }
+    return '<a class="tk-ext" target="_blank" rel="noopener" ' +
+      'href="https://translate.google.com/?sl=en&amp;tl=zh-TW&amp;op=translate&amp;text=' +
+      encodeURIComponent(raw) + '">🌐 用 Google 翻譯聽<span class="ex">↗</span></a>';
+  }
+
+  function card(e) {
+    var s = SECS[e.sec] || {};
+    var h = '<article class="tk" data-id="' + esc(e.id) + '">' +
+      (canSpeak()
+        ? '<button type="button" class="tk-play" aria-label="朗讀 ' + esc(e.t) + '">' +
+          '<span class="tk-ic" aria-hidden="true">🔊</span></button>'
+        : '') +
+      '<div class="tk-b">' +
+      '<span class="tk-sec" style="color:' + esc(s.color || '#555') + '">' +
+      esc(s.icon || '') + ' ' + esc(s.label || e.sec) + '</span>' +
+      '<h3 class="tk-t">' + hl(e.t) + '</h3>' +
+      '<p class="tk-zh">' + hl(e.zh) + '</p>' +
+      '<div class="tk-say">' +
+      (e.roma ? '<span class="tk-roma">' + hl(e.roma) + '</span>' : '') +
+      (e.zhsound ? '<span class="tk-zs">' + hl(e.zhsound) + '</span>' : '') +
+      '</div>' +
+      (e.when ? '<p class="tk-when">' + hl(e.when) + '</p>' : '') +
+      (e.note ? '<p class="tk-note">💡 ' + hl(e.note) + '</p>' : '') +
+      extLink(e) +
+      '</div></article>';
+    return h;
+  }
+
+  function render() {
+    var hits = LIST.filter(match);
+    var body = root.querySelector('#tk-list');
+    var cnt = root.querySelector('#tk-count');
+
+    if (!hits.length) {
+      body.innerHTML = '<div class="empty"><p>找不到符合的說法。</p>' +
+        '<button type="button" class="btn" data-clear>清除全部條件</button></div>';
+      body.querySelector('[data-clear]').onclick = clearAll;
+    } else {
+      // 依 group → sec 排序後分段顯示
+      var order = [];
+      groupsOf().forEach(function (g) { g.secs.forEach(function (s) { order.push(s); }); });
+      hits.sort(function (a, b) { return order.indexOf(a.sec) - order.indexOf(b.sec); });
+      var out = '', last = null;
+      hits.forEach(function (e) {
+        if (e.sec !== last) {
+          if (last !== null) out += '</div>';
+          var s = SECS[e.sec] || {};
+          out += '<h3 class="tk-h" style="border-color:' + esc(s.color || '#ccc') + '">' +
+            esc(s.icon || '') + ' ' + esc(s.label || e.sec) + '</h3><div class="tk-grid">';
+          last = e.sec;
+        }
+        out += card(e);
+      });
+      if (last !== null) out += '</div>';
+      body.innerHTML = out;
+    }
+    cnt.textContent = state.q || state.sec
+      ? '找到 ' + hits.length + ' / ' + LIST.length + ' 條'
+      : '共 ' + LIST.length + ' 條';
+
+    Array.prototype.forEach.call(body.querySelectorAll('.tk'), function (el) {
+      var pb = el.querySelector('.tk-play');
+      if (!pb) return;
+      pb.onclick = function () {
+        var ent = byId[el.dataset.id];
+        var ok = ent && say(ent, this);
+        if (!ok) {
+          this.classList.add('fail');
+          var t = this;
+          setTimeout(function () { t.classList.remove('fail'); }, 900);
+        }
+      };
+    });
+  }
+
+  function clearAll() {
+    state.sec = ''; state.q = '';
+    var i = root.querySelector('#tk-q'); if (i) i.value = '';
+    syncChips(); render();
+  }
+  function syncChips() {
+    Array.prototype.forEach.call(root.querySelectorAll('.fchip[data-sec]'), function (b) {
+      b.setAttribute('aria-pressed', b.dataset.sec === state.sec ? 'true' : 'false');
+    });
+  }
+
+  function boot() {
+    var chips = '';
+    groupsOf().forEach(function (g) {
+      chips += '<div class="grp"><span class="lbl">' + esc(g.name) + '</span>';
+      g.secs.forEach(function (sc) {
+        var s = SECS[sc] || {};
+        var n = LIST.filter(function (e) { return e.sec === sc; }).length;
+        chips += '<button type="button" class="fchip" data-sec="' + esc(sc) +
+          '" aria-pressed="false">' + esc(s.icon || '') + ' ' + esc(s.label || sc) +
+          ' <b>' + n + '</b></button>';
+      });
+      chips += '</div>';
+    });
+
+    root.innerHTML =
+      '<div class="voicebar" id="voicebar"></div>' +
+      '<div class="searchwrap"><span class="s-ic" aria-hidden="true">🔍</span>' +
+      '<input type="search" id="tk-q" class="s-in" placeholder="搜尋中文或英文，例如：謝謝、加油、雪鏈" ' +
+      'autocomplete="off" aria-label="搜尋說法">' +
+      '<button type="button" class="s-x" aria-label="清除搜尋" hidden>✕</button></div>' +
+      '<div class="filters">' + chips + '</div>' +
+      '<div class="tk-bar"><span id="tk-count"></span>' +
+      '<button type="button" class="tk-stop">■ 停止朗讀</button></div>' +
+      '<div id="tk-list"></div>';
+
+    renderVoiceBar();
+
+    var q = root.querySelector('#tk-q');
+    var x = root.querySelector('.s-x');
+    q.addEventListener('input', function () {
+      state.q = this.value.trim();
+      x.hidden = !this.value;
+      render();
+    });
+    x.onclick = function () { q.value = ''; state.q = ''; x.hidden = true; q.focus(); render(); };
+
+    Array.prototype.forEach.call(root.querySelectorAll('.fchip[data-sec]'), function (b) {
+      b.onclick = function () {
+        state.sec = (state.sec === b.dataset.sec) ? '' : b.dataset.sec;
+        syncChips(); render();
+      };
+    });
+    root.querySelector('.tk-stop').onclick = stopAll;
+    window.addEventListener('pagehide', stopAll);
+
+    render();
+  }
+
+  boot();
 })();
 
 </script>
