@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F5B4E">
-<title>行前注意事項 · 南島環島 2026</title>
+<title>架構說明 PRD · 南島環島 2026</title>
+<meta name="description" content="這個旅程規劃網站的完整架構說明：資料結構、產生流程、設計系統、內容品質規則，以及可以直接貼給 AI 的提示詞。要規劃下一趟旅行時，把這份文件給 AI 讀。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1108,39 +1109,52 @@ input:focus-visible,[tabindex]:focus-visible{
 
 </style>
 <style>
-/* 打包清單：可勾選，狀態存在本機 */
-.packlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:20px 0}
-.packgrp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+/* PRD 是長文件，用比一般分頁窄的欄寬與更清楚的層級 */
+.prd{max-width:840px;margin:0 auto;padding:0 24px}
+.prd h1{font-family:var(--serif);font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.15;
+  margin:6px 0 18px;color:var(--ink);text-wrap:balance}
+.prd h2{font-family:var(--serif);font-size:clamp(1.35rem,3.4vw,1.8rem);
+  margin:44px 0 14px;padding-bottom:9px;border-bottom:2px solid var(--pounamu);color:var(--ink)}
+.prd h3{font-size:1.12rem;margin:28px 0 10px;color:var(--pounamu);font-weight:700}
+.prd h4{font-size:1rem;margin:20px 0 8px;color:var(--ink)}
+.prd p{margin:0 0 13px;line-height:1.82;color:var(--ink-2)}
+.prd strong{color:var(--ink)}
+.prd ul,.prd ol{margin:0 0 15px;padding-left:24px}
+.prd li{margin-bottom:7px;line-height:1.78;color:var(--ink-2)}
+.prd li strong{color:var(--ink)}
+.prd hr{border:0;border-top:1px dashed var(--line);margin:34px 0}
+.prd blockquote{margin:0 0 18px;padding:14px 18px;background:var(--ice);
+  border-left:4px solid var(--pukaki);border-radius:0 12px 12px 0;
+  font-size:.93rem;line-height:1.8;color:var(--ink-2)}
+.prd blockquote strong{color:var(--ink)}
+.prd code{font-family:var(--mono);font-size:.86em;background:var(--paper-2);
+  padding:2px 6px;border-radius:5px;color:#8C3B2E;word-break:break-word}
+.prd pre.code{background:var(--night);color:#D8E4EA;border-radius:12px;
+  padding:16px 18px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.7;
   box-shadow:var(--shadow)}
-.packgrp h4{margin:0 0 10px;font-size:.98rem;display:flex;align-items:center;gap:8px}
-.packgrp ul{list-style:none;margin:0;padding:0}
-.packgrp li{margin:0}
-.packgrp label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer;
-  font-size:.9rem;line-height:1.55;color:var(--ink-2);border-top:1px solid var(--line-2);min-height:40px}
-.packgrp li:first-child label{border-top:0}
-.packgrp input{width:19px;height:19px;margin:2px 0 0;flex:none;accent-color:var(--pounamu);cursor:pointer}
-.packgrp input:checked + span{color:var(--ink-soft);text-decoration:line-through}
-.packgrp b{color:var(--ink)}
-.packbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
-.packbar .pct{font-family:var(--mono);font-size:.82rem;color:var(--pounamu);font-weight:700}
-.packbar button{font:inherit;font-size:.8rem;padding:7px 14px;border-radius:8px;cursor:pointer;
-  border:1px solid var(--line);background:var(--card);color:var(--ink-2);min-height:38px}
+.prd pre.code code{background:none;padding:0;color:inherit;font-size:1em;white-space:pre}
+.prd pre.code[data-lang]::before{content:attr(data-lang);display:block;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#6E8894;margin-bottom:9px}
+.prd .tw{margin:0 0 20px}
+.prd table td,.prd table th{font-size:.87rem}
+.prd a{color:var(--pukaki-dk);text-decoration:underline;text-underline-offset:2px}
+.prd h2:first-of-type{margin-top:20px}
 
-/* 溫度表 */
-.temps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;
-  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:20px 0}
-.temp{background:var(--card);padding:15px 14px;text-align:center}
-.temp .pl{font-size:.86rem;font-weight:700;color:var(--ink);margin-bottom:5px}
-.temp .rg{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--pukaki-dk);
-  font-variant-numeric:tabular-nums}
-.temp .rk{font-size:.74rem;color:var(--ink-soft);margin-top:3px}
+.prd-toc{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:16px 20px;margin:0 0 30px;box-shadow:var(--shadow)}
+.prd-toc b{display:block;font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);color:var(--ink-soft);margin-bottom:10px}
+.prd-toc ol{margin:0;padding-left:20px;columns:2;column-gap:26px}
+.prd-toc li{margin-bottom:5px;font-size:.88rem;break-inside:avoid}
+@media(max-width:620px){.prd-toc ol{columns:1}.prd{padding:0 18px}}
 </style>
 </head>
 <body>
 <div id="prog"></div>
 <header class="topbar"><div class="inner">
 <a class="logo" href="index.html">南島 <em>2026</em></a>
-<span class="pagename">行前</span>
+<span class="pagename"></span>
 <nav aria-label="分頁導覽">
 <span class="navlbl" aria-hidden="true">分頁</span>
 <div class="navtrack">
@@ -1152,439 +1166,314 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="glacier.html"><span class="ic" aria-hidden="true">🚁</span><span class="tx">冰川</span></a>
 <a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
 <a href="talk.html"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
-<a href="prepare.html" class="on" aria-current="page"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
+<a href="prepare.html"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
 <a href="itinerary.html"><span class="ic" aria-hidden="true">🗓</span><span class="tx">行程</span></a>
 </div></nav></div></header>
 
-<section style="padding-top:30px;padding-bottom:6px">
-  <div class="wrap">
-    <div class="sec-k">Before You Go</div>
-    <h2>行前注意事項</h2>
-    <p class="lead">出發前該知道的、該帶的、該先做的。<b>打包清單可以直接在手機上勾</b>，
-      勾選狀態會記在你自己的瀏覽器裡。</p>
-  </div>
-</section>
-
-<!-- ══════ 三件先知道 ══════ -->
-<section style="padding-top:14px">
-  <div class="wrap">
-    <div class="sec-k rv">Read This First</div>
-    <h2 class="rv">三件一定要先知道的事</h2>
-    <p class="lead rv">都不是壞消息，但<strong>沒先講，同行者到現場會失望或手忙腳亂</strong>。</p>
-    <div class="grid g3" style="margin-top:24px">
-      <div class="card rv" style="border-top:4px solid var(--kowhai)">
-        <h4>🌕 前四晚是滿月</h4>
-        <p style="font-size:.9rem"><b>2026/09/27 凌晨 04:49（紐西蘭時間）是滿月。</b>
-          9/26–9/29 這四晚，Tekapo 的月面照度是 <b>99%、100%、98%、93%</b>，而且月亮幾乎整夜都在天上。</p>
-        <p style="font-size:.9rem;margin-bottom:0">我們正好在全世界最大的暗空保護區裡，卻碰到全年最亮的月相。
-          <b>銀河會被月光洗掉</b>——把期待改成「用望遠鏡看月面環形山」，那其實更震撼。</p>
-      </div>
-      <div class="card rv" style="border-top:4px solid var(--pukaki)">
-        <h4>🕐 9/27 凌晨時鐘跳一小時</h4>
-        <p style="font-size:.9rem">紐西蘭夏令時間在<b>九月最後一個星期日</b>開始——正好是 <b>2026/09/27</b>，
-          凌晨 2:00 直接跳到 3:00。</p>
-        <p style="font-size:.9rem;margin-bottom:0">那晚<b>少睡一小時</b>。手機會自己調，
-          <strong>但車上時鐘、手錶、鬧鐘要自己改</strong>。好處是之後每天天黑晚一小時。</p>
-      </div>
-      <div class="card rv" style="border-top:4px solid var(--rata)">
-        <h4>❄️ Milford 公路還在雪崩季</h4>
-        <p style="font-size:.9rem">NZTA 把 <b>6 月到 10 月</b>定為 Milford Road（SH94）的雪崩季，
-          我們 <b>10/04</b> 還在期間內。</p>
-        <p style="font-size:.9rem;margin-bottom:0">而且 <b>6–11 月「可能需要車上備雪鏈」</b>，
-          無視「須裝雪鏈」告示牌繼續開，<strong>警方可開罰 NZ$750</strong>。租車時要確認。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ 天氣 ══════ -->
-<section class="tint">
-  <div class="wrap">
-    <div class="sec-k rv">Weather</div>
-    <h2 class="rv">天氣：一天之內可以有四季</h2>
-    <p class="lead rv">南島 9 月底到 10 月初是<strong>冬末轉初春</strong>。
-      關鍵不是「冷不冷」，是<strong>「一天之內溫差有多大」</strong>——
-      麥肯錫盆地早上可能接近 0°C，中午出太陽又能到 15°C 以上。</p>
-
-    <div class="temps rv">
-      <div class="temp"><div class="pl">Tekapo / Mt Cook</div><div class="rg">-2 – 14°C</div>
-        <div class="rk">高山盆地 · 溫差最大</div></div>
-      <div class="temp"><div class="pl">Wanaka / 皇后鎮</div><div class="rg">2 – 16°C</div>
-        <div class="rk">內陸湖區 · 日照強</div></div>
-      <div class="temp"><div class="pl">Te Anau / Milford</div><div class="rg">3 – 14°C</div>
-        <div class="rk">峽灣 · 一年下 200 天雨</div></div>
-      <div class="temp"><div class="pl">Invercargill / Bluff</div><div class="rg">4 – 13°C</div>
-        <div class="rk">最南 · 風非常大</div></div>
-      <div class="temp"><div class="pl">但尼丁 / Oamaru</div><div class="rg">5 – 15°C</div>
-        <div class="rk">東岸 · 相對溫和</div></div>
-      <div class="temp"><div class="pl">基督城 / 奧克蘭</div><div class="rg">6 – 18°C</div>
-        <div class="rk">最舒服的兩站</div></div>
-    </div>
-    <p class="rv" style="font-size:.85rem;color:var(--ink-soft)">
-      ※ 上表是這個季節的<b>一般範圍</b>，供打包參考，<b>不是預報</b>。
-      實際請在出發前一週查 <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>（紐西蘭官方氣象）。</p>
-
-    <div class="note warn rv">
-      <span class="h">☀️ 紫外線是真的會曬傷</span>
-      <p style="margin-bottom:0"><strong>紐西蘭上空的臭氧層較薄，紫外線強度明顯高於同緯度地區。</strong>
-        加上冰川與雪地會反射，<b>冰川健行那天沒擦防曬一定曬傷</b>。
-        高係數防曬、太陽眼鏡、帽子不是選配。</p>
+<section style="padding-top:28px;padding-bottom:4px">
+  <div class="prd">
+    <div class="sec-k">Product Requirements</div>
+    <div class="note tip" style="margin:14px 0 26px">
+      <span class="h">🤖 如果你是 AI，讀這裡就對了</span>
+      <p style="margin-bottom:0">這份文件說明<b>整個網站怎麼運作</b>——資料結構、產生流程、
+        設計系統、內容品質規則。要照這個架構規劃另一趟旅行時，
+        <b>先讀完，再看第 8 節把該問的問題一次問完</b>，最後第 9 節有可以直接複製的提示詞。
+        純文字版在 <a href="PRD.md">PRD.md</a>。</p>
     </div>
 
-    <div class="grid g2" style="margin-top:24px">
-      <div class="card rv">
-        <h4>🧅 穿什麼：洋蔥式三層</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>底層</b>：發熱衣或羊毛底層 ×2（排汗，不要純棉）</li>
-          <li><b>中層</b>：刷毛或輕羽絨（保暖，可脫）</li>
-          <li><b>外層</b>：<strong>硬殼防水防風外套</strong>——不是防潑水，是真的防水</li>
-          <li><b>下半身</b>：快乾長褲 ×2（牛仔褲濕了不會乾）＋ 雨褲</li>
-          <li><b>配件</b>：手套、毛帽、脖圍——Mt Cook 早晚接近 0°C</li>
-        </ul>
-      </div>
-      <div class="card rv">
-        <h4>👟 鞋子</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>防水登山鞋</b>：Hooker Valley Track 有濕滑路段，DOC 警告冬末背陰處會結冰</li>
-          <li><b>綁緊的運動鞋</b>：跳傘要穿，<b>不能穿涼鞋、拖鞋、靴子</b></li>
-          <li>冰川健行的靴子與冰爪<b>業者會提供</b>，不用自己帶</li>
-          <li><b>入境前把鞋底泥土刷乾淨</b>——生物安全檢查會看</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="prd-toc" id="prd-toc"><b>目錄</b><ol></ol></div>
 
-<!-- ══════ 打包清單 ══════ -->
-<section>
-  <div class="wrap">
-    <div class="sec-k rv">Packing</div>
-    <h2 class="rv">打包清單</h2>
-    <p class="lead rv">按著勾。<b>粗體的是這趟特別需要、平常旅行不會帶的。</b></p>
-    <div class="packbar rv">
-      <span class="pct" id="packpct">0%</span>
-      <button type="button" id="packreset">清除全部勾選</button>
-      <span style="font-size:.8rem;color:var(--ink-soft)">勾選只存在你自己的手機／瀏覽器，不會同步給別人</span>
-    </div>
+    <h1 id="旅程規劃網站-prd-給下一次的你-或下一個-ai">旅程規劃網站 PRD — 給下一次的你（或下一個 AI）</h1>
+<blockquote><strong>這份文件的用途</strong><br>這個網站（紐西蘭南島 2026）是一套<strong>可以複製到任何旅程</strong>的架構。<br>如果你是 AI，被要求「照這個網站的架構規劃另一趟旅行」，請讀完這份文件再動手：<br>它說明了資料結構、產生方式、內容品質規則，以及<strong>你應該先問使用者哪些問題</strong>。<br>如果你是人，這份文件是給你貼給 AI 的說明書——最後一節有可以直接複製的提示詞。</blockquote>
+<p><strong>現行實例</strong>：紐西蘭南島環島，2026/09/24–10/11，4 人自駕 <strong>線上版</strong>：<a href="https://neilhuang01428.github.io/nz-trip-2026/" target="_blank" rel="noopener">https://neilhuang01428.github.io/nz-trip-2026/</a></p>
+<hr>
+<h2 id="0-這個網站在解決什麼問題">0. 這個網站在解決什麼問題</h2>
+<p>規劃一趟長天數自駕旅行，痛點不是「找不到景點」，是：</p>
+<div class="tw"><table><thead><tr><th>痛點</th><th>這個架構怎麼解</th></tr></thead><tbody><tr><td>資料散在十幾個分頁與截圖裡</td><td><strong>單一資料源</strong> <code>places.json</code>，所有分頁都從它生成</td></tr><tr><td>不知道某個點順不順路</td><td>每個地點綁 <code>day</code>，<strong>按日期篩選</strong>就只留那天路線上的</td></tr><tr><td>同行者看不懂為什麼這樣排</td><td>行程頁把每天的<strong>方案 A/B/備案</strong>攤開，可以切換比較</td></tr><tr><td>網路資訊過期、被內容農場抄爛</td><td><strong>查證紀律</strong>：只寫查得到官方出處的，查不到就明說</td></tr><tr><td>到了現場才發現公休／過季／已歇業</td><td>這類警告<strong>優先於推薦</strong>，用 ⚠️ 標在卡片正面</td></tr><tr><td>手機上難用</td><td>手機優先設計，觸控目標 ≥44px，離線可用</td></tr></tbody></table></div>
+<p><strong>核心設計原則：誠實 &gt; 完整 &gt; 好看。</strong> 查不到就寫「查不到」，比編一個看起來完整的答案有用得多。</p>
+<hr>
+<h2 id="1-技術架構">1. 技術架構</h2>
+<h3 id="1-1-整體">1.1 整體</h3>
+<pre class="code"><code>純靜態網站，無框架、無建置工具鏈、無後端。
+資料（JSON） ─┐
+樣板（HTML） ─┼─→ _build.py ─→ 根目錄的 *.html（可直接開、可丟 GitHub Pages）
+樣式（CSS）  ─┤
+程式（JS）   ─┘</code></pre>
+<p><strong>為什麼不用框架</strong>：旅程網站的生命週期是幾個月，要能十年後還打得開。 單一 HTML 檔（CSS 與 JS 都 inline）可以用 <code>file://</code> 直接開，飛機上也能看。</p>
+<h3 id="1-2-檔案結構">1.2 檔案結構</h3>
+<pre class="code"><code>專案根目錄/
+├── _build.py              組裝器：把樣板的佔位標記換成共用資源
+├── _check.py              產出後的整站檢查（必跑）
+├── _nz-style.css          全站樣式（build 時 inline 進每一頁）
+├── assets/app.js          全站前端邏輯（build 時 inline 進每一頁）
+├── _src/*.html            分頁樣板（要改內容改這裡，不要改根目錄的產出）
+├── data/
+│   ├── places.json        ★ 唯一資料源：所有地點、行程日、路線方案
+│   ├── culture.json       文化與背景卡片
+│   ├── talk.json          當地語言與實用會話
+│   └── routes-geo.json    build 前用 OSRM 預先算好的道路幾何
+├── images/
+│   ├── *.jpg              照片（全部本地化，不外連）
+│   ├── credits.json       每張圖的作者與授權
+│   └── CREDITS.md         人類可讀的授權表
+├── _geocode.py            用 Nominatim 補地點座標
+├── _routes.py             用 OSRM 算路線幾何
+├── _merge_*.py            把研究 agent 的產出併回資料源
+└── *.html                 產出（不要手改）</code></pre>
+<h3 id="1-3-build-的運作方式">1.3 build 的運作方式</h3>
+<p><code>_build.py</code> 把樣板裡的佔位標記換成實際內容：</p>
+<div class="tw"><table><thead><tr><th>標記</th><th>換成什麼</th></tr></thead><tbody><tr><td><code>&lt;!--NZCSS--&gt;</code></td><td><code>_nz-style.css</code> 全文，包在 <code>&lt;style&gt;</code> 裡</td></tr><tr><td><code>&lt;!--NZJS--&gt;</code></td><td><code>assets/app.js</code> 全文，包在 <code>&lt;script&gt;</code> 裡</td></tr><tr><td><code>&lt;!--PLACES--&gt;</code></td><td><code>data/places.json</code>，包在 <code>&lt;script type=&quot;application/json&quot;&gt;</code> 裡</td></tr><tr><td><code>&lt;!--CULTURE--&gt;</code></td><td><code>data/culture.json</code></td></tr><tr><td><code>&lt;!--TALK--&gt;</code></td><td><code>data/talk.json</code></td></tr><tr><td><code>&lt;!--ROUTESGEO--&gt;</code></td><td><code>data/routes-geo.json</code></td></tr><tr><td><code>&lt;!--NAV--&gt;</code></td><td>桌機頂部導覽列（自動標出目前頁）</td></tr><tr><td><code>&lt;!--TABBAR--&gt;</code></td><td>手機底部分頁列 ＋「更多」選單</td></tr><tr><td><code>&lt;!--LEAFLET--&gt;</code></td><td>Leaflet 的 CDN 標籤（含 SRI）</td></tr></tbody></table></div>
+<p>指令：<code>python3 _build.py</code>（全部）或 <code>python3 _build.py _src/eat.html</code>（單頁） <strong>改完一定要跑 <code>python3 _check.py</code></strong>，它會查 id 重複、內文標籤、缺圖、未替換的標記、孤兒圖片、無授權記錄的圖片。</p>
+<h3 id="1-4-外部依賴-全部免金鑰">1.4 外部依賴（全部免金鑰）</h3>
+<div class="tw"><table><thead><tr><th>用途</th><th>服務</th><th>注意事項</th></tr></thead><tbody><tr><td>地圖</td><td>Leaflet 1.9.4 + OpenStreetMap 圖磚</td><td>必須標示 OSM 貢獻者；不可大量下載圖磚</td></tr><tr><td>導航連結</td><td>Google Maps URLs API</td><td>不需金鑰。<code>/maps/search/?api=1&amp;query=</code> 與 <code>/maps/dir/?api=1&amp;origin=&amp;destination=&amp;waypoints=</code></td></tr><tr><td>座標補齊</td><td>Nominatim</td><td><strong>1 秒 1 次</strong>，要帶自訂 User-Agent，限定國別</td></tr><tr><td>道路幾何</td><td>OSRM demo server</td><td>build 時跑一次存成 JSON，執行時完全不依賴</td></tr><tr><td>發音</td><td>瀏覽器內建 SpeechSynthesis</td><td>離線可用，不需金鑰</td></tr><tr><td>圖片</td><td>Wikimedia Commons</td><td>只用 CC0／CC BY／CC BY-SA，作者與授權要記進 <code>credits.json</code></td></tr></tbody></table></div>
+<p><strong>做不到的事（不要嘗試）</strong>：</p>
+<ul><li>沒有 API 可以<strong>寫入</strong> Google Maps 的「已儲存清單」。所謂「一鍵加入清單」不存在，最多是「開啟地點頁 → 使用者自己按儲存」（兩個動作）。</li><li><strong>Google 評分無法免費即時取得</strong>。官方途徑是付費的 Places API，爬 Google Maps 違反服務條款。本站的評分是<strong>查證當下的快照</strong>，欄位帶 <code>asof</code> 查證年月與 <code>src</code> 來源網址。</li></ul>
+<hr>
+<h2 id="2-資料結構">2. 資料結構</h2>
+<h3 id="2-1-data-places-json-唯一資料源">2.1 <code>data/places.json</code>（唯一資料源）</h3>
+<pre class="code" data-lang="jsonc"><code>{
+  &quot;meta&quot;: {
+    &quot;trip&quot;: &quot;紐西蘭南島環島&quot;,
+    &quot;dates&quot;: &quot;2026/09/24 – 10/11&quot;,
+    &quot;verified&quot;: &quot;2026/08/20&quot;,          // 查證日，顯示在頁尾
+    &quot;cats&quot;: {
+      &quot;sight&quot;:   { &quot;label&quot;: &quot;景點&quot;,       &quot;color&quot;: &quot;#1B7A93&quot;, &quot;page&quot;: &quot;sights&quot; },
+      &quot;eat&quot;:     { &quot;label&quot;: &quot;吃的&quot;,       &quot;color&quot;: &quot;#B4791F&quot;, &quot;page&quot;: &quot;eat&quot; },
+      &quot;book&quot;:    { &quot;label&quot;: &quot;需預約體驗&quot;, &quot;color&quot;: &quot;#1E5B4E&quot;, &quot;page&quot;: &quot;book&quot; }
+      // 可以再加自訂分類，例如本站的 skydive / glacier 是「重頭戲」獨立成頁
+    },
+    &quot;days&quot;: [
+      { &quot;d&quot;: 1, &quot;date&quot;: &quot;09/24&quot;, &quot;wd&quot;: &quot;四&quot;,
+        &quot;title&quot;: &quot;台北 → 奧克蘭&quot;, &quot;leg&quot;: &quot;CI53 23:55 TPE&quot; }
+      // 每一天一筆。d 是第幾天，其他地點靠 day 對應到這裡
+    ],
+    &quot;fx&quot;: { &quot;nzd_twd&quot;: 18.9, &quot;asof&quot;: &quot;2026-08-20&quot; }   // 匯率，用來顯示台幣估算
+  },
 
-    <div class="packlist" id="packlist">
-      <div class="packgrp"><h4>🧥 衣物</h4><ul>
-        <li><label><input type="checkbox"><span><b>硬殼防水防風外套</b></span></label></li>
-        <li><label><input type="checkbox"><span>保暖中層（刷毛／輕羽絨）</span></label></li>
-        <li><label><input type="checkbox"><span>發熱衣或羊毛底層 ×2</span></label></li>
-        <li><label><input type="checkbox"><span>快乾長褲 ×2</span></label></li>
-        <li><label><input type="checkbox"><span><b>雨褲</b>（Milford 一年下 200 天雨）</span></label></li>
-        <li><label><input type="checkbox"><span><b>手套、毛帽、脖圍</b></span></label></li>
-        <li><label><input type="checkbox"><span>換洗衣物（小鎮不一定有洗衣機）</span></label></li>
-      </ul></div>
+  &quot;places&quot;: [
+    {
+      &quot;id&quot;: &quot;fergburger&quot;,              // kebab-case，全站唯一
+      &quot;name&quot;: &quot;Fergburger&quot;,            // 官方名稱（當地語言）
+      &quot;zh&quot;: &quot;皇后鎮排隊漢堡&quot;,           // 中文名或一句話定位
+      &quot;cat&quot;: &quot;eat&quot;,                    // 對應 meta.cats
+      &quot;day&quot;: 8,                        // 對應 meta.days 的 d
+      &quot;town&quot;: &quot;Queenstown&quot;,
+      &quot;lat&quot;: -45.0311, &quot;lng&quot;: 168.6612,
+      &quot;q&quot;: &quot;Fergburger Queenstown New Zealand&quot;,   // Google Maps 搜尋字串
+      &quot;addr&quot;: &quot;42 Shotover St, Queenstown 9300&quot;,
+      &quot;price&quot;: &quot;NZ$15–20&quot;,             // 出現 NZ$ 會自動加上台幣估算
+      &quot;hours&quot;: &quot;08:00–05:00&quot;,
+      &quot;flag&quot;: &quot;star&quot;,                  // star 必去 / ok / warn 注意 / info /
+                                       // closed 已歇業 / unverified 未查證
+      &quot;bookable&quot;: true,                // 有沒有訂位連結
+      &quot;url&quot;: &quot;https://...&quot;,            // 官網
+      &quot;bk&quot;: &quot;klook&quot;,                   // 第三方訂位平台代號（可選）
+      &quot;note&quot;: &quot;卡片正面的簡介，一到三句，白話。⚠️ 開頭代表警告。&quot;,
+      &quot;img&quot;: &quot;images/xxx.jpg&quot;,         // 可選
+      &quot;geo_approx&quot;: &quot;說明文字&quot;,         // 座標是概略位置時填，卡片會標「📍概略」
+      &quot;g&quot;: {                           // Google 評分快照（可選）
+        &quot;r&quot;: 4.5, &quot;n&quot;: 2360,
+        &quot;asof&quot;: &quot;2026/08&quot;,
+        &quot;src&quot;: &quot;https://...&quot;           // 實際看到這個數字的網址
+      },
+      &quot;deep&quot;: {                        // 展開後的深度知識（可選，沒特別可講就不要有）
+        &quot;lead&quot;: &quot;一句話的勾子，看完就知道這張卡要講什麼&quot;,
+        &quot;paras&quot;: [&quot;段落一&quot;, &quot;段落二&quot;],
+        &quot;tips&quot;: [&quot;實用提醒&quot;]
+      }
+    }
+  ],
 
-      <div class="packgrp"><h4>👟 鞋與裝備</h4><ul>
-        <li><label><input type="checkbox"><span><b>防水登山鞋</b>（鞋底先刷乾淨）</span></label></li>
-        <li><label><input type="checkbox"><span><b>綁緊的運動鞋</b>（跳傘用）</span></label></li>
-        <li><label><input type="checkbox"><span>冰爪／microspikes（DOC 建議，可當地租）</span></label></li>
-        <li><label><input type="checkbox"><span>登山杖（冰川行程業者會提供）</span></label></li>
-        <li><label><input type="checkbox"><span>小背包（步道用）</span></label></li>
-        <li><label><input type="checkbox"><span>保溫瓶</span></label></li>
-      </ul></div>
+  &quot;routes&quot;: [
+    {
+      &quot;day&quot;: 8,
+      &quot;title&quot;: &quot;皇后鎮機動日 ①&quot;,
+      &quot;note&quot;: &quot;這天的說明&quot;,
+      &quot;options&quot;: [
+        {
+          &quot;id&quot;: &quot;d8a&quot;,
+          &quot;label&quot;: &quot;A 案&quot;,
+          &quot;name&quot;: &quot;方案名稱&quot;,
+          &quot;meta&quot;: &quot;耗時／距離&quot;,
+          &quot;rec&quot;: true,                 // 建議這個
+          &quot;desc&quot;: &quot;這個方案怎麼走&quot;,
+          &quot;main&quot;: [&quot;place-id&quot;, &quot;...&quot;], // 一定會經過的地點
+          &quot;alt&quot;:  [&quot;place-id&quot;, &quot;...&quot;]  // 順路的候選
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<h3 id="2-2-data-culture-json-文化與背景">2.2 <code>data/culture.json</code>（文化與背景）</h3>
+<pre class="code" data-lang="jsonc"><code>{
+  &quot;meta&quot;: { &quot;secs&quot;: { &quot;maori&quot;: { &quot;label&quot;:&quot;毛利文化&quot;,&quot;icon&quot;:&quot;🗿&quot;,&quot;color&quot;:&quot;#8C3B2E&quot;,&quot;group&quot;:&quot;…&quot; } } },
+  &quot;cards&quot;: [
+    { &quot;id&quot;:&quot;…&quot;, &quot;cat&quot;:&quot;maori&quot;, &quot;title&quot;:&quot;卡片標題&quot;, &quot;lead&quot;:&quot;一句話勾子&quot;,
+      &quot;paras&quot;:[&quot;…&quot;], &quot;where&quot;:&quot;會在這裡遇到：D04 庫克山&quot;, &quot;img&quot;:&quot;檔名（不含路徑與副檔名）&quot; }
+  ]
+}</code></pre>
+<h3 id="2-3-data-talk-json-當地語言與實用會話">2.3 <code>data/talk.json</code>（當地語言與實用會話）</h3>
+<pre class="code" data-lang="jsonc"><code>{
+  &quot;meta&quot;: { &quot;secs&quot;: { &quot;greet&quot;: { &quot;label&quot;:&quot;打招呼&quot;,&quot;icon&quot;:&quot;👋&quot;,&quot;color&quot;:&quot;…&quot;,&quot;group&quot;:&quot;當地語言&quot; } } },
+  &quot;entries&quot;: [
+    { &quot;id&quot;:&quot;kia-ora&quot;, &quot;sec&quot;:&quot;greet&quot;, &quot;lang&quot;:&quot;mi&quot;,   // lang 決定用哪個語音朗讀
+      &quot;t&quot;:&quot;Kia ora&quot;,                                 // 原文
+      &quot;zh&quot;:&quot;你好／謝謝&quot;,                              // 中文意思
+      &quot;say&quot;:&quot;kia ora&quot;,                               // 丟給語音合成的字串（可與 t 不同）
+      &quot;roma&quot;:&quot;ki-a-O-ra&quot;,                            // 音節切分，大寫是重音
+      &quot;zhsound&quot;:&quot;ㄍㄧ ㄚ ˙ㄛ ㄌㄚ&quot;,                    // 中文近似音
+      &quot;when&quot;:&quot;什麼時候用&quot;,
+      &quot;note&quot;:&quot;加分知識（可選）&quot; }
+  ]
+}</code></pre>
+<hr>
+<h2 id="3-分頁架構">3. 分頁架構</h2>
+<div class="tw"><table><thead><tr><th>分頁</th><th>內容</th><th>資料來源</th></tr></thead><tbody><tr><td><strong>總覽</strong></td><td>封面、分頁入口、全部地點的總地圖、幾個先知道的重點</td><td>places.json</td></tr><tr><td><strong>景點</strong></td><td>分類 <code>sight</code> 的卡片 ＋ 地圖 ＋ 篩選 ＋ 搜尋</td><td>places.json</td></tr><tr><td><strong>吃的</strong></td><td>分類 <code>eat</code>，特別標公休日與季節</td><td>places.json</td></tr><tr><td><strong>需預約</strong></td><td>分類 <code>book</code>，標出「一定要先訂」的</td><td>places.json</td></tr><tr><td><strong>重頭戲</strong>（可 0–N 頁）</td><td>這趟最重要的活動，各自獨立成頁，含廠商比較、天候備案</td><td>places.json ＋ 樣板內容</td></tr><tr><td><strong>文化與背景</strong></td><td>讓體驗加分的知識卡片</td><td>culture.json</td></tr><tr><td><strong>開口講</strong></td><td>當地語言、地名發音、路上的標語、實用會話，可朗讀</td><td>talk.json</td></tr><tr><td><strong>行前注意</strong></td><td>天氣、穿什麼、打包清單（可勾選）、開車規則、入境</td><td>樣板內容</td></tr><tr><td><strong>行程安排</strong></td><td>逐日一覽 ＋ 有選擇的日子的方案切換 ＋ 路線圖</td><td>places.json 的 routes</td></tr></tbody></table></div>
+<p><strong>分頁數量可以增減</strong>，但這幾件事建議保留：</p>
+<ol><li><strong>主題分頁 ＋ 地圖 ＋ 日期篩選</strong>這組合是核心</li><li><strong>行程頁放方案比較</strong>，不要把選擇藏在文字裡</li><li><strong>行前頁</strong>是實用價值最高的一頁，不要省</li><li><strong>重頭戲獨立成頁</strong>——最貴、最看天氣的活動值得一整頁講清楚</li></ol>
+<hr>
+<h2 id="4-核心功能">4. 核心功能</h2>
+<div class="tw"><table><thead><tr><th>功能</th><th>說明</th></tr></thead><tbody><tr><td><strong>日期篩選</strong></td><td>選某一天，只留那天路線上的地點。選了會顯示那天的行程摘要</td></tr><tr><td><strong>條件篩選</strong></td><td>必去／要預約／免費／隱藏已歇業</td></tr><tr><td><strong>關鍵字搜尋</strong></td><td>多關鍵字 AND，命中反白，比對範圍含展開後的內文</td></tr><tr><td><strong>清單／地圖切換</strong></td><td>手機是全螢幕地圖面板，桌機是上下並排</td></tr><tr><td><strong>卡片 ↔ 地圖雙向連動</strong></td><td>點卡片的「在地圖上」會捲到地圖並開 popup；點 pin 會反白卡片</td></tr><tr><td><strong>卡片展開</strong></td><td>「知道了會不一樣」的深度知識，沒特別可講就不顯示這一塊</td></tr><tr><td><strong>外幣自動換算</strong></td><td>內文出現當地幣別時，自動在旁邊加上母語幣別估算</td></tr><tr><td><strong>訂位連結</strong></td><td>官網 ／ 第三方平台（Klook、KKday…）分開列</td></tr><tr><td><strong>發音朗讀</strong></td><td>用瀏覽器內建語音，離線可用；另附真人發音的外部連結</td></tr><tr><td><strong>打包清單</strong></td><td>可勾選，狀態存在 localStorage</td></tr><tr><td><strong>路線圖</strong></td><td>build 時用 OSRM 算好道路幾何，執行時不依賴外部 API</td></tr></tbody></table></div>
+<hr>
+<h2 id="5-設計系統">5. 設計系統</h2>
+<h3 id="5-1-色彩">5.1 色彩</h3>
+<p>用<strong>當地的顏色</strong>當主色，不要用通用配色。本站取自紐西蘭：</p>
+<pre class="code" data-lang="css"><code>--pukaki:  #3E9DB8   /* 冰河湖的藍 */
+--pounamu: #1F5B4E   /* 綠玉的綠 */
+--tussock: #C08A3E   /* 高原草原的金 */
+--kowhai:  #E5B23C   /* 國花的黃 */
+--rata:    #BE3B2B   /* 原生樹的紅 */
+--night:   #0B1620   /* 暗空保護區的夜 */</code></pre>
+<p>換一個目的地時，<strong>重新挑一組屬於那裡的顏色</strong>。這是整個網站個性的來源。</p>
+<h3 id="5-2-字體">5.2 字體</h3>
+<ul><li>標題：襯線體（本站 Cormorant Garamond）</li><li>內文：無襯線 ＋ 中文字體（Inter + Noto Sans TC）</li><li>數字／代號：等寬字，並開 <code>font-variant-numeric: lining-nums tabular-nums</code></li></ul>
+<h3 id="5-3-這個可以點-的設計紀律-吃過虧的經驗">5.3 「這個可以點」的設計紀律（吃過虧的經驗）</h3>
+<p>使用者連續回報四次「不知道這個可以點」。歸納出的順序是：</p>
+<blockquote><strong>文字 &gt; 圖示 &gt; 顏色</strong></blockquote>
+<ul><li><strong>可展開的區塊</strong>：右側放一顆寫著「展開／收合」的膠囊，不要只放一個小箭頭</li><li><strong>可橫向捲動的列</strong>：邊緣漸層 ＋ 可按的箭頭 ＋ 尾端留白 ＋ 首次進入輕晃一次</li><li><strong>會發出聲音的鈕</strong>：圖示旁邊加「聽」字，播放中換成「播放中」</li><li><strong>一組擇一的選項</strong>：加單選圓點（○/●）＋「點這裡看／✓ 目前看這個」的狀態文字，並用 <code>role=&quot;radiogroup&quot;</code></li><li><strong>導覽列</strong>：把分頁包在一條有底色的軌道裡，讀起來才像「一組可切換的東西」</li><li>每個可互動元素都要有 <code>:hover</code>、<code>:active</code>、<code>:focus-visible</code> 三種狀態</li><li>手機觸控目標 <strong>≥44×44px</strong></li></ul>
+<h3 id="5-4-手機優先">5.4 手機優先</h3>
+<p>預期八成流量在手機。底部固定分頁列、清單／地圖切換、篩選晶片橫向捲動、 輸入框字級 16px（避免 iOS 自動放大）、<code>env(safe-area-inset-bottom)</code>。</p>
+<hr>
+<h2 id="6-內容品質規則-最重要的一節">6. 內容品質規則（最重要的一節）</h2>
+<p>這是這個網站跟一般旅遊部落格最大的差別。<strong>照抄這些規則。</strong></p>
+<h3 id="6-1-查證紀律">6.1 查證紀律</h3>
+<ol><li><strong>優先官方來源</strong>：政府機關、國家公園管理單位、業者官網、法定資料庫。</li><li><strong>內容農場互相抄襲且常錯。</strong> 至少兩個獨立可信來源一致才採用。</li><li><strong>查不到出處就不要寫。</strong> 寧可少寫，不要編。</li><li><strong>保留語氣是刻意的</strong>：「一般認為」「有幾種說法」「查不到出處」「這是傳說不是正史」「官方未如此宣稱」——這些字眼寫進去之後，<strong>後續任何改寫都不可以拿掉</strong>，拿掉就變成假訊息。</li><li><strong>有爭議的說法要並列</strong>，不要挑一個當定論。</li><li>每一頁的頁尾要有<strong>「這些我查不到」</strong>一節，明列沒有官方依據的項目。</li></ol>
+<h3 id="6-2-警告優先於推薦">6.2 警告優先於推薦</h3>
+<p>實際查證過程中，<strong>最有價值的產出往往是否定的</strong>：</p>
+<ul><li>「這家店 2023 年已經永久歇業，但中文資訊還在推薦」</li><li>「這個裝置藝術已經被藝術家撤除了」</li><li>「這個海鮮 10 月完全過季」</li><li>「這條步道 10/01–11/10 因產羔羊封閉」</li><li>「這個景點的常見說法是錯的」</li></ul>
+<p>這類資訊<strong>一律用 ⚠️ 標在卡片正面</strong>，並且在任何後續改寫中都不可以削弱力道。</p>
+<h3 id="6-3-反翻譯腔">6.3 反翻譯腔</h3>
+<p>用當地語言查資料、用母語寫給讀者看，很容易寫出「翻譯感很重」的句子。檢查清單：</p>
+<div class="tw"><table><thead><tr><th>症狀</th><th>例子</th></tr></thead><tbody><tr><td>「X 不是 A，是 B」句式濫用，而且 A、B 不成對比</td><td>「『你跟誰講了？』在這裡不是嘮叨，是制度。」</td></tr><tr><td>反問句開頭卻沒回答</td><td>同上</td></tr><tr><td>抽象名詞硬當主詞</td><td>「深水物種淺化」「行程意向」</td></tr><tr><td>副詞配形容詞的怪組合</td><td>「原因很物理」「白話到近乎樸素」</td></tr><tr><td>外語直譯</td><td>Gore 地區「乾」了 51 年（dry ＝ 禁酒，不是氣候）</td></tr><tr><td>專有名詞未解釋就使用</td><td>「根瘤蚜」「砧木」</td></tr><tr><td>「的」連續堆疊</td><td>「一場打了一百五十年的官司的結果」</td></tr><tr><td>無效形容</td><td>「令人驚豔」「不容錯過」「美不勝收」</td></tr></tbody></table></div>
+<p><strong>好的寫法</strong>：具體 &gt; 抽象、短句 &gt; 長句、一句話講一件事。 與其說「地質作用造就獨特景觀」，不如說「那個藍是石頭磨成的粉」。</p>
+<h3 id="6-4-改寫時的紅線">6.4 改寫時的紅線</h3>
+<p>用 AI 改寫文案時，<strong>每一筆都要驗證後才寫入</strong>，任何一項不過就整筆退回：</p>
+<ul><li>數字集合完全一致（年份、金額、公里數、營業時間）</li><li>當地語言的特殊字元一致（例如毛利語的長音符號 ā ē ī ō ū）</li><li>★／⚠️／❌ 等標記數量一致</li><li>保留語氣詞（6.1 第 4 點那些）沒有消失</li><li>HTML 標籤配對且只允許 <code>&lt;b&gt;</code></li><li>段落數不變</li></ul>
+<p>本站的 <code>_merge_rewrite.py</code> 就是在做這件事，<strong>它真的攔截到過改壞的內容</strong>。</p>
+<hr>
+<h2 id="7-工作流程">7. 工作流程</h2>
+<h3 id="7-1-從零到上線">7.1 從零到上線</h3>
+<pre class="code"><code>1. 問清楚需求（見第 8 節的問題清單）
+2. 建 data/places.json 的 meta（行程日、分類、匯率）
+3. 分區派研究 agent 蒐集地點 → 併回 places.json
+4. python3 _geocode.py   補座標（Nominatim，1 秒 1 次）
+5. 人工抽查座標（跨城鎮距離異常的要抓出來）
+6. python3 _routes.py    算路線幾何
+7. 抓圖片 → 壓縮 → 記錄授權
+8. python3 _build.py &amp;&amp; python3 _check.py
+9. 手機／桌機各量一次版面（用無頭瀏覽器量 getBoundingClientRect，不要只看截圖）
+10. commit + push（公開版建議另開一個只放產出的 repo）</code></pre>
+<h3 id="7-2-用-subagent-平行處理">7.2 用 subagent 平行處理</h3>
+<p><strong>適合平行的</strong>：分區蒐集資料、分區查證、獨立的唯讀稽核。 <strong>不適合平行的</strong>：多個 agent 改同一個檔案——會互相覆蓋。真的需要就用 git worktree 隔離。</p>
+<p>有效的做法：</p>
+<ul><li>一個 agent 只負責一個地理區域或一個主題</li><li>給它<strong>明確的輸出 JSON 格式</strong>與<strong>輸出檔路徑</strong></li><li>要求它回報「<strong>查證後推翻或不敢寫的說法</strong>」——這部分往往比正面成果更有價值</li><li>另外派一個<strong>唯讀稽核 agent</strong>，用無頭瀏覽器實際量測介面問題</li></ul>
+<h3 id="7-3-驗證要用量的-不要用看的">7.3 驗證要用量的，不要用看的</h3>
+<p>無頭瀏覽器截圖有陷阱（最小視窗寬度、捲動位置、動畫不執行），<strong>多次被誤判成 bug</strong>。 可靠做法是注入腳本、用 <code>getBoundingClientRect()</code> / <code>getComputedStyle()</code> / <code>elementFromPoint()</code> 量， 把結果塞進 <code>document.title</code> 再用 <code>--dump-dom</code> 撈出來。 要模擬真實手機寬度（無頭最小 500px），用 iframe 強制 390×844，並加 <code>--allow-file-access-from-files</code>。</p>
+<hr>
+<h2 id="8-給-ai-開工前要先問使用者的事">8. 給 AI：開工前要先問使用者的事</h2>
+<p><strong>在寫任何一行程式碼之前，先問清楚這些。</strong> 沒問清楚就開始做，後面幾乎一定要重來。</p>
+<h3 id="8-1-必問-沒有答案就無法開始">8.1 必問（沒有答案就無法開始）</h3>
+<ol><li><strong>去哪裡？</strong> 國家／地區／大致路線。是環線還是單程？</li><li><strong>哪天出發、哪天回來？</strong> 含班機時間——這會決定第一天和最後一天實際能用多少時間。</li><li><strong>幾個人？</strong> 大人小孩、體力狀況、有沒有行動不便的。</li><li><strong>怎麼移動？</strong> 自駕（什麼車）／大眾運輸／包車。自駕的話有沒有人不能開夜車。</li><li><strong>住宿訂了嗎？</strong> <strong>哪幾晚已經訂死不能改？</strong>（這是最強的約束條件，會鎖住整條路線）</li></ol>
+<h3 id="8-2-幾乎一定要問">8.2 幾乎一定要問</h3>
+<ol><li><strong>有沒有已經訂好、不能改的行程或活動？</strong>（跳傘、遊船、演唱會、餐廳訂位…）</li><li><strong>這趟最想做的一到三件事是什麼？</strong> 這些值得獨立成頁，並且要規劃天候備案。</li><li><strong>住宿等級與預算感覺？</strong>（不用精確數字，「舒適三四星」這種就夠）</li><li><strong>飲食限制？</strong> 素食、過敏、不吃某樣東西、宗教限制。</li><li><strong>體力偏好？</strong> 想每天健行，還是以開車看風景為主？可以接受單日開多久車？</li></ol>
+<h3 id="8-3-會大幅改變結果的細節">8.3 會大幅改變結果的細節</h3>
+<ol><li><strong>同行者的裝置是 iOS 還是 Android？</strong>（影響地圖方案與離線建議）</li><li><strong>要不要把「同行者的願望清單」納入？</strong> 如果有，怎麼收（Google Maps 清單匯出、截圖、口頭）。</li><li><strong>有沒有特別在意的東西？</strong> 星空、野生動物、酒莊、鐵道、建築、特定電影取景地。</li><li><strong>語言？</strong> 當地講什麼語言，需不需要做「開口講」那一頁。</li><li><strong>這份網站要給誰看？</strong> 只有自己看，跟要說服同行者，內容取捨完全不同。</li></ol>
+<h3 id="8-4-開始做之後仍要確認的">8.4 開始做之後仍要確認的</h3>
+<ol><li>某天行程明顯過重（例如純開車 7 小時以上）時，<strong>要主動提出並給修正方案</strong>，不要照抄使用者的原始想法。</li><li>遇到「查證後發現使用者的假設是錯的」時（例如某地點已歇業、某活動不在該季節），<strong>要明確講出來</strong>，不要默默改掉。</li><li>版本控制：要不要 commit？要不要公開？公開的話個資（訂位代號、電話、住宿地址）要不要拿掉？</li></ol>
+<hr>
+<h2 id="9-給人類-可以直接複製的提示詞">9. 給人類：可以直接複製的提示詞</h2>
+<p>把下面這段貼給 AI，並附上這份 PRD 的網址或檔案。</p>
+<pre class="code"><code>請照著這份 PRD 幫我做一個旅程規劃網站：
+https://neilhuang01428.github.io/nz-trip-2026/prd.html
 
-      <div class="packgrp"><h4>☀️ 防曬與健康</h4><ul>
-        <li><label><input type="checkbox"><span><b>高係數防曬</b>（冰川反射極強）</span></label></li>
-        <li><label><input type="checkbox"><span><b>太陽眼鏡</b>（不是選配）</span></label></li>
-        <li><label><input type="checkbox"><span>護唇膏、乳液（極乾燥）</span></label></li>
-        <li><label><input type="checkbox"><span>常備藥（小鎮藥局關得早）</span></label></li>
-        <li><label><input type="checkbox"><span><b>暈車藥</b>（Crown Range、Akaroa 山路彎多）</span></label></li>
-        <li><label><input type="checkbox"><span>個人處方藥＋英文藥單</span></label></li>
-      </ul></div>
+我的旅程：
+- 目的地：______
+- 日期：____ 出發，____ 回來（班機：____）
+- 人數：__ 人，移動方式：______
+- 已訂死不能改的：______（住宿哪幾晚、哪些活動）
+- 這趟最想做的事：______
+- 住宿等級／預算感覺：______
+- 飲食限制：______
+- 體力偏好：______
 
-      <div class="packgrp"><h4>🚗 自駕相關</h4><ul>
-        <li><label><input type="checkbox"><span><b>台灣駕照＋英文譯本或國際駕照</b></span></label></li>
-        <li><label><input type="checkbox"><span>車用手機架</span></label></li>
-        <li><label><input type="checkbox"><span>車充＋充電線 ×2</span></label></li>
-        <li><label><input type="checkbox"><span>租車確認信（印出來一份）</span></label></li>
-        <li><label><input type="checkbox"><span>離線地圖（南島很多路段沒訊號）</span></label></li>
-      </ul></div>
-
-      <div class="packgrp"><h4>🔌 電子與證件</h4><ul>
-        <li><label><input type="checkbox"><span><b>轉接頭（紐西蘭是澳規八字腳 Type I）</b></span></label></li>
-        <li><label><input type="checkbox"><span>行動電源（隨身，不可託運）</span></label></li>
-        <li><label><input type="checkbox"><span>eSIM 或漫遊方案</span></label></li>
-        <li><label><input type="checkbox"><span>護照（效期六個月以上）＋ <b>NZeTA</b></span></label></li>
-        <li><label><input type="checkbox"><span>旅遊保險（含冒險活動！見下）</span></label></li>
-        <li><label><input type="checkbox"><span>相機＋備用電池（低溫耗電快）</span></label></li>
-      </ul></div>
-
-      <div class="packgrp"><h4>🎒 其他</h4><ul>
-        <li><label><input type="checkbox"><span>環保購物袋（紐西蘭全面禁塑膠袋）</span></label></li>
-        <li><label><input type="checkbox"><span>盥洗用品（motel 不一定提供牙刷）</span></label></li>
-        <li><label><input type="checkbox"><span>洗衣袋、夾鏈袋</span></label></li>
-        <li><label><input type="checkbox"><span>零食（車程長，小鎮補給有限）</span></label></li>
-        <li><label><input type="checkbox"><span>眼罩耳塞（機上）</span></label></li>
-      </ul></div>
-    </div>
-
-    <div class="note warn rv">
-      <span class="h">⚠️ 旅遊保險：確認有保「冒險活動」</span>
-      <p style="margin-bottom:0">我們要<b>跳傘</b>和<b>搭直升機做冰川健行</b>。
-        <strong>很多旅遊平安險的條款會把跳傘、高空彈跳、直升機活動列為除外責任。</strong>
-        買之前一定要看清楚，或加保冒險活動附加條款。
-        紐西蘭的 ACC 制度會給予意外傷害的基本補償，<b>但不涵蓋你回台灣後的費用與旅程取消損失</b>。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ 入境 ══════ -->
-<section class="tint">
-  <div class="wrap">
-    <div class="sec-k rv">Arrival</div>
-    <h2 class="rv">入境紐西蘭：生物安全是玩真的</h2>
-    <p class="lead rv">紐西蘭的生物安全是<strong>嚴格責任</strong>——MPI 官網白紙黑字寫著：
-      忘記、不小心、不知道規則、不曉得行李裡有什麼，<strong>全都不是理由</strong>。
-      沒申報被查到就是 <b>NZD 400 當場開罰</b>。</p>
-
-    <div class="note warn rv" style="margin-top:18px">
-      <span class="h">📱 已經沒有紙本入境卡了</span>
-      <p style="margin-bottom:0">現在改用 <b>NZTD</b>（New Zealand Traveller Declaration）線上申報，
-        飛機上不再發紙卡。官網 <b>travellerdeclaration.govt.nz</b> 或下載 NZTD App，
-        <strong>完全免費</strong>（會跟你收費的代填網站都是詐騙）。
-        <b>每人一份，小孩嬰兒也要</b>。最早出發前 24 小時可送出，
-        最晚要在走到護照查驗台之前完成。申報綁在護照上，過關掃護照就帶出來，不用印。
-        填錯可以用 email 收到的 reference number 修改，<b>過了查驗台就改不了</b>。</p>
-    </div>
-
-    <div class="grid g2" style="margin-top:20px">
-      <div class="card rv" style="border-top:4px solid var(--rata)">
-        <h4>❌ 直接不要帶（申報也沒用）</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>所有豬肉製品</b>——豬肉乾、豬肉鬆、香腸、火腿。
-            MPI 明文「No pork products」，<strong>一律禁止，沒有申報後放行這回事</strong></li>
-          <li><b>新鮮蔬菜水果</b>——一律禁</li>
-          <li><b>非紐西蘭產的蜂蜜</b>與蜂產品</li>
-          <li><b>黑枸杞</b>、<b>木耳銀耳</b>等木生菌類</li>
-          <li>含火腿、肉鬆的月餅（雲腿、廣式肉月餅）</li>
-        </ul>
-      </div>
-      <div class="card rv" style="border-top:4px solid var(--pounamu)">
-        <h4>✅ 申報後通常可以過</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>茶葉</b>（商業包裝原封，每項 2 kg 內）</li>
-          <li><b>去殼堅果</b>、<b>乾香菇</b></li>
-          <li><b>鳳梨酥、太陽餅</b>等餅乾糖果</li>
-          <li><b>含整顆蛋黃的月餅</b>——條件是商業包裝原封、<b>不含肉</b>、不需冷藏，上限 10 kg。
-            所以蛋黃酥、蓮蓉蛋黃月餅可以</li>
-          <li><b>牛肉乾／牛肉鬆</b>有機會過（台灣在 MPI 的口蹄疫非疫區名單上），
-            但要商業包裝原封、標明製造國、不需冷藏，限 1 kg</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid g2" style="margin-top:16px">
-      <div class="card rv" style="border-top:4px solid var(--kowhai)">
-        <h4>🥾 登山鞋是最多人栽跟頭的一項</h4>
-        <p style="font-size:.9rem">MPI 規定<b>所有登山鞋、運動鞋，以及任何在市區以外穿過的鞋子</b>
-          都要申報。帳篷、露營用品、背包、釣具、腳踏車同理。</p>
-        <p style="font-size:.9rem;margin-bottom:0"><strong>出國前就把鞋底溝槽用刷子刷乾淨、晾乾。</strong>
-          官員可能拿去消毒再還你（通常幾分鐘）。太髒又沒申報，就是罰 NZD 400。
-          一般在市區穿的球鞋、皮鞋不用申報。</p>
-      </div>
-      <div class="card rv" style="border-top:4px solid var(--pukaki)">
-        <h4>💊 藥品：處方藥與中藥</h4>
-        <ul style="font-size:.9rem;margin-bottom:0">
-          <li>處方藥：帶處方箋影本或醫師英文證明、<b>保持原包裝</b>、<b>不超過三個月用量</b></li>
-          <li>含 <b>pseudoephedrine（假麻黃鹼）</b>的感冒藥屬管制藥品，必須申報、放隨身行李、<b>不能幫別人帶</b></li>
-          <li><b>中藥一定要申報</b>（歸在 herbal medicines 與動物產品）。
-            西洋參、石斛等受 CITES 管制，沒文件可能直接沒收</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid g2" style="margin-top:16px">
-      <div class="card rv">
-        <h4>💵 現金與免稅額</h4>
-        <ul style="font-size:.9rem;margin-bottom:0">
-          <li><b>每人帶 NZ$10,000 以上</b>（或等值外幣）要填 Border Cash Report，有繁體中文版。
-            以<b>個人實際攜帶</b>計算，不是全家加總</li>
-          <li>「現金」定義很寬：紙鈔、旅行支票、支票、匯票都算。
-            沒申報最高 <b>3 個月徒刑＋罰款 NZ$10,000</b>，現金可能被扣押</li>
-          <li>免稅額<b>每人 NZ$700</b>，Customs 明文<strong>四個人不能合併計算</strong>——
-            一件 NZ$2,000 的東西不能算成四人份</li>
-          <li>酒：每人 4.5 公升葡萄酒或啤酒 ＋ 3 瓶烈酒（每瓶 1.125 公升內）；菸 50 支。要滿 17 歲</li>
-        </ul>
-      </div>
-      <div class="card rv">
-        <h4>🧾 兩個常見的誤會</h4>
-        <p style="font-size:.9rem"><strong>紐西蘭沒有觀光客退稅。</strong>
-          海關官網原文：<b>「You can't get GST refunds on items you purchased in New Zealand」</b>。
-          <b>不要去機場找退稅櫃檯</b>，那是澳洲和歐洲才有的制度。</p>
-          <p style="font-size:.9rem;margin-bottom:0"><strong>申報不等於不能帶。</strong>
-          申報後被沒收，最多損失那樣東西；沒申報被抓到，是罰款。
-          不確定的一律申報，這是整趟最能幫你省錢的動作。
-          出發前把 <b>NZeTA</b>（電子旅行授權）也一併辦好，不要拖到機場。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ 開車 ══════ -->
-<section>
-  <div class="wrap">
-    <div class="sec-k rv">Driving</div>
-    <h2 class="rv">開車：跟台灣不一樣的地方</h2>
-
-    <div class="grid g2">
-      <div class="rv">
-        <h3>🌉 單線橋：紐西蘭獨有的路權規則</h3>
-        <p style="font-size:.93rem">南島有非常多<b>單線橋</b>，一次只能一個方向通過。規則很簡單但看錯就會對撞：</p>
-        <div class="tw">
-          <table>
-            <thead><tr><th>看到的標誌</th><th>意思</th></tr></thead>
-            <tbody>
-              <tr><td><span class="tag t-red">🔴 紅色圓形</span></td><td><strong>你要讓對向先過</strong></td></tr>
-              <tr><td><span class="tag t-blue">🔵 藍色長方形</span></td><td>對向該讓你，<b>但仍要減速確認橋上沒車</b></td></tr>
-              <tr><td><span class="tag t-gold">🟡 黃色菱形</span></td><td>前方有單線橋的預告</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size:.9rem"><b>只看顏色和形狀就好。</b>
-          網路上流傳「看箭頭大小判斷誰先過」，但 <b>NZTA 官方只定義顏色與形狀</b>，
-          <strong>箭頭那個說法方向常常被講反</strong>——記錯會迎面對撞，
-          所以<b>紅圓＝我讓、藍長方形＝我先過</b>，只記這一條。
-          <b>藍牌也要減速確認橋上沒車</b>：對向可能沒看牌。</p>
-
-        <h3 style="margin-top:26px">🚐 4 人租箱型車</h3>
-        <ul style="font-size:.93rem;margin-bottom:0">
-          <li><b>多半是柴油車</b> → 要繳 <b>Road User Charges（RUC）</b>。以 GO Rentals 為例是用每天 <b>NZ$3 的固定日費</b>涵蓋，不是還車時按里程結算。<b>租不同家要先問。</b></li>
-          <li><b>汽油車不用繳 RUC</b>（在加油時繳燃油稅）。柴油車擋風玻璃上有實體 RUC 標籤，別撕。</li>
-          <li><b>保險</b>：標準方案通常保留高額自負額。<b>建議加購降低自負額</b>——南島碎石路多，擋風玻璃被石頭打到是最常見的理賠。加購保費通常不可退。</li>
-          <li><b>年齡</b>：8 人座最低駕駛年齡多為 21 歲。</li>
-          <li><b>異地還車費</b>各家官網多半不公告，訂車時要單獨問。我們基督城進出，理論上沒這筆。</li>
-        </ul>
-      </div>
-
-      <div class="rv">
-        <h3>❄️ 雪鏈與路況</h3>
-        <ul style="font-size:.93rem">
-          <li><b>Milford Road（SH94）6–11 月「可能需要車上備雪鏈」</b>——租車時明確要求，並確認合約允許在該路段使用。</li>
-          <li>雪鏈告示牌在三處：<b>Te Anau 北 1 km、Knobs Flat（北 65 km）、Milford Sound 東 5 km</b>。</li>
-          <li><strong>無視「須裝雪鏈」告示牌繼續開，警方可罰 NZ$750。</strong></li>
-          <li><b>Crown Range Road</b> 由 QLDC 管轄，2026 年起也執行雪鏈規定，同樣罰 NZ$750。</li>
-        </ul>
-
-        <div class="note warn" style="margin-top:16px">
-          <span class="h">🔍 查路況：兩個地方都要看</span>
-          <p style="margin-bottom:0">
-            <b><a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA Journey Planner</a></b>
-            ——官方，有即時交通攝影機可以直接目視路面。<br>
-            <strong>但 NZTA 只管國道。</strong>官方明確要求：路線若包含地方道路（例如 <b>Crown Range Road</b>），
-            要另外查
-            <a href="https://www.qldc.govt.nz/services/transport-and-parking/winter-road-reports" target="_blank" rel="noopener">QLDC 冬季路況頁</a>。
-            這句話在 Journey Planner 頁面上重複出現了五次，代表官方很在意。</p>
-        </div>
-
-        <h3 style="margin-top:26px">🍷 酒駕</h3>
-        <p style="font-size:.93rem">紐西蘭交通部規定：<strong>20 歲以上上限為呼氣每公升 250 微克、血液每 100 毫升 50 毫克</strong>；
-          <b>未滿 20 歲是零酒精</b>。超過即違法。</p>
-        <p style="font-size:.93rem;margin-bottom:0"><b>這是「非零上限」，不是滴酒不沾</b>——法律允許少量飲酒後駕車。
-          但<strong>個人代謝差異大，沒有可靠方法在現場估算</strong>。
-          我們會去三家酒莊品飲，<b>先講好指定駕駛</b>。指定駕駛可以只聞不喝、或請酒莊給吐酒杯，這在酒莊完全正常。</p>
-      </div>
-    </div>
-
-    <div class="note rv">
-      <span class="h">⛽ 加油與其他</span>
-      <p style="margin-bottom:0">
-        · <b>91 vs 95</b>：一般租車加 91；柴油車加 Diesel，<strong>千萬不要加錯</strong>。<br>
-        · <b>偏遠路段加油站間距很大</b>：Te Anau→Milford（120 km 只有一個且不保證營運）、卡特林斯。
-          養成習慣：<strong>油表過半就找機會加</strong>。<b>10/03 在 Te Anau 一定要加滿。</b><br>
-        · <b>靠左行駛、右駕。</b>頭幾小時最容易犯的錯是<b>轉彎後跑到右線</b>與<b>雨刷當方向燈打</b>。<br>
-        · <b>限速 100 是上限不是目標。</b>後面有車就找 slow vehicle bay 讓車，這是當地禮節。<br>
-        · <b>羊、牛可能在路上。</b>山區隨時可能遇到趕羊群，慢慢等。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ 錢與生活 ══════ -->
-<section class="tint">
-  <div class="wrap">
-    <div class="sec-k rv">Money & Daily Life</div>
-    <h2 class="rv">錢、網路、生活</h2>
-    <div class="grid g2">
-      <div class="card rv">
-        <h4>💳 付錢</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>幾乎全部刷卡</b>，小鎮咖啡館也能刷。現金幾乎用不到。</li>
-          <li><b>刷卡附加費約 1–3%</b>，會標在櫃檯或帳單上。
-            紐西蘭曾在 2025 年提案禁收這筆錢，<b>但法案卡在國會沒通過</b>；
-            而且草案本來就把<b>外國發行的卡排除在外</b>，我們的卡不受保護。</li>
-          <li><b>EFTPOS 我們用不到</b>——那是紐西蘭本地的支付軌道，
-            要有紐西蘭銀行帳戶的卡才能跑，外國卡刷不了。看到只寫 EFTPOS 的機器就直接刷信用卡。</li>
-          <li><b>紐西蘭沒有小費文化</b>，不用給。</li>
-          <li>菜單價格<b>已含 15% GST</b>，看到多少付多少。
-            <b>而且紐西蘭沒有觀光客退稅</b>，機場不用找退稅櫃檯。</li>
-          <li>⚠️ <b>9/28（一）是這段期間唯一的國定假日</b>（南坎特伯里紀念日），
-            那天我們正好在庫克山一帶，<b>外食可能被加 15% 假日附加費</b>。
-            不過蒂卡波與庫克山所在的 Mackenzie 區實際上有沒有放這天，
-            官方網站查不到確認，看到店門口的告示再確認。其餘日子（含所有週日）沒有加成依據。</li>
-        </ul>
-      </div>
-      <div class="card rv">
-        <h4>📶 網路與訊號</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li>主要城鎮訊號良好，<b>但山區與峽灣大段沒訊號</b>。</li>
-          <li><b>出發前先下載離線地圖</b>（Google Maps 可下載區域）。</li>
-          <li>Milford Road、Crown Range、卡特林斯都會斷訊。</li>
-          <li>住宿多半有 Wi-Fi，但偏遠地區可能很慢或有流量上限。</li>
-        </ul>
-      </div>
-      <div class="card rv">
-        <h4>🛒 超市</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li>三大超市：<b>New World</b>（中高價）、<b>Woolworths</b>（原 Countdown）、<b>PAK'nSAVE</b>（最便宜）。</li>
-          <li><b>小鎮超市關得早</b>（常 19:00–20:00），Mt Cook、Te Anau 更早。</li>
-          <li>省錢作法：<b>午餐買超市三明治在路上吃，晚餐才上餐廳。</b></li>
-          <li>伴手禮（<b>Whittaker's 巧克力、mānuka 蜂蜜</b>）在超市買最划算，別在機場買。</li>
-          <li>⚠️ <b>買酒被要求看證件時，紐西蘭只認三種：護照、紐西蘭駕照、Kiwi Access Card。</b>
-            <strong>台灣駕照和國際駕照都不算</strong>——要去酒莊或買酒，<b>帶護照</b>。</li>
-          <li><b>一定要自備購物袋。</b>紐西蘭 2019 年禁一次性塑膠袋，2023 年連裝蔬果的散裝袋也禁了，
-            超市什麼袋子都不給。PAK'nSAVE 還要<b>自己裝袋</b>。</li>
-        </ul>
-      </div>
-      <div class="card rv">
-        <h4>🕐 營業時間的心理準備</h4>
-        <ul style="font-size:.92rem;margin-bottom:0">
-          <li><b>南島小鎮餐廳普遍很早關</b>——很多廚房 20:00 就最後點餐。</li>
-          <li><b>週一、週二是最常公休的兩天。</b></li>
-          <li>景點多半 <b>16:00–17:00 就關</b>。</li>
-          <li>一句話：<strong>在紐西蘭，「晚上再說」通常等於「沒有了」。</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="note rv">
-      <span class="h">🆘 緊急聯絡</span>
-      <p style="margin-bottom:0">
-        <b>紐西蘭緊急電話：111</b>（警消救護共用）<br>
-        <b>非緊急報警：105</b>　·　<b>路況查詢：0800 4 HIGHWAYS（0800 44 44 49）</b><br>
-        <b>駐紐西蘭台北經濟文化辦事處（威靈頓）急難救助行動電話</b>：出發前請自行至外交部網站查詢最新號碼並存進手機。</p>
-    </div>
+要求：
+1. 先讀完 PRD，然後把你還需要知道的事情一次問完，不要邊做邊問。
+2. 沿用 PRD 的資料結構與 build 流程，但顏色請重新挑一組屬於這個目的地的。
+3. 內容品質規則（PRD 第 6 節）務必照做——尤其是「查不到就不要寫」
+   與「警告優先於推薦」。
+4. 蒐集資料時請用多個 subagent 分區平行處理，並要求它們回報
+   「查證後推翻或不敢寫的說法」。
+5. 做完後用無頭瀏覽器實際量測手機與桌機版面，不要只看截圖。
+6. 完成後 commit + push。</code></pre>
+<h3 id="9-1-如果只是要改現有的這一份">9.1 如果只是要改現有的這一份</h3>
+<pre class="code"><code>這個網站的架構說明在 prd.html。
+我要把它改成 ______ 的行程，請：
+1. 保留架構、build 流程與所有互動功能
+2. 換掉 data/*.json 的內容
+3. 重新挑一組屬於新目的地的顏色
+4. 重新蒐集圖片並記錄授權
+5. 把「重頭戲」分頁換成這趟真正的重點
+先問我 PRD 第 8 節裡你還不知道答案的問題。</code></pre>
+<hr>
+<h2 id="10-已知的坑-省下你重新踩一次的時間">10. 已知的坑（省下你重新踩一次的時間）</h2>
+<div class="tw"><table><thead><tr><th>坑</th><th>說明</th></tr></thead><tbody><tr><td><strong>座標會歪很遠</strong></td><td>Nominatim 曾把一個地點放到 236 公里外。一定要做「地點到所屬城鎮的距離」異常檢查</td></tr><tr><td><strong>圖片名稱會騙人</strong></td><td>Wikimedia 上學名正確的檔案，內容可能是別的東西（查到一張「奇異鳥」其實是苔蘚上的幾根羽毛）。<strong>用之前一定要看過</strong></td></tr><tr><td><strong>無頭瀏覽器截圖會誤導</strong></td><td>最小視窗 500px、捲動位置不生效、<code>behavior:&#x27;smooth&#x27;</code> 不動畫、程式化捲動不觸發 scroll 事件。用量測不要用目測</td></tr><tr><td><strong><code>width:100%</code> + 左右 margin</strong></td><td>在 <code>border-box</code> 下仍會超出容器，要用 <code>calc(100% - 兩側 margin)</code></td></tr><tr><td><strong>grid/flex item 的 <code>min-width:auto</code></strong></td><td>會被子孫的 max-content 撐開，導致整頁橫向溢出。加 <code>min-width:0</code></td></tr><tr><td><strong><code>[hidden]</code> 會被 <code>display:flex</code> 壓過</strong></td><td>要另外寫 <code>.xxx[hidden]{display:none}</code></td></tr><tr><td><strong><code>opacity:0</code> 仍然可以點</strong></td><td>要一起加 <code>pointer-events:none</code> 或用 <code>visibility:hidden</code></td></tr><tr><td><strong>CSS 選擇器寫 <code>a.on</code> 但元素是 <code>button</code></strong></td><td>造成六個分頁的底部導覽完全沒有選取狀態</td></tr><tr><td><strong><code>scroll-snap</code> 會把捲動位置吸回去</strong></td><td>讓「按箭頭捲動」看起來沒作用</td></tr><tr><td><strong>多個 agent 改同一個檔案</strong></td><td>後寫的會蓋掉先寫的。要嘛排隊，要嘛用 worktree</td></tr><tr><td><strong>AI 改寫文案會順手改壞事實</strong></td><td>一定要寫驗證器擋，不要相信「我有注意保留」</td></tr></tbody></table></div>
+<hr>
+<p><em>本文件隨網站一起維護。最後更新：2026/08</em></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p style="margin:0 0 10px">道路規則、雪鏈規定、酒駕上限均取自 <b>NZTA / 紐西蘭交通部</b>官方資料，查證日 <b>2026/08/20</b>。
-      溫度範圍是季節性參考值，<b>不是預報</b>——出發前請查
-      <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>。</p>
-    <p style="margin:0;font-size:.8rem;color:#5F7583">打包清單的勾選狀態儲存在你自己瀏覽器的 localStorage，不會上傳。</p>
+    <p style="margin:0 0 10px">這份 PRD 與網站一起維護。
+      純文字版：<a href="PRD.md">PRD.md</a>（給 AI 讀比較省事）。
+      <a href="index.html">回到行程網站</a>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      架構可自由沿用。實際內容（地點、查證結果、照片授權）僅適用於 2026 年這趟紐西蘭南島行程。</p>
   </div>
-<p class="prdnote">🧭 這個網站是一套<b>可以複製到其他旅程</b>的架構。<a href="prd.html">看架構說明（PRD）</a>——裡面有資料結構、內容品質規則、以及可以直接貼給 AI 的提示詞。<a href="PRD.md">原始 Markdown</a></p>
 </footer>
 
+<script>
+/* 目錄直接從文件裡的 h2 產生，錨點永遠不會跟內容對不上 */
+(function () {
+  var ol = document.querySelector('#prd-toc ol');
+  var hs = document.querySelectorAll('.prd h2[id]');
+  if (!ol || !hs.length) { var t = document.getElementById('prd-toc'); if (t) t.hidden = true; return; }
+  Array.prototype.forEach.call(hs, function (h) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    // 去掉標題前面的編號與括號補述，目錄才好掃
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '').replace(/（[^）]*）\s*$/, '');
+    li.appendChild(a); ol.appendChild(li);
+  });
+})();
+</script>
 <nav class="tabbar" aria-label="主要分頁"><div class="row">
 <a class="" href="sights.html"><span class="ic">📸</span>景點</a>
 <a class="" href="eat.html"><span class="ic">🍽</span>吃的</a>
 <a class="" href="book.html"><span class="ic">🎟</span>需預約</a>
 <a class="" href="itinerary.html"><span class="ic">🗓</span>行程</a>
-<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class="on"><span class="ic">☰</span>更多</button>
+<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class=""><span class="ic">☰</span>更多</button>
 </div></nav>
 <div class="sheet" id="more-sheet" data-sheet hidden>
 <a href="index.html"><span>🏔</span>總覽</a>
@@ -1592,41 +1481,8 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="glacier.html"><span>🚁</span>冰川</a>
 <a href="culture.html"><span>🗿</span>文化</a>
 <a href="talk.html"><span>💬</span>會話</a>
-<a href="prepare.html" class="on"><span>🎒</span>行前</a>
+<a href="prepare.html"><span>🎒</span>行前</a>
 </div>
-<script>
-/* 打包清單：勾選狀態存 localStorage */
-(function () {
-  var KEY = 'nz2026-pack';
-  var list = document.getElementById('packlist');
-  if (!list) return;
-  var boxes = [].slice.call(list.querySelectorAll('input[type=checkbox]'));
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
-  function label(b) { return (b.parentNode.textContent || '').trim().slice(0, 40); }
-  function pct() {
-    var n = boxes.filter(function (b) { return b.checked; }).length;
-    document.getElementById('packpct').textContent =
-      Math.round(n / boxes.length * 100) + '%　(' + n + '/' + boxes.length + ')';
-  }
-  boxes.forEach(function (b) {
-    var k = label(b);
-    if (saved[k]) b.checked = true;
-    b.addEventListener('change', function () {
-      saved[k] = b.checked;
-      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
-      pct();
-    });
-  });
-  pct();
-  document.getElementById('packreset').onclick = function () {
-    boxes.forEach(function (b) { b.checked = false; });
-    saved = {};
-    try { localStorage.removeItem(KEY); } catch (e) {}
-    pct();
-  };
-})();
-</script>
 <script>
 /* ═══════════════════════════════════════════════════════════
    南島 2026 · 地點分頁的共用邏輯

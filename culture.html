@@ -1078,6 +1078,35 @@ input:focus-visible,[tabindex]:focus-visible{
   .food p{font-size:.79rem}
 }
 
+/* ══════════ Google 評分（查證快照，非即時） ══════════ */
+.pl-rate{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 7px;
+  font-size:.83rem;line-height:1}
+.pl.has-img .pl-rate{padding:0 18px}
+.pl-rate b{font-family:var(--mono);font-weight:700;color:#B06000;
+  font-variant-numeric:lining-nums;font-size:.9rem}
+.pl-rate .stars{display:inline-flex;gap:1px;letter-spacing:0}
+.pl-rate .st{color:#DAD3C4;font-size:.94rem;line-height:1}
+.pl-rate .st.f{color:#F0A32C}
+.pl-rate .st.h{background:linear-gradient(90deg,#F0A32C 50%,#DAD3C4 50%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.pl-rate .cnt{font-family:var(--mono);font-size:.79rem;color:var(--ink-soft);
+  font-variant-numeric:lining-nums}
+.pl-rate .asof{font-family:var(--mono);font-size:.66rem;color:var(--ink-soft);
+  background:var(--paper-2);border-radius:5px;padding:2px 6px;opacity:.85}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media(max-width:560px){
+  .pl.has-img .pl-rate{padding:0 17px}
+  .pl-rate .asof{display:none}
+}
+
+/* ══════════ 頁尾的 PRD 連結 ══════════ */
+.prdnote{margin:14px 0 0!important;padding-top:13px;border-top:1px dashed rgba(255,255,255,.18);
+  font-size:.82rem;line-height:1.7;color:#7E939F}
+.prdnote b{color:#B8C9D3}
+.prdnote a{color:var(--pukaki-lt);text-decoration:underline;text-underline-offset:2px;
+  margin:0 2px}
+
 </style>
 </head>
 <body>
@@ -1149,6 +1178,7 @@ input:focus-visible,[tabindex]:focus-visible{
     <p style="margin:0;font-size:.8rem;color:#5F7583">
       照片取自 Wikimedia Commons，作者與授權見 <a href="images/CREDITS.md">images/CREDITS.md</a>。</p>
   </div>
+<p class="prdnote">🧭 這個網站是一套<b>可以複製到其他旅程</b>的架構。<a href="prd.html">看架構說明（PRD）</a>——裡面有資料結構、內容品質規則、以及可以直接貼給 AI 的提示詞。<a href="PRD.md">原始 Markdown</a></p>
 </footer>
 
 <nav class="tabbar" aria-label="主要分頁"><div class="row">
@@ -4744,6 +4774,7 @@ input:focus-visible,[tabindex]:focus-visible{
     if (p._hay) return p._hay;
     var d = p.deep || {};
     p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
+      (p.g && p.g.r ? p.g.r + '星 高評價' : ''),
               d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
               (CATS[p.cat] || {}).label,
               'D' + String(p.day).padStart(2, '0'),
@@ -5040,6 +5071,25 @@ input:focus-visible,[tabindex]:focus-visible{
     try { localStorage.setItem('nz-deep-hint', '1'); } catch (e) {}
   }
 
+  /* Google 評分。這是查證當下的快照，不是即時資料——
+     沒有免費且合乎條款的方式即時取得，所以標上查證年月，讓讀者自己判斷新舊。 */
+  function rateHtml(g) {
+    var r = Number(g.r) || 0;
+    var full = Math.floor(r), half = (r - full) >= 0.25 && (r - full) < 0.75;
+    var stars = '';
+    for (var i = 0; i < 5; i++) {
+      stars += '<span class="st' +
+        (i < full ? ' f' : (i === full && half ? ' h' : '')) + '">★</span>';
+    }
+    return '<div class="pl-rate" title="Google 評分，查證於 ' + esc(g.asof || '') + '">' +
+      '<b>' + r.toFixed(1) + '</b>' +
+      '<span class="stars" aria-hidden="true">' + stars + '</span>' +
+      (g.n ? '<span class="cnt">(' + Number(g.n).toLocaleString('en-US') + ')</span>' : '') +
+      (g.asof ? '<span class="asof">' + esc(g.asof) + '查</span>' : '') +
+      '<span class="sr-only">Google 評分 ' + r.toFixed(1) + ' 分' +
+      (g.n ? '，' + g.n + ' 則評論' : '') + '</span></div>';
+  }
+
   /* ── 卡片 ── */
   function cardHtml(p) {
     var c = (CATS[p.cat] || {}).color || '#3E9DB8';
@@ -5057,6 +5107,7 @@ input:focus-visible,[tabindex]:focus-visible{
     h += '<div class="pl-top"><span class="pl-dot" style="background:' + c + '"></span>' +
       '<h3>' + hl(p.name) + (p.zh ? '<small>' + hl(p.zh) + '</small>' : '') + '</h3></div>';
     if (tags) h += '<div class="pl-tags">' + tags + '</div>';
+    if (p.g && p.g.r) h += rateHtml(p.g);
     if (p.price) h += '<div class="pl-price">' + esc(p.price) + '</div>';
     if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
     if (p.note) h += '<p class="pl-note">' + hl(p.note) + '</p>';
