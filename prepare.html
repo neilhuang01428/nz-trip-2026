@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>行前注意事項 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   NZ SOUTH ISLAND · 旅遊書風格設計系統
+   ═══════════════════════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+:root{
+  --pukaki:#3E9DB8; --pukaki-lt:#8FD4E0; --pukaki-dk:#175E78;
+  --pounamu:#1F5B4E; --pounamu-lt:#3B8A75;
+  --ice:#DCEFF4; --ice-2:#EEF7F9;
+  --tussock:#C08A3E; --kowhai:#E5B23C;
+  --slate:#33454F; --night:#0B1620; --night-2:#12242F;
+  --paper:#FCFAF5; --paper-2:#F4EEE3; --card:#FFFFFF;
+  --ink:#1A2630; --ink-2:#40525E; --ink-soft:#778995;
+  --rata:#BE3B2B;
+  --line:rgba(26,38,48,.12); --line-2:rgba(26,38,48,.06);
+  --shadow:0 1px 2px rgba(11,22,32,.05),0 8px 28px -8px rgba(11,22,32,.16);
+  --shadow-lg:0 2px 6px rgba(11,22,32,.06),0 24px 60px -16px rgba(11,22,32,.28);
+  --serif:'Cormorant Garamond','Noto Serif TC',Georgia,'Songti TC',serif;
+  --sans:'Inter','Noto Sans TC',-apple-system,BlinkMacSystemFont,'PingFang TC','Segoe UI',sans-serif;
+  --mono:'SF Mono','JetBrains Mono',Menlo,monospace;
+  --maxw:1140px;
+}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.75;letter-spacing:.01em;overflow-x:hidden}
+
+/* ── 毛利 poutama（階梯）與 niho taniwha（三角）紋樣 ── */
+.pattern-poutama{
+  background-image:
+    linear-gradient(135deg,transparent 45%,currentColor 45%,currentColor 55%,transparent 55%),
+    linear-gradient(45deg,transparent 45%,currentColor 45%,currentColor 55%,transparent 55%);
+  background-size:22px 22px;opacity:.07}
+.rule-niho{height:14px;width:100%;
+  background:linear-gradient(135deg,var(--pounamu) 25%,transparent 25%) -14px 0,
+             linear-gradient(225deg,var(--pounamu) 25%,transparent 25%) -14px 0,
+             linear-gradient(315deg,var(--pounamu) 25%,transparent 25%),
+             linear-gradient(45deg,var(--pounamu) 25%,transparent 25%);
+  background-size:28px 28px;opacity:.85}
+
+/* ── 版面 ── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:820px;margin:0 auto;padding:0 28px}
+
+/* ── 頂部導覽 ── */
+.topbar{position:sticky;top:0;z-index:80;background:rgba(252,250,245,.86);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-2)}
+.topbar .inner{max-width:var(--maxw);margin:0 auto;padding:11px 28px;
+  display:flex;align-items:center;gap:22px}
+.topbar .logo{font-family:var(--serif);font-weight:700;font-size:1.12rem;
+  color:var(--pounamu);letter-spacing:.02em;white-space:nowrap}
+.topbar .logo em{font-style:normal;color:var(--pukaki)}
+.topbar nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.topbar nav a{font-size:.79rem;color:var(--ink-2);text-decoration:none;
+  padding:6px 11px;border-radius:20px;transition:.2s;white-space:nowrap}
+.topbar nav a:hover{background:var(--ice);color:var(--pukaki-dk)}
+.topbar nav a.on{background:var(--pounamu);color:#fff}
+#prog{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--pukaki),var(--kowhai));transition:width .12s}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--night)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.06);animation:kenburns 26s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.04) translate3d(0,0,0)}
+  to{transform:scale(1.14) translate3d(-1.5%,-1.5%,0)}}
+/* 左側暗幕：讓標題在亮照片上也讀得清楚 */
+.hero::before{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(8,17,25,.88) 0%,rgba(8,17,25,.66) 32%,
+             rgba(8,17,25,.16) 60%,rgba(8,17,25,0) 80%)}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(11,22,32,.58) 0%,rgba(11,22,32,.06) 30%,
+             rgba(11,22,32,.44) 58%,rgba(11,22,32,.80) 79%,rgba(11,22,32,.95) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--maxw);
+  margin:0 auto;padding:0 28px 62px}
+.hero .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--pukaki-lt);margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-weight:700;color:#fff;line-height:1.04;font-variant-numeric:lining-nums;
+  font-size:clamp(2.6rem,7.2vw,5.4rem);letter-spacing:-.015em;
+  text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero h1 .mao{display:block;font-size:.42em;letter-spacing:.16em;font-weight:400;
+  color:var(--kowhai);margin-top:14px;font-style:italic}
+.hero strong,.hero b{color:#fff;font-weight:700}
+.hero .lede{color:rgba(255,255,255,.9);font-size:clamp(1rem,2vw,1.16rem);
+  max-width:640px;margin-top:20px;line-height:1.7}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-meta span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);
+  color:#fff;padding:7px 16px;border-radius:30px;font-size:.83rem;
+  backdrop-filter:blur(8px)}
+.scroll-cue{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;
+  color:rgba(255,255,255,.65);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+/* ── 區塊 ── */
+section{padding:74px 0;scroll-margin-top:60px}
+section.tint{background:var(--paper-2)}
+section.dark{background:var(--night);color:#C8D6DF}
+section.dark h2,section.dark h3{color:#fff}
+section.dark .sec-k{color:var(--kowhai)}
+.sec-k{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--pukaki);margin-bottom:9px;
+  display:flex;align-items:center;gap:10px}
+.sec-k::before{content:'';width:26px;height:2px;background:currentColor;flex:none}
+h2{font-family:var(--serif);font-size:clamp(1.85rem,4vw,2.7rem);font-weight:700;
+  line-height:1.14;letter-spacing:-.01em;margin-bottom:14px;color:var(--ink)}
+h3{font-family:var(--serif);font-size:1.42rem;font-weight:700;margin:30px 0 10px;
+  color:var(--pounamu);line-height:1.3}
+h4{font-size:1.02rem;font-weight:700;margin:20px 0 7px;color:var(--ink)}
+p{margin-bottom:14px;color:var(--ink-2)}
+.dark p{color:#A9BDC9}
+.lead{font-size:1.1rem;color:var(--ink-2);max-width:720px}
+strong{color:var(--ink);font-weight:650}
+.dark strong{color:#fff}
+a{color:var(--pukaki-dk)}
+small{font-size:.8rem;color:var(--ink-soft)}
+
+/* ── 卡片 ── */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;box-shadow:var(--shadow);transition:.3s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.card h4{margin-top:0}
+.dark .card{background:var(--night-2);border-color:rgba(255,255,255,.09)}
+
+/* 圖片卡 */
+.pcard{background:var(--card);border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.35s;border:1px solid var(--line-2)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.pcard img{width:100%;height:190px;object-fit:cover;display:block;transition:.6s}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .body{padding:17px 19px}
+.pcard .body h4{margin:0 0 5px}
+.pcard .body p{font-size:.88rem;margin:0;color:var(--ink-soft)}
+
+/* ── 圖片 ── */
+figure{margin:26px 0}
+figure img{width:100%;border-radius:12px;display:block;box-shadow:var(--shadow)}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:8px;text-align:center;
+  font-style:italic}
+.figwide{margin:34px calc(50% - 50vw);width:100vw;max-width:100vw}
+.figwide img{border-radius:0;max-height:62vh;object-fit:cover}
+
+/* ── 表格 ── */
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px;
+  background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+th{background:var(--pounamu);color:#fff;text-align:left;padding:11px 14px;
+  font-weight:600;font-size:.8rem;letter-spacing:.03em;white-space:nowrap}
+td{padding:11px 14px;border-top:1px solid var(--line-2);vertical-align:top;
+  color:var(--ink-2)}
+tbody tr:nth-child(even){background:rgba(62,157,184,.045)}
+td strong{color:var(--ink)}
+.pick{background:rgba(229,178,60,.16)!important}
+.pick td:first-child::before{content:'★ ';color:var(--kowhai)}
+
+/* ── 時間軸 ── */
+.tl{position:relative;padding-left:0;list-style:none}
+.tl::before{content:'';position:absolute;left:58px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,var(--pukaki),var(--pounamu),var(--tussock))}
+.tl>li{position:relative;padding:0 0 26px 92px;min-height:60px}
+.tl .dot{position:absolute;left:47px;top:6px;width:24px;height:24px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--pukaki);z-index:2}
+.tl .dot.key{background:var(--kowhai);border-color:var(--tussock);
+  box-shadow:0 0 0 5px rgba(229,178,60,.22)}
+.tl .date{position:absolute;left:0;top:2px;width:42px;text-align:right;
+  font-family:var(--mono);font-size:.74rem;line-height:1.35;color:var(--ink-soft);
+  font-weight:600}
+.tl .date b{display:block;font-size:1.06rem;color:var(--pounamu)}
+
+/* ── 徽章 ── */
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.72rem;
+  font-weight:600;letter-spacing:.02em;vertical-align:middle}
+.t-blue{background:rgba(62,157,184,.15);color:var(--pukaki-dk)}
+.t-green{background:rgba(31,91,78,.13);color:var(--pounamu)}
+.t-gold{background:rgba(229,178,60,.2);color:#8A6416}
+.t-red{background:rgba(190,59,43,.13);color:var(--rata)}
+.t-grey{background:rgba(51,69,79,.1);color:var(--slate)}
+
+/* ── 提示框 ── */
+.note{border-left:4px solid var(--pukaki);background:var(--ice-2);
+  padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+.note.warn{border-color:var(--rata);background:rgba(190,59,43,.055)}
+.note.tip{border-color:var(--kowhai);background:rgba(229,178,60,.09)}
+.note.plan{border-color:var(--pounamu);background:rgba(31,91,78,.06)}
+.note .h{font-weight:700;color:var(--ink);margin-bottom:5px;display:block;font-size:.94rem}
+/* 深色區塊內的提示框：反轉配色，避免深字壓深底 */
+.dark .note{background:rgba(255,255,255,.055);border-color:var(--pukaki-lt)}
+.dark .note.warn{background:rgba(190,59,43,.18);border-color:#E4705F}
+.dark .note.tip{background:rgba(229,178,60,.13);border-color:var(--kowhai)}
+.dark .note.plan{background:rgba(59,138,117,.16);border-color:var(--pounamu-lt)}
+.dark .note .h{color:#fff}
+.dark .note p,.dark .note li,.dark .note td{color:#C0D2DC}
+.dark .note strong,.dark .note b{color:#fff}
+/* 深色區塊裡的淺底元件（表格／卡片）要用回深色字，否則白字白底 */
+.dark .tw strong,.dark .tw b,.dark .mx strong,.dark .mx b,
+.dark .pcard strong,.dark .pcard b{color:var(--ink)}
+.note p:last-child{margin-bottom:0}
+.note ul{margin:6px 0 0}
+
+ul,ol{margin:0 0 14px 20px;color:var(--ink-2)}
+li{margin-bottom:6px}
+
+/* ── 統計數字 ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--card);padding:22px 16px;text-align:center}
+.dark .stat{background:var(--night-2)}
+.stat .n{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:2.3rem;font-weight:700;color:var(--pukaki-dk);
+  line-height:1}
+.dark .stat .n{color:var(--pukaki-lt)}
+.stat .l{font-size:.79rem;color:var(--ink-soft);margin-top:6px}
+
+/* ── 滾動揭示動畫 ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),
+  transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hero-bg{animation:none}.scroll-cue{animation:none}}
+
+/* ── 頁尾 ── */
+footer{background:var(--night);color:#8FA3B0;padding:52px 0 40px;font-size:.86rem}
+footer a{color:var(--pukaki-lt)}
+footer h4{color:#fff;margin-top:0}
+
+details{border:1px solid var(--line);border-radius:10px;padding:12px 16px;
+  margin:14px 0;background:var(--card)}
+summary{cursor:pointer;font-weight:650;color:var(--pounamu);font-size:.94rem}
+details[open] summary{margin-bottom:9px}
+
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr}}
+@media(max-width:680px){
+  body{font-size:16px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .wrap,.wrap-narrow,.topbar .inner,.hero-in{padding-left:18px;padding-right:18px}
+  section{padding:52px 0}
+  .tl::before{left:8px}.tl>li{padding-left:40px}.tl .dot{left:-3px;width:20px;height:20px}
+  .tl .date{position:static;width:auto;text-align:left;margin-bottom:4px}
+  .tl .date b{display:inline;margin-right:6px}
+  .topbar nav{width:100%;margin-left:0;overflow-x:auto}
+}
+
+/* ── 照片畫廊（01 與 04 共用） ── */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow);background:var(--slate)}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .7s}
+.gal figure:hover img{transform:scale(1.07)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:24px 12px 10px;
+  background:linear-gradient(transparent,rgba(8,17,25,.55) 42%,rgba(8,17,25,.93));
+  color:#fff;font-size:.78rem;font-style:normal;text-align:left;line-height:1.35}
+.gal figcaption b{display:block;font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.gal figcaption span{color:#9FBDCC;font-size:.69rem;font-family:var(--mono)}
+.gal .wide{grid-column:span 2}
+.gal .wide img{aspect-ratio:8/3}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}
+  .gal .wide{grid-column:span 2}.gal .wide img{aspect-ratio:16/7}}
+@media(max-width:520px){.gal{grid-template-columns:1fr}.gal .wide img{aspect-ratio:4/3}}
+
+/* ═══════════════════════════════════════════════════════════
+   資料驅動分頁：地圖 · 篩選 · 地點卡
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 篩選列 ── */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 16px}
+.filters .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-right:2px}
+.fchip{font:inherit;font-size:.79rem;padding:5px 13px;border-radius:20px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-2);
+  transition:background .18s,color .18s,border-color .18s;white-space:nowrap}
+.fchip:hover{border-color:var(--pukaki)}
+.fchip[aria-pressed="true"]{background:var(--pounamu);border-color:var(--pounamu);color:#fff;font-weight:600}
+.fchip.day[aria-pressed="true"]{background:var(--pukaki-dk);border-color:var(--pukaki-dk)}
+.fcount{margin-left:auto;font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ── 地圖 ── */
+.mapbox{height:clamp(300px,48vh,520px);border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper-2);z-index:1}
+.mapbox.tall{height:clamp(380px,64vh,680px)}
+.leaflet-container{font-family:var(--sans);background:var(--paper-2)}
+.leaflet-popup-content-wrapper{border-radius:12px;box-shadow:var(--shadow-lg);padding:2px}
+.leaflet-popup-content{margin:13px 15px;font-size:.88rem;line-height:1.6;min-width:210px;max-width:270px}
+.leaflet-popup-tip{box-shadow:none}
+.pop-h{font-family:var(--serif);font-size:1.08rem;font-weight:700;color:var(--ink);
+  line-height:1.3;margin-bottom:2px}
+.pop-sub{font-size:.74rem;color:var(--ink-soft);font-family:var(--mono);margin-bottom:8px}
+.pop-meta{font-size:.8rem;color:var(--ink-2);margin:0 0 4px;line-height:1.55}
+.pop-meta b{color:var(--ink)}
+.pop-warn{color:var(--rata);font-weight:650}
+.pop-btns{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pop-btns a{flex:1;text-align:center;font-size:.76rem;font-weight:650;padding:6px 8px;
+  border-radius:7px;text-decoration:none;white-space:nowrap}
+.pop-btns a.g{background:var(--pukaki-dk);color:#fff}
+.pop-btns a.o{border:1px solid var(--line);color:var(--ink-2)}
+
+/* 自訂 pin */
+.pin-ico{display:block;width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+  border:2.5px solid #fff;box-shadow:0 2px 5px rgba(11,22,32,.4);transition:transform .18s}
+.pin-ico.on{transform:rotate(-45deg) scale(1.45);z-index:900}
+.pin-ico.star::after{content:'';position:absolute;inset:4px;border-radius:50%;background:rgba(255,255,255,.85)}
+
+/* ── 地點卡 ── */
+.places{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px;margin:20px 0}
+.pl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 19px 18px;
+  box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s;
+  scroll-margin-top:90px;position:relative;display:flex;flex-direction:column}
+.pl:hover,.pl.hot{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--pukaki)}
+.pl.hot{outline:2px solid var(--pukaki);outline-offset:1px}
+.pl-top{display:flex;align-items:flex-start;gap:9px;margin-bottom:7px}
+.pl-dot{width:11px;height:11px;border-radius:50%;flex:none;margin-top:6px}
+.pl h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin:0;line-height:1.28;color:var(--ink)}
+.pl h3 small{display:block;font-family:var(--sans);font-size:.76rem;font-weight:400;
+  color:var(--ink-soft);margin-top:1px}
+.pl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+.pl-tag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:20px;
+  font-family:var(--mono);letter-spacing:.02em}
+.t-day{background:rgba(62,157,184,.15);color:var(--pukaki-dk)}
+.t-star{background:rgba(229,178,60,.22);color:#8A6416}
+.t-warn{background:rgba(190,59,43,.13);color:var(--rata)}
+.t-closed{background:var(--rata);color:#fff}
+.t-book{background:rgba(31,91,78,.13);color:var(--pounamu)}
+.t-unv{background:rgba(51,69,79,.1);color:var(--slate)}
+.pl-price{font-family:var(--mono);font-size:.79rem;color:var(--pounamu);font-weight:700;margin-bottom:5px}
+.pl-hours{font-size:.79rem;color:var(--ink-soft);margin-bottom:7px}
+.pl-note{font-size:.87rem;color:var(--ink-2);line-height:1.68;margin:0 0 12px;flex:1}
+.pl-btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
+.pl-btns a,.pl-btns button{font:inherit;font-size:.77rem;font-weight:650;padding:6px 12px;
+  border-radius:8px;text-decoration:none;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+.pl-btns .b-map{background:var(--pukaki-dk);color:#fff}
+.pl-btns .b-loc{background:var(--ice);color:var(--pukaki-dk)}
+.pl-btns .b-url{border-color:var(--line);color:var(--ink-2);background:var(--card)}
+.pl-btns a:hover,.pl-btns button:hover{filter:brightness(1.07)}
+.pl.is-closed{opacity:.72}
+.pl.is-closed h3{text-decoration:line-through;text-decoration-thickness:1.5px}
+
+.empty{text-align:center;padding:48px 20px;color:var(--ink-soft);font-size:.92rem}
+
+/* ── 頁面內導覽（8 頁） ── */
+.topbar nav a.on{background:var(--pounamu);color:#fff}
+
+/* ── 行程頁：路線方案 ── */
+.routes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.route{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;
+  box-shadow:var(--shadow);cursor:pointer;transition:.2s}
+.route:hover{border-color:var(--pukaki)}
+.route[aria-pressed="true"]{border-color:var(--kowhai);border-width:2px;
+  box-shadow:0 0 0 4px rgba(229,178,60,.16),var(--shadow)}
+.route .rh{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.route .rl{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;background:var(--slate);
+  padding:2px 9px;border-radius:6px}
+.route[aria-pressed="true"] .rl{background:var(--kowhai);color:#3A2A05}
+.route h4{margin:0;font-size:1.06rem;font-family:var(--serif);font-weight:700}
+.route .rd{font-family:var(--mono);font-size:.82rem;color:var(--pounamu);font-weight:700;
+  font-variant-numeric:tabular-nums}
+.route p{font-size:.87rem;margin:7px 0 0;color:var(--ink-2)}
+@media(max-width:760px){.routes{grid-template-columns:1fr}}
+
+@media(max-width:600px){
+  .places{grid-template-columns:1fr}
+  .filters .lbl{width:100%;margin-bottom:2px}
+  .fcount{width:100%;margin-left:0;margin-top:4px}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   手機優先優化（預期 80% 流量來自手機）
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 清單／地圖切換（僅手機） ── */
+.viewseg{display:none;position:sticky;top:47px;z-index:40;gap:0;
+  background:var(--card);border:1px solid var(--line);border-radius:11px;
+  padding:3px;margin:14px 0 4px;box-shadow:var(--shadow)}
+.viewseg button{flex:1;font:inherit;font-size:.88rem;font-weight:650;padding:9px 8px;
+  border:0;border-radius:8px;background:transparent;color:var(--ink-2);cursor:pointer;
+  min-height:42px}
+.viewseg button.on{background:var(--pounamu);color:#fff}
+
+/* ── 底部 tab bar（僅手機） ── */
+.tabbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(252,250,245,.97);backdrop-filter:saturate(180%) blur(14px);
+  border-top:1px solid var(--line);
+  padding:5px 4px calc(5px + env(safe-area-inset-bottom))}
+.tabbar .row{display:flex;max-width:560px;margin:0 auto}
+.tabbar a,.tabbar button{flex:1;font:inherit;background:none;border:0;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:6px 2px;text-decoration:none;color:var(--ink-soft);
+  font-size:.66rem;font-weight:600;min-height:48px;border-radius:9px}
+.tabbar .ic{font-size:1.22rem;line-height:1}
+.tabbar a.on{color:var(--pounamu)}
+.tabbar a.on .ic{transform:translateY(-1px)}
+.sheet[hidden]{display:none}
+.sheet{position:fixed;left:10px;right:10px;bottom:calc(62px + env(safe-area-inset-bottom));
+  z-index:71;background:var(--card);border:1px solid var(--line);border-radius:15px;
+  box-shadow:var(--shadow-lg);padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.sheet a{display:flex;align-items:center;gap:9px;padding:12px 13px;border-radius:10px;
+  text-decoration:none;color:var(--ink);font-size:.9rem;font-weight:600;background:var(--paper-2);
+  min-height:46px}
+.sheet a.on{background:var(--pounamu);color:#fff}
+
+@media(max-width:780px){
+  body{padding-bottom:66px}
+  .viewseg{display:flex}
+  .tabbar{display:block}
+  .topbar nav{display:none}
+  .topbar .inner{padding:10px 16px;justify-content:space-between}
+  .topbar .pagename{display:inline-block;font-family:var(--serif);font-weight:700;
+    font-size:1.02rem;color:var(--ink);margin-left:auto}
+
+  /* 視圖切換 */
+  #app[data-view="list"] .mapbox{display:none}
+  #app[data-view="map"] .filters,
+  #app[data-view="map"] .places{display:none}
+  #app[data-view="map"] .mapbox{height:calc(100vh - 148px);min-height:360px}
+
+  /* 觸控目標放大 */
+  .fchip{padding:9px 15px;font-size:.84rem;min-height:38px}
+  .pl-btns a,.pl-btns button{padding:10px 15px;font-size:.83rem;min-height:42px;
+    display:inline-flex;align-items:center}
+  .pl{padding:18px 18px 19px}
+  .pl h3{font-size:1.2rem}
+  .pl-note{font-size:.92rem}
+  .pop-btns a{padding:9px 8px;font-size:.8rem}
+
+  /* 篩選列改成可橫向捲動，不換行吃掉版面 */
+  .filters{display:block;margin:12px 0 14px}
+  .filters .grp{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:7px;padding-bottom:7px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .filters .fchip{flex:0 0 auto}
+  .filters .grp::-webkit-scrollbar{display:none}
+  .filters .lbl{position:sticky;left:0;background:var(--paper);padding-right:6px;z-index:2}
+  section.tint .filters .lbl{background:var(--paper-2)}
+  .fcount{display:block;margin:2px 0 0;text-align:right}
+
+  /* 內文密度 */
+  .wrap,.wrap-narrow{padding-left:16px;padding-right:16px}
+  section{padding:38px 0}
+  h2{font-size:1.55rem}
+  .lead{font-size:1rem}
+  .hero{min-height:74vh}
+  .hero h1{font-size:clamp(2.2rem,10vw,3.2rem)}
+
+  /* 表格在手機上字小一點、可橫捲 */
+  table{font-size:.84rem;min-width:520px}
+  th,td{padding:9px 11px}
+}
+
+/* 手機橫向或小平板 */
+@supports (height:100dvh){
+  @media(max-width:780px){
+    #app[data-view="map"] .mapbox{height:calc(100dvh - 148px)}
+  }
+}
+
+@media(min-width:781px){
+  .viewseg,.tabbar,.sheet{display:none!important}
+  .topbar .pagename{display:none}
+}
+
+/* 深色系統偏好下，底部列跟著調 */
+@media (prefers-color-scheme:dark){
+  .tabbar{background:rgba(12,22,32,.96)}
+}
+
+/* ── 行程頁 ── */
+.daysec{padding:26px 0;border-top:1px solid var(--line)}
+.daysec:first-child{border-top:0;padding-top:6px}
+.dayhead{display:grid;grid-template-columns:76px 1fr;gap:16px;align-items:start;margin-bottom:14px}
+.daynum{font-family:var(--mono);text-align:center;background:var(--paper-2);border-radius:11px;
+  padding:9px 4px;line-height:1.25}
+.daynum b{display:block;font-size:1.24rem;color:var(--pounamu);font-variant-numeric:lining-nums}
+.daynum span{font-size:.68rem;color:var(--ink-soft)}
+.dayhead h3{margin:0;font-size:1.24rem;color:var(--ink);font-family:var(--serif)}
+.dayleg{font-size:.84rem;color:var(--ink-soft);margin:3px 0 0;font-family:var(--mono)}
+
+.optout{margin-top:4px}
+.optbox{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:17px 19px}
+.cand-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;font-weight:700;
+  margin:0 0 9px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.cand-h.main{color:var(--pounamu)} .cand-h.alt{color:var(--pukaki-dk);margin-top:16px}
+.cand-h span{font-family:var(--sans);font-size:.75rem;font-weight:400;color:var(--ink-soft);letter-spacing:0}
+.cands{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.cand{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:11px 13px;text-decoration:none;color:inherit;min-height:48px;
+  transition:border-color .18s,transform .18s}
+.cand:hover{border-color:var(--pukaki);transform:translateY(-2px)}
+.cand-dot{width:9px;height:9px;border-radius:50%;flex:none}
+.cand-n{font-size:.88rem;font-weight:650;color:var(--ink);line-height:1.35;flex:1}
+.cand-n em{display:block;font-style:normal;font-size:.75rem;font-weight:400;color:var(--ink-soft)}
+.cand-warn{color:var(--rata);margin-left:5px}
+.cand-p{font-family:var(--mono);font-size:.72rem;color:var(--pounamu);font-weight:700;
+  text-align:right;flex:none;max-width:96px;line-height:1.3}
+.navbtn{display:block;margin-top:16px;text-align:center;background:var(--pukaki-dk);color:#fff;
+  padding:13px 16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:.92rem;min-height:48px}
+.navbtn:hover{filter:brightness(1.08)}
+@media(max-width:600px){
+  .dayhead{grid-template-columns:64px 1fr;gap:12px}
+  .cands{grid-template-columns:1fr}
+  .routes{gap:12px}
+}
+
+/* ── 地點卡的照片 ── */
+.pl.has-img{padding:0;overflow:hidden}
+.pl-img{margin:0;line-height:0;background:var(--paper-2)}
+.pl-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .6s}
+.pl.has-img:hover .pl-img img{transform:scale(1.05)}
+.pl.has-img .pl-top{padding:16px 18px 0}
+.pl.has-img .pl-tags,.pl.has-img .pl-price,.pl.has-img .pl-hours{padding:0 18px}
+.pl.has-img .pl-note{padding:0 18px}
+.pl.has-img .pl-btns{padding:0 18px 18px}
+.pl.is-closed .pl-img img{filter:grayscale(.85) opacity(.75)}
+@media(max-width:600px){
+  .pl.has-img .pl-top{padding:15px 17px 0}
+  .pl.has-img .pl-tags,.pl.has-img .pl-price,.pl.has-img .pl-hours,
+  .pl.has-img .pl-note{padding:0 17px}
+  .pl.has-img .pl-btns{padding:0 17px 17px}
+}
+
+</style>
+<style>
+/* 打包清單：可勾選，狀態存在本機 */
+.packlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:20px 0}
+.packgrp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  box-shadow:var(--shadow)}
+.packgrp h4{margin:0 0 10px;font-size:.98rem;display:flex;align-items:center;gap:8px}
+.packgrp ul{list-style:none;margin:0;padding:0}
+.packgrp li{margin:0}
+.packgrp label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer;
+  font-size:.9rem;line-height:1.55;color:var(--ink-2);border-top:1px solid var(--line-2);min-height:40px}
+.packgrp li:first-child label{border-top:0}
+.packgrp input{width:19px;height:19px;margin:2px 0 0;flex:none;accent-color:var(--pounamu);cursor:pointer}
+.packgrp input:checked + span{color:var(--ink-soft);text-decoration:line-through}
+.packgrp b{color:var(--ink)}
+.packbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.packbar .pct{font-family:var(--mono);font-size:.82rem;color:var(--pounamu);font-weight:700}
+.packbar button{font:inherit;font-size:.8rem;padding:7px 14px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-2);min-height:38px}
+
+/* 溫度表 */
+.temps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:20px 0}
+.temp{background:var(--card);padding:15px 14px;text-align:center}
+.temp .pl{font-size:.86rem;font-weight:700;color:var(--ink);margin-bottom:5px}
+.temp .rg{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--pukaki-dk);
+  font-variant-numeric:tabular-nums}
+.temp .rk{font-size:.74rem;color:var(--ink-soft);margin-top:3px}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header class="topbar"><div class="inner">
+<a class="logo" href="index.html">南島 <em>2026</em></a>
+<span class="pagename">行前</span>
+<nav>
+<a href="index.html">🏔 總覽</a>
+<a href="sights.html">📸 景點</a>
+<a href="eat.html">🍽 吃的</a>
+<a href="book.html">🎟 需預約</a>
+<a href="skydive.html">🪂 跳傘</a>
+<a href="glacier.html">🚁 冰川</a>
+<a href="prepare.html" class="on">🎒 行前</a>
+<a href="itinerary.html">🗓 行程</a>
+</nav></div></header>
+
+<section style="padding-top:30px;padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k">Before You Go</div>
+    <h2>行前注意事項</h2>
+    <p class="lead">出發前該知道的、該帶的、該先做的。<b>打包清單可以直接在手機上勾</b>，
+      勾選狀態會記在你自己的瀏覽器裡。</p>
+  </div>
+</section>
+
+<!-- ══════ 三件先知道 ══════ -->
+<section style="padding-top:14px">
+  <div class="wrap">
+    <div class="sec-k rv">Read This First</div>
+    <h2 class="rv">三件一定要先知道的事</h2>
+    <p class="lead rv">都不是壞消息，但<strong>沒先講，同行者到現場會失望或手忙腳亂</strong>。</p>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="card rv" style="border-top:4px solid var(--kowhai)">
+        <h4>🌕 前四晚是滿月</h4>
+        <p style="font-size:.9rem"><b>2026/09/27 凌晨 04:49（紐西蘭時間）是滿月。</b>
+          9/26–9/29 這四晚，Tekapo 的月面照度是 <b>99%、100%、98%、93%</b>，而且月亮幾乎整夜都在天上。</p>
+        <p style="font-size:.9rem;margin-bottom:0">我們正好在全世界最大的暗空保護區裡，卻碰到全年最亮的月相。
+          <b>銀河會被月光洗掉</b>——把期待改成「用望遠鏡看月面環形山」，那其實更震撼。</p>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--pukaki)">
+        <h4>🕐 9/27 凌晨時鐘跳一小時</h4>
+        <p style="font-size:.9rem">紐西蘭夏令時間在<b>九月最後一個星期日</b>開始——正好是 <b>2026/09/27</b>，
+          凌晨 2:00 直接跳到 3:00。</p>
+        <p style="font-size:.9rem;margin-bottom:0">那晚<b>少睡一小時</b>。手機會自己調，
+          <strong>但車上時鐘、手錶、鬧鐘要自己改</strong>。好處是之後每天天黑晚一小時。</p>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--rata)">
+        <h4>❄️ Milford 公路還在雪崩季</h4>
+        <p style="font-size:.9rem">NZTA 把 <b>6 月到 10 月</b>定為 Milford Road（SH94）的雪崩季，
+          我們 <b>10/04</b> 還在期間內。</p>
+        <p style="font-size:.9rem;margin-bottom:0">而且 <b>6–11 月「可能需要車上備雪鏈」</b>，
+          無視「須裝雪鏈」告示牌繼續開，<strong>警方可開罰 NZ$750</strong>。租車時要確認。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 天氣 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Weather</div>
+    <h2 class="rv">天氣：一天之內可以有四季</h2>
+    <p class="lead rv">南島 9 月底到 10 月初是<strong>冬末轉初春</strong>。
+      關鍵不是「冷不冷」，是<strong>「一天之內溫差有多大」</strong>——
+      麥肯錫盆地早上可能接近 0°C，中午出太陽又能到 15°C 以上。</p>
+
+    <div class="temps rv">
+      <div class="temp"><div class="pl">Tekapo / Mt Cook</div><div class="rg">-2 – 14°C</div>
+        <div class="rk">高山盆地 · 溫差最大</div></div>
+      <div class="temp"><div class="pl">Wanaka / 皇后鎮</div><div class="rg">2 – 16°C</div>
+        <div class="rk">內陸湖區 · 日照強</div></div>
+      <div class="temp"><div class="pl">Te Anau / Milford</div><div class="rg">3 – 14°C</div>
+        <div class="rk">峽灣 · 一年下 200 天雨</div></div>
+      <div class="temp"><div class="pl">Invercargill / Bluff</div><div class="rg">4 – 13°C</div>
+        <div class="rk">最南端 · 風非常大</div></div>
+      <div class="temp"><div class="pl">但尼丁 / Oamaru</div><div class="rg">5 – 15°C</div>
+        <div class="rk">東岸 · 相對溫和</div></div>
+      <div class="temp"><div class="pl">基督城 / 奧克蘭</div><div class="rg">6 – 18°C</div>
+        <div class="rk">最舒服的兩站</div></div>
+    </div>
+    <p class="rv" style="font-size:.85rem;color:var(--ink-soft)">
+      ※ 上表是這個季節的<b>一般範圍</b>，供打包參考，<b>不是預報</b>。
+      實際請在出發前一週查 <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>（紐西蘭官方氣象）。</p>
+
+    <div class="note warn rv">
+      <span class="h">☀️ 紫外線是真的會曬傷</span>
+      <p style="margin-bottom:0"><strong>紐西蘭上空的臭氧層較薄，紫外線強度明顯高於同緯度地區。</strong>
+        加上冰川與雪地會反射，<b>冰川健行那天沒擦防曬一定曬傷</b>。
+        高係數防曬、太陽眼鏡、帽子不是選配。</p>
+    </div>
+
+    <div class="grid g2" style="margin-top:24px">
+      <div class="card rv">
+        <h4>🧅 穿什麼：洋蔥式三層</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>底層</b>：發熱衣或羊毛底層 ×2（排汗，不要純棉）</li>
+          <li><b>中層</b>：刷毛或輕羽絨（保暖，可脫）</li>
+          <li><b>外層</b>：<strong>硬殼防水防風外套</strong>——不是防潑水，是真的防水</li>
+          <li><b>下半身</b>：快乾長褲 ×2（牛仔褲濕了不會乾）＋ 雨褲</li>
+          <li><b>配件</b>：手套、毛帽、脖圍——Mt Cook 早晚接近 0°C</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>👟 鞋子</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>防水登山鞋</b>：Hooker Valley Track 有濕滑路段，DOC 警告冬末背陰處會結冰</li>
+          <li><b>綁緊的運動鞋</b>：跳傘要穿，<b>不能穿涼鞋、拖鞋、靴子</b></li>
+          <li>冰川健行的靴子與冰爪<b>業者會提供</b>，不用自己帶</li>
+          <li><b>入境前把鞋底泥土刷乾淨</b>——生物安全檢查會看</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 打包清單 ══════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-k rv">Packing</div>
+    <h2 class="rv">打包清單</h2>
+    <p class="lead rv">按著勾。<b>粗體的是這趟特別需要、平常旅行不會帶的。</b></p>
+    <div class="packbar rv">
+      <span class="pct" id="packpct">0%</span>
+      <button type="button" id="packreset">清除全部勾選</button>
+      <span style="font-size:.8rem;color:var(--ink-soft)">勾選只存在你自己的手機／瀏覽器，不會同步給別人</span>
+    </div>
+
+    <div class="packlist" id="packlist">
+      <div class="packgrp"><h4>🧥 衣物</h4><ul>
+        <li><label><input type="checkbox"><span><b>硬殼防水防風外套</b></span></label></li>
+        <li><label><input type="checkbox"><span>保暖中層（刷毛／輕羽絨）</span></label></li>
+        <li><label><input type="checkbox"><span>發熱衣或羊毛底層 ×2</span></label></li>
+        <li><label><input type="checkbox"><span>快乾長褲 ×2</span></label></li>
+        <li><label><input type="checkbox"><span><b>雨褲</b>（Milford 一年下 200 天雨）</span></label></li>
+        <li><label><input type="checkbox"><span><b>手套、毛帽、脖圍</b></span></label></li>
+        <li><label><input type="checkbox"><span>換洗衣物（小鎮不一定有洗衣機）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>👟 鞋與裝備</h4><ul>
+        <li><label><input type="checkbox"><span><b>防水登山鞋</b>（鞋底先刷乾淨）</span></label></li>
+        <li><label><input type="checkbox"><span><b>綁緊的運動鞋</b>（跳傘用）</span></label></li>
+        <li><label><input type="checkbox"><span>冰爪／microspikes（DOC 建議，可當地租）</span></label></li>
+        <li><label><input type="checkbox"><span>登山杖（冰川行程業者會提供）</span></label></li>
+        <li><label><input type="checkbox"><span>小背包（步道用）</span></label></li>
+        <li><label><input type="checkbox"><span>保溫瓶</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>☀️ 防曬與健康</h4><ul>
+        <li><label><input type="checkbox"><span><b>高係數防曬</b>（冰川反射極強）</span></label></li>
+        <li><label><input type="checkbox"><span><b>太陽眼鏡</b>（不是選配）</span></label></li>
+        <li><label><input type="checkbox"><span>護唇膏、乳液（極乾燥）</span></label></li>
+        <li><label><input type="checkbox"><span>常備藥（小鎮藥局關得早）</span></label></li>
+        <li><label><input type="checkbox"><span><b>暈車藥</b>（Crown Range、Akaroa 山路彎多）</span></label></li>
+        <li><label><input type="checkbox"><span>個人處方藥＋英文藥單</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🚗 自駕相關</h4><ul>
+        <li><label><input type="checkbox"><span><b>台灣駕照＋英文譯本或國際駕照</b></span></label></li>
+        <li><label><input type="checkbox"><span>車用手機架</span></label></li>
+        <li><label><input type="checkbox"><span>車充＋充電線 ×2</span></label></li>
+        <li><label><input type="checkbox"><span>租車確認信（印出來一份）</span></label></li>
+        <li><label><input type="checkbox"><span>離線地圖（南島很多路段沒訊號）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🔌 電子與證件</h4><ul>
+        <li><label><input type="checkbox"><span><b>轉接頭（紐西蘭是澳規八字腳 Type I）</b></span></label></li>
+        <li><label><input type="checkbox"><span>行動電源（隨身，不可託運）</span></label></li>
+        <li><label><input type="checkbox"><span>eSIM 或漫遊方案</span></label></li>
+        <li><label><input type="checkbox"><span>護照（效期六個月以上）＋ <b>NZeTA</b></span></label></li>
+        <li><label><input type="checkbox"><span>旅遊保險（含冒險活動！見下）</span></label></li>
+        <li><label><input type="checkbox"><span>相機＋備用電池（低溫耗電快）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🎒 其他</h4><ul>
+        <li><label><input type="checkbox"><span>環保購物袋（紐西蘭全面禁塑膠袋）</span></label></li>
+        <li><label><input type="checkbox"><span>盥洗用品（motel 不一定提供牙刷）</span></label></li>
+        <li><label><input type="checkbox"><span>洗衣袋、夾鏈袋</span></label></li>
+        <li><label><input type="checkbox"><span>零食（車程長，小鎮補給有限）</span></label></li>
+        <li><label><input type="checkbox"><span>眼罩耳塞（機上）</span></label></li>
+      </ul></div>
+    </div>
+
+    <div class="note warn rv">
+      <span class="h">⚠️ 旅遊保險：確認有保「冒險活動」</span>
+      <p style="margin-bottom:0">我們要<b>跳傘</b>和<b>搭直升機做冰川健行</b>。
+        <strong>很多旅遊平安險的條款會把跳傘、高空彈跳、直升機活動列為除外責任。</strong>
+        買之前一定要看清楚，或加保冒險活動附加條款。
+        紐西蘭的 ACC 制度會給予意外傷害的基本補償，<b>但不涵蓋你回台灣後的費用與旅程取消損失</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 入境 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Arrival</div>
+    <h2 class="rv">入境紐西蘭：生物安全是玩真的</h2>
+    <div class="grid g2">
+      <div class="card rv">
+        <h4>🛂 必須申報的東西</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>任何食品</b>——泡麵、肉乾、水果、蜂蜜、中藥、零食全部要報</li>
+          <li><b>木製品、竹製品、種子、植物</b></li>
+          <li><b>用過的登山鞋、露營裝備、高爾夫球具</b>（沾過土壤的）</li>
+          <li>藥品（處方藥帶英文藥單）</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>💡 實務做法</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><strong>不確定的東西一律勾「是」</strong>——申報不會被罰，隱匿才會</li>
+          <li>申報了通常只是檢查一下就放行</li>
+          <li><b>沒申報被查到，罰款從 NZ$400 起跳</b></li>
+          <li>登山鞋底的泥土<b>出發前就刷乾淨</b>，省很多時間</li>
+          <li>出發前線上申請 <b>NZeTA</b>（電子旅行授權），不要拖到機場</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 開車 ══════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-k rv">Driving</div>
+    <h2 class="rv">開車：跟台灣不一樣的地方</h2>
+
+    <div class="grid g2">
+      <div class="rv">
+        <h3>🌉 單線橋：紐西蘭獨有的路權規則</h3>
+        <p style="font-size:.93rem">南島有非常多<b>單線橋</b>，一次只能一個方向通過。規則很簡單但看錯就會對撞：</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>看到的標誌</th><th>意思</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag t-red">🔴 紅色圓形</span></td><td><strong>你要讓對向先過</strong></td></tr>
+              <tr><td><span class="tag t-blue">🔵 藍色長方形</span></td><td>對向該讓你，<b>但仍要減速確認橋上沒車</b></td></tr>
+              <tr><td><span class="tag t-gold">🟡 黃色菱形</span></td><td>前方有單線橋的預告</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.9rem"><b>訣竅：</b>標誌上<strong>大箭頭代表享有優先的行進方向</strong>。</p>
+
+        <h3 style="margin-top:26px">🚐 4 人租箱型車</h3>
+        <ul style="font-size:.93rem;margin-bottom:0">
+          <li><b>多半是柴油車</b> → 要繳 <b>Road User Charges（RUC）</b>。以 GO Rentals 為例是用每天 <b>NZ$3 的固定日費</b>涵蓋，不是還車時按里程結算。<b>租不同家要先問。</b></li>
+          <li><b>汽油車不用繳 RUC</b>（在加油時繳燃油稅）。柴油車擋風玻璃上有實體 RUC 標籤，別撕。</li>
+          <li><b>保險</b>：標準方案通常保留高額自負額。<b>建議加購降低自負額</b>——南島碎石路多，擋風玻璃被石頭打到是最常見的理賠。加購保費通常不可退。</li>
+          <li><b>年齡</b>：8 人座最低駕駛年齡多為 21 歲。</li>
+          <li><b>異地還車費</b>各家官網多半不公告，訂車時要單獨問。我們基督城進出，理論上沒這筆。</li>
+        </ul>
+      </div>
+
+      <div class="rv">
+        <h3>❄️ 雪鏈與路況</h3>
+        <ul style="font-size:.93rem">
+          <li><b>Milford Road（SH94）6–11 月「可能需要車上備雪鏈」</b>——租車時明確要求，並確認合約允許在該路段使用。</li>
+          <li>雪鏈告示牌在三處：<b>Te Anau 北 1 km、Knobs Flat（北 65 km）、Milford Sound 東 5 km</b>。</li>
+          <li><strong>無視「須裝雪鏈」告示牌繼續開，警方可罰 NZ$750。</strong></li>
+          <li><b>Crown Range Road</b> 由 QLDC 管轄，2026 年起也執行雪鏈規定，同樣罰 NZ$750。</li>
+        </ul>
+
+        <div class="note warn" style="margin-top:16px">
+          <span class="h">🔍 查路況：兩個地方都要看</span>
+          <p style="margin-bottom:0">
+            <b><a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA Journey Planner</a></b>
+            ——官方，有即時交通攝影機可以直接目視路面。<br>
+            <strong>但 NZTA 只管國道。</strong>官方明確要求：路線若包含地方道路（例如 <b>Crown Range Road</b>），
+            要另外查
+            <a href="https://www.qldc.govt.nz/services/transport-and-parking/winter-road-reports" target="_blank" rel="noopener">QLDC 冬季路況頁</a>。
+            這句話在 Journey Planner 頁面上重複出現了五次，代表官方很在意。</p>
+        </div>
+
+        <h3 style="margin-top:26px">🍷 酒駕</h3>
+        <p style="font-size:.93rem">紐西蘭交通部規定：<strong>20 歲以上上限為呼氣每公升 250 微克、血液每 100 毫升 50 毫克</strong>；
+          <b>未滿 20 歲是零酒精</b>。超過即違法。</p>
+        <p style="font-size:.93rem;margin-bottom:0"><b>這是「非零上限」，不是滴酒不沾</b>——法律允許少量飲酒後駕車。
+          但<strong>個人代謝差異大，沒有可靠方法在現場估算</strong>。
+          我們會去三家酒莊品飲，<b>先講好指定駕駛</b>。指定駕駛可以只聞不喝、或請酒莊給吐酒杯，這在酒莊完全正常。</p>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">⛽ 加油與其他</span>
+      <p style="margin-bottom:0">
+        · <b>91 vs 95</b>：一般租車加 91；柴油車加 Diesel，<strong>千萬不要加錯</strong>。<br>
+        · <b>偏遠路段加油站間距很大</b>：Te Anau→Milford（120 km 只有一個且不保證營運）、卡特林斯。
+          養成習慣：<strong>油表過半就找機會加</strong>。<b>10/03 在 Te Anau 一定要加滿。</b><br>
+        · <b>靠左行駛、右駕。</b>頭幾小時最容易犯的錯是<b>轉彎後跑到右線</b>與<b>雨刷當方向燈打</b>。<br>
+        · <b>限速 100 是上限不是目標。</b>後面有車就找 slow vehicle bay 讓車，這是當地禮節。<br>
+        · <b>羊、牛可能在路上。</b>山區隨時可能遇到趕羊群，慢慢等。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 錢與生活 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Money & Daily Life</div>
+    <h2 class="rv">錢、網路、生活</h2>
+    <div class="grid g2">
+      <div class="card rv">
+        <h4>💳 付錢</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>幾乎全部刷卡</b>，小鎮咖啡館也能刷。現金幾乎用不到。</li>
+          <li>常見<b>刷卡手續費約 1–2%</b>，會標在櫃檯或帳單上。</li>
+          <li><b>紐西蘭沒有小費文化</b>，不用給。</li>
+          <li>菜單價格<b>已含 15% GST</b>，看到多少付多少。</li>
+          <li>國定假日通常加 15% 附加費——<b>我們這段期間沒有國定假日。</b></li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>📶 網路與訊號</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li>主要城鎮訊號良好，<b>但山區與峽灣大段沒訊號</b>。</li>
+          <li><b>出發前先下載離線地圖</b>（Google Maps 可下載區域）。</li>
+          <li>Milford Road、Crown Range、卡特林斯都會斷訊。</li>
+          <li>住宿多半有 Wi-Fi，但偏遠地區可能很慢或有流量上限。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🛒 超市</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li>三大超市：<b>New World</b>（中高價）、<b>Woolworths</b>（原 Countdown）、<b>PAK'nSAVE</b>（最便宜）。</li>
+          <li><b>小鎮超市關得早</b>（常 19:00–20:00），Mt Cook、Te Anau 更早。</li>
+          <li>省錢作法：<b>午餐買超市三明治在路上吃，晚餐才上餐廳。</b></li>
+          <li>伴手禮（<b>Whittaker's 巧克力、mānuka 蜂蜜</b>）在超市買最划算，別在機場買。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🕐 營業時間的心理準備</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>南島小鎮餐廳普遍很早關</b>——很多廚房 20:00 就最後點餐。</li>
+          <li><b>週一、週二是最常公休的兩天。</b></li>
+          <li>景點多半 <b>16:00–17:00 就關</b>。</li>
+          <li>一句話：<strong>在紐西蘭，「晚上再說」通常等於「沒有了」。</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">🆘 緊急聯絡</span>
+      <p style="margin-bottom:0">
+        <b>紐西蘭緊急電話：111</b>（警消救護共用）<br>
+        <b>非緊急報警：105</b>　·　<b>路況查詢：0800 4 HIGHWAYS（0800 44 44 49）</b><br>
+        <b>駐紐西蘭台北經濟文化辦事處（威靈頓）急難救助行動電話</b>：出發前請自行至外交部網站查詢最新號碼並存進手機。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">道路規則、雪鏈規定、酒駕上限均取自 <b>NZTA / 紐西蘭交通部</b>官方資料，查證日 <b>2026/08/20</b>。
+      溫度範圍是季節性參考值，<b>不是預報</b>——出發前請查
+      <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">打包清單的勾選狀態儲存在你自己瀏覽器的 localStorage，不會上傳。</p>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="主要分頁"><div class="row">
+<a class="" href="sights.html"><span class="ic">📸</span>景點</a>
+<a class="" href="eat.html"><span class="ic">🍽</span>吃的</a>
+<a class="" href="book.html"><span class="ic">🎟</span>需預約</a>
+<a class="" href="itinerary.html"><span class="ic">🗓</span>行程</a>
+<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class="on"><span class="ic">☰</span>更多</button>
+</div></nav>
+<div class="sheet" id="more-sheet" data-sheet hidden>
+<a href="index.html"><span>🏔</span>總覽</a>
+<a href="skydive.html"><span>🪂</span>跳傘</a>
+<a href="glacier.html"><span>🚁</span>冰川</a>
+<a href="prepare.html" class="on"><span>🎒</span>行前</a>
+</div>
+<script>
+/* 打包清單：勾選狀態存 localStorage */
+(function () {
+  var KEY = 'nz2026-pack';
+  var list = document.getElementById('packlist');
+  if (!list) return;
+  var boxes = [].slice.call(list.querySelectorAll('input[type=checkbox]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  function label(b) { return (b.parentNode.textContent || '').trim().slice(0, 40); }
+  function pct() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('packpct').textContent =
+      Math.round(n / boxes.length * 100) + '%　(' + n + '/' + boxes.length + ')';
+  }
+  boxes.forEach(function (b) {
+    var k = label(b);
+    if (saved[k]) b.checked = true;
+    b.addEventListener('change', function () {
+      saved[k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      pct();
+    });
+  });
+  pct();
+  document.getElementById('packreset').onclick = function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    pct();
+  };
+})();
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   南島 2026 · 地點分頁的共用邏輯
+   手機優先：清單／地圖切換、底部 tab、觸控友善
+   資料來源：頁面內的 <script id="places-data" type="application/json">
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var dataEl = document.getElementById('places-data');
+  if (!dataEl) return;
+  var DB = JSON.parse(dataEl.textContent);
+  var CATS = DB.meta.cats;
+  var DAYS = DB.meta.days;
+  var dayByNum = {};
+  DAYS.forEach(function (d) { dayByNum[d.d] = d; });
+
+  var root = document.getElementById('app');
+  if (!root) return;
+
+  var PAGE_CAT = root.dataset.cat || '';            // '' = 全部
+  var pool = DB.places.filter(function (p) {
+    return (!PAGE_CAT || p.cat === PAGE_CAT) && p.lat && p.lng;
+  }).sort(function (a, b) { return (a.day || 0) - (b.day || 0); });
+
+  /* ── 狀態 ── */
+  var state = { days: new Set(), flags: new Set(), view: 'list' };
+
+  /* ── 小工具 ── */
+  function el(tag, cls, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function gmapUrl(p) {
+    var q = p.addr ? p.name + ' ' + p.addr : (p.q || p.name + ' New Zealand');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+  function dayLabel(p) {
+    var d = dayByNum[p.day];
+    return d ? 'D' + String(p.day).padStart(2, '0') + ' · ' + d.date : '';
+  }
+  function isMobile() { return window.matchMedia('(max-width: 780px)').matches; }
+
+  /* ── 篩選 ── */
+  function pass(p) {
+    if (state.days.size && !state.days.has(p.day)) return false;
+    if (state.flags.has('star') && p.flag !== 'star') return false;
+    if (state.flags.has('book') && !p.book) return false;
+    if (state.flags.has('free') && !/免費/.test(p.price || '')) return false;
+    if (state.flags.has('hideclosed') && p.flag === 'closed') return false;
+    return true;
+  }
+
+  /* ── 建立篩選列 ── */
+  var bar = el('div', 'filters');
+  var daysPresent = [];
+  pool.forEach(function (p) { if (daysPresent.indexOf(p.day) < 0) daysPresent.push(p.day); });
+  daysPresent.sort(function (a, b) { return a - b; });
+
+  var gDay = el('div', 'grp');
+  gDay.appendChild(el('span', 'lbl', '日期'));
+  daysPresent.forEach(function (d) {
+    var b = el('button', 'fchip day', 'D' + String(d).padStart(2, '0'));
+    b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.title = (dayByNum[d] || {}).title || '';
+    b.onclick = function () {
+      state.days.has(d) ? state.days.delete(d) : state.days.add(d);
+      b.setAttribute('aria-pressed', state.days.has(d));
+      render();
+    };
+    gDay.appendChild(b);
+  });
+  bar.appendChild(gDay);
+
+  var gFlag = el('div', 'grp');
+  gFlag.appendChild(el('span', 'lbl', '條件'));
+  [['star', '★ 必去'], ['book', '要預約'], ['free', '免費'], ['hideclosed', '隱藏已歇業']]
+    .forEach(function (f) {
+      var b = el('button', 'fchip', f[1]);
+      b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+      b.onclick = function () {
+        state.flags.has(f[0]) ? state.flags.delete(f[0]) : state.flags.add(f[0]);
+        b.setAttribute('aria-pressed', state.flags.has(f[0]));
+        render();
+      };
+      gFlag.appendChild(b);
+    });
+  bar.appendChild(gFlag);
+
+  var count = el('span', 'fcount', '');
+  bar.appendChild(count);
+
+  /* ── 手機：清單／地圖切換 ── */
+  var seg = el('div', 'viewseg');
+  var segList = el('button', 'on', '📋 清單');
+  var segMap = el('button', '', '🗺 地圖');
+  segList.type = segMap.type = 'button';
+  seg.appendChild(segList); seg.appendChild(segMap);
+  function setView(v) {
+    state.view = v;
+    segList.className = v === 'list' ? 'on' : '';
+    segMap.className = v === 'map' ? 'on' : '';
+    root.dataset.view = v;
+    if (v === 'map' && map) setTimeout(function () {
+      map.invalidateSize();
+      // 手機切到地圖時，把畫面捲到切換列，讓地圖佔滿螢幕
+      if (isMobile()) {
+        var y = seg.getBoundingClientRect().top + window.scrollY - 46;
+        var soft = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: y, behavior: soft ? 'smooth' : 'auto' });
+      }
+    }, 70);
+  }
+  segList.onclick = function () { setView('list'); };
+  segMap.onclick = function () { setView('map'); };
+
+  /* ── 版面 ── */
+  var mapWrap = el('div', 'mapbox');
+  mapWrap.id = 'map';
+  var grid = el('div', 'places');
+
+  root.appendChild(seg);
+  root.appendChild(mapWrap);
+  root.appendChild(bar);
+  root.appendChild(grid);
+
+  /* ── Leaflet ── */
+  var map = null, markers = {}, layer = null;
+  if (window.L) {
+    map = L.map('map', { scrollWheelZoom: false, tap: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    map.on('click', function () { clearHot(); });
+    layer = L.layerGroup().addTo(map);
+  }
+
+  function pinIcon(p) {
+    var c = (CATS[p.cat] || {}).color || '#3E9DB8';
+    if (p.flag === 'closed') c = '#8A94A0';
+    var ring = p.flag === 'star' ? 'box-shadow:0 0 0 3px rgba(229,178,60,.55),0 2px 5px rgba(11,22,32,.4);' : '';
+    return L.divIcon({
+      className: '',
+      html: '<span class="pin-ico" style="background:' + c + ';' + ring + '"></span>',
+      iconSize: [20, 20], iconAnchor: [10, 20], popupAnchor: [0, -18]
+    });
+  }
+
+  function popupHtml(p) {
+    var h = '<div class="pop-h">' + esc(p.name) + '</div>';
+    var sub = [dayLabel(p), p.town].filter(Boolean).join(' · ');
+    if (sub) h += '<div class="pop-sub">' + esc(sub) + '</div>';
+    if (p.price) h += '<p class="pop-meta"><b>' + esc(p.price) + '</b></p>';
+    if (p.hours) h += '<p class="pop-meta">' + esc(p.hours) + '</p>';
+    if (p.flag === 'closed') h += '<p class="pop-meta pop-warn">已永久歇業</p>';
+    else if (p.flag === 'warn') h += '<p class="pop-meta pop-warn">有注意事項，見卡片</p>';
+    if (p.geo_approx) h += '<p class="pop-meta" style="color:var(--ink-soft);font-size:.73rem">' +
+      '此為概略位置（以「' + esc(p.geo_approx) + '」定位）· 導航請按下面的按鈕' + '</p>';
+    h += '<div class="pop-btns"><a class="g" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">在 Google Maps 開啟</a>';
+    if (p.url) h += '<a class="o" href="' + esc(p.url) + '" target="_blank" rel="noopener">官網</a>';
+    h += '</div>';
+    return h;
+  }
+
+  function clearHot() {
+    document.querySelectorAll('.pl.hot').forEach(function (n) { n.classList.remove('hot'); });
+    Object.keys(markers).forEach(function (k) {
+      var i = markers[k]._icon && markers[k]._icon.querySelector('.pin-ico');
+      if (i) i.classList.remove('on');
+    });
+  }
+
+  function focusPlace(id, fromMap) {
+    clearHot();
+    var card = document.getElementById('pl-' + id);
+    var m = markers[id];
+    if (m) {
+      var i = m._icon && m._icon.querySelector('.pin-ico');
+      if (i) i.classList.add('on');
+    }
+    if (card) {
+      card.classList.add('hot');
+      if (fromMap && !isMobile()) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (!fromMap && m && map) {
+      if (isMobile()) setView('map');
+      setTimeout(function () {
+        map.invalidateSize();
+        map.setView(m.getLatLng(), Math.max(map.getZoom(), 12), { animate: true });
+        m.openPopup();
+      }, isMobile() ? 90 : 0);
+    }
+  }
+
+  /* ── 卡片 ── */
+  function cardHtml(p) {
+    var c = (CATS[p.cat] || {}).color || '#3E9DB8';
+    var tags = '';
+    if (p.day) tags += '<span class="pl-tag t-day">' + dayLabel(p) + '</span>';
+    if (p.flag === 'star') tags += '<span class="pl-tag t-star">★ 必去</span>';
+    if (p.flag === 'warn') tags += '<span class="pl-tag t-warn">⚠ 注意</span>';
+    if (p.flag === 'closed') tags += '<span class="pl-tag t-closed">已歇業</span>';
+    if (p.flag === 'unverified') tags += '<span class="pl-tag t-unv">未查證</span>';
+    if (p.book) tags += '<span class="pl-tag t-book">要預約</span>';
+    if (p.geo_approx) tags += '<span class="pl-tag t-unv" title="地圖上是概略位置，導航請用 Google Maps 按鈕">📍概略</span>';
+
+    var h = p.img ? '<div class="pl-img"><img src="' + esc(p.img) + '" alt="' +
+      esc(p.zh || p.name) + '" loading="lazy" decoding="async"></div>' : '';
+    h += '<div class="pl-top"><span class="pl-dot" style="background:' + c + '"></span>' +
+      '<h3>' + esc(p.name) + (p.zh ? '<small>' + esc(p.zh) + '</small>' : '') + '</h3></div>';
+    if (tags) h += '<div class="pl-tags">' + tags + '</div>';
+    if (p.price) h += '<div class="pl-price">' + esc(p.price) + '</div>';
+    if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
+    if (p.note) h += '<p class="pl-note">' + esc(p.note) + '</p>';
+    h += '<div class="pl-btns">' +
+      '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
+      '<a class="b-map" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">📍 Google Maps</a>' +
+      (p.url ? '<a class="b-url" href="' + esc(p.url) + '" target="_blank" rel="noopener">官網</a>' : '') +
+      '</div>';
+    return h;
+  }
+
+  /* ── 渲染 ── */
+  function render() {
+    var list = pool.filter(pass);
+    count.textContent = list.length + ' / ' + pool.length + ' 個地點';
+
+    grid.innerHTML = '';
+    if (!list.length) {
+      grid.appendChild(el('div', 'empty', '沒有符合條件的地點。<br>試著取消幾個篩選。'));
+    }
+    list.forEach(function (p) {
+      var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
+        (p.img ? ' has-img' : ''), cardHtml(p));
+      card.id = 'pl-' + p.id;
+      grid.appendChild(card);
+    });
+    grid.querySelectorAll('[data-focus]').forEach(function (b) {
+      b.onclick = function () { focusPlace(b.dataset.focus, false); };
+    });
+
+    if (!map) return;
+    layer.clearLayers(); markers = {};
+    var pts = [];
+    list.forEach(function (p) {
+      var m = L.marker([p.lat, p.lng], { icon: pinIcon(p), title: p.name })
+        .bindPopup(popupHtml(p), { closeButton: true, autoPanPadding: [24, 24] });
+      m.on('click', function () { focusPlace(p.id, true); });
+      m.addTo(layer);
+      markers[p.id] = m;
+      pts.push([p.lat, p.lng]);
+    });
+    if (pts.length) {
+      // 南島佔多數時，預設只框住南島，免得整張圖被奧克蘭拉到看不清
+      var south = pts.filter(function (c) { return c[0] < -40.5; });
+      var use = (south.length && south.length >= pts.length * 0.7) ? south : pts;
+      map.fitBounds(use, { padding: [34, 34], maxZoom: 11 });
+    }
+  }
+
+  render();
+  setView(isMobile() ? 'list' : 'both');
+  window.addEventListener('resize', function () {
+    if (!isMobile() && state.view !== 'both') setView('both');
+    if (isMobile() && state.view === 'both') setView('list');
+    if (map) map.invalidateSize();
+  });
+})();
+
+/* ── 底部 tab：更多 ── */
+(function () {
+  var more = document.querySelector('[data-more]');
+  var sheet = document.querySelector('[data-sheet]');
+  if (!more || !sheet) return;
+  function close() { sheet.hidden = true; more.setAttribute('aria-expanded', 'false'); }
+  more.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = sheet.hidden;
+    sheet.hidden = !open;
+    more.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function (e) { if (!sheet.contains(e.target)) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+
+/* ── 捲動進度條 ── */
+(function () {
+  var bar = document.getElementById('prog');
+  if (!bar) return;
+  addEventListener('scroll', function () {
+    var h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, { passive: true });
+})();
+
+/* ── 滾動揭示 ── */
+(function () {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -40px' });
+  document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   行程頁：路線方案 × 候選地點
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var host = document.getElementById('itin');
+  var dataEl = document.getElementById('places-data');
+  if (!host || !dataEl) return;
+
+  var DB = JSON.parse(dataEl.textContent);
+  var byId = {};
+  DB.places.forEach(function (p) { byId[p.id] = p; });
+  var dayByNum = {};
+  DB.meta.days.forEach(function (d) { dayByNum[d.d] = d; });
+  var CATS = DB.meta.cats;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function gmap(p) {
+    var q = p.addr ? p.name + ' ' + p.addr : (p.q || p.name + ' New Zealand');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+  function dirUrl(pts) {
+    if (pts.length < 2) return null;
+    var o = encodeURIComponent(pts[0]), d = encodeURIComponent(pts[pts.length - 1]);
+    var way = pts.slice(1, -1).map(encodeURIComponent).join('%7C');
+    return 'https://www.google.com/maps/dir/?api=1&origin=' + o + '&destination=' + d +
+      (way ? '&waypoints=' + way : '') + '&travelmode=driving';
+  }
+
+  DB.routes.forEach(function (r) {
+    var day = dayByNum[r.day] || {};
+    var sec = document.createElement('section');
+    sec.className = 'daysec';
+    sec.id = 'day' + r.day;
+
+    var head = '<div class="dayhead">' +
+      '<div class="daynum"><b>D' + String(r.day).padStart(2, '0') + '</b><span>' +
+      esc(day.date || '') + ' · ' + esc(day.wd || '') + '</span></div>' +
+      '<div><h3>' + esc(r.title) + '</h3>' +
+      '<p class="dayleg">' + esc(day.title || '') + '　·　' + esc(day.leg || '') + '</p></div></div>';
+    if (r.note) head += '<div class="note ' + (/⚠/.test(r.note) ? 'warn' : 'tip') +
+      '" style="margin:0 0 16px"><p style="margin:0">' + r.note + '</p></div>';
+
+    var opts = '<div class="routes">';
+    r.options.forEach(function (o, i) {
+      opts += '<button type="button" class="route" data-opt="' + o.id + '" data-day="' + r.day +
+        '" aria-pressed="' + (i === 0) + '">' +
+        '<div class="rh"><span class="rl">' + esc(o.label) + '</span>' +
+        '<h4>' + esc(o.name) + '</h4></div>' +
+        '<div class="rd">' + esc(o.meta || '') + (o.rec ? '　★ 建議' : '') + '</div>' +
+        '<p>' + esc(o.desc) + '</p></button>';
+    });
+    opts += '</div>';
+
+    sec.innerHTML = head + opts + '<div class="optout" id="out-' + r.day + '"></div>';
+    host.appendChild(sec);
+  });
+
+  function chipsFor(ids, kind) {
+    if (!ids || !ids.length) return '';
+    var t = kind === 'main'
+      ? '<div class="cand-h main">主推　<span>照這個方案走一定會經過</span></div>'
+      : '<div class="cand-h alt">備案候選　<span>時間夠再加</span></div>';
+    var h = t + '<div class="cands">';
+    ids.forEach(function (id) {
+      var p = byId[id];
+      if (!p) return;
+      var c = (CATS[p.cat] || {}).color || '#3E9DB8';
+      var warn = p.flag === 'warn' ? '<span class="cand-warn">⚠</span>' :
+        (p.flag === 'closed' ? '<span class="cand-warn">✕</span>' : '');
+      h += '<a class="cand" href="' + gmap(p) + '" target="_blank" rel="noopener">' +
+        '<span class="cand-dot" style="background:' + c + '"></span>' +
+        '<span class="cand-n">' + esc(p.name) + warn +
+        (p.zh ? '<em>' + esc(p.zh) + '</em>' : '') + '</span>' +
+        (p.price ? '<span class="cand-p">' + esc(p.price) + '</span>' : '') +
+        '</a>';
+    });
+    return h + '</div>';
+  }
+
+  function showOpt(day, optId) {
+    var r = DB.routes.filter(function (x) { return x.day === day; })[0];
+    var o = r.options.filter(function (x) { return x.id === optId; })[0];
+    var out = document.getElementById('out-' + day);
+    if (!o || !out) return;
+
+    var pts = (o.main || []).map(function (id) {
+      var p = byId[id]; return p ? (p.name + ', New Zealand') : null;
+    }).filter(Boolean);
+    var du = dirUrl(pts);
+
+    out.innerHTML =
+      '<div class="optbox">' +
+      chipsFor(o.main, 'main') +
+      chipsFor(o.alt, 'alt') +
+      (du ? '<a class="navbtn" href="' + du + '" target="_blank" rel="noopener">🚗 用 Google Maps 導航這條路線</a>' : '') +
+      '</div>';
+  }
+
+  host.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.route') : null;
+    if (!b) return;
+    var day = parseInt(b.dataset.day, 10);
+    host.querySelectorAll('.route[data-day="' + day + '"]').forEach(function (x) {
+      x.setAttribute('aria-pressed', x === b);
+    });
+    showOpt(day, b.dataset.opt);
+  });
+
+  DB.routes.forEach(function (r) { showOpt(r.day, r.options[0].id); });
+})();
+
+</script>
+</body>
+</html>
