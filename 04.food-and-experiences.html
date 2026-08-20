@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吃什麼・看什麼・玩什麼 · 南島美食與體驗提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   NZ SOUTH ISLAND · 旅遊書風格設計系統
+   ═══════════════════════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+:root{
+  --pukaki:#3E9DB8; --pukaki-lt:#8FD4E0; --pukaki-dk:#175E78;
+  --pounamu:#1F5B4E; --pounamu-lt:#3B8A75;
+  --ice:#DCEFF4; --ice-2:#EEF7F9;
+  --tussock:#C08A3E; --kowhai:#E5B23C;
+  --slate:#33454F; --night:#0B1620; --night-2:#12242F;
+  --paper:#FCFAF5; --paper-2:#F4EEE3; --card:#FFFFFF;
+  --ink:#1A2630; --ink-2:#40525E; --ink-soft:#778995;
+  --rata:#BE3B2B;
+  --line:rgba(26,38,48,.12); --line-2:rgba(26,38,48,.06);
+  --shadow:0 1px 2px rgba(11,22,32,.05),0 8px 28px -8px rgba(11,22,32,.16);
+  --shadow-lg:0 2px 6px rgba(11,22,32,.06),0 24px 60px -16px rgba(11,22,32,.28);
+  --serif:'Cormorant Garamond','Noto Serif TC',Georgia,'Songti TC',serif;
+  --sans:'Inter','Noto Sans TC',-apple-system,BlinkMacSystemFont,'PingFang TC','Segoe UI',sans-serif;
+  --mono:'SF Mono','JetBrains Mono',Menlo,monospace;
+  --maxw:1140px;
+}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.75;letter-spacing:.01em;overflow-x:hidden}
+
+/* ── 毛利 poutama（階梯）與 niho taniwha（三角）紋樣 ── */
+.pattern-poutama{
+  background-image:
+    linear-gradient(135deg,transparent 45%,currentColor 45%,currentColor 55%,transparent 55%),
+    linear-gradient(45deg,transparent 45%,currentColor 45%,currentColor 55%,transparent 55%);
+  background-size:22px 22px;opacity:.07}
+.rule-niho{height:14px;width:100%;
+  background:linear-gradient(135deg,var(--pounamu) 25%,transparent 25%) -14px 0,
+             linear-gradient(225deg,var(--pounamu) 25%,transparent 25%) -14px 0,
+             linear-gradient(315deg,var(--pounamu) 25%,transparent 25%),
+             linear-gradient(45deg,var(--pounamu) 25%,transparent 25%);
+  background-size:28px 28px;opacity:.85}
+
+/* ── 版面 ── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:820px;margin:0 auto;padding:0 28px}
+
+/* ── 頂部導覽 ── */
+.topbar{position:sticky;top:0;z-index:80;background:rgba(252,250,245,.86);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-2)}
+.topbar .inner{max-width:var(--maxw);margin:0 auto;padding:11px 28px;
+  display:flex;align-items:center;gap:22px}
+.topbar .logo{font-family:var(--serif);font-weight:700;font-size:1.12rem;
+  color:var(--pounamu);letter-spacing:.02em;white-space:nowrap}
+.topbar .logo em{font-style:normal;color:var(--pukaki)}
+.topbar nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.topbar nav a{font-size:.79rem;color:var(--ink-2);text-decoration:none;
+  padding:6px 11px;border-radius:20px;transition:.2s;white-space:nowrap}
+.topbar nav a:hover{background:var(--ice);color:var(--pukaki-dk)}
+.topbar nav a.on{background:var(--pounamu);color:#fff}
+#prog{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--pukaki),var(--kowhai));transition:width .12s}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--night)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.06);animation:kenburns 26s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.04) translate3d(0,0,0)}
+  to{transform:scale(1.14) translate3d(-1.5%,-1.5%,0)}}
+/* 左側暗幕：讓標題在亮照片上也讀得清楚 */
+.hero::before{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(8,17,25,.88) 0%,rgba(8,17,25,.66) 32%,
+             rgba(8,17,25,.16) 60%,rgba(8,17,25,0) 80%)}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(11,22,32,.58) 0%,rgba(11,22,32,.06) 30%,
+             rgba(11,22,32,.44) 58%,rgba(11,22,32,.80) 79%,rgba(11,22,32,.95) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--maxw);
+  margin:0 auto;padding:0 28px 62px}
+.hero .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--pukaki-lt);margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-weight:700;color:#fff;line-height:1.04;font-variant-numeric:lining-nums;
+  font-size:clamp(2.6rem,7.2vw,5.4rem);letter-spacing:-.015em;
+  text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero h1 .mao{display:block;font-size:.42em;letter-spacing:.16em;font-weight:400;
+  color:var(--kowhai);margin-top:14px;font-style:italic}
+.hero strong,.hero b{color:#fff;font-weight:700}
+.hero .lede{color:rgba(255,255,255,.9);font-size:clamp(1rem,2vw,1.16rem);
+  max-width:640px;margin-top:20px;line-height:1.7}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-meta span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);
+  color:#fff;padding:7px 16px;border-radius:30px;font-size:.83rem;
+  backdrop-filter:blur(8px)}
+.scroll-cue{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;
+  color:rgba(255,255,255,.65);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+/* ── 區塊 ── */
+section{padding:74px 0;scroll-margin-top:60px}
+section.tint{background:var(--paper-2)}
+section.dark{background:var(--night);color:#C8D6DF}
+section.dark h2,section.dark h3{color:#fff}
+section.dark .sec-k{color:var(--kowhai)}
+.sec-k{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--pukaki);margin-bottom:9px;
+  display:flex;align-items:center;gap:10px}
+.sec-k::before{content:'';width:26px;height:2px;background:currentColor;flex:none}
+h2{font-family:var(--serif);font-size:clamp(1.85rem,4vw,2.7rem);font-weight:700;
+  line-height:1.14;letter-spacing:-.01em;margin-bottom:14px;color:var(--ink)}
+h3{font-family:var(--serif);font-size:1.42rem;font-weight:700;margin:30px 0 10px;
+  color:var(--pounamu);line-height:1.3}
+h4{font-size:1.02rem;font-weight:700;margin:20px 0 7px;color:var(--ink)}
+p{margin-bottom:14px;color:var(--ink-2)}
+.dark p{color:#A9BDC9}
+.lead{font-size:1.1rem;color:var(--ink-2);max-width:720px}
+strong{color:var(--ink);font-weight:650}
+.dark strong{color:#fff}
+a{color:var(--pukaki-dk)}
+small{font-size:.8rem;color:var(--ink-soft)}
+
+/* ── 卡片 ── */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;box-shadow:var(--shadow);transition:.3s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.card h4{margin-top:0}
+.dark .card{background:var(--night-2);border-color:rgba(255,255,255,.09)}
+
+/* 圖片卡 */
+.pcard{background:var(--card);border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.35s;border:1px solid var(--line-2)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.pcard img{width:100%;height:190px;object-fit:cover;display:block;transition:.6s}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .body{padding:17px 19px}
+.pcard .body h4{margin:0 0 5px}
+.pcard .body p{font-size:.88rem;margin:0;color:var(--ink-soft)}
+
+/* ── 圖片 ── */
+figure{margin:26px 0}
+figure img{width:100%;border-radius:12px;display:block;box-shadow:var(--shadow)}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:8px;text-align:center;
+  font-style:italic}
+.figwide{margin:34px calc(50% - 50vw);width:100vw;max-width:100vw}
+.figwide img{border-radius:0;max-height:62vh;object-fit:cover}
+
+/* ── 表格 ── */
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px;
+  background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+th{background:var(--pounamu);color:#fff;text-align:left;padding:11px 14px;
+  font-weight:600;font-size:.8rem;letter-spacing:.03em;white-space:nowrap}
+td{padding:11px 14px;border-top:1px solid var(--line-2);vertical-align:top;
+  color:var(--ink-2)}
+tbody tr:nth-child(even){background:rgba(62,157,184,.045)}
+td strong{color:var(--ink)}
+.pick{background:rgba(229,178,60,.16)!important}
+.pick td:first-child::before{content:'★ ';color:var(--kowhai)}
+
+/* ── 時間軸 ── */
+.tl{position:relative;padding-left:0;list-style:none}
+.tl::before{content:'';position:absolute;left:58px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,var(--pukaki),var(--pounamu),var(--tussock))}
+.tl>li{position:relative;padding:0 0 26px 92px;min-height:60px}
+.tl .dot{position:absolute;left:47px;top:6px;width:24px;height:24px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--pukaki);z-index:2}
+.tl .dot.key{background:var(--kowhai);border-color:var(--tussock);
+  box-shadow:0 0 0 5px rgba(229,178,60,.22)}
+.tl .date{position:absolute;left:0;top:2px;width:42px;text-align:right;
+  font-family:var(--mono);font-size:.74rem;line-height:1.35;color:var(--ink-soft);
+  font-weight:600}
+.tl .date b{display:block;font-size:1.06rem;color:var(--pounamu)}
+
+/* ── 徽章 ── */
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.72rem;
+  font-weight:600;letter-spacing:.02em;vertical-align:middle}
+.t-blue{background:rgba(62,157,184,.15);color:var(--pukaki-dk)}
+.t-green{background:rgba(31,91,78,.13);color:var(--pounamu)}
+.t-gold{background:rgba(229,178,60,.2);color:#8A6416}
+.t-red{background:rgba(190,59,43,.13);color:var(--rata)}
+.t-grey{background:rgba(51,69,79,.1);color:var(--slate)}
+
+/* ── 提示框 ── */
+.note{border-left:4px solid var(--pukaki);background:var(--ice-2);
+  padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+.note.warn{border-color:var(--rata);background:rgba(190,59,43,.055)}
+.note.tip{border-color:var(--kowhai);background:rgba(229,178,60,.09)}
+.note.plan{border-color:var(--pounamu);background:rgba(31,91,78,.06)}
+.note .h{font-weight:700;color:var(--ink);margin-bottom:5px;display:block;font-size:.94rem}
+/* 深色區塊內的提示框：反轉配色，避免深字壓深底 */
+.dark .note{background:rgba(255,255,255,.055);border-color:var(--pukaki-lt)}
+.dark .note.warn{background:rgba(190,59,43,.18);border-color:#E4705F}
+.dark .note.tip{background:rgba(229,178,60,.13);border-color:var(--kowhai)}
+.dark .note.plan{background:rgba(59,138,117,.16);border-color:var(--pounamu-lt)}
+.dark .note .h{color:#fff}
+.dark .note p,.dark .note li,.dark .note td{color:#C0D2DC}
+.dark .note strong,.dark .note b{color:#fff}
+/* 深色區塊裡的淺底元件（表格／卡片）要用回深色字，否則白字白底 */
+.dark .tw strong,.dark .tw b,.dark .mx strong,.dark .mx b,
+.dark .pcard strong,.dark .pcard b{color:var(--ink)}
+.note p:last-child{margin-bottom:0}
+.note ul{margin:6px 0 0}
+
+ul,ol{margin:0 0 14px 20px;color:var(--ink-2)}
+li{margin-bottom:6px}
+
+/* ── 統計數字 ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--card);padding:22px 16px;text-align:center}
+.dark .stat{background:var(--night-2)}
+.stat .n{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:2.3rem;font-weight:700;color:var(--pukaki-dk);
+  line-height:1}
+.dark .stat .n{color:var(--pukaki-lt)}
+.stat .l{font-size:.79rem;color:var(--ink-soft);margin-top:6px}
+
+/* ── 滾動揭示動畫 ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),
+  transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hero-bg{animation:none}.scroll-cue{animation:none}}
+
+/* ── 頁尾 ── */
+footer{background:var(--night);color:#8FA3B0;padding:52px 0 40px;font-size:.86rem}
+footer a{color:var(--pukaki-lt)}
+footer h4{color:#fff;margin-top:0}
+
+details{border:1px solid var(--line);border-radius:10px;padding:12px 16px;
+  margin:14px 0;background:var(--card)}
+summary{cursor:pointer;font-weight:650;color:var(--pounamu);font-size:.94rem}
+details[open] summary{margin-bottom:9px}
+
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr}}
+@media(max-width:680px){
+  body{font-size:16px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .wrap,.wrap-narrow,.topbar .inner,.hero-in{padding-left:18px;padding-right:18px}
+  section{padding:52px 0}
+  .tl::before{left:8px}.tl>li{padding-left:40px}.tl .dot{left:-3px;width:20px;height:20px}
+  .tl .date{position:static;width:auto;text-align:left;margin-bottom:4px}
+  .tl .date b{display:inline;margin-right:6px}
+  .topbar nav{width:100%;margin-left:0;overflow-x:auto}
+}
+
+/* ── 照片畫廊（01 與 04 共用） ── */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow);background:var(--slate)}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .7s}
+.gal figure:hover img{transform:scale(1.07)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:24px 12px 10px;
+  background:linear-gradient(transparent,rgba(8,17,25,.55) 42%,rgba(8,17,25,.93));
+  color:#fff;font-size:.78rem;font-style:normal;text-align:left;line-height:1.35}
+.gal figcaption b{display:block;font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.gal figcaption span{color:#9FBDCC;font-size:.69rem;font-family:var(--mono)}
+.gal .wide{grid-column:span 2}
+.gal .wide img{aspect-ratio:8/3}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}
+  .gal .wide{grid-column:span 2}.gal .wide img{aspect-ratio:16/7}}
+@media(max-width:520px){.gal{grid-template-columns:1fr}.gal .wide img{aspect-ratio:4/3}}
+
+</style>
+<style>
+/* ── 過時資訊警報 ── */
+.alerts{display:grid;gap:14px;margin:26px 0}
+.alert{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;
+  background:var(--card);border:1px solid var(--line);border-left:4px solid var(--rata);
+  border-radius:0 12px 12px 0;padding:18px 20px;box-shadow:var(--shadow)}
+.alert .ic{font-size:1.7rem;line-height:1;text-align:center;padding-top:2px}
+.alert > div > b{display:block;color:var(--ink);font-size:1.02rem;margin-bottom:5px}
+.alert p b,.alert p strong{color:var(--ink);font-weight:700}
+.alert p{font-size:.9rem;margin:0 0 6px;color:var(--ink-2)}
+.alert p:last-child{margin-bottom:0}
+.alert .fix{font-size:.86rem;color:var(--pounamu);font-weight:650}
+.alert.warn{border-left-color:var(--kowhai)}
+@media(max-width:600px){.alert{grid-template-columns:1fr}.alert .ic{text-align:left}}
+
+/* ── 食物網格 ── */
+.foods{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+.food{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.3s;position:relative}
+.food:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.food img{width:100%;aspect-ratio:5/4;object-fit:cover;display:block}
+.food .b{padding:13px 15px 15px}
+.food .b h4{margin:0 0 4px;font-size:1rem}
+.food .b p{font-size:.83rem;margin:0;color:var(--ink-soft);line-height:1.55}
+.food .flag{position:absolute;top:10px;right:10px;font-size:.68rem;font-weight:700;
+  padding:3px 9px;border-radius:12px;backdrop-filter:blur(6px)}
+.food .flag.ok{background:rgba(31,91,78,.9);color:#fff}
+.food .flag.no{background:rgba(190,59,43,.9);color:#fff}
+@media(max-width:900px){.foods{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.foods{grid-template-columns:1fr}}
+
+/* ── 逐站卡 ── */
+.stop{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:0 0 16px;
+  overflow:hidden;box-shadow:var(--shadow)}
+.stop-h{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:center;padding:14px 20px;
+  background:linear-gradient(90deg,rgba(62,157,184,.08),transparent);border-bottom:1px solid var(--line-2)}
+.stop-h .d{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft);text-align:center;line-height:1.2}
+.stop-h .d b{display:block;font-size:1.2rem;color:var(--pounamu);font-variant-numeric:lining-nums}
+.stop-h .n{font-family:var(--serif);font-size:1.22rem;font-weight:700;color:var(--ink)}
+.stop-b{padding:6px 20px 16px}
+.row{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:11px 0;
+  border-top:1px solid var(--line-2);font-size:.9rem;align-items:start}
+.row:first-child{border-top:none}
+.row .lbl{font-size:.78rem;font-weight:700;color:#fff;background:var(--c,var(--pukaki));
+  padding:3px 0;border-radius:12px;text-align:center;white-space:nowrap}
+.row.eat .lbl{background:var(--tussock)}
+.row.see .lbl{background:var(--pukaki-dk)}
+.row.do .lbl{background:var(--pounamu)}
+.row ul{margin:0 0 0 17px}
+.row li{margin-bottom:5px}
+.row li:last-child{margin-bottom:0}
+@media(max-width:560px){.stop-h{grid-template-columns:1fr}.stop-h .d{text-align:left}
+  .stop-h .d b{display:inline;margin-right:8px}
+  .row{grid-template-columns:1fr;gap:5px}.row .lbl{width:74px}}
+
+.price{font-family:var(--mono);font-weight:700;color:var(--pounamu);white-space:nowrap}
+.closed{color:var(--rata);font-weight:700}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="topbar">
+  <div class="inner">
+    <div class="logo">南島 <em>2026</em></div>
+    <nav>
+      <a href="01.south-island-itinerary.html">① 行程</a>
+      <a href="02.skydiving.html">② 跳傘</a>
+      <a href="03.glacier-heli-hike.html">③ 冰川</a>
+      <a href="#" class="on">④ 吃玩看</a>
+      <a href="#alerts">別踩雷</a>
+      <a href="#eat">必吃</a>
+      <a href="#stops">逐站</a>
+      <a href="#stars">觀星</a>
+      <a href="#milford">遊船</a>
+      <a href="#gallery">照片</a>
+      <a href="#plan">怎麼排</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('images/do-earnslaw.jpg');background-position:60% center"></div>
+  <div class="hero-in">
+    <div class="eyebrow">Proposal 04 · Eat · See · Do</div>
+    <h1>吃什麼<span class="mao">Kai — 毛利語的「食物」</span></h1>
+    <p class="lede">前三份講的是<strong>怎麼移動、怎麼跳、怎麼上冰川</strong>。這一份講剩下的：
+      <strong>每一站吃什麼、看什麼、玩什麼</strong>。
+      重點不是列清單——是告訴你<b>哪幾家其實已經倒了、哪些東西這個季節根本吃不到</b>。</p>
+    <div class="hero-meta">
+      <span>🍽 逐站餐廳</span><span>🌌 觀星比較</span>
+      <span>🍷 中奧塔哥酒莊</span><span>⛵ Milford 六家船</span>
+    </div>
+  </div>
+  <div class="scroll-cue">↓</div>
+</div>
+
+<div class="rule-niho"></div>
+
+<!-- ══════════ 過時資訊警報 ══════════ -->
+<section id="alerts">
+  <div class="wrap">
+    <div class="sec-k rv">Outdated Info</div>
+    <h2 class="rv">先講最重要的：這五件事，網路上還在教你錯的</h2>
+    <p class="lead rv">餐廳與景點的資訊過期得很快，中文旅遊資訊尤其嚴重。
+      這五個是<strong>查證後確認已經改變、但還被大量推薦</strong>的。先看完再往下。</p>
+
+    <div class="alerts">
+      <div class="alert rv">
+        <div class="ic">🚫</div>
+        <div>
+          <b>Moeraki 的 Fleurs Place 已經永久歇業了</b>
+          <p>幾乎每一篇中文的但尼丁／摩拉基遊記都推薦它——英國名廚 Rick Stein 選過的海鮮名店。
+            但它<strong>從疫情初期就關閉，到 2025 年 4 月建物已經掛牌出售</strong>，
+            創辦人 Fleur Sullivan 本人也已表態不會再開。</p>
+          <p class="fix">→ 10/07 經過摩拉基時，別把它排進午餐。改在 Oamaru 吃（見下面 Riverstone Kitchen）。</p>
+        </div>
+      </div>
+
+      <div class="alert rv">
+        <div class="ic">🦪</div>
+        <div>
+          <b>10 月初到 Bluff，吃不到當季 Bluff 生蠔</b>
+          <p>Bluff 生蠔的商業採收季是<strong>每年 3 月到 8 月底</strong>，你們 10/05 到，完全過季。
+            更麻煩的是：這個漁場自 2023 年起連年出問題（疾病、海溫、族群衰退），
+            <b>2023、2024、2025 三年都提前收季</b>，2026 年更早在 5 月底就結束，
+            持有約 20% 配額的 Ngāi Tahu Seafood <b>連續第二年完全停捕</b>。</p>
+          <p class="fix">→ 想吃生蠔請放下期待。<b>但 Bluff 還是值得去</b>——Stirling Point 的
+            Oyster Cove 有藍鱈（blue cod）與貽貝等在地海鮮，過季一樣好吃。</p>
+        </div>
+      </div>
+
+      <div class="alert rv">
+        <div class="ic">📅</div>
+        <div>
+          <b>Mt Cook 唯一那家餐廳，很可能你們在的兩天都公休</b>
+          <p><strong>The Old Mountaineers</strong> 是 Mt Cook 村裡最常被推薦的餐廳，2026 年仍在營業。
+            官網的營業時間表寫<b>週一、週二公休</b>——你們 <b>9/28（週一）和 9/29（週二）剛好都碰上</b>，
+            9/27（週日）也只開到 16:00。</p>
+          <p><span class="closed">⚠️ 但官網自己前後矛盾</span>：同一頁的文字敘述寫的是
+            「Opening times 10am to 7pm. Closed Monday」（<b>只休週一</b>），
+            跟時間表（週一＋週二都休）對不起來，而且頁面明說<b>營業時間不保證</b>。</p>
+          <p class="fix">→ 幸好你們的 motel <b>含早晚餐</b>，影響有限。
+            <b>不要靠它當午餐的唯一方案</b>——備好 Hermitage 飯店餐廳，或前一天在 Twizel／Tekapo 買補給。
+            官網明講時間會隨人力變動，<b>當天傳簡訊給 Charlie（0274 342277）問一句最準</b>。</p>
+        </div>
+      </div>
+
+      <div class="alert rv warn">
+        <div class="ic">🗿</div>
+        <div>
+          <b>Timaru 的毛利岩畫「實地導覽」，你們去的季節沒有</b>
+          <p>Te Ana Māori Rock Art Centre 的<strong>實地岩畫導覽只在 11/1–3/31 營運</strong>，
+            10/08 屬季節外。中心本身週二至週六開（10/08 是週四，10:00–15:00 有開），
+            但那是室內展覽，不是去看真的岩壁。</p>
+          <p class="fix">→ <b>想看真的岩畫，改去 Duntroon 的 Takiroa</b>——就在同一天的路線上，
+            SH83 往北 3 公里，<b>免費、路邊停車場走 50 公尺就到、全年開放</b>，15–30 分鐘搞定。</p>
+        </div>
+      </div>
+
+      <div class="alert rv warn">
+        <div class="ic">⛵</div>
+        <div>
+          <b>Milford Sound 的海底觀景站與皮划艇，目前訂不到</b>
+          <p>Southern Discoveries 的「Discover More」系列（<b>唯一含海底觀景站</b>的行程）
+            與「Cruise &amp; Kayak」皮划艇行程，在 2026/08/20 查證時官網都標示
+            <strong>currently unavailable（暫停販售）</strong>，官方導流到一般的 Nature Cruise。</p>
+          <p class="fix">→ 海底觀景站本身還在營運，<b>行前一個月再查一次</b>。
+            想划獨木舟請改找 Rosco's Milford Kayaks 等其他業者。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 這節的意義</span>
+      <p style="margin-bottom:0">餐廳與小型景點的資訊<strong>半衰期只有一兩年</strong>，
+        而中文旅遊文章常常是抄舊文再抄。<b>凡是這份文件裡標了價格與營業時間的，都是 2026/08/20 直接查官網得到的。
+        但即使如此，出發前一週還是要再確認一次</b>——尤其餐廳。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 必吃 ══════════ -->
+<section class="tint" id="eat">
+  <div class="wrap">
+    <div class="sec-k rv">Must Eat</div>
+    <h2 class="rv">紐西蘭必吃：哪些這個季節有，哪些沒有</h2>
+    <p class="lead rv">紐西蘭沒有「國菜」，但有一整套<strong>只有這裡才有的日常食物</strong>。
+      左上角標籤是<b>你們 9/26–10/10 這段期間的當季狀況</b>。</p>
+
+    <div class="foods">
+      <div class="food rv"><span class="flag ok">當季 ✓</span>
+        <img src="images/food-whitebait.jpg" alt="白銀魚煎餅 whitebait fritter">
+        <div class="b"><h4>Whitebait Fritter</h4>
+          <p>白銀魚煎餅。<b>法定捕撈季 9/1–10/30，整趟都在季內</b>。
+            透明小魚拌蛋煎成餅，是紐西蘭最貴的家常菜之一。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-mussel.jpg" alt="紐西蘭綠唇貽貝">
+        <div class="b"><h4>綠唇貽貝</h4>
+          <p>Green-lipped mussel，紐西蘭獨有、殼緣一圈翠綠。
+            比台灣的淡菜大很多，白酒或椰奶煮都常見。</p></div></div>
+
+      <div class="food rv"><span class="flag no">過季 ✗</span>
+        <img src="images/food-oyster.jpg" alt="Bluff 生蠔">
+        <div class="b"><h4>Bluff 生蠔</h4>
+          <p>產季 3–8 月，<b>10 月吃不到當季的</b>。而且 2026 年產量創低。
+            零售參考價 NZ$40–50／打。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-hokeypokey.jpg" alt="Hokey pokey 冰淇淋">
+        <div class="b"><h4>Hokey Pokey 冰淇淋</h4>
+          <p>香草冰淇淋裡拌蜂巢焦糖脆粒，<b>紐西蘭的國民口味</b>。
+            超市買一大桶最划算，加油站也有甜筒。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-flatwhite.jpg" alt="Flat white 咖啡">
+        <div class="b"><h4>Flat White</h4>
+          <p>紐西蘭（和澳洲吵了幾十年）發明的咖啡。
+            比拿鐵奶少、比卡布無泡，<b>幾乎每家咖啡館都做得很好</b>。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-pavlova.jpg" alt="Pavlova 蛋白霜蛋糕">
+        <div class="b"><h4>Pavlova</h4>
+          <p>蛋白霜外脆內軟，鋪鮮奶油與水果。
+            <b>紐澳為了它的發明權吵了一百年</b>，紐西蘭這邊多半配奇異果。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-kumara.jpg" alt="Kūmara 紐西蘭甘藷">
+        <div class="b"><h4>Kūmara</h4>
+          <p>毛利人帶來的甘藷，紐西蘭飲食的根。
+            炸成薯條（kūmara fries）幾乎每家餐廳都有，比一般薯條甜。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-manuka.jpg" alt="Mānuka 麥蘆卡花">
+        <div class="b"><h4>Mānuka 蜂蜜</h4>
+          <p>紐西蘭最有名的伴手禮。UMF／MGO 數字愈高愈貴。
+            <b>超市價格比機場便宜非常多</b>，看到就買。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-lamington.jpg" alt="Lamington 椰子海綿蛋糕">
+        <div class="b"><h4>Lamington</h4>
+          <p>海綿蛋糕裹巧克力醬滾椰子粉。<b>每家小鎮麵包店都有</b>，
+            配一杯 flat white 是最紐西蘭的下午茶。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-wines.jpg" alt="紐西蘭葡萄酒">
+        <div class="b"><h4>中奧塔哥黑皮諾</h4>
+          <p>世界最南端的葡萄酒產區之一。
+            <b>9/30 經過 Cromwell／Bannockburn 正好是核心產區</b>，見下面酒莊那節。</p></div></div>
+
+      <div class="food rv"><span class="flag ok">全年 ✓</span>
+        <img src="images/food-beerflight.jpg" alt="精釀啤酒品飲組">
+        <div class="b"><h4>精釀啤酒</h4>
+          <p>但尼丁的 <b>Speight's</b>（1876 年）與 <b>Emerson's</b>、Oamaru 的 Scotts。
+            點 tasting flight 一次喝四五種小杯。</p></div></div>
+
+      <div class="food rv"><span class="flag no">非產季 ✗</span>
+        <img src="images/food-feijoa.jpg" alt="Feijoa 斐濟果">
+        <div class="b"><h4>Feijoa</h4>
+          <p>紐西蘭人的鄉愁水果，<b>產季是 3–6 月</b>，你們去的時候沒有新鮮的。
+            但 feijoa 口味的汽水、糖果、冰淇淋全年都買得到。</p></div></div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">🥧 還有一樣，但沒有好照片：肉派（meat pie）</span>
+      <p style="margin-bottom:0">紐西蘭的國民速食。<b>加油站、麵包店、超市都有</b>，
+        經典口味是 steak &amp; cheese、mince &amp; cheese。
+        路上一定會吃到——<b>Fairlie Bakehouse</b>（9/26 經過）和
+        <b>Invercargill 的 Fat Bastard Pies</b>（10/05）是路線上最有名的兩家。
+        順帶一提：Mt Cook 那家 Old Mountaineers 的披薩餅皮和漢堡麵包，
+        <strong>就是 Fairlie Bakehouse 供應的</strong>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 逐站 ══════════ -->
+<section id="stops">
+  <div class="wrap">
+    <div class="sec-k rv">Stop by Stop</div>
+    <h2 class="rv">逐站：吃什麼・看什麼・玩什麼</h2>
+    <p class="lead rv">價格為 NZD、查證於 <strong>2026/08/20</strong>，以官網最新為準。
+      <b>特別注意標紅的公休日</b>——南島小鎮餐廳的公休比你想的多。</p>
+
+    <!-- 9/26 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>26</b>09 · 六</div>
+        <div class="n">Fairlie → 蒂卡波湖 Tekapo</div></div>
+      <div class="stop-b">
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><b>Fairlie Bakehouse</b>（Fairlie，路過午餐）——全紐最有名的肉派店之一，
+            2026 仍在營業。<b>連 Mt Cook 的餐廳都跟它進貨。</b></li>
+          <li><b>Astro Café</b>（Mt John 山頂）——由 Dark Sky Project 經營，
+            <b>每天 10:00–15:00</b>（最後點餐關門前 15 分鐘）。
+            咖啡＋輕食，賣點是 360 度湖景。惡劣天氣會臨時關，改開山下的 Dark Sky Diner。</li>
+          <li><b>Kohan</b>（Tekapo 湖畔日本料理）——當地名店，以生魚丼與定食聞名。
+            <small style="color:var(--ink-soft)">本輪未取得官方營業時間，訂位前請自行確認。</small></li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>好牧羊人教堂</b>——1935 年建成，紀念麥肯錫地區的拓荒者。石砌小教堂，祭壇後方是一整片落地窗，
+            正對湖與山。旁邊有<b>牧羊犬銅像</b>，紀念沒有牠們就開不了牧場。</li>
+          <li><b>Mt John 山頂</b>——自駕上山需付<span class="price">每車 NZ$14</span>道路通行費
+            （閘口刷卡，不收現金），道路 <b>10:00–16:00</b> 開放。
+            不想付費可走 8.9 公里來回的 Summit Circuit 步道。</li>
+        </ul></div>
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Dark Sky Project 觀星</b>——見下面<a href="#stars">觀星那節</a>。
+            <b>這晚是滿月前一天，先看完那節再決定訂哪個。</b></li>
+          <li><b>Tekapo Springs</b> 溫泉——泡在露天池裡看星星。
+            <small style="color:var(--ink-soft)">本輪未取得官方 2026 價格。</small></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 9/27-29 Mt Cook -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>27–29</b>09 月</div>
+        <div class="n">Aoraki／Mount Cook 國家公園</div></div>
+      <div class="stop-b">
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><span class="closed">⚠️ The Old Mountaineers 週一、週二公休</span>——
+            你們 9/28、9/29 都碰上。9/27（週日）只到 16:00。
+            價格供參：漢堡 $28–32、披薩 $27–29、炸魚薯條 $32、素食漢堡 $29。
+            <b>沒有訂位、櫃檯點餐、國定假日加 15%。</b></li>
+          <li><b>Hermitage 飯店的餐廳</b>——村裡另一個選擇，Panorama Room 正對 Aoraki。
+            你們的 motel 含早晚餐，主要需要解決的是<b>午餐</b>。</li>
+          <li>務實作法：<b>9/26 在 Tekapo 或 9/27 路過 Twizel 時買好乾糧與水果</b>。
+            Mt Cook 村的商店選擇非常少、價格高。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>Sir Edmund Hillary Alpine Centre</b>（Hermitage 內）——紀念第一位登上聖母峰的紐西蘭人，
+            他就是在這裡練習登山的。館內有博物館與天象館。</li>
+          <li><b>Kea Point</b>——來回約 1 小時的短步道，終點看得到 Mueller 冰河湖與 Mt Sefton 的冰瀑。
+            <b>比 Hooker Valley 短很多，適合當天備案。</b></li>
+          <li><b>Tasman Glacier View Track</b> 與 <b>Blue Lakes</b>——開車到 Tasman Valley 停車場，
+            爬約 20 分鐘的階梯上稜線，俯瞰塔斯曼冰河湖與浮冰。</li>
+        </ul></div>
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Big Sky Stargazing</b>（Mt Cook 觀星）——<span class="price">成人 NZD $159 起</span>，
+            75–90 分鐘，梯次 19:30 與 21:30，<b>有華語導覽</b>。
+            天候取消改成 45 分鐘天象館並<b>退 75%（非全額）</b>。
+            官方自己建議「盡量選新月前後」——你們碰到滿月，見<a href="#stars">觀星那節</a>。</li>
+          <li><b>Hooker Valley Track</b>（9/28 下午）——來回約 10 公里、3 小時，
+            分三段：停車場→第一吊橋 1 km／15 分、→第二吊橋 1.5 km／30 分、→Hooker 冰河湖 2.5 km／45 分。
+            起點 White Horse Hill 停車場。<b>第二吊橋 2026 年 7 月換新，189 公尺，全紐最長。</b></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 9/29-30 Wanaka -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>29–30</b>09 月</div>
+        <div class="n">瓦納卡</div></div>
+      <div class="stop-b">
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Rippon Vineyard 品飲</b>——湖畔葡萄園，中奧塔哥最上鏡的酒莊。
+            <strong>標準品飲完全免費、約 30 分鐘，但<b>必須事先線上預約</b></strong>——官網原話是
+            「Visitors need a booking to taste wine. We are not open for sightseeing as we are a working farm and residence」，
+            <b>沒預約只能買酒、不能試飲，也不接受純參觀</b>。
+            每場最多 6 人、每半小時一場；<b>注意：官網明說你的場次可能與其他客人共席，不是包場</b>。
+            預約要留信用卡，<b>沒到場每人罰 NZ$10</b>（品飲本身不收費）。常提前數天到數週訂滿。
+            <b>請提早 5 分鐘到，遲到超過 10 分鐘可能無法接待。</b>
+            <b>現場不供餐</b>，不能當午餐地點。想深入可訂 Private Tasting（$45／人、約 1 小時、最少 2 人）。</li>
+          <li><b>Puzzling World</b>——傾斜屋、錯覺房間、大型迷宮。
+            四個大人去也會玩得很開心，適合下午換個腦袋。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>#ThatWanakaTree</b>——長在湖水裡的那棵柳樹，全世界最被拍爛的一棵樹。
+            清晨或黃昏光線最好。</li>
+          <li><span class="closed">⚠️ Roys Peak 每年 10/1–11/10 因產羔羊封閉</span>——
+            你們 9/29–9/30 剛好是<b>封閉前最後兩天</b>。但它是 16 公里、爬升 1,500 公尺、
+            來回 5–6 小時的硬路線，DOC 評為需要高體能，<b>不適合當作路過的順遊</b>。
+            而且 9 月底 1,000 公尺以上仍屬雪崩地形，可能需要冰爪。</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 9/30 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>30</b>09 · 三</div>
+        <div class="n">Cromwell → Arrowtown → 皇后鎮</div></div>
+      <div class="stop-b">
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Mt Difficulty 酒莊</b>（Bannockburn，73 Felton Road）——中奧塔哥黑皮諾的代表。
+            <span class="closed">只在週三至週日營業</span>，品飲 10:30–16:30、餐廳 10:30–15:30。
+            <strong>9/30 是週三，剛好有開</strong>（週一週二去會撲空）。
+            <b>12 人以下不接受訂位，直接 walk-in</b>。
+            品飲 <span class="price">$25</span>（Classics，5 杯）／<span class="price">$35</span>（Premium Pinot，4 杯），
+            <b>買 3 瓶以上免品飲費</b>。</li>
+          <li><b>Domaine Thomson</b>（Mt Pisa，46 Clark Rd）——另一個選擇，
+            Two Hemispheres Tasting <span class="price">$25／人</span>，四款酒含法國布根地對比。
+            <b>4 人以上必須預約</b>（你們正好 4 人）。每人買兩瓶免品飲費。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>Arrowtown Chinese Settlement</b>——<strong>整趟最值得停的一站</strong>。
+            1860 年代淘金潮時，數千名廣東台山、開平來的華工在這裡生活。
+            現場保留了他們的小石屋與店鋪遺址，<b>免費、露天、隨時可進</b>。
+            對台灣人來說，站在那些矮到要彎腰的小屋前面，感受完全不一樣。</li>
+          <li><b>Cromwell Heritage Precinct</b>——1980 年代因建水庫，舊鎮沉入湖底，
+            居民把重要建築<b>一棟一棟拆下、往上搬、原樣重建</b>。現在是湖畔的老街區。</li>
+          <li><b>Cardrona Hotel</b>——1863 年的木造旅店立面，紐西蘭最常被拍的建築之一。
+            在 Crown Range 路上。</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/01-02 Queenstown -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>01–02</b>10 月</div>
+        <div class="n">Queenstown（兩個機動日）</div></div>
+      <div class="stop-b">
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><b>Fergburger</b>——世界級排隊漢堡店，幾乎全天有隊。
+            但當地人的建議是：<b>隔壁的 Fergbaker（麵包／派）其實更值得，而且不用排那麼久</b>。</li>
+          <li><b>Rata</b>——Josh Emett（英國米其林體系出身的紐西蘭主廚）的餐廳，皇后鎮最好的正式晚餐選擇之一。
+            <b>要訂位。</b></li>
+          <li>皇后鎮是整趟<b>選擇最多的一站</b>，日料、泰式、印度、義式都有。
+            前後幾天小鎮的選擇很少，<b>想吃什麼在這裡吃</b>。</li>
+        </ul></div>
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>TSS Earnslaw ＋ Walter Peak 高原農場</b>——1912 年的燃煤蒸汽船（<b>現在還在燒真煤，可以下去看鍋爐房</b>）
+            開過湖到對岸農場。行程都是 <b>3 小時 45 分往返</b>：
+            Gourmet BBQ 自助餐 <span class="price">$175 起</span>（含牧羊犬秀，<b>室內用餐不受天氣影響</b>）、
+            Farm Tour <span class="price">$139 起</span>（含牧羊犬與剪羊毛）、
+            Garden to Table <span class="price">$159 起</span>。
+            單純搭船遊湖 1.5 小時 <span class="price">$115 起</span>。<b>必須提前預訂。</b>
+            <br><span class="closed">⚠️ TSS Earnslaw 每年有一段年度維修停駛期，2026 日期官網未公布——訂之前一定要問。</span>
+            停駛時的替代：現代雙體船 Spirit of Queenstown，1.5 小時 <span class="price">$75 起</span>。</li>
+          <li><b>Skyline Gondola ＋ 山頂溜溜車（Luge）</b>——全鎮最好的俯瞰角度，
+            四個大人玩溜溜車會比小孩還瘋。</li>
+          <li><b>Shotover Jet</b>——峽谷裡貼著岩壁 360 度旋轉的噴射快艇。<b>比跳傘便宜非常多，刺激度不低。</b></li>
+          <li><b>Glenorchy／Paradise 一日來回</b>（建議 10/02）——單程 45 分鐘，
+            <strong>這段湖岸公路公認是紐西蘭最美的公路之一</strong>。終點是《魔戒》多處取景地。
+            <b>沿路觀景停車彎很多，來回抓 4–5 小時。</b></li>
+          <li><b>Kawarau Bridge</b>——世界第一座商業高空彈跳點（1988 年）。
+            不跳也可以去看別人跳，<b>免費</b>，就在往 Cromwell 的路上。</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/03-04 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>03–04</b>10 月</div>
+        <div class="n">Te Anau → Milford Sound</div></div>
+      <div class="stop-b">
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Te Anau 螢火蟲洞</b>（10/03 傍晚）——搭船過湖，走進地下河的石灰岩洞，
+            在完全黑暗中看滿天藍色螢光。約 2¼ 小時。<b>這是紐西蘭南島最好的螢火蟲洞體驗。</b></li>
+          <li><b>Te Anau Bird Sanctuary</b>——免費。可以看到 <b>takahē（南秧雞）</b>：
+            一種曾被宣告絕種 50 年、1948 年在 Fiordland 山區被重新發現的鳥。
+            <strong>全世界只剩約 500 隻，這裡是少數能近距離看到的地方。</strong></li>
+          <li><b>Milford Sound 遊船</b>（10/04）——六家船公司怎麼選，見<a href="#milford">下一節</a>。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li>Milford 公路本身就是景點：<b>Mirror Lakes</b>（無風時倒影）、
+            <b>Eglinton Valley</b>（冰河 U 形谷）、<b>Homer Tunnel</b>（1,270 公尺單線隧道，要等紅綠燈）、
+            <b>The Chasm</b>（10 分鐘步道看激流壺穴）。</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/05 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>05</b>10 · 一</div>
+        <div class="n">Invercargill → Bluff → Invercargill</div></div>
+      <div class="stop-b">
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><b>Oyster Cove</b>（Bluff, Stirling Point）——2026 仍營業。
+            <span class="closed">⚠️ 官網目前掛的是「Winter Hours」</span>：
+            週一至週四 10:30–16:00（廚房 15:00 最後點餐）、週五至週日 10:30–19:00（廚房 18:00）。
+            <b>但 10/05 已經是紐西蘭春季，官網屆時應該會換成另一套時間</b>——
+            <strong>週一到底有沒有晚餐，一定要打電話問</strong>（03-212-8855）。
+            官方明示<b>晚餐必須訂位</b>，因為可能提早打烊。
+            生蠔過季，但藍鱈（blue cod）、貽貝等在地海鮮照常。</li>
+          <li><b>The Anchorage</b>（Bluff）——鮑魚（pāua）餛飩，
+            並舉辦 <b>Hākari</b>（傳統毛利宴席）活動。<strong>這是路線上少見的正統毛利飲食體驗。</strong></li>
+          <li><b>Kai Reka 食物車</b>（Bluff）——炸麵包（fry bread）與奶油鮑魚薯條。在地、便宜、道地。</li>
+          <li><b>Fat Bastard Pies</b>（Invercargill）——招牌 steak &amp; cheese 派，2026 仍在營業。</li>
+          <li><b>The Batch Café</b>（Invercargill）——早餐／早午餐，招牌是味噌 kūmara 與司康。</li>
+          <li><span class="closed">✗ Louie's（Invercargill）已於 2023 年歇業</span>，舊資訊還在推，別去。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>Bill Richardson Transport World</b>——全球最大的私人古董卡車收藏之一。
+            <strong>即使完全不迷車，光是規模就會讓人愣住。</strong></li>
+          <li><b>E Hayes &amp; Sons 五金行</b>——聽起來像笑話，但這家五金行裡放著
+            <b>Burt Munro 那台創下世界紀錄的 1920 年印第安機車本尊</b>（電影《世界最快的印第安》原型）。
+            <b>免費參觀。</b></li>
+          <li><b>Stirling Point 路標</b>（Bluff）——南島最南端，寫著到倫敦 18,958 公里。</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/06 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>06</b>10 · 二</div>
+        <div class="n">Gore → 但尼丁 Dunedin</div></div>
+      <div class="stop-b">
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>但尼丁火車站</b>——1906 年落成，號稱<b>全世界最常被拍照的紐西蘭建築</b>。
+            內部的地磚由 72 萬塊維多利亞瓷磚拼成。</li>
+          <li><b>Baldwin Street</b>——曾是金氏世界紀錄的最陡街道（後來被威爾斯搶走、2020 年又搶回來）。
+            <b>走上去比看起來累。</b></li>
+          <li><b>Larnach Castle</b>——紐西蘭唯一的「城堡」，1871 年由銀行家 William Larnach 建造，
+            背後是一段家族悲劇。花園被列為國際重要花園。</li>
+          <li><b>Hokonui Moonshine Museum</b>（Gore，路過）——禁酒時期私釀威士忌的博物館，
+            <b>比想像中有趣</b>。Gore 同時是紐西蘭的「鱒魚之都」，有一尊巨大鱒魚雕像。</li>
+        </ul></div>
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>Speight's Brewery 導覽</b>——1876 年創立，南島最老的啤酒廠之一。
+            導覽最後可以自己倒酒喝。<b>注意酒駕，見下面。</b></li>
+          <li><b>奧塔哥半島</b>——如果時間允許，這是紐西蘭最好的野生動物半島：
+            <b>Taiaroa Head 皇家信天翁中心</b>（經典導覽 <span class="price">$68.39</span>／含砲台 <span class="price">$78.91</span>）、
+            <b>Sandfly Bay</b> 的紐西蘭海獅與黃眼企鵝。
+            <br><small style="color:var(--ink-soft)">季節提醒：9 月是信天翁幼鳥離巢、10 月成鳥才陸續回來，
+            10/07 正卡在換季空檔，數量會比繁殖高峰少。</small></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/07 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>07</b>10 · 三</div>
+        <div class="n">摩拉基 → Oamaru</div></div>
+      <div class="stop-b">
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><span class="closed">✗ Fleurs Place（Moeraki）已永久歇業</span>——見最上面的警報。</li>
+          <li><b>Riverstone Kitchen</b>（Oamaru 近郊，1431 Glenavy-Hilderthorpe Road）——
+            自家農場直供的知名餐廳，2026 仍營業。
+            <strong>午餐每天 9am–4pm（最後訂位 2:45pm），但晚餐只有週五、週六</strong>。
+            <b>10/07 是週三 → 只能安排午餐</b>。建議提前訂位；不可自帶酒或食物。</li>
+        </ul></div>
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>Steampunk HQ</b>（Oamaru）——<span class="price">成人 NZ$15</span>（4 人共 $60），
+            <strong>每天 10:00–16:00，最後入場 15:30</strong>。
+            蒸汽龐克藝術裝置，會噴火會叫的機械雕塑。<b>參觀約 45–60 分鐘，不用預約，現場買票。</b>
+            就在維多利亞街區旁邊，可以一起走。</li>
+          <li><b>Oamaru 維多利亞街區</b>——用當地白色石灰岩（Oamaru stone）蓋的整片 1880 年代街區，
+            紐西蘭保存最完整的。</li>
+          <li><b>摩拉基大圓石</b>——6,000 萬年前海底沉積形成的球狀結核，
+            毛利傳說則說那是 Āraiteuru 獨木舟翻覆後散落的葫蘆與地瓜籃。<b>退潮才好走好看。</b></li>
+          <li><b>Katiki Point</b>——黃眼企鵝（hoiho）棲地，牠們<b>傍晚才會上岸回巢</b>。</li>
+        </ul></div>
+        <div class="row do"><span class="lbl">玩</span><ul>
+          <li><b>藍企鵝歸巢</b>（當晚）——10 月場次 <b>20:00 開始</b>，上岸約 180 隻。
+            一般看台 <span class="price">$47</span>／人、Premium <span class="price">$63</span>（<b>只有 60 席，必須訂位</b>）。
+            <strong>全程禁止拍照與使用任何發光螢幕。</strong></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/08-09 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>08–09</b>10 月</div>
+        <div class="n">Waitaki 內陸 → 基督城</div></div>
+      <div class="stop-b">
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>Takiroa 毛利岩畫</b>（Duntroon 北 3 公里，SH83 路邊）——
+            <strong>免費、全年開放、不用預約</strong>，停車場走 50 公尺就到，15–30 分鐘。
+            這裡位在一條從山到海的 <b>ara tawhito（古道）</b>上，是毛利先民的庇護與補給處。
+            <b>現場要求尊重 kaitiakitanga（守護），什麼都不要拿走。</b>
+            <small style="color:var(--ink-soft)">注意：有落石與雨天濕滑風險。</small></li>
+          <li><b>Elephant Rocks</b> 與 <b>Vanished World 化石中心</b>（Duntroon）——
+            岩壁與巨石都是<b>約 2,500 萬年前的海底石灰岩</b>，跟 Takiroa 是同一套地質故事，
+            可以串成同一天的主題。Elephant Rocks 是《納尼亞傳奇》取景地。</li>
+          <li><span class="closed">⚠️ Te Ana 毛利岩畫中心（Timaru）的實地導覽 11/1 才開季</span>——
+            中心本身週二至週六開（10/08 週四 10:00–15:00），但那是室內展覽。
+            票價官網未公開，建議先電洽 0800 46 83 262。</li>
+          <li><b>基督城</b>（10/09）——紙教堂（坂茂用紙管設計的震後臨時教堂）、
+            <b>185 White Chairs</b>（185 張白椅紀念地震罹難者，非常震撼）、
+            植物園與雅芳河撐篙、復古電車。</li>
+        </ul></div>
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><b>Riverside Market</b>（基督城）——南島最好的市集，一棟樓裡幾十個攤位，
+            從越南河粉到西班牙 tapas 都有。<b>午餐直接在這裡解決，四個人各吃各的。</b></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 10/10 -->
+    <div class="stop rv">
+      <div class="stop-h"><div class="d"><b>10</b>10 · 六</div>
+        <div class="n">奧克蘭（下午 5 點前都能玩）</div></div>
+      <div class="stop-b">
+        <div class="row see"><span class="lbl">看</span><ul>
+          <li><b>奧克蘭戰爭紀念博物館</b>——<strong>如果整趟只挑一個博物館，選這個</strong>。
+            紐西蘭最好的毛利文化與自然史收藏，<b>每天有毛利文化表演（含 haka）</b>。
+            前面 13 天你們看的都是南島的自然風景，
+            <b>這裡是唯一能系統性理解毛利文化的地方</b>。</li>
+          <li><b>天空塔 Sky Tower</b>——南半球最高建築，328 公尺。觀景台看得到兩片海。</li>
+          <li><b>Devonport</b>——搭 12 分鐘渡輪到對岸小鎮，爬上維多利亞山看天際線。</li>
+        </ul></div>
+        <div class="row eat"><span class="lbl">吃</span><ul>
+          <li><b>Ponsonby Road</b> 或 <b>Commercial Bay</b>——最後一餐與伴手禮。
+            <b>Whittaker's 巧克力、mānuka 蜂蜜在超市買，比機場便宜很多。</b></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 觀星 ══════════ -->
+<section class="dark" id="stars">
+  <div class="wrap">
+    <div class="sec-k rv">Stargazing</div>
+    <h2 class="rv">觀星：碰到滿月，該訂哪一個？</h2>
+    <p class="lead rv">你們 9/26–9/29 都在暗空保護區裡，但那四晚<strong>月面照度 99–100%</strong>
+      （詳見<a href="01.south-island-itinerary.html#stars">第一份文件</a>）。
+      好消息是：<b>兩家業者都照常出團，沒有因滿月停團的政策</b>。要調整的是你訂哪一種。</p>
+
+    <div class="tw rv" style="margin-top:24px">
+      <table>
+        <thead><tr><th>行程</th><th>地點</th><th>價格（成人）</th><th>時長</th><th>滿月時的價值</th></tr></thead>
+        <tbody>
+          <tr><td><b>Summit Experience</b></td><td>Tekapo · Mt John 山頂</td>
+            <td class="price">NZ$219</td><td>1 小時 45 分</td>
+            <td>山頂天文台＋專業望遠鏡。<b>看月面環形山與行星仍然精彩</b>，銀河會被洗掉。10 歲以上。</td></tr>
+          <tr><td><b>Crater Experience</b></td><td>Tekapo · Cowan's 私人天文台</td>
+            <td class="price">NZ$129</td><td>75 分鐘</td>
+            <td>入門觀星團，價格友善。5 歲以上。<b>四人共 NZ$516。</b></td></tr>
+          <tr class="pick"><td><b>Dark Sky Experience</b></td><td>Tekapo · 室內（白天）</td>
+            <td class="price">NZ$59</td><td>45–60 分</td>
+            <td><strong>完全不看天、不看月亮</strong>。多媒體天文導覽，講毛利星象與南半球天空。
+              <b>滿月或陰天的最佳備案，四人只要 NZ$236。</b>場次 10:30／12:30／14:30。</td></tr>
+          <tr><td><b>Big Sky Stargazing</b></td><td>Mt Cook 國家公園內</td>
+            <td class="price">NZ$159 起</td><td>75–90 分</td>
+            <td><b>有華語導覽</b>。梯次 19:30／21:30。官方自己建議「盡量選新月前後」。
+              天候取消改天象館並<b>只退 75%</b>。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 我的建議</span>
+      <p><strong>不要花 NZ$219 訂 Summit Experience。</strong>那個價格買的是「最暗的天空」，
+        而你們那幾晚拿不到。</p>
+      <p style="margin-bottom:0">改成這樣組合，四個人省下超過 NZ$500，體驗反而更完整：<br>
+        · <b>9/26 白天或傍晚：Dark Sky Experience（室內，$59／人）</b>——
+          先搞懂南半球星空與毛利星象（Matariki 昴宿星團在毛利曆法裡是新年）。<br>
+        · <b>9/26 或 9/27 晚上：Crater Experience（$129／人）</b>——
+          用望遠鏡看滿月的環形山。<b>對外行人來說，望遠鏡裡的月球比銀河更有衝擊力。</b><br>
+        · <b>Mt Cook 那兩晚：不訂團，自己走出 motel 抬頭看。</b>
+          滿月照亮整片南阿爾卑斯雪山的夜景，是另一種畫面，而且免費。</p>
+    </div>
+
+    <figure class="rv">
+      <img src="images/tekapo-milkyway.jpg" alt="蒂卡波湖上空的銀河">
+      <figcaption>這是新月時的 Tekapo。你們那幾晚看不到——但也因此不必為它多花 NZ$219。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ Milford 遊船 ══════════ -->
+<section id="milford">
+  <div class="wrap">
+    <div class="sec-k rv">Milford Cruises</div>
+    <h2 class="rv">Milford Sound：六家船，怎麼選</h2>
+    <p class="lead rv">先破除一個誤解：<strong>網路上看到的「Milford 遊船」業者其實只有六家在開船</strong>，
+      其他 Trips &amp; Tramps、Fiordland Tours 這些都是<b>代訂船位的巴士團</b>。
+      你們自駕前往，可以直接訂船，不必透過巴士團。</p>
+
+    <div class="tw rv">
+      <table>
+        <thead><tr><th>船公司</th><th>船型／載客</th><th>10 月班次</th><th>參考價（起）</th><th>適合誰</th></tr></thead>
+        <tbody>
+          <tr class="pick"><td><b>Cruise Milford</b></td><td>150 人船<b>限載 75 人</b></td>
+            <td><strong>一天 7 班，08:45–14:45 每小時一班</strong></td><td class="price">NZ$189</td>
+            <td><b>班次最密</b>——自駕最好調度，路上耽誤了還有下一班</td></tr>
+          <tr class="pick"><td><b>Mitre Peak Cruises</b></td><td><b>最小的 60／75 人船</b></td>
+            <td>冬季（5–9 月）僅 2 班；<b>全峽灣最晚的 15:55</b></td><td class="price">NZ$169</td>
+            <td><b>想避開大船人潮</b>；小船能開進大船進不去的角落</td></tr>
+          <tr><td>Pure Milford</td><td>約 120 人；<b>唯一的玻璃屋頂船</b> Gem of the Sound</td>
+            <td>—</td><td class="price">官網直訂 9:30 班約 NZ$152</td>
+            <td>下雨天不用站甲板也看得到瀑布；<b>全峽灣最低價</b></td></tr>
+          <tr><td>Southern Discoveries</td><td>150 人船限載 75 人</td>
+            <td>09:00、10:30 兩班</td><td class="price">NZ$179</td>
+            <td>海底觀景站的經營者，<b>但該行程目前停售</b></td></tr>
+          <tr><td>RealNZ</td><td>Classic Catamaran <b>上限 180 人</b></td>
+            <td>—</td><td class="price">NZ$285</td>
+            <td>最大最穩、設施最完整，但人也最多</td></tr>
+          <tr><td>Fiordland Discovery</td><td>過夜航程（22 人／9 套房）</td>
+            <td class="closed">2026/10/31 才開季</td><td>約 NZ$2,380／人</td>
+            <td class="closed">你們 10/04 訂不到</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g2" style="margin-top:24px">
+      <div class="note plan rv" style="margin-top:0">
+        <span class="h">🎯 建議：Cruise Milford 或 Mitre Peak Cruises</span>
+        <p style="margin-bottom:0"><b>Cruise Milford</b> 的每小時一班對自駕來說是決定性優勢——
+          Te Anau 到 Milford 官方基準是「不停車至少 2 小時」，
+          但這條路值得慢慢開，<strong>班次密才不會被時間追著跑</strong>。<br><br>
+          <b>Mitre Peak Cruises</b> 則是另一種思路：<b>船最小、人最少</b>，
+          而且 10 月初還在冬季班表（只有 2 班），
+          <strong>訂之前一定要先確認 10/04 的實際發船時間。</strong></p>
+      </div>
+      <div class="note warn rv" style="margin-top:0">
+        <span class="h">⚠️ 訂之前要知道的</span>
+        <p style="margin-bottom:0">
+          · <b>價格會浮動</b>：表中多為第三方平台的起跳價，<b>官網直訂通常更便宜</b>。<br>
+          · <b>海底觀景站</b>（Harrison Cove，下 64 階到水下 10 公尺）只能綁 Southern Discoveries 的船買，
+            <b>該行程 2026/08/20 查證時停售</b>，行前再確認。<br>
+          · <b>皮划艇</b>：Southern Discoveries 的組合行程也停售，想划船改找 Rosco's Milford Kayaks。<br>
+          · 10/04 是週日，且仍在雪崩管制季，<b>出發前務必查 NZTA 路況</b>。</p>
+      </div>
+    </div>
+
+    <figure class="rv">
+      <img src="images/milford.jpg" alt="米爾福德峽灣">
+      <figcaption>初春是 Milford 瀑布最多的季節——融雪加春雨，峽灣壁上會掛滿臨時瀑布</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ 酒莊與酒駕 ══════════ -->
+<section class="tint" id="wine">
+  <div class="wrap">
+    <div class="sec-k rv">Wine Country</div>
+    <h2 class="rv">中奧塔哥：世界最南端的黑皮諾</h2>
+    <p class="lead rv">你們 9/29–9/30 會穿過<strong>中奧塔哥（Central Otago）</strong>——
+      全世界緯度最南的商業葡萄酒產區之一。這裡日夜溫差極大，
+      種出來的<b>黑皮諾（Pinot Noir）</b>是紐西蘭最貴、最有國際地位的紅酒。</p>
+
+    <div class="grid g3" style="margin-top:26px">
+      <div class="pcard rv">
+        <img src="images/see-rippon.jpg" alt="Rippon Vineyard 湖畔葡萄園">
+        <div class="body"><h4>Rippon（Wanaka · 9/29）</h4>
+          <p><b>必須線上預約</b>，不預約不能試飲。<br>
+            標準品飲 <b>免費</b>、30 分鐘、每場最多 6 人（<b>你們 4 人可包場</b>）。<br>
+            沒到場罰 NZ$10／人。<b>現場不供餐。</b>常提前數週滿。</p></div>
+      </div>
+      <div class="pcard rv">
+        <img src="images/wine-bannockburn.jpg" alt="Bannockburn 產區地景">
+        <div class="body"><h4>Mt Difficulty（Bannockburn · 9/30）</h4>
+          <p><b>只在週三–週日營業</b>，9/30 是週三剛好有開。<br>
+            品飲 10:30–16:30。<b>12 人以下不用訂位，直接進去。</b><br>
+            Classics <b>$25</b>（5 杯）／Premium Pinot <b>$35</b>（4 杯）。<b>買 3 瓶免費。</b></p></div>
+      </div>
+      <div class="pcard rv">
+        <img src="images/wine-tasting.jpg" alt="酒莊 cellar door 品飲">
+        <div class="body"><h4>Domaine Thomson（Mt Pisa · 9/30）</h4>
+          <p>Two Hemispheres Tasting <b>$25／人</b>，<br>
+            四款酒，<b>拿法國布根地跟中奧塔哥對比著喝</b>。<br>
+            <b>4 人以上必須預約。</b>每人買兩瓶免品飲費。起司拼盤需提前 24 小時訂。</p></div>
+      </div>
+    </div>
+
+    <div class="note warn rv">
+      <span class="h">🚗 最重要的一件事：酒駕標準</span>
+      <p>紐西蘭交通部規定，<strong>20 歲以上駕駛人的上限是呼氣每公升 250 微克（mcg/L）、
+        血液每 100 毫升 50 毫克（mg/100ml）</strong>；<b>未滿 20 歲則是零酒精</b>。
+        超過上限即違法（依 Land Transport Act 1998），<b>不是裁量問題</b>。</p>
+      <p><b>講清楚一件事：這是「非零上限」，不是滴酒不沾。</b>
+        法律上，20 歲以上的駕駛人只要不超過上述數值，飲酒後駕車並不違法。
+        <strong>但個人代謝差異很大，沒有可靠的方法可以在現場估算自己有沒有超標。</strong></p>
+      <p style="margin-bottom:0"><b>所以務實建議還是：先講好指定駕駛。</b>
+        品飲一杯是 25ml，看起來不多，但 <b>Mt Difficulty 的 Classics 一次五杯就是 125ml</b>，
+        一天跑兩家就更難估。
+        <b>指定駕駛可以只聞不喝、或請酒莊給 spit bucket（吐酒杯）——這在酒莊是完全正常的行為，不會失禮。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 野生動物 ══════════ -->
+<section id="wildlife">
+  <div class="wrap">
+    <div class="sec-k rv">Wildlife</div>
+    <h2 class="rv">野生動物：南島最好的四種相遇</h2>
+    <p class="lead rv">紐西蘭沒有陸生哺乳類天敵，演化出一堆<strong>不會飛、不怕人、全世界只有這裡有</strong>的鳥。
+      這是南島跟其他旅遊目的地最不一樣的地方。</p>
+
+    <div class="grid g4" style="margin-top:26px">
+      <div class="pcard rv"><img src="images/see-takahe.jpg" alt="Takahē 南秧雞">
+        <div class="body"><h4>Takahē 南秧雞</h4>
+          <p><b>10/03 · Te Anau Bird Sanctuary（免費）</b><br>
+          曾被宣告絕種 50 年，1948 年在 Fiordland 山區被重新發現。<b>全世界剩約 500 隻。</b></p></div></div>
+      <div class="pcard rv"><img src="images/hoiho.jpg" alt="黃眼企鵝 hoiho">
+        <div class="body"><h4>Hoiho 黃眼企鵝</h4>
+          <p><b>10/07 傍晚 · Katiki Point（免費）</b><br>
+          全球最稀有的企鵝之一。名字意思是「噪音製造者」。<b>要傍晚才會上岸。</b></p></div></div>
+      <div class="pcard rv"><img src="images/blue-penguin.jpg" alt="藍企鵝">
+        <div class="body"><h4>Kororā 藍企鵝</h4>
+          <p><b>10/07 晚上 20:00 · Oamaru（$47／$63）</b><br>
+          世界最小的企鵝。10 月約 180 隻上岸。<b>全程禁止拍照。</b></p></div></div>
+      <div class="pcard rv"><img src="images/kea.jpg" alt="Kea 高山鸚鵡">
+        <div class="body"><h4>Kea 高山鸚鵡</h4>
+          <p><b>Mt Cook／Milford 公路停車場（免費）</b><br>
+          全世界唯一的高山鸚鵡，聰明到會拆你的車。<b>剩不到 5,000 隻，絕對不要餵食。</b></p></div></div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">🐧 一個觀念：紐西蘭的野生動物不是「景點」</span>
+      <p style="margin-bottom:0">上面四種有三種是<b>受威脅或瀕危</b>。紐西蘭的規矩比台灣嚴很多：
+        <strong>不餵食、不觸摸、保持距離、不要擋在牠們回巢的路線上</strong>。
+        Oamaru 那場甚至全面禁止拍照。<b>這不是掃興，是這些動物還存在的原因。</b></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ 體驗畫廊 ══════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-k rv">The Experiences</div>
+    <h2 class="rv">這些是你們會體驗到的</h2>
+    <p class="lead rv">依行程順序排。<strong>不是每一項都要做</strong>——挑四個人都有興趣的就好。
+      標「免費」的可以直接去，其餘見上面各節的價格與訂位方式。</p>
+
+    <div class="gal rv">
+      <figure class="wide"><img src="images/see-keapoint.jpg" alt="Kea Point 看 Mueller 冰河湖">
+        <figcaption><b>Kea Point 步道</b><span>09/28 · Mt Cook · 來回 1 小時 · 免費</span></figcaption></figure>
+      <figure><img src="images/see-hillary.jpg" alt="Hermitage 飯店與 Hillary 雕像">
+        <figcaption><b>Hillary Alpine Centre</b><span>09/28 · 聖母峰第一人的起點</span></figcaption></figure>
+      <figure><img src="images/see-tasmanvalley.jpg" alt="塔斯曼谷與 Blue Lakes">
+        <figcaption><b>Tasman Valley</b><span>09/28 · 冰河湖觀景台 · 免費</span></figcaption></figure>
+
+      <figure><img src="images/see-rippon.jpg" alt="Rippon 湖畔葡萄園">
+        <figcaption><b>Rippon 品飲</b><span>09/29 · 免費但必須預約</span></figcaption></figure>
+      <figure><img src="images/puzzling.jpg" alt="Puzzling World 傾斜屋">
+        <figcaption><b>Puzzling World</b><span>09/29 · Wanaka</span></figcaption></figure>
+      <figure class="wide"><img src="images/see-chinese.jpg" alt="Arrowtown 華人淘金聚落石屋">
+        <figcaption><b>Arrowtown 華人淘金聚落</b><span>09/30 · 免費 · 整趟最值得停的一站</span></figcaption></figure>
+
+      <figure><img src="images/cromwell.jpg" alt="Cromwell 巨型水果地標">
+        <figcaption><b>Cromwell 老鎮區</b><span>09/30 · 從水底搬上來的街區</span></figcaption></figure>
+      <figure><img src="images/wine-tasting.jpg" alt="酒莊 cellar door 品飲">
+        <figcaption><b>Mt Difficulty 品飲</b><span>09/30 · 週三有開 · NZ$25 起</span></figcaption></figure>
+      <figure><img src="images/do-gondola.jpg" alt="皇后鎮天空纜車">
+        <figcaption><b>Skyline 纜車＋溜溜車</b><span>10/01 · 皇后鎮</span></figcaption></figure>
+      <figure><img src="images/do-jetboat.jpg" alt="Shotover Jet 噴射快艇">
+        <figcaption><b>Shotover Jet</b><span>10/01 · 峽谷 360 度旋轉</span></figcaption></figure>
+
+      <figure class="wide"><img src="images/do-walterpeak.jpg" alt="Walter Peak 高原農場">
+        <figcaption><b>TSS Earnslaw ＋ Walter Peak 農場</b><span>10/01 · BBQ 含牧羊犬秀 · NZ$175 起 · 要預訂</span></figcaption></figure>
+      <figure><img src="images/do-bungy.jpg" alt="Kawarau Bridge 高空彈跳">
+        <figcaption><b>Kawarau Bridge</b><span>10/02 · 世界第一座商業彈跳點 · 看免費</span></figcaption></figure>
+      <figure><img src="images/see-glenorchy.jpg" alt="Glenorchy 碼頭">
+        <figcaption><b>Glenorchy 公路</b><span>10/02 · 紐西蘭最美公路之一 · 免費</span></figcaption></figure>
+
+      <figure><img src="images/see-glowworm.jpg" alt="螢火蟲洞的藍色螢光">
+        <figcaption><b>Te Anau 螢火蟲洞</b><span>10/03 · 約 2¼ 小時 · 要預訂</span></figcaption></figure>
+      <figure><img src="images/see-takahe.jpg" alt="Takahē 南秧雞">
+        <figcaption><b>Takahē 南秧雞</b><span>10/03 · Bird Sanctuary · 免費</span></figcaption></figure>
+      <figure class="wide"><img src="images/mirror-lakes.jpg" alt="Mirror Lakes 鏡湖倒影">
+        <figcaption><b>Milford 公路沿途</b><span>10/04 · 鏡湖、Eglinton 谷、Homer 隧道 · 免費</span></figcaption></figure>
+
+      <figure><img src="images/see-burtmunro.jpg" alt="Burt Munro 的印第安機車">
+        <figcaption><b>E Hayes 五金行</b><span>10/05 · 世界最快印第安本尊 · 免費</span></figcaption></figure>
+      <figure><img src="images/invercargill.jpg" alt="Invercargill 市區">
+        <figcaption><b>Transport World</b><span>10/05 · 全球最大私人卡車收藏</span></figcaption></figure>
+      <figure><img src="images/do-speights.jpg" alt="Speight's 啤酒廠">
+        <figcaption><b>Speight&#39;s 啤酒廠</b><span>10/06 · 1876 年 · 注意酒駕</span></figcaption></figure>
+      <figure><img src="images/baldwin.jpg" alt="Baldwin Street 陡坡">
+        <figcaption><b>Baldwin Street</b><span>10/06 · 世界最陡街道 · 免費</span></figcaption></figure>
+
+      <figure><img src="images/larnach.jpg" alt="Larnach Castle">
+        <figcaption><b>Larnach Castle</b><span>10/06 · 紐西蘭唯一的城堡</span></figcaption></figure>
+      <figure><img src="images/see-albatross.jpg" alt="皇家信天翁與 Taiaroa Head 燈塔">
+        <figcaption><b>Taiaroa Head 信天翁</b><span>10/06 · NZ$68.39 起 · 10 月是換季空檔</span></figcaption></figure>
+      <figure><img src="images/see-sealion.jpg" alt="紐西蘭海獅">
+        <figcaption><b>Sandfly Bay 海獅</b><span>10/06 · 奧塔哥半島 · 免費</span></figcaption></figure>
+      <figure><img src="images/steampunk.jpg" alt="Steampunk HQ 蒸汽龐克裝置">
+        <figcaption><b>Steampunk HQ</b><span>10/07 · NZ$15 · 最後入場 15:30</span></figcaption></figure>
+
+      <figure class="wide"><img src="images/see-vanished.jpg" alt="Vanished World 化石中心">
+        <figcaption><b>Waitaki 化石與岩畫帶</b><span>10/08 · Takiroa 岩畫免費 · Elephant Rocks · Vanished World</span></figcaption></figure>
+      <figure><img src="images/see-cardboard.jpg" alt="基督城紙教堂">
+        <figcaption><b>紙教堂</b><span>10/09 · 坂茂設計 · 免費</span></figcaption></figure>
+      <figure><img src="images/see-185chairs.jpg" alt="185 張白椅紀念裝置">
+        <figcaption><b>185 White Chairs</b><span>10/09 · 地震紀念 · 免費</span></figcaption></figure>
+
+      <figure><img src="images/see-riverside.jpg" alt="Riverside Market">
+        <figcaption><b>Riverside Market</b><span>10/09 · 南島最好的市集</span></figcaption></figure>
+      <figure><img src="images/do-punting.jpg" alt="雅芳河撐篙">
+        <figcaption><b>雅芳河撐篙</b><span>10/09 · 基督城植物園</span></figcaption></figure>
+      <figure class="wide"><img src="images/see-haka.jpg" alt="毛利文化表演 haka">
+        <figcaption><b>奧克蘭戰爭紀念博物館</b><span>10/10 · 每天有含 haka 的毛利文化表演</span></figcaption></figure>
+      <figure><img src="images/see-aklmuseum.jpg" alt="奧克蘭戰爭紀念博物館建築">
+        <figcaption><b>戰爭紀念博物館</b><span>10/10 · 最好的毛利文化收藏</span></figcaption></figure>
+      <figure><img src="images/see-skytower.jpg" alt="奧克蘭天空塔夜景">
+        <figcaption><b>天空塔</b><span>10/10 · 南半球最高建築</span></figcaption></figure>
+      <figure><img src="images/see-devonport.jpg" alt="從 Devonport 看奧克蘭天際線">
+        <figcaption><b>Devonport</b><span>10/10 · 渡輪 12 分鐘 · 免費</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 怎麼排 ══════════ -->
+<section class="tint" id="plan">
+  <div class="wrap">
+    <div class="sec-k rv">Putting It Together</div>
+    <h2 class="rv">整合：哪一天排什麼</h2>
+    <p class="lead rv">把上面全部收進一張表。<strong>粗體是需要事先訂位的</strong>，
+      其餘可以當天決定。9/27、9/28 上午已被跳傘與冰川健行佔走。</p>
+
+    <div class="tw rv">
+      <table>
+        <thead><tr><th>日期</th><th>白天</th><th>晚上</th><th>要先訂</th></tr></thead>
+        <tbody>
+          <tr><td><b>09/26 六</b></td><td>Fairlie 肉派 → Mt John（$14 通行費）→ Astro Café</td>
+            <td><b>Crater Experience 觀星 $129</b></td><td>觀星團</td></tr>
+          <tr><td><b>09/27 日</b></td><td>🪂 跳傘 → Peter's Lookout → Mt Cook</td>
+            <td>motel 晚餐（已含）</td><td>—</td></tr>
+          <tr class="pick"><td><b>09/28 一</b></td><td>🚁 冰川健行 → 午餐（<span class="closed">Old Mountaineers 公休</span>）→ Hooker Valley Track</td>
+            <td>motel 晚餐（已含）</td><td>冰川健行</td></tr>
+          <tr><td><b>09/29 二</b></td><td>Lindis Pass → Wanaka → <b>Rippon 品飲（免費但要訂）</b></td>
+            <td>Wanaka 鎮上晚餐</td><td><b>Rippon</b></td></tr>
+          <tr><td><b>09/30 三</b></td><td><b>Mt Difficulty 品飲 $25</b> → Cromwell 老鎮 → Arrowtown 華人聚落</td>
+            <td>皇后鎮晚餐</td><td>Domaine Thomson（若去）</td></tr>
+          <tr class="pick"><td><b>10/01 四</b></td><td>Skyline 纜車＋溜溜車 / Shotover Jet</td>
+            <td><b>TSS Earnslaw + Walter Peak BBQ $175</b></td><td><b>Walter Peak</b>（並確認船有沒有停駛）</td></tr>
+          <tr><td><b>10/02 五</b></td><td>Glenorchy 一日來回（4–5 小時）／跳傘備案日</td>
+            <td>Fergburger 或 Rata</td><td>Rata（若去）</td></tr>
+          <tr><td><b>10/03 六</b></td><td>移動到 Te Anau → Bird Sanctuary 看 takahē（免費）</td>
+            <td><b>Te Anau 螢火蟲洞</b></td><td><b>螢火蟲洞</b></td></tr>
+          <tr class="pick"><td><b>10/04 日</b></td><td><b>Milford 遊船</b>（Cruise Milford 或 Mitre Peak）</td>
+            <td>Te Anau 晚餐</td><td><b>遊船</b></td></tr>
+          <tr><td><b>10/05 一</b></td><td>Bluff Stirling Point → <b>Oyster Cove 午餐</b>（<span class="closed">週一沒晚餐</span>）→ Transport World / E Hayes</td>
+            <td>Invercargill 晚餐</td><td>Oyster Cove</td></tr>
+          <tr><td><b>10/06 二</b></td><td>Gore 私釀博物館 → 但尼丁火車站、Baldwin St</td>
+            <td>Speight's（<b>注意酒駕</b>）</td><td>Larnach／信天翁（若去）</td></tr>
+          <tr class="pick"><td><b>10/07 三</b></td><td>摩拉基大圓石（<b>看退潮</b>）→ Katiki Point → <b>Riverstone Kitchen 午餐</b> → Steampunk HQ（<b>15:30 前</b>）</td>
+            <td><b>藍企鵝 20:00</b></td><td><b>Riverstone、藍企鵝 Premium</b></td></tr>
+          <tr><td><b>10/08 四</b></td><td>Takiroa 岩畫（免費）→ Elephant Rocks → 基督城</td>
+            <td>基督城晚餐</td><td>—</td></tr>
+          <tr><td><b>10/09 五</b></td><td>紙教堂、185 chairs、Riverside Market 午餐、撐篙 → 飛奧克蘭</td>
+            <td>奧克蘭</td><td>—</td></tr>
+          <tr><td><b>10/10 六</b></td><td><b>奧克蘭戰爭紀念博物館</b>（毛利表演）→ 天空塔 / Devonport</td>
+            <td>20:30 CI54</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note plan rv">
+      <span class="h">📌 一定要事先訂的六樣</span>
+      <p style="margin-bottom:0">
+        ① <b>Rippon 品飲</b>（免費但強制預約，常提前數週滿）<br>
+        ② <b>TSS Earnslaw / Walter Peak</b>（船位有限，並要確認 2026 年維修停駛日期）<br>
+        ③ <b>Te Anau 螢火蟲洞</b><br>
+        ④ <b>Milford 遊船</b><br>
+        ⑤ <b>Oamaru 藍企鵝 Premium 看台</b>（只有 60 席）<br>
+        ⑥ <b>Riverstone Kitchen 午餐</b>（最後訂位 2:45pm）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 實用 ══════════ -->
+<section id="practical">
+  <div class="wrap">
+    <div class="sec-k rv">Practical</div>
+    <h2 class="rv">實用：台灣人在紐西蘭吃飯要知道的</h2>
+
+    <div class="grid g2">
+      <div class="card rv">
+        <h4>💳 付錢</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>幾乎全部刷卡</b>，小鎮咖啡館也能刷。現金幾乎用不到。</li>
+          <li>常見<b>刷卡手續費約 1–2%</b>，會標在櫃檯或帳單上。</li>
+          <li><b>紐西蘭沒有小費文化</b>，不用給。服務生的薪水本來就含在價格裡。</li>
+          <li>菜單價格<b>已含 15% GST</b>，看到多少付多少。</li>
+          <li><b>國定假日通常加收 15% 附加費</b>——不過你們 9/26–10/10 期間沒有國定假日。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🥗 素食與不吃生食</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>素食選項普遍</b>，連 Mt Cook 那家小餐廳都有素食漢堡（$29）與素披薩（$29）。</li>
+          <li>菜單上常見標示：<b>V（素）、VG（全素）、GF（無麩質）、DF（無乳）</b>。</li>
+          <li><b>不吃生食要注意</b>：紐西蘭餐廳的生蠔、tataki（炙燒半生）、
+            carpaccio 都是常見主打。點之前先問。</li>
+          <li>Milford 遊船的野餐午餐<b>提供素食、全素與無麩質選項</b>。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🛒 超市與自炊</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li>三大超市：<b>New World</b>（中高價）、<b>Woolworths</b>（原 Countdown）、
+            <b>PAK'nSAVE</b>（最便宜）。</li>
+          <li><b>小鎮超市關得早</b>（常 19:00–20:00），Mt Cook、Te Anau 更早。
+            <b>大鎮先補給</b>。</li>
+          <li>四人自駕的省錢作法：<b>午餐買超市三明治與水果在路上吃，晚餐才上餐廳</b>。</li>
+          <li>伴手禮：<b>Whittaker's 巧克力、mānuka 蜂蜜、hokey pokey 相關零食</b>
+            都在超市買最划算，別在機場買。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🕐 營業時間的心理準備</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>南島小鎮的餐廳普遍很早關</b>——很多廚房 20:00 就最後點餐。</li>
+          <li><b>週一、週二是餐廳最常公休的兩天</b>（Old Mountaineers、Te Ana 中心都是）。</li>
+          <li>景點多半 <b>16:00–17:00 就關</b>，Steampunk HQ 15:30 最後入場。</li>
+          <li>一句話：<strong>在紐西蘭，「晚上再說」通常等於「沒有了」。</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 待查 ══════════ -->
+<section class="tint" id="gaps">
+  <div class="wrap-narrow">
+    <div class="sec-k rv">Honest Gaps</div>
+    <h2 class="rv">這些我查不到，訂位時要自己確認</h2>
+    <ul class="styled rv" style="list-style:none;padding:0">
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Tekapo 的 Kohan 日本料理、Tekapo Springs 溫泉的 2026 營業時間與價格</b>——本輪未取得官方資料。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>TSS Earnslaw 2026 年的年度維修停駛日期</b>——官網未公布。
+        <strong>這會直接影響 10/01 的 Walter Peak 安排，訂位時務必問。</strong></li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Te Ana 毛利岩畫中心（Timaru）的票價</b>——官網完全未公開，需電洽。
+        且官網兩處對打烊時間的記載不一致（15:00 vs 15:30）。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Milford 各家船公司的 2026/10/04 實際發船時間與官網直訂價</b>——
+        表中多為第三方平台起跳價。<b>Mitre Peak Cruises 10 月初可能仍是冬季 2 班制，一定要先確認。</b></li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Southern Discoveries 海底觀景站與皮划艇何時恢復販售</b>——查證當下皆停售，無恢復時間表。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Domaine Thomson 在 9 月底的實際營業天數</b>——官網同一頁有兩套矛盾說法
+        （「冬季週三–週日」vs「每天營業」）。<b>去之前先來信確認。</b></li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Old Mountaineers 的實際營業時間</b>——官網的文字敘述與時間表本身互相矛盾，
+        老闆自己也說「時間不保證」。<b>當天傳簡訊給 Charlie（0274 342277）。</b></li>
+      <li style="padding:9px 0">
+        <b>皇后鎮各餐廳（Fergburger、Rata 等）的 2026 營業狀態與價格</b>——
+        本輪研究未逐一查證官網。皇后鎮餐廳汰換率高，<b>出發前一週再確認一次</b>。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="grid g3" style="gap:30px">
+      <div>
+        <h4>官方連結</h4>
+        <p style="font-size:.84rem;line-height:1.9">
+          Dark Sky Project · <a href="https://www.darkskyproject.co.nz/" target="_blank" rel="noopener">darkskyproject.co.nz</a><br>
+          RealNZ（TSS Earnslaw／Walter Peak）· <a href="https://www.realnz.com/" target="_blank" rel="noopener">realnz.com</a><br>
+          Rippon Vineyard · <a href="https://www.rippon.co.nz/" target="_blank" rel="noopener">rippon.co.nz</a><br>
+          Mt Difficulty · <a href="https://www.mtdifficulty.co.nz/" target="_blank" rel="noopener">mtdifficulty.co.nz</a><br>
+          Riverstone Kitchen · <a href="https://www.riverstonekitchen.co.nz/" target="_blank" rel="noopener">riverstonekitchen.co.nz</a><br>
+          Steampunk HQ · <a href="https://www.steampunkoamaru.co.nz/" target="_blank" rel="noopener">steampunkoamaru.co.nz</a>
+        </p>
+      </div>
+      <div>
+        <h4>查證說明</h4>
+        <p style="font-size:.84rem">價格、營業時間、營運狀態均取自<b>官方網站</b>，查證日 <b>2026/08/20</b>。
+          <strong>餐廳與小型景點的資訊變動極快</strong>，出發前一週請再確認一次。
+          註明「未取得官方資料」的項目請當線索，不要當定論。</p>
+      </div>
+      <div>
+        <h4>相關文件</h4>
+        <p style="font-size:.84rem;line-height:1.9">
+          <a href="01.south-island-itinerary.html">① 南島行程盤點與規劃</a><br>
+          <a href="02.skydiving.html">② 跳傘建議</a><br>
+          <a href="03.glacier-heli-hike.html">③ 直升機＋冰川健行</a>
+        </p>
+        <p style="font-size:.78rem;color:#5F7583;margin-top:14px">
+          圖片來源：Wikimedia Commons（CC0 / CC BY / CC BY-SA），
+          完整作者與授權見 <a href="images/CREDITS.md">images/CREDITS.md</a>。</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const bar=document.getElementById('prog');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+  e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -205,6 +205,9 @@ td strong{color:var(--ink)}
 .dark .note .h{color:#fff}
 .dark .note p,.dark .note li,.dark .note td{color:#C0D2DC}
 .dark .note strong,.dark .note b{color:#fff}
+/* 深色區塊裡的淺底元件（表格／卡片）要用回深色字，否則白字白底 */
+.dark .tw strong,.dark .tw b,.dark .mx strong,.dark .mx b,
+.dark .pcard strong,.dark .pcard b{color:var(--ink)}
 .note p:last-child{margin-bottom:0}
 .note ul{margin:6px 0 0}
 
@@ -251,6 +254,23 @@ details[open] summary{margin-bottom:9px}
   .tl .date b{display:inline;margin-right:6px}
   .topbar nav{width:100%;margin-left:0;overflow-x:auto}
 }
+
+/* ── 照片畫廊（01 與 04 共用） ── */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow);background:var(--slate)}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .7s}
+.gal figure:hover img{transform:scale(1.07)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:24px 12px 10px;
+  background:linear-gradient(transparent,rgba(8,17,25,.55) 42%,rgba(8,17,25,.93));
+  color:#fff;font-size:.78rem;font-style:normal;text-align:left;line-height:1.35}
+.gal figcaption b{display:block;font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.gal figcaption span{color:#9FBDCC;font-size:.69rem;font-family:var(--mono)}
+.gal .wide{grid-column:span 2}
+.gal .wide img{aspect-ratio:8/3}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}
+  .gal .wide{grid-column:span 2}.gal .wide img{aspect-ratio:16/7}}
+@media(max-width:520px){.gal{grid-template-columns:1fr}.gal .wide img{aspect-ratio:4/3}}
 
 </style>
 <style>
@@ -322,6 +342,7 @@ details[open] summary{margin-bottom:9px}
       <a href="01.south-island-itinerary.html">① 行程盤點</a>
       <a href="#" class="on">② 跳傘</a>
       <a href="03.glacier-heli-hike.html">③ 冰川健行</a>
+      <a href="04.food-and-experiences.html">④ 吃玩看</a>
       <a href="#pick">結論</a>
       <a href="#compare">比較</a>
       <a href="#money">費用</a>
@@ -883,7 +904,8 @@ details[open] summary{margin-bottom:9px}
         <h4>相關文件</h4>
         <p style="font-size:.84rem;line-height:1.9">
           <a href="01.south-island-itinerary.html">① 南島行程盤點與規劃</a><br>
-          <a href="03.glacier-heli-hike.html">③ 直升機＋冰川健行</a>
+          <a href="03.glacier-heli-hike.html">③ 直升機＋冰川健行</a><br>
+          <a href="04.food-and-experiences.html">④ 吃什麼・看什麼・玩什麼</a>
         </p>
         <p style="font-size:.78rem;color:#5F7583;margin-top:14px">
           圖片來源：Wikimedia Commons（CC0 / CC BY / CC BY-SA），
