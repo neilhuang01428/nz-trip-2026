@@ -548,6 +548,21 @@ details[open] summary{margin-bottom:9px}
   .fchip.day span{font-size:.66rem}
 }
 
+/* ── 行程頁的路線地圖 ── */
+.routemap{height:clamp(320px,54vh,560px);border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper-2);z-index:1}
+.optmapwrap{margin:0 0 18px}
+.optmap{height:clamp(230px,34vh,340px);border-radius:11px;overflow:hidden;
+  border:1px solid var(--line);background:var(--paper-2);z-index:1}
+.optcap{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft);margin-top:7px;
+  text-align:right;font-variant-numeric:tabular-nums}
+.leaflet-container a.leaflet-popup-close-button{color:var(--ink-soft)}
+@media(max-width:780px){
+  .routemap{height:clamp(300px,48vh,440px)}
+  .optmap{height:clamp(220px,32vh,300px)}
+  .optcap{text-align:left;font-size:.72rem}
+}
+
 </style>
 <style>
 /* ── 本頁專用：高度尺 ── */
@@ -1278,7 +1293,7 @@ details[open] summary{margin-bottom:9px}
     "date": "10/02",
     "wd": "五",
     "title": "皇后鎮 機動日 ②",
-    "leg": "彈性"
+    "leg": "彈性（Glenorchy 來回 1h18）"
    },
    {
     "d": 10,
@@ -1306,7 +1321,7 @@ details[open] summary{margin-bottom:9px}
     "date": "10/06",
     "wd": "二",
     "title": "Invercargill → Gore → 但尼丁",
-    "leg": "約 2h50 · 215km"
+    "leg": "3h02 或 4h30（看方案）"
    },
    {
     "d": 14,
@@ -1320,7 +1335,7 @@ details[open] summary{margin-bottom:9px}
     "date": "10/08",
     "wd": "四",
     "title": "Oamaru → Waitaki 內陸 → 基督城",
-    "leg": "4.5–7h（看方案）"
+    "leg": "4h55–7h14（看方案）"
    },
    {
     "d": 16,
@@ -3239,8 +3254,8 @@ details[open] summary{margin-bottom:9px}
      "label": "A 案",
      "name": "格林諾奇一日來回",
      "rec": true,
-     "meta": "來回 4–5 小時",
-     "desc": "公認紐西蘭最美的公路之一，終點是《魔戒》取景地與 Paradise。沿路觀景停車彎很多。",
+     "meta": "來回 93 km · 純開車 1 小時 18 分",
+     "desc": "公認紐西蘭最美的公路之一，終點是《魔戒》取景地與 Paradise。純開車只要 1 小時 18 分，但沿路觀景停車彎非常多——實際上請抓 4–5 小時。",
      "main": [
       "glenorchy"
      ],
@@ -3253,7 +3268,7 @@ details[open] summary{margin-bottom:9px}
      "id": "d9b",
      "label": "B 案",
      "name": "酒鄉與彈跳",
-     "meta": "半天",
+     "meta": "來回 47 km · 純開車 46 分",
      "desc": "往 Cromwell 方向，看 Kawarau Bridge 的高空彈跳（免費看），順路吉布斯頓谷酒莊。",
      "main": [
       "kawarau-bungy"
@@ -3275,7 +3290,7 @@ details[open] summary{margin-bottom:9px}
      "label": "A 案",
      "name": "走 SH1 經 Gore（最快）",
      "rec": true,
-     "meta": "約 2 小時 50 分 · 215 km",
+     "meta": "216 km · 純開車 3 小時 2 分",
      "desc": "最快的路。Gore 有私釀威士忌博物館與巨大鱒魚雕像，下午就能到但尼丁，還有時間上奧塔哥半島。",
      "main": [
       "hokonui-moonshine",
@@ -3292,7 +3307,7 @@ details[open] summary{margin-bottom:9px}
      "id": "d13b",
      "label": "B 案",
      "name": "走卡特林斯海岸（Southern Scenic Route）",
-     "meta": "多花約 2–3 小時",
+     "meta": "289 km · 純開車 4 小時 30 分",
      "desc": "沿海路線，有化石森林、黃眼企鵝上岸點與南島最上鏡的海岬之一。代價是那天要早起、不要再排別的。",
      "main": [
       "curio-bay",
@@ -3308,14 +3323,14 @@ details[open] summary{margin-bottom:9px}
   {
    "day": 15,
    "title": "Oamaru → 基督城：三個修正方案",
-   "note": "⚠️ 原行程把 Elephant Rocks、毛利岩畫、Waitaki、Timaru、Dunsandel、Akaroa 全排在同一天，純開車就 7 小時以上。這是整份行程唯一必須改的地方。",
+   "note": "⚠️ 原行程把 Elephant Rocks、毛利岩畫、Waitaki、Timaru、Dunsandel、Akaroa 全排在同一天，純開車就 7 小時以上。這是整份行程唯一必須改的地方。下面三個方案的公里數與時間，是用 OSRM 依實際道路計算的（不是概估）。",
    "options": [
     {
      "id": "d15a",
      "label": "A 案",
      "name": "砍 Akaroa，走 Waitaki 內陸",
      "rec": true,
-     "meta": "純開車約 4.5 小時",
+     "meta": "350 km · 純開車 4 小時 55 分",
      "desc": "早上 Oamaru → Duntroon（Elephant Rocks ＋ Takiroa 岩畫，兩個緊鄰）→ Waitaki Dam → 回 SH1 → Timaru 午餐 → 直上基督城。Akaroa 可以放到 10/09 早上（若班機是下午）。",
      "main": [
       "elephant-rocks",
@@ -3332,7 +3347,7 @@ details[open] summary{margin-bottom:9px}
      "id": "d15b",
      "label": "B 案",
      "name": "砍內陸，保 Akaroa",
-     "meta": "純開車約 5.5 小時",
+     "meta": "387 km · 純開車 5 小時 57 分",
      "desc": "Oamaru 直接走 SH1 北上 → Timaru → Dunsandel → Motukarara → Akaroa → 基督城。保住法國小鎮與賞海豚，但放棄 Elephant Rocks 與毛利岩畫。",
      "main": [
       "akaroa"
@@ -3345,8 +3360,8 @@ details[open] summary{margin-bottom:9px}
      "id": "d15c",
      "label": "C 案",
      "name": "全走內陸，經 Tekapo 回基督城",
-     "meta": "純開車約 5 小時",
-     "desc": "Oamaru → Duntroon → Kurow → Omarama → 普卡基湖 → Tekapo → Geraldine → 基督城。景色最好、路最好開，但會重走第一天去過的 Tekapo／Pukaki。",
+     "meta": "442 km · 純開車 7 小時 14 分",
+     "desc": "Oamaru → Duntroon → Kurow → Omarama → 普卡基湖 → Tekapo → Geraldine → 基督城。景色最好、路最好開，但 442 公里是三案中最遠的——而且會重走第一天去過的 Tekapo／Pukaki。",
      "main": [
       "elephant-rocks",
       "takiroa-rock-art"
@@ -3775,10 +3790,13 @@ details[open] summary{margin-bottom:9px}
 
     out.innerHTML =
       '<div class="optbox">' +
+      '<div class="optmapwrap"><div class="optmap" id="optmap-' + day + '"></div>' +
+      '<div class="optcap" id="optcap-' + day + '"></div></div>' +
       chipsFor(o.main, 'main') +
       chipsFor(o.alt, 'alt') +
       (du ? '<a class="navbtn" href="' + du + '" target="_blank" rel="noopener">🚗 用 Google Maps 導航這條路線</a>' : '') +
       '</div>';
+    if (window.nzDrawOption) window.nzDrawOption(day, o);
   }
 
   host.addEventListener('click', function (e) {
@@ -3792,6 +3810,132 @@ details[open] summary{margin-bottom:9px}
   });
 
   DB.routes.forEach(function (r) { showOpt(r.day, r.options[0].id); });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   行程頁的路線地圖（Leaflet）
+   幾何在建置時用 OSRM 算好、存成 encoded polyline，這裡解碼畫出
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var geoEl = document.getElementById('routes-geo');
+  var dataEl = document.getElementById('places-data');
+  if (!geoEl || !dataEl || !window.L) return;
+
+  var GEO = JSON.parse(geoEl.textContent);
+  var DB = JSON.parse(dataEl.textContent);
+  var byId = {}; DB.places.forEach(function (p) { byId[p.id] = p; });
+  var CATS = DB.meta.cats;
+
+  /* Google encoded polyline 解碼（精度 5） */
+  function decode(str) {
+    var pts = [], i = 0, lat = 0, lng = 0;
+    while (i < str.length) {
+      var b, sh = 0, res = 0;
+      do { b = str.charCodeAt(i++) - 63; res |= (b & 0x1f) << sh; sh += 5; } while (b >= 0x20);
+      lat += (res & 1) ? ~(res >> 1) : (res >> 1);
+      sh = 0; res = 0;
+      do { b = str.charCodeAt(i++) - 63; res |= (b & 0x1f) << sh; sh += 5; } while (b >= 0x20);
+      lng += (res & 1) ? ~(res >> 1) : (res >> 1);
+      pts.push([lat / 1e5, lng / 1e5]);
+    }
+    return pts;
+  }
+
+  function baseMap(el) {
+    var m = L.map(el, { scrollWheelZoom: false, tap: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(m);
+    return m;
+  }
+
+  function dot(p, small) {
+    var c = (CATS[p.cat] || {}).color || '#3E9DB8';
+    return L.divIcon({
+      className: '',
+      html: '<span class="pin-ico" style="background:' + c + ';' +
+            (small ? 'width:14px;height:14px;border-width:2px;' : '') + '"></span>',
+      iconSize: small ? [14, 14] : [20, 20],
+      iconAnchor: small ? [7, 14] : [10, 20], popupAnchor: [0, -14]
+    });
+  }
+  function gmap(p) {
+    var q = p.addr ? p.name + ' ' + p.addr : (p.q || p.name + ' New Zealand');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+
+  /* ── 全程總覽圖 ── */
+  var ovEl = document.getElementById('routemap');
+  if (ovEl) {
+    var m = baseMap(ovEl);
+    var all = [];
+    var palette = ['#1B7A93', '#1E5B4E', '#B4791F', '#A83A2B', '#5B4AA8'];
+    GEO.legs.forEach(function (leg, i) {
+      var pts = decode(leg.poly);
+      all = all.concat(pts);
+      L.polyline(pts, {
+        color: palette[i % palette.length], weight: 4, opacity: .85, lineJoin: 'round'
+      }).addTo(m).bindPopup(
+        '<div class="pop-h">D' + String(leg.day).padStart(2, '0') + '</div>' +
+        '<div class="pop-sub">' + leg.label + '</div>' +
+        '<p class="pop-meta"><b>' + leg.km + ' km</b>　純開車約 ' +
+        Math.floor(leg.min / 60) + ' 小時 ' + (leg.min % 60) + ' 分</p>');
+    });
+    // 過夜點
+    [['lake-tekapo', 'D03'], ['mtcook-village', 'D04–05'], ['wanaka-tree', 'D06'],
+     ['nzone-skydive', 'D07–09'], ['lake-te-anau', 'D10–11'], ['transport-world', 'D12'],
+     ['dunedin-station', 'D13'], ['oamaru-victorian', 'D14'], ['chc-airport', 'D15–16']]
+      .forEach(function (x) {
+        var p = byId[x[0]]; if (!p) return;
+        L.marker([p.lat, p.lng], { icon: dot(p) }).addTo(m).bindPopup(
+          '<div class="pop-h">' + x[1] + ' 過夜</div><div class="pop-sub">' + p.town + '</div>');
+      });
+    if (all.length) m.fitBounds(all, { padding: [26, 26] });
+  }
+
+  /* ── 各方案的路線圖 ── */
+  window.nzDrawOption = function (day, opt) {
+    var box = document.getElementById('optmap-' + day);
+    if (!box) return;
+    var g = GEO.options[opt.id];
+    var wrap = box.parentNode;
+
+    if (!g) {                       // 沒有行車幾何（當地活動）
+      wrap.style.display = 'none';
+      return;
+    }
+    wrap.style.display = '';
+    if (box._map) { box._map.remove(); box._map = null; }
+    box.innerHTML = '';
+    var m = baseMap(box);
+    box._map = m;
+    var pts = decode(g.poly);
+    L.polyline(pts, { color: '#A83A2B', weight: 5, opacity: .9, lineJoin: 'round' }).addTo(m);
+    (opt.main || []).concat(opt.alt || []).forEach(function (id) {
+      var p = byId[id]; if (!p) return;
+      var isMain = (opt.main || []).indexOf(id) >= 0;
+      L.marker([p.lat, p.lng], { icon: dot(p, !isMain) }).addTo(m).bindPopup(
+        '<div class="pop-h">' + p.name + '</div>' +
+        '<div class="pop-sub">' + (isMain ? '主推' : '備案候選') + ' · ' + (p.town || '') + '</div>' +
+        '<div class="pop-btns"><a class="g" href="' + gmap(p) +
+        '" target="_blank" rel="noopener">在 Google Maps 開啟</a></div>');
+    });
+    m.fitBounds(pts, { padding: [22, 22] });
+    var cap = document.getElementById('optcap-' + day);
+    if (cap) cap.textContent = g.km + ' km · 純開車約 ' +
+      Math.floor(g.min / 60) + ' 小時 ' + (g.min % 60) + ' 分（OSRM 依實際道路計算）';
+    setTimeout(function () { m.invalidateSize(); }, 60);
+  };
+
+  // 這個模組在行程模組之後才載入，補畫一次初始選中的方案
+  DB.routes.forEach(function (r) {
+    var btn = document.querySelector('.route[data-day="' + r.day + '"][aria-pressed="true"]');
+    var id = btn ? btn.dataset.opt : r.options[0].id;
+    var o = r.options.filter(function (x) { return x.id === id; })[0];
+    if (o) window.nzDrawOption(r.day, o);
+  });
 })();
 
 </script>
