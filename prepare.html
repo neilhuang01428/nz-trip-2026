@@ -532,6 +532,8 @@ details[open] summary{margin-bottom:9px}
   .pl.has-img .pl-tags,.pl.has-img .pl-price,.pl.has-img .pl-hours,
   .pl.has-img .pl-note{padding:0 17px}
   .pl.has-img .pl-btns{padding:0 17px 17px}
+  .pl.has-img.has-book .pl-btns{padding-bottom:0}
+  .pl.has-img .pl-book{margin:13px 17px 17px}
 }
 
 /* ── 日期篩選鈕：顯示幾月幾號 ── */
@@ -570,8 +572,11 @@ th .twd,.pop-h .twd{display:none}
 .dark .twd{color:#8FA3B0}
 
 /* ── 卡片的訂位／購票列 ── */
-.pl-book{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
-.pl.has-img .pl-book{margin:11px 18px 0}
+.pl-book{margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}
+/* 有照片的卡片是各區塊自帶內距，訂位列要自己補下方留白 */
+.pl.has-img .pl-book{margin:13px 18px 18px}
+/* 訂位列存在時，上面那排按鈕不要再留大塊底部間距 */
+.pl.has-img.has-book .pl-btns{padding-bottom:0}
 .bk-l{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
   color:var(--ink-soft);margin-bottom:7px}
 .bk-row{display:flex;gap:7px;flex-wrap:wrap}
@@ -1286,7 +1291,8 @@ th .twd,.pop-h .twd{display:none}
     }
     list.forEach(function (p) {
       var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
-        (p.img ? ' has-img' : ''), cardHtml(p));
+        (p.img ? ' has-img' : '') +
+        (p.bookable && p.flag !== 'closed' ? ' has-book' : ''), cardHtml(p));
       card.id = 'pl-' + p.id;
       grid.appendChild(card);
     });
