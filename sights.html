@@ -606,19 +606,44 @@ th .twd,.pop-h .twd{display:none}
 }
 
 /* ── 卡片的「知道了會加分」展開區 ── */
-.pl-more{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
+.pl-more{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
   font:inherit;font-size:.86rem;line-height:1.55;cursor:pointer;
-  background:linear-gradient(90deg,rgba(192,138,62,.11),rgba(192,138,62,.03));
-  border:1px solid rgba(192,138,62,.28);border-radius:10px;
-  padding:11px 13px;margin:0 0 11px;color:var(--ink-2);
-  transition:background .18s,border-color .18s;min-height:44px}
-.pl-more:hover{background:rgba(192,138,62,.16);border-color:rgba(192,138,62,.5)}
-.pl-more .dm-ic{flex:none;line-height:1.4}
+  background:linear-gradient(180deg,#FDF6E8,#F8EDD8);
+  border:1.5px solid rgba(192,138,62,.55);border-radius:11px;
+  padding:11px 11px 11px 13px;margin:0 0 11px;color:var(--ink-2);
+  box-shadow:0 1px 0 rgba(192,138,62,.22),0 1px 3px rgba(45,32,10,.07);
+  transition:background .18s,border-color .18s,box-shadow .18s,transform .1s;
+  min-height:48px;-webkit-tap-highlight-color:transparent}
+.pl-more:hover{background:linear-gradient(180deg,#FBEFD6,#F4E3C2);
+  border-color:var(--tussock);box-shadow:0 2px 6px rgba(45,32,10,.13)}
+.pl-more:active{transform:scale(.985);box-shadow:0 1px 2px rgba(45,32,10,.1)}
+.pl-more:focus-visible{outline:2px solid var(--tussock);outline-offset:2px}
+.pl-more .dm-ic{flex:none;line-height:1.4;font-size:1.02rem;align-self:flex-start;margin-top:1px}
 .pl-more .dm-t{flex:1 1 auto;min-width:0;font-weight:600;color:#7A5A16;
   overflow-wrap:anywhere;word-break:break-word}
-.pl-more .dm-a{flex:none;color:var(--tussock);font-size:.9rem;line-height:1.5;
-  transition:transform .22s}
+
+/* 右邊做成一顆看得出來是按鈕的膠囊——「可以點」最強的線索是文字 */
+.pl-more .dm-cta{flex:none;display:inline-flex;align-items:center;gap:4px;
+  background:var(--tussock);color:#fff;border-radius:20px;
+  padding:5px 10px 5px 11px;font-size:.74rem;font-weight:700;letter-spacing:.03em;
+  box-shadow:0 1px 2px rgba(122,90,22,.35);align-self:center}
+.pl-more .dm-lb{white-space:nowrap}
+.pl-more .dm-a{font-size:.72rem;line-height:1;transition:transform .22s}
+.pl-more.open{background:linear-gradient(180deg,#F6E9CF,#F1E0BC);
+  border-color:var(--tussock);box-shadow:none}
 .pl-more.open .dm-a{transform:rotate(180deg)}
+.pl-more.open .dm-cta{background:#8C6A22}
+
+/* 第一次進來時輕輕跳一下，之後不再出現 */
+@keyframes dmHint{
+  0%,58%,100%{transform:translateY(0)}
+  66%{transform:translateY(-3px)}
+  74%{transform:translateY(0)}
+  82%{transform:translateY(-2px)}
+  90%{transform:translateY(0)}}
+.pl-more.hint .dm-cta{animation:dmHint 2.1s ease-in-out 2}
+@media (prefers-reduced-motion:reduce){.pl-more.hint .dm-cta{animation:none}}
+
 .pl.has-img .pl-more{margin:0 18px 11px;width:calc(100% - 36px)}
 
 .pl-deep{border-left:3px solid var(--tussock);background:var(--paper-2);
@@ -638,7 +663,8 @@ th .twd,.pop-h .twd{display:none}
 @media(max-width:600px){
   .pl.has-img .pl-more{margin:0 17px 11px;width:calc(100% - 34px)}
   .pl.has-img .pl-deep{margin:0 17px 12px}
-  .pl-more{font-size:.88rem;padding:12px 13px;min-height:48px}
+  .pl-more{font-size:.88rem;padding:12px 12px 12px 14px;min-height:52px}
+  .pl-more .dm-cta{padding:6px 11px 6px 12px;font-size:.76rem}
   .pl-deep p{font-size:.91rem}
 }
 
@@ -4269,6 +4295,20 @@ body.mapmode .totop{display:none!important}
     });
   }
 
+  /* 第一次看到清單時，讓最上面那顆展開鈕動一下，暗示它可以點。
+     只做一次，之後記在 localStorage，不再打擾。 */
+  var hinted = false;
+  function hintFirst(grid) {
+    if (hinted) return;
+    try { if (localStorage.getItem('nz-deep-hint')) { hinted = true; return; } } catch (e) {}
+    var b = grid.querySelector('.pl-more');
+    if (!b) return;
+    hinted = true;
+    b.classList.add('hint');
+    setTimeout(function () { b.classList.remove('hint'); }, 4200);
+    try { localStorage.setItem('nz-deep-hint', '1'); } catch (e) {}
+  }
+
   /* ── 卡片 ── */
   function cardHtml(p) {
     var c = (CATS[p.cat] || {}).color || '#3E9DB8';
@@ -4295,7 +4335,8 @@ body.mapmode .totop{display:none!important}
       h += '<button type="button" class="pl-more" data-deep="' + did + '" aria-expanded="false" ' +
         'aria-controls="' + did + '">' +
         '<span class="dm-ic">💡</span><span class="dm-t">' + esc(p.deep.lead) + '</span>' +
-        '<span class="dm-a" aria-hidden="true">▾</span></button>' +
+        '<span class="dm-cta"><span class="dm-lb">展開</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></span></button>' +
         '<div class="pl-deep" id="' + did + '" hidden>';
       (p.deep.paras || []).forEach(function (t) { h += '<p>' + t + '</p>'; });
       if (p.deep.tips && p.deep.tips.length) {
@@ -4366,8 +4407,13 @@ body.mapmode .totop{display:none!important}
         box.hidden = !open;
         b.setAttribute('aria-expanded', open);
         b.classList.toggle('open', open);
+        var lb = b.querySelector('.dm-lb');
+        if (lb) lb.textContent = open ? '收合' : '展開';
+        b.classList.remove('hint');          // 使用者已經知道能點了
       };
     });
+
+    hintFirst(grid);
 
     if (!map) return;
     layer.clearLayers(); markers = {};
