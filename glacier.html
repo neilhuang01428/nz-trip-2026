@@ -978,6 +978,109 @@ body.mapmode .totop{display:none!important}
   .dl-leg{flex:1 1 100%}
 }
 
+/* ══════════ 全站可用性修正（來自 2026/08 的介面稽核） ══════════ */
+
+/* ① grid item 預設 min-width:auto，會被表格的 min-width 撐開，
+   於是 .tw 自己永遠不需要捲動，改成整頁橫向溢出再被 body 夾死——
+   行前頁的單線橋表格右邊 148px 因此永遠看不到。 */
+.grid > *{min-width:0}
+.wrap,.wrap-narrow{min-width:0}
+
+/* ② 會話頁的語音下拉把整頁撐爆 25px，「▶ 試聽」鈕右緣被切掉。
+   根因有兩層：.vb-row 是 grid item，min-width:auto 讓它被子孫的
+   max-content（最長的那個 option 文字）撐開；select 自己也一樣。
+   兩層都要放行才收得回來。 */
+.voicebar{min-width:0}
+.voicebar > *{min-width:0}
+.voicebar .vb-row{min-width:0}
+.voicebar select{min-width:0;max-width:100%}
+
+/* ③ 搜尋框的 ✕：JS 有正確設 hidden，但 display:flex 權重壓過 [hidden] */
+.s-x[hidden]{display:none}
+.s-x{width:40px;height:40px}
+.s-x:active{background:var(--pukaki);color:#fff}
+.s-x:focus-visible{outline:2px solid var(--pukaki-dk);outline-offset:2px}
+
+/* ④ 底部分頁列：原本只寫 a.on，但「更多」是 button，
+   所以被收進更多選單的六頁完全沒有任何一格亮起 */
+.tabbar a.on,.tabbar button.on{color:var(--pounamu)}
+.tabbar button[data-more][aria-expanded="true"]{background:var(--ice);color:var(--pounamu)}
+.tabbar button[data-more][aria-expanded="true"] .ic{transform:rotate(90deg)}
+.tabbar .ic{transition:transform .2s}
+
+/* ⑤ 回到頂端鈕：原本 opacity:0 但仍可點，右下角有一塊隱形熱區壓在卡片上 */
+.totop{visibility:hidden;pointer-events:none}
+.totop.show{visibility:visible;pointer-events:auto}
+.totop:active{transform:scale(.92)}
+.totop:focus-visible{outline:2px solid var(--pounamu);outline-offset:3px}
+
+/* ⑥ 可橫向捲動的表格：跟篩選列用同一套提示 */
+.tw{position:relative}
+.grpwrap > .tw{border-radius:12px}
+.tw:focus-visible{outline:2px solid var(--pukaki-dk);outline-offset:2px}
+@media(max-width:780px){
+  .grpwrap:has(> .tw)::before,.grpwrap:has(> .tw)::after{bottom:0}
+  .tw{-webkit-overflow-scrolling:touch}
+}
+
+/* ⑦ 行程頁的候選地點其實是會開 Google Maps 的連結，但長得像資訊卡 */
+.cand{position:relative}
+.cand .cand-n{color:var(--pukaki-dk)}
+.cand::after{content:'↗';position:absolute;top:10px;right:11px;
+  font-size:.76rem;color:var(--pukaki-dk);opacity:.7}
+.cand:active{background:var(--ice)}
+.cand:focus-visible{outline:2px solid var(--pukaki-dk);outline-offset:2px}
+
+/* ⑧ 停止朗讀：沒在唸的時候就該看得出是停用的 */
+.tk-stop[disabled]{opacity:.42;cursor:default}
+.tk-stop:not([disabled]){border-color:var(--rata);color:var(--rata);font-weight:600}
+.tk-stop:not([disabled]):active{background:var(--rata);color:#fff}
+
+/* ⑨ 清單／地圖切換：補上按下與聚焦的回饋 */
+.viewseg button:not(.on):active{background:var(--ice)}
+.viewseg button:focus-visible{outline:2px solid var(--pukaki-dk);outline-offset:-3px}
+
+/* ⑩ 全域焦點保底。全站原本只有三條 :focus-visible 規則，
+   其餘靠瀏覽器預設的 1px 細框，壓在深色底上幾乎看不見。 */
+a:focus-visible,button:focus-visible,select:focus-visible,
+input:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--pounamu);outline-offset:2px;border-radius:4px}
+
+/* ⑪ 手機觸控目標統一補到 44px */
+@media(max-width:780px){
+  .viewseg button{min-height:44px}
+  .tk-stop,#packreset,.vb-slow,#v-test,.tk-ext{min-height:44px}
+  .grpwrap .gs-btn{width:40px;height:40px}
+  .leaflet-control-zoom a{width:40px!important;height:40px!important;line-height:40px!important}
+  .packgrp label{min-height:44px}
+}
+/* ⑫ 地圖 pin 的視覺維持 20px，但命中區放大到 40×40（手機點得準） */
+.pin-hit{display:flex;align-items:flex-end;justify-content:center;
+  width:40px;height:40px;background:transparent}
+
+/* ⑬ 吃的分頁的「必吃」卡片：原本完全沒有樣式，圖片以原生 1500px 呈現，
+   把手機版整頁撐爆 1126px。 */
+.foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin:22px 0 8px}
+.food{position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;min-width:0}
+.food img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.food .flag{position:absolute;top:9px;left:9px;z-index:2;font-size:.7rem;font-weight:700;
+  padding:3px 9px;border-radius:20px;backdrop-filter:blur(6px);white-space:nowrap}
+.food .flag.ok{background:rgba(31,91,78,.9);color:#fff}
+.food .flag.no{background:rgba(190,59,43,.9);color:#fff}
+.food .b{padding:12px 14px 14px}
+.food h4{font-family:var(--serif);font-size:1.06rem;margin:0 0 5px;color:var(--ink)}
+.food p{margin:0;font-size:.85rem;line-height:1.6;color:var(--ink-2)}
+.food p b{color:var(--ink)}
+@media(max-width:560px){
+  .foods{grid-template-columns:repeat(2,1fr);gap:11px}
+  .food .b{padding:10px 11px 12px}
+  .food h4{font-size:.96rem}
+  .food p{font-size:.79rem}
+}
+
 </style>
 <style>
 /* ── 本頁專用 ── */
@@ -4834,14 +4937,21 @@ body.mapmode .totop{display:none!important}
 
   /* ── 手機：清單／地圖切換 ── */
   var seg = el('div', 'viewseg');
+  seg.setAttribute('role', 'radiogroup');
+  seg.setAttribute('aria-label', '顯示方式');
   var segList = el('button', 'on', '📋 清單');
   var segMap = el('button', '', '🗺 地圖');
   segList.type = segMap.type = 'button';
+  segList.setAttribute('role', 'radio'); segMap.setAttribute('role', 'radio');
+  segList.setAttribute('aria-checked', 'true');
+  segMap.setAttribute('aria-checked', 'false');
   seg.appendChild(segList); seg.appendChild(segMap);
   function setView(v) {
     state.view = v;
     segList.className = v === 'list' ? 'on' : '';
     segMap.className = v === 'map' ? 'on' : '';
+    segList.setAttribute('aria-checked', v === 'list');
+    segMap.setAttribute('aria-checked', v === 'map');
     root.dataset.view = v;
     // 手機的地圖模式是「介於頂列與底部分頁列之間的全螢幕面板」，
     // 不靠捲動定位，所以不會有捲過頭、地圖上半被切掉的問題。
@@ -4890,8 +5000,9 @@ body.mapmode .totop{display:none!important}
     var ring = p.flag === 'star' ? 'box-shadow:0 0 0 3px rgba(229,178,60,.55),0 2px 5px rgba(11,22,32,.4);' : '';
     return L.divIcon({
       className: '',
-      html: '<span class="pin-ico" style="background:' + c + ';' + ring + '"></span>',
-      iconSize: [20, 20], iconAnchor: [10, 20], popupAnchor: [0, -18]
+      html: '<span class="pin-hit"><span class="pin-ico" style="background:' + c + ';' +
+            ring + '"></span></span>',
+      iconSize: [40, 40], iconAnchor: [20, 34], popupAnchor: [0, -32]
     });
   }
 
@@ -5359,10 +5470,9 @@ body.mapmode .totop{display:none!important}
     var c = (CATS[p.cat] || {}).color || '#3E9DB8';
     return L.divIcon({
       className: '',
-      html: '<span class="pin-ico" style="background:' + c + ';' +
-            (small ? 'width:14px;height:14px;border-width:2px;' : '') + '"></span>',
-      iconSize: small ? [14, 14] : [20, 20],
-      iconAnchor: small ? [7, 14] : [10, 20], popupAnchor: [0, -14]
+      html: '<span class="pin-hit"><span class="pin-ico" style="background:' + c + ';' +
+            (small ? 'width:14px;height:14px;border-width:2px;' : '') + '"></span></span>',
+      iconSize: [40, 40], iconAnchor: [20, small ? 31 : 34], popupAnchor: [0, -28]
     });
   }
   function gmap(p) {
@@ -5645,8 +5755,8 @@ body.mapmode .totop{display:none!important}
   b.onclick = function () {
     var soft = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: soft ? 'smooth' : 'auto' });
-    var inp = document.querySelector('.s-in');
-    if (inp) setTimeout(function () { inp.focus(); }, soft ? 420 : 0);
+    // 原本這裡會 focus() 搜尋框，但手機會因此彈出鍵盤蓋掉半個螢幕，
+    // 而且按鈕只說「回到頂端」，不該有這種副作用。桌機也一併拿掉。
   };
   document.body.appendChild(b);
   addEventListener('scroll', function () {
@@ -5803,6 +5913,7 @@ body.mapmode .totop{display:none!important}
       if (plb) plb.textContent = '聽';
       playingBtn = null;
     }
+    if (window.nzStopBtn) window.nzStopBtn.disabled = true;
   }
 
   function say(entry, btn) {
@@ -5815,6 +5926,7 @@ body.mapmode .totop{display:none!important}
     else { u.lang = lang === 'mi' ? 'mi-NZ' : 'en-NZ'; }
     u.rate = slow ? 0.55 : (lang === 'mi' ? 0.82 : 0.9);
     u.pitch = 1;
+    if (window.nzStopBtn) window.nzStopBtn.disabled = false;
     if (btn) {
       btn.classList.add('on'); playingBtn = btn;
       var lb = btn.querySelector('.tk-lb');
@@ -5823,6 +5935,7 @@ body.mapmode .totop{display:none!important}
         btn.classList.remove('on');
         if (lb) lb.textContent = '聽';
         if (playingBtn === btn) playingBtn = null;
+        if (window.nzStopBtn) window.nzStopBtn.disabled = true;
       };
     }
     try { SS.speak(u); } catch (e) { return false; }
@@ -6065,7 +6178,10 @@ body.mapmode .totop{display:none!important}
         syncChips(); render();
       };
     });
-    root.querySelector('.tk-stop').onclick = stopAll;
+    var stopBtn = root.querySelector('.tk-stop');
+    stopBtn.onclick = stopAll;
+    stopBtn.disabled = true;
+    window.nzStopBtn = stopBtn;
     window.addEventListener('pagehide', stopAll);
 
     render();
@@ -6083,7 +6199,7 @@ body.mapmode .totop{display:none!important}
      3. 第一次進頁面時輕輕晃一下，只做一次
    ══════════════════════════════════════════════════════════════ */
 (function () {
-  var grps = document.querySelectorAll('.filters .grp');
+  var grps = document.querySelectorAll('.filters .grp, .tw');
   if (!grps.length) return;
 
   function enhance(grp) {
@@ -6093,7 +6209,15 @@ body.mapmode .totop{display:none!important}
     grp.parentNode.insertBefore(wrap, grp);
     wrap.appendChild(grp);
 
-    var label = (grp.querySelector('.lbl') || {}).textContent || '';
+    var isTable = grp.classList.contains('tw');
+    var label = isTable ? '表格內容'
+      : ((grp.querySelector('.lbl') || {}).textContent || '');
+    if (isTable) {
+      // 鍵盤使用者要能捲動表格，螢幕閱讀器也要知道這是一個可捲動區域
+      grp.setAttribute('role', 'region');
+      grp.setAttribute('tabindex', '0');
+      grp.setAttribute('aria-label', '可左右捲動的表格');
+    }
     var mk = function (dir, sym, txt) {
       var b = document.createElement('button');
       b.type = 'button';
@@ -6113,8 +6237,10 @@ body.mapmode .totop{display:none!important}
 
     function sync() {
       var max = grp.scrollWidth - grp.clientWidth;
+      // 門檻抓 40px：.grp 尾端本來就留了 34px 白，用 4px 會誤判成「後面還有東西」
+      var LIM = isTable ? 8 : 40;
       wrap.classList.toggle('can-l', grp.scrollLeft > 4);
-      wrap.classList.toggle('can-r', max > 4 && grp.scrollLeft < max - 4);
+      wrap.classList.toggle('can-r', max > LIM && grp.scrollLeft < max - 4);
     }
     grp.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
