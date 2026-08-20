@@ -767,13 +767,23 @@ body.mapmode .totop{display:none!important}
 .tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px}
 .tk{display:flex;gap:13px;background:var(--card);border:1px solid var(--line);
   border-radius:14px;padding:15px 16px;box-shadow:var(--shadow)}
-.tk-play{flex:none;width:50px;height:50px;border-radius:50%;cursor:pointer;
-  border:1px solid var(--pukaki);background:var(--ice);color:var(--pukaki-dk);
-  display:flex;align-items:center;justify-content:center;font-size:1.24rem;
-  transition:transform .15s,background .15s;-webkit-tap-highlight-color:transparent}
-.tk-play:active{transform:scale(.93)}
+.tk-play{flex:none;align-self:flex-start;width:56px;min-height:60px;border-radius:14px;cursor:pointer;
+  border:1.5px solid var(--pukaki);background:linear-gradient(180deg,#EAF6FA,#DCEEF5);
+  color:var(--pukaki-dk);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:2px;padding:6px 4px;
+  box-shadow:0 1px 0 rgba(62,157,184,.25),0 1px 3px rgba(15,50,65,.09);
+  transition:transform .12s,background .18s,box-shadow .18s;
+  -webkit-tap-highlight-color:transparent}
+.tk-play .tk-ic{font-size:1.24rem;line-height:1}
+.tk-play .tk-lb{font-size:.66rem;font-weight:700;letter-spacing:.06em;line-height:1;
+  white-space:nowrap;color:var(--pukaki-dk)}
+.tk-play:hover{background:linear-gradient(180deg,#E0F2F8,#CDE7F1);
+  box-shadow:0 2px 7px rgba(15,50,65,.16)}
+.tk-play:active{transform:scale(.94)}
+.tk-play:focus-visible{outline:2px solid var(--pukaki-dk);outline-offset:2px}
 .tk-play.on{background:var(--pukaki);border-color:var(--pukaki);
   animation:tkpulse 1.1s ease-in-out infinite}
+.tk-play.on .tk-lb{color:#fff}
 .tk-play.fail{border-color:var(--rata);background:rgba(190,59,43,.12)}
 @keyframes tkpulse{0%,100%{box-shadow:0 0 0 0 rgba(62,157,184,.55)}
   70%{box-shadow:0 0 0 11px rgba(62,157,184,0)}}
@@ -796,7 +806,8 @@ body.mapmode .totop{display:none!important}
 @media(max-width:560px){
   .tk-grid{grid-template-columns:1fr;gap:11px}
   .tk{padding:13px 14px;gap:11px}
-  .tk-play{width:46px;height:46px;font-size:1.14rem}
+  .tk-play{width:52px;min-height:56px}
+  .tk-play .tk-ic{font-size:1.16rem}
   .tk-t{font-size:1.2rem}
   .vb-k{min-width:100%}
   .voicebar select{flex:1 1 100%}
@@ -809,6 +820,37 @@ body.mapmode .totop{display:none!important}
 .tk-ext:hover{background:var(--card);border-color:var(--pukaki)}
 .tk-ext:active{background:var(--pukaki);color:#fff;border-color:var(--pukaki)}
 .tk-ext .ex{font-size:.72rem;opacity:.65}
+
+/* ══════════ 橫向捲動篩選列的提示 ══════════ */
+.grpwrap{position:relative}
+.grpwrap .gs-btn{display:none}
+
+@media(max-width:780px){
+  /* 邊緣漸層：只在那一側還有內容時出現 */
+  .grpwrap::before,.grpwrap::after{content:'';position:absolute;top:0;bottom:7px;
+    width:52px;pointer-events:none;z-index:3;opacity:0;transition:opacity .2s}
+  .grpwrap::before{left:0;background:linear-gradient(90deg,var(--paper) 22%,transparent)}
+  .grpwrap::after{right:0;background:linear-gradient(270deg,var(--paper) 22%,transparent)}
+  section.tint .grpwrap::before{background:linear-gradient(90deg,var(--paper-2) 22%,transparent)}
+  section.tint .grpwrap::after{background:linear-gradient(270deg,var(--paper-2) 22%,transparent)}
+  .grpwrap.can-l::before,.grpwrap.can-r::after{opacity:1}
+
+  /* 箭頭不只是提示，按下去真的會捲一頁 */
+  .grpwrap .gs-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+    width:32px;height:32px;border-radius:50%;cursor:pointer;padding:0;
+    border:1px solid var(--line);background:var(--card);color:var(--pounamu);
+    box-shadow:0 2px 7px rgba(20,35,45,.2);font-size:1.15rem;line-height:1;
+    align-items:center;justify-content:center;opacity:0;pointer-events:none;
+    transition:opacity .2s,transform .12s;-webkit-tap-highlight-color:transparent}
+  .grpwrap .gs-btn span{margin-top:-2px}
+  .grpwrap .gs-l{left:-4px}
+  .grpwrap .gs-r{right:-4px}
+  .grpwrap.can-l .gs-l,.grpwrap.can-r .gs-r{display:flex;opacity:1;pointer-events:auto}
+  .grpwrap .gs-btn:active{transform:translateY(-50%) scale(.9)}
+
+  /* 尾端留白，讓最後一顆不會剛好貼齊邊緣（看起來像「剛好結束」） */
+  .filters .grp{padding-right:34px}
+}
 
 </style>
 <style>
@@ -2422,7 +2464,12 @@ body.mapmode .totop{display:none!important}
   var playingBtn = null;
   function stopAll() {
     if (SS) { try { SS.cancel(); } catch (e) {} }
-    if (playingBtn) { playingBtn.classList.remove('on'); playingBtn = null; }
+    if (playingBtn) {
+      playingBtn.classList.remove('on');
+      var plb = playingBtn.querySelector('.tk-lb');
+      if (plb) plb.textContent = '聽';
+      playingBtn = null;
+    }
   }
 
   function say(entry, btn) {
@@ -2437,8 +2484,11 @@ body.mapmode .totop{display:none!important}
     u.pitch = 1;
     if (btn) {
       btn.classList.add('on'); playingBtn = btn;
+      var lb = btn.querySelector('.tk-lb');
+      if (lb) lb.textContent = '播放中';
       u.onend = u.onerror = function () {
         btn.classList.remove('on');
+        if (lb) lb.textContent = '聽';
         if (playingBtn === btn) playingBtn = null;
       };
     }
@@ -2563,7 +2613,8 @@ body.mapmode .totop{display:none!important}
     var h = '<article class="tk" data-id="' + esc(e.id) + '">' +
       (canSpeak()
         ? '<button type="button" class="tk-play" aria-label="朗讀 ' + esc(e.t) + '">' +
-          '<span class="tk-ic" aria-hidden="true">🔊</span></button>'
+          '<span class="tk-ic" aria-hidden="true">🔊</span>' +
+          '<span class="tk-lb">聽</span></button>'
         : '') +
       '<div class="tk-b">' +
       '<span class="tk-sec" style="color:' + esc(s.color || '#555') + '">' +
@@ -2688,6 +2739,79 @@ body.mapmode .totop{display:none!important}
   }
 
   boot();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   橫向捲動的篩選列：讓「還有更多，可以往右滑」看得出來
+   手機上 .filters .grp 是橫向捲動容器，而且捲軸被藏起來了，
+   所以完全沒有線索。這裡補上三種提示：
+     1. 邊緣漸層（還有內容的那一側才出現）
+     2. 一顆可以按的箭頭（不只是提示，按了真的會捲）
+     3. 第一次進頁面時輕輕晃一下，只做一次
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var grps = document.querySelectorAll('.filters .grp');
+  if (!grps.length) return;
+
+  function enhance(grp) {
+    if (grp.parentNode.classList.contains('grpwrap')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'grpwrap';
+    grp.parentNode.insertBefore(wrap, grp);
+    wrap.appendChild(grp);
+
+    var label = (grp.querySelector('.lbl') || {}).textContent || '';
+    var mk = function (dir, sym, txt) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gs-btn gs-' + dir;
+      b.setAttribute('aria-label', txt);
+      b.innerHTML = '<span aria-hidden="true">' + sym + '</span>';
+      b.onclick = function () {
+        grp.scrollBy({ left: (dir === 'r' ? 1 : -1) * grp.clientWidth * 0.7,
+                       behavior: 'smooth' });
+        setTimeout(sync, 60); setTimeout(sync, 420);
+      };
+      wrap.appendChild(b);
+      return b;
+    };
+    mk('l', '‹', '看前面的' + label);
+    mk('r', '›', '看後面的' + label);
+
+    function sync() {
+      var max = grp.scrollWidth - grp.clientWidth;
+      wrap.classList.toggle('can-l', grp.scrollLeft > 4);
+      wrap.classList.toggle('can-r', max > 4 && grp.scrollLeft < max - 4);
+    }
+    grp.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+    setTimeout(sync, 300);   // 字型載入後寬度會變
+
+    return { grp: grp, sync: sync };
+  }
+
+  var made = [];
+  Array.prototype.forEach.call(grps, function (g) {
+    var r = enhance(g); if (r) made.push(r);
+  });
+
+  // 第一次進來時，最長的那一列輕輕晃一下——比任何靜態提示都直接
+  try { if (localStorage.getItem('nz-scroll-hint')) return; } catch (e) {}
+  var target = null, best = 0;
+  made.forEach(function (m) {
+    var over = m.grp.scrollWidth - m.grp.clientWidth;
+    if (over > best) { best = over; target = m; }
+  });
+  if (!target || best < 30) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setTimeout(function () {
+    target.grp.scrollTo({ left: 34, behavior: 'smooth' });
+    setTimeout(function () {
+      target.grp.scrollTo({ left: 0, behavior: 'smooth' });
+    }, 480);
+  }, 700);
+  try { localStorage.setItem('nz-scroll-hint', '1'); } catch (e) {}
 })();
 
 </script>
