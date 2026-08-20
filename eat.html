@@ -605,6 +605,114 @@ th .twd,.pop-h .twd{display:none}
   .bk{flex:1;min-width:88px;padding:8px 10px;min-height:46px}
 }
 
+/* ── 卡片的「知道了會加分」展開區 ── */
+.pl-more{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
+  font:inherit;font-size:.86rem;line-height:1.55;cursor:pointer;
+  background:linear-gradient(90deg,rgba(192,138,62,.11),rgba(192,138,62,.03));
+  border:1px solid rgba(192,138,62,.28);border-radius:10px;
+  padding:11px 13px;margin:0 0 11px;color:var(--ink-2);
+  transition:background .18s,border-color .18s;min-height:44px}
+.pl-more:hover{background:rgba(192,138,62,.16);border-color:rgba(192,138,62,.5)}
+.pl-more .dm-ic{flex:none;line-height:1.4}
+.pl-more .dm-t{flex:1;font-weight:600;color:#7A5A16}
+.pl-more .dm-a{flex:none;color:var(--tussock);font-size:.9rem;line-height:1.5;
+  transition:transform .22s}
+.pl-more.open .dm-a{transform:rotate(180deg)}
+.pl.has-img .pl-more{margin:0 18px 11px}
+
+.pl-deep{border-left:3px solid var(--tussock);background:var(--paper-2);
+  border-radius:0 10px 10px 0;padding:13px 16px;margin:0 0 12px;
+  animation:deepIn .22s ease-out}
+.pl.has-img .pl-deep{margin:0 18px 12px}
+.pl-deep p{font-size:.88rem;line-height:1.75;margin:0 0 9px;color:var(--ink-2)}
+.pl-deep p:last-child{margin-bottom:0}
+.pl-deep b{color:var(--ink)}
+.deep-tips{list-style:none;margin:11px 0 0;padding:10px 0 0;
+  border-top:1px dashed var(--line);font-size:.85rem}
+.deep-tips li{position:relative;padding-left:20px;margin-bottom:6px;color:var(--ink-2);line-height:1.65}
+.deep-tips li:last-child{margin-bottom:0}
+.deep-tips li::before{content:'→';position:absolute;left:0;color:var(--tussock);font-weight:700}
+@keyframes deepIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pl-deep{animation:none}.pl-more .dm-a{transition:none}}
+@media(max-width:600px){
+  .pl.has-img .pl-more{margin:0 17px 11px}
+  .pl.has-img .pl-deep{margin:0 17px 12px}
+  .pl-more{font-size:.88rem;padding:12px 13px;min-height:48px}
+  .pl-deep p{font-size:.91rem}
+}
+
+/* ── 文化知識卡 ── */
+.cul-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;margin:20px 0}
+.cul{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;
+  box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.cul:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.cul-img{line-height:0;background:var(--paper-2)}
+.cul-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .6s}
+.cul:hover .cul-img img{transform:scale(1.05)}
+.cul-b{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.cul-cat{align-self:flex-start;font-family:var(--mono);font-size:.68rem;font-weight:700;
+  padding:3px 10px;border-radius:20px;letter-spacing:.03em;margin-bottom:9px}
+.cul h3{font-family:var(--serif);font-size:1.32rem;font-weight:700;margin:0 0 7px;
+  color:var(--ink);line-height:1.3;font-variant-numeric:lining-nums}
+.cul-lead{font-size:.92rem;font-weight:650;color:var(--pounamu);margin:0 0 11px;line-height:1.6}
+.cul-body p{font-size:.9rem;line-height:1.8;color:var(--ink-2);margin:0 0 11px}
+.cul-body p:last-child{margin-bottom:0}
+.cul-body b{color:var(--ink)}
+.cul-where{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);
+  font-size:.8rem;color:var(--ink-soft);line-height:1.6}
+.cul-where b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  color:var(--tussock);margin-bottom:3px}
+@media(max-width:600px){
+  .cul-grid{grid-template-columns:1fr;gap:16px}
+  .cul-b{padding:17px 18px 19px}
+  .cul h3{font-size:1.26rem}
+  .cul-body p{font-size:.93rem}
+}
+
+/* ── 關鍵字搜尋 ── */
+.searchwrap{position:relative;display:flex;align-items:center;width:100%;margin-bottom:11px}
+.searchwrap .s-ic{position:absolute;left:14px;font-size:.95rem;pointer-events:none;opacity:.55}
+.s-in{width:100%;font:inherit;font-size:16px;/* 16px 避免 iOS 聚焦時自動放大 */
+  padding:12px 42px 12px 40px;border-radius:12px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--ink);min-height:48px;
+  transition:border-color .18s,box-shadow .18s;-webkit-appearance:none;appearance:none}
+.s-in::placeholder{color:var(--ink-soft)}
+.s-in:focus{outline:none;border-color:var(--pukaki);
+  box-shadow:0 0 0 3px rgba(62,157,184,.16)}
+.s-in::-webkit-search-cancel-button{display:none}
+.searchwrap.has .s-in{border-color:var(--pounamu);background:var(--card)}
+.s-x{position:absolute;right:7px;width:34px;height:34px;border-radius:50%;border:0;
+  background:var(--paper-2);color:var(--ink-2);font-size:.82rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center}
+.s-x:hover{background:var(--ice);color:var(--pukaki-dk)}
+
+mark{background:rgba(229,178,60,.42);color:inherit;border-radius:3px;padding:0 2px;
+  font-weight:inherit;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+.empty{text-align:center;padding:44px 20px;color:var(--ink-soft);font-size:.94rem;line-height:1.9}
+.empty b{color:var(--ink)}
+.empty-reset{display:inline-block;margin-top:14px;font:inherit;font-size:.86rem;font-weight:650;
+  padding:10px 20px;border-radius:10px;border:1px solid var(--line);background:var(--card);
+  color:var(--pukaki-dk);cursor:pointer;min-height:44px}
+.empty-reset:hover{border-color:var(--pukaki);background:var(--ice)}
+
+/* 回到頂端（手機） */
+.totop{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:60;
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(252,250,245,.95);backdrop-filter:blur(10px);color:var(--pounamu);
+  font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow-lg);
+  display:none;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.totop.show{opacity:1;transform:none}
+body.mapmode .totop{display:none!important}
+
+@media(max-width:780px){
+  .totop{display:flex}
+  /* 搜尋框在手機上跟著切換列一起黏住，捲很長也搆得到 */
+  .filters .searchwrap{margin-bottom:9px}
+}
+@media(prefers-color-scheme:dark){.totop{background:rgba(18,34,44,.95)}}
+
 </style>
 </head>
 <body>
@@ -619,6 +727,7 @@ th .twd,.pop-h .twd{display:none}
 <a href="book.html">🎟 需預約</a>
 <a href="skydive.html">🪂 跳傘</a>
 <a href="glacier.html">🚁 冰川</a>
+<a href="culture.html">🗿 文化</a>
 <a href="prepare.html">🎒 行前</a>
 <a href="itinerary.html">🗓 行程</a>
 </nav></div></header>
@@ -697,6 +806,7 @@ th .twd,.pop-h .twd{display:none}
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
 <a href="glacier.html"><span>🚁</span>冰川</a>
+<a href="culture.html"><span>🗿</span>文化</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
 </div>
 <script id="places-data" type="application/json">
@@ -889,7 +999,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.09862,
    "lng": 170.829453,
    "img": "images/food-lamington.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "把全紐最紅的肉派做出來的，是一位奧地利主廚。",
+    "paras": [
+     "老闆 Franz Lieber 是<b>奧地利出身的廚師</b>，2010 年才搬到 Fairlie 開店。他不是照著紐西蘭派的老配方做，而是用歐陸廚房的思路重寫餡料——最紅的口味是<b>豬五花配蘋果醬與脆皮</b>，不是常見的牛肉起司。",
+     "肉派在紐西蘭是國民食物，認真到有全國性賽事：Bakels 全國派大賽分 11 個類別，評審每年光試吃就要吃掉約 4,500 個派。所以「這家派好吃」在紐西蘭不是客套話，背後有一整套競賽文化在撐著。"
+    ],
+    "tips": [
+     "過了 Fairlie 就是 Burkes Pass，翻過那個山口才真正進入乾燥的 Mackenzie 盆地——這是進山前最後一個像樣的補給點。"
+    ]
+   }
   },
   {
    "id": "good-shepherd",
@@ -904,7 +1024,19 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.003347,
    "lng": 170.482468,
    "img": "images/tekapo-church.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "先決定要有那扇窗，才決定教堂蓋在哪裡。",
+    "paras": [
+     "一般是先選地再開窗，這裡反過來：當初就先定調<b>祭壇後方必須是一整片平板玻璃</b>，再依照這扇窗要框住的湖景與山景，去反推教堂的座向和位置。所以那個畫面不是運氣好，是 1935 年就設計好的。",
+     "石材規定只能取自基地方圓<b>五英里</b>內，而且必須「未經打鑿、保持天然狀態」，連石頭表面的地衣都刻意留著。施工時還被要求不准整地，教堂四周原生的 matagouri 灌木一叢都不能動。"
+    ],
+    "tips": [
+     "<b>室內全面禁止拍照</b>，手機和平板也算——那是明文規定，不是勸導。",
+     "有婚禮時整個庭院會關閉上鎖，撲空是常有的事。",
+     "旁邊的牧羊犬銅像 1968 年立，紀念的是牧羊犬本身：沒有牠們，Mackenzie 根本養不了羊。"
+    ]
+   }
   },
   {
    "id": "lake-tekapo",
@@ -919,7 +1051,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.004519,
    "lng": 170.477727,
    "img": "images/tekapo-pano.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "Tekapo 其實是拼錯的，正名 Takapō 意思是「連夜倉皇離開」。",
+    "paras": [
+     "官方地名現在寫成 <b>Lake Tekapo/Takapō</b> 雙語並列，因為 Tekapo 是沿用了一百多年的誤拼。Takapō 一般解作「在夜裡匆促離去」，傳說中兩位酋長連夜逃離湖區，被日出撞個正著，就地化成了石柱。",
+     "另一件反直覺的事：這座湖其實是<b>水力發電的水庫</b>。Tekapo A 電廠 1951 年啟用，1970 年代又開挖了一條二十幾公里的運河，把湖水引去 Pukaki 那邊發電。所以水位是被人調控的，湖岸線高低會變。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "mt-john",
@@ -938,7 +1078,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.464442,
    "img": "images/mtjohn.jpg",
    "bk": "Mount John Observatory",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "這座山頭被選上，是因為紐西蘭最好的天空剛好蓋在它上面。",
+    "paras": [
+     "Mackenzie 盆地卡在南阿爾卑斯山的<b>雨影區</b>，年雨量只有約 600 毫米，雲少、空氣乾。Tekapo 一年日照超過 2,400 小時，2023 年更衝到 2,658 小時，全紐最高。天文台 1965 年就設在這個山頭。",
+     "整個鎮也跟著配合：Mackenzie 的燈光管制<b>從 1981 年就寫進區域計畫</b>——燈具必須加遮罩、只准往下打光、用暖色光源。2012 年這一帶成為<b>金級</b>國際暗空保護區，4,367 平方公里，南半球第一個。"
+    ],
+    "tips": [
+     "山頂那具 1.8 公尺望遠鏡是日本出資的 MOA 計畫在用的，靠重力微透鏡搜尋系外行星，由名古屋大學主導——旁邊是真的在運轉的研究設施，不是展示品。"
+    ]
+   }
   },
   {
    "id": "astro-cafe",
@@ -990,7 +1140,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.477453,
    "img": "images/maori-carving.jpg",
    "bk": "Tekapo Dark Sky",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "館裡那具望遠鏡，130 年前有人用它盯著火星找運河。",
+    "paras": [
+     "展場的主角是一具 <b>1894 年</b>的 Brashear 折射鏡，18 吋鏡片出自賓州光學名匠 John Brashear 之手，曾借給 Percival Lowell 觀測火星。後來賓州大學買下它，1954 年天文台關閉後便拆解封存。",
+     "1960 年代初它漂洋過海來到紐西蘭給坎特伯雷大學，卻因經費不足躺了半個世紀；2016 年才捐給信託修復，最後落腳 Tekapo。你在室內看到的，是一具被救回來的古董，不是複製品。"
+    ],
+    "tips": [
+     "這裡是 Ngāi Tahu 與原本的 Earth & Sky 合資的事業，2019 年才改名 Dark Sky Project。導覽會把毛利星象知識和西方天文學並置講——那是刻意設計的主軸，不是附加內容。"
+    ]
+   }
   },
   {
    "id": "dsp-crater",
@@ -1084,7 +1244,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.047761,
    "lng": 170.174231,
    "img": "images/pukaki.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "你看到的湖岸線是人造的——它被抬高了 37 公尺。",
+    "paras": [
+     "為了蓄水發電，1976 到 1979 年間 Pukaki 築起高壩，水位<b>整整抬高 37 公尺</b>，蓄水量增加約 49 億立方公尺。工程大到紐西蘭 1975 年就先架好微地震監測網，擔心水壓會誘發地震。今天的湖岸，是墊高後的新水位。",
+     "湖畔那片荒地也演過戲：《哈比人》的長湖鎮（Laketown）就在 Pukaki 岸邊搭景拍攝，最忙時約 700 名工作人員在這裡工作。現在片場一點痕跡都不剩，土地是私人牧場。"
+    ],
+    "tips": [
+     "Tekapo–Pukaki 之間的水力運河裡養著 Mt Cook Alpine Salmon，海拔 667 公尺，號稱全世界最高的鮭魚養殖場；Pukaki 遊客中心旁有直營店，可以直接買生魚片。"
+    ]
+   }
   },
   {
    "id": "peters-lookout",
@@ -1100,7 +1270,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.135856,
    "geo_approx": "Peters Lookout",
    "img": "images/pukaki-hero.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "沒人說得清 Peter 是誰，但它的毛利名字有出處。",
+    "paras": [
+     "這個點另有一個被正式贈予的毛利名 <b>Tapataia Mahaka</b>，紀念的是湖岸邊一處歷史上的 mahinga kai——傳統採集食物的聚落。相對地，「Peter」到底是哪個 Peter，反而查不到可信的說法。",
+     "它也不是天生長這樣。這裡原本被入侵的野生松樹擋住視線，土地資訊局清掉松樹後，2018 年核准整修，2020 年底才完成現在的植栽、步道與解說牌。你拍到的「天然」構圖，其實是整理過的。"
+    ],
+    "tips": [
+     "路邊沒有大招牌，車速快很容易衝過頭——導航設 Peter's Lookout，看到路肩有停車彎就先減速。"
+    ]
+   }
   },
   {
    "id": "mtcook-village",
@@ -1115,7 +1295,19 @@ th .twd,.pop-h .twd{display:none}
    "lat": -43.734945,
    "lng": 170.097723,
    "img": "images/mtcook-village.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "對 Ngāi Tahu 來說，Aoraki 不是一座山，是一位祖先。",
+    "paras": [
+     "傳說中 Aoraki 是天空之父 Rakinui 的兒子，和兄弟乘獨木舟下凡探望地母，回程祈禱沒念完，船擱淺翻覆。<b>那艘獨木舟化成整座南島</b>，爬上船身高處的兄弟被南風凍成石頭，成了南阿爾卑斯山的群峰——最高的那位就是 Aoraki。",
+     "所以官方名字寫成 <b>Aoraki/Mount Cook</b>，毛利名在前。1998 年 Ngāi Tahu 和解法案先把這座山象徵性歸還部落，再由部落贈與全國。山頂等於祖先的頭，因此嚮導帶隊通常停在<b>離真正最高點約 50 公尺</b>處，不踩上去。"
+    ],
+    "tips": [
+     "SH80 是條死路：從 SH8 岔進來 55 公里，出去也是同樣 55 公里，沒有第二條路。",
+     "村裡只有一座刷卡自助油泵，最近的正規加油站在 Twizel——轉進 SH80 之前先把油加滿。",
+     "整個村子都在國家公園內，土地不能買賣，所有旅館店家都是靠政府特許經營——這就是為什麼選擇少、價格硬。"
+    ]
+   }
   },
   {
    "id": "adventurer-helihike",
@@ -1137,7 +1329,15 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Mount Cook Aerodrome",
    "img": "images/helihike3.jpg",
    "bk": "Tasman Glacier Heli Hike",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "塔斯曼冰川的下半段是黑的——它被石頭蓋住了。",
+    "paras": [
+     "從末端往上游約 8 公里都覆著一層碎石，靠近末端處厚達一公尺左右。石頭像棉被一樣<b>隔熱</b>，所以塔斯曼冰川對暖化的反應不是末端往後縮，而是<b>整個變薄</b>——光是 1890 到 1962 年就垂直掉了約 82 公尺。",
+     "這也正是為什麼非搭直升機不可：走得到的下游是灰黑色的碎石冰，真正乾淨的藍冰、冰洞和裂隙都在上游高處，只能飛上去。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "glacier-highlights",
@@ -1179,7 +1379,15 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Mount Cook Aerodrome",
    "img": "images/helihike1.jpg",
    "bk": "Mount Cook ski plane helicopter",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "能降落在冰川上的滑雪飛機，1955 年就是在這裡發明的。",
+    "paras": [
+     "1955 年 9 月 22 日，Harry Wigley 駕著裝上<b>可收放木製滑雪橇</b>的 Auster Aiglet 降落在塔斯曼冰川雪原，是南半球第一次滑雪飛機降落。輪子能從滑雪橇中伸出來，所以同一架飛機能在跑道起飛、在雪地落地。",
+     "當天機上的乘客之一，是還沒登上聖母峰的 <b>Edmund Hillary</b>。這趟試驗直接催生了 Mount Cook Ski Planes 這門生意；今天你買的冰川降落，用的還是七十年前那個點子。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "tasman-taster",
@@ -1221,7 +1429,17 @@ th .twd,.pop-h .twd{display:none}
    "img": "images/tasman-boat.jpg",
    "url": "https://glacierexplorers.co.nz/",
    "bk": "Tasman Glacier boat tour",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "2011 年基督城地震，把兩百公里外的這座湖震掉一大塊冰。",
+    "paras": [
+     "2011 年 2 月 22 日基督城地震後<b>約半小時</b>，塔斯曼冰川末端發生大規模崩冰，體積約 450 萬立方公尺（媒體常換算成三千萬噸）。研究認為那塊冰本來就瀕臨崩落，地震只是補上了最後一腳。",
+     "你搭船繞的浮冰就是這樣來的：冰川末端一路後退進自己融出來的湖裡，再整塊整塊崩下來。NIWA 估計 1990 年代以來平均一年退約 180 公尺。"
+    ],
+    "tips": [
+     "浮冰的位置與大小每天都不一樣，看得到什麼很靠運氣——這是自然現象，不是安排好的節目。"
+    ]
+   }
   },
   {
    "id": "hooker-valley",
@@ -1234,13 +1452,23 @@ th .twd,.pop-h .twd{display:none}
    "flag": "star",
    "hours": "來回約 10 公里 · 3 小時",
    "url": "https://www.doc.govt.nz/",
-   "note": "★ 起點 White Horse Hill 停車場。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。第二吊橋 2026 年 7 月換新，189 公尺，全紐最長。⚠️ DOC 警告冬末背陰處結冰極滑，建議帶冰爪與登山杖。",
+   "note": "★ 起點 White Horse Hill 停車場。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。第二吊橋 2026 年 7 月換新，全長 189 公尺（媒體稱是全紐最長，DOC 官方新聞稿本身未如此宣稱）。⚠️ DOC 警告冬末背陰處結冰極滑，建議帶冰爪與登山杖。",
    "lat": -43.720689,
    "lng": 170.095521,
    "geo_approx": "Hooker Valley",
    "img": "images/hooker-track.jpg",
    "bk": "Aoraki Mount Cook tour",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "走到底看到的那座冰河湖，1970 年代還不存在。",
+    "paras": [
+     "Hooker Lake 是<b>冰川退縮之後才長出來的</b>：1970 年代晚期才開始積水成湖。1990 年它只有 1.2 公里長，2013 年已經 2.3 公里，冰川一年退超過 50 公尺。你走的這條步道，終點每年都還在往後移。",
+     "谷地與冰川的名字來自英國植物學家 <b>William Hooker</b>，由地質學家 Julius von Haast 命名——注意是父親那一位，不是更有名的兒子 Joseph Hooker，兩人常被弄混。"
+    ],
+    "tips": [
+     "湖邊的風是直接掠過冰面吹過來的，體感遠低於村裡，最外層防風一定要帶著走。"
+    ]
+   }
   },
   {
    "id": "kea-point",
@@ -1256,7 +1484,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -43.728752,
    "lng": 170.093077,
    "img": "images/see-keapoint.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "會在停車場拆你車子的那種鸚鵡，全世界只有這裡有。",
+    "paras": [
+     "Kea 是<b>世界上唯一的高山鸚鵡</b>，只住在南島山區，聰明到會拆背包、咬雨刷和車門橡膠條。DOC 估計野外只剩 <b>1,000 到 5,000 隻</b>，列為「國家瀕危」。而在 1970 年代之前，紐西蘭還在懸賞獵殺牠，累計超過十五萬隻被打死。",
+     "DOC 的規則只有一句：<b>絕對不要餵</b>。被餵過的 kea 會學會靠近人和車找吃的，然後在路上被輾死——牠們最主要的死因之一，其實是被人類「餵」出來的。"
+    ],
+    "tips": [
+     "東西別留在車外，車窗關好；牠們是真的會動手。",
+     "步道盡頭正對 Mt Sefton（3,151 公尺）的冰瀑，安靜的時候可以聽到雪崩的轟隆聲從對面山壁傳過來。"
+    ]
+   }
   },
   {
    "id": "tasman-glacier-view",
@@ -1273,7 +1512,15 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.227868,
    "geo_approx": "Tasman Glacier",
    "img": "images/see-tasmanvalley.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "Blue Lakes 已經不藍了，而且 DOC 自己就這樣寫。",
+    "paras": [
+     "DOC 官網直白寫著：這幾個小高山湖<b>以前是藍的</b>，那是冰川融水的顏色；現在它們靠雨水補注，所以看起來是綠的。冰川退得太遠，含岩粉的融水不再流進來——名字留了下來，顏色沒有。",
+     "同一件事的另一面就在稜線那頭：塔斯曼冰河湖在 1970 年代初還只是冰面上零星的融水池塘，1990 年前後這些池塘連成一片，才成了今天這座湖。四十年就長出一座湖。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "hillary-centre",
@@ -1288,7 +1535,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -43.732778,
    "lng": 170.093113,
    "img": "images/see-hillary.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "希拉里人生第一座真正的山，就在這個村子後面。",
+    "paras": [
+     "1939 年，20 歲、還在家裡幫忙養蜂的 Edmund Hillary，從 Mt Cook 村後方爬上了 <b>Mount Ollivier</b>（1,933 公尺），一般被視為他第一次像樣的登頂。從聖母峰往回推，起點在這裡，不在喜馬拉雅。",
+     "門口那尊銅像 <b>2003 年由他本人親自揭幕</b>，造型取自 1970 年他 50 歲生日完成 Aoraki 三峰縱走後拍的照片——不是慈祥老爺爺，是正在爬山的他。館內的天象館是紐西蘭唯一一座。"
+    ],
+    "tips": [
+     "Mount Ollivier 現在要走 Sealy Tarns 步道再接 Mueller Hut 路線才到得了，落差一千公尺出頭——看得到，但不是散步等級。"
+    ]
+   }
   },
   {
    "id": "old-mountaineers",
@@ -1307,7 +1564,14 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.097723,
    "geo_approx": "Mount Cook Village",
    "img": "images/food-beerflight.jpg",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "老闆 Charlie 不是餐飲業出身，他是登山嚮導。",
+    "paras": [
+     "這家店 2003 年由 <b>Charlie 與 Mary Hobbs</b> 一手蓋起來，Charlie 是紐西蘭備受敬重的登山與滑雪嚮導。這解釋了為什麼營業時間會「看情況」、為什麼傳簡訊問他比看官網準——這本來就是登山者開給登山者的店。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "hermitage",
@@ -1323,7 +1587,15 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.093722,
    "geo_approx": "The Hermitage Mount Cook",
    "img": "images/hooker-lake.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這間飯店被洪水沖垮過一次，又被大火燒光過一次。",
+    "paras": [
+     "第一代 Hermitage 1884 年蓋在更上游、靠近 Mueller 冰川的地方，是土坯屋、只有 11 間房。1913 年兩場洪水把它毀了，1914 年才在<b>現在這個位置</b>重開——所以今天窗外那個角度，是被大水逼出來的。",
+     "1957 年 9 月 15 日廚房起火，剛整修完的建築整棟燒毀。政府急著重建，八個月後、<b>1958 年 5 月</b>就重新開幕。今天你走進去的，已經是第三代 Hermitage。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "big-sky-stargazing",
@@ -1380,7 +1652,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.58826,
    "lng": 169.64308,
    "img": "images/lindis.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這片金草原之所以乾淨，是因為 1975 年就被劃成保護區",
+    "paras": [
+     "1857 年，奧塔哥首席測量師 John Turnbull Thomson 成為第一個翻越這裡的歐洲人。Lindis 這個名字<b>一般認為</b>來自英格蘭東北外海的 Lindisfarne 島，整條路、整條河、整座山峰都跟著這樣叫——不過這個命名由來只見於二手資料，沒查到一手佐證。",
+     "海拔 971 公尺，是南島國道系統最高的埡口。這一帶從 1975 年起就是保護區，所以你沿路看不到電線桿、農舍、圍籬，整片山坡只有 tussock 高山草。那種「什麼都沒有」是刻意留下來的。"
+    ],
+    "tips": [
+     "最佳光線是清晨與傍晚的斜射光，整片草會發亮；正午拍會平掉。",
+     "觀景停車彎不多，看到就停，錯過要開很久才有下一個。"
+    ]
+   }
   },
   {
    "id": "clay-cliffs",
@@ -1395,7 +1678,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.491382,
    "lng": 169.972966,
    "img": "images/lindis.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "它其實不是黏土，是被斷層推上來的百萬年河床",
+    "paras": [
+     "這些尖塔的材料，是一兩百萬年前冰河融水的辮狀河堆下的礫石與粉砂，本來平平躺在地底。是旁邊的 <b>Ostler 斷層</b>把整片沉積層推上來，雨水再把鬆散的部分刻成深溝與尖塔。",
+     "Ostler 斷層到今天仍是活動斷層——也就是說，這片懸崖不是遺跡，是還在被抬高、還在被削掉的東西。毛利語稱這裡 Paritea。"
+    ],
+    "tips": [
+     "進場的 Henburn Road 是未鋪面碎石路，一般小車可走但要慢；入場靠誠實箱，記得帶現金。",
+     "沉積物很鬆，別爬上尖塔、也別站在崖壁正下方。"
+    ]
+   }
   },
   {
    "id": "rippon",
@@ -1417,7 +1711,15 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Rippon",
    "img": "images/see-rippon.jpg",
    "bk": "Wanaka wine tasting",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "老闆是二戰潛艦軍官，在葡萄牙看到片岩坡才想到瓦納卡",
+    "paras": [
+     "Rolfe Mills 二戰時當潛艦軍官，看過葡萄牙 Douro 河谷長在片岩坡上的葡萄園，覺得跟家鄉瓦納卡一模一樣。1975 年他和太太 Lois 開始試種，1982 年才正式商業種植——在當時，沒人相信這麼南邊種得出好酒。",
+     "更罕見的是：Rippon 約八成的葡萄樹是<b>自根、未嫁接</b>的。全球大多數產區因為根瘤蚜必須嫁接美洲砧木，這裡沒有。兒子 Nick Mills 在布根地待了五年，2003 年回來接手，隨即改行生物動力法。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "puzzling-world",
@@ -1433,7 +1735,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 169.161557,
    "img": "images/puzzling.jpg",
    "bk": "Puzzling World Wanaka",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "創辦人懸賞十萬紐幣找通靈者，二十八年沒人領走",
+    "paras": [
+     "1973 年這裡只有一座迷宮，而且是<b>世界第一座立體迷宮</b>——要上下樓、不是平面繞圈。斜塔傾斜 53 度，塔上的時鐘是倒著走的。",
+     "創辦人 Stuart Landsborough 是紐西蘭懷疑論者協會成員。1994 年他開始懸賞：只要通靈者能「讀」出他藏起來的本票位置就能拿走；2006 年加碼到<b>十萬紐幣</b>。直到 2022 年挑戰結束，沒有任何人成功。"
+    ],
+    "tips": [
+     "四個大人的話，迷宮至少留 1 小時，錯覺屋另外算——很多人低估時間。"
+    ]
+   }
   },
   {
    "id": "wanaka-tree",
@@ -1448,7 +1760,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.698355,
    "lng": 169.117564,
    "img": "images/wanaka-tree.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "最有名的那個身世故事，在地史料自己說是傳說",
+    "paras": [
+     "流傳最廣的說法是：1930 年代末有人沿湖岸拉圍籬擋牲畜，柱子是就地砍柳樹枝削成的，插進濕沙裡竟自己生根發芽，<b>整棵樹是一根圍籬柱活過來的</b>。不過在地的 Wanaka History Group 自己把這段標註為 <i>lore</i>（口傳），不是有文獻佐證的正史——當故事聽就好，這反而是它迷人的地方。",
+     "諷刺的是，脆柳（crack willow）在紐西蘭被列為有害植物，法律禁止種植與繁殖。它會紅，是因為 2014 年攝影師 Dennis Radermacher 用它拿下紐西蘭地理年度攝影獎。2020 年 3 月，有人帶鋸子把最上鏡的那根橫枝鋸掉了。"
+    ],
+    "tips": [
+     "湖水位高低會改變「站在水裡」的效果，水少的時候它其實很靠近岸邊，別期待每次都一樣。",
+     "樹齡沒有確定數字，各方推估大約 85～90 歲，碰到有人講得很篤定，多半是照抄的。"
+    ]
+   }
   },
   {
    "id": "roys-peak",
@@ -1486,7 +1809,17 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Felton Road Bannockburn",
    "img": "images/wine-bannockburn.jpg",
    "bk": "Central Otago wine tour Bannockburn",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "山名是趕牛人罵出來的，酒莊隔壁就是淘金留下的月球地形",
+    "paras": [
+     "Mt Difficulty 這個名字，來自十九世紀趕牛人翻越 Kawarau 峽谷的經驗——地形難走到直接變成地名。",
+     "中奧塔哥是紐西蘭<b>唯一的大陸性氣候</b>產區：南阿爾卑斯山擋掉海洋水氣，年雨量常低於 400 毫米，生長季日夜溫差可以拉到 20 度以上。白天曬出糖與風味、夜裡鎖住酸度，黑皮諾就是這樣長出來的。"
+    ],
+    "tips": [
+     "酒莊旁邊就是 Bannockburn Sluicings：1862 到 1930 年代水力採金沖出來的峽谷地形，DOC 管理、約 3.9 公里環狀步道，喝完酒散個步剛好。"
+    ]
+   }
   },
   {
    "id": "domaine-thomson",
@@ -1518,11 +1851,19 @@ th .twd,.pop-h .twd{display:none}
    "town": "Cromwell",
    "q": "Cromwell Heritage Precinct New Zealand",
    "flag": "ok",
-   "note": "1980 年代因建水庫舊鎮沉入湖底，居民把重要建築一棟一棟拆下往上搬、原樣重建。現在是湖畔老街區。",
+   "note": "Clyde 水壩淹掉了舊鎮，居民趕在蓄水前把重要建築一棟一棟拆下往上搬、原樣重建。現在是湖畔老街區。（<b>被救的其實只有八棟</b>，展開看細節。）",
    "lat": -45.04913,
    "lng": 169.206597,
    "img": "images/cromwell.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "水其實是 1992 年才淹上來的，而且大部分建築沒被救",
+    "paras": [
+     "Clyde 水壩是 1980 年代 Muldoon 政府「Think Big」的產物，但真正蓄水是 <b>1992 年 4 月</b>才開始、1993 年淹滿。所以「1980 年代沉入湖底」講的是工程年代，不是淹沒年代。",
+     "被搶救的其實是少數。1985 年居民組成 Save Old Cromwell，最初只選了八棟商業建築搬到高處重建；主街上約五十間店面、六十戶住宅與十幾個果園多半就這樣放棄了。連 Clutha 與 Kawarau 兩河交會那個壯觀的「Junction」也一起消失。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "cromwell-fruit",
@@ -1538,7 +1879,15 @@ th .twd,.pop-h .twd{display:none}
    "lng": 169.197288,
    "geo_approx": "Cromwell",
    "img": "images/food-feijoa.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "四顆水果裡沒有櫻桃——雖然這裡最有名的就是櫻桃",
+    "paras": [
+     "1989 年由 Cromwell 扶輪社出資興建，設計者 Otto Muller 是當地人。高 13 公尺、超過 9 公噸，四顆水果分別是<b>梨、蘋果、油桃、杏桃</b>。櫻桃是 1960 年代才引進的後起之秀，蓋雕塑時還輪不到它。",
+     "會有果園帶，是因為 1860 年代淘金熱退了以後，很多礦工乾脆買地種果樹留下來——中奧塔哥的水果產業，其實是淘金潮的續集。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "arrowtown-chinese",
@@ -1550,11 +1899,23 @@ th .twd,.pop-h .twd{display:none}
    "q": "Arrowtown Chinese Settlement New Zealand",
    "flag": "star",
    "price": "免費 · 露天 · 隨時可進",
-   "note": "★ 整趟最值得停的一站。1860 年代淘金潮時數千名廣東台山、開平來的華工在這裡生活，現場保留他們的小石屋與店鋪遺址。對台灣人來說，站在那些矮到要彎腰的小屋前面，感受完全不一樣。",
+   "note": "★ 整趟最值得停的一站。1860 年代淘金潮時數千名廣東華工（以廣州周邊為主，<b>番禺一縣就約佔三分之二</b>）在這裡生活，現場保留他們的小石屋與店鋪遺址。對台灣人來說，站在那些矮到要彎腰的小屋前面，感受完全不一樣。",
    "lat": -44.938186,
    "lng": 168.825689,
    "img": "images/see-chinese.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "他們不是自己跑來的，是奧塔哥官方把他們請來的",
+    "paras": [
+     "1865 年歐洲礦工集體跑去西岸新金礦，奧塔哥經濟撐不住，<b>但尼丁商會主動邀請</b>中國礦工過來補位。1866 年第一批十二人從澳洲維多利亞抵達。原鄉以廣州周邊縣份為主，其中番禺一縣就佔了約三分之二。",
+     "被請來，卻不准申請新礦區——只能重新淘歐洲人挑剩的尾礦。等金子淘完，1881 年紐西蘭開始對每個入境華人課<b>人頭稅十英鎊</b>，1896 年加到一百英鎊，1908 年起連歸化入籍的資格都被取消。政府正式道歉，要等到 2002 年。"
+    ],
+    "tips": [
+     "Ah Lum 商店（約 1883 年）是現場少數的原始建築，當年兼做雜貨、借貸匯款、翻譯與社交中心；1923 年整個聚落只剩他和一名房客兩個人。",
+     "1881 年全紐西蘭中國女性只有 9 人、男性近 5,000 人——這個聚落幾乎可以確定從來沒住過女人。",
+     "出土文物收在鎮上的 Lakes District Museum，想把故事看完可以接著排進去。"
+    ]
+   }
   },
   {
    "id": "arrowtown-main",
@@ -1569,7 +1930,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.939276,
    "lng": 168.835471,
    "img": "images/arrowtown.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "第一個撈到金子的不是 Fox，秋天那片楓紅也全是種出來的",
+    "paras": [
+     "1862 年 8 月，牧場工人 <b>Jack Tewa</b> 先在箭河撈到金；兩個月後 William Fox 挖到更大量，並對外宣稱是他發現的，小鎮因此一度就叫「Fox's」。",
+     "老街兩排會變色的樹，是 1867 年第二任鎮長 Alec Innes 帶人種下的歐洲樹種——梧桐、橡樹、榆樹。也就是說，<b>箭鎮最有名的秋色裡，一棵紐西蘭原生樹都沒有</b>。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "cardrona-hotel",
@@ -1584,7 +1953,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.881538,
    "lng": 169.003534,
    "img": "images/cardrona.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "受古蹟保護的其實只有那面牆，後面早就重蓋過了",
+    "paras": [
+     "1863 年開業時叫 Empire Hotel。你要拍的那面波羅的海松木假立面，1975 年整修時被刻意保留，後方建築則大幅重建——Heritage NZ 的登錄名稱直接就寫「Cardrona Hotel <b>False Front</b>」，保護的對象就是那面牆本身。",
+     "1926 到 1961 年的老闆 Jimmy Patterson 有條規矩：要往皇后鎮方向走的客人（得翻危險的皇冠山路）只准喝一杯，往瓦納卡方向的可以喝兩杯。他一路做到九十一歲過世。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "crown-range",
@@ -1600,7 +1977,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.992535,
    "lng": 168.938572,
    "img": "images/crown-range.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這條路 2001 年才鋪柏油，在那之前全程碎石",
+    "paras": [
+     "淘金時代它只是箭鎮通往 Cardrona 的一條馱馬便道，落石、陡坡、積雪樣樣有。全線鋪成柏油是 <b>2001 年</b>才完成的事——你開的其實是一條「很新」的老路。",
+     "它是皇后鎮到瓦納卡最短的路（約 70 公里）卻不是最快的：繞 Cromwell 走 SH6 大約 120 公里，但平緩得多、冬天也可靠得多。皇后鎮那一側的連續髮夾彎，當地人叫「The Zig Zag」。"
+    ],
+    "tips": [
+     "下坡全程用低檔位靠引擎煞車，不要一路踩煞車踩到過熱——這條路最常出事的就是煞車失效。"
+    ]
+   }
   },
   {
    "id": "skyline-queenstown",
@@ -1618,7 +2005,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.656124,
    "img": "images/do-gondola.jpg",
    "bk": "Queenstown Skyline gondola luge",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "溜溜車不是皇后鎮發明的，是 Skyline 在羅托魯瓦弄出來的",
+    "paras": [
+     "世界第一條 luge 賽道 1986 年開在北島<b>羅托魯瓦</b>，也是 Skyline 自己做的；皇后鎮這條要等到 1998 年才有，整整晚了十二年。纜車本身則是 1967 年就開了。"
+    ],
+    "tips": [
+     "第一趟通常會被要求先走 Scenic（新手道）跑完，才放你上 Advanced，安排時間時把這趟算進去。",
+     "溜溜車票用「趟數」算，四個大人建議直接買多趟票，跑一趟絕對不夠。"
+    ]
+   }
   },
   {
    "id": "shotover-jet",
@@ -1636,7 +2033,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.671352,
    "img": "images/do-jetboat.jpg",
    "bk": "Shotover Jet",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "這種船是紐西蘭人為了在十公分深的河上開船發明的",
+    "paras": [
+     "噴射快艇的核心是<b>漢米爾頓噴射推進器</b>，1950 年代由紐西蘭工程師 Bill Hamilton 發明。他要解決的問題很土：坎特伯里那些又寬又淺的辮狀河，螺旋槳一放下去就撞底。噴射式沒有外露螺旋槳，十公分水深也跑得動。",
+     "1987 年一條專法把 Shotover 峽谷段的商業經營權<b>獨家</b>給了 Shotover Jet，所以峽谷裡永遠只會有這一家船。公司現在由南島毛利部落 Ngāi Tahu 持有。"
+    ],
+    "tips": [
+     "坐前排看得最爽但也最濕最冷，怕冷的人選中後排。"
+    ]
+   }
   },
   {
    "id": "tss-earnslaw",
@@ -1657,7 +2064,15 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Steamer Wharf Queenstown",
    "img": "images/do-earnslaw.jpg",
    "bk": "TSS Earnslaw Walter Peak",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "它在但尼丁造好，拆成編號鋼板用火車運到湖邊再鉚回去",
+    "paras": [
+     "1912 年下水，跟鐵達尼同一年。湖沒有出海口，船開不進來，所以船身在但尼丁造好後整艘拆掉、每塊鋼板編號、用火車運到湖尾的 Kingston，再在岸邊<b>一塊一塊鉚回去</b>。",
+     "它原本是條貨船：一趟能載一千五百隻羊、七十頭牛、兩百包羊毛，順便送信。1962 年格林諾奇公路通車後它就失業了，1968 年差點被解體，靠觀光才活下來。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "onsen-hot-pools",
@@ -1675,7 +2090,15 @@ th .twd,.pop-h .twd{display:none}
    "img": "images/do-walterpeak.jpg",
    "url": "https://onsen.co.nz/",
    "bk": "Queenstown Onsen hot pools",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "它不是溫泉——業者自己也這麼說",
+    "paras": [
+     "水源是山泉水，經過過濾後用熱交換器加熱到約 38～40 度，加溴消毒，<b>底下沒有地熱</b>。業者官網自己講得很白：這是「Kiwi 版」的泡湯，不是正統溫泉。",
+     "所以它賣的其實不是水質，是那面會整片打開、正對 Shotover 峽谷的窗——價值全在包廂與視野，先弄清楚這點比較不會失望。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "fergburger",
@@ -1690,7 +2113,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.031742,
    "lng": 168.659462,
    "img": "images/food-lamington.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "一開始是巷子裡三公尺見方的小店，只做半夜十二點到五點",
+    "paras": [
+     "2000 年底開張，地點在 Cow Lane 一個約 3×3 公尺的空間，設備是兩台在大賣場買的烤肉爐加一台炸鍋，營業時間<b>半夜十二點到清晨五點</b>——專做酒吧散場的客人。2005 年才搬到現在的 Shotover 街。",
+     "「Ferg」到底是誰、是什麼意思，店家從來不給正解，員工會現場隨口編一個。他們也一路拒絕加盟邀約，理由是「想讓它就只是一間特別的小店」。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "fergbaker",
@@ -1779,7 +2210,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.381522,
    "img": "images/see-glenorchy.jpg",
    "bk": "Glenorchy tour Queenstown",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "1962 年才有路通進來，在那之前只能坐三小時的船",
+    "paras": [
+     "格林諾奇曾經是<b>只有船到得了</b>的地方——TSS Earnslaw 開三個小時送人和補給進去。公路 1962 年才通、1998 年才鋪柏油。那條湖岸公路之所以又美又「晚被發現」，原因就在這裡。",
+     "當地過去挖的是<b>白鎢礦（scheelite）</b>，煉鎢用的。二戰時政府列為戰略物資、直接接管礦場，礦工還因此免服兵役。至於「Paradise」這個地名從哪來，連當地人都說不準，一說是紐西蘭巴鴨（paradise duck）。"
+    ],
+    "tips": [
+     "Isengard 與 Lothlórien 的外景確實在 Paradise 一帶；常被誤傳的 Amon Hen 其實主要在皇后鎮附近的 Closeburn 拍的。",
+     "Glenorchy Lagoon 有一圈約 3 公里的木棧道，無風的早上山影倒映最好看。"
+    ]
+   }
   },
   {
    "id": "kawarau-bungy",
@@ -1796,7 +2238,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.900302,
    "img": "images/do-bungy.jpg",
    "bk": "Kawarau bungy",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "橋本身比高空彈跳老一百年，是 1880 年的淘金公路橋",
+    "paras": [
+     "這座吊橋 1880 年底完工，本來是通往中奧塔哥金礦區的公路橋，工程還拿過 1882 年的 Telford 獎，現在是<b>一級古蹟</b>。1963 年上游新橋通車後它就退休了——退休二十五年之後，被拿來跳。",
+     "靈感鏈很長：萬那杜島民用藤蔓綁腳的成年儀式 → 1979 年牛津「危險運動俱樂部」跳布里斯托吊橋 → 1987 年 AJ Hackett 跳艾菲爾鐵塔被逮。1988 年 11 月 12 日這裡正式開張，第一天 28 個人、每人 75 紐幣。"
+    ],
+    "tips": [
+     "跳台高 43 公尺，可以事先講要不要碰到水；能不能真的碰到還要看當天水位。",
+     "不跳的人可以走到對岸觀景台，那個角度比橋上更好拍。"
+    ]
+   }
   },
   {
    "id": "te-anau-glowworm",
@@ -1815,7 +2268,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 167.726443,
    "img": "images/see-glowworm.jpg",
    "bk": "Te Anau glowworm caves",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "那不是螢火蟲，是會垂釣線抓蟲的蕈蚋幼蟲。",
+    "paras": [
+     "牠的正式名字是 <b>Arachnocampa luminosa</b>，一種蕈蚋（fungus gnat）的幼蟲。牠在洞頂結絲巢，垂下幾十條沾滿黏液珠的絲線，<b>發光把飛蟲騙來黏住</b>再拉上去吃掉。那片藍色星空，其實是一整面運作中的捕蟲網。",
+     "洞被找到的過程也很戲劇。1948 年 Lawson Burrows 照著毛利舊傳說裡的線索找了三年，最後從湖邊潛進水下的裂縫，才在洞內浮出水面。洞裡的地下河到現在還在切割石灰岩，是少見的「還在長」的活洞。"
+    ],
+    "tips": [
+     "洞內全程禁止拍照、禁止開燈——不是規定嚴，是一點光就會讓幼蟲熄燈。",
+     "有幾段通道低矮潮濕要彎腰，穿好走不怕滑的鞋。"
+    ]
+   }
   },
   {
    "id": "te-anau-bird",
@@ -1831,7 +2295,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.432652,
    "lng": 167.71334,
    "img": "images/see-takahe.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "怎麼分辨 takahē 和路邊那隻藍色的鳥？看腿。",
+    "paras": [
+     "takahē 常被認錯成隨處可見的 pūkeko（紫水雞）。分法很簡單：<b>pūkeko 瘦長、腿細、會飛；takahē 又胖又壯、腿粗得像雞腿、完全飛不起來</b>。牠是在沒有陸上天敵的環境裡，把飛行能力整個退化掉的少數鳥類之一。",
+     "1898 年之後，半世紀沒有任何目擊紀錄。1948 年，因弗卡吉爾的醫生 Geoffrey Orbell 憑著草叢裡的怪腳印和沒聽過的鳥叫，帶隊進 Murchison 山區找回了牠。巧的是，螢火蟲洞也是同年被找到的。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "lake-te-anau",
@@ -1846,7 +2318,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.18556,
    "lng": 167.735867,
    "img": "images/teanau.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "湖的名字，來自一個當時沒人找得到的山洞。",
+    "paras": [
+     "Te Ana-au 的意思是<b>「有漩渦水流的洞穴」</b>。也就是說，湖是以洞命名的——但那個洞後來只活在傳說裡，直到 1948 年才被重新找到，就是今天大家搭船去看螢火蟲的地方。名字比洞本身還早留下來。",
+     "湖的西側有三條深入山裡的長臂，叫 North／Middle／South Fiord，是<b>紐西蘭僅有的「內陸峽灣」</b>（其餘 14 條都在海邊）。最深 417 公尺，湖底最低處在海平面以下 226 公尺——冰河真的挖得比海還深。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "mirror-lakes",
@@ -1861,7 +2341,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.028407,
    "lng": 168.010956,
    "img": "images/mirror-lakes.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "先別急著看湖，先看那塊倒過來寫的牌子。",
+    "paras": [
+     "步道邊那塊「MIRROR LAKES」的字是<b>上下顛倒印的</b>——因為它不是寫給你看的，是寫給水面看的。無風時低頭看倒影，字會自己正過來。這是保育部（DOC）埋的小彩蛋，很多人拍完山就走，完全沒發現。",
+     "想要完美倒影，訣竅是<b>愈早愈好</b>。谷地的風多半隨太陽升高才起來，過了中午通常就吹皺了。所以去程順路停比回程停划算很多，回程再看只能碰運氣。"
+    ],
+    "tips": [
+     "去程（上午）看，成功率遠高於回程。"
+    ]
+   }
   },
   {
    "id": "eglinton-valley",
@@ -1891,7 +2381,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.764188,
    "lng": 167.981025,
    "img": "images/homer-tunnel.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這條隧道，是大蕭條時期五個人拿鎬頭和獨輪車開始挖的。",
+    "paras": [
+     "1935 年動工時，現場只有<b>五個人、鎬頭和獨輪車</b>，硬鑿花崗岩，性質上是當年的失業救濟工程。1940 年才打通，1953 年才通車，前後拖了將近 20 年。隧道到現在都還是<b>沒有內襯的裸岩壁</b>，開進去一看就明白。",
+     "代價也很真實：施工期間至少三人死於雪崩，1945 年一場雪崩把東口那段一百公尺長的混凝土防護廊整個摧毀。這條路的雪崩區內有五十多條雪崩路徑，現在靠直升機投擲炸藥「預防性引爆」來管理。"
+    ],
+    "tips": [
+     "隧道往西是約 1:10 的下坡，出洞後接連續彎道，車速先收。",
+     "等紅燈時別餵路邊的 kea，牠們很愛啃車上的橡膠條和雨刷。"
+    ]
+   }
   },
   {
    "id": "the-chasm",
@@ -1906,7 +2407,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.721545,
    "lng": 167.947814,
    "img": "images/stirling-falls.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "沖出這些壺穴的河，名字是威爾斯文的「劍」。",
+    "paras": [
+     "這條河叫 <b>Cleddau River</b>。1823 年把這裡命名為 Milford 的船長 John Grono 是威爾斯人，連家鄉米爾福德港那兩條河的名字都搬來了。Cleddau 在威爾斯文是「劍」，形容河像刀切開地形。",
+     "壺穴其實不是水沖出來的，是<b>石頭磨出來的</b>：卡在凹陷處的碎石被水流帶著原地打轉，像鑽頭一樣越鑽越深。你看到的每一個圓滑的洞，底下都曾經躺著一顆不斷轉圈的石頭。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "milford-sound",
@@ -1922,7 +2431,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 167.86876,
    "img": "images/milford.jpg",
    "bk": "Milford Sound day tour",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "它其實不是 sound——這個名字從一開始就取錯了。",
+    "paras": [
+     "Sound（灣）是河谷被海水淹沒形成的；這裡是<b>冰河刨出來的 fiord</b>，成因完全不同。所以地名雖然沿用 Milford Sound，整個區域卻叫 Fiordland。庫克船長兩度經過入口卻沒發現——從外海看幾乎是隱形的。",
+     "毛利名 <b>Piopiotahi</b> 意思是「一隻 piopio 鳥」：傳說半神 Māui 求永生失敗死去後，一隻 piopio 飛來為他哀鳴。另一則傳說說，死神怕這裡美到讓人捨不得走，放出沙蠅趕人——當地人至今還這樣解釋沙蠅。"
+    ],
+    "tips": [
+     "防蟲液一定要帶。沙蠅在停車場和岸邊最兇，上了船反而還好。"
+    ]
+   }
   },
   {
    "id": "cruise-milford",
@@ -1964,7 +2483,15 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Milford Sound Piopiotahi",
    "img": "images/stirling-falls.jpg",
    "bk": "Milford Sound small boat cruise",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "你以為的那座完美尖峰，其實是五座疊在一起。",
+    "paras": [
+     "Mitre Peak 從常見角度看是一個乾淨的三角錐，實際上它是<b>五個緊靠在一起的山峰</b>，只是從岸邊和船上的視角剛好排成一線。它高 1,692 公尺，而且幾乎是從水面直接站起來的，沒有山腳緩衝。",
+     "英文名來自主教的高帽（mitre），是英國測量船上的 John Lort Stokes 取的；毛利名叫 <b>Rahotu</b>。小船的好處也在這裡——能繞近崖壁換角度，才看得出它根本不是一片平面。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "pure-milford",
@@ -2005,7 +2532,16 @@ th .twd,.pop-h .twd{display:none}
    "geo_approx": "Milford Sound Piopiotahi",
    "img": "images/milford.jpg",
    "bk": "Milford Sound underwater observatory",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "十幾公尺就有黑珊瑚，但原因不是大家講的那個",
+    "paras": [
+     "峽灣一年下六千多毫米的雨，雨水流過森林帶走單寧，在海水上面形成一層<b>茶色的淡水</b>，通常好幾公尺厚。這層水顏色深、又不跟下面的海水混合，把峽灣底下變成一個又暗又特別的環境。",
+     "結果是原本要潛很深才看得到的<b>黑珊瑚</b>，在這裡十幾公尺就有。常見的解釋是「單寧擋光所以深海物種跑上來」，但 Kregting 與 Gibbs 2006 年的實測發現，黑珊瑚分布的深度上限跟光線強弱<b>沒有顯著相關</b>——真正把牠們壓在下面的是<b>鹽度</b>，牠們受不了上層那道淡水。",
+     "黑珊瑚活著的時候其實是<b>白色</b>的，只有骨骼是黑的；峽灣裡有些群體已經活了三、四百年。海底觀景站之所以蓋得起來，靠的就是這個地質與水文的巧合。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "realnz-milford",
@@ -2030,18 +2566,26 @@ th .twd,.pop-h .twd{display:none}
   {
    "id": "stirling-point",
    "name": "Stirling Point",
-   "zh": "最南端路標",
+   "zh": "南端路標",
    "cat": "sight",
    "day": 12,
    "town": "Bluff",
    "q": "Stirling Point Bluff New Zealand",
    "flag": "star",
    "price": "免費",
-   "note": "★ 南島最南端合影點，寫著到倫敦 18,958 公里、到南極 4,810 公里。旁邊有海崖步道，走 20 分鐘就有很好的視野。",
+   "note": "★ 全紐西蘭最有名的合影路標，寫著到倫敦 18,958 公里、到南極 4,810 公里。⚠️ 常被說成「紐西蘭最南端」，但那其實是卡特林斯的 Slope Point——Stirling Point 真正的身分是<b>1 號國道的南端端點</b>。旁邊有海崖步道，走 20 分鐘就有很好的視野。",
    "lat": -46.613486,
    "lng": 168.357306,
    "img": "images/bluff.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這裡其實不是最南端，但它是 1 號公路的起點。",
+    "paras": [
+     "南島真正的最南點是 Catlins 的 <b>Slope Point</b>，再往南還有斯圖爾特島。這裡只是<b>最有名的那根路標</b>，因為它是紐西蘭 1 號國道的南端端點，往北兩千多公里另一頭就是 Cape Reinga。",
+     "旁邊那截巨大的鐵鏈常被當成純裝置藝術。它 2009 年設立，另一半在斯圖爾特島的 Lee Bay——<b>象徵 Māui 繫住獨木舟（南島）的錨鍊</b>，錨就是斯圖爾特島本身。鏈子從這頭沉入 Foveaux 海峽，從那頭再浮出來。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "oyster-cove",
@@ -2061,7 +2605,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.356794,
    "img": "images/food-oyster.jpg",
    "bk": "Bluff Oyster Cove",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "布拉夫生蠔跟你平常吃的生蠔，不是同一種生物。",
+    "paras": [
+     "牠是 <b>Ostrea chilensis</b>，扁殼的 dredge oyster，跟一般養殖的太平洋牡蠣不同屬。關鍵是牠<b>養不起來</b>，只能靠漁船在 Foveaux 海峽拖耙網、從海床上撈——全是野生的，產量完全看海況與資源狀況。",
+     "所以它有很硬性的季節：<b>大約每年 3 月到 8 月</b>，其餘時間禁捕。10 月來剛好整個過季，菜單上若真的有生蠔，多半不是當季現撈的布拉夫蠔。想吃新鮮的，只能換季節再來一次。"
+    ],
+    "tips": [
+     "這個季節改點 blue cod（藍鱈）或淡菜，一樣是最道地的南地吃法。"
+    ]
+   }
   },
   {
    "id": "the-anchorage-bluff",
@@ -2077,7 +2631,15 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.343368,
    "geo_approx": "Bluff Southland",
    "img": "images/food-mussel.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "毛利木雕上那雙會發光的眼睛，用的就是這道菜的殼。",
+    "paras": [
+     "pāua 是紐西蘭特有的黑腳鮑（<b>Haliotis iris</b>），殼內虹彩公認是全世界鮑魚裡最艷的。毛利雕刻中祖先像的眼睛，傳統上就鑲 pāua 殼，象徵夜空裡注視後代的星星——它同時是食物，也是 taonga（珍寶）。",
+     "也因為太搶手，紐西蘭管制<b>未加工原殼出境</b>：撿到整片漂亮的殼別直接塞行李，要帶回家請買已經加工成飾品的成品。順帶一提，pāua 肉天生偏韌，做成餛飩或剁碎入菜是當地最常見的處理法。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "kai-reka",
@@ -2109,7 +2671,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.380446,
    "img": "images/invercargill.jpg",
    "bk": "Bill Richardson Transport World",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "全館最出名的展品，其實是廁所。",
+    "paras": [
+     "這裡有三百多台車、佔地約一萬五千平方公尺，但很多人回來第一句講的是<b>主題廁所</b>——每一間都做成完全不同的主題，誇張到名氣快追上車了，館方自己也把它當招牌在宣傳。真的值得推門進去看一眼。",
+     "收藏的源頭是本地卡車公司老闆 Bill Richardson，他把一台台報廢的老卡車救回來修好，規模一路失控。2015 年 11 月才正式對外開放——等於一個人的私人癖好，最後變成了一座城市地標。"
+    ],
+    "tips": [
+     "廁所不是玩笑，記得繞去看。"
+    ]
+   }
   },
   {
    "id": "e-hayes",
@@ -2126,7 +2698,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 168.347206,
    "geo_approx": "Dee Street Invercargill",
    "img": "images/see-burtmunro.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "他改一台車改了 41 年，那項紀錄到今天還沒人破。",
+    "paras": [
+     "Burt Munro 花了 41 年改這台 1920 年的 Indian Scout，零件買不起就自己做。1967 年他 <b>68 歲</b>，騎著這台 <b>47 歲</b>的老車在 Bonneville 鹽湖跑出 184.087 英里／時。",
+     "那項紀錄（1000cc 以下流線型改裝燃料組）<b>到 2026 年仍然有效</b>，沒人挑戰成功。車之所以會在五金行裡，是因為 1977 年 Munro 中風後，Hayes 家兄弟向他家人買下車與相關物件，之後就一直免費擺著給人看。"
+    ],
+    "tips": [
+     "旁邊那排斷掉的活塞和連桿是真品，是他四十年來失敗的紀錄，別只顧著拍車。"
+    ]
+   }
   },
   {
    "id": "motorcycle-mecca",
@@ -2205,7 +2787,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -46.097253,
    "lng": 168.94584,
    "img": "images/do-speights.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "整個 Gore 地區乾了 51 年，連酒都買不到",
+    "paras": [
+     "1902 年 Mataura 選區公投，六成居民投下禁酒票，隔年起區內 15 家旅館全數關門，一禁就是 51 年，到 1954 年才解除。需求沒有消失，只是轉入地下——<b>「Hokonui」後來變成整個南地私釀威士忌的代名詞</b>。",
+     "技術來自蘇格蘭高地：1870 年代 Mary McRae 帶著七個孩子與一台家傳蒸餾器移民至此，躲進 Hokonui 丘陵繼續釀。禁酒年代 30 多起起訴幾乎都扯得上 McRae 家族。<b>2020 年，博物館旁邊蓋起了合法蒸餾廠。</b>"
+    ],
+    "tips": [
+     "博物館與蒸餾廠在同一區，看完展可以直接試喝「現在合法的那個版本」。"
+    ]
+   }
   },
   {
    "id": "nugget-point",
@@ -2221,7 +2813,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -46.448077,
    "lng": 169.816794,
    "img": "images/nugget-point.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "外海那幾塊礁石，是庫克船長眼中的金塊",
+    "paras": [
+     "「Nugget」講的不是燈塔，而是外海那一串岩礁——1770 年庫克船長經過時覺得它們長得像一塊塊金礦石（nuggets），名字就這樣留下來。燈塔 1870 年 7 月 4 日首次點燈，塔身用的是<b>就地開採的石頭</b>。",
+     "這是紐西蘭本島少數能同時看到紐西蘭海狗、海獅、象鼻海豹的地方，牠們就攤在崖下的礁石上。<b>不過象鼻海豹主要在 12 月到 2 月才出現</b>，九月底這趟看到的多半是海狗。"
+    ],
+    "tips": [
+     "帶望遠鏡：海豹在崖下十幾公尺的礁石上，肉眼只看得到一坨黑色。",
+     "旁邊的 Roaring Bay 有黃眼企鵝觀察掩體，但要傍晚才有機會。"
+    ]
+   }
   },
   {
    "id": "curio-bay",
@@ -2238,7 +2841,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 169.101016,
    "geo_approx": "Curio Bay",
    "img": "images/nugget-point.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "你踩的不是木頭，是二氧化矽長成的木頭形狀",
+    "paras": [
+     "這些樹樁早就不是木頭了。火山泥流一次次把森林活埋，地下水裡的<b>二氧化矽一分子一分子把木質換掉</b>，換到連年輪和樹皮紋路都留著——所以摸起來是石頭，看起來卻完全是樹。",
+     "樹種是<b>現代貝殼杉（kauri）與諾福克松的親戚</b>。那個年代這裡還黏在岡瓦納大陸上，跟南美、澳洲、南極洲連成一片，而地球上還沒有草、也還沒有會開花的植物。"
+    ],
+    "tips": [
+     "樹樁只在退潮前後露出來，而退潮時間每天往後移將近一小時，出發前查當天潮汐。"
+    ]
+   }
   },
   {
    "id": "dunedin-station",
@@ -2253,7 +2866,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.875256,
    "lng": 170.508993,
    "img": "images/dunedin-station.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "建築師的綽號叫「薑餅喬治」，就是被這棟害的",
+    "paras": [
+     "黑色玄武岩配奶油色石灰岩交錯堆疊，落成時大家覺得像薑餅屋，建築師 George Troup 從此被叫做 <b>「Gingerbread George」</b>。那種奶油色石頭叫 Oamaru stone——隔天在 Oamaru 整條老街都是它。",
+     "反差是：這麼氣派的車站，今天幾乎沒有定期客運列車了。<b>剩下的多半是觀光路線</b>（Taieri Gorge 那類），平常時間站體安靜得像座博物館，這也是它好拍的原因之一。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "baldwin-street",
@@ -2269,7 +2890,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.849807,
    "lng": 170.535057,
    "img": "images/baldwin.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "紀錄搶回來，靠的是「從哪裡量」這件事",
+    "paras": [
+     "爭議在量法。威爾斯那條 Ffordd Pen Llech 最陡的是彎道內側（37.45%），但金氏 2020 年 4 月改採<b>沿道路中線量測</b>，Baldwin Street 以 34.8% 對 28.6% 把紀錄拿了回來。",
+     "它會這麼陡是個意外——但尼丁的棋盤格街道是<b>在倫敦畫的圖，畫的人沒看過這裡的地形</b>，直接把方格套在山坡上。上半段鋪的是混凝土不是柏油，因為天一熱柏油會整片往下流。"
+    ],
+    "tips": [
+     "走上去約 10 分鐘，下坡比上坡更傷膝蓋，別用跑的。",
+     "開車上去容易熄火或溜車，租來的車不建議冒險。"
+    ]
+   }
   },
   {
    "id": "larnach-castle",
@@ -2286,7 +2918,15 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.627249,
    "img": "images/larnach.jpg",
    "bk": "Larnach Castle",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "蓋城堡的人，最後在國會的會議室裡舉槍",
+    "paras": [
+     "1898 年 10 月 12 日，時任國會議員的 William Larnach 在威靈頓國會大廈一間委員會室內舉槍自盡。導火線是財務崩潰——他重壓的 Colonial Bank 1895 年倒閉。<b>他死時甚至沒有留下遺囑。</b>",
+     "城堡是為第一任妻子 Eliza 蓋的，Eliza 1880 年病逝；他續娶她同父異母的姊妹 Mary，Mary 也早逝；女兒 Kate 二十多歲走了。城堡後來荒廢到<b>舞廳被拿去關羊</b>，1967 年才由 Barker 夫婦買下修復。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "speights",
@@ -2304,7 +2944,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.500227,
    "img": "images/food-beerflight.jpg",
    "bk": "Speights Brewery tour",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "Dunedin 就是蓋爾語的「愛丁堡」，一切從這裡開始",
+    "paras": [
+     "Dunedin 來自 <b>Dùn Èideann</b>，愛丁堡的蘇格蘭蓋爾語名。1848 年蘇格蘭自由教會移民照著故鄉建城，1860 年代淘金潮又讓它三年內膨脹三倍，一度是全紐西蘭最大最有錢的城市。這間啤酒廠、大學和火車站都是那筆錢蓋的。",
+     "另一件當地人才知道的事：<b>釀酒廠外牆有一個免費的泉水龍頭</b>，接的是廠區底下的自流泉，腳踩控制，一年出水約 100 萬公升。常有但尼丁人提著大桶來排隊裝水，就在 Rattray Street 上，不用買票也能用。"
+    ],
+    "tips": [
+     "帶個空水壺去接那個泉水，是完全免費的體驗。",
+     "四個人裡先講好誰不喝——導覽最後真的會讓你自己倒。"
+    ]
+   }
   },
   {
    "id": "albatross-centre",
@@ -2318,13 +2969,24 @@ th .twd,.pop-h .twd{display:none}
    "book": true,
    "price": "Albatross Classic NZ$68.39（1 小時）· Unique Taiaroa NZ$78.91（1.5 小時）",
    "url": "https://albatross.org.nz/",
-   "note": "世界唯一設在本島的皇家信天翁繁殖地。⚠️ 季節提醒：9 月是幼鳥離巢、10 月成鳥才陸續回來，10/06–10/07 正卡在換季空檔，數量會比繁殖高峰少。",
+   "note": "<b>南半球唯一</b>設在本島（非離島）的皇家信天翁繁殖地。⚠️ 季節提醒：9 月是幼鳥離巢、10 月成鳥才陸續回來，10/06–10/07 正卡在換季空檔，數量會比繁殖高峰少。",
    "lat": -45.775145,
    "lng": 170.728333,
    "geo_approx": "Taiaroa Head",
    "img": "images/see-albatross.jpg",
    "bk": "Royal Albatross Centre Dunedin",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "翼展三公尺、兩年才生一顆蛋，賭注大到不能失敗",
+    "paras": [
+     "皇家信天翁翼展約 3 公尺，站著近 1 公尺高。牠們<b>兩年才繁殖一次、一次只下一顆蛋</b>，孵化就要約 11 週，雛鳥還得在巢裡待上約 240 天。幼鳥離巢後直接飛去南大洋，好幾年不落地，之後才回到出生地找伴。",
+     "這裡 1919 年發現第一顆蛋，卻要到 1938 年才在鳥類學家 Lance Richdale 守護下送出第一隻離巢雛鳥。山頭上還有一門 1889 年為防俄國入侵而裝的 <b>Armstrong 消失砲</b>，是全球唯一還在原砲坑、還能操作的。"
+    ],
+    "tips": [
+     "導覽走的是舊要塞，砲台和信天翁觀景台是同一趟，別只想著看鳥。",
+     "風大反而好——信天翁靠風起飛，太平靜的日子牠們常常懶得動。"
+    ]
+   }
   },
   {
    "id": "sandfly-bay",
@@ -2340,7 +3002,18 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.897203,
    "lng": 170.650028,
    "img": "images/see-sealion.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "名字跟沙蠅無關，是「會飛的沙」",
+    "paras": [
+     "Sandfly Bay 不是因為沙蠅咬人，而是因為這裡風太大，<b>沙丘上的沙會整片被吹起來飛</b>（flying sand）。所以下去那段沙坡很鬆很難走，回程爬上來才是真正的挑戰。",
+     "這裡的海獅有段身世：紐西蘭海獅曾在南島本島絕跡超過一百年。1993 年元旦，一隻被叫做 <b>「Mum」</b> 的母海獅產下本島百年來的第一隻幼獅，她一生生了 11 隻——<b>今天奧塔哥的海獅幾乎都是她的後代</b>。"
+    ],
+    "tips": [
+     "海獅睡覺時看起來像一塊漂流木，官方建議保持 20 公尺以上，別為了拍照繞過去。",
+     "下去 15 分鐘、上來要 25–30 分鐘，穿好走的鞋。"
+    ]
+   }
   },
   {
    "id": "otago-museum",
@@ -2371,7 +3044,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.460913,
    "lng": 170.814786,
    "img": "images/kea.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "毛利傳說裡，那艘獨木舟就是在這裡翻的",
+    "paras": [
+     "Matakaea（Shag Point）是 Āraiteuru 獨木舟故事的終點——貨物先在摩拉基與 Kātiki 一帶落海，<b>獨木舟最後在這裡翻覆</b>。所以摩拉基大圓石和這裡是同一個故事的兩段，順著開下來剛好就是敘事順序。",
+     "地質上也很熱鬧：1830 年代捕鯨人在這裡發現<b>紐西蘭第一處煙煤</b>，礦坑一路挖到海面底下，1972 年因為坑道進水才關閉。1983 年這裡還挖出一具 7 公尺長的蛇頸龍化石。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "katiki-point",
@@ -2388,7 +3069,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.851394,
    "geo_approx": "Moeraki Lighthouse",
    "img": "images/hoiho.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "hoiho 是唯一「看得到鄰居就不肯築巢」的企鵝",
+    "paras": [
+     "hoiho 在毛利語裡是「大聲喊叫的」，講的是牠尖銳的叫聲。但牠最特別的是社交習性：<b>其他企鵝擠成一片，牠卻要看不到任何鄰居才肯下蛋</b>，有時候會一路往內陸走近一公里，去找一個看不到同類的角落。",
+     "所以牠特別脆弱——沒有森林灌叢當屏障就不繁殖。<b>南島本島的巢數從 2008–09 年的 739 巢，掉到 2024–25 年只剩 143 巢</b>，十幾年少了八成。紐西蘭 5 元紙鈔上那隻企鵝就是牠。"
+    ],
+    "tips": [
+     "白天當然可以走，但企鵝要日落前後才上岸；沒時間等就當作是來看海狗。",
+     "在掩體裡別探頭：牠一看到有人擋在回巢路上就會掉頭回海裡，等於整晚沒吃到飯。"
+    ]
+   }
   },
   {
    "id": "moeraki-boulders",
@@ -2403,7 +3095,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.345173,
    "lng": 170.826245,
    "img": "images/moeraki.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "它們是從崖壁裡掉出來的，不是海浪堆出來的",
+    "paras": [
+     "圓石不是被海磨圓的，是<b>從裡面往外一圈圈長出來的</b>：海底泥裡的方解石繞著一個核心慢慢結晶，最大那幾顆估計長了四、五百萬年。表面的龜甲裂紋，則是內部乾縮裂開後又被方解石填回去留下的。",
+     "它們原本包在旁邊那片泥岩崖裡，崖被海侵蝕掉，圓石才露出來滾到沙灘上——<b>崖壁上現在還嵌著半顆半顆的</b>，值得抬頭看。毛利語它們叫 <b>Te Kaihīnaki</b>，指的就是那批漂上岸的食物籃與葫蘆。"
+    ],
+    "tips": [
+     "別只拍沙灘上完整的那幾顆，往崖壁走——裂開露出內部方解石結晶的其實更好看。"
+    ]
+   }
   },
   {
    "id": "fleurs-place",
@@ -2476,7 +3178,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -45.103561,
    "lng": 170.970408,
    "img": "images/oamaru.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這種石頭剛挖出來軟到能用鋸子鋸，見了空氣才變硬",
+    "paras": [
+     "Oamaru stone 是九成碳酸鈣的苔蘚蟲石灰岩，<b>剛從採石場（在內陸的 Weston）挖出來時軟到能用手鋸切、用鑿子雕，暴露在空氣中才慢慢硬化</b>。這就是為什麼這裡的門楣與柱頭雕得那麼囉唆——不是特別有錢，是這種石頭實在好雕。",
+     "至於為什麼是 1880 年代：1882 年 2 月第一批冷凍羊肉從 Port Chalmers 運往倫敦，紐西蘭冷凍肉貿易就此起飛，而 Oamaru 正在核心地帶，<b>當時港口一年進出四百多艘船</b>。這整片街區就是那十年蓋起來的。"
+    ],
+    "tips": [
+     "前一天在但尼丁火車站看到的奶油色石頭，就是同一種 Oamaru stone。"
+    ]
+   }
   },
   {
    "id": "blue-penguin-colony",
@@ -2496,7 +3208,18 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.980178,
    "img": "images/blue-penguin.jpg",
    "bk": "Oamaru blue penguin colony",
-   "bookable": true
+   "bookable": true,
+   "deep": {
+    "lead": "這片保育地原本是廢採石場，企鵝自己搬進去的",
+    "paras": [
+     "這裡本來是 1860 年代開挖、1970 年關掉的<b>廢棄採石場</b>。人一走，企鵝就自己搬進那些碎石縫裡築巢；1993 年成立保育區時只有約 30 對繁殖對，現在是數百對的規模。不是人把企鵝找來，是企鵝先來的。",
+     "牠們天黑才上岸不是害羞，是活命——白天上岸太容易被掠食者盯上。所以牠們會先在近海<b>集結成一團等天色夠暗，再一波一波衝上沙灘</b>，這也是為什麼你看到的是「一群」而不是零星幾隻。"
+    ],
+    "tips": [
+     "10 月場次 20:00 開始，但真正上岸看天色，心理準備坐 60–90 分鐘。",
+     "座位在戶外海邊，九、十月的夜風比想像中冷很多，外套一定要帶。"
+    ]
+   }
   },
   {
    "id": "whitestone-cheese",
@@ -2545,7 +3268,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.842898,
    "lng": 170.644912,
    "img": "images/maori-carving.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "畫裡有帆船和騎馬的人——那是歐洲人來了之後畫的",
+    "paras": [
+     "這些畫大約創作於西元 1400 到 1900 年間，顏料是 <b>kōkōwai</b>（赤鐵礦紅赭石，調鳥油或魚油）加木炭黑。內容從 taniwha、鳥獸，一路畫到<b>歐式帆船和騎馬的人</b>——同一面岩壁記錄了「外面的世界什麼時候到的」。",
+     "現場有些地方看起來像被挖過，因為真的被挖過：<b>1916 年一位美國學者 J. L. Elmore 把部分岩畫整塊切下來運走，送進了博物館</b>。所以「什麼都不要拿走」這句話在這裡不是客套話。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "vanished-world",
@@ -2561,7 +3292,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 170.840118,
    "geo_approx": "Duntroon Otago",
    "img": "images/see-vanished.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "2,500 萬年前，紐西蘭大部分泡在海裡",
+    "paras": [
+     "Waitaki 一帶 2023 年成為<b>紐西蘭第一座、也是目前唯一一座 UNESCO 世界地質公園</b>。原因就是這套故事：漸新世時紐西蘭大半沉在海面下，海底堆積的生物殘骸變成白石，也把當時的海洋生物一起封了進去。",
+     "最有代表性的是 <b>Kairuku 巨企鵝</b>——約 2,600 萬年前生活在這附近，站起來約 1.3 公尺高，比今天任何企鵝都大得多。同時期的原始鯨魚、鯊魚牙也都在這一帶出土。"
+    ],
+    "tips": [
+     "先來這裡看化石與解說，再去 Elephant Rocks，那些巨石才不會只是「好拍的石頭」。"
+    ]
+   }
   },
   {
    "id": "waitaki-dam",
@@ -2576,7 +3317,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -44.68896,
    "lng": 170.426633,
    "img": "images/lindis.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "五十萬立方公尺的土石，全靠鎬和鏟子挖出來",
+    "paras": [
+     "1928 年開工、1934 年開始發電。它是紐西蘭<b>最後一座「鎬與鏟」水壩</b>——超過 50 萬立方公尺的土石幾乎全靠人力挖走，沒有現代重機具。原因不是技術落後，而是大蕭條時期政府刻意用這種工法吸收失業人口。",
+     "這個工地後來還改變了紐西蘭：在此照顧工人的醫師 David McMillan 與牧師 Arnold Nordmeyer，1935 年雙雙進入國會，把工地上看到的貧與病，帶進了<b>紐西蘭福利國家制度的設計</b>。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "te-ana-rock-art",
@@ -2609,7 +3358,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -43.804317,
    "lng": 172.967833,
    "img": "images/akaroa-town.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "英國搶先幾天升旗，南島差點變成法國的",
+    "paras": [
+     "1840 年英國已在 5 月宣告對紐西蘭的主權，聽說法國移民船正開往 Akaroa，霍布森立刻派出英艦 Britomart，<b>搶在法國人抵達前幾天開進港內升起英國國旗</b>。法國移民還是留下來定居了，只是身分從殖民者變成僑民。",
+     "所以街道到今天還叫 Rue Lavaud、Rue Balguerie，而這個港灣本身是<b>被海淹進去的古火山口</b>。港內的 Hector's dolphin 是紐西蘭特有小海豚，Banks Peninsula 一帶約 1,000 隻，全紐最密集。"
+    ],
+    "tips": [
+     "從基督城開過去是 75 號公路上山下海的連續彎路，會暈車的人先吃藥。"
+    ]
+   }
   },
   {
    "id": "riverside-market",
@@ -2640,7 +3399,17 @@ th .twd,.pop-h .twd{display:none}
    "lat": -43.532296,
    "lng": 172.643059,
    "img": "images/see-cardboard.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "98 根紙管，但撐住它的其實不只是紙",
+    "paras": [
+     "主結構是 98 根排成 A 字形的紙管，但誠實地說：<b>紙管裡面塞了木製結構梁</b>，整座建築又架在八個貨櫃組成的牆體上。坂茂從來不主張「純紙能蓋房子」，他要的是<b>便宜、快、災後就地取得</b>。",
+     "所謂「臨時」，設計壽命是 50 年。正面那面三角形彩色玻璃，圖案取自地震中毀掉的舊大教堂玫瑰窗——把一個碎掉的圓，拆成一片片三角形重新裝上去。"
+    ],
+    "tips": [
+     "走幾分鐘就到 CTV 大樓遺址與雅芳河畔的官方地震紀念牆，三個點連著看，感受完全不同。"
+    ]
+   }
   },
   {
    "id": "185-chairs",
@@ -2650,14 +3419,52 @@ th .twd,.pop-h .twd{display:none}
    "day": 16,
    "town": "Christchurch",
    "q": "185 Empty Chairs Christchurch New Zealand",
-   "flag": "star",
+   "flag": "closed",
    "price": "免費",
-   "note": "★ 紀念地震 185 位罹難者的裝置，每張椅子都不一樣。非常震撼。",
+   "note": "⚠️ <b>這件裝置 2023 年 4 月已由藝術家主動撤除</b>，185 張椅子被民眾各自帶回家。中文旅遊資訊大多還沒更新，仍在推薦——<b>不要排成必到點</b>。想看地震紀念，改去下面那個 Oi Manawa。",
    "lat": -43.530946,
    "lng": 172.642651,
    "geo_approx": "Latimer Square Christchurch",
    "img": "images/see-185chairs.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "⚠️ 這件裝置 2023 年 4 月已經撤掉了",
+    "paras": [
+     "<b>2023 年 4 月 1 日，藝術家 Peter Majendie 主動結束了它</b>，並邀請民眾各自把一張椅子帶回家，讓 185 張椅子散進城市各處。中文旅遊資訊還在大量推薦，出發前務必再確認現場狀況，不要把它排成必到點。",
+     "它原本只打算擺三個星期。椅子每張都不一樣，是因為每張代表一個不同的人——嬰兒座椅、輪椅、沙發、辦公椅；靈感來自梵谷用一張空椅子畫出一個人的作法。<b>現在椅子散在各家客廳裡，某種意義上更貼近原意</b>。"
+    ],
+    "tips": [
+     "想看地震紀念，改去雅芳河畔的 Canterbury Earthquake National Memorial（Oi Manawa），185 個名字刻在河邊的大理石牆上。"
+    ]
+   }
+  },
+  {
+   "id": "oi-manawa",
+   "name": "Canterbury Earthquake National Memorial (Oi Manawa)",
+   "zh": "坎特伯里地震國家紀念牆",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Canterbury Earthquake National Memorial Christchurch",
+   "flag": "star",
+   "price": "免費",
+   "hours": "戶外，全日開放",
+   "lat": -43.534515,
+   "lng": 172.638243,
+   "geo_approx": "Oxford Terrace, Avon River",
+   "bookable": false,
+   "note": "★ 雅芳河畔的弧形大理石牆，<b>185 位罹難者的名字刻在上面</b>。取代白椅，成為基督城現在正式的地震紀念地點。走路就在市中心，安靜、不用門票。",
+   "deep": {
+    "lead": "名字是毛利語，意思是「顫抖的心」",
+    "paras": [
+     "<b>Oi Manawa</b> 由 Ngāi Tūāhuriri（在地毛利部族）命名，字面是「顫抖的心」——同時指地震時搖晃的大地，和活下來的人心裡那份震動。2017 年 2 月 22 日、地震六週年當天正式啟用。",
+     "牆是弧形的，沿著雅芳河展開，刻意做得很低、很安靜，<b>不是紀念碑式的高聳建築，而是讓人可以走近、伸手摸到名字的高度</b>。對岸有一段河岸步道，是設計的一部分，讓人隔著水看過來。"
+    ],
+    "tips": [
+     "就在市中心 Oxford Terrace，離紙教堂步行約 15 分鐘，可以跟 Quake City 排同一段。",
+     "旁邊沒有解說牌陣仗，去之前先知道這段背景，感受會完全不同。"
+    ]
+   }
   },
   {
    "id": "chch-botanic",
@@ -2725,7 +3532,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 172.633394,
    "img": "images/see-cardboard.jpg",
    "bk": "Quake City Christchurch",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "規模比 2010 那次小，卻幾乎摧毀了整座城",
+    "paras": [
+     "2010 年 9 月那場是規模 7.1，2011 年 2 月這場只有 6.3——但<b>震源只有四、五公里深、就在市區旁邊</b>，而且發生在中午、人全在建築物裡的時候。185 位罹難者中，<b>有 115 人死在 CTV 一棟大樓</b>。",
+     "罹難者來自二十多個國家：紐西蘭 97 人、日本 28 人、中國 23 人，很多是語言學校學生。市中心後來拆了一千兩百多棟建築，郊區另有八千多戶因土壤液化被政府收購拆除——這就是為什麼基督城看起來那麼新。"
+    ],
+    "tips": [
+     "先看這裡再走市區，路上每一塊空地都會突然變得有意義。"
+    ]
+   }
   },
   {
    "id": "sky-tower",
@@ -2736,12 +3553,20 @@ th .twd,.pop-h .twd{display:none}
    "town": "Auckland",
    "q": "Sky Tower Auckland New Zealand",
    "flag": "ok",
-   "note": "南半球最高建築，328 公尺。觀景台看得到兩片海。",
+   "note": "紐西蘭最高建築，328 公尺，觀景台看得到兩片海。（<b>常見的「南半球最高」說法 2022 年就過期了</b>，展開看原因。）",
    "lat": -36.848463,
    "lng": 174.762183,
    "img": "images/see-skytower.jpg",
    "bk": "Auckland Sky Tower",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "「南半球最高」這個頭銜，2022 年就過期了",
+    "paras": [
+     "328 公尺沒錯，但<b>「南半球最高建築」的說法已經不成立</b>——雅加達的 Autograph Tower 在 2022 年超過了它，Sky Tower 現在排第二。中文旅遊資料幾乎都還沒改，看到照抄舊說法可以心裡有數。",
+     "設計上它能扛時速 200 公里以上的強風，並<b>容許塔身在強風中擺動達一公尺</b>。觀景台那幾塊會讓人腳軟的玻璃地板，厚度是 38 公釐。塔身燈光顏色會隨節日與事件更換。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "auckland-museum",
@@ -2758,7 +3583,17 @@ th .twd,.pop-h .twd{display:none}
    "lng": 174.77781,
    "img": "images/see-aklmuseum.jpg",
    "bk": "Auckland Museum Maori show",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這棟建築本身就是一戰陣亡將士的紀念碑",
+    "paras": [
+     "它 1929 年落成，名字裡的 War Memorial 不是裝飾——<b>整棟建築就是紐西蘭的一戰紀念碑</b>，博物館只是裝在裡面的內容。而它腳下這片 Auckland Domain，本身是一座熄滅的火山口 Pukekawa。",
+     "館內兩件必看：<b>Te Toki-a-Tāpiri</b>，約 1836 年造、長 25 公尺、可載 100 人，是現存最後幾艘傳統毛利戰爭獨木舟之一；還有 <b>Hotunui</b>，1878 年的會堂，1929 年開館隔天由毛利族人正式獻堂。"
+    ],
+    "tips": [
+     "毛利文化表演一天多場但時間固定，進館先看時刻表，再倒推安排其他樓層。"
+    ]
+   }
   },
   {
    "id": "devonport",
@@ -2774,7 +3609,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -36.829731,
    "lng": 174.797538,
    "img": "images/see-devonport.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "山肚子裡的隧道，據說藏著一架失蹤的飛機",
+    "paras": [
+     "North Head（Maungauika）整座山被挖空過。1885 年<b>「俄國恐慌」</b>期間，紐西蘭在 14 個據點趕工建海防要塞，光奧克蘭就占了五處，這裡是其中之一——砲台、彈藥庫、隧道全在山肚子裡。",
+     "後來衍生出一個著名都市傳說：軍方在隧道裡封存了一架失蹤的老 Boeing 飛機。<b>1990 年代真的有人動用機具鑿洞開挖，結果什麼也沒找到</b>，傳說至今沒斷。旁邊的 Takarunga（維多利亞山）66 公尺，是北岸最高的火山錐。"
+    ],
+    "tips": []
+   }
   },
   {
    "id": "ponsonby",
@@ -2804,7 +3647,15 @@ th .twd,.pop-h .twd{display:none}
    "lat": -36.843805,
    "lng": 174.766265,
    "img": "images/see-skytower.jpg",
-   "bookable": false
+   "bookable": false,
+   "deep": {
+    "lead": "這裡以前真的是一座海灣，Queen Street 底下有條溪",
+    "paras": [
+     "Commercial Bay 不是取個好聽的名字——<b>這裡本來真的是一座海灣</b>。Queen Street 是沿著 Waihorotiu 溪的溪谷長出來的，1859 年築海堤把彎曲海岸拉直，之後又把兩側岬角挖掉、往外填海。",
+     "所以你現在站在商場裡買咖啡的位置，一百七十年前是水。<b>今天的海岸線 Quay Street 整條都是填出來的</b>——渡輪碼頭離這裡那麼近不是巧合，是因為海被推到那邊去了。"
+    ],
+    "tips": []
+   }
   }
  ],
  "routes": [
@@ -3078,7 +3929,7 @@ th .twd,.pop-h .twd{display:none}
   }).sort(function (a, b) { return (a.day || 0) - (b.day || 0); });
 
   /* ── 狀態 ── */
-  var state = { days: new Set(), flags: new Set(), view: 'list' };
+  var state = { days: new Set(), flags: new Set(), view: 'list', q: '' };
 
   /* ── 小工具 ── */
   function el(tag, cls, html) {
@@ -3109,8 +3960,41 @@ th .twd,.pop-h .twd{display:none}
   }
   function isMobile() { return window.matchMedia('(max-width: 780px)').matches; }
 
+  /* ── 搜尋 ── */
+  function haystack(p) {
+    if (p._hay) return p._hay;
+    var d = p.deep || {};
+    p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
+              d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
+              (CATS[p.cat] || {}).label,
+              'D' + String(p.day).padStart(2, '0'),
+              (dayByNum[p.day] || {}).date]
+      .filter(Boolean).join(' ').toLowerCase();
+    return p._hay;
+  }
+  function terms() {
+    return state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  }
+  /* 把命中的字詞包成 <mark>，text 會先被跳脫 */
+  function hl(text) {
+    var t = esc(text);
+    var ts = terms();
+    if (!ts.length) return t;
+    ts.forEach(function (k) {
+      if (k.length < 1) return;
+      var re = new RegExp('(' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      t = t.replace(re, '<mark>$1</mark>');
+    });
+    return t;
+  }
+
   /* ── 篩選 ── */
   function pass(p) {
+    var ts = terms();
+    if (ts.length) {
+      var hay = haystack(p);
+      for (var i = 0; i < ts.length; i++) if (hay.indexOf(ts[i]) < 0) return false;
+    }
     if (state.days.size && !state.days.has(p.day)) return false;
     if (state.flags.has('star') && p.flag !== 'star') return false;
     if (state.flags.has('book') && !p.book) return false;
@@ -3121,6 +4005,35 @@ th .twd,.pop-h .twd{display:none}
 
   /* ── 建立篩選列 ── */
   var bar = el('div', 'filters');
+
+  var sw = el('div', 'searchwrap');
+  sw.innerHTML =
+    '<span class="s-ic" aria-hidden="true">🔍</span>' +
+    '<input type="search" class="s-in" enterkeyhint="search" autocomplete="off" ' +
+    'autocapitalize="off" spellcheck="false" placeholder="搜尋地點、城鎮、關鍵字…" ' +
+    'aria-label="搜尋地點">' +
+    '<button type="button" class="s-x" aria-label="清除搜尋" hidden>✕</button>';
+  var input = sw.querySelector('.s-in');
+  var clearBtn = sw.querySelector('.s-x');
+  var deb = null;
+  function applyQ(v) {
+    state.q = v.trim();
+    clearBtn.hidden = !state.q;
+    sw.classList.toggle('has', !!state.q);
+    render();
+  }
+  input.addEventListener('input', function () {
+    clearTimeout(deb);
+    var v = input.value;
+    deb = setTimeout(function () { applyQ(v); }, 140);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+    if (e.key === 'Escape') { input.value = ''; applyQ(''); }
+  });
+  clearBtn.onclick = function () { input.value = ''; applyQ(''); input.focus(); };
+  bar.appendChild(sw);
+
   var daysPresent = [];
   pool.forEach(function (p) { if (daysPresent.indexOf(p.day) < 0) daysPresent.push(p.day); });
   daysPresent.sort(function (a, b) { return a - b; });
@@ -3281,11 +4194,27 @@ th .twd,.pop-h .twd{display:none}
     var h = p.img ? '<div class="pl-img"><img src="' + esc(p.img) + '" alt="' +
       esc(p.zh || p.name) + '" loading="lazy" decoding="async"></div>' : '';
     h += '<div class="pl-top"><span class="pl-dot" style="background:' + c + '"></span>' +
-      '<h3>' + esc(p.name) + (p.zh ? '<small>' + esc(p.zh) + '</small>' : '') + '</h3></div>';
+      '<h3>' + hl(p.name) + (p.zh ? '<small>' + hl(p.zh) + '</small>' : '') + '</h3></div>';
     if (tags) h += '<div class="pl-tags">' + tags + '</div>';
     if (p.price) h += '<div class="pl-price">' + esc(p.price) + '</div>';
     if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
-    if (p.note) h += '<p class="pl-note">' + esc(p.note) + '</p>';
+    if (p.note) h += '<p class="pl-note">' + hl(p.note) + '</p>';
+
+    if (p.deep && p.deep.lead) {
+      var did = 'deep-' + p.id;
+      h += '<button type="button" class="pl-more" data-deep="' + did + '" aria-expanded="false" ' +
+        'aria-controls="' + did + '">' +
+        '<span class="dm-ic">💡</span><span class="dm-t">' + esc(p.deep.lead) + '</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></button>' +
+        '<div class="pl-deep" id="' + did + '" hidden>';
+      (p.deep.paras || []).forEach(function (t) { h += '<p>' + t + '</p>'; });
+      if (p.deep.tips && p.deep.tips.length) {
+        h += '<ul class="deep-tips">';
+        p.deep.tips.forEach(function (t) { h += '<li>' + t + '</li>'; });
+        h += '</ul>';
+      }
+      h += '</div>';
+    }
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
       '<a class="b-map" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">📍 Google Maps</a>' +
@@ -3310,11 +4239,24 @@ th .twd,.pop-h .twd{display:none}
   /* ── 渲染 ── */
   function render() {
     var list = pool.filter(pass);
-    count.textContent = list.length + ' / ' + pool.length + ' 個地點';
+    count.textContent = (state.q || state.days.size || state.flags.size)
+      ? '找到 ' + list.length + ' / ' + pool.length + ' 個'
+      : list.length + ' 個地點';
 
     grid.innerHTML = '';
     if (!list.length) {
-      grid.appendChild(el('div', 'empty', '沒有符合條件的地點。<br>試著取消幾個篩選。'));
+      var e = el('div', 'empty',
+        (state.q ? '找不到「<b>' + esc(state.q) + '</b>」相關的地點。<br>' : '沒有符合條件的地點。<br>') +
+        '<button type="button" class="empty-reset">清除全部條件</button>');
+      grid.appendChild(e);
+      e.querySelector('.empty-reset').onclick = function () {
+        state.q = ''; state.days.clear(); state.flags.clear();
+        input.value = ''; clearBtn.hidden = true; sw.classList.remove('has');
+        bar.querySelectorAll('.fchip').forEach(function (b) {
+          b.setAttribute('aria-pressed', 'false');
+        });
+        render();
+      };
     }
     list.forEach(function (p) {
       var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
@@ -3325,6 +4267,16 @@ th .twd,.pop-h .twd{display:none}
     });
     grid.querySelectorAll('[data-focus]').forEach(function (b) {
       b.onclick = function () { focusPlace(b.dataset.focus, false); };
+    });
+    grid.querySelectorAll('[data-deep]').forEach(function (b) {
+      b.onclick = function () {
+        var box = document.getElementById(b.dataset.deep);
+        if (!box) return;
+        var open = box.hidden;
+        box.hidden = !open;
+        b.setAttribute('aria-expanded', open);
+        b.classList.toggle('open', open);
+      };
     });
 
     if (!map) return;
@@ -3754,6 +4706,99 @@ th .twd,.pop-h .twd{display:none}
     p.dataset.twd = '1';
     f.appendChild(p);
   });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   文化頁：知識卡片（可篩選、可展開）
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var host = document.getElementById('culture');
+  var el = document.getElementById('culture-data');
+  if (!host || !el) return;
+  var DB = JSON.parse(el.textContent);
+  var CATS = DB.meta.cats || {};
+  var cards = DB.cards || [];
+  if (!cards.length) return;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  var active = new Set();
+  var bar = document.createElement('div');
+  bar.className = 'filters';
+  var grp = document.createElement('div');
+  grp.className = 'grp';
+  grp.innerHTML = '<span class="lbl">主題</span>';
+  Object.keys(CATS).forEach(function (k) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fchip'; b.setAttribute('aria-pressed', 'false');
+    b.textContent = CATS[k].icon + ' ' + CATS[k].label;
+    b.onclick = function () {
+      active.has(k) ? active.delete(k) : active.add(k);
+      b.setAttribute('aria-pressed', active.has(k));
+      render();
+    };
+    grp.appendChild(b);
+  });
+  bar.appendChild(grp);
+  var count = document.createElement('span');
+  count.className = 'fcount';
+  bar.appendChild(count);
+
+  var grid = document.createElement('div');
+  grid.className = 'cul-grid';
+  host.appendChild(bar);
+  host.appendChild(grid);
+
+  function render() {
+    var list = cards.filter(function (c) { return !active.size || active.has(c.cat); });
+    count.textContent = list.length + ' / ' + cards.length + ' 則';
+    grid.innerHTML = '';
+    list.forEach(function (c) {
+      var meta = CATS[c.cat] || { label: '', color: '#3E9DB8', icon: '' };
+      var art = document.createElement('article');
+      art.className = 'cul' + (c.img ? ' has-img' : '');
+      var h = c.img
+        ? '<div class="cul-img"><img src="images/' + esc(c.img) + '.jpg" alt="' +
+          esc(c.title) + '" loading="lazy" decoding="async"></div>' : '';
+      h += '<div class="cul-b">' +
+        '<span class="cul-cat" style="background:' + meta.color + '1f;color:' + meta.color + '">' +
+        meta.icon + ' ' + esc(meta.label) + '</span>' +
+        '<h3>' + esc(c.title) + '</h3>' +
+        '<p class="cul-lead">' + esc(c.lead) + '</p>' +
+        '<div class="cul-body">';
+      (c.paras || []).forEach(function (t) { h += '<p>' + t + '</p>'; });
+      h += '</div>';
+      if (c.where) h += '<div class="cul-where"><b>會在這裡遇到</b>' + esc(c.where) + '</div>';
+      h += '</div>';
+      art.innerHTML = h;
+      grid.appendChild(art);
+    });
+    if (window.nzTWD) window.nzTWD.convert(grid);
+  }
+  render();
+})();
+
+/* ── 回到頂端（手機） ── */
+(function () {
+  if (!document.querySelector('.places, .cul-grid')) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'totop'; b.setAttribute('aria-label', '回到頂端');
+  b.innerHTML = '↑';
+  b.onclick = function () {
+    var soft = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: soft ? 'smooth' : 'auto' });
+    var inp = document.querySelector('.s-in');
+    if (inp) setTimeout(function () { inp.focus(); }, soft ? 420 : 0);
+  };
+  document.body.appendChild(b);
+  addEventListener('scroll', function () {
+    b.classList.toggle('show', window.scrollY > 700);
+  }, { passive: true });
 })();
 
 </script>

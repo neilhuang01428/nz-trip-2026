@@ -4,14 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F5B4E">
-<title>行程安排 · 南島環島 2026</title>
+<title>文化與背景 · 南島環島 2026</title>
+<meta name="description" content="紐西蘭南島的毛利文化、地質、生態與歷史背景——知道之後，路上看到的東西會不一樣。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
 /* ═══════════════════════════════════════════════════════════
    NZ SOUTH ISLAND · 旅遊書風格設計系統
@@ -714,32 +711,12 @@ body.mapmode .totop{display:none!important}
 @media(prefers-color-scheme:dark){.totop{background:rgba(18,34,44,.95)}}
 
 </style>
-<style>
-.dayline{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
-  padding:13px 16px;border-top:1px solid var(--line-2);font-size:.92rem}
-.dayline:first-child{border-top:0}
-.dayline .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);line-height:1.25}
-.dayline .n b{display:block;font-size:1.05rem;color:var(--pounamu);font-variant-numeric:lining-nums}
-.dayline .t{color:var(--ink);font-weight:600}
-.dayline .t small{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
-.dayline .g{font-family:var(--mono);font-size:.75rem;color:var(--pukaki-dk);background:var(--ice);
-  padding:4px 10px;border-radius:14px;white-space:nowrap;text-align:center}
-.dayline.has{background:linear-gradient(90deg,rgba(229,178,60,.10),transparent)}
-.dayline.has .t::after{content:' ▸ 要選一個';font-size:.72rem;color:#8A6416;font-weight:700}
-.daytable{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
-  box-shadow:var(--shadow);margin:18px 0}
-a.dayline,.dayline a{text-decoration:none;color:inherit}
-@media(max-width:600px){
-  .dayline{grid-template-columns:56px 1fr;gap:10px;padding:12px 14px}
-  .dayline .g{grid-column:2;justify-self:start;margin-top:3px}
-}
-</style>
 </head>
 <body>
 <div id="prog"></div>
 <header class="topbar"><div class="inner">
 <a class="logo" href="index.html">南島 <em>2026</em></a>
-<span class="pagename">行程</span>
+<span class="pagename">文化</span>
 <nav>
 <a href="index.html">🏔 總覽</a>
 <a href="sights.html">📸 景點</a>
@@ -747,107 +724,59 @@ a.dayline,.dayline a{text-decoration:none;color:inherit}
 <a href="book.html">🎟 需預約</a>
 <a href="skydive.html">🪂 跳傘</a>
 <a href="glacier.html">🚁 冰川</a>
-<a href="culture.html">🗿 文化</a>
+<a href="culture.html" class="on">🗿 文化</a>
 <a href="prepare.html">🎒 行前</a>
-<a href="itinerary.html" class="on">🗓 行程</a>
+<a href="itinerary.html">🗓 行程</a>
 </nav></div></header>
 
-<section style="padding-top:30px;padding-bottom:6px">
-  <div class="wrap">
-    <div class="sec-k">Itinerary</div>
-    <h2>行程安排</h2>
-    <p class="lead">17 天裡，<strong>有 12 天路線是固定的，開過去就對了</strong>。
-      只有 <strong>5 天需要我們一起決定</strong>：那天要走哪條路、或那一整天要怎麼安排。
-      這頁就是把那 5 天的選項攤開來比。</p>
+<div class="hero" style="min-height:60vh">
+  <div class="hero-bg" style="background-image:url('images/maori-carving.jpg');background-position:60% center"></div>
+  <div class="hero-in">
+    <div class="eyebrow">Context · Aotearoa</div>
+    <h1>知道了會不一樣<span class="mao">Mātauranga — 知識</span></h1>
+    <p class="lede">同一片湖、同一座山，<strong>知道它的來歷之後，看起來是不一樣的東西</strong>。
+      這頁不講行程，只講背景——毛利文化、地質、生態、歷史。</p>
+    <div class="hero-meta">
+      <span>🗿 毛利文化</span><span>⛰ 地質</span><span>🐧 生態</span><span>📜 歷史</span>
+    </div>
   </div>
-</section>
+  <div class="scroll-cue">↓</div>
+</div>
+<div class="rule-niho"></div>
 
-<!-- ══════ 全程路線圖 ══════ -->
-<section style="padding-top:10px;padding-bottom:6px">
+<section style="padding-top:30px;padding-bottom:8px">
   <div class="wrap">
-    <div class="sec-k rv">The Route</div>
-    <h2 class="rv">全程路線</h2>
-    <p class="lead rv">每一段用不同顏色畫出來，<b>是真實道路，不是直線連點</b>——
-      幾何由 OSRM 依實際路網計算。點線段會顯示那一段的公里數與純開車時間；
-      大圓點是過夜的地方。</p>
-    <div class="routemap" id="routemap"></div>
-    <p style="font-size:.78rem;color:var(--ink-soft);margin-top:9px">
-      🔵 D03 基督城→Tekapo　🟢 D04 →Mt Cook　🟠 D06 →Wanaka　🔴 D07 →皇后鎮　🟣 D10 →Te Anau
-      …依序循環。<b>Milford 那段是當天來回。</b></p>
-  </div>
-</section>
-
-<!-- ══════ 全程一覽 ══════ -->
-<section style="padding-top:10px">
-  <div class="wrap">
-    <div class="sec-k rv">Overview</div>
-    <h2 class="rv">全程一覽</h2>
-    <p class="lead rv">車程是<b>不停車的概估值</b>。紐西蘭官方 NZTA 自己也註明：路線與時間是「指示性」建議，不是保證。
-      <b>南島的路多半是雙線道、彎、限速 100 但實際開不到，請一律往上抓 20–30%。</b></p>
-    <div class="daytable rv" id="daytable"></div>
-    <div class="note tip rv">
-      <span class="h">💡 怎麼用這頁</span>
-      <p style="margin-bottom:0">上表標「<b>▸ 要選一個</b>」的那 5 天，往下捲就會看到選項。
-        <b>點不同的方案卡，下面的地圖路線和景點清單會跟著換</b>，可以直接比較。
-        每個方案底下有一顆按了就能導航的 <b>Google Maps</b> 按鈕。</p>
+    <div class="sec-k">Why This Page</div>
+    <h2>為什麼要有這一頁</h2>
+    <p class="lead">紐西蘭的風景照片誰都看過，<strong>真正會留在記憶裡的是「原來如此」的那一刻</strong>——
+      知道普卡基湖那種不真實的藍是冰川磨出來的岩粉，知道 Aoraki 對南島毛利人來說不是一座山而是一位祖先，
+      知道紐西蘭的鳥為什麼會忘記怎麼飛。</p>
+    <div class="note tip">
+      <span class="h">💡 這頁怎麼用</span>
+      <p style="margin-bottom:0">全部查證過，數字沒把握的就不寫。<b>不用一次看完</b>——
+        用上面的主題篩選，挑有興趣的看；或是出發前一晚翻一翻，路上會突然想起來。
+        每張卡片下面都標了<b>「會在這裡遇到」</b>，對應行程的哪一天、哪個地方。</p>
     </div>
   </div>
 </section>
 
-<!-- ══════ 方案比較 ══════ -->
-<section class="tint">
+<section style="padding-top:6px">
   <div class="wrap">
-    <div class="sec-k rv">Choose Your Route</div>
-    <h2 class="rv">這 5 天有不只一種安排</h2>
-    <p class="lead rv">每一天下面有 2–3 張方案卡，<strong>點一下就會切換</strong>，
-      地圖上的路線、沿途會經過哪些地方都跟著變，可以邊看邊討論。<br>
-      <strong>其中 10/08 那天不是「可以選」，是「非改不可」</strong>——照原本排的，
-      光開車就 7 小時以上。</p>
-    <div id="itin"></div>
-  </div>
-</section>
-
-<!-- ══════ 固定不動的部分 ══════ -->
-<section>
-  <div class="wrap">
-    <div class="sec-k rv">Fixed</div>
-    <h2 class="rv">不能動的三件事</h2>
-    <div class="grid g3">
-      <div class="card rv">
-        <h4>🏨 9/28 Mt Cook 住宿</h4>
-        <p style="font-size:.9rem;margin-bottom:0">已訂含早晚餐的 motel。<b>所以 Mt Cook 那幾天只需要解決午餐。</b>
-          村裡商店選擇極少，建議前一天在 Twizel／Tekapo 買好補給。</p>
-      </div>
-      <div class="card rv">
-        <h4>✈️ 進出點</h4>
-        <p style="font-size:.9rem;margin-bottom:0">基督城進、基督城出（10/09 飛奧克蘭）。
-          <b>租車不用付異地還車費</b>，但訂車時仍要單獨確認。</p>
-      </div>
-      <div class="card rv">
-        <h4>🪂🚁 兩個重頭戲</h4>
-        <p style="font-size:.9rem;margin-bottom:0">跳傘排 <b>9/27 早上</b>（Lake Pukaki 機場，順路），
-          冰川健行排 <b>9/28 早上</b>。兩個都看天氣，備案日設計見各自的分頁。</p>
-      </div>
-    </div>
-
-    <div class="note warn rv">
-      <span class="h">⚠️ 兩個活動會搶同一個備案日</span>
-      <p style="margin-bottom:0"><b>9/29 早上</b>同時是跳傘的備案日、也是冰川健行的備案日
-        （那天回程會再經過 Pukaki 機場，也還沒離開 Mt Cook）。
-        <strong>兩個都要補的話，優先給冰川健行</strong>——因為跳傘在皇后鎮還有 10/01、10/02 兩天可補，
-        <b>冰川健行過了 Mt Cook 就沒有第二次機會了</b>。</p>
-    </div>
+    <div id="culture"></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p style="margin:0 0 10px">車程為概估，<b>以當日路況為準</b>。
-      出發前每天早上請查
-      <a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA Journey Planner</a>；
-      <b>Crown Range Road 不是國道，NZTA 查不到</b>，要看
-      <a href="https://www.qldc.govt.nz/services/transport-and-parking/winter-road-reports" target="_blank" rel="noopener">QLDC 冬季路況頁</a>。</p>
-    <p style="margin:0;font-size:.8rem;color:#5F7583">導航按鈕使用 Google 官方 Maps URLs，不需要 API key，手機上會直接開啟 Google Maps App。</p>
+    <p style="margin:0 0 10px">內容以官方與學術來源為主
+      （<a href="https://teara.govt.nz/" target="_blank" rel="noopener">Te Ara 紐西蘭大百科</a>、
+      <a href="https://www.doc.govt.nz/" target="_blank" rel="noopener">DOC 保育部</a>、
+      <a href="https://nzhistory.govt.nz/" target="_blank" rel="noopener">NZHistory</a>、
+      <a href="https://ngaitahu.iwi.nz/" target="_blank" rel="noopener">Ngāi Tahu</a>、
+      GNS Science 等），查證日 <b>2026/08</b>。
+      涉及毛利文化的部分力求準確與尊重，<b>有爭議或無法確認的說法一律不寫</b>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      照片取自 Wikimedia Commons，作者與授權見 <a href="images/CREDITS.md">images/CREDITS.md</a>。</p>
   </div>
 </footer>
 
@@ -855,16 +784,425 @@ a.dayline,.dayline a{text-decoration:none;color:inherit}
 <a class="" href="sights.html"><span class="ic">📸</span>景點</a>
 <a class="" href="eat.html"><span class="ic">🍽</span>吃的</a>
 <a class="" href="book.html"><span class="ic">🎟</span>需預約</a>
-<a class="on" href="itinerary.html"><span class="ic">🗓</span>行程</a>
-<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class=""><span class="ic">☰</span>更多</button>
+<a class="" href="itinerary.html"><span class="ic">🗓</span>行程</a>
+<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class="on"><span class="ic">☰</span>更多</button>
 </div></nav>
 <div class="sheet" id="more-sheet" data-sheet hidden>
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
 <a href="glacier.html"><span>🚁</span>冰川</a>
-<a href="culture.html"><span>🗿</span>文化</a>
+<a href="culture.html" class="on"><span>🗿</span>文化</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
 </div>
+<script id="culture-data" type="application/json">
+{
+ "meta": {
+  "cats": {
+   "maori": {
+    "label": "毛利文化",
+    "color": "#8C3B2E",
+    "icon": "🗿"
+   },
+   "history": {
+    "label": "歷史",
+    "color": "#7A6234",
+    "icon": "📜"
+   },
+   "society": {
+    "label": "社會與生活",
+    "color": "#2E6B7A",
+    "icon": "🏘"
+   },
+   "geology": {
+    "label": "地質",
+    "color": "#5B4AA8",
+    "icon": "⛰"
+   },
+   "wildlife": {
+    "label": "生態與野生動物",
+    "color": "#1E5B4E",
+    "icon": "🐧"
+   },
+   "sky": {
+    "label": "星空",
+    "color": "#1B3A6B",
+    "icon": "✨"
+   },
+   "season": {
+    "label": "季節與天氣",
+    "color": "#B4791F",
+    "icon": "🍃"
+   }
+  }
+ },
+ "cards": [
+  {
+   "id": "austronesian-cousins",
+   "title": "毛利人是台灣的遠親",
+   "cat": "maori",
+   "lead": "毛利語的「眼睛」是 mata，阿美語也是 mata。",
+   "paras": [
+    "毛利語屬於<b>南島語系</b>。語言學界主流的「<b>出台灣說</b>」認為，這個橫跨太平洋與印度洋、近四億人使用的語系，源頭就在五、六千年前的台灣——台灣原住民語保留了最古老、分化最深的分支，其中東部的阿美語被認為最接近後來一路擴散出去的那一支。",
+    "具體到什麼程度？「眼睛」在阿美語是 <b>mata</b>，毛利語也是 mata；「五」在阿美語是 <b>lima</b>，毛利語是 <b>rima</b>（南島語的 l 到毛利語常變成 r）。全世界一千兩百多種南島語，多數的「眼睛」都念 mata。",
+    "誠實地說一句：語言學證據很強，但基因與考古學界對遷徙路線細節仍在爭論，不是已經定案的事。不過站在奧克蘭博物館那艘大戰船 waka 前面，那個「原來我們是遠親」的感覺是真的。"
+   ],
+   "where": "全程聽到毛利地名時；D18 奧克蘭戰爭紀念博物館毛利廳",
+   "img": "see-aklmuseum"
+  },
+  {
+   "id": "placename-decoder",
+   "title": "地名解碼器",
+   "cat": "maori",
+   "lead": "知道 wai 是水、ō- 是「某人的地方」，地圖就變成一本書。",
+   "paras": [
+    "幾個字根解開一半的地名：<b>wai</b> 水、<b>roto</b> 湖、<b>maunga</b> 山、<b>ō-</b>「某人的地方」。所以 Waitaki 是「哭泣的水」、Ōtākou（英國人念歪成 Otago）是「Tākou 的地方」、<b>Te Waipounamu</b>——整座南島的毛利名——是「綠玉之水」。",
+    "南島的毛利語有個好認的特色：北島的 <b>ng</b>，在南島常唸成 <b>k</b>。北島寫 Ngāi Tahu，南島自己寫 <b>Kāi Tahu</b>；北島叫最高峰 Aorangi，南島叫 <b>Aoraki</b>。看到一堆 k，不是拼錯，是南方腔。",
+    "米爾福德的毛利名 <b>Piopiotahi</b> 是「一隻 piopio」——傳說 Māui 死後，一隻 piopio 鳥飛去那裡哀悼。也有沒定論的：蒂卡波正名其實是 <b>Takapō</b>，一般解為「夜裡匆忙離開」；Te Anau 常被說成「漩渦之洞」，但這說法在本地就有爭議。"
+   ],
+   "where": "全程路牌與地圖；D02 Takapō、D03 Pukaki、D11 Piopiotahi、D15 Ōtākou",
+   "img": "pukaki-hero"
+  },
+  {
+   "id": "pounamu-owner",
+   "title": "綠玉的主人是一個部落",
+   "cat": "maori",
+   "lead": "南島天然狀態的綠玉，法律上全部屬於 Ngāi Tahu。",
+   "paras": [
+    "<b>Pounamu</b>（綠玉）只有南島有，因為它是板塊擠出來的：南島正好騎在澳洲板塊與太平洋板塊交界的<b>阿爾卑斯斷層</b>上，深處的高壓熱液把岩石變成透閃石。產區集中在西岸 Arahura、南 Westland、瓦卡蒂普湖區與米爾福德一帶。",
+    "1997 年的《Ngāi Tahu (Pounamu Vesting) Act》把 Ngāi Tahu 領域內<b>所有天然狀態的綠玉</b>所有權還給部落（常被誤引成 1998 年的和解法案）。海灘漂石一般可撿，河床採集受限，Arahura 河因為 tapu 完全禁止。",
+    "至於「綠玉不能自己買、一定要別人送」這句紀念品店必講的話：查下去會發現<b>找不到任何可考的傳統 tikanga 這樣規定</b>，比較像觀光敘事加工出來的浪漫。重點反而是買到真的——正品附一組追溯碼，上網查得到它出自哪條河、誰雕的。"
+   ],
+   "where": "全程紀念品店；D06 Wanaka、D09 皇后鎮",
+   "img": "pounamu"
+  },
+  {
+   "id": "aoraki-slash",
+   "title": "山名中間那條斜線",
+   "cat": "maori",
+   "lead": "那條斜線，是一場打了一百五十年的官司的結果。",
+   "paras": [
+    "1844 到 1864 年間，Ngāi Tahu 把<b>三千四百五十萬英畝</b>土地轉給王室——南島大部分、全國一半以上的土地——總價<b>一萬四千七百五十英鎊</b>，一英畝約六分之一便士。承諾的保留地、學校、醫院從沒兌現。這場控訴一路告到 1998 年才和解。",
+    "和解內容：政府道歉、賠 1.7 億紐幣，並把南島<b>八十多處地名</b>改成毛利名在前、中間一條斜線的雙名。Aoraki 在 Ngāi Tahu 的說法裡不是山，是人：他與兄弟駕獨木舟下來探望大地之母，回程唸錯祈禱文，船翻覆變成整座南島，兄弟化成石頭，成了南阿爾卑斯群峰。",
+    "踩上真正的峰頂，等於踩在祖先的頭上。2013 年重測 Aoraki 高度的團隊就與 Ngāi Tahu 約定<b>不踩峰頂</b>，在低於頂點五公尺的冰面上量完就下山。和解還有一條：王室要把這座山的所有權交給 Ngāi Tahu，再由他們送還全國——時機由部落自己決定。"
+   ],
+   "where": "D03–D05 Aoraki / Mount Cook；全程雙名路牌",
+   "img": "mtcook"
+  },
+  {
+   "id": "tapu-noa",
+   "title": "tapu 與 noa",
+   "cat": "maori",
+   "lead": "為什麼離開墓園要洗手，為什麼不能坐在桌子上。",
+   "paras": [
+    "毛利世界觀有一組對立：<b>tapu</b> 是受限制、有神聖性、不可隨便碰的狀態；<b>noa</b> 是日常、鬆開、安全的狀態。不是善惡，比較像「帶電／不帶電」。而把 tapu 解回 noa 最常見的方法就是<b>水和食物</b>，這個動作叫 whakanoa。",
+    "於是有一整套沒人特地解釋、但你會遇到的規則：<b>urupā</b>（墓園）是最 tapu 的地方之一，裡面不吃不喝，離開時要在入口用水洗手；<b>wharenui</b>（會堂）裡不能吃東西，因為食物是 noa、會堂是 tapu，兩者必須分開。",
+    "會堂本身還是一個身體。wharenui 就是一位祖先：山牆頂端的臉是頭、兩側斜板是手臂、主樑是脊椎、椽是肋骨。所以裡面的木雕 <b>whakairo</b> 不是裝飾，是族譜——在沒有文字的年代，柱子上刻的每一位都是有名字的祖先。"
+   ],
+   "where": "任何 marae 與墓園；D01 基督城、D18 奧克蘭博物館毛利廳",
+   "img": "maori-carving"
+  },
+  {
+   "id": "kia-ora-hongi",
+   "title": "kia ora 之外",
+   "cat": "maori",
+   "lead": "學會五個母音和一個 wh，毛利地名就不會念錯。",
+   "paras": [
+    "<b>kia ora</b> 是萬用的「你好／謝謝」，但很輕鬆；正式場合對長輩，用 <b>tēnā koe</b>（一人）、tēnā koutou（三人以上）較得體。早安 mōrena，「下次見」ka kite anō。whānau、kai、mahi、ka pai 在日常英語裡天天出現。",
+    "發音不難：a=阿、e=ㄝ、i=衣、o=喔、u=烏，每個母音都要念出來、不吞音。兩個規則要記：<b>wh 念成 f</b>（Whakatipu 念「fa-」），<b>ng</b> 是英文 singer 中間那個鼻音。母音上那一橫是把音拉長——Takapō 跟 Tekapo 就是這麼一回事。",
+    "有三個字同時是身體的隱喻：<b>whānau</b>（家人）當動詞是「生下來」，<b>hapū</b>（次部落）字面是「懷孕」，<b>iwi</b>（部落）字面是「骨頭」。而 <b>hongi</b> 不只是碰鼻子：鼻尖與額頭同時輕抵，交換的是 <b>hā</b>，生命的氣息——做完之後，你就從客人變成這塊土地上的人。"
+   ],
+   "where": "全程；D01 基督城、任何文化體驗與 marae",
+   "img": "see-haka"
+  },
+  {
+   "id": "chinese-invited",
+   "title": "廣東礦工是被請來的",
+   "cat": "history",
+   "lead": "1865 年，但尼丁商會決定去請中國人來撿別人不要的礦。",
+   "paras": [
+    "1861 年的奧塔哥淘金潮讓但尼丁成為全紐西蘭最大最富的城市。但 1865 年西岸發現金礦，礦工一窩蜂跑光，奧塔哥快變空城。<b>但尼丁商會</b>做了一個決定：去澳洲維多利亞金礦區請中國礦工過來。1866 年第一批<b>十二個人</b>抵達但尼丁；到那年十月，金礦區已有一百多人。",
+    "他們幾乎全來自珠江三角洲，最大宗是<b>番禺</b>（約六成七），不是一般以為的台山。分到的是歐洲人挑剩的礦區與翻過一遍的尾礦。1874 年金礦區官員 Caleb Whiteford 的報告寫得很直白：他們重新挖通了那些「一般礦工不肯花錢也不肯費事去修」的舊水道。",
+    "Arrowtown 的 Bush Creek 溪邊那排石屋就是他們住的地方，離大街只有兩百公尺，卻是另一個世界。約七成礦工是已婚的，太太留在中國；第一位中國女性 1873 年才抵達紐西蘭。運氣好的人帶一百英鎊回鄉，那約等於當時中國的<b>二十年工資</b>。"
+   ],
+   "where": "D07 Arrowtown 華人聚落（Bush Creek）；D08 Bannockburn 水槍礦場遺跡",
+   "img": "see-chinese"
+  },
+  {
+   "id": "poll-tax-apology",
+   "title": "十英鎊，121 年後道歉",
+   "cat": "history",
+   "lead": "紐西蘭是最晚廢除人頭稅的國家之一，卻是最早道歉的。",
+   "paras": [
+    "1881 年《Chinese Immigrants Act》開徵人頭稅：中國人入境每人繳<b>十英鎊</b>，船每載十噸貨才准載一名中國人。1888 年收緊成一百噸一人；1896 年稅漲到<b>一百英鎊</b>、兩百噸才准一人。1898 年起中國人被排除在老年年金之外，一排 38 年。",
+    "人頭稅 1934 年停收，1944 年才正式廢除——財政部長 Walter Nash 稱它是「我國立法上的一個污點」。<b>2002 年 2 月 12 日</b>，總理 Helen Clark 在國會的農曆新年活動上代表政府正式道歉，之後撥五百萬紐幣成立華人人頭稅傳統基金。",
+    "還有一段後續。礦工的心願是死後回鄉，但尼丁商人 <b>Choie Sew Hoy</b> 主持了大規模起骨返鄉。1902 年 10 月 28 日，載著 <b>499 具遺骨</b>的 SS Ventnor 號在北島外海沉沒，連他自己的棺木也在船上。漂上岸的遺骨，由當地毛利人收殮安葬。"
+   ],
+   "where": "D07 Arrowtown 華人聚落；D15–D16 但尼丁",
+   "img": "arrowtown"
+  },
+  {
+   "id": "southern-scots",
+   "title": "但尼丁就叫愛丁堡",
+   "cat": "history",
+   "lead": "Dunedin 是蓋爾語的 Edinburgh，連街道都是照抄的。",
+   "paras": [
+    "1843 年蘇格蘭教會大分裂，退出者成立自由教會，決定去地球另一端蓋一座「新愛丁堡」。1848 年 3 月兩艘船抵達奧塔哥港，帶隊牧師 Thomas Burns 是詩人 <b>Robert Burns 的親姪子</b>。城市定名 <b>Dunedin</b>——愛丁堡的蓋爾語。",
+    "Charles Kettle 把愛丁堡新城的格局套到山坡上，Princes Street、Moray Place 原名照搬。1861 年 Gabriel's Gully 發現金礦，礦區人口一年衝到一萬一千五、是但尼丁兩倍，這座蘇格蘭小鎮一躍成為全國最富的城市。",
+    "Invercargill 市中心的 Dee、Tay、Esk、Forth 全是蘇格蘭河名。這一帶還是<b>全紐西蘭唯一有地方口音</b>的地方——Southland burr，把 r 捲出來念。1902 年禁酒之後，Gore 一帶自己蒸餾的 <b>Hokonui</b> 私酒紅了半世紀。"
+   ],
+   "where": "D13 Invercargill、D14 Gore（Hokonui 私酒博物館）、D15–D16 但尼丁",
+   "img": "dunedin-station"
+  },
+  {
+   "id": "oamaru-frozen",
+   "title": "白石城停在 1880",
+   "cat": "history",
+   "lead": "維多利亞街區保存得那麼完整，原因不是有錢，是破產。",
+   "paras": [
+    "Oamaru 石是本地石灰岩，剛採出來時軟得像起司，可以用手工具雕，暴露在空氣中才慢慢變硬——所以南半球一個小鎮才雕得起那麼多柱頭與簷飾。<b>Forrester and Lemon</b> 事務所幾乎設計了整條 Harbour Street 與 Tyne Street。",
+    "錢從哪來？很多人以為是冷凍船，順序其實相反：碼頭信託 1869 年成立、防波堤 1872 年開工、主要建築 1876 年起落成，靠的是<b>羊毛、穀物</b>與一年停靠四百多艘船的港口。第一批冷凍肉 1882 年 2 月才出發——那時建築熱潮已經蓋到一半。",
+    "然後就崩了。1880 年一條輸水道花掉 <b>136,800 英鎊</b>，1891 年港務局付不出利息違約，倫敦的金主把 Oamaru 列進黑名單。整個 1890 年代小鎮沒錢重建、也沒錢拆舊蓋新——這才是那批白石建築原封不動留到今天的真正原因。"
+   ],
+   "where": "D17 Oamaru Harbour／Tyne Street 維多利亞街區與 Steampunk HQ",
+   "img": "oamaru"
+  },
+  {
+   "id": "mackenzie-gaelic-dog",
+   "title": "盆地以偷羊賊命名",
+   "cat": "history",
+   "lead": "他的牧羊犬據說只聽得懂蓋爾語口令。",
+   "paras": [
+    "1855 年 3 月，牧人在 Waitaki 上游追一千隻失蹤的羊，抓到蘇格蘭牧羊人 <b>James Mackenzie</b>。他把羊從 Timaru 附近的農場趕走，穿過一個三年前自己發現的隘口。他的搭檔是一隻叫 <b>Friday</b> 的邊境牧羊犬，據說只聽得懂蓋爾語口令。",
+    "他被抓、逃脫、徒步一百英里走到 Lyttelton，又被抓。1855 年 4 月 17 日最高法院判他五年苦役。但九個月後、<b>1856 年 1 月 11 日</b>他獲得無條件赦免——理由之一是他只會蓋爾語、英語很差，整場審判根本聽不懂。之後他就從紐西蘭的紀錄裡消失了。",
+    "結果這片他趕羊經過的高原就叫 <b>Mackenzie Country</b>——你從 Fairlie 翻過 Burke Pass 之後，眼前突然開闊、變黃褐色的那一片。1968 年當地牧場主人在蒂卡波湖畔立了一尊銅牧羊犬，碑文寫著：沒有牧羊犬，這片山地根本不可能放牧。"
+   ],
+   "where": "D02 Fairlie → Burke Pass → 蒂卡波湖畔牧羊犬銅像與好牧羊人教堂",
+   "img": "tekapo-pano"
+  },
+  {
+   "id": "bungy-1988",
+   "title": "冒險之都始於金礦橋",
+   "cat": "society",
+   "lead": "1988 年，兩個紐西蘭人在一座 1880 年的老橋上開了第一家。",
+   "paras": [
+    "<b>Kawarau Bridge</b> 是 1880 年淘金時代的公路橋，橫在皇后鎮往 Cromwell 的峽谷上，離水面 <b>43 公尺</b>。1988 年 11 月，<b>AJ Hackett</b> 與 <b>Henry van Asch</b> 在這裡開張，一跳 75 紐幣——世界第一個商業彈跳點。",
+    "在那之前，Hackett 先做了一件很紐西蘭的事：1987 年 6 月 26 日清晨爬上巴黎鐵塔跳下去，一戰成名，回國才把它變成生意。（常被說靈感來自萬那杜 Pentecost 島的成年跳塔儀式，不過這條淵源多半是後來的敘事。）",
+    "這件事的意義比一個景點大得多。皇后鎮本是 1860 年代 Shotover 河淘金起家的礦鎮，金子挖完之後靠牧羊撐著。1988 年之後，這裡把「危險但受控的刺激」變成一個可以出口的產業——噴射快艇、跳傘、峽谷鞦韆，全照同一個模板長出來。"
+   ],
+   "where": "D08 Cromwell → 皇后鎮 途中的 Kawarau Bridge（可以只看不跳）",
+   "img": "do-bungy"
+  },
+  {
+   "id": "kiwi-three-meanings",
+   "title": "kiwi 的三個意思",
+   "cat": "society",
+   "lead": "奇異果是中國來的，而且紐西蘭人根本不叫它 kiwi。",
+   "paras": [
+    "第一個意思是那種夜行性、不會飛、鼻孔長在喙尖上的鳥。2014 年《Science》的古 DNA 研究推翻了一個常識：奇異鳥血緣最近的親戚<b>不是恐鳥（moa）</b>，而是馬達加斯加已滅絕的象鳥——分家時紐西蘭早已與岡瓦納大陸分離，也就是說牠們的祖先是飛過去的。",
+    "第二個意思是「紐西蘭人」。十九世紀就有商業圖案在用，一戰時徹底定型：紐軍徽章上有奇異鳥，士兵又愛用（澳洲產的）Kiwi 鞋油，於是 Kiwi 成了紐西蘭大兵的代稱；戰爭快結束時，他們還在英國營區旁的白堊丘上刻了一隻巨大的奇異鳥。",
+    "第三個是水果。奇異果原產<b>中國長江流域</b>，原名 Chinese gooseberry；1904 年女校校長 Mary Isabel Fraser 從中國帶回一把種子。1959 年為了打進美國市場改名——冷戰年代「Chinese」不好賣——才叫 <b>kiwifruit</b>。"
+   ],
+   "where": "全程超市；D08 Cromwell 一帶果園、D18 奧克蘭",
+   "img": "kiwi-bird"
+  },
+  {
+   "id": "mountain-seriousness",
+   "title": "紐西蘭人對山的嚴肅",
+   "cat": "society",
+   "lead": "「你跟誰講了？」在這裡不是嘮叨，是制度。",
+   "paras": [
+    "紐西蘭的山會殺人，原因很物理：南阿爾卑斯山脈橫著擋在南半球西風帶上，海面來的濕氣被硬抬上去，天氣可以在幾小時內從晴朗變暴風雪。米爾福德峽灣年雨量約 <b>6,800 公釐</b>、一年約 180 天在下雨，將近台北的三倍。",
+    "所以這裡有一套很具體的做法：出發前留下 <b>intentions</b>（行程意向）。DOC 現在的官方說法是——把路線加上「幾點沒回來就報警」的時間，<b>直接寄給一個信得過的人</b>。關鍵在於：那份表不會自動送到任何救難單位，它的全部效力就在你寄出去的那個人身上。",
+    "官方的 <b>Land Safety Code</b> 只有五條，白話到近乎樸素：選一趟適合自己的行程、搞懂天氣、帶足保暖衣物與備用食物、把計畫告訴別人並帶上求救工具、照顧好自己和同伴。看完這些，你在每個步道口看到的那塊牌子就不再是裝飾了。"
+   ],
+   "where": "D04 Hooker Valley、D11 米爾福德步道；任何 DOC 步道起點與遊客中心",
+   "img": "hooker-track"
+  },
+  {
+   "id": "alpine-fault-clock",
+   "title": "斷層的碼表快走到底",
+   "cat": "geology",
+   "lead": "南阿爾卑斯是兩塊板塊擠出來的，而下一次錯動已經在倒數。",
+   "paras": [
+    "南島底下，太平洋板塊正斜斜撞進澳洲板塊，碰撞面在地表就是那條筆直的<b>阿爾卑斯斷層</b>——從峽灣一路劃到西岸，兩側每年錯開約 3 公分。你在 Lindis Pass 看到的稜線、在庫克山下抬頭看到的岩壁，都是這場碰撞把海底岩層硬推上來的。",
+    "它是全世界最「守時」的大斷層之一。科學家從斷層旁的湖底沉積層裡數出過去 4,000 年的 20 次大地震，平均約 250～300 年一次；上一次是 <b>1717 年</b>，規模約 8.1，一口氣撕開 380 公里。2021 年的推算：未來 50 年內錯動機率約 <b>75%</b>，八成會是規模 8 以上。",
+    "但山其實長不高。斷層中段每年把岩層垂直抬升約 1 公分，侵蝕幾乎同步磨掉。<b>庫克山最誠實</b>：1881 年測得 3,764 公尺；1991 年東壁崩掉一千多萬立方公尺岩石，一路衝了 7.5 公里到塔斯曼冰川上；2013 年重測只剩 <b>3,724 公尺</b>，比課本矮了整整 30 公尺。"
+   ],
+   "where": "基督城往內陸的每一段山路、Aoraki／Mt Cook",
+   "img": "mtcook"
+  },
+  {
+   "id": "rock-flour-blue",
+   "title": "把石頭磨成麵粉的湖",
+   "cat": "geology",
+   "lead": "那個藍不是礦物、不是藻類，是被冰川磨成粉的石頭。",
+   "paras": [
+    "冰川底下是一台石磨。冰帶著碎石在基岩上刮過去，磨出比麵粉還細的<b>岩粉（rock flour）</b>，細到沉不下去，就一直懸在水裡。這些顆粒幾乎不吸光，只是拚命把光散射回來；而水本身會吃掉紅、橙、黃。<b>顆粒把光丟回來、水把暖色吃掉</b>，兩件事湊在一起才有那個顏色。",
+    "順帶戳破一個常見說法：這不是課本裡的瑞利散射（那要顆粒比光波長還小）。岩粉是微米級，比可見光大得多，屬於米氏散射，偏藍的程度其實很輕微。真正挑顏色的是水，不是粉。",
+    "普卡基比蒂卡波混濁快兩倍，因為它的集水區冰川多得多。更值得注意的是：<b>蒂卡波正在快速變清</b>——透明度從 2000 年前後的約 5 公尺，到 2018 年後量到約 10.7 公尺。冰川退縮，送下來的岩粉變少了。你看到的顏色本身就是一份氣候紀錄。"
+   ],
+   "where": "蒂卡波湖、普卡基湖、Hooker Valley 一路上",
+   "img": "pukaki"
+  },
+  {
+   "id": "tasman-new-lake",
+   "title": "半世紀前這裡沒有湖",
+   "cat": "geology",
+   "lead": "你搭船繞冰山的那片水面，1970 年代還不存在。",
+   "paras": [
+    "塔斯曼冰川長約 23 公里，是紐西蘭最長的，但它整片蓋滿碎石——從末端往上游 8 公里都是，靠近末端平均厚達 1 公尺。碎石像一床棉被，能把消融壓下九成，所以整個二十世紀它<b>不是往後退，而是原地變薄</b>。末端的冰一年只爬不到 3 公尺。",
+    "薄到某個程度，表面就開始積水。1950 年代還只是幾個零星融水池，1970 年代迅速擴大，約 <b>1990 年</b>連成一座湖，隔年開始崩冰。2008 年實測面積約 6 平方公里、最深 240 公尺。有了湖，冰舌泡在水裡被切開，退縮從一年幾十公尺跳到 2006–2008 年的<b>一年 144 公尺</b>。",
+    "2011 年基督城地震那天，遊船乘客親眼看到大塊冰崩落。但論文後來還原：崩塌是在地震約<b>半小時後</b>才啟動的，體積約 450 萬立方公尺，遠小於當時業者估的三千萬噸。冰早就準備好要掉了，地震只是補上最後一腳。"
+   ],
+   "where": "Aoraki／Mt Cook：塔斯曼冰川湖遊船、Tasman Valley",
+   "img": "tasman-lake"
+  },
+  {
+   "id": "rain-shadow-tussock",
+   "title": "一座島的兩種極端",
+   "cat": "geology",
+   "lead": "西岸一年下十公尺雨，一百公里外的中奧塔哥只有三十五公分。",
+   "paras": [
+    "南阿爾卑斯橫在西風帶上，像一道牆。濕空氣被逼著爬升、降雨，主脊上一年可以超過 <b>10,000 毫米</b>；翻過去空氣已經擠乾，中奧塔哥一年只剩約 <b>350 毫米</b>。同一座島、相距一百公里，一邊是全國最濕、一邊是全國最乾。你過了 Lindis Pass 看到的乾黃山坡，就是這道牆的背面。",
+    "但那片金色草原不是原生風景。中奧塔哥與麥肯齊盆地原本長著卡奴卡與山地陶陶樹，毛利人約 1280–1500 年間的火燒把東南島大片森林清成草原；這裡太乾，燒完就長不回來。<b>你在拍的其實是一道七百年前的火痕。</b>",
+    "所以近年在草原裡慢慢冒出來的 matagouri、卡奴卡、蕨叢不是雜草，而是森林正在很慢地走回來。紐西蘭保育界對此還在吵：要維持這片「經典風景」，還是讓它自己長回去。"
+   ],
+   "where": "Lindis Pass、中奧塔哥、Cromwell 一帶",
+   "img": "lindis"
+  },
+  {
+   "id": "fiord-not-sound",
+   "title": "叫錯名字的峽灣",
+   "cat": "geology",
+   "lead": "米爾福德是 fiord 不是 sound，只是命名那年這個字還沒傳到紐西蘭。",
+   "paras": [
+    "<b>Sound</b> 是被海水淹掉的<b>河谷</b>，<b>fiord</b> 是冰河挖出的 U 形谷再灌進海水。峽灣國家公園那 14 條全是後者。錯在時間差：1850 年代英國海軍測繪這一帶時通通標成 Sound，而「fiord」這個字要到 1860 年代才在紐西蘭出現。真正的 sound 在南島北端。",
+    "冰河挖谷的方式跟河完全不同。河切出 V 形；冰是整條谷底一起磨，切成陡壁平底的 U 形，而且會挖到<b>比海平面還深</b>。冰退了、海灌進來，就成了峽灣。所以船開進去，兩側是垂直落水的岩壁而不是慢慢傾斜的海灘，Mitre Peak 從水面直接站起約 1,700 公尺。",
+    "還有一個藏在水下的細節：冰河在出海口卸下大量碎石，堆成一道<b>淺淺的門檻</b>。門檻把峽灣內部的深水半隔離起來，這正是下一張卡片那些奇怪生物能住在裡面的前提。"
+   ],
+   "where": "米爾福德峽灣（Milford Sound／Piopiotahi）",
+   "img": "milford"
+  },
+  {
+   "id": "north-otago-seafloor",
+   "title": "把海底翻上來的海岸",
+   "cat": "geology",
+   "lead": "摩拉基到 Duntroon 這一段，你踩的每塊石頭都曾在海面下。",
+   "paras": [
+    "<b>摩拉基大圓石</b>不是被海浪磨圓的，是從裡面長出來的。約 6,000 萬年前的海底軟泥裡，一片貝殼或有機物成了核心，方解石以它為中心一圈圈往外膠結，像珍珠。長到直徑兩公尺大約花了 400～550 萬年。後來包著它的泥岩被侵蝕掉，硬球就一顆顆被「洗」出來躺在沙灘上。",
+    "再往北，Oamaru 到 Duntroon 進入紐西蘭唯一的 UNESCO 世界地質公園。約 2,500 萬年前紐西蘭陸地縮到最小、幾乎全泡在海裡，<b>沒有泥沙沖下來把水弄濁</b>，海底才堆得出那麼純的貝殼與苔蘚蟲石灰岩。Oamaru 整座城的白色建築、但尼丁火車站的外牆，用的就是這層海底。",
+    "Duntroon 附近的 Anatini 至今還有一具鯨魚化石留在原岩壁上沒被挖走。牠死的時候，頭上還壓著一百公尺深的海水。旁邊 Elephant Rocks 那些被牛群圍著的白色巨石，是同一層石灰岩被雨水溶蝕後剩下的殘骸。"
+   ],
+   "where": "摩拉基大圓石、Oamaru、Duntroon（Vanished World）",
+   "img": "moeraki"
+  },
+  {
+   "id": "milford-dark-water",
+   "title": "深海生物住在十公尺",
+   "cat": "wildlife",
+   "lead": "峽灣表層那層茶色淡水，把深海搬到了浮潛的深度。",
+   "paras": [
+    "峽灣一年下約 7 公尺雨。雨水沖過森林帶著單寧（跟泡茶同一回事）流進海裡，因為比較輕就浮在海水上，形成一層<b>幾公分到十公尺厚</b>的茶色淡水。這層水擋掉大部分光線，DOC 的說法是：海裡的生物幾乎全被壓在最上面 40 公尺。",
+    "後果很奇怪：本來要潛到 45 公尺以下才看得到的<b>黑珊瑚</b>，在峽灣裡 5 到 10 公尺就有。峽灣估計有約 <b>700 萬叢</b>，有些高達 5 公尺、樹齡 200 年。名字叫黑珊瑚，活著的時候卻是幽靈般的白——黑的是裡面的骨骼。",
+    "常見的解釋是「單寧擋光，所以珊瑚往上搬」。不過 2006 年在 Doubtful Sound 的實測發現，決定牠們能長多淺的其實是<b>鹽度</b>，跟光線強弱沒有顯著關係。這類被複述到爛、實際上已被推翻的說法，紐西蘭的自然解說裡特別多。"
+   ],
+   "where": "米爾福德峽灣遊船（會開到崖壁邊）",
+   "img": "fiord-blackcoral"
+  },
+  {
+   "id": "island-of-birds",
+   "title": "鳥填掉了所有空位",
+   "cat": "wildlife",
+   "lead": "沒有陸生哺乳類，所以鳥變大、變重、不會飛、也不怕人。",
+   "paras": [
+    "人類抵達時，紐西蘭沒有任何陸生哺乳類，只有兩種蝙蝠。哺乳類的位置全被鳥接手：恐鳥當大型草食獸，哈斯特鷹當頂級掠食者。地面既然沒有威脅，翅膀就是浪費——紐西蘭因此成為<b>已知不會飛鳥類最多的島嶼</b>。（不過中奧塔哥出土過 1,900 萬年前的陸生哺乳類化石，「八千萬年從沒有過」是講太滿了。）",
+    "連蝙蝠都被同化了。紐西蘭短尾蝠有三成時間在<b>森林地面上用走的</b>覓食，是全球一千多種蝙蝠裡僅有兩種會用真正走路步態的其中之一——因為地上本來沒有老鼠跟牠搶。",
+    "最戲劇性的是<b>南秧雞（takahē）</b>：1898 年之後被當成滅絕，1948 年 11 月，因弗卡吉爾的醫師 Orbell 在蒂阿瑙湖西邊的山區把牠找了回來。今天全世界剛過 500 隻；2025 年起已在皇后鎮北邊的 Rees Valley 野放 86 隻，並開始在野外育雛。"
+   ],
+   "where": "蒂阿瑙鳥類保護區（免費，可近距離看南秧雞）",
+   "img": "see-takahe"
+  },
+  {
+   "id": "predator-free-2050",
+   "title": "路邊那些木盒子",
+   "cat": "wildlife",
+   "lead": "紐西蘭打算在 2050 年前，把整個國家的掠食者清光。",
+   "paras": [
+    "你會在步道口、路肩、溪邊不斷看到綠色或木頭的長條盒子，那是捕獸夾。DOC 估計每年約有 <b>2,500 萬隻</b>原生鳥死在外來掠食者口中。<b>Predator Free 2050</b> 要把牠們清零；2026 年 3 月的新版策略定了四類目標：鼠類、鼬科、負鼠，以及<b>剛加進來的野貓</b>。家貓不在名單上。",
+    "為什麼要動用直升機撒 1080？因為南方山毛櫸會「大結實」——某些年份整片森林同步大量結籽。種子餵飽老鼠，老鼠幾週內爆量，接著鼬科跟著爆量；等種子吃完，這批掠食者就轉頭去吃鳥。<b>控制的時機得抓在種子落地之後、老鼠爆量之前</b>，錯過就來不及了。",
+    "一個誠實的補充：那個 2,500 萬隻的數字 DOC 到 2025／26 年都還在用，但它其實只追得到一位研究者的估算引語，找不到任何同儕審查論文。方向沒錯，精度別當真——這在保育宣傳裡很常見。"
+   ],
+   "where": "全程步道口與公路旁；峽灣、Aoraki 一帶特別密集",
+   "img": "doc-trap"
+  },
+  {
+   "id": "kea-alpine-parrot",
+   "title": "會拆你車的高山鸚鵡",
+   "cat": "wildlife",
+   "lead": "全世界唯一在高山討生活的鸚鵡，聰明到讓人頭痛。",
+   "paras": [
+    "kea 只剩 <b>1,000～5,000 隻</b>（DOC 估計，等級是全國瀕危）。牠是唯一慣常在高山帶生活覓食的鸚鵡，而高山最大的特徵是<b>食物不可預測</b>；演化的解法就是：對任何新東西都先拆開看看。2020 年《Nature Communications》的實驗顯示，kea 會用<b>比例</b>而不是絕對數量去判斷勝算。",
+    "牠們也真的會用工具。2018 年在 Murchison 山區記錄到：兩年半內至少 <b>227 個捕鼬陷阱</b>被 kea 塞進樹枝觸發，是野外首度確認的習慣性工具使用。至於雨刷、行李架橡膠、背包扣帶，那是同一套「把東西撬開找食物」的本能，用在了錯的東西上。",
+    "最要緊的一句話：<b>不要餵。</b>2023 年的研究發現，住在人類活動區旁的 kea 對新物體更敢下手，而這讓牠們更短命——被車撞、吃到鉛。2024 年的同位素研究指出，血鉛偏高的 kea 裡約三分之一來自鉛彈。Homer Tunnel 口那幾隻最會演，牠們是在等食物。"
+   ],
+   "where": "Homer Tunnel 隧道口、Aoraki 各步道、Arthur's Pass",
+   "img": "kea"
+  },
+  {
+   "id": "otago-peninsula-two-trends",
+   "title": "一種回來，一種在走",
+   "cat": "wildlife",
+   "lead": "同一段海岸，海獅正在回來，黃眼企鵝正在消失。",
+   "paras": [
+    "<b>hoiho（黃眼企鵝）</b>是世界上最稀有的企鵝之一，而牠正在崩。DOC 統計本島（奧塔哥／南地／斯圖爾特島）的巢數：2008/09 年 739 巢，2024/25 年只剩 <b>143 巢</b>，十六年掉了八成。DOC 直說：照這個速度，本島族群可能在二十年內在地滅絕。",
+    "牠們的巢有個特徵：<b>彼此看不見</b>。研究認為這是「找遮蔭避曬」選出來的副產品，不是刻意孤僻，但結果一樣——牧場化、灌叢消失，就等於巢位消失。也因為極度怕人，賞企鵝一定要走有管制的觀察壕溝；站在沙灘上，牠會寧可整晚不上岸。",
+    "同一片海岸的好消息：紐西蘭海獅回來了。1993 年一隻被叫做「Mum」的母海獅在但尼丁生下本島一百五十年來第一隻幼獸，牠 2010 年過世；2025/26 這一季奧塔哥海岸出生了 <b>38 隻</b>，其中 36 隻是牠的後代。開車小心，牠們會睡在路上。"
+   ],
+   "where": "奧塔哥半島、Taiaroa Head、Katiki Point（摩拉基）",
+   "img": "hoiho"
+  },
+  {
+   "id": "braided-rivers",
+   "title": "全球罕見的辮狀河",
+   "cat": "wildlife",
+   "lead": "你在麥肯齊盆地跨過的那些灰白亂流河，全世界沒幾條。",
+   "paras": [
+    "冰川磨出來的岩粉與礫石太多，河搬不動，只好把河床墊高、然後不斷分岔改道，這就是<b>辮狀河</b>。它要「大量沉積物＋陡坡＋流量暴起暴落」同時成立，全球罕見，坎特伯里與麥肯齊盆地是世界上最重要的辮狀河區之一。從基督城往內陸，你會連續跨過 Rakaia、Rangitata、Waitaki。",
+    "那片看起來什麼都沒有的礫石灘，是幾種鳥唯一的家。<b>kakī（黑長腳鷸）</b>曾經只剩 23 隻，靠 Twizel 的復育中心拉回來；2025 年 8 月一次野放 148 隻幼鳥，野外成鳥約 141 隻。還有<b>反嘴鴴</b>：全世界唯一喙向側面彎的鳥，而且永遠向右彎，沒有例外。",
+    "順帶說一件會讓人尷尬的事：蒂卡波那片明信片等級的紫色魯冰花是<b>入侵種</b>，它在礫石灘上長成密叢，正好把上面那幾種鳥的巢位吃光。而且它要 11 月到 1 月才開——你們九月底去，看不到。"
+   ],
+   "where": "基督城→蒂卡波沿路、Twizel、普卡基周邊",
+   "img": "see-tasmanvalley"
+  },
+  {
+   "id": "southern-sky",
+   "title": "南半球的天空要重學",
+   "cat": "sky",
+   "lead": "南十字永遠不落下，銀河卻會被前四晚的滿月吃掉。",
+   "paras": [
+    "北半球看北極星，南半球沒有對應的亮星，得自己算。方法是把<b>南十字</b>的長軸從頂端往底端延伸約 <b>4.5 倍</b>，那個空無一物的點就是南天極，垂到地平線就是正南；旁邊兩顆很亮的「指極星」是半人馬座 α 與 β。在南緯 44 度的蒂卡波，南十字是<b>拱極星座，一整年都不會落下</b>。",
+    "<b>Matariki</b>（昴宿星團）是毛利新年，但重點不是它多亮，而是<b>什麼時候出現</b>：新年指的是它在六月底黎明前重新從東北方地平線升起的那一刻。九月底它已經是後半夜的星星了——想看得熬到凌晨，而且那時它代表的並不是新年。",
+    "殘酷的現實：你們前四晚是滿月。滿月亮度 −12.7 等，會把肉眼可見的星星從約三千顆壓到三百顆，而銀河比五等星還暗，會<b>整條消失</b>。查好月出月落，挑月亮下山之後再出門。這一帶從 <b>1981 年</b>就立法管燈：燈具必須全遮罩不准往上照，還限制 440 奈米以下的藍光。"
+   ],
+   "where": "蒂卡波湖／Mt John（Aoraki Mackenzie 暗空保護區）",
+   "img": "tekapo-milkyway"
+  },
+  {
+   "id": "early-spring-south",
+   "title": "九月底的南島長這樣",
+   "cat": "season",
+   "lead": "雪還在、瀑布最多，日光節約時間剛好在你們第四天啟動。",
+   "paras": [
+    "初春是南島瀑布最多的季節：山上開始融雪，加上峽灣本來就多雨。米爾福德一年約 <b>6,300 毫米</b>雨、約 200 個雨天，而九月的雨量幾乎剛好等於月平均、十月還是全年第三濕的月份。所以<b>不要期待晴天，更不要為了下雨改行程</b>——雨越大，崖壁上臨時瀑布越多，那才是米爾福德最好看的樣子。",
+    "代價是雪崩季。通往米爾福德的 94 號公路有 17 公里穿過雪崩區，上方稜線藏著 50 個以上的雪崩源頭，雪崩季通常是六月到十月，管理方式是直升機投擲炸藥主動引爆，作業時整條路封閉。<b>出發前務必查 NZTA 路況</b>，並且絕不要在雪崩區停車拍照。",
+    "兩件實用的：<b>9 月 27 日</b>凌晨兩點跳三點，日光節約時間開始，之後天黑晚一小時，觀星要往後挪。還有紫外線——紐西蘭夏季尖峰的 UV 比北半球同緯度<b>強約 40%</b>：近日點落在南半球夏季（約 +7%）、南半球臭氧較少（約 +10%），剩下約 20% 純粹因為空氣太乾淨。初春加雪地反光更兇。"
+   ],
+   "where": "米爾福德公路（SH94）、Homer Tunnel、全程",
+   "img": "homer-tunnel"
+  }
+ ]
+}
+</script>
 <script id="places-data" type="application/json">
 {
  "meta": {
@@ -3958,30 +4296,6 @@ a.dayline,.dayline a{text-decoration:none;color:inherit}
   }
  ]
 }
-</script>
-<script id="routes-geo" type="application/json">{"legs":[{"poly":"vokhG_x`|_@qd@yBnRjiBhqAa[xbJ`vDnk\\flmArxKzxLnjM`n`@jrLntSn~R~pc@tvEtkYtgCvpHbxDjpH`qDnn@tlAndBw_Adu@eD`tFguAjbDrt@vcEwz@jyIjnBnmHay@nzCzN`xCmrAdtDisDp`Evu@|}B_mEpsDyr@vdExgBxpAfVtjB`gBtG|zAbpFemKjqNgh@dhExv@`qDj_Iv|Evi@d{Om`E~xJkiIbZor@noC","km":224,"min":186,"day":3,"label":"基督城 → Fairlie → 蒂卡波湖"},{"poly":"zqqkGsnoo_@}i@ftJ~l@~cAhyBhf@tvA|mBndHbrEp}A{\\pmEd^p}EdfBvdAhxAbqCdvIcWlvAobE~bFlzAnhCgs@ddBjEhfB|h@vIbq@rnAmXjuAjRjm@joDne@lhCyImmChIivDqq@iw@jdAguDv[m~CwwBqyEan@mtHhGehBnb@cxMcPqaCdd@{r@jiAgrAqkAcu@zs@ooCkMycAhiB_h@kp@{qEvGmrFuyAu}ApAmhDflA}e@poA","km":117,"min":93,"day":4,"label":"Tekapo → 普卡基湖 → Mt Cook"},{"poly":"dx|iGchem_@ve@koAngDilAxmQr_CbdAiiBreEoe@frApkAluDqnBjnY_Wv~F~i@raDbyBfuDw[hw@kdA`lKbs@rn@xcB~yD`xAtiMteO~oQnmD|aFqtDaUjkEfzCjb[iFpyDw`Bl`GvcE~iGniEnrCdSdrDvpCtqBseAtqCxwElmPznKhdIboGgnDhqO}Mvo@fn@}|@dkDx_@vnCfpDtsCjl@zdDyzBflHykEoXm~GbdB_bBr~Ipa@hyCwlEt}Kmi@tzH","km":210,"min":162,"day":6,"label":"Mt Cook → Lindis Pass → Wanaka"},{"poly":"tixoGaqjg_@oIyg@|s@{qGnbBcqCr`AoxEphCywBnMmwAuPmbAff@k~Bn|Aw_BheEe]jhAcr@`pAtX`}FdkFdrC|a@`_Kn{GreFbaCpvGliFzD}k@zdAjXxRq`ApTdaA|qCt|CirCjfGsiBnt@q~@zcCq_CfjBcW``A~Z`k@teApNje@nxAdeAtx@v}Bsq@|^bRkExz@{iA`Smu@pmCwC~yA{{CxsLaLntE}Vlo@gqDveE{yAwLorCraBnGhh@t|AldAj|CDdyApsA`g@hgH~sAloCdh@nfEriA|bCiO~oB","km":123,"min":109,"day":7,"label":"Wanaka → Cromwell → Arrowtown → 皇后鎮"},{"poly":"xczqG_|ld_@jOsoBypBu}HnxA_Ldt@wuBfgNe}@~qThqC~wJaaD`zFtkChhL`cMzuC}]ny@anDv|Db`A`wExoD`tCljGqt@b|Kf`Drm@jcCjbGn}A`RroBjsCdtEvcCyfAbbFhoGnb`@f|AfhAykA|yFo|Pr|Syi@lfM_`C|aI|f@~|MgpCbuJyCfeGqoBj~@mnF_lAacDpoAuwCv_K","km":171,"min":136,"day":10,"label":"皇后鎮 → 蒂阿瑙"},{"poly":"`_etGupt~^oeByyFqgFh@unJmeEu_SqgE_h@si@de@evD{|AutCyzFixBav@upGiyLcbHapA_uBqmC{@{|Nm]ekFeeEsPeaCuuCoiDwfJycCy}Ads@`v@h|Eud@nnEk`AbsB{~D|_Bci@j}CcZntBiuCr_C{bE}sDc`Dhh@mVh{Eai@tG","km":119,"min":100,"day":11,"label":"蒂阿瑙 → 米爾福德峽灣"},{"poly":"`_etGupt~^twCw_K`cDqoAlnF~kAdoBs}@dD_fGfpCcuJ}f@_}M~_C}aIxi@mfMn|Ps|Spy@glEnzCfyEbtObaBzpDpfFn}DbaBd`e@d~Bnk@k`JtzKq{IhpDyhG}`AabDnPybEzaMqv@`y@m|@njg@qnA``DpPnsGo{Fh|BlxCddCjaJ~_G~dAhvCor@rfAokGziAgk@","km":188,"min":156,"day":12,"label":"蒂阿瑙 → Invercargill → Bluff"},{"poly":"nahzG}qpb_@uaGed_@_dJmyP~h@{oEoyA{wMhLkeJmkAu{AyjGcoBwnRsfR_yIceFekBslF_@qjBzdBgfFKcjMt~B_}Iwf@ovPft@}iBj`Duu@j`JaaQoe@maTd`G}eU`q@czUcpBkcJ}jDPu~De~Gi_F{bQc_@}aGeiN{tOs{C{`JuzEaqFakIgfQy_H}bX`eAy_D|AsxLa~@syGimB}s@","km":216,"min":182,"day":13,"label":"Invercargill → Gore → 但尼丁"},{"poly":"tx~vGinto_@irBsnA_[ln@ogAqn@{_@tkAsz@itAkrCnQeuAu~Ec}FupByoMyMolFcfDmlBkkGmcB}fAk_CciFa|EwxAufIrMykAifCwA}kGykCgiG|w@qmBsb@diA}bC`Ts}F}lD}fF~iAyIajDxI`jDwwKlhA{{Gd}B{fAtyAapAyFw_QudOu{DuuKuf@k`G","km":121,"min":110,"day":14,"label":"但尼丁 → 摩拉基 → Oamaru"},{"poly":"bbgrGayor_@{~MgrHefXfeh@kyFxmY_zCzvRktYf|[h`G_tGy_@{`CtyGicIxwGauQnnIiu^hNsaPwjKxYovDqrSuvOmq[y|QwpAkbf@g|SupItrBoxPe~FinL{IufPy{GspHchQ{yE}tYqp`@_dx@ykMqp`@i{Kw~Lw}XsqdAaJyrScpBycE|FcaHm_Bya@","km":350,"min":295,"day":15,"label":"Oamaru → Waitaki 內陸 → 基督城"}],"options":{"d9a":{"poly":"xczqG_|ld_@f|@p~Cb`@fk@lGfm@f`@lV`Qrb@~GznCgPle@rg@tuA_Hti@dj@pqC|XpsFfr@n|AlJjy@kFdm@qMlP_rAtO_bAvj@gmB`e@}eAtaAmgB}ZulBjnAmrB_c@gfBsB{jCxeAe{@nDql@`e@iq@pCya@rz@kq@zd@iaB`TghBgUkVbbAik@rj@tD|VuD}Vhk@sj@jVcbAfhBfUhaBaTjq@{d@xa@sz@hq@qCpl@ae@d{@oDzjCyeAffBrBlrB~b@tlBknAlgB|Z|eAuaAfmBae@~aAwj@~qAuOpMmPjFem@mJky@gr@o|A}XqsFej@qqC~Gui@sg@uuAfPme@_H{nCaQsb@g`@mVmGgm@c`@gk@g|@q~C","km":93,"min":78},"d9b":{"poly":"xczqG_|ld_@pPuYxDqn@kFyf@ia@}i@iOkn@uVqg@gJcv@gTer@uGe|AyTcn@y}@g_BwDoqAei@_gDrGyj@aXaZie@}eAm_@{`@aEmp@pN{RfAeL{\\elAdDoSt_@sKbUaf@tvBmuBtVwm@YojAtAsK{@bwAuVvm@uvBluBcU`f@u_@rKeDnSz\\dlAgAdLqNzR`Elp@l_@z`@he@|eA`X`ZsGxj@df@rrCvGzeBz}@r{AvTvq@tGd|AfTdr@fJbv@tVpg@hOjn@ha@|i@jFxf@yDpn@qPtY","km":47,"min":46},"d13a":{"poly":"nahzG}qpb_@uaGed_@_dJmyP~h@{oEoyA{wMhLkeJmkAu{AyjGcoBwnRsfR_yIceFekBslF_@qjBzdBgfFKcjMt~B_}Iwf@ovPft@}iBj`Duu@j`JaaQoe@maTd`G}eU`q@czUcpBkcJ}jDPu~De~Gi_F{bQc_@}aGeiN{tOs{C{`JuzEaqFakIgfQy_H}bX`eAy_D|AsxLa~@syGimB}s@","km":216,"min":182},"d13b":{"poly":"nahzG}qpb_@bgBK`fC{kLT}d]vyBi_Wjz@m}@b}AvXp}AouEduA{@tqBknC|n@uiDxzCoi@lTyrD|pCmgExr@jOfv@oqCbnBk]xm@c`H_|BihLl`@{jD`iBehBpSinJbfAgBy~Ay]s~@yaD_yE`o@ccDs|Ayn@grCrv@}~@|OuzHrwAurFbKg{Fe}@qgCrq@_aGcaAoqCdFeuCsrAsgI}zEkaA}aCzuAk^qy@_iCkzIdPm_EwdAikArw@aaCqkAefGqmB{lAwmAc}DkkGgaD~mBerDqfCqtH~uA}jBfxBnc@|tAq}A}tAp}AgxBoc@mtAlgB|dCtxHgzE|aJy}FmsK}|CfdCwpJehCusB|z@{wA{yFs{DcPipHkoPooBqeJcIswDqjNcwOuk@_`Dy|F_qKaoAmc@gjMy|Yi_DsoO~eAayCtAqzLy}@uwGimB}s@","km":289,"min":270},"d15a":{"poly":"bbgrGayor_@{~MgrHefXfeh@kyFxmY_zCzvRktYf|[h`G_tGy_@{`CtyGicIxwGauQnnIiu^hNsaPwjKxYovDqrSuvOmq[y|QwpAkbf@g|SupItrBoxPe~FinL{IufPy{GspHchQ{yE}tYqp`@_dx@ykMqp`@i{Kw~Lw}XsqdAaJyrScpBycE|FcaHm_Bya@","km":350,"min":295},"d15b":{"poly":"bbgrGayor_@in^exWc}RbeC}oZamJkxQanAkbf@g|SupItrB{jo@i_PguHunQ{yE}tYqp`@_dx@ykMqp`@swKawLugEkwQ{dIudXhpCuhBLu}Gd{IwhFfXwuLeoDyzDdaAosFj_EebAtyBkhHtvCcf@ltJcqNonKmtVhh@{_FcsBg_GlqCqsKrbGcg@sbGbg@mqC~rKbsBx_Gih@z_FvnKzmViaCdnARflCejKvaI{zBriHowHtgBi~KwuAuuGsrM}qBrB","km":387,"min":357},"d15c":{"poly":"bbgrGayor_@{~MgrHefXfeh@kyFxmYkvChqRwtRhqSsyNvwYssK`wh@kbOjpQus@l_I{|WidEakTe_U{kKsl@asAc`Flm@ygEgjCsxDmfWv{AedDvlAciAebBqaDkxP{f@ueMvbEe}Gvi@_pJnr@ooCjiIcZ~`Ee|Jij@_xOk_Iw|Eyv@soDpg@ohEzaKcvNuqHogNfwLibVf~@ciKmnBsqHjy@qfJ_qAm`GypBya@k_HkyDsa@maE~wDycLq`Jw~b@sr`@ehx@okM}o`@i{Kw~Lw}XsqdAaJyrScpBycE|FcaHm_Bya@","km":442,"min":434}}}</script>
-<script>
-/* 全程一覽表：由 places.json 的 meta.days 產生 */
-(function () {
-  var el = document.getElementById('daytable');
-  var d = document.getElementById('places-data');
-  if (!el || !d) return;
-  var DB = JSON.parse(d.textContent);
-  var withOpts = {};
-  (DB.routes || []).forEach(function (r) { withOpts[r.day] = true; });
-  var html = '';
-  DB.meta.days.forEach(function (x) {
-    var has = withOpts[x.d];
-    var inner =
-      '<div class="n"><b>D' + String(x.d).padStart(2, '0') + '</b>' + x.date + ' · ' + x.wd + '</div>' +
-      '<div class="t">' + x.title + '</div>' +
-      '<div class="g">' + x.leg + '</div>';
-    html += has
-      ? '<a class="dayline has" href="#day' + x.d + '">' + inner + '</a>'
-      : '<div class="dayline">' + inner + '</div>';
-  });
-  el.innerHTML = html;
-})();
 </script>
 <script>
 /* ═══════════════════════════════════════════════════════════

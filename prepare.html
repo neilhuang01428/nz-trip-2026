@@ -601,6 +601,114 @@ th .twd,.pop-h .twd{display:none}
   .bk{flex:1;min-width:88px;padding:8px 10px;min-height:46px}
 }
 
+/* ── 卡片的「知道了會加分」展開區 ── */
+.pl-more{display:flex;align-items:flex-start;gap:9px;width:100%;text-align:left;
+  font:inherit;font-size:.86rem;line-height:1.55;cursor:pointer;
+  background:linear-gradient(90deg,rgba(192,138,62,.11),rgba(192,138,62,.03));
+  border:1px solid rgba(192,138,62,.28);border-radius:10px;
+  padding:11px 13px;margin:0 0 11px;color:var(--ink-2);
+  transition:background .18s,border-color .18s;min-height:44px}
+.pl-more:hover{background:rgba(192,138,62,.16);border-color:rgba(192,138,62,.5)}
+.pl-more .dm-ic{flex:none;line-height:1.4}
+.pl-more .dm-t{flex:1;font-weight:600;color:#7A5A16}
+.pl-more .dm-a{flex:none;color:var(--tussock);font-size:.9rem;line-height:1.5;
+  transition:transform .22s}
+.pl-more.open .dm-a{transform:rotate(180deg)}
+.pl.has-img .pl-more{margin:0 18px 11px}
+
+.pl-deep{border-left:3px solid var(--tussock);background:var(--paper-2);
+  border-radius:0 10px 10px 0;padding:13px 16px;margin:0 0 12px;
+  animation:deepIn .22s ease-out}
+.pl.has-img .pl-deep{margin:0 18px 12px}
+.pl-deep p{font-size:.88rem;line-height:1.75;margin:0 0 9px;color:var(--ink-2)}
+.pl-deep p:last-child{margin-bottom:0}
+.pl-deep b{color:var(--ink)}
+.deep-tips{list-style:none;margin:11px 0 0;padding:10px 0 0;
+  border-top:1px dashed var(--line);font-size:.85rem}
+.deep-tips li{position:relative;padding-left:20px;margin-bottom:6px;color:var(--ink-2);line-height:1.65}
+.deep-tips li:last-child{margin-bottom:0}
+.deep-tips li::before{content:'→';position:absolute;left:0;color:var(--tussock);font-weight:700}
+@keyframes deepIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pl-deep{animation:none}.pl-more .dm-a{transition:none}}
+@media(max-width:600px){
+  .pl.has-img .pl-more{margin:0 17px 11px}
+  .pl.has-img .pl-deep{margin:0 17px 12px}
+  .pl-more{font-size:.88rem;padding:12px 13px;min-height:48px}
+  .pl-deep p{font-size:.91rem}
+}
+
+/* ── 文化知識卡 ── */
+.cul-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;margin:20px 0}
+.cul{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;
+  box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.cul:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.cul-img{line-height:0;background:var(--paper-2)}
+.cul-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .6s}
+.cul:hover .cul-img img{transform:scale(1.05)}
+.cul-b{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.cul-cat{align-self:flex-start;font-family:var(--mono);font-size:.68rem;font-weight:700;
+  padding:3px 10px;border-radius:20px;letter-spacing:.03em;margin-bottom:9px}
+.cul h3{font-family:var(--serif);font-size:1.32rem;font-weight:700;margin:0 0 7px;
+  color:var(--ink);line-height:1.3;font-variant-numeric:lining-nums}
+.cul-lead{font-size:.92rem;font-weight:650;color:var(--pounamu);margin:0 0 11px;line-height:1.6}
+.cul-body p{font-size:.9rem;line-height:1.8;color:var(--ink-2);margin:0 0 11px}
+.cul-body p:last-child{margin-bottom:0}
+.cul-body b{color:var(--ink)}
+.cul-where{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);
+  font-size:.8rem;color:var(--ink-soft);line-height:1.6}
+.cul-where b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  color:var(--tussock);margin-bottom:3px}
+@media(max-width:600px){
+  .cul-grid{grid-template-columns:1fr;gap:16px}
+  .cul-b{padding:17px 18px 19px}
+  .cul h3{font-size:1.26rem}
+  .cul-body p{font-size:.93rem}
+}
+
+/* ── 關鍵字搜尋 ── */
+.searchwrap{position:relative;display:flex;align-items:center;width:100%;margin-bottom:11px}
+.searchwrap .s-ic{position:absolute;left:14px;font-size:.95rem;pointer-events:none;opacity:.55}
+.s-in{width:100%;font:inherit;font-size:16px;/* 16px 避免 iOS 聚焦時自動放大 */
+  padding:12px 42px 12px 40px;border-radius:12px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--ink);min-height:48px;
+  transition:border-color .18s,box-shadow .18s;-webkit-appearance:none;appearance:none}
+.s-in::placeholder{color:var(--ink-soft)}
+.s-in:focus{outline:none;border-color:var(--pukaki);
+  box-shadow:0 0 0 3px rgba(62,157,184,.16)}
+.s-in::-webkit-search-cancel-button{display:none}
+.searchwrap.has .s-in{border-color:var(--pounamu);background:var(--card)}
+.s-x{position:absolute;right:7px;width:34px;height:34px;border-radius:50%;border:0;
+  background:var(--paper-2);color:var(--ink-2);font-size:.82rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center}
+.s-x:hover{background:var(--ice);color:var(--pukaki-dk)}
+
+mark{background:rgba(229,178,60,.42);color:inherit;border-radius:3px;padding:0 2px;
+  font-weight:inherit;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+.empty{text-align:center;padding:44px 20px;color:var(--ink-soft);font-size:.94rem;line-height:1.9}
+.empty b{color:var(--ink)}
+.empty-reset{display:inline-block;margin-top:14px;font:inherit;font-size:.86rem;font-weight:650;
+  padding:10px 20px;border-radius:10px;border:1px solid var(--line);background:var(--card);
+  color:var(--pukaki-dk);cursor:pointer;min-height:44px}
+.empty-reset:hover{border-color:var(--pukaki);background:var(--ice)}
+
+/* 回到頂端（手機） */
+.totop{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:60;
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(252,250,245,.95);backdrop-filter:blur(10px);color:var(--pounamu);
+  font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow-lg);
+  display:none;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.totop.show{opacity:1;transform:none}
+body.mapmode .totop{display:none!important}
+
+@media(max-width:780px){
+  .totop{display:flex}
+  /* 搜尋框在手機上跟著切換列一起黏住，捲很長也搆得到 */
+  .filters .searchwrap{margin-bottom:9px}
+}
+@media(prefers-color-scheme:dark){.totop{background:rgba(18,34,44,.95)}}
+
 </style>
 <style>
 /* 打包清單：可勾選，狀態存在本機 */
@@ -643,6 +751,7 @@ th .twd,.pop-h .twd{display:none}
 <a href="book.html">🎟 需預約</a>
 <a href="skydive.html">🪂 跳傘</a>
 <a href="glacier.html">🚁 冰川</a>
+<a href="culture.html">🗿 文化</a>
 <a href="prepare.html" class="on">🎒 行前</a>
 <a href="itinerary.html">🗓 行程</a>
 </nav></div></header>
@@ -705,7 +814,7 @@ th .twd,.pop-h .twd{display:none}
       <div class="temp"><div class="pl">Te Anau / Milford</div><div class="rg">3 – 14°C</div>
         <div class="rk">峽灣 · 一年下 200 天雨</div></div>
       <div class="temp"><div class="pl">Invercargill / Bluff</div><div class="rg">4 – 13°C</div>
-        <div class="rk">最南端 · 風非常大</div></div>
+        <div class="rk">最南 · 風非常大</div></div>
       <div class="temp"><div class="pl">但尼丁 / Oamaru</div><div class="rg">5 – 15°C</div>
         <div class="rk">東岸 · 相對溫和</div></div>
       <div class="temp"><div class="pl">基督城 / 奧克蘭</div><div class="rg">6 – 18°C</div>
@@ -1001,6 +1110,7 @@ th .twd,.pop-h .twd{display:none}
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
 <a href="glacier.html"><span>🚁</span>冰川</a>
+<a href="culture.html"><span>🗿</span>文化</a>
 <a href="prepare.html" class="on"><span>🎒</span>行前</a>
 </div>
 <script>
@@ -1062,7 +1172,7 @@ th .twd,.pop-h .twd{display:none}
   }).sort(function (a, b) { return (a.day || 0) - (b.day || 0); });
 
   /* ── 狀態 ── */
-  var state = { days: new Set(), flags: new Set(), view: 'list' };
+  var state = { days: new Set(), flags: new Set(), view: 'list', q: '' };
 
   /* ── 小工具 ── */
   function el(tag, cls, html) {
@@ -1093,8 +1203,41 @@ th .twd,.pop-h .twd{display:none}
   }
   function isMobile() { return window.matchMedia('(max-width: 780px)').matches; }
 
+  /* ── 搜尋 ── */
+  function haystack(p) {
+    if (p._hay) return p._hay;
+    var d = p.deep || {};
+    p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
+              d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
+              (CATS[p.cat] || {}).label,
+              'D' + String(p.day).padStart(2, '0'),
+              (dayByNum[p.day] || {}).date]
+      .filter(Boolean).join(' ').toLowerCase();
+    return p._hay;
+  }
+  function terms() {
+    return state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  }
+  /* 把命中的字詞包成 <mark>，text 會先被跳脫 */
+  function hl(text) {
+    var t = esc(text);
+    var ts = terms();
+    if (!ts.length) return t;
+    ts.forEach(function (k) {
+      if (k.length < 1) return;
+      var re = new RegExp('(' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      t = t.replace(re, '<mark>$1</mark>');
+    });
+    return t;
+  }
+
   /* ── 篩選 ── */
   function pass(p) {
+    var ts = terms();
+    if (ts.length) {
+      var hay = haystack(p);
+      for (var i = 0; i < ts.length; i++) if (hay.indexOf(ts[i]) < 0) return false;
+    }
     if (state.days.size && !state.days.has(p.day)) return false;
     if (state.flags.has('star') && p.flag !== 'star') return false;
     if (state.flags.has('book') && !p.book) return false;
@@ -1105,6 +1248,35 @@ th .twd,.pop-h .twd{display:none}
 
   /* ── 建立篩選列 ── */
   var bar = el('div', 'filters');
+
+  var sw = el('div', 'searchwrap');
+  sw.innerHTML =
+    '<span class="s-ic" aria-hidden="true">🔍</span>' +
+    '<input type="search" class="s-in" enterkeyhint="search" autocomplete="off" ' +
+    'autocapitalize="off" spellcheck="false" placeholder="搜尋地點、城鎮、關鍵字…" ' +
+    'aria-label="搜尋地點">' +
+    '<button type="button" class="s-x" aria-label="清除搜尋" hidden>✕</button>';
+  var input = sw.querySelector('.s-in');
+  var clearBtn = sw.querySelector('.s-x');
+  var deb = null;
+  function applyQ(v) {
+    state.q = v.trim();
+    clearBtn.hidden = !state.q;
+    sw.classList.toggle('has', !!state.q);
+    render();
+  }
+  input.addEventListener('input', function () {
+    clearTimeout(deb);
+    var v = input.value;
+    deb = setTimeout(function () { applyQ(v); }, 140);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+    if (e.key === 'Escape') { input.value = ''; applyQ(''); }
+  });
+  clearBtn.onclick = function () { input.value = ''; applyQ(''); input.focus(); };
+  bar.appendChild(sw);
+
   var daysPresent = [];
   pool.forEach(function (p) { if (daysPresent.indexOf(p.day) < 0) daysPresent.push(p.day); });
   daysPresent.sort(function (a, b) { return a - b; });
@@ -1265,11 +1437,27 @@ th .twd,.pop-h .twd{display:none}
     var h = p.img ? '<div class="pl-img"><img src="' + esc(p.img) + '" alt="' +
       esc(p.zh || p.name) + '" loading="lazy" decoding="async"></div>' : '';
     h += '<div class="pl-top"><span class="pl-dot" style="background:' + c + '"></span>' +
-      '<h3>' + esc(p.name) + (p.zh ? '<small>' + esc(p.zh) + '</small>' : '') + '</h3></div>';
+      '<h3>' + hl(p.name) + (p.zh ? '<small>' + hl(p.zh) + '</small>' : '') + '</h3></div>';
     if (tags) h += '<div class="pl-tags">' + tags + '</div>';
     if (p.price) h += '<div class="pl-price">' + esc(p.price) + '</div>';
     if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
-    if (p.note) h += '<p class="pl-note">' + esc(p.note) + '</p>';
+    if (p.note) h += '<p class="pl-note">' + hl(p.note) + '</p>';
+
+    if (p.deep && p.deep.lead) {
+      var did = 'deep-' + p.id;
+      h += '<button type="button" class="pl-more" data-deep="' + did + '" aria-expanded="false" ' +
+        'aria-controls="' + did + '">' +
+        '<span class="dm-ic">💡</span><span class="dm-t">' + esc(p.deep.lead) + '</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></button>' +
+        '<div class="pl-deep" id="' + did + '" hidden>';
+      (p.deep.paras || []).forEach(function (t) { h += '<p>' + t + '</p>'; });
+      if (p.deep.tips && p.deep.tips.length) {
+        h += '<ul class="deep-tips">';
+        p.deep.tips.forEach(function (t) { h += '<li>' + t + '</li>'; });
+        h += '</ul>';
+      }
+      h += '</div>';
+    }
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
       '<a class="b-map" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">📍 Google Maps</a>' +
@@ -1294,11 +1482,24 @@ th .twd,.pop-h .twd{display:none}
   /* ── 渲染 ── */
   function render() {
     var list = pool.filter(pass);
-    count.textContent = list.length + ' / ' + pool.length + ' 個地點';
+    count.textContent = (state.q || state.days.size || state.flags.size)
+      ? '找到 ' + list.length + ' / ' + pool.length + ' 個'
+      : list.length + ' 個地點';
 
     grid.innerHTML = '';
     if (!list.length) {
-      grid.appendChild(el('div', 'empty', '沒有符合條件的地點。<br>試著取消幾個篩選。'));
+      var e = el('div', 'empty',
+        (state.q ? '找不到「<b>' + esc(state.q) + '</b>」相關的地點。<br>' : '沒有符合條件的地點。<br>') +
+        '<button type="button" class="empty-reset">清除全部條件</button>');
+      grid.appendChild(e);
+      e.querySelector('.empty-reset').onclick = function () {
+        state.q = ''; state.days.clear(); state.flags.clear();
+        input.value = ''; clearBtn.hidden = true; sw.classList.remove('has');
+        bar.querySelectorAll('.fchip').forEach(function (b) {
+          b.setAttribute('aria-pressed', 'false');
+        });
+        render();
+      };
     }
     list.forEach(function (p) {
       var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
@@ -1309,6 +1510,16 @@ th .twd,.pop-h .twd{display:none}
     });
     grid.querySelectorAll('[data-focus]').forEach(function (b) {
       b.onclick = function () { focusPlace(b.dataset.focus, false); };
+    });
+    grid.querySelectorAll('[data-deep]').forEach(function (b) {
+      b.onclick = function () {
+        var box = document.getElementById(b.dataset.deep);
+        if (!box) return;
+        var open = box.hidden;
+        box.hidden = !open;
+        b.setAttribute('aria-expanded', open);
+        b.classList.toggle('open', open);
+      };
     });
 
     if (!map) return;
@@ -1738,6 +1949,99 @@ th .twd,.pop-h .twd{display:none}
     p.dataset.twd = '1';
     f.appendChild(p);
   });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   文化頁：知識卡片（可篩選、可展開）
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var host = document.getElementById('culture');
+  var el = document.getElementById('culture-data');
+  if (!host || !el) return;
+  var DB = JSON.parse(el.textContent);
+  var CATS = DB.meta.cats || {};
+  var cards = DB.cards || [];
+  if (!cards.length) return;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  var active = new Set();
+  var bar = document.createElement('div');
+  bar.className = 'filters';
+  var grp = document.createElement('div');
+  grp.className = 'grp';
+  grp.innerHTML = '<span class="lbl">主題</span>';
+  Object.keys(CATS).forEach(function (k) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fchip'; b.setAttribute('aria-pressed', 'false');
+    b.textContent = CATS[k].icon + ' ' + CATS[k].label;
+    b.onclick = function () {
+      active.has(k) ? active.delete(k) : active.add(k);
+      b.setAttribute('aria-pressed', active.has(k));
+      render();
+    };
+    grp.appendChild(b);
+  });
+  bar.appendChild(grp);
+  var count = document.createElement('span');
+  count.className = 'fcount';
+  bar.appendChild(count);
+
+  var grid = document.createElement('div');
+  grid.className = 'cul-grid';
+  host.appendChild(bar);
+  host.appendChild(grid);
+
+  function render() {
+    var list = cards.filter(function (c) { return !active.size || active.has(c.cat); });
+    count.textContent = list.length + ' / ' + cards.length + ' 則';
+    grid.innerHTML = '';
+    list.forEach(function (c) {
+      var meta = CATS[c.cat] || { label: '', color: '#3E9DB8', icon: '' };
+      var art = document.createElement('article');
+      art.className = 'cul' + (c.img ? ' has-img' : '');
+      var h = c.img
+        ? '<div class="cul-img"><img src="images/' + esc(c.img) + '.jpg" alt="' +
+          esc(c.title) + '" loading="lazy" decoding="async"></div>' : '';
+      h += '<div class="cul-b">' +
+        '<span class="cul-cat" style="background:' + meta.color + '1f;color:' + meta.color + '">' +
+        meta.icon + ' ' + esc(meta.label) + '</span>' +
+        '<h3>' + esc(c.title) + '</h3>' +
+        '<p class="cul-lead">' + esc(c.lead) + '</p>' +
+        '<div class="cul-body">';
+      (c.paras || []).forEach(function (t) { h += '<p>' + t + '</p>'; });
+      h += '</div>';
+      if (c.where) h += '<div class="cul-where"><b>會在這裡遇到</b>' + esc(c.where) + '</div>';
+      h += '</div>';
+      art.innerHTML = h;
+      grid.appendChild(art);
+    });
+    if (window.nzTWD) window.nzTWD.convert(grid);
+  }
+  render();
+})();
+
+/* ── 回到頂端（手機） ── */
+(function () {
+  if (!document.querySelector('.places, .cul-grid')) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'totop'; b.setAttribute('aria-label', '回到頂端');
+  b.innerHTML = '↑';
+  b.onclick = function () {
+    var soft = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: soft ? 'smooth' : 'auto' });
+    var inp = document.querySelector('.s-in');
+    if (inp) setTimeout(function () { inp.focus(); }, soft ? 420 : 0);
+  };
+  document.body.appendChild(b);
+  addEventListener('scroll', function () {
+    b.classList.toggle('show', window.scrollY > 700);
+  }, { passive: true });
 })();
 
 </script>
