@@ -360,21 +360,78 @@ details[open] summary{margin-bottom:9px}
 .topbar nav a.on{background:var(--pounamu);color:#fff}
 
 /* ── 行程頁：路線方案 ── */
-.routes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
-.route{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;
-  box-shadow:var(--shadow);cursor:pointer;transition:.2s}
-.route:hover{border-color:var(--pukaki)}
-.route[aria-pressed="true"]{border-color:var(--kowhai);border-width:2px;
+/* 方案列上方的一行說明：讓人第一眼就知道「這幾張卡片可以點」 */
+.rhint{display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px;
+  margin:20px 0 10px;padding:9px 13px;border-radius:11px;
+  background:linear-gradient(180deg,#FDF6E8,#F8EDD8);
+  border:1.5px solid rgba(192,138,62,.55);
+  box-shadow:0 1px 0 rgba(192,138,62,.22)}
+.rhint-ic{flex:none;font-size:1rem;line-height:1;color:var(--tussock)}
+.rhint-t{font-size:.9rem;font-weight:600;color:#7A5A16}
+.rhint-t b{color:#8C6A22;font-weight:800}
+.rhint-s{font-size:.8rem;color:var(--ink-soft)}
+
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,258px),1fr));
+  gap:18px;margin:0 0 22px}
+.route{border:1.5px solid var(--line);border-radius:14px;background:var(--card);
+  padding:15px 18px 18px;box-shadow:var(--shadow);cursor:pointer;text-align:left;
+  font:inherit;color:inherit;min-height:44px;min-width:0;-webkit-tap-highlight-color:transparent;
+  transition:border-color .18s,box-shadow .18s,background .18s,transform .12s}
+.route:hover{border-color:var(--pukaki);transform:translateY(-2px);
+  box-shadow:0 2px 8px rgba(11,22,32,.12),var(--shadow)}
+.route:active{transform:scale(.985);box-shadow:0 1px 2px rgba(11,22,32,.1)}
+.route:focus-visible{outline:2px solid var(--tussock);outline-offset:2px}
+
+/* 選中的那張：底色、邊框、陰影、標籤全部一起換，不只是外框 */
+.route[aria-checked="true"]{border-color:var(--kowhai);border-width:2px;padding:14.5px 17.5px 17.5px;
+  background:linear-gradient(180deg,#FDF6E8,#F8EDD8);
   box-shadow:0 0 0 4px rgba(229,178,60,.16),var(--shadow)}
-.route .rh{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.route[aria-checked="true"]:hover{border-color:var(--kowhai);transform:none}
+
+/* 卡片頂端：單選圓點 ＋ 方案代號 ＋ 狀態文字 */
+.route .rtop{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.route .rdot{flex:none;width:17px;height:17px;border-radius:50%;
+  border:2px solid var(--ink-soft);background:var(--card);position:relative;
+  transition:border-color .18s,background .18s}
+.route .rdot::after{content:'';position:absolute;inset:2.5px;border-radius:50%;
+  background:#3A2A05;transform:scale(0);transition:transform .18s}
+.route:hover .rdot{border-color:var(--pukaki)}
+.route[aria-checked="true"] .rdot{border-color:#8C6A22;background:var(--kowhai)}
+.route[aria-checked="true"] .rdot::after{transform:scale(1)}
+
 .route .rl{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;background:var(--slate);
-  padding:2px 9px;border-radius:6px}
-.route[aria-pressed="true"] .rl{background:var(--kowhai);color:#3A2A05}
-.route h4{margin:0;font-size:1.06rem;font-family:var(--serif);font-weight:700;font-variant-numeric:lining-nums}
+  padding:2px 9px;border-radius:6px;white-space:nowrap}
+.route[aria-checked="true"] .rl{background:var(--kowhai);color:#3A2A05}
+
+/* 狀態膠囊：沒選的寫「點這裡看」，選中的寫「目前看這個」 */
+.route .rstate{margin-left:auto;flex:none;font-size:.71rem;font-weight:700;
+  letter-spacing:.02em;line-height:1;white-space:nowrap;
+  border-radius:20px;padding:5px 10px;font-style:normal}
+.route .rstate b,.route .rstate i{font-style:normal;font-weight:700}
+.route .rstate b{display:none}
+.route .rstate{border:1px solid rgba(192,138,62,.55);color:#7A5A16;background:var(--paper)}
+.route:hover .rstate{background:var(--tussock);color:#fff;border-color:var(--tussock)}
+.route[aria-checked="true"] .rstate{background:#8C6A22;color:#fff;border-color:#8C6A22;
+  box-shadow:0 1px 2px rgba(122,90,22,.35)}
+.route[aria-checked="true"] .rstate b{display:inline}
+.route[aria-checked="true"] .rstate i{display:none}
+
+.route h4{margin:0;font-size:1.06rem;font-family:var(--serif);font-weight:700;
+  font-variant-numeric:lining-nums;line-height:1.35;overflow-wrap:anywhere}
 .route .rd{font-family:var(--mono);font-size:.82rem;color:var(--pounamu);font-weight:700;
-  font-variant-numeric:tabular-nums}
-.route p{font-size:.87rem;margin:7px 0 0;color:var(--ink-2)}
-@media(max-width:760px){.routes{grid-template-columns:1fr}}
+  font-variant-numeric:tabular-nums;margin-top:4px;overflow-wrap:anywhere}
+.route p{font-size:.87rem;margin:7px 0 0;color:var(--ink-2);overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){
+  .route,.route .rdot,.route .rdot::after{transition:none}
+  .route:hover{transform:none}
+}
+@media(max-width:780px){
+  .routes{grid-template-columns:1fr}
+  .rhint{gap:2px 8px}
+  .rhint-t{font-size:.88rem}
+  .rhint-s{font-size:.78rem;flex:1 0 100%;padding-left:25px}
+  .route .rstate{font-size:.72rem;padding:6px 11px}
+}
 
 @media(max-width:600px){
   .places{grid-template-columns:1fr}
@@ -853,6 +910,71 @@ body.mapmode .totop{display:none!important}
   .filters .grp{padding-right:34px}
 }
 
+/* ══════════ 桌機導覽列：讓「可以切換分頁」一眼看得出來 ══════════
+   原本是一排沒有邊界的純文字，只有目前頁有底色，
+   其餘看起來像標題文字而不是可以點的東西。
+   改成 segmented control 的樣子：一條有底色的軌道把它們框在一起，
+   「一組可以擇一切換」這件事就不用解釋了。 */
+@media(min-width:781px){
+  .topbar nav{display:flex;align-items:center;gap:9px;margin-left:auto;flex-wrap:nowrap;
+    min-width:0}
+  .topbar .navlbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;flex:none}
+  .topbar .navtrack{display:flex;align-items:center;gap:2px;padding:3px;
+    background:var(--ice);border:1px solid var(--line);border-radius:22px;
+    box-shadow:inset 0 1px 2px rgba(20,40,50,.06);min-width:0}
+  .topbar nav a{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+    font-size:.8rem;color:var(--ink-2);text-decoration:none;white-space:nowrap;
+    padding:7px 12px;border-radius:18px;
+    transition:background .16s,color .16s,box-shadow .16s,transform .1s}
+  .topbar nav a .ic{font-size:.92em;line-height:1}
+  .topbar nav a:hover{background:var(--card);color:var(--pukaki-dk);
+    box-shadow:0 1px 5px rgba(20,40,50,.16)}
+  .topbar nav a:active{transform:scale(.96)}
+  .topbar nav a:focus-visible{outline:2px solid var(--pounamu);outline-offset:2px}
+  .topbar nav a.on{background:var(--pounamu);color:#fff;font-weight:700;
+    box-shadow:0 1px 5px rgba(31,91,78,.42)}
+  .topbar nav a.on:hover{background:var(--pounamu);color:#fff}
+}
+/* 窄一點的桌機：先收掉圖示，再收掉「分頁」二字，避免擠成兩行 */
+@media(min-width:781px) and (max-width:1120px){
+  .topbar nav a .ic{display:none}
+  .topbar nav a{padding:7px 10px}
+}
+@media(min-width:781px) and (max-width:940px){
+  .topbar .navlbl{display:none}
+  .topbar nav a{font-size:.76rem;padding:6px 9px}
+  .topbar .inner{gap:14px;padding-left:18px;padding-right:18px}
+}
+
+/* ══════════ 選了日期之後的路線提示 ══════════
+   「為什麼要按日期篩」這件事，光靠日期數字說不清楚。
+   選下去之後把那天的行程長什麼樣直接寫出來，關聯就成立了。 */
+.dayline{display:grid;gap:7px;margin:-4px 0 16px;padding:12px 15px;
+  background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pounamu);
+  border-radius:12px;box-shadow:var(--shadow);animation:dlIn .2s ease-out}
+@keyframes dlIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.dayline{animation:none}}
+.dayline[hidden]{display:none}
+.dl-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:.88rem}
+.dl-d{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;
+  background:var(--pounamu);border-radius:6px;padding:2px 7px;flex:none;
+  font-variant-numeric:lining-nums}
+.dl-date{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);flex:none;
+  font-variant-numeric:lining-nums}
+.dl-t{font-weight:700;color:var(--ink);min-width:0}
+.dl-leg{font-size:.79rem;color:var(--ink-soft);font-family:var(--mono);
+  background:var(--paper-2);border-radius:6px;padding:2px 8px}
+.dl-more{font-size:.8rem;font-weight:600;color:var(--pukaki-dk);text-decoration:none;
+  border-top:1px dashed var(--line-2);padding-top:8px;margin-top:1px}
+.dl-more:hover{text-decoration:underline}
+@media(max-width:560px){
+  .dayline{padding:11px 13px;gap:9px}
+  .dl-row{font-size:.85rem;gap:5px 8px}
+  .dl-t{flex:1 1 100%}
+  .dl-leg{flex:1 1 100%}
+}
+
 </style>
 </head>
 <body>
@@ -860,18 +982,20 @@ body.mapmode .totop{display:none!important}
 <header class="topbar"><div class="inner">
 <a class="logo" href="index.html">南島 <em>2026</em></a>
 <span class="pagename">會話</span>
-<nav>
-<a href="index.html">🏔 總覽</a>
-<a href="sights.html">📸 景點</a>
-<a href="eat.html">🍽 吃的</a>
-<a href="book.html">🎟 需預約</a>
-<a href="skydive.html">🪂 跳傘</a>
-<a href="glacier.html">🚁 冰川</a>
-<a href="culture.html">🗿 文化</a>
-<a href="talk.html" class="on">💬 會話</a>
-<a href="prepare.html">🎒 行前</a>
-<a href="itinerary.html">🗓 行程</a>
-</nav></div></header>
+<nav aria-label="分頁導覽">
+<span class="navlbl" aria-hidden="true">分頁</span>
+<div class="navtrack">
+<a href="index.html"><span class="ic" aria-hidden="true">🏔</span><span class="tx">總覽</span></a>
+<a href="sights.html"><span class="ic" aria-hidden="true">📸</span><span class="tx">景點</span></a>
+<a href="eat.html"><span class="ic" aria-hidden="true">🍽</span><span class="tx">吃的</span></a>
+<a href="book.html"><span class="ic" aria-hidden="true">🎟</span><span class="tx">需預約</span></a>
+<a href="skydive.html"><span class="ic" aria-hidden="true">🪂</span><span class="tx">跳傘</span></a>
+<a href="glacier.html"><span class="ic" aria-hidden="true">🚁</span><span class="tx">冰川</span></a>
+<a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
+<a href="talk.html" class="on" aria-current="page"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
+<a href="prepare.html"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
+<a href="itinerary.html"><span class="ic" aria-hidden="true">🗓</span><span class="tx">行程</span></a>
+</div></nav></div></header>
 
 <div class="hero" style="min-height:56vh">
   <div class="hero-bg" style="background-image:url('images/see-haka.jpg');background-position:50% 40%"></div>
@@ -3733,6 +3857,28 @@ body.mapmode .totop{display:none!important}
   var count = el('span', 'fcount', '');
   bar.appendChild(count);
 
+  /* 選了日期之後，在篩選列下方說明那天的行程長什麼樣，
+     這樣「為什麼要按日期篩」才有著落。 */
+  var dayline = el('div', 'dayline');
+  dayline.hidden = true;
+
+  function renderDayline() {
+    var ds = Array.from(state.days).sort(function (a, b) { return a - b; });
+    if (!ds.length) { dayline.hidden = true; dayline.innerHTML = ''; return; }
+    dayline.hidden = false;
+    dayline.innerHTML = ds.map(function (d) {
+      var i = dayByNum[d] || {};
+      return '<div class="dl-row">' +
+        '<span class="dl-d">D' + String(d).padStart(2, '0') + '</span>' +
+        '<span class="dl-date">' + esc(i.date || '') +
+        (i.wd ? '（' + esc(i.wd) + '）' : '') + '</span>' +
+        '<span class="dl-t">' + esc(i.title || '') + '</span>' +
+        (i.leg ? '<span class="dl-leg">' + esc(i.leg) + '</span>' : '') +
+        '</div>';
+    }).join('') +
+      '<a class="dl-more" href="itinerary.html">看完整行程與路線圖 →</a>';
+  }
+
   /* ── 手機：清單／地圖切換 ── */
   var seg = el('div', 'viewseg');
   var segList = el('button', 'on', '📋 清單');
@@ -3765,7 +3911,12 @@ body.mapmode .totop{display:none!important}
 
   root.appendChild(seg);
   root.appendChild(mapWrap);
+  // 樣板裡的日期說明框原本在 #app 外面（也就是地圖上方），離篩選列太遠，
+  // 讀者不會把兩件事連起來。搬到篩選列正上方。
+  var fhint = document.querySelector('.fhint');
+  if (fhint) root.appendChild(fhint);
   root.appendChild(bar);
+  root.appendChild(dayline);
   root.appendChild(grid);
 
   /* ── Leaflet ── */
@@ -3946,6 +4097,7 @@ body.mapmode .totop{display:none!important}
   /* ── 渲染 ── */
   function render() {
     var list = pool.filter(pass);
+    renderDayline();
     count.textContent = (state.q || state.days.size || state.flags.size)
       ? '找到 ' + list.length + ' / ' + pool.length + ' 個'
       : list.length + ' 個地點';
@@ -4103,12 +4255,22 @@ body.mapmode .totop{display:none!important}
     if (r.note) head += '<div class="note ' + (/⚠/.test(r.note) ? 'warn' : 'tip') +
       '" style="margin:0 0 16px"><p style="margin:0">' + r.note + '</p></div>';
 
-    var opts = '<div class="routes">';
+    /* 方案列：先用一行白話說明「這裡可以點」，再把每張卡做成看得出來的單選項 */
+    var nOpt = r.options.length;
+    var opts = '<div class="rhint"><span class="rhint-ic" aria-hidden="true">☞</span>' +
+      '<span class="rhint-t">這天有 <b>' + nOpt + ' 種</b>安排，點卡片換一種看</span>' +
+      '<span class="rhint-s">下面的地圖和地點清單會跟著換</span></div>';
+    opts += '<div class="routes" role="radiogroup" aria-label="D' + String(r.day).padStart(2, '0') +
+      ' 的行程方案，共 ' + nOpt + ' 種">';
     r.options.forEach(function (o, i) {
+      var on = i === 0;
       opts += '<button type="button" class="route" data-opt="' + o.id + '" data-day="' + r.day +
-        '" aria-pressed="' + (i === 0) + '">' +
-        '<div class="rh"><span class="rl">' + esc(o.label) + '</span>' +
-        '<h4>' + esc(o.name) + '</h4></div>' +
+        '" role="radio" aria-checked="' + on + '" tabindex="' + (on ? '0' : '-1') + '">' +
+        '<span class="rtop"><span class="rdot" aria-hidden="true"></span>' +
+        '<span class="rl">' + esc(o.label) + '</span>' +
+        '<span class="rstate" aria-hidden="true"><b>✓ 目前看這個</b>' +
+        '<i>點這裡看</i></span></span>' +
+        '<h4>' + esc(o.name) + '</h4>' +
         '<div class="rd">' + esc(o.meta || '') + (o.rec ? '　★ 建議' : '') + '</div>' +
         '<p>' + esc(o.desc) + '</p></button>';
     });
@@ -4162,14 +4324,40 @@ body.mapmode .totop{display:none!important}
     if (window.nzDrawOption) window.nzDrawOption(day, o);
   }
 
+  /* 選一張：更新 aria-checked、roving tabindex，再重畫下方內容 */
+  function pick(b, focus) {
+    var day = parseInt(b.getAttribute('data-day'), 10);
+    host.querySelectorAll('.route[data-day="' + day + '"]').forEach(function (x) {
+      var on = x === b;
+      x.setAttribute('aria-checked', on);
+      x.setAttribute('tabindex', on ? '0' : '-1');
+    });
+    if (focus) b.focus();
+    showOpt(day, b.getAttribute('data-opt'));
+  }
+
   host.addEventListener('click', function (e) {
     var b = e.target.closest ? e.target.closest('.route') : null;
+    if (!b || b.getAttribute('aria-checked') === 'true') return;
+    pick(b, false);
+  });
+
+  /* radiogroup 的鍵盤操作：左右上下切換、Home/End 跳頭尾 */
+  host.addEventListener('keydown', function (e) {
+    var b = e.target.closest ? e.target.closest('.route') : null;
     if (!b) return;
-    var day = parseInt(b.dataset.day, 10);
-    host.querySelectorAll('.route[data-day="' + day + '"]').forEach(function (x) {
-      x.setAttribute('aria-pressed', x === b);
-    });
-    showOpt(day, b.dataset.opt);
+    var k = e.key, dir = 0;
+    if (k === 'ArrowRight' || k === 'ArrowDown') dir = 1;
+    else if (k === 'ArrowLeft' || k === 'ArrowUp') dir = -1;
+    else if (k !== 'Home' && k !== 'End') return;
+    var list = [].slice.call(
+      host.querySelectorAll('.route[data-day="' + b.getAttribute('data-day') + '"]'));
+    var i = list.indexOf(b), n = list.length, t;
+    if (k === 'Home') t = list[0];
+    else if (k === 'End') t = list[n - 1];
+    else t = list[(i + dir + n) % n];
+    e.preventDefault();
+    pick(t, true);
   });
 
   DB.routes.forEach(function (r) { showOpt(r.day, r.options[0].id); });
@@ -4294,7 +4482,7 @@ body.mapmode .totop{display:none!important}
 
   // 這個模組在行程模組之後才載入，補畫一次初始選中的方案
   DB.routes.forEach(function (r) {
-    var btn = document.querySelector('.route[data-day="' + r.day + '"][aria-pressed="true"]');
+    var btn = document.querySelector('.route[data-day="' + r.day + '"][aria-checked="true"]');
     var id = btn ? btn.dataset.opt : r.options[0].id;
     var o = r.options.filter(function (x) { return x.id === id; })[0];
     if (o) window.nzDrawOption(r.day, o);
