@@ -1078,7 +1078,7 @@ input:focus-visible,[tabindex]:focus-visible{
   .food p{font-size:.79rem}
 }
 
-/* ══════════ Google 評分（查證快照，非即時） ══════════ */
+/* ══════════ 評分（查證快照，非即時，來源要標出來） ══════════ */
 .pl-rate{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 7px;
   font-size:.83rem;line-height:1}
 .pl.has-img .pl-rate{padding:0 18px}
@@ -1091,6 +1091,9 @@ input:focus-visible,[tabindex]:focus-visible{
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .pl-rate .cnt{font-family:var(--mono);font-size:.79rem;color:var(--ink-soft);
   font-variant-numeric:lining-nums}
+.pl-rate .src{font-size:.68rem;font-weight:700;color:var(--ink-2);
+  background:var(--paper-2);border:1px solid var(--line-2);border-radius:5px;padding:2px 6px}
+.pl-rate .src.g{color:#1A73E8;border-color:rgba(26,115,232,.3);background:rgba(26,115,232,.07)}
 .pl-rate .asof{font-family:var(--mono);font-size:.66rem;color:var(--ink-soft);
   background:var(--paper-2);border-radius:5px;padding:2px 6px;opacity:.85}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
@@ -1101,6 +1104,11 @@ input:focus-visible,[tabindex]:focus-visible{
 }
 
 /* ══════════ 頁尾的 PRD 連結 ══════════ */
+.ratenote{margin:14px 0 0!important;padding-top:13px;
+  border-top:1px dashed rgba(255,255,255,.18);
+  font-size:.82rem;line-height:1.7;color:#7E939F}
+.ratenote b{color:#B8C9D3}
+.ratenote + .prdnote{border-top:1px dashed rgba(255,255,255,.12)}
 .prdnote{margin:14px 0 0!important;padding-top:13px;border-top:1px dashed rgba(255,255,255,.18);
   font-size:.82rem;line-height:1.7;color:#7E939F}
 .prdnote b{color:#B8C9D3}
@@ -4178,8 +4186,12 @@ input:focus-visible,[tabindex]:focus-visible{
     try { localStorage.setItem('nz-deep-hint', '1'); } catch (e) {}
   }
 
-  /* Google 評分。這是查證當下的快照，不是即時資料——
-     沒有免費且合乎條款的方式即時取得，所以標上查證年月，讓讀者自己判斷新舊。 */
+  /* 評分。這是查證當下的快照，不是即時資料。
+     來源不一定是 Google——Google 評分沒有免費且合乎條款的取得方式，
+     實務上撈得到的多半是業者官網內嵌的 schema.org 評分或在地評論站。
+     所以「來源平台」一定要顯示出來，不能一律掛成 Google。 */
+  var RATE_SRC = { google: 'Google', rankers: 'Rankers', tripadvisor: 'Tripadvisor',
+                   official: '官網', klook: 'Klook', viator: 'Viator' };
   function rateHtml(g) {
     var r = Number(g.r) || 0;
     var full = Math.floor(r), half = (r - full) >= 0.25 && (r - full) < 0.75;
@@ -4188,12 +4200,19 @@ input:focus-visible,[tabindex]:focus-visible{
       stars += '<span class="st' +
         (i < full ? ' f' : (i === full && half ? ' h' : '')) + '">★</span>';
     }
-    return '<div class="pl-rate" title="Google 評分，查證於 ' + esc(g.asof || '') + '">' +
+    var srcName = RATE_SRC[g.src] || g.src || '';
+    var tip = (srcName ? srcName + ' 評分' : '評分') +
+      (g.asof ? '，查證於 ' + g.asof : '') + '（快照，非即時）' +
+      (g.approx ? '。評論數為估算值' : '') + (g.note ? '。' + g.note : '');
+    return '<div class="pl-rate" title="' + esc(tip) + '">' +
       '<b>' + r.toFixed(1) + '</b>' +
       '<span class="stars" aria-hidden="true">' + stars + '</span>' +
-      (g.n ? '<span class="cnt">(' + Number(g.n).toLocaleString('en-US') + ')</span>' : '') +
+      (g.n ? '<span class="cnt">(' + (g.approx ? '約 ' : '') +
+        Number(g.n).toLocaleString('en-US') + ')</span>' : '') +
+      (srcName ? '<span class="src' + (g.src === 'google' ? ' g' : '') + '">' +
+        esc(srcName) + '</span>' : '') +
       (g.asof ? '<span class="asof">' + esc(g.asof) + '查</span>' : '') +
-      '<span class="sr-only">Google 評分 ' + r.toFixed(1) + ' 分' +
+      '<span class="sr-only">' + esc(tip) + ' ' + r.toFixed(1) + ' 分' +
       (g.n ? '，' + g.n + ' 則評論' : '') + '</span></div>';
   }
 

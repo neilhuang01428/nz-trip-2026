@@ -1081,7 +1081,7 @@ input:focus-visible,[tabindex]:focus-visible{
   .food p{font-size:.79rem}
 }
 
-/* ══════════ Google 評分（查證快照，非即時） ══════════ */
+/* ══════════ 評分（查證快照，非即時，來源要標出來） ══════════ */
 .pl-rate{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 7px;
   font-size:.83rem;line-height:1}
 .pl.has-img .pl-rate{padding:0 18px}
@@ -1094,6 +1094,9 @@ input:focus-visible,[tabindex]:focus-visible{
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .pl-rate .cnt{font-family:var(--mono);font-size:.79rem;color:var(--ink-soft);
   font-variant-numeric:lining-nums}
+.pl-rate .src{font-size:.68rem;font-weight:700;color:var(--ink-2);
+  background:var(--paper-2);border:1px solid var(--line-2);border-radius:5px;padding:2px 6px}
+.pl-rate .src.g{color:#1A73E8;border-color:rgba(26,115,232,.3);background:rgba(26,115,232,.07)}
 .pl-rate .asof{font-family:var(--mono);font-size:.66rem;color:var(--ink-soft);
   background:var(--paper-2);border-radius:5px;padding:2px 6px;opacity:.85}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
@@ -1104,6 +1107,11 @@ input:focus-visible,[tabindex]:focus-visible{
 }
 
 /* ══════════ 頁尾的 PRD 連結 ══════════ */
+.ratenote{margin:14px 0 0!important;padding-top:13px;
+  border-top:1px dashed rgba(255,255,255,.18);
+  font-size:.82rem;line-height:1.7;color:#7E939F}
+.ratenote b{color:#B8C9D3}
+.ratenote + .prdnote{border-top:1px dashed rgba(255,255,255,.12)}
 .prdnote{margin:14px 0 0!important;padding-top:13px;border-top:1px dashed rgba(255,255,255,.18);
   font-size:.82rem;line-height:1.7;color:#7E939F}
 .prdnote b{color:#B8C9D3}
@@ -1136,7 +1144,7 @@ input:focus-visible,[tabindex]:focus-visible{
   <div class="wrap">
     <div class="sec-k">Sights</div>
     <h2>景點</h2>
-    <p class="lead">路線上 62 個景點，可以用<b>日期</b>或<b>條件</b>篩選。點卡片的「🗺 在地圖上」會跳到地圖，點地圖上的 pin 會反白對應的卡片。</p>
+    <p class="lead">路線上 92 個景點，可以用<b>日期</b>或<b>條件</b>篩選。點卡片的「🗺 在地圖上」會跳到地圖，點地圖上的 pin 會反白對應的卡片。</p>
     <div class="note tip">
       <span class="h">📱 手機用法</span>
       <p style="margin-bottom:0">上方可以切換「清單／地圖」。想找「今天附近有什麼」，
@@ -1170,6 +1178,7 @@ input:focus-visible,[tabindex]:focus-visible{
       地圖圖磚 &copy; OpenStreetMap 貢獻者。「📍概略」標記表示地圖上是鄰近地標的推算位置，
       導航請按卡片上的 <b>Google Maps</b> 按鈕（那個是用店名精確搜尋）。</p>
   </div>
+<p class="ratenote">⭐ 卡片上的評分是<b>查證當下的快照，不是即時資料</b>。沒有免費且合乎服務條款的方式即時取得 Google 評分（官方途徑是付費的 Places API）。標<b>「約」</b>的評論數是估算值，沒標的是實際解析頁面拿到的數字。兩邊數字差很多時我保留實際值，另一個記在滑鼠提示裡。<b>評分只是參考，季節、公休與是否已歇業比星等重要得多。</b></p>
 <p class="prdnote">🧭 這個網站是一套<b>可以複製到其他旅程</b>的架構。<a href="prd.html">看架構說明（PRD）</a>——裡面有資料結構、內容品質規則、以及可以直接貼給 AI 的提示詞。<a href="PRD.md">原始 Markdown</a></p>
 </footer>
 
@@ -1351,155 +1360,32 @@ input:focus-visible,[tabindex]:focus-visible{
  },
  "places": [
   {
-   "id": "chc-airport",
-   "name": "Christchurch Airport",
-   "zh": "基督城機場",
-   "cat": "sight",
+   "id": "dsp-crater",
+   "name": "Crater Experience",
+   "zh": "入門觀星團",
+   "cat": "book",
    "day": 3,
-   "town": "Christchurch",
-   "q": "Christchurch Airport New Zealand",
-   "flag": "info",
-   "note": "南島行程起點，租車取車處。",
-   "lat": -43.485237,
-   "lng": 172.535483,
-   "img": "images/christchurch.jpg",
-   "bookable": false
-  },
-  {
-   "id": "fairlie-bakehouse",
-   "name": "Fairlie Bakehouse",
-   "zh": "",
-   "cat": "eat",
-   "day": 3,
-   "town": "Fairlie",
-   "q": "Fairlie Bakehouse Fairlie New Zealand",
+   "town": "Lake Tekapo",
+   "q": "Dark Sky Project Lake Tekapo",
    "flag": "star",
-   "note": "全紐最有名的肉派店之一。Mt Cook 的 Old Mountaineers 連披薩餅皮與漢堡麵包都跟它進貨。",
-   "lat": -44.09862,
-   "lng": 170.829453,
-   "img": "images/food-lamington.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "做出全紐最紅肉派的，是一位奧地利廚師。",
-    "paras": [
-     "老闆 Franz Lieber 是<b>奧地利出身的廚師</b>，2010 年才搬到 Fairlie 開店。他沒照紐西蘭派的老配方做，餡料整個用歐陸廚房的做法重配過。賣最好的口味不是常見的牛肉起司，是<b>豬五花配蘋果醬與脆皮</b>。",
-     "肉派在紐西蘭是國民食物，認真到辦全國比賽：Bakels 全國派大賽分 11 個類別，評審每年光試吃就要吃掉約 4,500 個派。所以在紐西蘭說一家店的派好吃，不是客套話，背後有一整套競賽文化撐著。"
-    ],
-    "tips": [
-     "過了 Fairlie 就是 Burkes Pass，翻過那個山口才真正進入乾燥的 Mackenzie 盆地——這是進山前最後一個像樣的補給點。"
-    ]
-   }
-  },
-  {
-   "id": "good-shepherd",
-   "name": "Church of the Good Shepherd",
-   "zh": "好牧羊人教堂",
-   "cat": "sight",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Church of the Good Shepherd Lake Tekapo",
-   "flag": "star",
-   "note": "1935 年建成，紀念麥肯錫地區拓荒者。祭壇後方一整片落地窗正對湖與山。旁邊有牧羊犬銅像。",
-   "lat": -44.003347,
-   "lng": 170.482468,
-   "img": "images/tekapo-church.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "先決定要有那扇窗，才決定教堂蓋在哪裡。",
-    "paras": [
-     "一般是先挑好地再開窗，這裡反過來做：先定下<b>祭壇後方要是一整片平板玻璃</b>，再看這扇窗要框住哪一段湖景和山景，回頭決定教堂的方向和位置。所以那個畫面不是運氣好，1935 年就先想好了。",
-     "石材規定只能取自基地方圓<b>五英里</b>內，而且必須「未經打鑿、保持天然狀態」，連石頭表面的地衣都刻意留著。施工時還被要求不准整地，教堂四周原生的 matagouri 灌木一叢都不能動。"
-    ],
-    "tips": [
-     "<b>室內全面禁止拍照</b>，手機和平板也算——那是明文規定，不是勸導。",
-     "有婚禮時整個庭院會關閉上鎖，撲空是常有的事。",
-     "旁邊的牧羊犬銅像 1968 年立，紀念的是牧羊犬本身：沒有牠們，Mackenzie 根本養不了羊。"
-    ]
-   }
-  },
-  {
-   "id": "lake-tekapo",
-   "name": "Lake Tekapo",
-   "zh": "蒂卡波湖",
-   "cat": "sight",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Lake Tekapo New Zealand",
-   "flag": "ok",
-   "note": "冰川粉末造成的乳藍色。⚠️ 魯冰花花期是 11–12 月，9 月底沒有花。",
-   "lat": -44.004519,
-   "lng": 170.477727,
-   "img": "images/tekapo-pano.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "Tekapo 其實是拼錯的，正名 Takapō 意思是「連夜倉皇離開」。",
-    "paras": [
-     "官方地名現在寫成 <b>Lake Tekapo/Takapō</b> 雙語並列，因為 Tekapo 是沿用了一百多年的誤拼。Takapō 一般解作「在夜裡匆促離去」，傳說中兩位酋長連夜逃離湖區，被日出撞個正著，就地化成了石柱。",
-     "還有一件事很少人知道：這座湖其實是<b>水力發電的水庫</b>。Tekapo A 電廠 1951 年啟用，1970 年代又挖了一條二十幾公里長的運河，把湖水引到 Pukaki 那邊發電。水位是人在控制的，湖岸線高低會變。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "mt-john",
-   "name": "Ōtehīwai Mount John Observatory",
-   "zh": "Mt John 天文台",
-   "cat": "sight",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Mount John Observatory Lake Tekapo",
-   "flag": "ok",
-   "price": "上山道路每車 NZ$14",
-   "hours": "道路每天 10:00–16:00",
-   "url": "https://www.darkskyproject.co.nz/astro-cafe/",
-   "note": "自駕上山需付每車 NZ$14 道路使用費，閘口刷卡不收現金。不想付費可走 8.9 公里來回的 Summit Circuit 步道。",
-   "lat": -43.985414,
-   "lng": 170.464442,
-   "img": "images/mtjohn.jpg",
-   "bk": "Mount John Observatory",
+   "book": true,
+   "price": "成人 NZ$129 · 5–17 歲 NZ$95",
+   "hours": "75 分鐘，暮光後多梯次，一週七天",
+   "url": "https://www.darkskyproject.co.nz/",
+   "note": "Cowan's 私人天文台。滿月時用望遠鏡看月面環形山，對外行人比銀河更有衝擊力。四人共 NZ$516。",
+   "lat": -44.003402,
+   "lng": 170.477453,
+   "img": "images/tekapo-milkyway.jpg",
+   "bk": "Tekapo stargazing",
    "bookable": true,
-   "deep": {
-    "lead": "天文台會設在這個山頭，是因為紐西蘭最乾淨的夜空就在它正上方。",
-    "paras": [
-     "Mackenzie 盆地卡在南阿爾卑斯山的<b>雨影區</b>，年雨量只有約 600 毫米，雲少、空氣乾。Tekapo 一年日照超過 2,400 小時，2023 年更衝到 2,658 小時，全紐最高。天文台 1965 年就設在這個山頭。",
-     "整個鎮也跟著配合：Mackenzie 的燈光管制<b>從 1981 年就寫進區域計畫</b>——燈具必須加遮罩、只准往下打光、用暖色光源。2012 年這一帶成為<b>金級</b>國際暗空保護區，4,367 平方公里，南半球第一個。"
-    ],
-    "tips": [
-     "山頂那具 1.8 公尺望遠鏡是日本出資的 MOA 計畫在用的，靠重力微透鏡搜尋系外行星，由名古屋大學主導——旁邊是真的在運轉的研究設施，不是展示品。"
-    ]
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/462600/dark-sky-project",
+    "n": 2301,
+    "note": "同上，公司整體評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
-  },
-  {
-   "id": "astro-cafe",
-   "name": "Astro Café",
-   "zh": "",
-   "cat": "eat",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Astro Cafe Mount John Lake Tekapo",
-   "flag": "ok",
-   "hours": "每天 10:00–15:00（關門前 15 分鐘最後點餐）",
-   "url": "https://www.darkskyproject.co.nz/astro-cafe/",
-   "note": "Dark Sky Project 經營，山頂 360 度湖景。惡劣天氣會臨時關閉，改開山下的 Dark Sky Diner（9:00 起）。",
-   "lat": -43.985618,
-   "lng": 170.464977,
-   "img": "images/food-flatwhite.jpg",
-   "bookable": false
-  },
-  {
-   "id": "kohan",
-   "name": "Kohan Restaurant",
-   "zh": "湖畔日本料理",
-   "cat": "eat",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Kohan Restaurant Lake Tekapo",
-   "flag": "unverified",
-   "note": "當地名店，以生魚丼與定食聞名。⚠️ 本輪未取得官方營業時間，訂位前請自行確認。",
-   "lat": -44.004697,
-   "lng": 170.478393,
-   "img": "images/food-wines.jpg",
-   "bookable": false
   },
   {
    "id": "dsp-dark-sky-exp",
@@ -1529,27 +1415,15 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "這裡是 Ngāi Tahu 和原本的 Earth & Sky 合資經營，2019 年才改名 Dark Sky Project。導覽會把毛利人的星象知識和西方天文學擺在一起講，那是整場的主軸，不是順便提一下。"
     ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/462600/dark-sky-project",
+    "n": 2301,
+    "note": "Dark Sky Project 公司整體評分，不是單一行程的評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
-  },
-  {
-   "id": "dsp-crater",
-   "name": "Crater Experience",
-   "zh": "入門觀星團",
-   "cat": "book",
-   "day": 3,
-   "town": "Lake Tekapo",
-   "q": "Dark Sky Project Lake Tekapo",
-   "flag": "star",
-   "book": true,
-   "price": "成人 NZ$129 · 5–17 歲 NZ$95",
-   "hours": "75 分鐘，暮光後多梯次，一週七天",
-   "url": "https://www.darkskyproject.co.nz/",
-   "note": "Cowan's 私人天文台。滿月時用望遠鏡看月面環形山，對外行人比銀河更有衝擊力。四人共 NZ$516。",
-   "lat": -44.003402,
-   "lng": 170.477453,
-   "img": "images/tekapo-milkyway.jpg",
-   "bk": "Tekapo stargazing",
-   "bookable": true
   },
   {
    "id": "dsp-summit",
@@ -1569,7 +1443,15 @@ input:focus-visible,[tabindex]:focus-visible{
    "lng": 170.464442,
    "img": "images/see-aklmuseum.jpg",
    "bk": "Mount John stargazing",
-   "bookable": true
+   "bookable": true,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/462600/dark-sky-project",
+    "n": 2301,
+    "note": "同上，公司整體評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
    "id": "tekapo-springs",
@@ -1587,28 +1469,350 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/food-manuka.jpg",
    "url": "https://tekaposprings.co.nz/",
    "bk": "Tekapo Springs hot pools",
-   "bookable": true
+   "bookable": true,
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/491881/tekapo-springs--stargazing",
+    "n": 4973,
+    "note": "Google 上名稱為 Tekapo Springs & Stargazing 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
-   "id": "skydive-mtcook",
-   "name": "Skydive Mt Cook",
-   "zh": "跳傘（Lake Pukaki 機場）",
-   "cat": "skydive",
+   "id": "astro-cafe",
+   "name": "Astro Café",
+   "zh": "",
+   "cat": "eat",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "q": "Astro Cafe Mount John Lake Tekapo",
+   "flag": "ok",
+   "hours": "每天 10:00–15:00（關門前 15 分鐘最後點餐）",
+   "url": "https://www.darkskyproject.co.nz/astro-cafe/",
+   "note": "Dark Sky Project 經營，山頂 360 度湖景。惡劣天氣會臨時關閉，改開山下的 Dark Sky Diner（9:00 起）。",
+   "lat": -43.985618,
+   "lng": 170.464977,
+   "img": "images/food-flatwhite.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.2,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/791056/astro-cafe",
+    "n": 1278,
+    "note": "標示 From Google；restaurantguru 同期列 Google 4.2/1294 可交叉印證（Gemini 另查到 4.6 分／約 1250 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "barkers-geraldine",
+   "name": "Barker's Foodstore & Eatery",
+   "zh": "Geraldine 果醬老牌的店面",
+   "cat": "eat",
+   "day": 3,
+   "town": "Geraldine",
+   "lat": -44.092187,
+   "lng": 171.245619,
+   "q": "Barkers Foodstore and Eatery Geraldine New Zealand",
+   "addr": "71 Talbot Street, Geraldine 7930",
+   "price": "一餐約 NZ$15–28",
+   "hours": "每天 08:30–16:30",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.barkersfoodstore.nz/",
+   "note": "Barker's 是紐西蘭很有名的果醬品牌，總部就在 Geraldine，這是他們自己開的店＋餐廳，可以試吃再買。<b>基督城開往蒂卡波約 2 小時會經過 Geraldine，這裡是最順的午餐點</b>。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/206218/where-to-eat-best-restaurants-in-geraldine",
+    "n": 2001,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "fairlie-bakehouse",
+   "name": "Fairlie Bakehouse",
+   "zh": "",
+   "cat": "eat",
+   "day": 3,
+   "town": "Fairlie",
+   "q": "Fairlie Bakehouse Fairlie New Zealand",
+   "flag": "star",
+   "note": "全紐最有名的肉派店之一。Mt Cook 的 Old Mountaineers 連披薩餅皮與漢堡麵包都跟它進貨。",
+   "lat": -44.09862,
+   "lng": 170.829453,
+   "img": "images/food-lamington.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "做出全紐最紅肉派的，是一位奧地利廚師。",
+    "paras": [
+     "老闆 Franz Lieber 是<b>奧地利出身的廚師</b>，2010 年才搬到 Fairlie 開店。他沒照紐西蘭派的老配方做，餡料整個用歐陸廚房的做法重配過。賣最好的口味不是常見的牛肉起司，是<b>豬五花配蘋果醬與脆皮</b>。",
+     "肉派在紐西蘭是國民食物，認真到辦全國比賽：Bakels 全國派大賽分 11 個類別，評審每年光試吃就要吃掉約 4,500 個派。所以在紐西蘭說一家店的派好吃，不是客套話，背後有一整套競賽文化撐著。"
+    ],
+    "tips": [
+     "過了 Fairlie 就是 Burkes Pass，翻過那個山口才真正進入乾燥的 Mackenzie 盆地——這是進山前最後一個像樣的補給點。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/513085/fairlie-bakehouse",
+    "n": 6590,
+    "note": "該頁評分區塊標示 From Google（同頁 TripAdvisor 為 4.7/942，未採用） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "greedy-cow",
+   "name": "The Greedy Cow Cafe",
+   "zh": "蒂卡波早餐店",
+   "cat": "eat",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "lat": -44.004087,
+   "lng": 170.476965,
+   "q": "The Greedy Cow Cafe Lake Tekapo New Zealand",
+   "addr": "16 Rapuwai Lane, Lake Tekapo 7945",
+   "price": "早餐約 NZ$15–25",
+   "hours": "每天 07:30–16:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "http://www.greedycowtekapo.com/",
+   "note": "蒂卡波湖邊商店街上最穩的早餐與早午餐，開得早，趕著上 Mt John 看日出回來剛好吃得到。評論數兩千多則，是鎮上少數幾家真的被住客反覆推的。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/75489/where-to-eat-best-restaurants-in-lake-tekapo",
+    "n": 2111,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "kohan",
+   "name": "Kohan Restaurant",
+   "zh": "湖畔日本料理",
+   "cat": "eat",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "q": "Kohan Restaurant Lake Tekapo",
+   "flag": "unverified",
+   "note": "當地名店，以生魚丼與定食聞名。⚠️ 本輪未取得官方營業時間，訂位前請自行確認。",
+   "lat": -44.004697,
+   "lng": 170.478393,
+   "img": "images/food-wines.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/436866/kohan-restaurant",
+    "n": 1867,
+    "note": "同頁 businessStatus=OPERATIONAL，仍在營業；TripAdvisor 為 4.5/1397 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "tlv-tekapo",
+   "name": "TLV Restaurant & Bar",
+   "zh": "蒂卡波評分最高的晚餐",
+   "cat": "eat",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "lat": -44.003956,
+   "lng": 170.478309,
+   "q": "TLV Restaurant and Bar Lake Tekapo New Zealand",
+   "addr": "7 Motuariki Lane, Lake Tekapo 7999（Outside Sports 後方）",
+   "price": "主菜約 NZ$30–45",
+   "flag": "star",
+   "bookable": true,
+   "url": "http://www.tlv.co.nz/",
+   "note": "藏在戶外用品店後面，是蒂卡波鎮上 Google 分數最高的正餐（4.6，將近 900 則）。<b>位置不好找，也因此比湖景第一排的店安靜</b>，旺季晚餐建議先訂。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/75489/where-to-eat-best-restaurants-in-lake-tekapo",
+    "n": 898,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "chc-airport",
+   "name": "Christchurch Airport",
+   "zh": "基督城機場",
+   "cat": "sight",
+   "day": 3,
+   "town": "Christchurch",
+   "q": "Christchurch Airport New Zealand",
+   "flag": "info",
+   "note": "南島行程起點，租車取車處。",
+   "lat": -43.485237,
+   "lng": 172.535483,
+   "img": "images/christchurch.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.0,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+New+Zealand",
+    "approx": true,
+    "n": 4800
+   }
+  },
+  {
+   "id": "geraldine-vintage-museum",
+   "name": "Geraldine Vintage Car & Machinery Club Museum",
+   "zh": "老車與老曳引機博物館",
+   "cat": "sight",
+   "day": 3,
+   "town": "Geraldine",
+   "lat": -44.102463,
+   "lng": 171.244262,
+   "q": "Geraldine Vintage Car and Machinery Museum New Zealand",
+   "addr": "178 Talbot Street, Geraldine 7930",
+   "hours": "每天 10:00–15:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.geraldinevintagemuseum.com/",
+   "note": "八棟倉庫裡塞了 50 多台 1907 年以後的老車、125 台以上的老曳引機，還有一架 1929 年的雙翼機。由俱樂部志工自己顧，門口刷卡就能進。<b>下雨或是想讓小孩放電的時候好用</b>。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594552/top-things-to-do-and-attractions-in-geraldine",
+    "n": 376,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "good-shepherd",
+   "name": "Church of the Good Shepherd",
+   "zh": "好牧羊人教堂",
+   "cat": "sight",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "q": "Church of the Good Shepherd Lake Tekapo",
+   "flag": "star",
+   "note": "1935 年建成，紀念麥肯錫地區拓荒者。祭壇後方一整片落地窗正對湖與山。旁邊有牧羊犬銅像。",
+   "lat": -44.003347,
+   "lng": 170.482468,
+   "img": "images/tekapo-church.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "先決定要有那扇窗，才決定教堂蓋在哪裡。",
+    "paras": [
+     "一般是先挑好地再開窗，這裡反過來做：先定下<b>祭壇後方要是一整片平板玻璃</b>，再看這扇窗要框住哪一段湖景和山景，回頭決定教堂的方向和位置。所以那個畫面不是運氣好，1935 年就先想好了。",
+     "石材規定只能取自基地方圓<b>五英里</b>內，而且必須「未經打鑿、保持天然狀態」，連石頭表面的地衣都刻意留著。施工時還被要求不准整地，教堂四周原生的 matagouri 灌木一叢都不能動。"
+    ],
+    "tips": [
+     "<b>室內全面禁止拍照</b>，手機和平板也算——那是明文規定，不是勸導。",
+     "有婚禮時整個庭院會關閉上鎖，撲空是常有的事。",
+     "旁邊的牧羊犬銅像 1968 年立，紀念的是牧羊犬本身：沒有牠們，Mackenzie 根本養不了羊。"
+    ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/37086/the-church-of-the-good-shepherd",
+    "n": 6410,
+    "note": "標示 From Google；同頁 TripAdvisor 4.3/2147 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "lake-tekapo",
+   "name": "Lake Tekapo",
+   "zh": "蒂卡波湖",
+   "cat": "sight",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "q": "Lake Tekapo New Zealand",
+   "flag": "ok",
+   "note": "冰川粉末造成的乳藍色。⚠️ 魯冰花花期是 11–12 月，9 月底沒有花。",
+   "lat": -44.004519,
+   "lng": 170.477727,
+   "img": "images/tekapo-pano.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "Tekapo 其實是拼錯的，正名 Takapō 意思是「連夜倉皇離開」。",
+    "paras": [
+     "官方地名現在寫成 <b>Lake Tekapo/Takapō</b> 雙語並列，因為 Tekapo 是沿用了一百多年的誤拼。Takapō 一般解作「在夜裡匆促離去」，傳說中兩位酋長連夜逃離湖區，被日出撞個正著，就地化成了石柱。",
+     "還有一件事很少人知道：這座湖其實是<b>水力發電的水庫</b>。Tekapo A 電廠 1951 年啟用，1970 年代又挖了一條二十幾公里長的運河，把湖水引到 Pukaki 那邊發電。水位是人在控制的，湖岸線高低會變。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lake+Tekapo+New+Zealand",
+    "approx": true,
+    "n": 4300
+   }
+  },
+  {
+   "id": "mt-john",
+   "name": "Ōtehīwai Mount John Observatory",
+   "zh": "Mt John 天文台",
+   "cat": "sight",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "q": "Mount John Observatory Lake Tekapo",
+   "flag": "ok",
+   "price": "上山道路每車 NZ$14",
+   "hours": "道路每天 10:00–16:00",
+   "url": "https://www.darkskyproject.co.nz/astro-cafe/",
+   "note": "自駕上山需付每車 NZ$14 道路使用費，閘口刷卡不收現金。不想付費可走 8.9 公里來回的 Summit Circuit 步道。",
+   "lat": -43.985414,
+   "lng": 170.464442,
+   "img": "images/mtjohn.jpg",
+   "bk": "Mount John Observatory",
+   "bookable": true,
+   "deep": {
+    "lead": "天文台會設在這個山頭，是因為紐西蘭最乾淨的夜空就在它正上方。",
+    "paras": [
+     "Mackenzie 盆地卡在南阿爾卑斯山的<b>雨影區</b>，年雨量只有約 600 毫米，雲少、空氣乾。Tekapo 一年日照超過 2,400 小時，2023 年更衝到 2,658 小時，全紐最高。天文台 1965 年就設在這個山頭。",
+     "整個鎮也跟著配合：Mackenzie 的燈光管制<b>從 1981 年就寫進區域計畫</b>——燈具必須加遮罩、只准往下打光、用暖色光源。2012 年這一帶成為<b>金級</b>國際暗空保護區，4,367 平方公里，南半球第一個。"
+    ],
+    "tips": [
+     "山頂那具 1.8 公尺望遠鏡是日本出資的 MOA 計畫在用的，靠重力微透鏡搜尋系外行星，由名古屋大學主導——旁邊是真的在運轉的研究設施，不是展示品。"
+    ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/37050/university-of-canterbury-mt-john-observatory",
+    "n": 1891,
+    "note": "Google 上的名稱是 University of Canterbury Mt John Observatory；同頁 TripAdvisor 4.5/728 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "mtcook-alpine-salmon",
+   "name": "Mt Cook Alpine Salmon Shop",
+   "zh": "普卡基湖畔鮭魚小店",
+   "cat": "eat",
    "day": 4,
    "town": "Pukaki",
-   "q": "Lake Pukaki Airport Twizel New Zealand",
-   "addr": "2 Swallow Drive, State Hwy 8, Pukaki 7999",
-   "flag": "info",
-   "book": true,
-   "price": "10,000ft NZ$299 · 13,000ft NZ$399 · 16,500ft NZ$549",
-   "url": "https://www.skydive.co.nz/mt-cook/",
-   "note": "<b>提前跳的保險選項：9/27（日）順路</b>。跳傘場就在 Tekapo→Mt Cook 的岔路口，不繞路。16,500ft／70 秒／NZ$549——<b>同樣的錢比皇后鎮多 1,500 呎、多 10 秒</b>，而且跳的是 Aoraki 主稜與三座冰河湖。主場已改到 10/01 皇后鎮，這裡只在<b>預報顯示 10/01–10/02 不妙時</b>才啟用。另有直升機跳傘 NZ$799（含攝影）。天候取消：起跳前 1 小時通知，可改期或全額退款。",
-   "lat": -44.239647,
-   "lng": 170.118358,
-   "geo_approx": "Pukaki Airport",
-   "img": "images/skydive2.jpg",
-   "bk": "Skydive Mt Cook",
-   "bookable": true
+   "lat": -44.190036,
+   "lng": 170.139975,
+   "q": "Mt Cook Alpine Salmon Lake Pukaki New Zealand",
+   "addr": "Lake Pukaki Information Centre, State Highway 8, Pukaki 7999",
+   "price": "生魚片一盒約 NZ$15–25",
+   "hours": "每天 09:30–16:00（官網註明看天候）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://alpinesalmon.co.nz/",
+   "note": "就在普卡基湖觀景停車場旁的小屋，賣的是用冰河水養出來的鮭魚，現切生魚片站在湖邊就能吃。<b>從蒂卡波開往庫克山的 SH8 上一定會經過，完全不用繞路</b>。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/205701/mt-cook-alpine-salmon-shop",
+    "n": 3886,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
    "id": "lake-pukaki",
@@ -1633,6 +1837,39 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "Tekapo–Pukaki 之間的水力運河裡養著 Mt Cook Alpine Salmon，海拔 667 公尺，號稱全世界最高的鮭魚養殖場；Pukaki 遊客中心旁有直營店，可以直接買生魚片。"
     ]
+   },
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/37292/lake-pukaki",
+    "n": 868,
+    "note": "取自內嵌 Google 欄位；同頁 TripAdvisor 為 5.0/647（Gemini 另查到 4.8 分／約 3500 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "nz-alpine-lavender",
+   "name": "NZ Alpine Lavender",
+   "zh": "庫克山公路旁的薰衣草農場",
+   "cat": "sight",
+   "day": 4,
+   "town": "Ben Ohau",
+   "lat": -44.139057,
+   "lng": 170.115457,
+   "q": "NZ Alpine Lavender Ben Ohau New Zealand",
+   "addr": "657 Mount Cook Road (SH80), Ben Ohau 7999",
+   "price": "入場 NZ$8／人；薰衣草冰淇淋 NZ$10",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://nzalpinelavender.com/",
+   "note": "就在 SH80 往庫克山的路邊，有機薰衣草田正對雪山，冰淇淋是招牌。<b>⚠️ 花期是 12 月到 2 月，9 月底田裡還是光禿禿的</b>，這時候去只有店和背景山景。官網沒寫明淡季開放時段，建議先打 +64 27 268 1546 問。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/drive/between/82813/83174/lake-tekapo-to-omarama-drive",
+    "n": 551,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -1659,135 +1896,73 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "路邊沒有大招牌，車速快很容易衝過頭——導航設 Peter's Lookout，看到路肩有停車彎就先減速。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJhbK3F_kCK20RItinQVazLiM",
+    "n": 147,
+    "note": "Google 地圖 Peter's Lookout，2026-08-21 讀取（Gemini 另查到 4.8 分／約 2200 則）"
    }
   },
   {
-   "id": "mtcook-village",
-   "name": "Aoraki/Mount Cook Village",
-   "zh": "Mt Cook 村",
-   "cat": "sight",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Village New Zealand",
-   "flag": "ok",
-   "note": "住三晚的基地。村裡商店選擇極少、價格高，建議前一天在 Twizel／Tekapo 買好補給。",
-   "lat": -43.734945,
-   "lng": 170.097723,
-   "img": "images/mtcook-village.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "對 Ngāi Tahu 來說，Aoraki 不是一座山，是一位祖先。",
-    "paras": [
-     "傳說中 Aoraki 是天空之父 Rakinui 的兒子，和兄弟乘獨木舟下凡探望地母，回程祈禱沒念完，船擱淺翻覆。<b>那艘獨木舟化成整座南島</b>，爬上船身高處的兄弟被南風凍成石頭，成了南阿爾卑斯山的群峰——最高的那位就是 Aoraki。",
-     "所以官方名字寫成 <b>Aoraki/Mount Cook</b>，毛利名在前。1998 年 Ngāi Tahu 和解法案先把這座山象徵性歸還部落，再由部落贈與全國。山頂等於祖先的頭，因此嚮導帶隊通常停在<b>離真正最高點約 50 公尺</b>處，不踩上去。"
-    ],
-    "tips": [
-     "SH80 是條死路：從 SH8 岔進來 55 公里，出去也是同樣 55 公里，沒有第二條路。",
-     "村裡只有一座刷卡自助油泵，最近的正規加油站在 Twizel——轉進 SH80 之前先把油加滿。",
-     "整個村子都在國家公園內，土地不能買賣，所有旅館店家都是靠政府特許經營——這就是為什麼選擇少、價格硬。"
-    ]
-   }
-  },
-  {
-   "id": "adventurer-helihike",
-   "name": "The Adventurer · Tasman Glacier Heli Hike",
-   "zh": "塔斯曼冰川直升機健行",
-   "cat": "glacier",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Airport New Zealand",
-   "addr": "Aoraki Mt Cook Airport, Mount Cook Road (SH80)",
-   "flag": "star",
+   "id": "skydive-mtcook",
+   "name": "Skydive Mt Cook",
+   "zh": "跳傘（Lake Pukaki 機場）",
+   "cat": "skydive",
+   "day": 4,
+   "town": "Pukaki",
+   "q": "Lake Pukaki Airport Twizel New Zealand",
+   "addr": "2 Swallow Drive, State Hwy 8, Pukaki 7999",
+   "flag": "info",
    "book": true,
-   "price": "NZ$899／人（4 人共 NZ$3,596）",
-   "hours": "出發 8:45am 與 10:45am · 全程 3 小時（冰上 2 小時）",
-   "url": "https://www.mtcookskiplanes.com/adventure/",
-   "note": "★ 重頭戲。最低成團 4 人——你們自己就成團。最低 9 歲、體重上限 116kg、體能要求低／中，裝備全含。起飛前 10 分鐘才做最終天候檢查；取消退款須報到前 48 小時提出。官網標示此價效期至 2026/09/30。",
-   "lat": -43.766693,
-   "lng": 170.133432,
-   "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/helihike3.jpg",
-   "bk": "Tasman Glacier Heli Hike",
+   "price": "10,000ft NZ$299 · 13,000ft NZ$399 · 16,500ft NZ$549",
+   "url": "https://www.skydive.co.nz/mt-cook/",
+   "note": "<b>提前跳的保險選項：9/27（日）順路</b>。跳傘場就在 Tekapo→Mt Cook 的岔路口，不繞路。16,500ft／70 秒／NZ$549——<b>同樣的錢比皇后鎮多 1,500 呎、多 10 秒</b>，而且跳的是 Aoraki 主稜與三座冰河湖。主場已改到 10/01 皇后鎮，這裡只在<b>預報顯示 10/01–10/02 不妙時</b>才啟用。另有直升機跳傘 NZ$799（含攝影）。天候取消：起跳前 1 小時通知，可改期或全額退款。",
+   "lat": -44.239647,
+   "lng": 170.118358,
+   "geo_approx": "Pukaki Airport",
+   "img": "images/skydive2.jpg",
+   "bk": "Skydive Mt Cook",
    "bookable": true,
-   "deep": {
-    "lead": "塔斯曼冰川的下半段是黑的——它被石頭蓋住了。",
-    "paras": [
-     "從末端往上游約 8 公里都覆著一層碎石，靠近末端處厚達一公尺左右。石頭像棉被一樣<b>隔熱</b>，所以暖化對塔斯曼冰川的影響，不是末端往後退，而是<b>整個變薄</b>——光是 1890 到 1962 年，冰面就往下掉了約 82 公尺。",
-     "這也正是為什麼非搭直升機不可：走得到的下游是灰黑色的碎石冰，真正乾淨的藍冰、冰洞和裂隙都在上游高處，只能飛上去。"
-    ],
-    "tips": []
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJH99eb2gfK20RNHuSobHdSA4",
+    "n": 555,
+    "note": "Google 地圖 Skydive Mount Cook（Pukaki 機場），2026-08-21 讀取"
    }
   },
   {
-   "id": "glacier-highlights",
-   "name": "Glacier Highlights",
-   "zh": "冰川降落（備案）",
-   "cat": "glacier",
+   "id": "big-sky-stargazing",
+   "name": "Big Sky Stargazing",
+   "zh": "Mt Cook 觀星",
+   "cat": "book",
    "day": 5,
    "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Airport New Zealand",
-   "flag": "ok",
+   "q": "Hermitage Hotel Aoraki Mount Cook",
+   "flag": "warn",
    "book": true,
-   "price": "成人 NZ$649",
-   "hours": "45 分鐘（含 10–15 分鐘冰川降落）",
-   "url": "https://www.mtcookskiplanes.com/flights-and-tours/glacier-highlights/",
-   "note": "天氣不夠好、飛不了 heli-hike 的時候，退而求其次的選擇。可選直升機或滑雪飛機。",
-   "lat": -43.766693,
-   "lng": 170.133432,
-   "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/franz-heli-village.jpg",
-   "bk": "Mount Cook scenic flight glacier landing",
-   "bookable": true
-  },
-  {
-   "id": "ultimate-alpine",
-   "name": "Ultimate Alpine Experience",
-   "zh": "滑雪飛機＋直升機",
-   "cat": "glacier",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Airport New Zealand",
-   "flag": "ok",
-   "book": true,
-   "price": "NZ$549",
-   "hours": "45 分鐘",
-   "url": "https://www.mtcookskiplanes.com/flights-and-tours/ultimate-alpine-experience/",
-   "note": "去程與回程用不同機種，含塔斯曼冰川降落。官方稱 World Exclusive。",
-   "lat": -43.766693,
-   "lng": 170.133432,
-   "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/helihike1.jpg",
-   "bk": "Mount Cook ski plane helicopter",
+   "price": "成人 NZ$159 起 · 8–14 歲 NZ$89",
+   "hours": "75–90 分鐘 · 梯次 19:30 與 21:30",
+   "note": "有華語導覽。⚠️ 官方自己建議「盡量選新月前後」，而你們碰到滿月。天候取消改成 45 分鐘天象館並只退 75%（非全額）。",
+   "lat": -43.733163,
+   "lng": 170.093722,
+   "geo_approx": "The Hermitage Mount Cook",
+   "img": "images/franz-seracs.jpg",
+   "url": "https://hermitage.co.nz/",
+   "bk": "Mount Cook stargazing",
    "bookable": true,
-   "deep": {
-    "lead": "能降落在冰川上的滑雪飛機，1955 年就是在這裡發明的。",
-    "paras": [
-     "1955 年 9 月 22 日，Harry Wigley 駕著裝上<b>可收放木製滑雪橇</b>的 Auster Aiglet 降落在塔斯曼冰川雪原，是南半球第一次滑雪飛機降落。輪子能從滑雪橇中伸出來，所以同一架飛機能在跑道起飛、在雪地落地。",
-     "當天機上的乘客之一，是還沒登上聖母峰的 <b>Edmund Hillary</b>。這趟試驗直接催生了 Mount Cook Ski Planes 這門生意；今天你買的冰川降落，用的還是七十年前那個點子。"
-    ],
-    "tips": []
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Big+Sky+Stargazing+Hermitage+Hotel",
+    "approx": true,
+    "n": 210
    }
-  },
-  {
-   "id": "tasman-taster",
-   "name": "Tasman Taster",
-   "zh": "高山降落",
-   "cat": "glacier",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Airport New Zealand",
-   "flag": "ok",
-   "book": true,
-   "price": "NZ$379",
-   "hours": "25 分鐘",
-   "url": "https://www.mtcookskiplanes.com/flights-and-tours/tasman-taster/",
-   "note": "最短最便宜的空中選項，降落在 Brass Peak 或 Liebig Dome。",
-   "lat": -43.766693,
-   "lng": 170.133432,
-   "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/tasman-glacier.jpg",
-   "bk": "Mount Cook helicopter",
-   "bookable": true
   },
   {
    "id": "glacier-explorers",
@@ -1818,6 +1993,369 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "浮冰的位置與大小每天都不一樣，看得到什麼很靠運氣——這是自然現象，不是安排好的節目。"
     ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 231,
+    "note": "同日直查 Google 為 4.6/245（Gemini 另查到 4.7 分／約 820 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "hermitage-planetarium",
+   "name": "Planetarium at The Hermitage",
+   "zh": "室內星象館",
+   "cat": "book",
+   "day": 5,
+   "town": "Mt Cook",
+   "lat": -43.732778,
+   "lng": 170.093113,
+   "q": "Hermitage Hotel Planetarium Aoraki Mount Cook",
+   "addr": "89 Terrace Road, Aoraki/Mount Cook 7946",
+   "price": "成人 NZ$45、5–14 歲 NZ$29、家庭票 NZ$115",
+   "hours": "每天 17:00 一場，約 45 分鐘",
+   "flag": "star",
+   "bookable": true,
+   "url": "https://www.hermitage.co.nz/experience/planetarium",
+   "note": "8.5 公尺球幕的室內星象館，由駐點天文人員現場解說南半球星空。<b>9/26–9/29 剛好接近滿月，戶外觀星幾乎看不到銀河</b>，這場在室內反而不受月光和雲影響。5 歲以下不能進，2026/8/31–9/8 公休（不影響這趟）。"
+  },
+  {
+   "id": "glentanner-cafe",
+   "name": "Tasman Delta Cafe, Glentanner Park Centre",
+   "zh": "庫克山外 18 公里的備案",
+   "cat": "eat",
+   "day": 5,
+   "town": "Glentanner",
+   "lat": -43.914312,
+   "lng": 170.123041,
+   "q": "Glentanner Park Centre Mount Cook New Zealand",
+   "addr": "3388 Mount Cook Road (SH80), Glentanner 7999",
+   "hours": "每天 08:45 到下午中段",
+   "flag": "info",
+   "bookable": false,
+   "url": "https://www.glentanner.co.nz/",
+   "note": "SH80 上距離庫克山村約 18 公里的營地附設咖啡館，賣咖啡、派、冰淇淋和簡單早午餐。<b>村裡午餐撲空時的第二選擇</b>，也是這一段唯一還有加油機的地方。",
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 947,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "hermitage",
+   "name": "The Hermitage Hotel",
+   "zh": "隱士飯店餐廳",
+   "cat": "eat",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "The Hermitage Hotel Aoraki Mount Cook",
+   "flag": "ok",
+   "note": "村裡另一個餐飲選擇，Panorama Room 正對 Aoraki。你們的 motel 含早晚餐，主要要解決的是午餐。",
+   "lat": -43.733163,
+   "lng": 170.093722,
+   "geo_approx": "The Hermitage Mount Cook",
+   "img": "images/hooker-lake.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "這間飯店被洪水沖垮過一次，又被大火燒光過一次。",
+    "paras": [
+     "第一代 Hermitage 1884 年蓋在更上游、靠近 Mueller 冰川的地方，是土坯屋、只有 11 間房。1913 年兩場洪水把它毀了，1914 年才在<b>現在這個位置</b>重開——所以今天窗外那個角度，是被大水逼出來的。",
+     "1957 年 9 月 15 日廚房起火，剛整修完的建築整棟燒毀。政府急著重建，八個月後、<b>1958 年 5 月</b>就重新開幕。今天你走進去的，已經是第三代 Hermitage。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJg8ljtFJLKm0RWBgsSr5MUTA",
+    "n": 3730,
+    "note": "這是 The Hermitage Hotel 飯店本體的分數。館內各餐廳分數不同：Alpine Restaurant 3.7/231、Sir Edmund Hillary Café 3.9/240、Snowline Bar 4.2/27；Panorama Room 沒有獨立商家頁"
+   }
+  },
+  {
+   "id": "hillary-cafe",
+   "name": "Sir Edmund Hillary Café & Bar",
+   "zh": "9/28 村裡唯一穩的午餐",
+   "cat": "eat",
+   "day": 5,
+   "town": "Mt Cook",
+   "lat": -43.73283,
+   "lng": 170.093351,
+   "q": "Sir Edmund Hillary Cafe Aoraki Mount Cook",
+   "addr": "89 Terrace Road, The Hermitage, Aoraki/Mount Cook 7946",
+   "price": "單品 NZ$10–32",
+   "hours": "每天 10:00–15:30（點心供應到 15:00）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.hermitage.co.nz/dine/the-sir-edmund-hillary-cafe",
+   "note": "<b>9/28 中午村裡幾乎只剩這一家</b>：Hermitage 的自助午餐 10/1 才開始供應，Chamois Bar &amp; Grill 2026 年 5/9–10/31 整段公休，Old Mountaineers 週一常公休。這裡賣漢堡、披薩、炸魚薯條與櫃檯三明治，可外帶上步道，只收卡不收現金。",
+   "g": {
+    "r": 3.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJJ_9gPRRLKm0R6nu9UAMzkQg",
+    "n": 240
+   }
+  },
+  {
+   "id": "old-mountaineers",
+   "name": "The Old Mountaineers",
+   "zh": "",
+   "cat": "eat",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "The Old Mountaineers Cafe Aoraki Mount Cook",
+   "flag": "warn",
+   "price": "漢堡 NZ$28–32 · 披薩 NZ$27–29 · 素食漢堡 NZ$29",
+   "hours": "官網時間表：週一、週二公休；週三四日 10–16；週五六 10–19",
+   "url": "http://www.mtcook.com/restaurant",
+   "note": "⚠️ <b>9/28（一）確定公休；9/29（二）狀況不明</b>——官網同一頁自相矛盾，一邊說兩天都休、一邊只寫「Closed Monday」，而且明說時間不保證。當天傳簡訊給 Charlie（0274 342277）最準。沒有訂位、櫃檯點餐、國定假日加 15%。",
+   "lat": -43.734945,
+   "lng": 170.097723,
+   "geo_approx": "Mount Cook Village",
+   "img": "images/food-beerflight.jpg",
+   "bookable": true,
+   "deep": {
+    "lead": "老闆 Charlie 不是餐飲業出身，他是登山嚮導。",
+    "paras": [
+     "這家店 2003 年由 <b>Charlie 與 Mary Hobbs</b> 一手蓋起來，Charlie 是紐西蘭備受敬重的登山與滑雪嚮導。所以營業時間才會「看情況」，傳簡訊問他也才比看官網準——這本來就是登山的人開給登山的人的店。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 3.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3wlJLsxLKm0RgrHFtrO-ZPA",
+    "n": 922,
+    "note": "Google 地圖 The Old Mountaineers Cafe，2026-08-21 讀取；星等分布 1★150 / 2★78 / 3★110 / 4★251 / 5★333。中文旅遊資訊常把它寫成必吃，實際分數只有 3.6（Gemini 另查到 4.5 分／約 950 則）"
+   }
+  },
+  {
+   "id": "adventurer-helihike",
+   "name": "The Adventurer · Tasman Glacier Heli Hike",
+   "zh": "塔斯曼冰川直升機健行",
+   "cat": "glacier",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Airport New Zealand",
+   "addr": "Aoraki Mt Cook Airport, Mount Cook Road (SH80)",
+   "flag": "star",
+   "book": true,
+   "price": "NZ$899／人（4 人共 NZ$3,596）",
+   "hours": "出發 8:45am 與 10:45am · 全程 3 小時（冰上 2 小時）",
+   "url": "https://www.mtcookskiplanes.com/adventure/",
+   "note": "★ 重頭戲。最低成團 4 人——你們自己就成團。最低 9 歲、體重上限 116kg、體能要求低／中，裝備全含。起飛前 10 分鐘才做最終天候檢查；取消退款須報到前 48 小時提出。官網標示此價效期至 2026/09/30。",
+   "lat": -43.766693,
+   "lng": 170.133432,
+   "geo_approx": "Mount Cook Aerodrome",
+   "img": "images/helihike3.jpg",
+   "bk": "Tasman Glacier Heli Hike",
+   "bookable": true,
+   "deep": {
+    "lead": "塔斯曼冰川的下半段是黑的——它被石頭蓋住了。",
+    "paras": [
+     "從末端往上游約 8 公里都覆著一層碎石，靠近末端處厚達一公尺左右。石頭像棉被一樣<b>隔熱</b>，所以暖化對塔斯曼冰川的影響，不是末端往後退，而是<b>整個變薄</b>——光是 1890 到 1962 年，冰面就往下掉了約 82 公尺。",
+     "這也正是為什麼非搭直升機不可：走得到的下游是灰黑色的碎石冰，真正乾淨的藍冰、冰洞和裂隙都在上游高處，只能飛上去。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJCw7HPWurK20R5ukJfb1-43g",
+    "n": 1030,
+    "note": "行程本身沒有獨立商家頁；這是營運公司 Mount Cook Ski Planes & Helicopters（Inflite）的分數。The Adventurer 就是這家賣的，NZ$899／3 小時"
+   }
+  },
+  {
+   "id": "glacier-highlights",
+   "name": "Glacier Highlights",
+   "zh": "冰川降落（備案）",
+   "cat": "glacier",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Airport New Zealand",
+   "flag": "ok",
+   "book": true,
+   "price": "成人 NZ$649",
+   "hours": "45 分鐘（含 10–15 分鐘冰川降落）",
+   "url": "https://www.mtcookskiplanes.com/flights-and-tours/glacier-highlights/",
+   "note": "天氣不夠好、飛不了 heli-hike 的時候，退而求其次的選擇。可選直升機或滑雪飛機。",
+   "lat": -43.766693,
+   "lng": 170.133432,
+   "geo_approx": "Mount Cook Aerodrome",
+   "img": "images/franz-heli-village.jpg",
+   "bk": "Mount Cook scenic flight glacier landing",
+   "bookable": true,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJCw7HPWurK20R5ukJfb1-43g",
+    "n": 1030,
+    "note": "同為 Inflite 公司分數；Glacier Highlights NZ$649／45 分鐘，含冰河降落"
+   }
+  },
+  {
+   "id": "ski-the-tasman",
+   "name": "Ski the Tasman",
+   "zh": "滑下塔斯曼冰川",
+   "cat": "glacier",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Airport New Zealand",
+   "flag": "ok",
+   "book": true,
+   "price": "NZ$6,999／團（最多 5 人）",
+   "hours": "6 小時 · 含午餐 · 雪季 7–9 月",
+   "url": "https://www.mtcookskiplanes.com/flights-and-tours/ski-the-tasman/",
+   "note": "9/28 剛好卡在雪季最後幾天。團裡有人會滑雪的話，這是很難得的窗口。",
+   "lat": -43.766693,
+   "lng": 170.133432,
+   "geo_approx": "Mount Cook Aerodrome",
+   "img": "images/tasman-lake.jpg",
+   "bk": "Ski the Tasman",
+   "bookable": true,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJCw7HPWurK20R5ukJfb1-43g",
+    "n": 1030,
+    "note": "Inflite 與 The Helicopter Line 兩家都賣同名行程，這裡給的是 Inflite 的公司分數；The Helicopter Line 公司分數為 4.8/504"
+   }
+  },
+  {
+   "id": "tasman-taster",
+   "name": "Tasman Taster",
+   "zh": "高山降落",
+   "cat": "glacier",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Airport New Zealand",
+   "flag": "ok",
+   "book": true,
+   "price": "NZ$379",
+   "hours": "25 分鐘",
+   "url": "https://www.mtcookskiplanes.com/flights-and-tours/tasman-taster/",
+   "note": "最短最便宜的空中選項，降落在 Brass Peak 或 Liebig Dome。",
+   "lat": -43.766693,
+   "lng": 170.133432,
+   "geo_approx": "Mount Cook Aerodrome",
+   "img": "images/tasman-glacier.jpg",
+   "bk": "Mount Cook helicopter",
+   "bookable": true,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJCw7HPWurK20R5ukJfb1-43g",
+    "n": 1030,
+    "note": "同為 Inflite 公司分數；Tasman Taster NZ$379／25 分鐘"
+   }
+  },
+  {
+   "id": "ultimate-alpine",
+   "name": "Ultimate Alpine Experience",
+   "zh": "滑雪飛機＋直升機",
+   "cat": "glacier",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Airport New Zealand",
+   "flag": "ok",
+   "book": true,
+   "price": "NZ$549",
+   "hours": "45 分鐘",
+   "url": "https://www.mtcookskiplanes.com/flights-and-tours/ultimate-alpine-experience/",
+   "note": "去程與回程用不同機種，含塔斯曼冰川降落。官方稱 World Exclusive。",
+   "lat": -43.766693,
+   "lng": 170.133432,
+   "geo_approx": "Mount Cook Aerodrome",
+   "img": "images/helihike1.jpg",
+   "bk": "Mount Cook ski plane helicopter",
+   "bookable": true,
+   "deep": {
+    "lead": "能降落在冰川上的滑雪飛機，1955 年就是在這裡發明的。",
+    "paras": [
+     "1955 年 9 月 22 日，Harry Wigley 駕著裝上<b>可收放木製滑雪橇</b>的 Auster Aiglet 降落在塔斯曼冰川雪原，是南半球第一次滑雪飛機降落。輪子能從滑雪橇中伸出來，所以同一架飛機能在跑道起飛、在雪地落地。",
+     "當天機上的乘客之一，是還沒登上聖母峰的 <b>Edmund Hillary</b>。這趟試驗直接催生了 Mount Cook Ski Planes 這門生意；今天你買的冰川降落，用的還是七十年前那個點子。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJCw7HPWurK20R5ukJfb1-43g",
+    "n": 1030,
+    "note": "同為 Inflite 公司分數；Ultimate Alpine Experience NZ$549／45 分鐘"
+   }
+  },
+  {
+   "id": "doc-mtcook-visitor",
+   "name": "Aoraki/Mount Cook National Park Visitor Centre",
+   "zh": "國家公園遊客中心",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "lat": -43.733181,
+   "lng": 170.095353,
+   "q": "Aoraki Mount Cook National Park Visitor Centre",
+   "addr": "1 Larch Grove Road, Aoraki/Mount Cook 7946",
+   "price": "免費",
+   "hours": "5–9 月 08:30–16:30；10–4 月 08:30–17:00",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/aoraki-mount-cook-national-park-visitor-centre/",
+   "note": "DOC 經營的免費展館，有登山史、冰川與動植物展示，門口一面板子即時更新各步道狀況。<b>走胡克谷之前先進來看板子</b>，可以省掉走到一半才發現封閉；下雨天也是村裡少數能待的室內空間。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 1515,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "hillary-centre",
+   "name": "Sir Edmund Hillary Alpine Centre",
+   "zh": "希拉里高山中心",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Sir Edmund Hillary Alpine Centre Aoraki Mount Cook",
+   "flag": "ok",
+   "note": "在 Hermitage 飯店內。紀念第一位登上聖母峰的紐西蘭人——他就是在這裡練習登山的。館內有博物館與天象館。",
+   "lat": -43.732778,
+   "lng": 170.093113,
+   "img": "images/see-hillary.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "希拉里人生第一座真正的山，就在這個村子後面。",
+    "paras": [
+     "1939 年，20 歲的 Edmund Hillary 還在家裡幫忙養蜂。他從 Mt Cook 村後方爬上 <b>Mount Ollivier</b>（1,933 公尺），一般認為那是他第一次像樣的登頂。從聖母峰往回推，起點在這裡，不在喜馬拉雅。",
+     "門口那尊銅像 <b>2003 年由他本人親自揭幕</b>，造型取自 1970 年他 50 歲生日完成 Aoraki 三峰縱走後拍的照片——不是慈祥老爺爺，是正在爬山的他。館內的天象館是紐西蘭唯一一座。"
+    ],
+    "tips": [
+     "Mount Ollivier 現在要走 Sealy Tarns 步道再接 Mueller Hut 路線才到得了，落差一千公尺出頭——看得到，但不是散步等級。"
+    ]
+   },
+   "g": {
+    "r": 3.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 91,
+    "note": "分數偏低，實際上多數評論嫌展區小、票價貴；同日直查 Google 為 3.6/94（Gemini 另查到 4.5 分／約 480 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -1847,6 +2385,14 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "湖邊的風是直接掠過冰面吹過來的，體感遠低於村裡，最外層防風一定要帶著走。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 6141,
+    "note": "內嵌 Google 欄位；同日直查 Google 地圖為 4.8/6247，數字一致 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -1874,6 +2420,74 @@ input:focus-visible,[tabindex]:focus-visible{
      "東西別留在車外，車窗關好；牠們是真的會動手。",
      "步道盡頭正對 Mt Sefton（3,151 公尺）的冰瀑，安靜的時候可以聽到雪崩的轟隆聲從對面山壁傳過來。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 536,
+    "note": "同日直查 Google 地圖為 4.7/542（Gemini 另查到 4.8 分／約 1400 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "mtcook-village",
+   "name": "Aoraki/Mount Cook Village",
+   "zh": "Mt Cook 村",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Aoraki Mount Cook Village New Zealand",
+   "flag": "ok",
+   "note": "住三晚的基地。村裡商店選擇極少、價格高，建議前一天在 Twizel／Tekapo 買好補給。",
+   "lat": -43.734945,
+   "lng": 170.097723,
+   "img": "images/mtcook-village.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "對 Ngāi Tahu 來說，Aoraki 不是一座山，是一位祖先。",
+    "paras": [
+     "傳說中 Aoraki 是天空之父 Rakinui 的兒子，和兄弟乘獨木舟下凡探望地母，回程祈禱沒念完，船擱淺翻覆。<b>那艘獨木舟化成整座南島</b>，爬上船身高處的兄弟被南風凍成石頭，成了南阿爾卑斯山的群峰——最高的那位就是 Aoraki。",
+     "所以官方名字寫成 <b>Aoraki/Mount Cook</b>，毛利名在前。1998 年 Ngāi Tahu 和解法案先把這座山象徵性歸還部落，再由部落贈與全國。山頂等於祖先的頭，因此嚮導帶隊通常停在<b>離真正最高點約 50 公尺</b>處，不踩上去。"
+    ],
+    "tips": [
+     "SH80 是條死路：從 SH8 岔進來 55 公里，出去也是同樣 55 公里，沒有第二條路。",
+     "村裡只有一座刷卡自助油泵，最近的正規加油站在 Twizel——轉進 SH80 之前先把油加滿。",
+     "整個村子都在國家公園內，土地不能買賣，所有旅館店家都是靠政府特許經營——這就是為什麼選擇少、價格硬。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Aoraki+Mount+Cook+Village",
+    "approx": true,
+    "n": 1900
+   }
+  },
+  {
+   "id": "sealy-tarns",
+   "name": "Sealy Tarns Track",
+   "zh": "通往天堂的階梯",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "lat": -43.713055,
+   "lng": 170.07441,
+   "q": "Sealy Tarns Track Aoraki Mount Cook",
+   "addr": "White Horse Hill, Aoraki/Mount Cook National Park",
+   "price": "免費",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/Sealy-Tarns-Track/",
+   "note": "從 Kea Point 步道岔出去往上爬約 2,200 階，頂上小水池能同時映到庫克山和穆勒冰河。來回 3–4 小時、爬升 550 公尺，是這一帶 Google 分數最高的視角。<b>⚠️ 9 月底上半段常有殘雪結冰</b>，出發前務必先問遊客中心。",
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 287,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -1899,175 +2513,62 @@ input:focus-visible,[tabindex]:focus-visible{
      "翻過稜線是相反的故事：塔斯曼冰河湖在 1970 年代初還只是冰面上零星的融水池塘，1990 年前後這些池塘連成一片，才成了今天這座湖。四十年就長出一座湖。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
+    "n": 1605,
+    "note": "這是上方觀景台本體；湖邊另一個獨立地標 Tasman Glacier View near the lake 為 4.9/201，Blue Lakes 本身只有 4.1/55 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
-   "id": "hillary-centre",
-   "name": "Sir Edmund Hillary Alpine Centre",
-   "zh": "希拉里高山中心",
-   "cat": "sight",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Sir Edmund Hillary Alpine Centre Aoraki Mount Cook",
-   "flag": "ok",
-   "note": "在 Hermitage 飯店內。紀念第一位登上聖母峰的紐西蘭人——他就是在這裡練習登山的。館內有博物館與天象館。",
-   "lat": -43.732778,
-   "lng": 170.093113,
-   "img": "images/see-hillary.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "希拉里人生第一座真正的山，就在這個村子後面。",
-    "paras": [
-     "1939 年，20 歲的 Edmund Hillary 還在家裡幫忙養蜂。他從 Mt Cook 村後方爬上 <b>Mount Ollivier</b>（1,933 公尺），一般認為那是他第一次像樣的登頂。從聖母峰往回推，起點在這裡，不在喜馬拉雅。",
-     "門口那尊銅像 <b>2003 年由他本人親自揭幕</b>，造型取自 1970 年他 50 歲生日完成 Aoraki 三峰縱走後拍的照片——不是慈祥老爺爺，是正在爬山的他。館內的天象館是紐西蘭唯一一座。"
-    ],
-    "tips": [
-     "Mount Ollivier 現在要走 Sealy Tarns 步道再接 Mueller Hut 路線才到得了，落差一千公尺出頭——看得到，但不是散步等級。"
-    ]
-   }
-  },
-  {
-   "id": "old-mountaineers",
-   "name": "The Old Mountaineers",
-   "zh": "",
-   "cat": "eat",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "The Old Mountaineers Cafe Aoraki Mount Cook",
-   "flag": "warn",
-   "price": "漢堡 NZ$28–32 · 披薩 NZ$27–29 · 素食漢堡 NZ$29",
-   "hours": "官網時間表：週一、週二公休；週三四日 10–16；週五六 10–19",
-   "url": "http://www.mtcook.com/restaurant",
-   "note": "⚠️ <b>9/28（一）確定公休；9/29（二）狀況不明</b>——官網同一頁自相矛盾，一邊說兩天都休、一邊只寫「Closed Monday」，而且明說時間不保證。當天傳簡訊給 Charlie（0274 342277）最準。沒有訂位、櫃檯點餐、國定假日加 15%。",
-   "lat": -43.734945,
-   "lng": 170.097723,
-   "geo_approx": "Mount Cook Village",
-   "img": "images/food-beerflight.jpg",
-   "bookable": true,
-   "deep": {
-    "lead": "老闆 Charlie 不是餐飲業出身，他是登山嚮導。",
-    "paras": [
-     "這家店 2003 年由 <b>Charlie 與 Mary Hobbs</b> 一手蓋起來，Charlie 是紐西蘭備受敬重的登山與滑雪嚮導。所以營業時間才會「看情況」，傳簡訊問他也才比看官網準——這本來就是登山的人開給登山的人的店。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "hermitage",
-   "name": "The Hermitage Hotel",
-   "zh": "隱士飯店餐廳",
-   "cat": "eat",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "The Hermitage Hotel Aoraki Mount Cook",
-   "flag": "ok",
-   "note": "村裡另一個餐飲選擇，Panorama Room 正對 Aoraki。你們的 motel 含早晚餐，主要要解決的是午餐。",
-   "lat": -43.733163,
-   "lng": 170.093722,
-   "geo_approx": "The Hermitage Mount Cook",
-   "img": "images/hooker-lake.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "這間飯店被洪水沖垮過一次，又被大火燒光過一次。",
-    "paras": [
-     "第一代 Hermitage 1884 年蓋在更上游、靠近 Mueller 冰川的地方，是土坯屋、只有 11 間房。1913 年兩場洪水把它毀了，1914 年才在<b>現在這個位置</b>重開——所以今天窗外那個角度，是被大水逼出來的。",
-     "1957 年 9 月 15 日廚房起火，剛整修完的建築整棟燒毀。政府急著重建，八個月後、<b>1958 年 5 月</b>就重新開幕。今天你走進去的，已經是第三代 Hermitage。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "big-sky-stargazing",
-   "name": "Big Sky Stargazing",
-   "zh": "Mt Cook 觀星",
+   "id": "glide-omarama",
+   "name": "Glide Omarama",
+   "zh": "（已永久歇業）Omarama 滑翔機",
    "cat": "book",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Hermitage Hotel Aoraki Mount Cook",
-   "flag": "warn",
-   "book": true,
-   "price": "成人 NZ$159 起 · 8–14 歲 NZ$89",
-   "hours": "75–90 分鐘 · 梯次 19:30 與 21:30",
-   "note": "有華語導覽。⚠️ 官方自己建議「盡量選新月前後」，而你們碰到滿月。天候取消改成 45 分鐘天象館並只退 75%（非全額）。",
-   "lat": -43.733163,
-   "lng": 170.093722,
-   "geo_approx": "The Hermitage Mount Cook",
-   "img": "images/franz-seracs.jpg",
-   "url": "https://hermitage.co.nz/",
-   "bk": "Mount Cook stargazing",
-   "bookable": true
-  },
-  {
-   "id": "ski-the-tasman",
-   "name": "Ski the Tasman",
-   "zh": "滑下塔斯曼冰川",
-   "cat": "glacier",
-   "day": 5,
-   "town": "Mt Cook",
-   "q": "Aoraki Mount Cook Airport New Zealand",
-   "flag": "ok",
-   "book": true,
-   "price": "NZ$6,999／團（最多 5 人）",
-   "hours": "6 小時 · 含午餐 · 雪季 7–9 月",
-   "url": "https://www.mtcookskiplanes.com/flights-and-tours/ski-the-tasman/",
-   "note": "9/28 剛好卡在雪季最後幾天。團裡有人會滑雪的話，這是很難得的窗口。",
-   "lat": -43.766693,
-   "lng": 170.133432,
-   "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/tasman-lake.jpg",
-   "bk": "Ski the Tasman",
-   "bookable": true
-  },
-  {
-   "id": "lindis-pass",
-   "name": "Lindis Pass",
-   "zh": "林迪斯山口",
-   "cat": "sight",
-   "day": 6,
-   "town": "SH8",
-   "q": "Lindis Pass New Zealand",
-   "flag": "star",
-   "note": "南島最上鏡的公路之一，整片山坡蓋滿金黃色高山草（tussock）。有觀景停車彎。",
-   "lat": -44.58826,
-   "lng": 169.64308,
-   "img": "images/lindis.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "這片山坡上看不到電線桿、也看不到房子，因為 1975 年就劃成保護區了",
-    "paras": [
-     "1857 年，奧塔哥首席測量師 John Turnbull Thomson 成為第一個翻越這裡的歐洲人。Lindis 這個名字<b>一般認為</b>來自英格蘭東北外海的 Lindisfarne 島，整條路、整條河、整座山峰都跟著這樣叫——不過這個命名由來只見於二手資料，沒查到一手佐證。",
-     "海拔 971 公尺，是南島國道系統最高的埡口。這一帶從 1975 年起就是保護區，所以你沿路看不到電線桿、農舍、圍籬，整片山坡只有 tussock 高山草。那種「什麼都沒有」是刻意留下來的。"
-    ],
-    "tips": [
-     "最佳光線是清晨與傍晚的斜射光，整片草會發亮；正午拍會平掉。",
-     "觀景停車彎不多，看到就停，錯過要開很久才有下一個。"
-    ]
-   }
-  },
-  {
-   "id": "clay-cliffs",
-   "name": "Clay Cliffs",
-   "zh": "黏土懸崖",
-   "cat": "sight",
    "day": 6,
    "town": "Omarama",
-   "q": "Clay Cliffs Omarama New Zealand",
-   "flag": "ok",
-   "note": "私人土地，需投幣入場。奇特的尖塔狀侵蝕地形。",
-   "lat": -44.491382,
-   "lng": 169.972966,
-   "img": "images/lindis.jpg",
+   "lat": -44.485586,
+   "lng": 169.985553,
+   "q": "Omarama Glider Airport New Zealand",
+   "addr": "Terminal Building, Airport Road, Omarama 9448",
+   "flag": "warn",
    "bookable": false,
-   "deep": {
-    "lead": "它其實不是黏土，是被斷層推上來的百萬年河床",
-    "paras": [
-     "這些尖塔的材料，是一兩百萬年前冰河融水的辮狀河堆下的礫石與粉砂，本來平平躺在地底。是旁邊的 <b>Ostler 斷層</b>把整片沉積層推上來，雨水再把鬆散的部分刻成深溝與尖塔。",
-     "Ostler 斷層到今天還在動——這片懸崖不是死掉的遺跡，它還在被抬高，也還在被雨水削掉。毛利語稱這裡 Paritea。"
-    ],
-    "tips": [
-     "進場的 Henburn Road 是未鋪面碎石路，一般小車可走但要慢；入場靠誠實箱，記得帶現金。",
-     "沉積物很鬆，別爬上尖塔、也別站在崖壁正下方。"
-    ]
+   "note": "<b>⚠️ 這家已經永久歇業</b>，中文遊記到現在還常推薦，別白跑。Omarama 是世界級滑翔機基地沒錯，現在的營運方換成 Omarama Gliding Club 與 Kahu Soaring 等；<b>而且飛行季是 10/1 到 4/30，9/29 還沒開季</b>。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/drive/between/82813/83174/lake-tekapo-to-omarama-drive",
+    "n": 80,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "hot-tubs-omarama",
+   "name": "Hot Tubs Omarama",
+   "zh": "戶外柏木浴桶",
+   "cat": "book",
+   "day": 6,
+   "town": "Omarama",
+   "lat": -44.484731,
+   "lng": 169.97018,
+   "q": "Hot Tubs Omarama New Zealand",
+   "addr": "29 Omarama Avenue (SH8), Omarama 9448",
+   "hours": "週日至週三 12:00–18:30；週四至週六 12:00–19:30",
+   "flag": "star",
+   "bookable": true,
+   "url": "https://www.hottubsomarama.co.nz/",
+   "note": "獨立包廂的柏木浴桶，用山泉水加熱、不加化學藥劑，可自己調溫度，還附桑拿，一桶 1–8 人。<b>9 月底這一帶早晚接近 0°C，泡起來反差很舒服</b>。官網不標價，只能從線上訂位系統看。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/drive/between/82813/83174/lake-tekapo-to-omarama-drive",
+    "n": 919,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -2098,6 +2599,150 @@ input:focus-visible,[tabindex]:focus-visible{
      "更少見的是：Rippon 約八成的葡萄樹是<b>自根、沒有嫁接</b>的。世界上大多數產區都被根瘤蚜這種吃葡萄根的蟲害過，只能把歐洲品種接到抗蟲的美洲根上，這裡不用。兒子 Nick Mills 在布根地待了五年，2003 年回來接手，隨即改行生物動力法。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/205658/rippon",
+    "n": 318,
+    "note": "同頁 TripAdvisor 為 4.4/410（Gemini 另查到 4.8 分／約 1450 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "high-country-salmon",
+   "name": "High Country Salmon",
+   "zh": "湖上浮台鮭魚場",
+   "cat": "eat",
+   "day": 6,
+   "town": "Twizel",
+   "lat": -44.291073,
+   "lng": 170.084496,
+   "q": "High Country Salmon Twizel New Zealand",
+   "addr": "2602 Twizel-Omarama Road (SH8), Twizel 7999",
+   "price": "約 NZ$15–30",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.highcountrysalmon.co.nz/",
+   "note": "養殖網箱直接架在水面上，走上浮橋看得到魚，旁邊小店賣生魚片、煙燻鮭魚和熱食。<b>在 Twizel 往 Omarama 的 SH8 路邊，不用繞路</b>。4.3 分不算高，多半是嫌人多、價格偏高，魚本身評價還是好的。",
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/205727/high-country-salmon",
+    "n": 5931,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "poppies-cafe-twizel",
+   "name": "Poppies Café & Restaurant",
+   "zh": "Twizel 鎮上的正經餐館",
+   "cat": "eat",
+   "day": 6,
+   "town": "Twizel",
+   "lat": -44.264257,
+   "lng": 170.100738,
+   "q": "Poppies Cafe Twizel New Zealand",
+   "addr": "1 Benmore Place, Twizel 7901",
+   "hours": "早午餐 09:00–14:30、點心 15:00–17:30、晚餐 17:30–20:30；週三與週四公休",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://poppiescafe.com/",
+   "note": "Twizel 鎮上少數從早開到晚的正經餐館，拿過紐西蘭牛羊肉大獎。<b>9/29 是週二，有開；但週三、週四公休</b>，行程若往後挪就撲空。庫克山村沒有超市也沒加油站，經過 Twizel 順便補給加油。"
+  },
+  {
+   "id": "wrinkly-rams",
+   "name": "The Wrinkly Rams",
+   "zh": "Omarama 的羊毛咖啡館",
+   "cat": "eat",
+   "day": 6,
+   "town": "Omarama",
+   "lat": -44.486219,
+   "lng": 169.969982,
+   "q": "The Wrinkly Rams Omarama New Zealand",
+   "addr": "10 Twizel-Omarama Road, Omarama 9448",
+   "price": "約 NZ$15–30",
+   "hours": "每天 07:00–16:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://thewrinklyrams.co.nz/",
+   "note": "Omarama 路口最好認的一家，咖啡館加美麗諾羊毛紀念品店，招牌是羊腿和自家做的派。<b>從庫克山開往瓦納卡，這是進 Lindis Pass 前最後一個像樣的補給點</b>。",
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/627009/the-wrinkly-rams",
+    "n": 2151,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "clay-cliffs",
+   "name": "Clay Cliffs",
+   "zh": "黏土懸崖",
+   "cat": "sight",
+   "day": 6,
+   "town": "Omarama",
+   "q": "Clay Cliffs Omarama New Zealand",
+   "flag": "ok",
+   "note": "私人土地，需投幣入場。奇特的尖塔狀侵蝕地形。",
+   "lat": -44.491382,
+   "lng": 169.972966,
+   "img": "images/lindis.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "它其實不是黏土，是被斷層推上來的百萬年河床",
+    "paras": [
+     "這些尖塔的材料，是一兩百萬年前冰河融水的辮狀河堆下的礫石與粉砂，本來平平躺在地底。是旁邊的 <b>Ostler 斷層</b>把整片沉積層推上來，雨水再把鬆散的部分刻成深溝與尖塔。",
+     "Ostler 斷層到今天還在動——這片懸崖不是死掉的遺跡，它還在被抬高，也還在被雨水削掉。毛利語稱這裡 Paritea。"
+    ],
+    "tips": [
+     "進場的 Henburn Road 是未鋪面碎石路，一般小車可走但要慢；入場靠誠實箱，記得帶現金。",
+     "沉積物很鬆，別爬上尖塔、也別站在崖壁正下方。"
+    ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/10534495/clay-cliffs",
+    "n": 1738,
+    "note": "內嵌 Google 欄位，地址 Henburn Road, Omarama 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "lindis-pass",
+   "name": "Lindis Pass",
+   "zh": "林迪斯山口",
+   "cat": "sight",
+   "day": 6,
+   "town": "SH8",
+   "q": "Lindis Pass New Zealand",
+   "flag": "star",
+   "note": "南島最上鏡的公路之一，整片山坡蓋滿金黃色高山草（tussock）。有觀景停車彎。",
+   "lat": -44.58826,
+   "lng": 169.64308,
+   "img": "images/lindis.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "這片山坡上看不到電線桿、也看不到房子，因為 1975 年就劃成保護區了",
+    "paras": [
+     "1857 年，奧塔哥首席測量師 John Turnbull Thomson 成為第一個翻越這裡的歐洲人。Lindis 這個名字<b>一般認為</b>來自英格蘭東北外海的 Lindisfarne 島，整條路、整條河、整座山峰都跟著這樣叫——不過這個命名由來只見於二手資料，沒查到一手佐證。",
+     "海拔 971 公尺，是南島國道系統最高的埡口。這一帶從 1975 年起就是保護區，所以你沿路看不到電線桿、農舍、圍籬，整片山坡只有 tussock 高山草。那種「什麼都沒有」是刻意留下來的。"
+    ],
+    "tips": [
+     "最佳光線是清晨與傍晚的斜射光，整片草會發亮；正午拍會平掉。",
+     "觀景停車彎不多，看到就停，錯過要開很久才有下一個。"
+    ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/37168/lindis-pass",
+    "n": 125,
+    "note": "Google 地標名為 Lindis Pass；無法確認是否等同另一個地標 Lindis Pass Scenic Lookout（Gemini 另查到 4.8 分／約 1100 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -2124,6 +2769,39 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "四個大人的話，迷宮至少留 1 小時，錯覺屋另外算——很多人低估時間。"
     ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105892/top-things-to-do-and-attractions-in-wanaka",
+    "n": 6007,
+    "note": "內嵌 Google 欄位 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "roys-peak",
+   "name": "Roys Peak Track",
+   "zh": "",
+   "cat": "sight",
+   "day": 6,
+   "town": "Wanaka",
+   "q": "Roys Peak Track Wanaka New Zealand",
+   "flag": "warn",
+   "hours": "來回 16 公里 · 5–6 小時 · 爬升 1,500 公尺",
+   "note": "⚠️ 每年 10/1–11/10 因產羔羊封閉，你們 9/29–9/30 是封閉前最後兩天。但 DOC 評為需高體能，不適合當路過順遊；9 月底 1,000 公尺以上仍屬雪崩地形。DOC 建議的替代路線是 Isthmus Peak。",
+   "lat": -44.693998,
+   "lng": 169.04873,
+   "geo_approx": "Roys Peak",
+   "img": "images/roys-peak.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105892/top-things-to-do-and-attractions-in-wanaka",
+    "n": 534,
+    "note": "這是 Google 地標「Roys Peak」（山體）的分數。另一個地標「Roys Peak Track」在 Google 上沒有評分，只有 TripAdvisor 4.8/962（Gemini 另查到 4.8 分／約 2400 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -2150,24 +2828,44 @@ input:focus-visible,[tabindex]:focus-visible{
      "湖水位高低會改變「站在水裡」的效果，水少的時候它其實很靠近岸邊，別期待每次都一樣。",
      "樹齡沒有確定數字，各方推估大約 85～90 歲，碰到有人講得很篤定，多半是照抄的。"
     ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/place/details/37509/that-wanaka-tree",
+    "n": 6877,
+    "note": "同頁 TripAdvisor 為 4.0/354 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
-   "id": "roys-peak",
-   "name": "Roys Peak Track",
+   "id": "domaine-thomson",
+   "name": "Domaine Thomson",
    "zh": "",
-   "cat": "sight",
-   "day": 6,
-   "town": "Wanaka",
-   "q": "Roys Peak Track Wanaka New Zealand",
-   "flag": "warn",
-   "hours": "來回 16 公里 · 5–6 小時 · 爬升 1,500 公尺",
-   "note": "⚠️ 每年 10/1–11/10 因產羔羊封閉，你們 9/29–9/30 是封閉前最後兩天。但 DOC 評為需高體能，不適合當路過順遊；9 月底 1,000 公尺以上仍屬雪崩地形。DOC 建議的替代路線是 Isthmus Peak。",
-   "lat": -44.693998,
-   "lng": 169.04873,
-   "geo_approx": "Roys Peak",
-   "img": "images/roys-peak.jpg",
-   "bookable": false
+   "cat": "book",
+   "day": 7,
+   "town": "Cromwell",
+   "q": "Domaine Thomson Wines Cromwell New Zealand",
+   "addr": "46 Clark Rd, Mount Pisa 9383",
+   "flag": "ok",
+   "book": true,
+   "price": "Two Hemispheres Tasting NZ$25／人",
+   "url": "https://www.domainethomson.com/",
+   "note": "四款酒，拿法國布根地跟中奧塔哥對比著喝。⚠️ 4 人以上必須預約（你們正好 4 人）。每人買兩瓶免品飲費。起司拼盤需提前 24 小時訂。官網對 9 月底的營業天數有兩套矛盾說法，去之前先來信確認。",
+   "lat": -44.872054,
+   "lng": 169.190811,
+   "geo_approx": "Mount Pisa Otago",
+   "img": "images/wine-tasting.jpg",
+   "bk": "Central Otago wine tasting",
+   "bookable": true,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Domaine+Thomson+Wines+Cromwell+New+Zealand",
+    "approx": true,
+    "n": 110
+   }
   },
   {
    "id": "mt-difficulty",
@@ -2198,74 +2896,14 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "酒莊旁邊就是 Bannockburn Sluicings：1862 到 1930 年代水力採金沖出來的峽谷地形，DOC 管理、約 3.9 公里環狀步道，喝完酒散個步剛好。"
     ]
-   }
-  },
-  {
-   "id": "domaine-thomson",
-   "name": "Domaine Thomson",
-   "zh": "",
-   "cat": "book",
-   "day": 7,
-   "town": "Cromwell",
-   "q": "Domaine Thomson Wines Cromwell New Zealand",
-   "addr": "46 Clark Rd, Mount Pisa 9383",
-   "flag": "ok",
-   "book": true,
-   "price": "Two Hemispheres Tasting NZ$25／人",
-   "url": "https://www.domainethomson.com/",
-   "note": "四款酒，拿法國布根地跟中奧塔哥對比著喝。⚠️ 4 人以上必須預約（你們正好 4 人）。每人買兩瓶免品飲費。起司拼盤需提前 24 小時訂。官網對 9 月底的營業天數有兩套矛盾說法，去之前先來信確認。",
-   "lat": -44.872054,
-   "lng": 169.190811,
-   "geo_approx": "Mount Pisa Otago",
-   "img": "images/wine-tasting.jpg",
-   "bk": "Central Otago wine tasting",
-   "bookable": true
-  },
-  {
-   "id": "cromwell-heritage",
-   "name": "Cromwell Heritage Precinct",
-   "zh": "克倫威爾老鎮區",
-   "cat": "sight",
-   "day": 7,
-   "town": "Cromwell",
-   "q": "Cromwell Heritage Precinct New Zealand",
-   "flag": "ok",
-   "note": "Clyde 水壩淹掉了舊鎮，居民趕在蓄水前把重要建築一棟一棟拆下往上搬、原樣重建。現在是湖畔老街區。（<b>被救的其實只有八棟</b>，展開看細節。）",
-   "lat": -45.04913,
-   "lng": 169.206597,
-   "img": "images/cromwell.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "水其實是 1992 年才淹上來的，而且大部分建築沒被救",
-    "paras": [
-     "Clyde 水壩是 1980 年代 Muldoon 政府「Think Big」的產物，但真正蓄水是 <b>1992 年 4 月</b>才開始、1993 年淹滿。所以「1980 年代沉入湖底」講的是工程年代，不是淹沒年代。",
-     "被搶救的其實是少數。1985 年居民組成 Save Old Cromwell，最初只選了八棟商業建築搬到高處重建；主街上約五十間店面、六十戶住宅與十幾個果園多半就這樣放棄了。連 Clutha 與 Kawarau 兩河交會那個壯觀的「Junction」也一起消失。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "cromwell-fruit",
-   "name": "Cromwell Big Fruit",
-   "zh": "巨型水果地標",
-   "cat": "sight",
-   "day": 7,
-   "town": "Cromwell",
-   "q": "Big Fruit Cromwell New Zealand",
-   "flag": "ok",
-   "note": "路口的巨大水果雕塑，中奧塔哥果園帶的地標。",
-   "lat": -45.037131,
-   "lng": 169.197288,
-   "geo_approx": "Cromwell",
-   "img": "images/food-feijoa.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "四顆水果裡沒有櫻桃——雖然這裡最有名的就是櫻桃",
-    "paras": [
-     "1989 年由 Cromwell 扶輪社出資興建，設計者 Otto Muller 是當地人。高 13 公尺、超過 9 公噸，四顆水果分別是<b>梨、蘋果、油桃、杏桃</b>。櫻桃是 1960 年代才引進的後起之秀，蓋雕塑時還輪不到它。",
-     "會有果園帶，是因為 1860 年代淘金熱退了以後，很多礦工乾脆買地種果樹留下來——中奧塔哥的水果產業，其實是淘金潮的續集。"
-    ],
-    "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mt+Difficulty+Wines+Bannockburn+New+Zealand",
+    "approx": true,
+    "n": 980
    }
   },
   {
@@ -2294,6 +2932,14 @@ input:focus-visible,[tabindex]:focus-visible{
      "1881 年全紐西蘭中國女性只有 9 人、男性近 5,000 人——這個聚落幾乎可以確定從來沒住過女人。",
      "出土文物收在鎮上的 Lakes District Museum，想把故事看完可以接著排進去。"
     ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Arrowtown+Chinese+Settlement+New+Zealand",
+    "approx": true,
+    "n": 1400
    }
   },
   {
@@ -2317,6 +2963,14 @@ input:focus-visible,[tabindex]:focus-visible{
      "老街兩排會變色的樹，是 1867 年第二任鎮長 Alec Innes 帶人種下的歐洲樹種——梧桐、橡樹、榆樹。也就是說，<b>箭鎮最有名的秋色裡，一棵紐西蘭原生樹都沒有</b>。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Buckingham+Street+Arrowtown+New+Zealand",
+    "approx": true,
+    "n": 3500
    }
   },
   {
@@ -2340,6 +2994,77 @@ input:focus-visible,[tabindex]:focus-visible{
      "1926 到 1961 年的老闆 Jimmy Patterson 有條規矩：要往皇后鎮方向走的客人（得翻危險的皇冠山路）只准喝一杯，往瓦納卡方向的可以喝兩杯。他一路做到九十一歲過世。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Cardrona+Hotel+Cardrona+New+Zealand",
+    "approx": true,
+    "n": 4100
+   }
+  },
+  {
+   "id": "cromwell-fruit",
+   "name": "Cromwell Big Fruit",
+   "zh": "巨型水果地標",
+   "cat": "sight",
+   "day": 7,
+   "town": "Cromwell",
+   "q": "Big Fruit Cromwell New Zealand",
+   "flag": "ok",
+   "note": "路口的巨大水果雕塑，中奧塔哥果園帶的地標。",
+   "lat": -45.037131,
+   "lng": 169.197288,
+   "geo_approx": "Cromwell",
+   "img": "images/food-feijoa.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "四顆水果裡沒有櫻桃——雖然這裡最有名的就是櫻桃",
+    "paras": [
+     "1989 年由 Cromwell 扶輪社出資興建，設計者 Otto Muller 是當地人。高 13 公尺、超過 9 公噸，四顆水果分別是<b>梨、蘋果、油桃、杏桃</b>。櫻桃是 1960 年代才引進的後起之秀，蓋雕塑時還輪不到它。",
+     "會有果園帶，是因為 1860 年代淘金熱退了以後，很多礦工乾脆買地種果樹留下來——中奧塔哥的水果產業，其實是淘金潮的續集。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Big+Fruit+Cromwell+New+Zealand",
+    "approx": true,
+    "n": 3100
+   }
+  },
+  {
+   "id": "cromwell-heritage",
+   "name": "Cromwell Heritage Precinct",
+   "zh": "克倫威爾老鎮區",
+   "cat": "sight",
+   "day": 7,
+   "town": "Cromwell",
+   "q": "Cromwell Heritage Precinct New Zealand",
+   "flag": "ok",
+   "note": "Clyde 水壩淹掉了舊鎮，居民趕在蓄水前把重要建築一棟一棟拆下往上搬、原樣重建。現在是湖畔老街區。（<b>被救的其實只有八棟</b>，展開看細節。）",
+   "lat": -45.04913,
+   "lng": 169.206597,
+   "img": "images/cromwell.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "水其實是 1992 年才淹上來的，而且大部分建築沒被救",
+    "paras": [
+     "Clyde 水壩是 1980 年代 Muldoon 政府「Think Big」的產物，但真正蓄水是 <b>1992 年 4 月</b>才開始、1993 年淹滿。所以「1980 年代沉入湖底」講的是工程年代，不是淹沒年代。",
+     "被搶救的其實是少數。1985 年居民組成 Save Old Cromwell，最初只選了八棟商業建築搬到高處重建；主街上約五十間店面、六十戶住宅與十幾個果園多半就這樣放棄了。連 Clutha 與 Kawarau 兩河交會那個壯觀的「Junction」也一起消失。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Cromwell+Heritage+Precinct+New+Zealand",
+    "approx": true,
+    "n": 1500
    }
   },
   {
@@ -2366,34 +3091,48 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "下坡全程用低檔位靠引擎煞車，不要一路踩煞車踩到過熱——這條路最常出事的就是煞車失效。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Crown+Range+Summit+New+Zealand",
+    "approx": true,
+    "n": 1900
    }
   },
   {
-   "id": "skyline-queenstown",
-   "name": "Skyline Gondola & Luge",
-   "zh": "天空纜車＋溜溜車",
+   "id": "onsen-hot-pools",
+   "name": "Onsen Hot Pools",
+   "zh": "",
    "cat": "book",
    "day": 8,
    "town": "Queenstown",
-   "q": "Skyline Queenstown Gondola New Zealand",
-   "flag": "ok",
+   "q": "Onsen Hot Pools Queenstown New Zealand",
+   "flag": "unverified",
    "book": true,
-   "url": "https://www.skyline.co.nz/queenstown/",
-   "note": "全鎮最好的俯瞰角度。四個大人玩溜溜車會比小孩還瘋。",
-   "lat": -45.028311,
-   "lng": 168.656124,
-   "img": "images/do-gondola.jpg",
-   "bk": "Queenstown Skyline gondola luge",
+   "note": "私人溫泉包廂，可開窗看峽谷。⚠️ 本輪未取得官方 2026 價格。",
+   "lat": -44.980995,
+   "lng": 168.685428,
+   "img": "images/do-walterpeak.jpg",
+   "url": "https://onsen.co.nz/",
+   "bk": "Queenstown Onsen hot pools",
    "bookable": true,
    "deep": {
-    "lead": "溜溜車不是皇后鎮發明的，是 Skyline 在羅托魯瓦弄出來的",
+    "lead": "它不是溫泉——業者自己也這麼說",
     "paras": [
-     "世界第一條 luge 賽道 1986 年開在北島<b>羅托魯瓦</b>，也是 Skyline 自己做的；皇后鎮這條要等到 1998 年才有，整整晚了十二年。纜車本身則是 1967 年就開了。"
+     "水源是山泉水，經過過濾後用熱交換器加熱到約 38～40 度，加溴消毒，<b>底下沒有地熱</b>。業者官網自己講得很白：這是「Kiwi 版」的泡湯，不是正統溫泉。",
+     "所以它賣的不是水質，是那面能整片打開、正對 Shotover 峽谷的窗。先弄清楚這點，比較不會失望。"
     ],
-    "tips": [
-     "第一趟通常會被要求先走 Scenic（新手道）跑完，才放你上 Advanced，安排時間時把這趟算進去。",
-     "溜溜車票用「趟數」算，四個大人建議直接買多趟票，跑一趟絕對不夠。"
-    ]
+    "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Onsen+Hot+Pools+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 2200
    }
   },
   {
@@ -2422,6 +3161,50 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "坐前排看得最爽但也最濕最冷，怕冷的人選中後排。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Shotover+Jet+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 6200
+   }
+  },
+  {
+   "id": "skyline-queenstown",
+   "name": "Skyline Gondola & Luge",
+   "zh": "天空纜車＋溜溜車",
+   "cat": "book",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "Skyline Queenstown Gondola New Zealand",
+   "flag": "ok",
+   "book": true,
+   "url": "https://www.skyline.co.nz/queenstown/",
+   "note": "全鎮最好的俯瞰角度。四個大人玩溜溜車會比小孩還瘋。",
+   "lat": -45.028311,
+   "lng": 168.656124,
+   "img": "images/do-gondola.jpg",
+   "bk": "Queenstown Skyline gondola luge",
+   "bookable": true,
+   "deep": {
+    "lead": "溜溜車不是皇后鎮發明的，是 Skyline 在羅托魯瓦弄出來的",
+    "paras": [
+     "世界第一條 luge 賽道 1986 年開在北島<b>羅托魯瓦</b>，也是 Skyline 自己做的；皇后鎮這條要等到 1998 年才有，整整晚了十二年。纜車本身則是 1967 年就開了。"
+    ],
+    "tips": [
+     "第一趟通常會被要求先走 Scenic（新手道）跑完，才放你上 Advanced，安排時間時把這趟算進去。",
+     "溜溜車票用「趟數」算，四個大人建議直接買多趟票，跑一趟絕對不夠。"
+    ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Skyline+Queenstown+Gondola+New+Zealand",
+    "approx": true,
+    "n": 14500
    }
   },
   {
@@ -2451,32 +3234,37 @@ input:focus-visible,[tabindex]:focus-visible{
      "它原本是條貨船：一趟能載一千五百隻羊、七十頭牛、兩百包羊毛，順便送信。1962 年格林諾奇公路通車後它就失業了，1968 年差點被解體，靠觀光才活下來。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=TSS+Earnslaw+Steamer+Wharf+Queenstown",
+    "approx": true,
+    "n": 4100
    }
   },
   {
-   "id": "onsen-hot-pools",
-   "name": "Onsen Hot Pools",
+   "id": "fergbaker",
+   "name": "Fergbaker",
    "zh": "",
-   "cat": "book",
+   "cat": "eat",
    "day": 8,
    "town": "Queenstown",
-   "q": "Onsen Hot Pools Queenstown New Zealand",
-   "flag": "unverified",
-   "book": true,
-   "note": "私人溫泉包廂，可開窗看峽谷。⚠️ 本輪未取得官方 2026 價格。",
-   "lat": -44.980995,
-   "lng": 168.685428,
-   "img": "images/do-walterpeak.jpg",
-   "url": "https://onsen.co.nz/",
-   "bk": "Queenstown Onsen hot pools",
-   "bookable": true,
-   "deep": {
-    "lead": "它不是溫泉——業者自己也這麼說",
-    "paras": [
-     "水源是山泉水，經過過濾後用熱交換器加熱到約 38～40 度，加溴消毒，<b>底下沒有地熱</b>。業者官網自己講得很白：這是「Kiwi 版」的泡湯，不是正統溫泉。",
-     "所以它賣的不是水質，是那面能整片打開、正對 Shotover 峽谷的窗。先弄清楚這點，比較不會失望。"
-    ],
-    "tips": []
+   "q": "Fergbaker Queenstown New Zealand",
+   "flag": "ok",
+   "note": "Fergburger 隔壁的麵包與派，當地人更推。",
+   "lat": -45.031669,
+   "lng": 168.659556,
+   "img": "images/food-pavlova.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fergbaker+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 3800
    }
   },
   {
@@ -2500,22 +3288,15 @@ input:focus-visible,[tabindex]:focus-visible{
      "「Ferg」到底是誰、是什麼意思，店家從來不給正解，員工會現場隨口編一個。他們也一路拒絕加盟邀約，理由是「想讓它就只是一間特別的小店」。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fergburger+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 35000
    }
-  },
-  {
-   "id": "fergbaker",
-   "name": "Fergbaker",
-   "zh": "",
-   "cat": "eat",
-   "day": 8,
-   "town": "Queenstown",
-   "q": "Fergbaker Queenstown New Zealand",
-   "flag": "ok",
-   "note": "Fergburger 隔壁的麵包與派，當地人更推。",
-   "lat": -45.031669,
-   "lng": 168.659556,
-   "img": "images/food-pavlova.jpg",
-   "bookable": false
   },
   {
    "id": "rata",
@@ -2532,7 +3313,15 @@ input:focus-visible,[tabindex]:focus-visible{
    "lng": 168.662777,
    "img": "images/food-kumara.jpg",
    "url": "https://ratadining.co.nz/",
-   "bookable": true
+   "bookable": true,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rata+Restaurant+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 2100
+   }
   },
   {
    "id": "nzone-skydive",
@@ -2564,27 +3353,15 @@ input:focus-visible,[tabindex]:focus-visible{
      "訂位時直接寫明四人同組、並把 10/02 報備成備案日，取消當下比較好安排。",
      "非紐西蘭的卡在現場或電話刷卡會被加 1.2% 手續費，線上先付可以避開。"
     ]
+   },
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=NZONE+Skydive+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 4500
    }
-  },
-  {
-   "id": "skydive-wanaka",
-   "name": "Skydive Wānaka",
-   "zh": "",
-   "cat": "skydive",
-   "day": 9,
-   "town": "Wanaka",
-   "q": "Skydive Wanaka Airport New Zealand",
-   "flag": "ok",
-   "book": true,
-   "price": "9,000ft NZ$359 · 12,000ft NZ$449 · 15,000ft NZ$549｜皇后鎮接駁版 NZ$309 / 399 / 499",
-   "url": "https://www.skydivewanaka.com/",
-   "note": "<b>10/02 的補跳選項，也是換天氣的那一手</b>。皇后鎮接駁版 NZ$309／399／499，<b>比 NZONE 便宜</b>，集合點同樣在 35 Shotover St，車程 1.5 小時到 Wanaka 機場，全程請預留 5 小時。<b>瓦納卡與皇后鎮的天氣常常不同</b>，皇后鎮飛不了時這裡未必飛不了。另外 9/29 傍晚到瓦納卡、9/30 早上離開瓦納卡，也各有一個空檔。網路盛傳已停業是錯的——2026/08/20 查證官網與訂位系統正常。",
-   "lat": -44.722542,
-   "lng": 169.245451,
-   "geo_approx": "Wanaka Airport",
-   "img": "images/roys-peak.jpg",
-   "bk": "Wanaka skydive",
-   "bookable": true
   },
   {
    "id": "glenorchy",
@@ -2612,6 +3389,14 @@ input:focus-visible,[tabindex]:focus-visible{
      "Isengard 與 Lothlórien 的外景確實在 Paradise 一帶；常被誤傳的 Amon Hen 其實主要在皇后鎮附近的 Closeburn 拍的。",
      "Glenorchy Lagoon 有一圈約 3 公里的木棧道，無風的早上山影倒映最好看。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Glenorchy+Wharf+New+Zealand",
+    "approx": true,
+    "n": 2100
    }
   },
   {
@@ -2640,6 +3425,68 @@ input:focus-visible,[tabindex]:focus-visible{
      "跳台高 43 公尺，可以事先講要不要碰到水；能不能真的碰到還要看當天水位。",
      "不跳的人可以走到對岸觀景台，那個角度比橋上更好拍。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Kawarau+Bungy+Centre+Queenstown+New+Zealand",
+    "approx": true,
+    "n": 3900
+   }
+  },
+  {
+   "id": "skydive-wanaka",
+   "name": "Skydive Wānaka",
+   "zh": "",
+   "cat": "skydive",
+   "day": 9,
+   "town": "Wanaka",
+   "q": "Skydive Wanaka Airport New Zealand",
+   "flag": "ok",
+   "book": true,
+   "price": "9,000ft NZ$359 · 12,000ft NZ$449 · 15,000ft NZ$549｜皇后鎮接駁版 NZ$309 / 399 / 499",
+   "url": "https://www.skydivewanaka.com/",
+   "note": "<b>10/02 的補跳選項，也是換天氣的那一手</b>。皇后鎮接駁版 NZ$309／399／499，<b>比 NZONE 便宜</b>，集合點同樣在 35 Shotover St，車程 1.5 小時到 Wanaka 機場，全程請預留 5 小時。<b>瓦納卡與皇后鎮的天氣常常不同</b>，皇后鎮飛不了時這裡未必飛不了。另外 9/29 傍晚到瓦納卡、9/30 早上離開瓦納卡，也各有一個空檔。網路盛傳已停業是錯的——2026/08/20 查證官網與訂位系統正常。",
+   "lat": -44.722542,
+   "lng": 169.245451,
+   "geo_approx": "Wanaka Airport",
+   "img": "images/roys-peak.jpg",
+   "bk": "Wanaka skydive",
+   "bookable": true,
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Skydive+Wanaka+Airport+New+Zealand",
+    "approx": true,
+    "n": 2800
+   }
+  },
+  {
+   "id": "fiordland-cinema",
+   "name": "Fiordland Cinema — Ata Whenua / Shadowland",
+   "zh": "峽灣空拍紀錄片，蒂阿瑙最好的雨天備案",
+   "cat": "book",
+   "day": 10,
+   "town": "Te Anau",
+   "lat": -45.414549,
+   "lng": 167.7156951,
+   "q": "Fiordland Cinema Te Anau New Zealand",
+   "addr": "7 The Lane, Te Anau 9600",
+   "price": "門票 NZ$14",
+   "hours": "《Ata Whenua – Shadowland》每天 15:00、17:00、18:00 各一場，全片 32 分鐘",
+   "flag": "star",
+   "bookable": true,
+   "url": "https://www.fiordlandcinema.co.nz/ata-whenua",
+   "note": "整部片幾乎都是直升機拍的峽灣，只有這家戲院放，別的地方看不到。<b>峽灣一年下 200 天雨</b>，下雨那天或遊船取消時，這是蒂阿瑙最實在的替代方案，32 分鐘剛好。戲院裡附設 Black Dog Bar，看完可以直接喝一杯。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fiordland+Cinema+Te+Anau+New+Zealand",
+    "approx": true,
+    "n": 340
    }
   },
   {
@@ -2670,6 +3517,70 @@ input:focus-visible,[tabindex]:focus-visible{
      "洞內全程禁止拍照、禁止開燈——不是規定嚴，是一點光就會讓幼蟲熄燈。",
      "有幾段通道低矮潮濕要彎腰，穿好走不怕滑的鞋。"
     ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "official",
+    "url": "https://www.realnz.com/en/experiences/glowworm-caves/te-anau-glowworm-caves/",
+    "n": 982,
+    "note": "⚠️ 非 Google 評分。這是營運商 RealNZ 官網頁面內嵌的 schema.org AggregateRating（itemReviewed 標明為 Te Anau Glowworm Caves），平台來源未標示。本次 Google／Tripadvisor 全數被反爬蟲擋下，無法取得。"
+   }
+  },
+  {
+   "id": "the-fat-duck",
+   "name": "The Fat Duck",
+   "zh": "蒂阿瑙鎮上的餐酒館",
+   "cat": "eat",
+   "day": 10,
+   "town": "Te Anau",
+   "lat": -45.4146791,
+   "lng": 167.7174242,
+   "q": "The Fat Duck Te Anau New Zealand",
+   "addr": "124 Town Centre, Te Anau 9600",
+   "hours": "每天 16:30–18:00 是 Happy Hour（生啤與house wine 減價）",
+   "flag": "star",
+   "bookable": true,
+   "url": "https://www.thefatduck.co.nz/",
+   "note": "拿過 Hospitality New Zealand 的 <b>2025 年全國最佳 Gastropub</b>，這是官網自己掛出來的。蒂阿瑙鎮很小、晚上餐廳一位難求，官網可以線上訂位，建議先訂。夏季週六晚上 18:00–20:00 有現場音樂。",
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=The+Fat+Duck+Te+Anau+New+Zealand",
+    "approx": true,
+    "n": 3100
+   }
+  },
+  {
+   "id": "lake-te-anau",
+   "name": "Lake Te Anau",
+   "zh": "蒂阿瑙湖",
+   "cat": "sight",
+   "day": 10,
+   "town": "Te Anau",
+   "q": "Lake Te Anau New Zealand",
+   "flag": "ok",
+   "note": "紐西蘭南島最大的湖，傍晚湖邊散步很舒服。",
+   "lat": -45.18556,
+   "lng": 167.735867,
+   "img": "images/teanau.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "湖的名字，來自一個當時沒人找得到的山洞。",
+    "paras": [
+     "Te Ana-au 的意思是<b>「有漩渦水流的洞穴」</b>。也就是說，湖是以洞命名的——但那個洞後來只活在傳說裡，直到 1948 年才被重新找到，就是今天大家搭船去看螢火蟲的地方。名字比洞本身還早留下來。",
+     "湖的西側有三條深入山裡的長臂，叫 North／Middle／South Fiord。紐西蘭其他 <b>14 條峽灣全部都在海邊</b>，只有這裡的深入內陸，所以它們常被稱作紐西蘭僅有的<b>「內陸峽灣」</b>。最深 417 公尺，湖底最低處在海平面以下 226 公尺——冰河真的挖得比海還深。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lake+Te+Anau+New+Zealand",
+    "approx": true,
+    "n": 1300
    }
   },
   {
@@ -2694,144 +3605,14 @@ input:focus-visible,[tabindex]:focus-visible{
      "1898 年之後，半世紀沒有任何目擊紀錄。1948 年，因弗卡吉爾的醫生 Geoffrey Orbell 憑著草叢裡的怪腳印和沒聽過的鳥叫，帶隊進 Murchison 山區找回了牠。巧的是，螢火蟲洞也是同年被找到的。"
     ],
     "tips": []
-   }
-  },
-  {
-   "id": "lake-te-anau",
-   "name": "Lake Te Anau",
-   "zh": "蒂阿瑙湖",
-   "cat": "sight",
-   "day": 10,
-   "town": "Te Anau",
-   "q": "Lake Te Anau New Zealand",
-   "flag": "ok",
-   "note": "紐西蘭南島最大的湖，傍晚湖邊散步很舒服。",
-   "lat": -45.18556,
-   "lng": 167.735867,
-   "img": "images/teanau.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "湖的名字，來自一個當時沒人找得到的山洞。",
-    "paras": [
-     "Te Ana-au 的意思是<b>「有漩渦水流的洞穴」</b>。也就是說，湖是以洞命名的——但那個洞後來只活在傳說裡，直到 1948 年才被重新找到，就是今天大家搭船去看螢火蟲的地方。名字比洞本身還早留下來。",
-     "湖的西側有三條深入山裡的長臂，叫 North／Middle／South Fiord。紐西蘭其他 <b>14 條峽灣全部都在海邊</b>，只有這裡的深入內陸，所以它們常被稱作紐西蘭僅有的<b>「內陸峽灣」</b>。最深 417 公尺，湖底最低處在海平面以下 226 公尺——冰河真的挖得比海還深。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "mirror-lakes",
-   "name": "Mirror Lakes",
-   "zh": "鏡湖",
-   "cat": "sight",
-   "day": 11,
-   "town": "SH94",
-   "q": "Mirror Lakes Fiordland New Zealand",
-   "flag": "star",
-   "note": "無風時倒影完美，路邊停車走 5 分鐘。",
-   "lat": -45.028407,
-   "lng": 168.010956,
-   "img": "images/mirror-lakes.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "先別急著看湖，先看那塊倒過來寫的牌子。",
-    "paras": [
-     "步道邊那塊「MIRROR LAKES」的字是<b>上下顛倒印的</b>——因為它不是寫給你看的，是寫給水面看的。無風時低頭看倒影，字會自己正過來。這是保育部（DOC）埋的小彩蛋，很多人拍完山就走，完全沒發現。",
-     "想要完美倒影，訣竅是<b>愈早愈好</b>。谷地的風多半隨太陽升高才起來，過了中午通常就吹皺了。所以去程順路停比回程停划算很多，回程再看只能碰運氣。"
-    ],
-    "tips": [
-     "去程（上午）看，成功率遠高於回程。"
-    ]
-   }
-  },
-  {
-   "id": "eglinton-valley",
-   "name": "Eglinton Valley",
-   "zh": "艾格林頓谷",
-   "cat": "sight",
-   "day": 11,
-   "town": "SH94",
-   "q": "Eglinton Valley Fiordland New Zealand",
-   "flag": "ok",
-   "note": "冰河切出來的 U 形谷，兩側垂直山壁。",
-   "lat": -45.06209,
-   "lng": 167.993691,
-   "img": "images/mirror-lakes.jpg",
-   "bookable": false
-  },
-  {
-   "id": "homer-tunnel",
-   "name": "Homer Tunnel",
-   "zh": "荷馬隧道",
-   "cat": "sight",
-   "day": 11,
-   "town": "SH94",
-   "q": "Homer Tunnel Fiordland New Zealand",
-   "flag": "star",
-   "note": "1,270 公尺長、單線輪流通行，要等紅綠燈（旺季 15–20 分鐘）。出隧道那一刻的景色是全程最震撼的。⚠️ 位在雪崩管制區內，管制區禁止停車。",
-   "lat": -44.764188,
-   "lng": 167.981025,
-   "img": "images/homer-tunnel.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "最早在挖這條隧道的，只有五個人，配備是鎬頭和獨輪車。",
-    "paras": [
-     "1935 年動工時，現場只有<b>五個人、鎬頭和獨輪車</b>，靠人力硬鑿花崗岩，說穿了就是當年的失業救濟工程。1940 年才打通，1953 年才通車，前後拖了將近 20 年。隧道到現在還是<b>沒有內襯的裸岩壁</b>，開進去一看就知道。",
-     "代價也很慘：施工期間至少三人死於雪崩，1945 年一場雪崩把東口那段一百公尺長的混凝土防護廊整個掃掉。這條路的雪崩區裡有五十多條雪崩路徑，現在的管理方式是派直升機投擲炸藥，主動把雪先引爆下來。"
-    ],
-    "tips": [
-     "出隧道往西是一路下坡（約 1:10），出洞後馬上接連續彎，車速先放慢。",
-     "等紅燈時別餵路邊的 kea，牠們很愛啃車上的橡膠條和雨刷。"
-    ]
-   }
-  },
-  {
-   "id": "the-chasm",
-   "name": "The Chasm",
-   "zh": "",
-   "cat": "sight",
-   "day": 11,
-   "town": "SH94",
-   "q": "The Chasm Fiordland New Zealand",
-   "flag": "ok",
-   "note": "出隧道後不久，10 分鐘步道看激流沖出的壺穴。",
-   "lat": -44.721545,
-   "lng": 167.947814,
-   "img": "images/stirling-falls.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "這條河的名字，在威爾斯文裡是「劍」。",
-    "paras": [
-     "這條河叫 <b>Cleddau River</b>。1823 年替這裡取名 Milford 的船長 John Grono 是威爾斯人，連家鄉米爾福德港那兩條河的名字都一起搬了過來。Cleddau 在威爾斯文是「劍」，形容這條河像刀一樣把地形切開。",
-     "壺穴其實不是水沖出來的，是<b>石頭磨出來的</b>：卡在凹陷處的碎石被水流帶著原地打轉，像鑽頭一樣越鑽越深。你看到的每一個圓滑的洞，底下都曾經躺著一顆不斷轉圈的石頭。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "milford-sound",
-   "name": "Milford Sound / Piopiotahi",
-   "zh": "米爾福德峽灣",
-   "cat": "sight",
-   "day": 11,
-   "town": "Milford Sound",
-   "q": "Milford Sound New Zealand",
-   "flag": "star",
-   "note": "★ 初春是瀑布最多的季節——融雪加春雨，峽灣壁上會掛滿臨時瀑布。下雨天反而最好看。",
-   "lat": -44.619019,
-   "lng": 167.86876,
-   "img": "images/milford.jpg",
-   "bk": "Milford Sound day tour",
-   "bookable": false,
-   "deep": {
-    "lead": "它叫 Milford Sound，但這裡其實不是 sound——名字從一開始就取錯了。",
-    "paras": [
-     "Sound（灣）是海水灌進河谷淹出來的；這裡卻是<b>冰河刨出來的 fiord（峽灣）</b>，成因完全不同。所以地名雖然一直沿用 Milford Sound，整個區域卻叫 Fiordland。庫克船長兩度經過入口都沒發現，因為從外海看它幾乎是隱形的。",
-     "毛利名 <b>Piopiotahi</b> 意思是「一隻 piopio 鳥」：傳說半神 Māui 求永生失敗死去後，一隻 piopio 飛來為他哀鳴。另一個傳說是，死神怕這裡美到讓人捨不得走，才放出沙蠅趕人——當地人到現在還這樣解釋沙蠅。"
-    ],
-    "tips": [
-     "防蟲液一定要帶。沙蠅在停車場和岸邊最兇，上了船反而還好。"
-    ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Te+Anau+Bird+Sanctuary+New+Zealand",
+    "approx": true,
+    "n": 780
    }
   },
   {
@@ -2853,7 +3634,15 @@ input:focus-visible,[tabindex]:focus-visible{
    "geo_approx": "Milford Sound Piopiotahi",
    "img": "images/milford.jpg",
    "bk": "Milford Sound cruise",
-   "bookable": true
+   "bookable": true,
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Cruise+Terminal+New+Zealand",
+    "approx": true,
+    "n": 1400
+   }
   },
   {
    "id": "mitre-peak-cruises",
@@ -2882,6 +3671,14 @@ input:focus-visible,[tabindex]:focus-visible{
      "英文名來自主教的高帽（mitre），是英國測量船上的 John Lort Stokes 取的；毛利名叫 <b>Rahotu</b>。小船的好處也在這裡——能繞近崖壁換角度，才看得出它根本不是一片平面。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/1481-Mitre_Peak_Cruises_Up_to_30_percent_Off",
+    "n": 222,
+    "note": "⚠️ 非 Google 評分。來源是 Rankers（紐西蘭在地旅遊評論聚合平台），為該站自家會員評論的彙總。（Gemini 另查到 4.7 分／約 680 則）"
    }
   },
   {
@@ -2902,36 +3699,14 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/fox-icecave.jpg",
    "url": "https://puremilford.co.nz/",
    "bk": "Milford Sound cruise",
-   "bookable": true
-  },
-  {
-   "id": "southern-discoveries",
-   "name": "Southern Discoveries",
-   "zh": "峽灣遊船＋海底觀景站",
-   "cat": "book",
-   "day": 11,
-   "town": "Milford Sound",
-   "q": "Milford Sound Cruise Terminal New Zealand",
-   "flag": "warn",
-   "book": true,
-   "price": "約 NZ$179 起",
-   "hours": "09:00、10:30 兩班",
-   "url": "https://www.southerndiscoveries.co.nz/",
-   "note": "⚠️ 含海底觀景站的「Discover More」與皮划艇行程，2026/08/20 查證時官網皆標示 currently unavailable（暫停販售）。觀景站本身仍在營運（Harrison Cove，下 64 階到水下 10 公尺），行前再確認。想划獨木舟改找 Rosco's Milford Kayaks。",
-   "lat": -44.619019,
-   "lng": 167.86876,
-   "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/milford.jpg",
-   "bk": "Milford Sound underwater observatory",
    "bookable": true,
-   "deep": {
-    "lead": "在這裡潛十幾公尺就看得到黑珊瑚，而原因跟大家常講的不一樣",
-    "paras": [
-     "峽灣一年下六千多毫米的雨，雨水流過森林帶走單寧，在海水上面鋪成一層<b>茶色的淡水</b>，通常好幾公尺厚。這層水顏色深，又不太跟下面的海水混在一起，等於幫峽灣底下蓋了一塊遮光板。",
-     "結果是原本要潛很深才看得到的<b>黑珊瑚</b>，在這裡十幾公尺就有。常見的解釋是「單寧擋光所以深海物種跑上來」，但 Kregting 與 Gibbs 2006 年的實測發現，黑珊瑚分布的深度上限跟光線強弱<b>沒有顯著相關</b>——真正把牠們壓在下面的是<b>鹽度</b>，牠們受不了上層那道淡水。",
-     "黑珊瑚活著的時候其實是<b>白色</b>的，只有骨骼是黑的；峽灣裡有些群體已經活了三、四百年。海底觀景站之所以蓋得起來，靠的就是這個地質與水文的巧合。"
-    ],
-    "tips": []
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Pure+Milford+Milford+Sound",
+    "approx": true,
+    "n": 450
    }
   },
   {
@@ -2952,30 +3727,387 @@ input:focus-visible,[tabindex]:focus-visible{
    "geo_approx": "Milford Sound Piopiotahi",
    "img": "images/franz-josef.jpg",
    "bk": "Milford Sound cruise",
-   "bookable": true
+   "bookable": true,
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "official",
+    "url": "https://www.realnz.com/en/experiences/day-cruises/milford-sound-signature-cruise/",
+    "n": 2070,
+    "note": "⚠️ 非 Google 評分。RealNZ 官網 Signature Cruise 頁面的 schema.org AggregateRating（產品名 Milford Sound Cruise），營運商自行公布。"
+   }
   },
   {
-   "id": "stirling-point",
-   "name": "Stirling Point",
-   "zh": "南端路標",
-   "cat": "sight",
-   "day": 12,
-   "town": "Bluff",
-   "q": "Stirling Point Bluff New Zealand",
-   "flag": "star",
-   "price": "免費",
-   "note": "★ 全紐西蘭最有名的合影路標，寫著到倫敦 18,958 公里、到南極 4,810 公里。⚠️ 常被說成「紐西蘭最南端」，但那其實是卡特林斯的 Slope Point——Stirling Point 真正的身分是<b>1 號國道的南端端點</b>。旁邊有海崖步道，走 20 分鐘就有很好的視野。",
-   "lat": -46.613486,
-   "lng": 168.357306,
-   "img": "images/bluff.jpg",
-   "bookable": false,
+   "id": "southern-discoveries",
+   "name": "Southern Discoveries",
+   "zh": "峽灣遊船＋海底觀景站",
+   "cat": "book",
+   "day": 11,
+   "town": "Milford Sound",
+   "q": "Milford Sound Cruise Terminal New Zealand",
+   "flag": "warn",
+   "book": true,
+   "price": "約 NZ$179 起",
+   "hours": "09:00、10:30 兩班",
+   "url": "https://www.southerndiscoveries.co.nz/",
+   "note": "⚠️ <b>海底觀景站目前停售。</b>官網明寫 Discover More Cruises currently unavailable，<b>只剩 Nature Cruises 照常</b>——也就是說「遊船＋海底觀景站」這個賣點現在不成立，行前務必再確認。Nature Cruise 是全米佛最長的 2 小時，NZ$143.20。想划獨木舟改找 Rosco's Milford Kayaks。",
+   "lat": -44.619019,
+   "lng": 167.86876,
+   "geo_approx": "Milford Sound Piopiotahi",
+   "img": "images/milford.jpg",
+   "bk": "Milford Sound underwater observatory",
+   "bookable": true,
    "deep": {
-    "lead": "這裡不是紐西蘭最南端，但它是 1 號國道的最南端。",
+    "lead": "在這裡潛十幾公尺就看得到黑珊瑚，而原因跟大家常講的不一樣",
     "paras": [
-     "南島真正的最南點是 Catlins 的 <b>Slope Point</b>，再往南還有斯圖爾特島。這裡只是<b>最有名的那根路標</b>，因為它是紐西蘭 1 號國道的南端端點，往北兩千多公里另一頭就是 Cape Reinga。",
-     "旁邊那截巨大的鐵鏈常被當成純裝置藝術。它 2009 年設立，另一半在斯圖爾特島的 Lee Bay——<b>象徵 Māui 繫住獨木舟（南島）的錨鍊</b>，錨就是斯圖爾特島本身。鏈子從這頭沉入 Foveaux 海峽，從那頭再浮出來。"
+     "峽灣一年下六千多毫米的雨，雨水流過森林帶走單寧，在海水上面鋪成一層<b>茶色的淡水</b>，通常好幾公尺厚。這層水顏色深，又不太跟下面的海水混在一起，等於幫峽灣底下蓋了一塊遮光板。",
+     "結果是原本要潛很深才看得到的<b>黑珊瑚</b>，在這裡十幾公尺就有。常見的解釋是「單寧擋光所以深海物種跑上來」，但 Kregting 與 Gibbs 2006 年的實測發現，黑珊瑚分布的深度上限跟光線強弱<b>沒有顯著相關</b>——真正把牠們壓在下面的是<b>鹽度</b>，牠們受不了上層那道淡水。",
+     "黑珊瑚活著的時候其實是<b>白色</b>的，只有骨骼是黑的；峽灣裡有些群體已經活了三、四百年。海底觀景站之所以蓋得起來，靠的就是這個地質與水文的巧合。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.1,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/649-Southern_Discoveries_Milford_Sound_Cruises",
+    "n": 203,
+    "note": "⚠️ 非 Google 評分。來源是 Rankers（紐西蘭在地旅遊評論聚合平台）。同站另有「Southern Discoveries / Milford Sound Red Boats」小船行程 4.4／74 則，是不同產品。（Gemini 另查到 4.4 分／約 520 則）"
+   }
+  },
+  {
+   "id": "pio-pio-restaurant",
+   "name": "Pio Pio Restaurant (Milford Sound Lodge)",
+   "zh": "米爾福德峽灣唯一像樣的餐廳",
+   "cat": "eat",
+   "day": 11,
+   "town": "Milford Sound",
+   "lat": -44.6772412,
+   "lng": 167.938471,
+   "q": "Pio Pio Restaurant Milford Sound Lodge New Zealand",
+   "addr": "Milford Sound Highway, Milford Sound 9679",
+   "flag": "info",
+   "bookable": true,
+   "url": "https://www.milfordsoundlodge.com/",
+   "note": "米爾福德峽灣<b>整個園區沒有商店</b>，這家在 Milford Sound Lodge 裡的餐廳是少數的正經吃飯選項，官網明講「歡迎非住客的日間旅客」。位子不多、又在國家公園裡面，想吃一定要先訂。不想花這筆的話，就在蒂阿瑙先買好三明治帶著。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Pio+Pio+Restaurant+Milford+Sound+Lodge+New+Zealand",
+    "approx": true,
+    "n": 320
+   }
+  },
+  {
+   "id": "eglinton-valley",
+   "name": "Eglinton Valley",
+   "zh": "艾格林頓谷",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "q": "Eglinton Valley Fiordland New Zealand",
+   "flag": "ok",
+   "note": "冰河切出來的 U 形谷，兩側垂直山壁。",
+   "lat": -45.06209,
+   "lng": 167.993691,
+   "img": "images/mirror-lakes.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Eglinton+Valley+Fiordland+New+Zealand",
+    "approx": true,
+    "n": 850
+   }
+  },
+  {
+   "id": "homer-tunnel",
+   "name": "Homer Tunnel",
+   "zh": "荷馬隧道",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "q": "Homer Tunnel Fiordland New Zealand",
+   "flag": "star",
+   "note": "1,270 公尺長、單線輪流通行，要等紅綠燈（旺季 15–20 分鐘）。出隧道那一刻的景色是全程最震撼的。⚠️ 位在雪崩管制區內，管制區禁止停車。",
+   "lat": -44.764188,
+   "lng": 167.981025,
+   "img": "images/homer-tunnel.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "最早在挖這條隧道的，只有五個人，配備是鎬頭和獨輪車。",
+    "paras": [
+     "1935 年動工時，現場只有<b>五個人、鎬頭和獨輪車</b>，靠人力硬鑿花崗岩，說穿了就是當年的失業救濟工程。1940 年才打通，1953 年才通車，前後拖了將近 20 年。隧道到現在還是<b>沒有內襯的裸岩壁</b>，開進去一看就知道。",
+     "代價也很慘：施工期間至少三人死於雪崩，1945 年一場雪崩把東口那段一百公尺長的混凝土防護廊整個掃掉。這條路的雪崩區裡有五十多條雪崩路徑，現在的管理方式是派直升機投擲炸藥，主動把雪先引爆下來。"
+    ],
+    "tips": [
+     "出隧道往西是一路下坡（約 1:10），出洞後馬上接連續彎，車速先放慢。",
+     "等紅燈時別餵路邊的 kea，牠們很愛啃車上的橡膠條和雨刷。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Homer+Tunnel+Fiordland+New+Zealand",
+    "approx": true,
+    "n": 620
+   }
+  },
+  {
+   "id": "knobs-flat",
+   "name": "Knobs Flat",
+   "zh": "米爾福德公路唯一的中途補給點",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "lat": -44.97722,
+   "lng": 168.0173009,
+   "q": "Knobs Flat Te Anau Milford Highway New Zealand",
+   "addr": "Te Anau-Milford Highway (SH94), Fiordland National Park",
+   "flag": "info",
+   "bookable": false,
+   "note": "蒂阿瑙到米爾福德這 120 公里<b>沒有加油站、沒有商店、全程沒有手機訊號</b>，Knobs Flat 大約在中間點，是這條路上唯一有公廁的地方，還有一台付費電話（另一支緊急衛星電話在荷馬隧道口）。上車前把油加滿、水和吃的先買好，這裡不是補給站是「上廁所站」。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Knobs+Flat+Te+Anau+Milford+Highway+New+Zealand",
+    "approx": true,
+    "n": 110
+   }
+  },
+  {
+   "id": "lake-gunn-nature-walk",
+   "name": "Lake Gunn Nature Walk",
+   "zh": "紅山毛櫸森林環狀步道",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "lat": -44.8939754,
+   "lng": 168.0830597,
+   "q": "Lake Gunn Nature Walk Cascade Creek Milford Road",
+   "addr": "Cascade Creek, Te Anau-Milford Highway (SH94)",
+   "hours": "全天開放，步道 1.2 公里環狀、來回約 45 分鐘",
+   "flag": "ok",
+   "bookable": false,
+   "note": "從蒂阿瑙開約 75 公里，在 Cascade Creek 路口轉進去。寬的碎石環狀步道穿過老紅山毛櫸林，中途有幾條小岔路通到湖邊的碎石灘，放了長椅可以坐。<b>路面平、不用爬升</b>，是這條路上最輕鬆的一段森林步道。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lake+Gunn+Nature+Walk+Cascade+Creek+Milford+Road",
+    "approx": true,
+    "n": 290
+   }
+  },
+  {
+   "id": "lake-marian-falls",
+   "name": "Lake Marian Falls Track",
+   "zh": "吊橋加懸空棧道的短瀑布步道",
+   "cat": "sight",
+   "day": 11,
+   "town": "Hollyford Road",
+   "lat": -44.8072344,
+   "lng": 168.1056761,
+   "q": "Lake Marian Track carpark Hollyford Road Fiordland",
+   "addr": "Lower Hollyford Road (SH94 轉入 1 公里)",
+   "hours": "全天開放，來回 720 公尺、約 20 分鐘",
+   "flag": "ok",
+   "bookable": false,
+   "note": "從 SH94 轉進 Lower Hollyford Road 開 1 公里就到登山口。過一座吊橋走 10 分鐘，會走上<b>整排鎖在岩壁上的懸空木棧道</b>，底下就是急流，水氣把整片苔蘚和蕨類噴得發亮。棧道盡頭就折返，再往上到 Lake Marian 是完全不同等級的硬路線，不要一時興起往前走。",
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lake+Marian+Track+carpark+Hollyford+Road+Fiordland",
+    "approx": true,
+    "n": 950
+   }
+  },
+  {
+   "id": "milford-sound",
+   "name": "Milford Sound / Piopiotahi",
+   "zh": "米爾福德峽灣",
+   "cat": "sight",
+   "day": 11,
+   "town": "Milford Sound",
+   "q": "Milford Sound New Zealand",
+   "flag": "star",
+   "note": "★ 初春是瀑布最多的季節——融雪加春雨，峽灣壁上會掛滿臨時瀑布。下雨天反而最好看。",
+   "lat": -44.619019,
+   "lng": 167.86876,
+   "img": "images/milford.jpg",
+   "bk": "Milford Sound day tour",
+   "bookable": false,
+   "deep": {
+    "lead": "它叫 Milford Sound，但這裡其實不是 sound——名字從一開始就取錯了。",
+    "paras": [
+     "Sound（灣）是海水灌進河谷淹出來的；這裡卻是<b>冰河刨出來的 fiord（峽灣）</b>，成因完全不同。所以地名雖然一直沿用 Milford Sound，整個區域卻叫 Fiordland。庫克船長兩度經過入口都沒發現，因為從外海看它幾乎是隱形的。",
+     "毛利名 <b>Piopiotahi</b> 意思是「一隻 piopio 鳥」：傳說半神 Māui 求永生失敗死去後，一隻 piopio 飛來為他哀鳴。另一個傳說是，死神怕這裡美到讓人捨不得走，才放出沙蠅趕人——當地人到現在還這樣解釋沙蠅。"
+    ],
+    "tips": [
+     "防蟲液一定要帶。沙蠅在停車場和岸邊最兇，上了船反而還好。"
+    ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Milford+Sound+New+Zealand",
+    "approx": true,
+    "n": 9500
+   }
+  },
+  {
+   "id": "mirror-lakes",
+   "name": "Mirror Lakes",
+   "zh": "鏡湖",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "q": "Mirror Lakes Fiordland New Zealand",
+   "flag": "star",
+   "note": "無風時倒影完美，路邊停車走 5 分鐘。",
+   "lat": -45.028407,
+   "lng": 168.010956,
+   "img": "images/mirror-lakes.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "先別急著看湖，先看那塊倒過來寫的牌子。",
+    "paras": [
+     "步道邊那塊「MIRROR LAKES」的字是<b>上下顛倒印的</b>——因為它不是寫給你看的，是寫給水面看的。無風時低頭看倒影，字會自己正過來。這是保育部（DOC）埋的小彩蛋，很多人拍完山就走，完全沒發現。",
+     "想要完美倒影，訣竅是<b>愈早愈好</b>。谷地的風多半隨太陽升高才起來，過了中午通常就吹皺了。所以去程順路停比回程停划算很多，回程再看只能碰運氣。"
+    ],
+    "tips": [
+     "去程（上午）看，成功率遠高於回程。"
+    ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mirror+Lakes+Fiordland+New+Zealand",
+    "approx": true,
+    "n": 1800
+   }
+  },
+  {
+   "id": "monkey-creek",
+   "name": "Monkey Creek",
+   "zh": "雪崩管制區內少數能合法停車的點",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "lat": -44.8008607,
+   "lng": 168.021349,
+   "q": "Monkey Creek Milford Road New Zealand",
+   "addr": "Te Anau-Milford Highway (SH94), Hollyford Valley",
+   "flag": "star",
+   "bookable": false,
+   "note": "荷馬隧道前的那段路是<b>雪崩管制區，沿線大部分路段禁止停車</b>，Monkey Creek 是少數畫了停車彎的地方之一（另一個是 The Chasm）。溪水從冰河流下來、可以直接裝來喝，停車場常有 kea（高山鸚鵡）在啄車上的橡膠條，東西不要放車頂。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Monkey+Creek+Milford+Road+New+Zealand",
+    "approx": true,
+    "n": 480
+   }
+  },
+  {
+   "id": "the-chasm",
+   "name": "The Chasm",
+   "zh": "",
+   "cat": "sight",
+   "day": 11,
+   "town": "SH94",
+   "q": "The Chasm Fiordland New Zealand",
+   "flag": "ok",
+   "note": "出隧道後不久，10 分鐘步道看激流沖出的壺穴。",
+   "lat": -44.721545,
+   "lng": 167.947814,
+   "img": "images/stirling-falls.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "這條河的名字，在威爾斯文裡是「劍」。",
+    "paras": [
+     "這條河叫 <b>Cleddau River</b>。1823 年替這裡取名 Milford 的船長 John Grono 是威爾斯人，連家鄉米爾福德港那兩條河的名字都一起搬了過來。Cleddau 在威爾斯文是「劍」，形容這條河像刀一樣把地形切開。",
+     "壺穴其實不是水沖出來的，是<b>石頭磨出來的</b>：卡在凹陷處的碎石被水流帶著原地打轉，像鑽頭一樣越鑽越深。你看到的每一個圓滑的洞，底下都曾經躺著一顆不斷轉圈的石頭。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/4022-The_Chasm_Milford_Road_Fiordland_National_Park",
+    "n": 34,
+    "note": "⚠️ 非 Google 評分。來源是 Rankers（紐西蘭在地旅遊評論聚合平台）。（Gemini 另查到 4.6 分／約 1600 則）"
+   }
+  },
+  {
+   "id": "batch-cafe",
+   "name": "The Batch Café",
+   "zh": "",
+   "cat": "eat",
+   "day": 12,
+   "town": "Invercargill",
+   "q": "The Batch Cafe Invercargill New Zealand",
+   "flag": "ok",
+   "note": "早餐／早午餐，招牌是味噌 kūmara、granola 與司康。",
+   "lat": -46.409767,
+   "lng": 168.353882,
+   "img": "images/food-hokeypokey.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=The+Batch+Cafe+Invercargill+New+Zealand",
+    "approx": true,
+    "n": 420
+   }
+  },
+  {
+   "id": "fat-bastard-pies",
+   "name": "Fat Bastard Pies",
+   "zh": "",
+   "cat": "eat",
+   "day": 12,
+   "town": "Invercargill",
+   "q": "Fat Bastard Pies Invercargill New Zealand",
+   "flag": "warn",
+   "note": "⚠️ <b>可能已經歇業，去之前一定要先確認。</b>官方網域 fatbastardpies.co.nz <b>已失效並被轉賣</b>，現在打開是賭場內容站；Wayback 最後一份正常快照停在 <b>2023/03/14</b>。中文文章還在推薦。招牌是 steak &amp; cheese 派——但不要把它排成非吃不可的一站。",
+   "lat": -46.411847,
+   "lng": 168.347063,
+   "geo_approx": "Invercargill",
+   "img": "images/helihike6.jpg",
+   "bookable": false
+  },
+  {
+   "id": "kai-reka",
+   "name": "Kai Reka",
+   "zh": "毛利食物車",
+   "cat": "eat",
+   "day": 12,
+   "town": "Bluff",
+   "q": "Bluff New Zealand",
+   "flag": "unverified",
+   "note": "炸麵包（fry bread）與奶油鮑魚薯條。⚠️ <b>查無獨立資料</b>，很可能就是 Hayz At The Anchorage 那組人的食物車。位置不固定，到了當地再問。",
+   "lat": -46.59882,
+   "lng": 168.343368,
+   "img": "images/food-mussel.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Kai+Reka+Bluff+New+Zealand",
+    "approx": true,
+    "n": 150
    }
   },
   {
@@ -2991,7 +4123,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "book": true,
    "hours": "官網目前掛「Winter Hours」：週一至週四 10:30–16:00（廚房 15:00 最後點餐）",
    "url": "https://oystercove.co.nz/",
-   "note": "⚠️ 官網現在顯示的是冬季時段，但 10/05 已是紐西蘭春季，屆時應該會換另一套時間——週一到底有沒有晚餐，一定要打電話問（03-212-8855）。官方明示晚餐必須訂位，因為可能提早打烊。生蠔過季，但藍鱈（blue cod）、貽貝等在地海鮮照常。",
+   "note": "⚠️ <b>生蠔完全過季。</b>官網寫死 Bluff 生蠔季是 <b>3–8 月</b>，而且註明 <b>2026 年採收會提早在 5 月底結束</b>——你們 10/05 到，已經過季四個多月，菜單上若有生蠔幾乎確定不是本季現撈。藍鱈（blue cod）、貽貝等在地海鮮照常。晚餐官方明示必須訂位（03-212-8855），因為可能提早打烊。",
    "lat": -46.613062,
    "lng": 168.356794,
    "img": "images/food-oyster.jpg",
@@ -3006,18 +4138,26 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "這個季節改點 blue cod（藍鱈）或淡菜，一樣是最道地的南地吃法。"
     ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Oyster+Cove+Restaurant+Bluff+New+Zealand",
+    "approx": true,
+    "n": 820
    }
   },
   {
    "id": "the-anchorage-bluff",
-   "name": "The Anchorage",
-   "zh": "",
+   "name": "Hayz At The Anchorage",
+   "zh": "布拉夫的現代毛利料理",
    "cat": "eat",
    "day": 12,
    "town": "Bluff",
-   "q": "The Anchorage Cafe Bluff New Zealand",
+   "q": "Hayz At The Anchorage Bluff New Zealand",
    "flag": "star",
-   "note": "★ 鮑魚（pāua）餛飩，並舉辦 Hākari（傳統毛利宴席）活動。路線上少見的正統毛利飲食體驗。",
+   "note": "★ <b>已改名為 Hayz At The Anchorage</b>（舊名 The Anchorage，中文資訊多半還沒更新）。主打<b>現代化的毛利料理</b>——tītī 鹹水鴨、鮑魚（pāua）雲吞。主廚 Haylee Simeon 入選 Cuisine 雜誌 2024 全國食飲界最具影響力女性 50 強。路線上少見的正統毛利飲食體驗。",
    "lat": -46.59882,
    "lng": 168.343368,
    "geo_approx": "Bluff Southland",
@@ -3030,48 +4170,40 @@ input:focus-visible,[tabindex]:focus-visible{
      "也因為太搶手，紐西蘭管制<b>未加工原殼出境</b>：撿到整片漂亮的殼別直接塞行李，要帶回家請買已經加工成飾品的成品。順帶一提，pāua 肉天生偏韌，做成餛飩或剁碎入菜是當地最常見的處理法。"
     ],
     "tips": []
+   },
+   "addr": "86 Gore Street, Bluff 9814",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hayz+At+The+Anchorage+Bluff+New+Zealand",
+    "approx": true,
+    "n": 310
    }
   },
   {
-   "id": "kai-reka",
-   "name": "Kai Reka",
-   "zh": "毛利食物車",
-   "cat": "eat",
-   "day": 12,
-   "town": "Bluff",
-   "q": "Bluff New Zealand",
-   "flag": "unverified",
-   "note": "炸麵包（fry bread）與奶油鮑魚薯條。在地、便宜、道地。⚠️ 食物車位置不固定，需當地確認。",
-   "lat": -46.59882,
-   "lng": 168.343368,
-   "img": "images/food-mussel.jpg",
-   "bookable": false
-  },
-  {
-   "id": "transport-world",
-   "name": "Bill Richardson Transport World",
-   "zh": "古董卡車博物館",
+   "id": "bluff-hill-lookout",
+   "name": "Bluff Hill / Motupōhue Lookout",
+   "zh": "布拉夫山頂 360 度觀景台",
    "cat": "sight",
    "day": 12,
-   "town": "Invercargill",
-   "q": "Bill Richardson Transport World Invercargill New Zealand",
+   "town": "Bluff",
+   "lat": -46.6149533,
+   "lng": 168.3387824,
+   "q": "Bluff Hill Lookout Motupohue New Zealand",
+   "addr": "Flagstaff Road, Bluff 9814",
+   "hours": "全天開放，停車場到觀景台來回 200 公尺、約 5 分鐘",
    "flag": "star",
-   "url": "https://www.transportworld.co.nz/",
-   "note": "★ 全球最大的私人古董卡車收藏之一。即使完全不迷車，光是規模就會讓人愣住。被嚴重低估的一站。",
-   "lat": -46.409616,
-   "lng": 168.380446,
-   "img": "images/invercargill.jpg",
-   "bk": "Bill Richardson Transport World",
    "bookable": false,
-   "deep": {
-    "lead": "全館最出名的展品，其實是廁所。",
-    "paras": [
-     "這裡有三百多台車、佔地約一萬五千平方公尺，但很多人回來第一句講的是<b>主題廁所</b>——每一間都做成完全不同的主題，誇張到名氣快追上車了，館方自己也把它當招牌在宣傳。真的值得推門進去看一眼。",
-     "收藏的源頭是本地卡車公司老闆 Bill Richardson，他把一台台報廢的老卡車救回來修好，規模一路失控。2015 年 11 月才正式對外開放——等於一個人的私人癖好，最後變成了一座城市地標。"
-    ],
-    "tips": [
-     "廁所不是玩笑，記得繞去看。"
-    ]
+   "url": "https://bluff.co.nz/walking-tracks/",
+   "note": "多數人到 Stirling Point 拍完那根黃色路標就走了，其實<b>從路標開車再上山 2.5 公里</b>就有這個觀景台，天氣好看得到史都華島。台上刻了一塊石板標出四周所有地標，上山沿路的解說牌從毛利人的地名一路講到現在，是這一帶最值得的 20 分鐘。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bluff+Hill+Lookout+Motupohue+New+Zealand",
+    "approx": true,
+    "n": 780
    }
   },
   {
@@ -3099,6 +4231,14 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "旁邊那排斷掉的活塞和連桿是真品，是他四十年來失敗的紀錄，別只顧著拍車。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=E+Hayes+and+Sons+Invercargill+New+Zealand",
+    "approx": true,
+    "n": 1250
    }
   },
   {
@@ -3116,38 +4256,15 @@ input:focus-visible,[tabindex]:focus-visible{
    "geo_approx": "Tay Street Invercargill",
    "img": "images/helihike4.jpg",
    "bk": "Classic Motorcycle Mecca Invercargill",
-   "bookable": false
-  },
-  {
-   "id": "fat-bastard-pies",
-   "name": "Fat Bastard Pies",
-   "zh": "",
-   "cat": "eat",
-   "day": 12,
-   "town": "Invercargill",
-   "q": "Fat Bastard Pies Invercargill New Zealand",
-   "flag": "ok",
-   "note": "招牌 steak & cheese 派，另有每月輪替口味。2026 年仍在營業，也做全國宅配。",
-   "lat": -46.411847,
-   "lng": 168.347063,
-   "geo_approx": "Invercargill",
-   "img": "images/helihike6.jpg",
-   "bookable": false
-  },
-  {
-   "id": "batch-cafe",
-   "name": "The Batch Café",
-   "zh": "",
-   "cat": "eat",
-   "day": 12,
-   "town": "Invercargill",
-   "q": "The Batch Cafe Invercargill New Zealand",
-   "flag": "ok",
-   "note": "早餐／早午餐，招牌是味噌 kūmara、granola 與司康。",
-   "lat": -46.409767,
-   "lng": 168.353882,
-   "img": "images/food-hokeypokey.jpg",
-   "bookable": false
+   "bookable": false,
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Classic+Motorcycle+Mecca+Invercargill+New+Zealand",
+    "approx": true,
+    "n": 1100
+   }
   },
   {
    "id": "queens-park",
@@ -3163,189 +4280,105 @@ input:focus-visible,[tabindex]:focus-visible{
    "lat": -46.401128,
    "lng": 168.356198,
    "img": "images/food-whitebait.jpg",
-   "bookable": false
-  },
-  {
-   "id": "hokonui-moonshine",
-   "name": "Hokonui Moonshine Museum",
-   "zh": "私釀威士忌博物館",
-   "cat": "sight",
-   "day": 13,
-   "town": "Gore",
-   "q": "Hokonui Moonshine Museum Gore New Zealand",
-   "flag": "ok",
-   "note": "禁酒時期私釀威士忌的博物館，比想像中有趣。Gore 同時是紐西蘭的「鱒魚之都」，有一尊巨大鱒魚雕像。",
-   "lat": -46.097253,
-   "lng": 168.94584,
-   "img": "images/do-speights.jpg",
    "bookable": false,
-   "deep": {
-    "lead": "Gore 這一帶禁酒禁了 51 年，想喝只能靠私釀",
-    "paras": [
-     "1902 年 Mataura 選區公投，六成居民投下禁酒票，隔年起區內 15 家旅館全數關門，一禁就是 51 年，到 1954 年才解除。需求沒有消失，只是轉入地下——<b>「Hokonui」後來變成整個南地私釀威士忌的代名詞</b>。",
-     "技術來自蘇格蘭高地：1870 年代 Mary McRae 帶著七個孩子與一台家傳蒸餾器移民至此，躲進 Hokonui 丘陵繼續釀。禁酒年代 30 多起起訴幾乎都扯得上 McRae 家族。<b>2020 年，博物館旁邊蓋起了合法蒸餾廠。</b>"
-    ],
-    "tips": [
-     "博物館與蒸餾廠在同一區，看完展可以直接試喝「現在合法的那個版本」。"
-    ]
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Queens+Park+Invercargill+New+Zealand",
+    "approx": true,
+    "n": 2400
    }
   },
   {
-   "id": "nugget-point",
-   "name": "Nugget Point Lighthouse",
-   "zh": "尖角燈塔",
+   "id": "stirling-point",
+   "name": "Stirling Point",
+   "zh": "南端路標",
    "cat": "sight",
-   "day": 13,
-   "town": "The Catlins",
-   "q": "Nugget Point Lighthouse Catlins New Zealand",
-   "flag": "info",
-   "price": "免費 · 步道 10 分鐘",
-   "note": "南島最上鏡的海岬之一。⚠️ 走卡特林斯海岸路線才會經過（比走 Gore 多 2–3 小時）。",
-   "lat": -46.448077,
-   "lng": 169.816794,
-   "img": "images/nugget-point.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "外海那幾塊礁石，是庫克船長眼中的金塊",
-    "paras": [
-     "「Nugget」講的不是燈塔，而是外海那一串岩礁——1770 年庫克船長經過時覺得它們長得像一塊塊金礦石（nuggets），名字就這樣留下來。燈塔 1870 年 7 月 4 日首次點燈，塔身用的是<b>就地開採的石頭</b>。",
-     "這是紐西蘭本島少數能同時看到紐西蘭海狗、海獅、象鼻海豹的地方，牠們就攤在崖下的礁石上。<b>不過象鼻海豹主要在 12 月到 2 月才出現</b>，九月底這趟看到的多半是海狗。"
-    ],
-    "tips": [
-     "帶望遠鏡：海豹在崖下十幾公尺的礁石上，肉眼只看得到一坨黑色。",
-     "旁邊的 Roaring Bay 有黃眼企鵝觀察掩體，但要傍晚才有機會。"
-    ]
-   }
-  },
-  {
-   "id": "curio-bay",
-   "name": "Curio Bay",
-   "zh": "化石森林",
-   "cat": "sight",
-   "day": 13,
-   "town": "The Catlins",
-   "q": "Curio Bay Catlins New Zealand",
-   "flag": "info",
-   "price": "免費",
-   "note": "1.8 億年前的化石森林，退潮時直接踩在石化樹幹上；也是黃眼企鵝上岸點。⚠️ 走卡特林斯路線才會經過。",
-   "lat": -46.663648,
-   "lng": 169.101016,
-   "geo_approx": "Curio Bay",
-   "img": "images/nugget-point.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "你踩的不是木頭，是石頭長成了木頭的樣子",
-    "paras": [
-     "這些樹樁早就不是木頭了。火山泥流一次次把森林活埋，地下水裡的<b>二氧化矽一分子一分子把木質換掉</b>，換到連年輪和樹皮紋路都留著——所以摸起來是石頭，看起來卻完全是樹。",
-     "樹種是<b>現代貝殼杉（kauri）與諾福克松的親戚</b>。那個年代這裡還黏在岡瓦納大陸上，跟南美、澳洲、南極洲連成一片，而地球上還沒有草、也還沒有會開花的植物。"
-    ],
-    "tips": [
-     "樹樁只在退潮前後露出來，而退潮時間每天往後移將近一小時，出發前查當天潮汐。"
-    ]
-   }
-  },
-  {
-   "id": "dunedin-station",
-   "name": "Dunedin Railway Station",
-   "zh": "但尼丁火車站",
-   "cat": "sight",
-   "day": 13,
-   "town": "Dunedin",
-   "q": "Dunedin Railway Station New Zealand",
+   "day": 12,
+   "town": "Bluff",
+   "q": "Stirling Point Bluff New Zealand",
    "flag": "star",
-   "note": "★ 1906 年落成，號稱全世界最常被拍照的紐西蘭建築。內部地磚由 72 萬塊維多利亞瓷磚拼成。",
-   "lat": -45.875256,
-   "lng": 170.508993,
-   "img": "images/dunedin-station.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "建築師的綽號叫「薑餅喬治」，就是被這棟害的",
-    "paras": [
-     "黑色玄武岩配奶油色石灰岩交錯堆疊，落成時大家覺得像薑餅屋，建築師 George Troup 從此被叫做 <b>「Gingerbread George」</b>。那種奶油色石頭叫 Oamaru stone——隔天在 Oamaru 整條老街都是它。",
-     "有趣的是，這麼氣派的車站，今天幾乎沒有定期的客運班次了。<b>剩下的多半是觀光路線</b>（Taieri Gorge 那類），平常時間站裡安靜得像座博物館，這也是它好拍的原因之一。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "baldwin-street",
-   "name": "Baldwin Street",
-   "zh": "世界最陡街道",
-   "cat": "sight",
-   "day": 13,
-   "town": "Dunedin",
-   "q": "Baldwin Street Dunedin New Zealand",
-   "flag": "ok",
    "price": "免費",
-   "note": "曾是金氏世界紀錄的最陡街道（後來被威爾斯搶走、2020 年又搶回來）。走上去比看起來累。",
-   "lat": -45.849807,
-   "lng": 170.535057,
-   "img": "images/baldwin.jpg",
+   "note": "★ 全紐西蘭最有名的合影路標，寫著到倫敦 18,958 公里、到南極 4,810 公里。⚠️ 常被說成「紐西蘭最南端」，但那其實是卡特林斯的 Slope Point——Stirling Point 真正的身分是<b>1 號國道的南端端點</b>。旁邊有海崖步道，走 20 分鐘就有很好的視野。",
+   "lat": -46.613486,
+   "lng": 168.357306,
+   "img": "images/bluff.jpg",
    "bookable": false,
    "deep": {
-    "lead": "紀錄能搶回來，關鍵在於「從路的哪裡量」",
+    "lead": "這裡不是紐西蘭最南端，但它是 1 號國道的最南端。",
     "paras": [
-     "爭議在量法。威爾斯那條 Ffordd Pen Llech 最陡的是彎道內側（37.45%），但金氏 2020 年 4 月改採<b>沿道路中線量測</b>，Baldwin Street 以 34.8% 對 28.6% 把紀錄拿了回來。",
-     "它會這麼陡是個意外——但尼丁的棋盤格街道是<b>在倫敦畫的圖，畫的人沒看過這裡的地形</b>，直接把方格套在山坡上。上半段鋪的是混凝土不是柏油，因為天一熱柏油會整片往下流。"
-    ],
-    "tips": [
-     "走上去約 10 分鐘，下坡比上坡更傷膝蓋，別用跑的。",
-     "開車上去容易熄火或溜車，租來的車不建議冒險。"
-    ]
-   }
-  },
-  {
-   "id": "larnach-castle",
-   "name": "Larnach Castle",
-   "zh": "拉納克城堡",
-   "cat": "book",
-   "day": 13,
-   "town": "Otago Peninsula",
-   "q": "Larnach Castle Dunedin New Zealand",
-   "flag": "ok",
-   "url": "https://www.larnachcastle.co.nz/",
-   "note": "紐西蘭唯一的「城堡」，1871 年由銀行家 William Larnach 建造，背後是一段家族悲劇。花園被列為國際重要花園。",
-   "lat": -45.861811,
-   "lng": 170.627249,
-   "img": "images/larnach.jpg",
-   "bk": "Larnach Castle",
-   "bookable": false,
-   "deep": {
-    "lead": "蓋城堡的人，最後在國會的會議室裡舉槍",
-    "paras": [
-     "1898 年 10 月 12 日，時任國會議員的 William Larnach 在威靈頓國會大廈一間委員會室內舉槍自盡。導火線是財務崩潰——他重壓的 Colonial Bank 1895 年倒閉。<b>他死時甚至沒有留下遺囑。</b>",
-     "城堡是為第一任妻子 Eliza 蓋的，Eliza 1880 年病逝；他續娶她同父異母的姊妹 Mary，Mary 也早逝；女兒 Kate 二十多歲走了。城堡後來荒廢到<b>舞廳被拿去關羊</b>，1967 年才由 Barker 夫婦買下修復。"
+     "南島真正的最南點是 Catlins 的 <b>Slope Point</b>，再往南還有斯圖爾特島。這裡只是<b>最有名的那根路標</b>，因為它是紐西蘭 1 號國道的南端端點，往北兩千多公里另一頭就是 Cape Reinga。",
+     "旁邊那截巨大的鐵鏈常被當成純裝置藝術。它 2009 年設立，另一半在斯圖爾特島的 Lee Bay——<b>象徵 Māui 繫住獨木舟（南島）的錨鍊</b>，錨就是斯圖爾特島本身。鏈子從這頭沉入 Foveaux 海峽，從那頭再浮出來。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Stirling+Point+Bluff+New+Zealand",
+    "approx": true,
+    "n": 2300
    }
   },
   {
-   "id": "speights",
-   "name": "Speight's Brewery",
-   "zh": "",
-   "cat": "book",
-   "day": 13,
-   "town": "Dunedin",
-   "q": "Speights Brewery Dunedin New Zealand",
+   "id": "te-unua-museum",
+   "name": "Te Unua Museum of Southland (前 Southland Museum & Art Gallery)",
+   "zh": "⚠️ 那座金字塔還在關，不要白跑",
+   "cat": "sight",
+   "day": 12,
+   "town": "Invercargill",
+   "lat": -46.4053659,
+   "lng": 168.3531639,
+   "q": "Te Unua Museum of Southland Invercargill",
+   "addr": "Queens Park, Gala Street, Invercargill",
    "flag": "warn",
-   "book": true,
-   "url": "https://www.speights.co.nz/",
-   "note": "1876 年創立，南島最老的啤酒廠之一，導覽最後可以自己倒酒喝。⚠️ 注意酒駕：20 歲以上上限為呼氣 250 mcg/L（非零，但估不準），先講好指定駕駛。",
-   "lat": -45.876275,
-   "lng": 170.500227,
-   "img": "images/food-beerflight.jpg",
-   "bk": "Speights Brewery tour",
-   "bookable": true,
+   "bookable": false,
+   "url": "https://southlandmuseum.co.nz/",
+   "note": "⚠️ <b>中文旅遊資訊還在推薦的那座金字塔博物館（看喙頭蜥 Henry 的地方）已經關了很多年</b>，原館 2018 年因耐震問題閉館，正在原地改建成新的 Te Unua Museum of Southland。官網 2026 年 8 月的最新消息還在寫「景觀工程施工中」，<b>2026 年 10 月不可能開</b>。行程請直接跳過，改去 Transport World 或 E Hayes。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Te+Unua+Museum+of+Southland+Invercargill",
+    "approx": true,
+    "n": 350
+   }
+  },
+  {
+   "id": "transport-world",
+   "name": "Bill Richardson Transport World",
+   "zh": "古董卡車博物館",
+   "cat": "sight",
+   "day": 12,
+   "town": "Invercargill",
+   "q": "Bill Richardson Transport World Invercargill New Zealand",
+   "flag": "star",
+   "url": "https://www.transportworld.co.nz/",
+   "note": "★ 全球最大的私人古董卡車收藏之一。即使完全不迷車，光是規模就會讓人愣住。被嚴重低估的一站。",
+   "lat": -46.409616,
+   "lng": 168.380446,
+   "img": "images/invercargill.jpg",
+   "bk": "Bill Richardson Transport World",
+   "bookable": false,
    "deep": {
-    "lead": "Dunedin 這個名字，就是蓋爾語的「愛丁堡」",
+    "lead": "全館最出名的展品，其實是廁所。",
     "paras": [
-     "Dunedin 來自 <b>Dùn Èideann</b>，愛丁堡的蘇格蘭蓋爾語名。1848 年蘇格蘭自由教會移民照著故鄉建城，1860 年代淘金潮又讓它三年內膨脹三倍，一度是全紐西蘭最大最有錢的城市。這間啤酒廠、大學和火車站都是那筆錢蓋的。",
-     "另一件當地人才知道的事：<b>釀酒廠外牆有一個免費的泉水龍頭</b>，接的是廠區底下的自流泉，腳踩控制，一年出水約 100 萬公升。常有但尼丁人提著大桶來排隊裝水，就在 Rattray Street 上，不用買票也能用。"
+     "這裡有三百多台車、佔地約一萬五千平方公尺，但很多人回來第一句講的是<b>主題廁所</b>——每一間都做成完全不同的主題，誇張到名氣快追上車了，館方自己也把它當招牌在宣傳。真的值得推門進去看一眼。",
+     "收藏的源頭是本地卡車公司老闆 Bill Richardson，他把一台台報廢的老卡車救回來修好，規模一路失控。2015 年 11 月才正式對外開放——等於一個人的私人癖好，最後變成了一座城市地標。"
     ],
     "tips": [
-     "帶個空水壺去接那個泉水，是完全免費的體驗。",
-     "四個人裡先講好誰不喝——導覽最後真的會讓你自己倒。"
+     "廁所不是玩笑，記得繞去看。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bill+Richardson+Transport+World+Invercargill+New+Zealand",
+    "approx": true,
+    "n": 1400
    }
   },
   {
@@ -3377,6 +4410,442 @@ input:focus-visible,[tabindex]:focus-visible{
      "導覽走的是舊要塞，砲台和信天翁觀景台是同一趟，別只想著看鳥。",
      "風大反而好——信天翁靠風起飛，太平靜的日子牠們常常懶得動。"
     ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105882/top-things-to-do-and-attractions-in-dunedin",
+    "n": 4309,
+    "note": "Google 評分，經 wanderlog 頁面查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "larnach-castle",
+   "name": "Larnach Castle",
+   "zh": "拉納克城堡",
+   "cat": "book",
+   "day": 13,
+   "town": "Otago Peninsula",
+   "q": "Larnach Castle Dunedin New Zealand",
+   "flag": "ok",
+   "url": "https://www.larnachcastle.co.nz/",
+   "note": "紐西蘭唯一的「城堡」，1871 年由銀行家 William Larnach 建造，背後是一段家族悲劇。花園被列為國際重要花園。",
+   "lat": -45.861811,
+   "lng": 170.627249,
+   "img": "images/larnach.jpg",
+   "bk": "Larnach Castle",
+   "bookable": false,
+   "deep": {
+    "lead": "蓋城堡的人，最後在國會的會議室裡舉槍",
+    "paras": [
+     "1898 年 10 月 12 日，時任國會議員的 William Larnach 在威靈頓國會大廈一間委員會室內舉槍自盡。導火線是財務崩潰——他重壓的 Colonial Bank 1895 年倒閉。<b>他死時甚至沒有留下遺囑。</b>",
+     "城堡是為第一任妻子 Eliza 蓋的，Eliza 1880 年病逝；他續娶她同父異母的姊妹 Mary，Mary 也早逝；女兒 Kate 二十多歲走了。城堡後來荒廢到<b>舞廳被拿去關羊</b>，1967 年才由 Barker 夫婦買下修復。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105882/top-things-to-do-and-attractions-in-dunedin",
+    "n": 5232,
+    "note": "Google 評分，經 wanderlog 頁面查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "speights",
+   "name": "Speight's Brewery",
+   "zh": "",
+   "cat": "book",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Speights Brewery Dunedin New Zealand",
+   "flag": "warn",
+   "book": true,
+   "url": "https://www.speights.co.nz/",
+   "note": "1876 年創立，南島最老的啤酒廠之一，導覽最後可以自己倒酒喝。⚠️ 注意酒駕：20 歲以上上限為呼氣 250 mcg/L（非零，但估不準），先講好指定駕駛。",
+   "lat": -45.876275,
+   "lng": 170.500227,
+   "img": "images/food-beerflight.jpg",
+   "bk": "Speights Brewery tour",
+   "bookable": true,
+   "deep": {
+    "lead": "Dunedin 這個名字，就是蓋爾語的「愛丁堡」",
+    "paras": [
+     "Dunedin 來自 <b>Dùn Èideann</b>，愛丁堡的蘇格蘭蓋爾語名。1848 年蘇格蘭自由教會移民照著故鄉建城，1860 年代淘金潮又讓它三年內膨脹三倍，一度是全紐西蘭最大最有錢的城市。這間啤酒廠、大學和火車站都是那筆錢蓋的。",
+     "另一件當地人才知道的事：<b>釀酒廠外牆有一個免費的泉水龍頭</b>，接的是廠區底下的自流泉，腳踩控制，一年出水約 100 萬公升。常有但尼丁人提著大桶來排隊裝水，就在 Rattray Street 上，不用買票也能用。"
+    ],
+    "tips": [
+     "帶個空水壺去接那個泉水，是完全免費的體驗。",
+     "四個人裡先講好誰不喝——導覽最後真的會讓你自己倒。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105882/top-things-to-do-and-attractions-in-dunedin",
+    "n": 343,
+    "note": "Google 評分，經 wanderlog 頁面查得（Gemini 另查到 4.5 分／約 1300 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "baldwin-street",
+   "name": "Baldwin Street",
+   "zh": "世界最陡街道",
+   "cat": "sight",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Baldwin Street Dunedin New Zealand",
+   "flag": "ok",
+   "price": "免費",
+   "note": "曾是金氏世界紀錄的最陡街道（後來被威爾斯搶走、2020 年又搶回來）。走上去比看起來累。",
+   "lat": -45.849807,
+   "lng": 170.535057,
+   "img": "images/baldwin.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "紀錄能搶回來，關鍵在於「從路的哪裡量」",
+    "paras": [
+     "爭議在量法。威爾斯那條 Ffordd Pen Llech 最陡的是彎道內側（37.45%），但金氏 2020 年 4 月改採<b>沿道路中線量測</b>，Baldwin Street 以 34.8% 對 28.6% 把紀錄拿了回來。",
+     "它會這麼陡是個意外——但尼丁的棋盤格街道是<b>在倫敦畫的圖，畫的人沒看過這裡的地形</b>，直接把方格套在山坡上。上半段鋪的是混凝土不是柏油，因為天一熱柏油會整片往下流。"
+    ],
+    "tips": [
+     "走上去約 10 分鐘，下坡比上坡更傷膝蓋，別用跑的。",
+     "開車上去容易熄火或溜車，租來的車不建議冒險。"
+    ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/113078/dunedin-skyline-most-iconic-buildings-and-best-views-in-dunedin",
+    "n": 3966,
+    "note": "Google 評分，經 wanderlog 頁面查得（頁面標記為 Baldwin Street - The Steepest Street in the World） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "cathedral-caves",
+   "name": "Cathedral Caves",
+   "zh": "⚠️ 10 月初很可能還沒開門",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.6039062,
+   "lng": 169.3745758,
+   "q": "Cathedral Caves Catlins New Zealand",
+   "addr": "Cathedral Caves Road, Waipati Beach, The Catlins",
+   "price": "成人 NZ$15、5–14 歲 NZ$2、5 歲以下免費，只收卡不收現金",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://www.cathedralcaves.co.nz/",
+   "note": "兩條海蝕洞加起來 200 公尺長、最高 30 公尺，是卡特林斯的招牌。<b>⚠️ 但它冬天關門：官網首頁寫「Closed for Winter，10 月中重開」，當地觀光局 catlins.org.nz 講得更保守，說通常關到 10 月底</b>——你們 10/6 到，兩種說法都指向還沒開，行前一定要看官網首頁當天的公告。就算開了也只有<b>退潮前後那 2 小時</b>能進去，停車場車位很少、拖車不能進。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Cathedral+Caves+Catlins+New+Zealand",
+    "approx": true,
+    "n": 780
+   }
+  },
+  {
+   "id": "croydon-aviation",
+   "name": "Croydon Aviation Heritage Centre",
+   "zh": "南半球最大的 de Havilland 老飛機收藏",
+   "cat": "sight",
+   "day": 13,
+   "town": "Mandeville",
+   "lat": -45.9917393,
+   "lng": 168.8099038,
+   "q": "Croydon Aviation Heritage Centre Mandeville New Zealand",
+   "addr": "1558 Waimea Highway (SH94), Mandeville, RD6 Gore 9776",
+   "price": "成人 NZ$12、學生與敬老 NZ$10、12 歲以下免費",
+   "hours": "10–4 月每天 09:00–16:00（5–9 月縮短為 10:00–15:00）",
+   "flag": "info",
+   "bookable": false,
+   "url": "https://www.croydonaviation.co.nz/",
+   "note": "1920–30 年代的老飛機，特別的是<b>展出的飛機幾乎都還飛得起來</b>，是隔壁 Croydon Aircraft Company 一架一架修好維護的，Tiger Moth 還可以付費上去飛。<b>要注意這裡在 Gore 西北邊 SH94 上，從 Gore 來回會多花約 30 分鐘</b>，走內陸方案又不趕路才順路。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Croydon+Aviation+Heritage+Centre+Mandeville+New+Zealand",
+    "approx": true,
+    "n": 210
+   }
+  },
+  {
+   "id": "curio-bay",
+   "name": "Curio Bay",
+   "zh": "化石森林",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "q": "Curio Bay Catlins New Zealand",
+   "flag": "info",
+   "price": "免費",
+   "note": "1.8 億年前的化石森林，退潮時直接踩在石化樹幹上；也是黃眼企鵝上岸點。⚠️ <b>旁邊的遊客中心 Tumu Toka Curioscape 自 2026/04/16 起整修關閉，沒有公布重開日期，現場只剩公廁</b>——這一站<b>沒地方吃飯也沒地方避雨</b>，要自備。⚠️ 走卡特林斯路線才會經過。10 月初正是黃眼企鵝的孵蛋期，全年最敏感，務必待在觀察掩體內。",
+   "lat": -46.663648,
+   "lng": 169.101016,
+   "geo_approx": "Curio Bay",
+   "img": "images/nugget-point.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "你踩的不是木頭，是石頭長成了木頭的樣子",
+    "paras": [
+     "這些樹樁早就不是木頭了。火山泥流一次次把森林活埋，地下水裡的<b>二氧化矽一分子一分子把木質換掉</b>，換到連年輪和樹皮紋路都留著——所以摸起來是石頭，看起來卻完全是樹。",
+     "樹種是<b>現代貝殼杉（kauri）與諾福克松的親戚</b>。那個年代這裡還黏在岡瓦納大陸上，跟南美、澳洲、南極洲連成一片，而地球上還沒有草、也還沒有會開花的植物。"
+    ],
+    "tips": [
+     "樹樁只在退潮前後露出來，而退潮時間每天往後移將近一小時，出發前查當天潮汐。"
+    ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Curio+Bay+Catlins+New+Zealand",
+    "approx": true,
+    "n": 520
+   }
+  },
+  {
+   "id": "dunedin-station",
+   "name": "Dunedin Railway Station",
+   "zh": "但尼丁火車站",
+   "cat": "sight",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Dunedin Railway Station New Zealand",
+   "flag": "star",
+   "note": "★ 1906 年落成，號稱全世界最常被拍照的紐西蘭建築。內部地磚由 72 萬塊維多利亞瓷磚拼成。",
+   "lat": -45.875256,
+   "lng": 170.508993,
+   "img": "images/dunedin-station.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "建築師的綽號叫「薑餅喬治」，就是被這棟害的",
+    "paras": [
+     "黑色玄武岩配奶油色石灰岩交錯堆疊，落成時大家覺得像薑餅屋，建築師 George Troup 從此被叫做 <b>「Gingerbread George」</b>。那種奶油色石頭叫 Oamaru stone——隔天在 Oamaru 整條老街都是它。",
+     "有趣的是，這麼氣派的車站，今天幾乎沒有定期的客運班次了。<b>剩下的多半是觀光路線</b>（Taieri Gorge 那類），平常時間站裡安靜得像座博物館，這也是它好拍的原因之一。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105882/top-things-to-do-and-attractions-in-dunedin",
+    "n": 292,
+    "note": "Google 評分，經 wanderlog 頁面查得（Gemini 另查到 4.7 分／約 4600 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "eastern-southland-gallery",
+   "name": "Eastern Southland Gallery",
+   "zh": "小鎮上的 Ralph Hotere 美術館",
+   "cat": "sight",
+   "day": 13,
+   "town": "Gore",
+   "lat": -46.0979982,
+   "lng": 168.9460165,
+   "q": "Eastern Southland Gallery Gore New Zealand",
+   "addr": "14 Hokonui Drive, Gore 9710",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.esgallery.co.nz/",
+   "note": "Gore 只有一萬人，卻有一間收藏了<b>紐西蘭最重要當代畫家之一 Ralph Hotere</b> 大批作品的美術館，另外還有捐贈者 John Money 收來的非洲與大洋洲藝術。就在 Gore 主要道路旁、和 Hokonui Moonshine 博物館走路可到，下雨天特別適合。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Eastern+Southland+Gallery+Gore+New+Zealand",
+    "approx": true,
+    "n": 130
+   }
+  },
+  {
+   "id": "hokonui-moonshine",
+   "name": "Hokonui Moonshine Museum",
+   "zh": "私釀威士忌博物館",
+   "cat": "sight",
+   "day": 13,
+   "town": "Gore",
+   "q": "Hokonui Moonshine Museum Gore New Zealand",
+   "flag": "ok",
+   "note": "禁酒時期私釀威士忌的博物館，比想像中有趣。Gore 同時是紐西蘭的「鱒魚之都」，有一尊巨大鱒魚雕像。",
+   "lat": -46.097253,
+   "lng": 168.94584,
+   "img": "images/do-speights.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "Gore 這一帶禁酒禁了 51 年，想喝只能靠私釀",
+    "paras": [
+     "1902 年 Mataura 選區公投，六成居民投下禁酒票，隔年起區內 15 家旅館全數關門，一禁就是 51 年，到 1954 年才解除。需求沒有消失，只是轉入地下——<b>「Hokonui」後來變成整個南地私釀威士忌的代名詞</b>。",
+     "技術來自蘇格蘭高地：1870 年代 Mary McRae 帶著七個孩子與一台家傳蒸餾器移民至此，躲進 Hokonui 丘陵繼續釀。禁酒年代 30 多起起訴幾乎都扯得上 McRae 家族。<b>2020 年，博物館旁邊蓋起了合法蒸餾廠。</b>"
+    ],
+    "tips": [
+     "博物館與蒸餾廠在同一區，看完展可以直接試喝「現在合法的那個版本」。"
+    ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hokonui+Moonshine+Museum+Gore+New+Zealand",
+    "approx": true,
+    "n": 180
+   }
+  },
+  {
+   "id": "lost-gypsy-gallery",
+   "name": "The Lost Gypsy Gallery",
+   "zh": "手做機關藝廊（10 月初還在冬季公休）",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.5606861,
+   "lng": 169.4682468,
+   "q": "The Lost Gypsy Gallery Papatowai New Zealand",
+   "addr": "Papatowai Highway, Papatowai, The Catlins",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://www.thelostgypsy.com",
+   "note": "藝術家 Blair Somerville 用回收零件手做的自動機關藝廊，中文遊記很常提到。<b>⚠️ 官網「Hours of Operation」寫明冬季（4 月底至 10 月底）公休</b>，10/06 經過時還沒開門，繞過去只會白跑；路邊那台改裝綠色巴士可以看一眼外觀就上路。",
+   "hours": "夏季 10:00–17:00，週三公休；冬季（4 月底–10 月底）全面公休",
+   "price": "Winding Thoughts Theatre 每人 NZ$10；路邊那台綠色巴士免費"
+  },
+  {
+   "id": "mclean-falls",
+   "name": "McLean Falls",
+   "zh": "卡特林斯最有份量的瀑布",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.5694546,
+   "lng": 169.3525674,
+   "q": "McLean Falls Catlins New Zealand",
+   "addr": "Rewcastle Road, Chaslands, The Catlins",
+   "hours": "全天開放，來回 1.5 公里、約 40 分鐘",
+   "flag": "star",
+   "bookable": false,
+   "note": "主瀑約 15 公尺高，水沿著一層層外露的泥岩與砂岩台階散開來流，整條溪谷被蕨類蓋滿。從 Southern Scenic Route 轉進 Rewcastle Road，<b>後段 3.5 公里是碎石路</b>，路底停車場有廁所。步道後半有陡階梯、下過雨會滑。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/3366-McLean_Falls_Walk_Catlins",
+    "n": 42,
+    "note": "Rankers 評分，非 Google（Gemini 另查到 4.8 分／約 950 則）"
+   }
+  },
+  {
+   "id": "nugget-point",
+   "name": "Nugget Point Lighthouse",
+   "zh": "尖角燈塔",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "q": "Nugget Point Lighthouse Catlins New Zealand",
+   "flag": "info",
+   "price": "免費 · 步道 10 分鐘",
+   "note": "南島最上鏡的海岬之一。⚠️ 走卡特林斯海岸路線才會經過（比走 Gore 多 2–3 小時）。",
+   "lat": -46.448077,
+   "lng": 169.816794,
+   "img": "images/nugget-point.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "外海那幾塊礁石，是庫克船長眼中的金塊",
+    "paras": [
+     "「Nugget」講的不是燈塔，而是外海那一串岩礁——1770 年庫克船長經過時覺得它們長得像一塊塊金礦石（nuggets），名字就這樣留下來。燈塔 1870 年 7 月 4 日首次點燈，塔身用的是<b>就地開採的石頭</b>。",
+     "這是紐西蘭本島少數能同時看到紐西蘭海狗、海獅、象鼻海豹的地方，牠們就攤在崖下的礁石上。<b>不過象鼻海豹主要在 12 月到 2 月才出現</b>，九月底這趟看到的多半是海狗。"
+    ],
+    "tips": [
+     "帶望遠鏡：海豹在崖下十幾公尺的礁石上，肉眼只看得到一坨黑色。",
+     "旁邊的 Roaring Bay 有黃眼企鵝觀察掩體，但要傍晚才有機會。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/3364-Nugget_Point_Tokata",
+    "n": 116,
+    "note": "⚠️ 非 Google 評分，來源是 Rankers（紐西蘭在地旅遊評論聚合平台）。Google/TripAdvisor 皆查無公開可見數字。（Gemini 另查到 4.8 分／約 1900 則）"
+   }
+  },
+  {
+   "id": "otago-museum",
+   "name": "Otago Museum",
+   "zh": "奧塔哥博物館",
+   "cat": "sight",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Otago Museum Dunedin New Zealand",
+   "flag": "ok",
+   "note": "自然史與太平洋文化收藏。",
+   "lat": -45.865635,
+   "lng": 170.510758,
+   "img": "images/see-haka.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105882/top-things-to-do-and-attractions-in-dunedin",
+    "n": 4105,
+    "note": "Google 評分，經 wanderlog 頁面查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "purakaunui-falls",
+   "name": "Pūrākaunui Falls",
+   "zh": "紐西蘭被拍最多次的三層瀑布",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.5175708,
+   "lng": 169.5608374,
+   "q": "Purakaunui Falls Catlins New Zealand",
+   "addr": "Purakaunui Falls Road, The Catlins",
+   "hours": "全天開放，來回 1 公里、約 20 分鐘",
+   "flag": "star",
+   "bookable": false,
+   "note": "水分成好幾道細流、分兩層攤開來下，是紐西蘭明信片上最常出現的瀑布之一。<b>上層觀景台輪椅推得上去</b>，但真正好看的角度要再往下走到溪面那層。轉進去的 Waikoata Valley Road 是碎石路，停車場有廁所和野餐桌。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "rankers",
+    "url": "https://www.rankers.co.nz/experiences/3359-Purakaunui_Falls_Walk_Catlins",
+    "n": 44,
+    "note": "Rankers 評分，非 Google（Gemini 另查到 4.8 分／約 780 則）"
+   }
+  },
+  {
+   "id": "roaring-bay-hide",
+   "name": "Roaring Bay Yellow-eyed Penguin Hide",
+   "zh": "尖角燈塔旁的黃眼企鵝觀察掩體",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.4440085,
+   "lng": 169.8027097,
+   "q": "Roaring Bay penguin hide Nugget Point New Zealand",
+   "addr": "Nugget Road, Ahuriri Flat（Nugget Point 燈塔停車場前 800 公尺）",
+   "hours": "全天開放，停車場到掩體來回 500 公尺、約 20 分鐘",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.catlins.org.nz/",
+   "note": "在 Nugget Point 燈塔停車場<b>前面 800 公尺</b>就有指標，蓋了一座專門看黃眼企鵝（hoiho）上岸的掩體。規矩要記住：<b>下午 3 點之後絕對不要走下沙灘</b>，會害牠們不敢上岸；官方 Catlins Care Code 規定<b>看企鵝至少距離 50 公尺、看海獅海狗至少 20 公尺</b>，這一帶也全面禁飛空拍機。⚠️ 當地觀光局現在寫「Roaring Bay 已經比較看不到企鵝了」，去了看不到是正常的，不要為了拍到而靠近。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Roaring+Bay+penguin+hide+Nugget+Point+New+Zealand",
+    "approx": true,
+    "n": 110
    }
   },
   {
@@ -3404,181 +4873,86 @@ input:focus-visible,[tabindex]:focus-visible{
      "海獅睡覺時看起來像一塊漂流木，官方建議保持 20 公尺以上，別為了拍照繞過去。",
      "下去 15 分鐘、上來要 25–30 分鐘，穿好走的鞋。"
     ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/131068/best-free-attractions-in-dunedin",
+    "n": 517,
+    "note": "Google 評分，經 wanderlog 頁面查得（頁面標記為 Sandfly Bay Wildlife Refuge） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
-   "id": "otago-museum",
-   "name": "Otago Museum",
-   "zh": "奧塔哥博物館",
+   "id": "slope-point",
+   "name": "Slope Point",
+   "zh": "⚠️ 南島最南點，9–11 月產羔季可能封閉",
    "cat": "sight",
    "day": 13,
-   "town": "Dunedin",
-   "q": "Otago Museum Dunedin New Zealand",
-   "flag": "ok",
-   "note": "自然史與太平洋文化收藏。",
-   "lat": -45.865635,
-   "lng": 170.510758,
-   "img": "images/see-haka.jpg",
-   "bookable": false
-  },
-  {
-   "id": "shag-point",
-   "name": "Shag Point",
-   "zh": "",
-   "cat": "sight",
-   "day": 14,
-   "town": "Shag Point",
-   "q": "Shag Point Otago New Zealand",
-   "flag": "ok",
-   "price": "免費",
-   "note": "紐西蘭海狗（fur seal）常態棲息地，路邊就能看。",
-   "lat": -45.460913,
-   "lng": 170.814786,
-   "img": "images/kea.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "摩拉基大圓石那個傳說的結局在這裡：獨木舟就是在這裡翻的。",
-    "paras": [
-     "Matakaea（Shag Point）是 Āraiteuru 獨木舟傳說的終點——船上的貨物先在摩拉基與 Kātiki 一帶落海，<b>獨木舟最後在這裡翻覆</b>。所以摩拉基大圓石和這裡講的是同一個故事的前後兩段，一路開下來剛好就是故事的順序。",
-     "地質上也很熱鬧：1830 年代捕鯨人在這裡發現<b>紐西蘭第一處煙煤</b>，礦坑一路挖到海面底下，1972 年因為坑道進水才關閉。1983 年這裡還挖出一具 7 公尺長的蛇頸龍化石。"
-    ],
-    "tips": []
-   }
-  },
-  {
-   "id": "katiki-point",
-   "name": "Katiki Point Lighthouse",
-   "zh": "卡蒂基角燈塔",
-   "cat": "sight",
-   "day": 14,
-   "town": "Moeraki",
-   "q": "Katiki Point Lighthouse Moeraki New Zealand",
-   "flag": "star",
-   "price": "免費",
-   "note": "★ 黃眼企鵝（hoiho）的棲地，全球最稀有的企鵝之一。⚠️ 牠們傍晚才會上岸回巢，白天去多半只看到海狗。務必待在步道與觀察掩體內。",
-   "lat": -45.365618,
-   "lng": 170.851394,
-   "geo_approx": "Moeraki Lighthouse",
-   "img": "images/hoiho.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "hoiho 是唯一「看得到鄰居就不肯築巢」的企鵝",
-    "paras": [
-     "hoiho 在毛利語裡是「大聲喊叫的」，講的是牠尖銳的叫聲。但牠最特別的是社交習性：<b>其他企鵝擠成一片，牠卻要看不到任何鄰居才肯下蛋</b>，有時候會一路往內陸走近一公里，去找一個看不到同類的角落。",
-     "所以牠特別脆弱——沒有森林灌叢當屏障就不繁殖。<b>南島本島的巢數從 2008–09 年的 739 巢，掉到 2024–25 年只剩 143 巢</b>，十幾年少了八成。紐西蘭 5 元紙鈔上那隻企鵝就是牠。"
-    ],
-    "tips": [
-     "白天當然可以走，但企鵝要日落前後才上岸；沒時間等就當作是來看海狗。",
-     "在掩體裡別探頭：牠一看到有人擋在回巢路上就會掉頭回海裡，等於整晚沒吃到飯。"
-    ]
-   }
-  },
-  {
-   "id": "moeraki-boulders",
-   "name": "Moeraki Boulders",
-   "zh": "摩拉基大圓石",
-   "cat": "sight",
-   "day": 14,
-   "town": "Moeraki",
-   "q": "Moeraki Boulders New Zealand",
-   "flag": "star",
-   "note": "★ 6,000 萬年前海底沉積形成的球狀結核；毛利傳說則說那是 Āraiteuru 獨木舟翻覆後散落的葫蘆與地瓜籃。⚠️ 退潮時才走得到、也才好看——出發前查當天潮汐表。",
-   "lat": -45.345173,
-   "lng": 170.826245,
-   "img": "images/moeraki.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "它們是從崖壁裡掉出來的，不是海浪堆出來的",
-    "paras": [
-     "圓石不是被海磨圓的，是<b>從裡面往外一圈圈長出來的</b>：海底泥裡的方解石繞著一個核心慢慢結晶，最大那幾顆估計長了四、五百萬年。表面的龜甲裂紋，則是內部乾縮裂開後又被方解石填回去留下的。",
-     "它們原本包在旁邊那片泥岩崖裡，崖被海侵蝕掉，圓石才露出來滾到沙灘上——<b>崖壁上現在還嵌著半顆半顆的</b>，值得抬頭看。毛利語它們叫 <b>Te Kaihīnaki</b>，指的就是那批漂上岸的食物籃與葫蘆。"
-    ],
-    "tips": [
-     "別只拍沙灘上完整的那幾顆，往崖壁走——裂開露出內部方解石結晶的其實更好看。"
-    ]
-   }
-  },
-  {
-   "id": "fleurs-place",
-   "name": "Fleurs Place",
-   "zh": "（已永久歇業）",
-   "cat": "eat",
-   "day": 14,
-   "town": "Moeraki",
-   "q": "Fleurs Place Moeraki New Zealand",
-   "flag": "closed",
-   "note": "❌ 已永久歇業。自疫情初期關閉，2025 年 4 月建物已掛牌出售，創辦人 Fleur Sullivan 本人表態不會再開。中文旅遊資訊仍大量推薦，別排進行程。",
-   "lat": -45.360012,
-   "lng": 170.854685,
-   "geo_approx": "Haven Street Moeraki",
-   "img": "images/katiki.jpg",
-   "bookable": false
-  },
-  {
-   "id": "riverstone-kitchen",
-   "name": "Riverstone Kitchen",
-   "zh": "",
-   "cat": "eat",
-   "day": 14,
-   "town": "Oamaru",
-   "q": "Riverstone Kitchen Oamaru New Zealand",
-   "addr": "1431 Glenavy-Hilderthorpe Road, North Oamaru",
+   "town": "The Catlins",
+   "lat": -46.6742895,
+   "lng": 169.0016008,
+   "q": "Slope Point Catlins New Zealand",
+   "addr": "Slope Point Road, Waihopai Toetoe, Southland",
+   "hours": "沒有路可以開到底，停好車要走約 20 分鐘（跟著褪色的黃色標樁）",
    "flag": "warn",
-   "book": true,
-   "hours": "午餐每天 9am–4pm（最後訂位 2:45pm）· 晚餐只有週五、週六",
-   "url": "https://www.riverstonekitchen.co.nz/",
-   "note": "自家農場直供的知名餐廳，2026 年仍營業（已用其訂位系統實際班次驗證）。⚠️ 10/07 是週三 → 只能安排午餐。建議提前訂位；8 人以上須電話訂；國定假日加 15%；不可自帶酒或食物。位置在 Oamaru 以北約 15 公里。",
-   "lat": -44.939197,
-   "lng": 171.096176,
-   "geo_approx": "Glenavy Hilderthorpe Road",
-   "img": "images/pounamu.jpg",
-   "bk": "Riverstone Kitchen Oamaru",
-   "bookable": true
-  },
-  {
-   "id": "steampunk-hq",
-   "name": "Steampunk HQ",
-   "zh": "蒸汽龐克總部",
-   "cat": "sight",
-   "day": 14,
-   "town": "Oamaru",
-   "q": "Steampunk HQ Oamaru New Zealand",
-   "addr": "1 Humber Street, Oamaru 9400",
-   "flag": "star",
-   "price": "成人 NZ$15（4 人共 NZ$60）",
-   "hours": "每天 10:00–16:00 · 最後入場 15:30",
-   "url": "https://www.steampunkoamaru.co.nz/",
-   "note": "★ 會噴火會叫的機械雕塑。⚠️ 10/07 要在 15:30 前到。參觀約 45–60 分鐘，不用預約，現場買票。就在維多利亞街區旁邊。",
-   "lat": -45.102318,
-   "lng": 170.970886,
-   "img": "images/steampunk.jpg",
-   "bk": "Steampunk HQ Oamaru",
-   "bookable": true
-  },
-  {
-   "id": "oamaru-victorian",
-   "name": "Oamaru Victorian Precinct",
-   "zh": "維多利亞街區",
-   "cat": "sight",
-   "day": 14,
-   "town": "Oamaru",
-   "q": "Oamaru Victorian Precinct New Zealand",
-   "flag": "ok",
-   "price": "免費",
-   "note": "用當地白色石灰岩（Oamaru stone）蓋的整片 1880 年代街區，紐西蘭保存最完整的。",
-   "lat": -45.103561,
-   "lng": 170.970408,
-   "img": "images/oamaru.jpg",
    "bookable": false,
-   "deep": {
-    "lead": "這種石頭剛挖出來軟到能用鋸子鋸，見了空氣才變硬",
-    "paras": [
-     "Oamaru stone 是一種苔蘚蟲石灰岩，成分九成是碳酸鈣。<b>剛從採石場（在內陸的 Weston）挖出來時軟到能用手鋸切、用鑿子雕，要暴露在空氣中才慢慢變硬</b>。這就是為什麼這裡的門楣和柱頭雕得那麼囉唆——不是因為特別有錢，是這種石頭實在太好雕。",
-     "至於為什麼是 1880 年代：1882 年 2 月第一批冷凍羊肉從 Port Chalmers 運往倫敦，紐西蘭冷凍肉貿易就此起飛，而 Oamaru 正在核心地帶，<b>當時港口一年進出四百多艘船</b>。這整片街區就是那十年蓋起來的。"
-    ],
-    "tips": [
-     "前一天在但尼丁火車站看到的奶油色石頭，就是同一種 Oamaru stone。"
-    ]
+   "note": "南島地理上真正的最南端，立了一塊寫著到赤道與南極距離的 AA 路牌。<b>⚠️ 這條路穿過私人牧場，9 月到 11 月綿羊產羔季不開放通行</b>，你們 10/6 正好卡在這段期間，很可能會看到閘門上鎖。想拍「最南」又怕撲空的話，Bluff 的 Stirling Point 路標和 Bluff Hill 觀景台是更保險的替代。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Slope+Point+Catlins+New+Zealand",
+    "approx": true,
+    "n": 890
+   }
+  },
+  {
+   "id": "tumu-toka-curioscape",
+   "name": "Tumu Toka Curioscape",
+   "zh": "⚠️ Curio Bay 遊客中心，2026 年 4 月起無限期停業",
+   "cat": "sight",
+   "day": 13,
+   "town": "Curio Bay",
+   "lat": -46.6616319,
+   "lng": 169.1011369,
+   "q": "Tumu Toka Curioscape Curio Bay New Zealand",
+   "addr": "590 Waikawa-Curio Bay Road, Curio Bay 9884",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://curioscape.co.nz/",
+   "note": "⚠️ 這是 Curio Bay 化石森林旁的遊客中心（含展覽、餐廳、商店），<b>官網公告從 2026 年 4 月 16 日起因整修暫停營業、無限期關閉，目前沒有公布重開日期</b>，只剩沙灘旁的公廁還開著。也就是說 Curio Bay 這一站<b>可能沒地方吃飯也沒地方避雨</b>，吃的請在 Invercargill 或 Owaka 先解決。化石森林本身照常，但<b>要退潮才看得到</b>。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Tumu+Toka+Curioscape+Curio+Bay+New+Zealand",
+    "approx": true,
+    "n": 410
+   }
+  },
+  {
+   "id": "waipapa-point-lighthouse",
+   "name": "Waipapa Point Lighthouse",
+   "zh": "紐西蘭最後一座木造燈塔，常有海獅",
+   "cat": "sight",
+   "day": 13,
+   "town": "The Catlins",
+   "lat": -46.6600622,
+   "lng": 168.8470512,
+   "q": "Waipapa Point Lighthouse Catlins New Zealand",
+   "addr": "Waipapa Lighthouse Road, Waipapa Point, Southland",
+   "hours": "全天開放，停車場到燈塔單程約 10 分鐘",
+   "flag": "ok",
+   "bookable": false,
+   "note": "1881 年蒸汽船 Tararua 在外海觸礁沉沒、131 人罹難，是紐西蘭史上第二慘的海難，事後才在這裡蓋了燈塔，也是<b>紐西蘭最後一座木造燈塔</b>。從 Fortrose 沿海岸開 12 公里，<b>最後 4.5 公里是碎石路</b>（租車全險常不理賠碎石路，開慢一點）。燈塔下的草坡和沙灘常有紐西蘭海獅趴著，官方規定至少距離 20 公尺。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Waipapa+Point+Lighthouse+Catlins+New+Zealand",
+    "approx": true,
+    "n": 480
    }
   },
   {
@@ -3610,6 +4984,98 @@ input:focus-visible,[tabindex]:focus-visible{
      "10 月場次 20:00 開始，但真正上岸看天色，心理準備坐 60–90 分鐘。",
      "座位在戶外海邊，九、十月的夜風比想像中冷很多，外套一定要帶。"
     ]
+   },
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594420/top-things-to-do-and-attractions-in-oamaru",
+    "n": 3213,
+    "note": "Google 商家名稱是「Ōamaru Penguins」，即藍企鵝歸巢中心（penguins.co.nz）。 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "fleurs-place",
+   "name": "Fleurs Place",
+   "zh": "（已永久歇業）",
+   "cat": "eat",
+   "day": 14,
+   "town": "Moeraki",
+   "q": "Fleurs Place Moeraki New Zealand",
+   "flag": "closed",
+   "note": "❌ 已永久歇業。自疫情初期關閉，2025 年 4 月建物已掛牌出售，創辦人 Fleur Sullivan 本人表態不會再開。中文旅遊資訊仍大量推薦，別排進行程。",
+   "lat": -45.360012,
+   "lng": 170.854685,
+   "geo_approx": "Haven Street Moeraki",
+   "img": "images/katiki.jpg",
+   "bookable": false
+  },
+  {
+   "id": "moeraki-tavern",
+   "name": "Moeraki Tavern",
+   "zh": "摩拉基小酒館",
+   "cat": "eat",
+   "day": 14,
+   "town": "Moeraki",
+   "lat": -45.3597973,
+   "lng": 170.8555949,
+   "q": "Moeraki Tavern New Zealand",
+   "addr": "Haven Street, Moeraki",
+   "hours": "每天 11:00 起營業",
+   "flag": "unverified",
+   "bookable": false,
+   "note": "Fleurs Place 歇業後，摩拉基漁村裡還在營業、查得到的餐飲選擇就剩這間社區小酒館，主打簡單酒吧餐（漢堡、薯條、炸魚薯條）。<b>這間店同樣查不到可靠的 Google／TripAdvisor 評分數字，屬於「有開但沒有公開評價可查證」，純粹提供給想在摩拉基吃口熱食的人參考。</b>"
+  },
+  {
+   "id": "riverstone-kitchen",
+   "name": "Riverstone Kitchen",
+   "zh": "",
+   "cat": "eat",
+   "day": 14,
+   "town": "Oamaru",
+   "q": "Riverstone Kitchen Oamaru New Zealand",
+   "addr": "1431 Glenavy-Hilderthorpe Road, North Oamaru",
+   "flag": "warn",
+   "book": true,
+   "hours": "午餐每天 9am–4pm（最後訂位 2:45pm）· 晚餐只有週五、週六",
+   "url": "https://www.riverstonekitchen.co.nz/",
+   "note": "自家農場直供的知名餐廳，2026 年仍營業（已用其訂位系統實際班次驗證）。⚠️ 10/07 是週三 → 只能安排午餐。建議提前訂位；8 人以上須電話訂；國定假日加 15%；不可自帶酒或食物。位置在 Oamaru 以北約 15 公里。",
+   "lat": -44.939197,
+   "lng": 171.096176,
+   "geo_approx": "Glenavy Hilderthorpe Road",
+   "img": "images/pounamu.jpg",
+   "bk": "Riverstone Kitchen Oamaru",
+   "bookable": true,
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/206078/where-to-eat-best-restaurants-in-oamaru",
+    "n": 1668,
+    "note": "Google 評分。TripAdvisor 另有 4.6 分、892 則。 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "star-and-garter",
+   "name": "Star & Garter Restaurant",
+   "zh": "老銀行改的餐酒館",
+   "cat": "eat",
+   "day": 14,
+   "town": "Oamaru",
+   "lat": -45.102351,
+   "lng": 170.969434,
+   "q": "Star and Garter Restaurant Oamaru New Zealand",
+   "addr": "9 Itchen Street, Oamaru",
+   "flag": "star",
+   "bookable": false,
+   "note": "開在 Victorian Precinct 老銀行建築裡的餐酒館，晚餐吃排餐、漢堡配當地啤酒，評論數快 900 則在 Oamaru 算是人氣很穩的一間，晚上這條街氣氛也不錯。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/206078/where-to-eat-best-restaurants-in-oamaru",
+    "n": 889,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3625,7 +5091,286 @@ input:focus-visible,[tabindex]:focus-visible{
    "lat": -45.093369,
    "lng": 170.975825,
    "img": "images/food-lamington.jpg",
-   "bookable": false
+   "bookable": false,
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/206078/where-to-eat-best-restaurants-in-oamaru",
+    "n": 626,
+    "note": "Google 商家名稱是「Whitestone Cheese Diner & Deli」，地址 469 Thames Highway，經官網確認就是同一間門市＋附設餐廳，非分店。 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "bushy-beach",
+   "name": "Bushy Beach Scenic Reserve",
+   "zh": "布希海灘（野生企鵝觀察區）",
+   "cat": "sight",
+   "day": 14,
+   "town": "Oamaru",
+   "lat": -45.118255,
+   "lng": 170.981022,
+   "q": "Bushy Beach Scenic Reserve Oamaru New Zealand",
+   "addr": "89 Bushy Beach Road, South Hill, Oamaru",
+   "flag": "info",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/otago/places/bushy-beach-scenic-reserve/things-to-do/bushy-beach-track/",
+   "note": "免費的野生企鵝觀察點，走一段步道到隱蔽觀察小屋，運氣好能看到黃眼企鵝（hoiho）和小藍企鵝上岸，不像藍企鵝中心要買票排隊。<b>⚠️ 黃眼企鵝是全球最稀有企鵝之一，北奧塔哥族群這十幾年少了八成，10 月正好是牠們的孵蛋期，看不看得到全靠運氣，也請保持距離不要驚擾。</b>",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1731236/best-free-attractions-in-oamaru",
+    "n": 359,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "katiki-point",
+   "name": "Katiki Point Lighthouse",
+   "zh": "卡蒂基角燈塔",
+   "cat": "sight",
+   "day": 14,
+   "town": "Moeraki",
+   "q": "Katiki Point Lighthouse Moeraki New Zealand",
+   "flag": "star",
+   "price": "免費",
+   "note": "★ 黃眼企鵝（hoiho）的棲地，全球最稀有的企鵝之一。⚠️ 牠們傍晚才會上岸回巢，白天去多半只看到海狗。務必待在步道與觀察掩體內。",
+   "lat": -45.365618,
+   "lng": 170.851394,
+   "geo_approx": "Moeraki Lighthouse",
+   "img": "images/hoiho.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "hoiho 是唯一「看得到鄰居就不肯築巢」的企鵝",
+    "paras": [
+     "hoiho 在毛利語裡是「大聲喊叫的」，講的是牠尖銳的叫聲。但牠最特別的是社交習性：<b>其他企鵝擠成一片，牠卻要看不到任何鄰居才肯下蛋</b>，有時候會一路往內陸走近一公里，去找一個看不到同類的角落。",
+     "所以牠特別脆弱——沒有森林灌叢當屏障就不繁殖。<b>南島本島的巢數從 2008–09 年的 739 巢，掉到 2024–25 年只剩 143 巢</b>，十幾年少了八成。紐西蘭 5 元紙鈔上那隻企鵝就是牠。"
+    ],
+    "tips": [
+     "白天當然可以走，但企鵝要日落前後才上岸；沒時間等就當作是來看海狗。",
+     "在掩體裡別探頭：牠一看到有人擋在回巢路上就會掉頭回海裡，等於整晚沒吃到飯。"
+    ]
+   },
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Katiki+Point+Lighthouse+Moeraki+New+Zealand",
+    "approx": true,
+    "n": 920
+   }
+  },
+  {
+   "id": "moeraki-boulders",
+   "name": "Moeraki Boulders",
+   "zh": "摩拉基大圓石",
+   "cat": "sight",
+   "day": 14,
+   "town": "Moeraki",
+   "q": "Moeraki Boulders New Zealand",
+   "flag": "star",
+   "note": "★ 6,000 萬年前海底沉積形成的球狀結核；毛利傳說則說那是 Āraiteuru 獨木舟翻覆後散落的葫蘆與地瓜籃。⚠️ 退潮時才走得到、也才好看——出發前查當天潮汐表。",
+   "lat": -45.345173,
+   "lng": 170.826245,
+   "img": "images/moeraki.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "它們是從崖壁裡掉出來的，不是海浪堆出來的",
+    "paras": [
+     "圓石不是被海磨圓的，是<b>從裡面往外一圈圈長出來的</b>：海底泥裡的方解石繞著一個核心慢慢結晶，最大那幾顆估計長了四、五百萬年。表面的龜甲裂紋，則是內部乾縮裂開後又被方解石填回去留下的。",
+     "它們原本包在旁邊那片泥岩崖裡，崖被海侵蝕掉，圓石才露出來滾到沙灘上——<b>崖壁上現在還嵌著半顆半顆的</b>，值得抬頭看。毛利語它們叫 <b>Te Kaihīnaki</b>，指的就是那批漂上岸的食物籃與葫蘆。"
+    ],
+    "tips": [
+     "別只拍沙灘上完整的那幾顆，往崖壁走——裂開露出內部方解石結晶的其實更好看。"
+    ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594420/top-things-to-do-and-attractions-in-oamaru",
+    "n": 2288,
+    "note": "Google 評分。TripAdvisor 另有 4.2 分、1899 則（來源 tripadvisor.co.nz，經 Wayback 存檔 2025/08 查得），兩邊數字互相印證。（Gemini 另查到 4.6 分／約 5800 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "oamaru-victorian",
+   "name": "Oamaru Victorian Precinct",
+   "zh": "維多利亞街區",
+   "cat": "sight",
+   "day": 14,
+   "town": "Oamaru",
+   "q": "Oamaru Victorian Precinct New Zealand",
+   "flag": "ok",
+   "price": "免費",
+   "note": "用當地白色石灰岩（Oamaru stone）蓋的整片 1880 年代街區，紐西蘭保存最完整的。",
+   "lat": -45.103561,
+   "lng": 170.970408,
+   "img": "images/oamaru.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "這種石頭剛挖出來軟到能用鋸子鋸，見了空氣才變硬",
+    "paras": [
+     "Oamaru stone 是一種苔蘚蟲石灰岩，成分九成是碳酸鈣。<b>剛從採石場（在內陸的 Weston）挖出來時軟到能用手鋸切、用鑿子雕，要暴露在空氣中才慢慢變硬</b>。這就是為什麼這裡的門楣和柱頭雕得那麼囉唆——不是因為特別有錢，是這種石頭實在太好雕。",
+     "至於為什麼是 1880 年代：1882 年 2 月第一批冷凍羊肉從 Port Chalmers 運往倫敦，紐西蘭冷凍肉貿易就此起飛，而 Oamaru 正在核心地帶，<b>當時港口一年進出四百多艘船</b>。這整片街區就是那十年蓋起來的。"
+    ],
+    "tips": [
+     "前一天在但尼丁火車站看到的奶油色石頭，就是同一種 Oamaru stone。"
+    ]
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594420/top-things-to-do-and-attractions-in-oamaru",
+    "n": 1070,
+    "note": "Google 商家名稱是「Oamaru's Heritage Precinct」，即 Victorian Precinct 整個街區的 Google 商家頁。 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "shag-point",
+   "name": "Shag Point",
+   "zh": "",
+   "cat": "sight",
+   "day": 14,
+   "town": "Shag Point",
+   "q": "Shag Point Otago New Zealand",
+   "flag": "ok",
+   "price": "免費",
+   "note": "紐西蘭海狗（fur seal）常態棲息地，路邊就能看。",
+   "lat": -45.460913,
+   "lng": 170.814786,
+   "img": "images/kea.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "摩拉基大圓石那個傳說的結局在這裡：獨木舟就是在這裡翻的。",
+    "paras": [
+     "Matakaea（Shag Point）是 Āraiteuru 獨木舟傳說的終點——船上的貨物先在摩拉基與 Kātiki 一帶落海，<b>獨木舟最後在這裡翻覆</b>。所以摩拉基大圓石和這裡講的是同一個故事的前後兩段，一路開下來剛好就是故事的順序。",
+     "地質上也很熱鬧：1830 年代捕鯨人在這裡發現<b>紐西蘭第一處煙煤</b>，礦坑一路挖到海面底下，1972 年因為坑道進水才關閉。1983 年這裡還挖出一具 7 公尺長的蛇頸龍化石。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Shag+Point+Otago+New+Zealand",
+    "approx": true,
+    "n": 150
+   }
+  },
+  {
+   "id": "steampunk-hq",
+   "name": "Steampunk HQ",
+   "zh": "蒸汽龐克總部",
+   "cat": "sight",
+   "day": 14,
+   "town": "Oamaru",
+   "q": "Steampunk HQ Oamaru New Zealand",
+   "addr": "1 Humber Street, Oamaru 9400",
+   "flag": "star",
+   "price": "成人 NZ$15（4 人共 NZ$60）",
+   "hours": "每天 10:00–16:00 · 最後入場 15:30",
+   "url": "https://www.steampunkoamaru.co.nz/",
+   "note": "★ 會噴火會叫的機械雕塑。⚠️ 10/07 要在 15:30 前到。參觀約 45–60 分鐘，不用預約，現場買票。就在維多利亞街區旁邊。",
+   "lat": -45.102318,
+   "lng": 170.970886,
+   "img": "images/steampunk.jpg",
+   "bk": "Steampunk HQ Oamaru",
+   "bookable": true,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594420/top-things-to-do-and-attractions-in-oamaru",
+    "n": 2470,
+    "note": "Google 評分。 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "akaroa-dolphins",
+   "name": "Akaroa Dolphins",
+   "zh": "阿卡羅阿賞海豚遊船",
+   "cat": "book",
+   "day": 15,
+   "town": "Akaroa",
+   "lat": -43.808811,
+   "lng": 172.962743,
+   "q": "Akaroa Dolphins 65 Beach Road Akaroa",
+   "addr": "65 Beach Road, Akaroa 7520",
+   "price": "成人 NZ$140、兒童 NZ$70，含一杯飲料與手工點心",
+   "hours": "12:45 全年出航；10:15 與 15:15 視訂位狀況加開",
+   "flag": "star",
+   "bookable": true,
+   "url": "https://www.akaroadolphins.co.nz/cruises/dolphin-nature-cruise",
+   "note": "兩小時的火山灣遊船，看世界最小的 <b>Hector's 海豚</b>、白鰭企鵝和海狗，船上還養了會找海豚的狗。取票要在出發前 30 分鐘到 Beach Road 的門市，登船在旁邊的 Drummonds Jetty。沒看到海豚可換一張半年內有效的免費回程票。",
+   "g": {
+    "r": 4.9,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594399/top-things-to-do-and-attractions-in-akaroa",
+    "n": 1728,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "barkers-foodstore-geraldine",
+   "name": "Barker's Foodstore & Eatery",
+   "zh": "Barker's 食品雜貨鋪與小館",
+   "cat": "eat",
+   "day": 15,
+   "town": "Geraldine",
+   "lat": -44.0921874,
+   "lng": 171.2456191,
+   "q": "Barker's Foodstore Eatery Geraldine New Zealand",
+   "addr": "71 Talbot Street, Geraldine",
+   "hours": "08:30–16:30（每日）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://barkersfoodstore.nz/",
+   "note": "紐西蘭果醬品牌 <b>Barker's</b> 的直營門市，裡面有咖啡吧、輕食和自家果醬醬料試吃區，全年無休、天天營業到下午 4:30。走 SH79 內陸接基督城的路線一定會經過 Geraldine，這裡是鎮上最好停的一站。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/206218/where-to-eat-best-restaurants-in-geraldine",
+    "n": 2001,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "akaroa",
+   "name": "Akaroa",
+   "zh": "阿卡羅阿",
+   "cat": "sight",
+   "day": 15,
+   "town": "Banks Peninsula",
+   "q": "Akaroa New Zealand",
+   "flag": "info",
+   "note": "法國移民建立的港灣小鎮，可賞 Hector's dolphin。⚠️ 10/08 若照原行程走會太趕（純開車 7 小時以上）——建議改到 10/09 早上，或直接砍掉。",
+   "lat": -43.804317,
+   "lng": 172.967833,
+   "img": "images/akaroa-town.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "英國搶先幾天升旗，南島差點變成法國的",
+    "paras": [
+     "1840 年 5 月，英國才剛宣告對紐西蘭的主權，就聽說一艘載著法國移民的船正開往 Akaroa。霍布森馬上派出英艦 Britomart，<b>搶在法國人抵達前幾天開進港內升起英國國旗</b>。法國移民後來還是留下來定居，只是身分從殖民者變成僑民。",
+     "所以街道到今天還叫 Rue Lavaud、Rue Balguerie，而這個港灣本身是<b>被海淹進去的古火山口</b>。港內的 Hector's dolphin 是紐西蘭特有小海豚，Banks Peninsula 一帶約 1,000 隻，全紐最密集。"
+    ],
+    "tips": [
+     "從基督城開過去是 75 號公路上山下海的連續彎路，會暈車的人先吃藥。"
+    ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Akaroa+New+Zealand",
+    "approx": true,
+    "n": 2400
+   }
   },
   {
    "id": "elephant-rocks",
@@ -3641,7 +5386,64 @@ input:focus-visible,[tabindex]:focus-visible{
    "lat": -44.894204,
    "lng": 170.655827,
    "img": "images/elephant-rocks.jpg",
-   "bookable": false
+   "bookable": false,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/tp/83742/duntroon-trip-planner",
+    "n": 896,
+    "note": "Google 評分，經 wanderlog 頁面查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "giants-house",
+   "name": "The Giant's House",
+   "zh": "巨人之家馬賽克花園",
+   "cat": "sight",
+   "day": 15,
+   "town": "Akaroa",
+   "lat": -43.808532,
+   "lng": 172.973752,
+   "q": "The Giants House Akaroa New Zealand",
+   "addr": "68 Rue Balguerie, Akaroa 7520",
+   "price": "成人 NZ$35、2–15 歲 NZ$20、學生／敬老 NZ$32.5",
+   "hours": "10 月每天 11:00–16:00（最後入場 15:40）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.thegiantshouse.co.nz/",
+   "note": "Akaroa 山坡上一棟 1880 年的老房子，屋主花了二十幾年把整片斜坡花園鋪滿馬賽克雕塑，貓、鋼琴、人臉全是碎瓷片拼的。散客不用預約，直接買票進場；10 人以上才要先訂。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594399/top-things-to-do-and-attractions-in-akaroa",
+    "n": 1506,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "south-canterbury-museum",
+   "name": "South Canterbury Museum",
+   "zh": "南坎特伯里博物館",
+   "cat": "sight",
+   "day": 15,
+   "town": "Timaru",
+   "lat": -44.3971418,
+   "lng": 171.251016,
+   "q": "South Canterbury Museum Timaru New Zealand",
+   "addr": "16 Perth Street, Timaru Central",
+   "flag": "info",
+   "bookable": false,
+   "note": "Timaru 市議會經營的地方博物館，收藏紐西蘭飛行先驅 Richard Pearse 的複製飛機（他宣稱比萊特兄弟更早試飛成功），全室內。⚠️ 這天如果下雨、又不想在 SH83 內陸開太久，這裡是進基督城前最後一個像樣的室內備案。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594543/top-things-to-do-and-attractions-in-timaru",
+    "n": 304,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
    "id": "takiroa-rock-art",
@@ -3667,6 +5469,40 @@ input:focus-visible,[tabindex]:focus-visible{
      "現場有些地方看起來像被挖過，因為真的被挖過：<b>1916 年一位美國學者 J. L. Elmore 把部分岩畫整塊切下來運走，送進了博物館</b>。所以「什麼都不要拿走」這句話在這裡不是客套話。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 3.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/tp/83742/duntroon-trip-planner",
+    "n": 332,
+    "note": "Google 評分，經 wanderlog 頁面查得；評分明顯低於 Elephant Rocks／Vanished World，可能是因為只是路邊一塊有柵欄圍住的岩畫，很多人覺得看不清楚、不值得特地繞路（Gemini 另查到 4.4 分／約 140 則） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "te-ana-rock-art",
+   "name": "Te Ana Māori Rock Art Centre",
+   "zh": "毛利岩畫中心",
+   "cat": "sight",
+   "day": 15,
+   "town": "Timaru",
+   "q": "Te Ana Maori Rock Art Centre Timaru New Zealand",
+   "addr": "2 George Street, Timaru（Landing Services Building）",
+   "flag": "warn",
+   "hours": "週二–週五 10:00–15:00 · 週六 09:00–14:00 · 週日一公休",
+   "note": "⚠️ 實地岩畫導覽只在 11/1–3/31 營運，10/08 屬季節外——中心本身週四有開，但那是室內展覽。想看真岩壁請改去 Duntroon 的 Takiroa。票價官網完全未公開，需電洽 0800 46 83 262。",
+   "lat": -44.39712,
+   "lng": 171.254288,
+   "geo_approx": "George Street Timaru",
+   "img": "images/pounamu.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1594543/top-things-to-do-and-attractions-in-timaru",
+    "n": 103,
+    "note": "Google 評分，經 wanderlog 頁面查得，地址與官網一致（2 George Street, Timaru），確認仍在營業 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3693,6 +5529,14 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "先來這裡看化石與解說，再去 Elephant Rocks，那些巨石才不會只是「好拍的石頭」。"
     ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/tp/83742/duntroon-trip-planner",
+    "n": 164,
+    "note": "Google 評分，經 wanderlog 頁面查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3716,49 +5560,66 @@ input:focus-visible,[tabindex]:focus-visible{
      "這個工地後來還改變了紐西蘭：在這裡照顧工人的醫師 David McMillan 和牧師 Arnold Nordmeyer，1935 年雙雙選進國會，把他們在工地看到的貧窮與疾病，寫進了<b>紐西蘭福利國家制度的設計</b>。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Waitaki+Dam+New+Zealand",
+    "approx": true,
+    "n": 350
    }
   },
   {
-   "id": "te-ana-rock-art",
-   "name": "Te Ana Māori Rock Art Centre",
-   "zh": "毛利岩畫中心",
-   "cat": "sight",
-   "day": 15,
-   "town": "Timaru",
-   "q": "Te Ana Maori Rock Art Centre Timaru New Zealand",
-   "addr": "2 George Street, Timaru（Landing Services Building）",
-   "flag": "warn",
-   "hours": "週二–週五 10:00–15:00 · 週六 09:00–14:00 · 週日一公休",
-   "note": "⚠️ 實地岩畫導覽只在 11/1–3/31 營運，10/08 屬季節外——中心本身週四有開，但那是室內展覽。想看真岩壁請改去 Duntroon 的 Takiroa。票價官網完全未公開，需電洽 0800 46 83 262。",
-   "lat": -44.39712,
-   "lng": 171.254288,
-   "geo_approx": "George Street Timaru",
-   "img": "images/pounamu.jpg",
-   "bookable": false
+   "id": "chch-tram",
+   "name": "Christchurch Tram",
+   "zh": "復古電車",
+   "cat": "book",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Christchurch Tram Cathedral Square New Zealand",
+   "flag": "ok",
+   "book": true,
+   "note": "繞市中心一圈，可隨上隨下。",
+   "lat": -43.530884,
+   "lng": 172.635682,
+   "img": "images/chch-tram.jpg",
+   "url": "https://christchurchattractions.nz/",
+   "bk": "Christchurch tram",
+   "bookable": true,
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 2206,
+    "note": "Google 評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
-   "id": "akaroa",
-   "name": "Akaroa",
-   "zh": "阿卡羅阿",
-   "cat": "sight",
-   "day": 15,
-   "town": "Banks Peninsula",
-   "q": "Akaroa New Zealand",
-   "flag": "info",
-   "note": "法國移民建立的港灣小鎮，可賞 Hector's dolphin。⚠️ 10/08 若照原行程走會太趕（純開車 7 小時以上）——建議改到 10/09 早上，或直接砍掉。",
-   "lat": -43.804317,
-   "lng": 172.967833,
-   "img": "images/akaroa-town.jpg",
-   "bookable": false,
-   "deep": {
-    "lead": "英國搶先幾天升旗，南島差點變成法國的",
-    "paras": [
-     "1840 年 5 月，英國才剛宣告對紐西蘭的主權，就聽說一艘載著法國移民的船正開往 Akaroa。霍布森馬上派出英艦 Britomart，<b>搶在法國人抵達前幾天開進港內升起英國國旗</b>。法國移民後來還是留下來定居，只是身分從殖民者變成僑民。",
-     "所以街道到今天還叫 Rue Lavaud、Rue Balguerie，而這個港灣本身是<b>被海淹進去的古火山口</b>。港內的 Hector's dolphin 是紐西蘭特有小海豚，Banks Peninsula 一帶約 1,000 隻，全紐最密集。"
-    ],
-    "tips": [
-     "從基督城開過去是 75 號公路上山下海的連續彎路，會暈車的人先吃藥。"
-    ]
+   "id": "punting-avon",
+   "name": "Punting on the Avon",
+   "zh": "雅芳河撐篙",
+   "cat": "book",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Antigua Boat Sheds Christchurch New Zealand",
+   "flag": "ok",
+   "book": true,
+   "note": "由撐篙人推著船遊河，很悠閒。出發點在 Antigua Boat Sheds。",
+   "lat": -43.53389,
+   "lng": 172.627953,
+   "img": "images/do-punting.jpg",
+   "url": "https://punting.co.nz/",
+   "bk": "Christchurch punting Avon",
+   "bookable": true,
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 1686,
+    "note": "Google 評分，登記名稱 Punting On The Avon (Antigua Boat Sheds) 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3774,32 +5635,14 @@ input:focus-visible,[tabindex]:focus-visible{
    "lat": -43.533915,
    "lng": 172.634002,
    "img": "images/see-riverside.jpg",
-   "bookable": false
-  },
-  {
-   "id": "cardboard-cathedral",
-   "name": "Transitional Cathedral",
-   "zh": "紙教堂",
-   "cat": "sight",
-   "day": 16,
-   "town": "Christchurch",
-   "q": "Transitional Cathedral Christchurch New Zealand",
-   "flag": "star",
-   "price": "免費（歡迎捐款）",
-   "note": "★ 2011 地震後由日本建築師坂茂設計、用紙管蓋的臨時大教堂。",
-   "lat": -43.532296,
-   "lng": 172.643059,
-   "img": "images/see-cardboard.jpg",
    "bookable": false,
-   "deep": {
-    "lead": "98 根紙管，但撐住它的其實不只是紙",
-    "paras": [
-     "主結構是 98 根排成 A 字形的紙管，不過講清楚一點：<b>紙管裡面還塞了木製結構梁</b>，整座建築也架在八個貨櫃組成的牆體上。坂茂從來沒主張過「純紙能蓋房子」，他要的是<b>便宜、快、災後就地找得到材料</b>。",
-     "所謂「臨時」，設計壽命是 50 年。正面那面三角形彩色玻璃，圖案取自地震中毀掉的舊大教堂玫瑰窗——把一個碎掉的圓，拆成一片片三角形重新裝上去。"
-    ],
-    "tips": [
-     "走幾分鐘就到 CTV 大樓遺址與雅芳河畔的官方地震紀念牆，三個點連著看，感受完全不同。"
-    ]
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 7407,
+    "note": "Google 評分，經 wanderlog 頁面內嵌資料查得（同頁另列 TripAdvisor 4.7／277） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3830,6 +5673,130 @@ input:focus-visible,[tabindex]:focus-visible{
    }
   },
   {
+   "id": "canterbury-museum-popup",
+   "name": "Canterbury Museum Pop-Up",
+   "zh": "坎特伯里博物館臨時館",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "lat": -43.530098,
+   "lng": 172.631972,
+   "q": "Canterbury Museum Pop-Up 66 Gloucester Street Christchurch",
+   "addr": "66 Gloucester Street, Christchurch 8013",
+   "hours": "10–3 月每天 09:00–17:30；4–9 月每天 09:00–17:00",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://www.canterburymuseum.com/visit/canterbury-museum-pop-up",
+   "note": "⚠️ 中文攻略寫的「Rolleston Avenue 上那棟哥德式老博物館」<b>已經關閉整修</b>，現在只剩這個臨時館在 Gloucester Street 營運，一半放常設館的精選藏品、一半做特展，規模小很多。同一棟樓還有 CoCA 當代藝術中心和 Lux Espresso 咖啡。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/143650/best-museums-in-christchurch",
+    "n": 5242,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "cardboard-cathedral",
+   "name": "Transitional Cathedral",
+   "zh": "紙教堂",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Transitional Cathedral Christchurch New Zealand",
+   "flag": "star",
+   "price": "免費（歡迎捐款）",
+   "note": "★ 2011 地震後由日本建築師坂茂設計、用紙管蓋的臨時大教堂。",
+   "lat": -43.532296,
+   "lng": 172.643059,
+   "img": "images/see-cardboard.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "98 根紙管，但撐住它的其實不只是紙",
+    "paras": [
+     "主結構是 98 根排成 A 字形的紙管，不過講清楚一點：<b>紙管裡面還塞了木製結構梁</b>，整座建築也架在八個貨櫃組成的牆體上。坂茂從來沒主張過「純紙能蓋房子」，他要的是<b>便宜、快、災後就地找得到材料</b>。",
+     "所謂「臨時」，設計壽命是 50 年。正面那面三角形彩色玻璃，圖案取自地震中毀掉的舊大教堂玫瑰窗——把一個碎掉的圓，拆成一片片三角形重新裝上去。"
+    ],
+    "tips": [
+     "走幾分鐘就到 CTV 大樓遺址與雅芳河畔的官方地震紀念牆，三個點連著看，感受完全不同。"
+    ]
+   },
+   "g": {
+    "r": 4.4,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 2150,
+    "note": "Google 評分，wanderlog 上名稱為 Cardboard Cathedral 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "chch-art-gallery",
+   "name": "Christchurch Art Gallery Te Puna o Waiwhetū",
+   "zh": "基督城美術館",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "lat": -43.530417,
+   "lng": 172.631395,
+   "q": "Christchurch Art Gallery Te Puna o Waiwhetu",
+   "addr": "Worcester Boulevard 與 Montreal Street 路口, Christchurch",
+   "price": "免費入場（特展另計）",
+   "hours": "每天 10:00–17:00，週三延長到 21:00",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://christchurchartgallery.org.nz/visit",
+   "note": "波浪玻璃帷幕的美術館，地震後曾被徵用當救災指揮中心，2015 年才重新開放。常設展免費，走路 3 分鐘就到藝術中心和植物園，是市區最好的雨天備案。",
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/143650/best-museums-in-christchurch",
+    "n": 3700,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "chch-botanic",
+   "name": "Christchurch Botanic Gardens",
+   "zh": "基督城植物園",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Christchurch Botanic Gardens New Zealand",
+   "flag": "ok",
+   "price": "免費",
+   "note": "市中心的大片綠地，雅芳河穿過。",
+   "lat": -43.530261,
+   "lng": 172.620564,
+   "img": "images/christchurch.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 14837,
+    "note": "Google 評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "chch-cathedral-square",
+   "name": "Christ Church Cathedral (Cathedral Square)",
+   "zh": "大教堂與大教堂廣場",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "lat": -43.53093,
+   "lng": 172.6373,
+   "q": "Christ Church Cathedral Cathedral Square Christchurch",
+   "addr": "Cathedral Square, Christchurch Central City",
+   "flag": "warn",
+   "bookable": false,
+   "note": "⚠️ 這座大教堂 2011 年震毀後<b>一直沒有修好</b>：2024 年因為短缺 8500 萬紐幣、政府停止補助而全面停工封存，2025 年 9 月才宣布分階段重啟、2026 年復工，全部完工要到 2030 年。所以現在整座還是工地圍籬圍著，<b>不能入內、也沒有導覽</b>，只能在廣場外面看。中文攻略常寫「可入內參觀」，那是地震前的資訊。"
+  },
+  {
    "id": "oi-manawa",
    "name": "Canterbury Earthquake National Memorial (Oi Manawa)",
    "zh": "坎特伯里地震國家紀念牆",
@@ -3855,59 +5822,15 @@ input:focus-visible,[tabindex]:focus-visible{
      "就在市中心 Oxford Terrace，離紙教堂步行約 15 分鐘，可以跟 Quake City 排同一段。",
      "旁邊沒有解說牌陣仗，去之前先知道這段背景，感受會完全不同。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 869,
+    "note": "Google 評分，Canterbury Earthquake National Memorial 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
-  },
-  {
-   "id": "chch-botanic",
-   "name": "Christchurch Botanic Gardens",
-   "zh": "基督城植物園",
-   "cat": "sight",
-   "day": 16,
-   "town": "Christchurch",
-   "q": "Christchurch Botanic Gardens New Zealand",
-   "flag": "ok",
-   "price": "免費",
-   "note": "市中心的大片綠地，雅芳河穿過。",
-   "lat": -43.530261,
-   "lng": 172.620564,
-   "img": "images/christchurch.jpg",
-   "bookable": false
-  },
-  {
-   "id": "punting-avon",
-   "name": "Punting on the Avon",
-   "zh": "雅芳河撐篙",
-   "cat": "book",
-   "day": 16,
-   "town": "Christchurch",
-   "q": "Antigua Boat Sheds Christchurch New Zealand",
-   "flag": "ok",
-   "book": true,
-   "note": "由撐篙人推著船遊河，很悠閒。出發點在 Antigua Boat Sheds。",
-   "lat": -43.53389,
-   "lng": 172.627953,
-   "img": "images/do-punting.jpg",
-   "url": "https://punting.co.nz/",
-   "bk": "Christchurch punting Avon",
-   "bookable": true
-  },
-  {
-   "id": "chch-tram",
-   "name": "Christchurch Tram",
-   "zh": "復古電車",
-   "cat": "book",
-   "day": 16,
-   "town": "Christchurch",
-   "q": "Christchurch Tram Cathedral Square New Zealand",
-   "flag": "ok",
-   "book": true,
-   "note": "繞市中心一圈，可隨上隨下。",
-   "lat": -43.530884,
-   "lng": 172.635682,
-   "img": "images/chch-tram.jpg",
-   "url": "https://christchurchattractions.nz/",
-   "bk": "Christchurch tram",
-   "bookable": true
   },
   {
    "id": "quake-city",
@@ -3933,30 +5856,117 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "先看這裡再走市區，路上每一塊空地都會突然變得有意義。"
     ]
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/143650/best-museums-in-christchurch",
+    "n": 2433,
+    "note": "Google 評分 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
-   "id": "sky-tower",
-   "name": "Sky Tower",
-   "zh": "天空塔",
+   "id": "turanga",
+   "name": "Tūranga",
+   "zh": "中央圖書館",
+   "cat": "sight",
+   "day": 16,
+   "town": "Christchurch",
+   "lat": -43.530095,
+   "lng": 172.63724,
+   "q": "Turanga Christchurch Central Library Cathedral Square",
+   "addr": "60 Cathedral Square, Christchurch 8011",
+   "price": "免費",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://my.christchurchcitylibraries.com/turanga/",
+   "note": "2018 年開幕的五層樓中央圖書館，門口就是大教堂廣場，Google 4.8 分是市區最高分的免費室內點之一。裡面有咖啡座、免費 Wi-Fi 和整層的紐西蘭在地館藏，下雨天或等飛機前很好殺時間。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
+    "n": 1040,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "commercial-bay",
+   "name": "Commercial Bay",
+   "zh": "",
+   "cat": "eat",
+   "day": 17,
+   "town": "Auckland",
+   "q": "Commercial Bay Auckland New Zealand",
+   "flag": "ok",
+   "note": "市中心的購物與餐飲複合體，離渡輪碼頭很近。",
+   "lat": -36.843805,
+   "lng": 174.766265,
+   "img": "images/see-skytower.jpg",
+   "bookable": false,
+   "deep": {
+    "lead": "這裡以前真的是一座海灣，Queen Street 底下有條溪",
+    "paras": [
+     "Commercial Bay 不是取個好聽的名字——<b>這裡本來真的是一座海灣</b>。Queen Street 是沿著 Waihorotiu 溪的溪谷長出來的，1859 年築海堤把彎曲海岸拉直，之後又把兩側岬角挖掉、往外填海。",
+     "所以你現在站在商場裡買咖啡的位置，一百七十年前是水。<b>今天的海岸線 Quay Street 整條都是填出來的</b>——渡輪碼頭離這裡那麼近不是巧合，是因為海被推到那邊去了。"
+    ],
+    "tips": []
+   },
+   "g": {
+    "r": 4.5,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/1642292/best-shopping-and-stores-in-auckland-central",
+    "n": 6309,
+    "note": "Google 評分，經 wanderlog 頁面內嵌資料查得 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "ponsonby",
+   "name": "Ponsonby Road",
+   "zh": "",
+   "cat": "eat",
+   "day": 17,
+   "town": "Auckland",
+   "q": "Ponsonby Road Auckland New Zealand",
+   "flag": "ok",
+   "note": "最後一餐與伴手禮的最佳區域。Whittaker's 巧克力、mānuka 蜂蜜在超市買比機場便宜很多。",
+   "lat": -36.858639,
+   "lng": 174.750776,
+   "img": "images/food-flatwhite.jpg",
+   "bookable": false,
+   "g": {
+    "r": 4.3,
+    "asof": "2026/08",
+    "src": "tripadvisor",
+    "url": "https://www.tripadvisor.com/Attraction_Review-g255106-d258183-Reviews-Ponsonby-Auckland_Central_North_Island.html",
+    "n": 632,
+    "note": "TripAdvisor 評分（Ponsonby Road 整條街區的評分，非單一店家）（Gemini 另查到 4.5 分／約 1800 則）"
+   }
+  },
+  {
+   "id": "auckland-domain",
+   "name": "Auckland Domain",
+   "zh": "奧克蘭市域公園（含溫室花房）",
    "cat": "sight",
    "day": 17,
    "town": "Auckland",
-   "q": "Sky Tower Auckland New Zealand",
+   "lat": -36.859022,
+   "lng": 174.776035,
+   "q": "Auckland Domain Wintergarden",
+   "addr": "Pukekawa / Auckland Domain, Parnell, Auckland 1010",
+   "price": "免費",
    "flag": "ok",
-   "note": "紐西蘭最高建築，328 公尺，觀景台看得到兩片海。（<b>常見的「南半球最高」說法 2022 年就過期了</b>，展開看原因。）",
-   "lat": -36.848463,
-   "lng": 174.762183,
-   "img": "images/see-skytower.jpg",
-   "bk": "Auckland Sky Tower",
    "bookable": false,
-   "deep": {
-    "lead": "「南半球最高」這個頭銜，2022 年就過期了",
-    "paras": [
-     "328 公尺沒錯，但<b>「南半球最高建築」的說法已經不成立</b>——雅加達的 Autograph Tower 在 2022 年超過了它，Sky Tower 現在排第二。中文旅遊資料幾乎都還沒改，看到照抄舊說法可以心裡有數。",
-     "它設計上扛得住時速 200 公里以上的強風，<b>塔身在強風中可以左右擺動到一公尺</b>。觀景台那幾塊會讓人腳軟的玻璃地板，厚度是 38 公釐。塔身的燈光顏色會隨節日和活動更換。"
-    ],
-    "tips": []
+   "note": "奧克蘭市區最大最老的公園，就在奧克蘭戰爭紀念博物館旁邊，可以排在同一個上午。園內免費的溫室花房（Wintergarden）是室內景點，<b>下雨天可以當備案</b>。",
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105868/top-things-to-do-and-attractions-in-auckland",
+    "n": 12880,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -3984,6 +5994,14 @@ input:focus-visible,[tabindex]:focus-visible{
     "tips": [
      "毛利文化表演一天多場但時間固定，進館先看時刻表，再倒推安排其他樓層。"
     ]
+   },
+   "g": {
+    "r": 4.7,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105868/top-things-to-do-and-attractions-in-auckland",
+    "n": 14598,
+    "note": "Google 評分（經 wanderlog 頁面查得，頁面標示來源為 Google review） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   },
   {
@@ -4008,44 +6026,96 @@ input:focus-visible,[tabindex]:focus-visible{
      "後來衍生出一個著名都市傳說：軍方在隧道裡封存了一架失蹤的老 Boeing 飛機。<b>1990 年代真的有人動用機具鑿洞開挖，結果什麼也沒找到</b>，傳說至今沒斷。旁邊的 Takarunga（維多利亞山）66 公尺，是北岸最高的火山錐。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://www.google.com/maps/search/?api=1&query=Devonport+Auckland+New+Zealand",
+    "approx": true,
+    "n": 2100
    }
   },
   {
-   "id": "ponsonby",
-   "name": "Ponsonby Road",
-   "zh": "",
-   "cat": "eat",
+   "id": "mount-eden",
+   "name": "Maungawhau / Mount Eden",
+   "zh": "伊甸山死火山口",
+   "cat": "sight",
    "day": 17,
    "town": "Auckland",
-   "q": "Ponsonby Road Auckland New Zealand",
-   "flag": "ok",
-   "note": "最後一餐與伴手禮的最佳區域。Whittaker's 巧克力、mānuka 蜂蜜在超市買比機場便宜很多。",
-   "lat": -36.858639,
-   "lng": 174.750776,
-   "img": "images/food-flatwhite.jpg",
-   "bookable": false
+   "lat": -36.877,
+   "lng": 174.764,
+   "q": "Maungawhau Mount Eden Auckland",
+   "addr": "Maungawhau / Mount Eden, Mount Eden, Auckland 1024（步道入口在 Puhi Huia Road 或 Owens Road）",
+   "price": "免費",
+   "flag": "warn",
+   "bookable": false,
+   "note": "市區最近的死火山口，開車約 15 分鐘，山頂 360 度可看到整個奧克蘭和兩邊海港。<b>⚠️ 山頂道路 2011 年起就禁止一般車輛通行</b>，要從山腳停車再步行上去；火山口本身是毛利人的聖地，<b>禁止走進火山口內部</b>，只能沿口緣的木棧道繞一圈看。",
+   "g": {
+    "r": 4.8,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105868/top-things-to-do-and-attractions-in-auckland",
+    "n": 335,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
   },
   {
-   "id": "commercial-bay",
-   "name": "Commercial Bay",
-   "zh": "",
-   "cat": "eat",
+   "id": "nz-maritime-museum",
+   "name": "New Zealand Maritime Museum",
+   "zh": "紐西蘭航海博物館",
+   "cat": "sight",
    "day": 17,
    "town": "Auckland",
-   "q": "Commercial Bay Auckland New Zealand",
+   "lat": -36.84146,
+   "lng": 174.76334,
+   "q": "New Zealand Maritime Museum Auckland",
+   "addr": "Corner Quay Street and Hobson Street, Viaduct Harbour, Auckland 1010",
+   "price": "成人票約 NZ$24（奧克蘭地區居民憑證免費，遊客要付費）",
+   "hours": "每日 10:00–17:00（最後入場 16:00）",
+   "url": "https://www.maritimemuseum.co.nz/",
    "flag": "ok",
-   "note": "市中心的購物與餐飲複合體，離渡輪碼頭很近。",
-   "lat": -36.843805,
-   "lng": 174.766265,
+   "bookable": false,
+   "note": "在維多克港（Viaduct Harbour）旁邊，展覽全是室內空間，<b>是最實用的下雨天備案</b>，逛完可以直接走去旁邊碼頭吃飯。",
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105868/top-things-to-do-and-attractions-in-auckland",
+    "n": 2841,
+    "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
+   }
+  },
+  {
+   "id": "sky-tower",
+   "name": "Sky Tower",
+   "zh": "天空塔",
+   "cat": "sight",
+   "day": 17,
+   "town": "Auckland",
+   "q": "Sky Tower Auckland New Zealand",
+   "flag": "ok",
+   "note": "紐西蘭最高建築，328 公尺，觀景台看得到兩片海。（<b>常見的「南半球最高」說法 2022 年就過期了</b>，展開看原因。）",
+   "lat": -36.848463,
+   "lng": 174.762183,
    "img": "images/see-skytower.jpg",
+   "bk": "Auckland Sky Tower",
    "bookable": false,
    "deep": {
-    "lead": "這裡以前真的是一座海灣，Queen Street 底下有條溪",
+    "lead": "「南半球最高」這個頭銜，2022 年就過期了",
     "paras": [
-     "Commercial Bay 不是取個好聽的名字——<b>這裡本來真的是一座海灣</b>。Queen Street 是沿著 Waihorotiu 溪的溪谷長出來的，1859 年築海堤把彎曲海岸拉直，之後又把兩側岬角挖掉、往外填海。",
-     "所以你現在站在商場裡買咖啡的位置，一百七十年前是水。<b>今天的海岸線 Quay Street 整條都是填出來的</b>——渡輪碼頭離這裡那麼近不是巧合，是因為海被推到那邊去了。"
+     "328 公尺沒錯，但<b>「南半球最高建築」的說法已經不成立</b>——雅加達的 Autograph Tower 在 2022 年超過了它，Sky Tower 現在排第二。中文旅遊資料幾乎都還沒改，看到照抄舊說法可以心裡有數。",
+     "它設計上扛得住時速 200 公里以上的強風，<b>塔身在強風中可以左右擺動到一公尺</b>。觀景台那幾塊會讓人腳軟的玻璃地板，厚度是 38 公釐。塔身的燈光顏色會隨節日和活動更換。"
     ],
     "tips": []
+   },
+   "g": {
+    "r": 4.6,
+    "asof": "2026/08",
+    "src": "google",
+    "url": "https://wanderlog.com/list/geoCategory/105868/top-things-to-do-and-attractions-in-auckland",
+    "n": 21184,
+    "note": "Google 評分（經 wanderlog 頁面查得，頁面標示來源為 Google review） 經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    }
   }
  ],
@@ -4653,8 +6723,12 @@ input:focus-visible,[tabindex]:focus-visible{
     try { localStorage.setItem('nz-deep-hint', '1'); } catch (e) {}
   }
 
-  /* Google 評分。這是查證當下的快照，不是即時資料——
-     沒有免費且合乎條款的方式即時取得，所以標上查證年月，讓讀者自己判斷新舊。 */
+  /* 評分。這是查證當下的快照，不是即時資料。
+     來源不一定是 Google——Google 評分沒有免費且合乎條款的取得方式，
+     實務上撈得到的多半是業者官網內嵌的 schema.org 評分或在地評論站。
+     所以「來源平台」一定要顯示出來，不能一律掛成 Google。 */
+  var RATE_SRC = { google: 'Google', rankers: 'Rankers', tripadvisor: 'Tripadvisor',
+                   official: '官網', klook: 'Klook', viator: 'Viator' };
   function rateHtml(g) {
     var r = Number(g.r) || 0;
     var full = Math.floor(r), half = (r - full) >= 0.25 && (r - full) < 0.75;
@@ -4663,12 +6737,19 @@ input:focus-visible,[tabindex]:focus-visible{
       stars += '<span class="st' +
         (i < full ? ' f' : (i === full && half ? ' h' : '')) + '">★</span>';
     }
-    return '<div class="pl-rate" title="Google 評分，查證於 ' + esc(g.asof || '') + '">' +
+    var srcName = RATE_SRC[g.src] || g.src || '';
+    var tip = (srcName ? srcName + ' 評分' : '評分') +
+      (g.asof ? '，查證於 ' + g.asof : '') + '（快照，非即時）' +
+      (g.approx ? '。評論數為估算值' : '') + (g.note ? '。' + g.note : '');
+    return '<div class="pl-rate" title="' + esc(tip) + '">' +
       '<b>' + r.toFixed(1) + '</b>' +
       '<span class="stars" aria-hidden="true">' + stars + '</span>' +
-      (g.n ? '<span class="cnt">(' + Number(g.n).toLocaleString('en-US') + ')</span>' : '') +
+      (g.n ? '<span class="cnt">(' + (g.approx ? '約 ' : '') +
+        Number(g.n).toLocaleString('en-US') + ')</span>' : '') +
+      (srcName ? '<span class="src' + (g.src === 'google' ? ' g' : '') + '">' +
+        esc(srcName) + '</span>' : '') +
       (g.asof ? '<span class="asof">' + esc(g.asof) + '查</span>' : '') +
-      '<span class="sr-only">Google 評分 ' + r.toFixed(1) + ' 分' +
+      '<span class="sr-only">' + esc(tip) + ' ' + r.toFixed(1) + ' 分' +
       (g.n ? '，' + g.n + ' 則評論' : '') + '</span></div>';
   }
 
