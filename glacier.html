@@ -433,7 +433,15 @@ details[open] summary{margin-bottom:9px}
   #app[data-view="list"] .mapbox{display:none}
   #app[data-view="map"] .filters,
   #app[data-view="map"] .places{display:none}
-  #app[data-view="map"] .mapbox{height:calc(100vh - 148px);min-height:360px}
+  /* 地圖模式：固定在頂列與底部分頁列之間，不靠捲動 */
+  body.mapmode{overflow:hidden;position:relative}
+  #app[data-view="map"]{position:fixed;left:0;right:0;top:47px;
+    bottom:calc(62px + env(safe-area-inset-bottom));z-index:45;
+    background:var(--paper);padding:10px 14px 12px;
+    display:flex;flex-direction:column;gap:8px;overflow:hidden}
+  section.tint #app[data-view="map"]{background:var(--paper-2)}
+  #app[data-view="map"] .viewseg{position:static;top:auto;margin:0;flex:none}
+  #app[data-view="map"] .mapbox{flex:1 1 auto;height:auto;min-height:0}
 
   /* 觸控目標放大 */
   .fchip{padding:9px 15px;font-size:.84rem;min-height:38px}
@@ -470,7 +478,7 @@ details[open] summary{margin-bottom:9px}
 /* 手機橫向或小平板 */
 @supports (height:100dvh){
   @media(max-width:780px){
-    #app[data-view="map"] .mapbox{height:calc(100dvh - 148px)}
+    #app[data-view="map"] .mapbox{height:auto}
   }
 }
 
@@ -3619,15 +3627,16 @@ th .twd,.pop-h .twd{display:none}
     segList.className = v === 'list' ? 'on' : '';
     segMap.className = v === 'map' ? 'on' : '';
     root.dataset.view = v;
-    if (v === 'map' && map) setTimeout(function () {
-      map.invalidateSize();
-      // 手機切到地圖時，把畫面捲到切換列，讓地圖佔滿螢幕
-      if (isMobile()) {
-        var y = seg.getBoundingClientRect().top + window.scrollY - 46;
-        var soft = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: y, behavior: soft ? 'smooth' : 'auto' });
-      }
-    }, 70);
+    // 手機的地圖模式是「介於頂列與底部分頁列之間的全螢幕面板」，
+    // 不靠捲動定位，所以不會有捲過頭、地圖上半被切掉的問題。
+    var mapMode = (v === 'map' && isMobile());
+    document.body.classList.toggle('mapmode', mapMode);
+    if (v === 'map' && map) {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { map.invalidateSize(); });
+      });
+      setTimeout(function () { map.invalidateSize(); }, 220);
+    }
   }
   segList.onclick = function () { setView('list'); };
   segMap.onclick = function () { setView('map'); };
@@ -3702,12 +3711,13 @@ th .twd,.pop-h .twd{display:none}
       if (fromMap && !isMobile()) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     if (!fromMap && m && map) {
-      if (isMobile()) setView('map');
+      var mob = isMobile();
+      if (mob) setView('map');
       setTimeout(function () {
         map.invalidateSize();
-        map.setView(m.getLatLng(), Math.max(map.getZoom(), 12), { animate: true });
+        map.setView(m.getLatLng(), Math.max(map.getZoom(), 12), { animate: !mob });
         m.openPopup();
-      }, isMobile() ? 90 : 0);
+      }, mob ? 160 : 0);
     }
   }
 
@@ -3796,6 +3806,7 @@ th .twd,.pop-h .twd{display:none}
   window.addEventListener('resize', function () {
     if (!isMobile() && state.view !== 'both') setView('both');
     if (isMobile() && state.view === 'both') setView('list');
+    if (!isMobile()) document.body.classList.remove('mapmode');
     if (map) map.invalidateSize();
   });
 })();
