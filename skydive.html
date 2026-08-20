@@ -563,6 +563,31 @@ details[open] summary{margin-bottom:9px}
   .optcap{text-align:left;font-size:.72rem}
 }
 
+/* ── 台幣換算 ── */
+.twd{color:var(--ink-soft);font-size:.86em;font-weight:400;white-space:nowrap;
+  font-variant-numeric:tabular-nums;letter-spacing:0}
+.pl-price .twd,.cand-p .twd{display:block;font-size:.9em;margin-top:1px}
+th .twd,.pop-h .twd{display:none}
+.dark .twd{color:#8FA3B0}
+
+/* ── 卡片的訂位／購票列 ── */
+.pl-book{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+.pl.has-img .pl-book{margin:11px 18px 0}
+.bk-l{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  color:var(--ink-soft);margin-bottom:7px}
+.bk-row{display:flex;gap:7px;flex-wrap:wrap}
+.bk{display:inline-flex;flex-direction:column;align-items:center;gap:1px;
+  padding:7px 13px;border-radius:8px;text-decoration:none;font-size:.79rem;font-weight:650;
+  line-height:1.2;min-height:42px;justify-content:center;border:1px solid transparent}
+.bk em{font-style:normal;font-size:.62rem;font-weight:400;opacity:.75}
+.bk-off{background:var(--pounamu);color:#fff}
+.bk-3p{border-color:var(--line);color:var(--ink-2);background:var(--card)}
+.bk-3p:hover{border-color:var(--pukaki);color:var(--pukaki-dk)}
+.bk-off:hover{filter:brightness(1.1)}
+@media(max-width:600px){
+  .bk{flex:1;min-width:88px;padding:8px 10px;min-height:46px}
+}
+
 </style>
 <style>
 /* ── 本頁專用：高度尺 ── */
@@ -904,15 +929,14 @@ details[open] summary{margin-bottom:9px}
 
     <div class="tw rv">
       <table>
-        <thead><tr><th>方案</th><th>單人</th><th>4 人合計</th><th>換算台幣<small>（約）</small></th><th>備註</th></tr></thead>
+        <thead><tr><th>方案</th><th>單人</th><th>4 人合計</th><th>備註</th></tr></thead>
         <tbody>
-          <tr class="pick"><td><strong>Mt Cook 16,500 ft</strong></td><td>NZ$549</td><td>NZ$2,196</td>
-            <td>約 NT$43,900</td><td>建議方案，最高、最長</td></tr>
-          <tr><td>Mt Cook 13,000 ft</td><td>NZ$399</td><td>NZ$1,596</td><td>約 NT$31,900</td><td>省 NZ$600，少 25 秒</td></tr>
-          <tr><td>Mt Cook 10,000 ft</td><td>NZ$299</td><td>NZ$1,196</td><td>約 NT$23,900</td><td>最便宜，但只有 30 秒</td></tr>
-          <tr><td>Mt Cook 直升機跳傘</td><td>NZ$799</td><td>NZ$3,196</td><td>約 NT$63,900</td><td>含攝影，只有 30 秒</td></tr>
-          <tr><td>NZONE 15,000 ft</td><td>NZ$549</td><td>NZ$2,196</td><td>約 NT$43,900</td><td>同價少 1,500 ft</td></tr>
-          <tr><td>Wanaka 15,000 ft ＋皇后鎮接駁</td><td>NZ$499</td><td>NZ$1,996</td><td>約 NT$39,900</td><td>備案裡最划算</td></tr>
+          <tr class="pick"><td><strong>Mt Cook 16,500 ft</strong></td><td>NZ$549</td><td>NZ$2,196</td><td>建議方案，最高、最長</td></tr>
+          <tr><td>Mt Cook 13,000 ft</td><td>NZ$399</td><td>NZ$1,596</td><td>省 NZ$600，少 25 秒</td></tr>
+          <tr><td>Mt Cook 10,000 ft</td><td>NZ$299</td><td>NZ$1,196</td><td>最便宜，但只有 30 秒</td></tr>
+          <tr><td>Mt Cook 直升機跳傘</td><td>NZ$799</td><td>NZ$3,196</td><td>含攝影，只有 30 秒</td></tr>
+          <tr><td>NZONE 15,000 ft</td><td>NZ$549</td><td>NZ$2,196</td><td>同價少 1,500 ft</td></tr>
+          <tr><td>Wanaka 15,000 ft ＋皇后鎮接駁</td><td>NZ$499</td><td>NZ$1,996</td><td>備案裡最划算</td></tr>
         </tbody>
       </table>
     </div>
@@ -935,10 +959,9 @@ details[open] summary{margin-bottom:9px}
 
     <div class="note rv">
       <span class="h">📊 建議的總預算抓法</span>
-      <p><strong>16,500 ft ＋ Ultimate Combo = NZ$549 + $379 = NZ$928／人 → 4 人 NZ$3,712（約 NT$74,200）</strong><br>
-      想省一點：16,500 ft ＋ 手腕 GoPro = NZ$758／人 → 4 人 NZ$3,032（約 NT$60,600）</p>
+      <p><strong>16,500 ft ＋ Ultimate Combo = NZ$549 + $379 = NZ$928／人 → 4 人 NZ$3,712</strong><br>
+      想省一點：16,500 ft ＋ 手腕 GoPro = NZ$758／人 → 4 人 NZ$3,032</p>
       <p style="font-size:.85rem;color:var(--ink-soft);margin-bottom:0">
-        ※ 台幣為 1 NZD ≈ 20 TWD 的粗估，僅供同行者感受量級，實際以刷卡當日匯率為準。<br>
         ※ 非紐西蘭 Eftpos 卡在現場或電話刷卡，<b>NZONE 與 Wanaka 都加收 1.2% 手續費</b>，線上先付可避開。</p>
     </div>
   </div>
@@ -1351,7 +1374,12 @@ details[open] summary{margin-bottom:9px}
     "title": "奧克蘭 → CI54 返台",
     "leg": "20:30 起飛"
    }
-  ]
+  ],
+  "fx": {
+   "nzd_twd": 18.9,
+   "asof": "2026-08-20",
+   "src": "open.er-api.com 18.85／fawazahmed0 currency-api 18.92，取 18.9"
+  }
  },
  "places": [
   {
@@ -1366,7 +1394,8 @@ details[open] summary{margin-bottom:9px}
    "note": "南島行程起點，租車取車處。",
    "lat": -43.485237,
    "lng": 172.535483,
-   "img": "images/christchurch.jpg"
+   "img": "images/christchurch.jpg",
+   "bookable": false
   },
   {
    "id": "fairlie-bakehouse",
@@ -1380,7 +1409,8 @@ details[open] summary{margin-bottom:9px}
    "note": "全紐最有名的肉派店之一。Mt Cook 的 Old Mountaineers 連披薩餅皮與漢堡麵包都跟它進貨。",
    "lat": -44.09862,
    "lng": 170.829453,
-   "img": "images/food-lamington.jpg"
+   "img": "images/food-lamington.jpg",
+   "bookable": false
   },
   {
    "id": "good-shepherd",
@@ -1394,7 +1424,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1935 年建成，紀念麥肯錫地區拓荒者。祭壇後方一整片落地窗正對湖與山。旁邊有牧羊犬銅像。",
    "lat": -44.003347,
    "lng": 170.482468,
-   "img": "images/tekapo-church.jpg"
+   "img": "images/tekapo-church.jpg",
+   "bookable": false
   },
   {
    "id": "lake-tekapo",
@@ -1408,7 +1439,8 @@ details[open] summary{margin-bottom:9px}
    "note": "冰川粉末造成的乳藍色。⚠️ 魯冰花花期是 11–12 月，9 月底沒有花。",
    "lat": -44.004519,
    "lng": 170.477727,
-   "img": "images/tekapo-pano.jpg"
+   "img": "images/tekapo-pano.jpg",
+   "bookable": false
   },
   {
    "id": "mt-john",
@@ -1425,7 +1457,9 @@ details[open] summary{margin-bottom:9px}
    "note": "自駕上山需付每車 NZ$14 道路使用費，閘口刷卡不收現金。不想付費可走 8.9 公里來回的 Summit Circuit 步道。",
    "lat": -43.985414,
    "lng": 170.464442,
-   "img": "images/mtjohn.jpg"
+   "img": "images/mtjohn.jpg",
+   "bk": "Mount John Observatory",
+   "bookable": true
   },
   {
    "id": "astro-cafe",
@@ -1441,7 +1475,8 @@ details[open] summary{margin-bottom:9px}
    "note": "Dark Sky Project 經營，山頂 360 度湖景。惡劣天氣會臨時關閉，改開山下的 Dark Sky Diner（9:00 起）。",
    "lat": -43.985618,
    "lng": 170.464977,
-   "img": "images/food-flatwhite.jpg"
+   "img": "images/food-flatwhite.jpg",
+   "bookable": false
   },
   {
    "id": "kohan",
@@ -1455,7 +1490,8 @@ details[open] summary{margin-bottom:9px}
    "note": "當地名店，以生魚丼與定食聞名。⚠️ 本輪未取得官方營業時間，訂位前請自行確認。",
    "lat": -44.004697,
    "lng": 170.478393,
-   "img": "images/food-wines.jpg"
+   "img": "images/food-wines.jpg",
+   "bookable": false
   },
   {
    "id": "dsp-dark-sky-exp",
@@ -1473,7 +1509,9 @@ details[open] summary{margin-bottom:9px}
    "note": "室內、白天、45–60 分鐘，完全不受天候與月相影響。★ 9/26–9/29 滿月期間的最佳備案，四人只要 NZ$236。",
    "lat": -44.003402,
    "lng": 170.477453,
-   "img": "images/maori-carving.jpg"
+   "img": "images/maori-carving.jpg",
+   "bk": "Tekapo Dark Sky",
+   "bookable": true
   },
   {
    "id": "dsp-crater",
@@ -1491,7 +1529,9 @@ details[open] summary{margin-bottom:9px}
    "note": "Cowan's 私人天文台。滿月時用望遠鏡看月面環形山，對外行人比銀河更有衝擊力。四人共 NZ$516。",
    "lat": -44.003402,
    "lng": 170.477453,
-   "img": "images/tekapo-milkyway.jpg"
+   "img": "images/tekapo-milkyway.jpg",
+   "bk": "Tekapo stargazing",
+   "bookable": true
   },
   {
    "id": "dsp-summit",
@@ -1509,7 +1549,9 @@ details[open] summary{margin-bottom:9px}
    "note": "⚠️ 不建議：這個價格買的是「最暗的天空」，而 9/26–9/29 月面照度 99–100%，銀河會被洗掉。",
    "lat": -43.985414,
    "lng": 170.464442,
-   "img": "images/see-aklmuseum.jpg"
+   "img": "images/see-aklmuseum.jpg",
+   "bk": "Mount John stargazing",
+   "bookable": true
   },
   {
    "id": "tekapo-springs",
@@ -1524,7 +1566,10 @@ details[open] summary{margin-bottom:9px}
    "note": "露天溫泉池，可泡著看星星。⚠️ 本輪未取得官方 2026 價格。",
    "lat": -43.99473,
    "lng": 170.461178,
-   "img": "images/food-manuka.jpg"
+   "img": "images/food-manuka.jpg",
+   "url": "https://tekaposprings.co.nz/",
+   "bk": "Tekapo Springs hot pools",
+   "bookable": true
   },
   {
    "id": "skydive-mtcook",
@@ -1543,7 +1588,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.239647,
    "lng": 170.118358,
    "geo_approx": "Pukaki Airport",
-   "img": "images/skydive2.jpg"
+   "img": "images/skydive2.jpg",
+   "bk": "Skydive Mt Cook",
+   "bookable": true
   },
   {
    "id": "lake-pukaki",
@@ -1557,7 +1604,8 @@ details[open] summary{margin-bottom:9px}
    "note": "冰川粉末造成的不可思議藍綠色，正對 Aoraki。",
    "lat": -44.047761,
    "lng": 170.174231,
-   "img": "images/pukaki.jpg"
+   "img": "images/pukaki.jpg",
+   "bookable": false
   },
   {
    "id": "peters-lookout",
@@ -1572,7 +1620,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.088993,
    "lng": 170.135856,
    "geo_approx": "Peters Lookout",
-   "img": "images/pukaki-hero.jpg"
+   "img": "images/pukaki-hero.jpg",
+   "bookable": false
   },
   {
    "id": "mtcook-village",
@@ -1586,7 +1635,8 @@ details[open] summary{margin-bottom:9px}
    "note": "住三晚的基地。村裡商店選擇極少、價格高，建議前一天在 Twizel／Tekapo 買好補給。",
    "lat": -43.734945,
    "lng": 170.097723,
-   "img": "images/mtcook-village.jpg"
+   "img": "images/mtcook-village.jpg",
+   "bookable": false
   },
   {
    "id": "adventurer-helihike",
@@ -1606,7 +1656,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.766693,
    "lng": 170.133432,
    "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/helihike3.jpg"
+   "img": "images/helihike3.jpg",
+   "bk": "Tasman Glacier Heli Hike",
+   "bookable": true
   },
   {
    "id": "glacier-highlights",
@@ -1625,7 +1677,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.766693,
    "lng": 170.133432,
    "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/franz-heli-village.jpg"
+   "img": "images/franz-heli-village.jpg",
+   "bk": "Mount Cook scenic flight glacier landing",
+   "bookable": true
   },
   {
    "id": "ultimate-alpine",
@@ -1644,7 +1698,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.766693,
    "lng": 170.133432,
    "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/helihike1.jpg"
+   "img": "images/helihike1.jpg",
+   "bk": "Mount Cook ski plane helicopter",
+   "bookable": true
   },
   {
    "id": "tasman-taster",
@@ -1663,7 +1719,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.766693,
    "lng": 170.133432,
    "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/tasman-glacier.jpg"
+   "img": "images/tasman-glacier.jpg",
+   "bk": "Mount Cook helicopter",
+   "bookable": true
   },
   {
    "id": "glacier-explorers",
@@ -1681,7 +1739,10 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.733163,
    "lng": 170.093722,
    "geo_approx": "The Hermitage Mount Cook",
-   "img": "images/tasman-boat.jpg"
+   "img": "images/tasman-boat.jpg",
+   "url": "https://glacierexplorers.co.nz/",
+   "bk": "Tasman Glacier boat tour",
+   "bookable": true
   },
   {
    "id": "hooker-valley",
@@ -1698,7 +1759,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.720689,
    "lng": 170.095521,
    "geo_approx": "Hooker Valley",
-   "img": "images/hooker-track.jpg"
+   "img": "images/hooker-track.jpg",
+   "bk": "Aoraki Mount Cook tour",
+   "bookable": false
   },
   {
    "id": "kea-point",
@@ -1713,7 +1776,8 @@ details[open] summary{margin-bottom:9px}
    "note": "比 Hooker Valley 短很多，終點看 Mueller 冰河湖與 Mt Sefton 冰瀑。適合當天備案。",
    "lat": -43.728752,
    "lng": 170.093077,
-   "img": "images/see-keapoint.jpg"
+   "img": "images/see-keapoint.jpg",
+   "bookable": false
   },
   {
    "id": "tasman-glacier-view",
@@ -1729,7 +1793,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.573631,
    "lng": 170.227868,
    "geo_approx": "Tasman Glacier",
-   "img": "images/see-tasmanvalley.jpg"
+   "img": "images/see-tasmanvalley.jpg",
+   "bookable": false
   },
   {
    "id": "hillary-centre",
@@ -1743,7 +1808,8 @@ details[open] summary{margin-bottom:9px}
    "note": "在 Hermitage 飯店內。紀念第一位登上聖母峰的紐西蘭人——他就是在這裡練習登山的。館內有博物館與天象館。",
    "lat": -43.732778,
    "lng": 170.093113,
-   "img": "images/see-hillary.jpg"
+   "img": "images/see-hillary.jpg",
+   "bookable": false
   },
   {
    "id": "old-mountaineers",
@@ -1761,7 +1827,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.734945,
    "lng": 170.097723,
    "geo_approx": "Mount Cook Village",
-   "img": "images/food-beerflight.jpg"
+   "img": "images/food-beerflight.jpg",
+   "bookable": true
   },
   {
    "id": "hermitage",
@@ -1776,7 +1843,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.733163,
    "lng": 170.093722,
    "geo_approx": "The Hermitage Mount Cook",
-   "img": "images/hooker-lake.jpg"
+   "img": "images/hooker-lake.jpg",
+   "bookable": false
   },
   {
    "id": "big-sky-stargazing",
@@ -1794,7 +1862,10 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.733163,
    "lng": 170.093722,
    "geo_approx": "The Hermitage Mount Cook",
-   "img": "images/franz-seracs.jpg"
+   "img": "images/franz-seracs.jpg",
+   "url": "https://hermitage.co.nz/",
+   "bk": "Mount Cook stargazing",
+   "bookable": true
   },
   {
    "id": "ski-the-tasman",
@@ -1813,7 +1884,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.766693,
    "lng": 170.133432,
    "geo_approx": "Mount Cook Aerodrome",
-   "img": "images/tasman-lake.jpg"
+   "img": "images/tasman-lake.jpg",
+   "bk": "Ski the Tasman",
+   "bookable": true
   },
   {
    "id": "lindis-pass",
@@ -1827,7 +1900,8 @@ details[open] summary{margin-bottom:9px}
    "note": "南島最上鏡的公路之一，整片山坡蓋滿金黃色高山草（tussock）。有觀景停車彎。",
    "lat": -44.58826,
    "lng": 169.64308,
-   "img": "images/lindis.jpg"
+   "img": "images/lindis.jpg",
+   "bookable": false
   },
   {
    "id": "clay-cliffs",
@@ -1841,7 +1915,8 @@ details[open] summary{margin-bottom:9px}
    "note": "私人土地，需投幣入場。奇特的尖塔狀侵蝕地形。",
    "lat": -44.491382,
    "lng": 169.972966,
-   "img": "images/lindis.jpg"
+   "img": "images/lindis.jpg",
+   "bookable": false
   },
   {
    "id": "rippon",
@@ -1861,7 +1936,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.694896,
    "lng": 169.104677,
    "geo_approx": "Rippon",
-   "img": "images/see-rippon.jpg"
+   "img": "images/see-rippon.jpg",
+   "bk": "Wanaka wine tasting",
+   "bookable": true
   },
   {
    "id": "puzzling-world",
@@ -1875,7 +1952,9 @@ details[open] summary{margin-bottom:9px}
    "note": "傾斜屋、錯覺房間、大型迷宮。四個大人去也會玩得很開心。",
    "lat": -44.69747,
    "lng": 169.161557,
-   "img": "images/puzzling.jpg"
+   "img": "images/puzzling.jpg",
+   "bk": "Puzzling World Wanaka",
+   "bookable": false
   },
   {
    "id": "wanaka-tree",
@@ -1889,7 +1968,8 @@ details[open] summary{margin-bottom:9px}
    "note": "長在湖水裡的柳樹，全世界最被拍爛的一棵樹。清晨或黃昏光線最好。",
    "lat": -44.698355,
    "lng": 169.117564,
-   "img": "images/wanaka-tree.jpg"
+   "img": "images/wanaka-tree.jpg",
+   "bookable": false
   },
   {
    "id": "roys-peak",
@@ -1905,7 +1985,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.693998,
    "lng": 169.04873,
    "geo_approx": "Roys Peak",
-   "img": "images/roys-peak.jpg"
+   "img": "images/roys-peak.jpg",
+   "bookable": false
   },
   {
    "id": "mt-difficulty",
@@ -1924,7 +2005,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.079346,
    "lng": 169.149659,
    "geo_approx": "Felton Road Bannockburn",
-   "img": "images/wine-bannockburn.jpg"
+   "img": "images/wine-bannockburn.jpg",
+   "bk": "Central Otago wine tour Bannockburn",
+   "bookable": true
   },
   {
    "id": "domaine-thomson",
@@ -1943,7 +2026,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.872054,
    "lng": 169.190811,
    "geo_approx": "Mount Pisa Otago",
-   "img": "images/wine-tasting.jpg"
+   "img": "images/wine-tasting.jpg",
+   "bk": "Central Otago wine tasting",
+   "bookable": true
   },
   {
    "id": "cromwell-heritage",
@@ -1957,7 +2042,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1980 年代因建水庫舊鎮沉入湖底，居民把重要建築一棟一棟拆下往上搬、原樣重建。現在是湖畔老街區。",
    "lat": -45.04913,
    "lng": 169.206597,
-   "img": "images/cromwell.jpg"
+   "img": "images/cromwell.jpg",
+   "bookable": false
   },
   {
    "id": "cromwell-fruit",
@@ -1972,7 +2058,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.037131,
    "lng": 169.197288,
    "geo_approx": "Cromwell",
-   "img": "images/food-feijoa.jpg"
+   "img": "images/food-feijoa.jpg",
+   "bookable": false
   },
   {
    "id": "arrowtown-chinese",
@@ -1987,7 +2074,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 整趟最值得停的一站。1860 年代淘金潮時數千名廣東台山、開平來的華工在這裡生活，現場保留他們的小石屋與店鋪遺址。對台灣人來說，站在那些矮到要彎腰的小屋前面，感受完全不一樣。",
    "lat": -44.938186,
    "lng": 168.825689,
-   "img": "images/see-chinese.jpg"
+   "img": "images/see-chinese.jpg",
+   "bookable": false
   },
   {
    "id": "arrowtown-main",
@@ -2001,7 +2089,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1860 年代淘金小鎮，木造店屋是紐西蘭保存最完整的。",
    "lat": -44.939276,
    "lng": 168.835471,
-   "img": "images/arrowtown.jpg"
+   "img": "images/arrowtown.jpg",
+   "bookable": false
   },
   {
    "id": "cardrona-hotel",
@@ -2015,7 +2104,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1863 年的木造旅店立面，紐西蘭最常被拍的建築之一。在 Crown Range 路上。",
    "lat": -44.881538,
    "lng": 169.003534,
-   "img": "images/cardrona.jpg"
+   "img": "images/cardrona.jpg",
+   "bookable": false
   },
   {
    "id": "crown-range",
@@ -2030,7 +2120,8 @@ details[open] summary{margin-bottom:9px}
    "note": "⚠️ 紐西蘭海拔最高的公路，觀景極好但彎多。這條不是國道，NZTA Journey Planner 查不到路況，要看 QLDC 冬季路況頁。QLDC 2026 年起執行雪鏈規定，未依規定由警方開罰 NZ$750。",
    "lat": -44.992535,
    "lng": 168.938572,
-   "img": "images/crown-range.jpg"
+   "img": "images/crown-range.jpg",
+   "bookable": false
   },
   {
    "id": "skyline-queenstown",
@@ -2046,7 +2137,9 @@ details[open] summary{margin-bottom:9px}
    "note": "全鎮最好的俯瞰角度。四個大人玩溜溜車會比小孩還瘋。",
    "lat": -45.028311,
    "lng": 168.656124,
-   "img": "images/do-gondola.jpg"
+   "img": "images/do-gondola.jpg",
+   "bk": "Queenstown Skyline gondola luge",
+   "bookable": true
   },
   {
    "id": "shotover-jet",
@@ -2062,7 +2155,9 @@ details[open] summary{margin-bottom:9px}
    "note": "峽谷裡貼著岩壁 360 度旋轉。比跳傘便宜非常多，刺激度不低。",
    "lat": -44.987113,
    "lng": 168.671352,
-   "img": "images/do-jetboat.jpg"
+   "img": "images/do-jetboat.jpg",
+   "bk": "Shotover Jet",
+   "bookable": true
   },
   {
    "id": "tss-earnslaw",
@@ -2081,7 +2176,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.033254,
    "lng": 168.657799,
    "geo_approx": "Steamer Wharf Queenstown",
-   "img": "images/do-earnslaw.jpg"
+   "img": "images/do-earnslaw.jpg",
+   "bk": "TSS Earnslaw Walter Peak",
+   "bookable": true
   },
   {
    "id": "onsen-hot-pools",
@@ -2096,7 +2193,10 @@ details[open] summary{margin-bottom:9px}
    "note": "私人溫泉包廂，可開窗看峽谷。⚠️ 本輪未取得官方 2026 價格。",
    "lat": -44.980995,
    "lng": 168.685428,
-   "img": "images/do-walterpeak.jpg"
+   "img": "images/do-walterpeak.jpg",
+   "url": "https://onsen.co.nz/",
+   "bk": "Queenstown Onsen hot pools",
+   "bookable": true
   },
   {
    "id": "fergburger",
@@ -2110,7 +2210,8 @@ details[open] summary{margin-bottom:9px}
    "note": "世界級排隊漢堡店，幾乎全天有隊。當地人的建議是：隔壁的 Fergbaker 其實更值得，而且不用排那麼久。",
    "lat": -45.031742,
    "lng": 168.659462,
-   "img": "images/food-lamington.jpg"
+   "img": "images/food-lamington.jpg",
+   "bookable": false
   },
   {
    "id": "fergbaker",
@@ -2124,7 +2225,8 @@ details[open] summary{margin-bottom:9px}
    "note": "Fergburger 隔壁的麵包與派，當地人更推。",
    "lat": -45.031669,
    "lng": 168.659556,
-   "img": "images/food-pavlova.jpg"
+   "img": "images/food-pavlova.jpg",
+   "bookable": false
   },
   {
    "id": "rata",
@@ -2139,7 +2241,9 @@ details[open] summary{margin-bottom:9px}
    "note": "Josh Emett（英國米其林體系出身的紐西蘭主廚）的餐廳，皇后鎮最好的正式晚餐選擇之一。要訂位。",
    "lat": -45.031572,
    "lng": 168.662777,
-   "img": "images/food-kumara.jpg"
+   "img": "images/food-kumara.jpg",
+   "url": "https://ratadining.co.nz/",
+   "bookable": true
   },
   {
    "id": "nzone-skydive",
@@ -2157,7 +2261,9 @@ details[open] summary{margin-bottom:9px}
    "note": "跳傘備案地點（10/01、10/02）。紐西蘭第一家跳傘公司，超過 35 萬跳，機隊載客量全紐最大——4 人比較容易排進同一架。影音：手腕 GoPro NZ$209 / 隨跳攝影師 NZ$319 / Ultimate Combo NZ$379。團體優惠要 10 人以上。天候取消會盡力改日期或改地點，不行則全額退款。",
    "lat": -45.031223,
    "lng": 168.659698,
-   "img": "images/queenstown.jpg"
+   "img": "images/queenstown.jpg",
+   "bk": "Queenstown skydive",
+   "bookable": true
   },
   {
    "id": "skydive-wanaka",
@@ -2175,7 +2281,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.722542,
    "lng": 169.245451,
    "geo_approx": "Wanaka Airport",
-   "img": "images/roys-peak.jpg"
+   "img": "images/roys-peak.jpg",
+   "bk": "Wanaka skydive",
+   "bookable": true
   },
   {
    "id": "glenorchy",
@@ -2190,7 +2298,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 這段湖岸公路公認是紐西蘭最美的公路之一。終點是《魔戒》多處取景地與 Paradise。沿路觀景停車彎很多。",
    "lat": -44.851521,
    "lng": 168.381522,
-   "img": "images/see-glenorchy.jpg"
+   "img": "images/see-glenorchy.jpg",
+   "bk": "Glenorchy tour Queenstown",
+   "bookable": false
   },
   {
    "id": "kawarau-bungy",
@@ -2205,7 +2315,9 @@ details[open] summary{margin-bottom:9px}
    "note": "世界第一座商業高空彈跳點（1988 年）。不跳也可以去看別人跳，就在往 Cromwell 的路上。",
    "lat": -45.009412,
    "lng": 168.900302,
-   "img": "images/do-bungy.jpg"
+   "img": "images/do-bungy.jpg",
+   "bk": "Kawarau bungy",
+   "bookable": false
   },
   {
    "id": "te-anau-glowworm",
@@ -2222,7 +2334,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 搭船過湖，走進地下河的石灰岩洞，在完全黑暗中看滿天藍色螢光。紐西蘭南島最好的螢火蟲洞體驗。要預訂。",
    "lat": -45.294505,
    "lng": 167.726443,
-   "img": "images/see-glowworm.jpg"
+   "img": "images/see-glowworm.jpg",
+   "bk": "Te Anau glowworm caves",
+   "bookable": true
   },
   {
    "id": "te-anau-bird",
@@ -2237,7 +2351,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 可以看到 takahē（南秧雞）——曾被宣告絕種 50 年、1948 年在 Fiordland 山區被重新發現，全世界只剩約 500 隻。這裡是少數能近距離看到的地方。",
    "lat": -45.432652,
    "lng": 167.71334,
-   "img": "images/see-takahe.jpg"
+   "img": "images/see-takahe.jpg",
+   "bookable": false
   },
   {
    "id": "lake-te-anau",
@@ -2251,7 +2366,8 @@ details[open] summary{margin-bottom:9px}
    "note": "紐西蘭南島最大的湖，傍晚湖邊散步很舒服。",
    "lat": -45.18556,
    "lng": 167.735867,
-   "img": "images/teanau.jpg"
+   "img": "images/teanau.jpg",
+   "bookable": false
   },
   {
    "id": "mirror-lakes",
@@ -2265,7 +2381,8 @@ details[open] summary{margin-bottom:9px}
    "note": "無風時倒影完美，路邊停車走 5 分鐘。",
    "lat": -45.028407,
    "lng": 168.010956,
-   "img": "images/mirror-lakes.jpg"
+   "img": "images/mirror-lakes.jpg",
+   "bookable": false
   },
   {
    "id": "eglinton-valley",
@@ -2279,7 +2396,8 @@ details[open] summary{margin-bottom:9px}
    "note": "冰河切出來的 U 形谷，兩側垂直山壁。",
    "lat": -45.06209,
    "lng": 167.993691,
-   "img": "images/mirror-lakes.jpg"
+   "img": "images/mirror-lakes.jpg",
+   "bookable": false
   },
   {
    "id": "homer-tunnel",
@@ -2293,7 +2411,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1,270 公尺長、單線輪流通行，要等紅綠燈（旺季 15–20 分鐘）。出隧道那一刻的景色是全程最震撼的。⚠️ 位在雪崩管制區內，管制區禁止停車。",
    "lat": -44.764188,
    "lng": 167.981025,
-   "img": "images/homer-tunnel.jpg"
+   "img": "images/homer-tunnel.jpg",
+   "bookable": false
   },
   {
    "id": "the-chasm",
@@ -2307,7 +2426,8 @@ details[open] summary{margin-bottom:9px}
    "note": "出隧道後不久，10 分鐘步道看激流沖出的壺穴。",
    "lat": -44.721545,
    "lng": 167.947814,
-   "img": "images/stirling-falls.jpg"
+   "img": "images/stirling-falls.jpg",
+   "bookable": false
   },
   {
    "id": "milford-sound",
@@ -2321,7 +2441,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 初春是瀑布最多的季節——融雪加春雨，峽灣壁上會掛滿臨時瀑布。下雨天反而最好看。",
    "lat": -44.619019,
    "lng": 167.86876,
-   "img": "images/milford.jpg"
+   "img": "images/milford.jpg",
+   "bk": "Milford Sound day tour",
+   "bookable": false
   },
   {
    "id": "cruise-milford",
@@ -2340,7 +2462,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.619019,
    "lng": 167.86876,
    "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/milford.jpg"
+   "img": "images/milford.jpg",
+   "bk": "Milford Sound cruise",
+   "bookable": true
   },
   {
    "id": "mitre-peak-cruises",
@@ -2359,7 +2483,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.619019,
    "lng": 167.86876,
    "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/stirling-falls.jpg"
+   "img": "images/stirling-falls.jpg",
+   "bk": "Milford Sound small boat cruise",
+   "bookable": true
   },
   {
    "id": "pure-milford",
@@ -2376,7 +2502,10 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.619019,
    "lng": 167.86876,
    "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/fox-icecave.jpg"
+   "img": "images/fox-icecave.jpg",
+   "url": "https://puremilford.co.nz/",
+   "bk": "Milford Sound cruise",
+   "bookable": true
   },
   {
    "id": "southern-discoveries",
@@ -2395,7 +2524,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.619019,
    "lng": 167.86876,
    "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/milford.jpg"
+   "img": "images/milford.jpg",
+   "bk": "Milford Sound underwater observatory",
+   "bookable": true
   },
   {
    "id": "realnz-milford",
@@ -2413,7 +2544,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.619019,
    "lng": 167.86876,
    "geo_approx": "Milford Sound Piopiotahi",
-   "img": "images/franz-josef.jpg"
+   "img": "images/franz-josef.jpg",
+   "bk": "Milford Sound cruise",
+   "bookable": true
   },
   {
    "id": "stirling-point",
@@ -2428,7 +2561,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 南島最南端合影點，寫著到倫敦 18,958 公里、到南極 4,810 公里。旁邊有海崖步道，走 20 分鐘就有很好的視野。",
    "lat": -46.613486,
    "lng": 168.357306,
-   "img": "images/bluff.jpg"
+   "img": "images/bluff.jpg",
+   "bookable": false
   },
   {
    "id": "oyster-cove",
@@ -2446,7 +2580,9 @@ details[open] summary{margin-bottom:9px}
    "note": "⚠️ 官網現在顯示的是冬季時段，但 10/05 已是紐西蘭春季，屆時應該會換另一套時間——週一到底有沒有晚餐，一定要打電話問（03-212-8855）。官方明示晚餐必須訂位，因為可能提早打烊。生蠔過季，但藍鱈（blue cod）、貽貝等在地海鮮照常。",
    "lat": -46.613062,
    "lng": 168.356794,
-   "img": "images/food-oyster.jpg"
+   "img": "images/food-oyster.jpg",
+   "bk": "Bluff Oyster Cove",
+   "bookable": true
   },
   {
    "id": "the-anchorage-bluff",
@@ -2461,7 +2597,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -46.59882,
    "lng": 168.343368,
    "geo_approx": "Bluff Southland",
-   "img": "images/food-mussel.jpg"
+   "img": "images/food-mussel.jpg",
+   "bookable": false
   },
   {
    "id": "kai-reka",
@@ -2475,7 +2612,8 @@ details[open] summary{margin-bottom:9px}
    "note": "炸麵包（fry bread）與奶油鮑魚薯條。在地、便宜、道地。⚠️ 食物車位置不固定，需當地確認。",
    "lat": -46.59882,
    "lng": 168.343368,
-   "img": "images/food-mussel.jpg"
+   "img": "images/food-mussel.jpg",
+   "bookable": false
   },
   {
    "id": "transport-world",
@@ -2490,7 +2628,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 全球最大的私人古董卡車收藏之一。即使完全不迷車，光是規模就會讓人愣住。被嚴重低估的一站。",
    "lat": -46.409616,
    "lng": 168.380446,
-   "img": "images/invercargill.jpg"
+   "img": "images/invercargill.jpg",
+   "bk": "Bill Richardson Transport World",
+   "bookable": false
   },
   {
    "id": "e-hayes",
@@ -2506,7 +2646,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -46.402327,
    "lng": 168.347206,
    "geo_approx": "Dee Street Invercargill",
-   "img": "images/see-burtmunro.jpg"
+   "img": "images/see-burtmunro.jpg",
+   "bookable": false
   },
   {
    "id": "motorcycle-mecca",
@@ -2521,7 +2662,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -46.411401,
    "lng": 168.371302,
    "geo_approx": "Tay Street Invercargill",
-   "img": "images/helihike4.jpg"
+   "img": "images/helihike4.jpg",
+   "bk": "Classic Motorcycle Mecca Invercargill",
+   "bookable": false
   },
   {
    "id": "fat-bastard-pies",
@@ -2536,7 +2679,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -46.411847,
    "lng": 168.347063,
    "geo_approx": "Invercargill",
-   "img": "images/helihike6.jpg"
+   "img": "images/helihike6.jpg",
+   "bookable": false
   },
   {
    "id": "batch-cafe",
@@ -2550,7 +2694,8 @@ details[open] summary{margin-bottom:9px}
    "note": "早餐／早午餐，招牌是味噌 kūmara、granola 與司康。",
    "lat": -46.409767,
    "lng": 168.353882,
-   "img": "images/food-hokeypokey.jpg"
+   "img": "images/food-hokeypokey.jpg",
+   "bookable": false
   },
   {
    "id": "queens-park",
@@ -2565,7 +2710,8 @@ details[open] summary{margin-bottom:9px}
    "note": "市區大公園，有免費的鳥舍與溫室。",
    "lat": -46.401128,
    "lng": 168.356198,
-   "img": "images/food-whitebait.jpg"
+   "img": "images/food-whitebait.jpg",
+   "bookable": false
   },
   {
    "id": "hokonui-moonshine",
@@ -2579,7 +2725,8 @@ details[open] summary{margin-bottom:9px}
    "note": "禁酒時期私釀威士忌的博物館，比想像中有趣。Gore 同時是紐西蘭的「鱒魚之都」，有一尊巨大鱒魚雕像。",
    "lat": -46.097253,
    "lng": 168.94584,
-   "img": "images/do-speights.jpg"
+   "img": "images/do-speights.jpg",
+   "bookable": false
   },
   {
    "id": "nugget-point",
@@ -2594,7 +2741,8 @@ details[open] summary{margin-bottom:9px}
    "note": "南島最上鏡的海岬之一。⚠️ 走卡特林斯海岸路線才會經過（比走 Gore 多 2–3 小時）。",
    "lat": -46.448077,
    "lng": 169.816794,
-   "img": "images/nugget-point.jpg"
+   "img": "images/nugget-point.jpg",
+   "bookable": false
   },
   {
    "id": "curio-bay",
@@ -2610,7 +2758,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -46.663648,
    "lng": 169.101016,
    "geo_approx": "Curio Bay",
-   "img": "images/nugget-point.jpg"
+   "img": "images/nugget-point.jpg",
+   "bookable": false
   },
   {
    "id": "dunedin-station",
@@ -2624,7 +2773,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 1906 年落成，號稱全世界最常被拍照的紐西蘭建築。內部地磚由 72 萬塊維多利亞瓷磚拼成。",
    "lat": -45.875256,
    "lng": 170.508993,
-   "img": "images/dunedin-station.jpg"
+   "img": "images/dunedin-station.jpg",
+   "bookable": false
   },
   {
    "id": "baldwin-street",
@@ -2639,7 +2789,8 @@ details[open] summary{margin-bottom:9px}
    "note": "曾是金氏世界紀錄的最陡街道（後來被威爾斯搶走、2020 年又搶回來）。走上去比看起來累。",
    "lat": -45.849807,
    "lng": 170.535057,
-   "img": "images/baldwin.jpg"
+   "img": "images/baldwin.jpg",
+   "bookable": false
   },
   {
    "id": "larnach-castle",
@@ -2654,7 +2805,9 @@ details[open] summary{margin-bottom:9px}
    "note": "紐西蘭唯一的「城堡」，1871 年由銀行家 William Larnach 建造，背後是一段家族悲劇。花園被列為國際重要花園。",
    "lat": -45.861811,
    "lng": 170.627249,
-   "img": "images/larnach.jpg"
+   "img": "images/larnach.jpg",
+   "bk": "Larnach Castle",
+   "bookable": false
   },
   {
    "id": "speights",
@@ -2670,7 +2823,9 @@ details[open] summary{margin-bottom:9px}
    "note": "1876 年創立，南島最老的啤酒廠之一，導覽最後可以自己倒酒喝。⚠️ 注意酒駕：20 歲以上上限為呼氣 250 mcg/L（非零，但估不準），先講好指定駕駛。",
    "lat": -45.876275,
    "lng": 170.500227,
-   "img": "images/food-beerflight.jpg"
+   "img": "images/food-beerflight.jpg",
+   "bk": "Speights Brewery tour",
+   "bookable": true
   },
   {
    "id": "albatross-centre",
@@ -2688,7 +2843,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.775145,
    "lng": 170.728333,
    "geo_approx": "Taiaroa Head",
-   "img": "images/see-albatross.jpg"
+   "img": "images/see-albatross.jpg",
+   "bk": "Royal Albatross Centre Dunedin",
+   "bookable": true
   },
   {
    "id": "sandfly-bay",
@@ -2703,7 +2860,8 @@ details[open] summary{margin-bottom:9px}
    "note": "步道下到沙灘，紐西蘭海獅與黃眼企鵝的棲地。保持距離，不要擋在牠們回巢的路線上。",
    "lat": -45.897203,
    "lng": 170.650028,
-   "img": "images/see-sealion.jpg"
+   "img": "images/see-sealion.jpg",
+   "bookable": false
   },
   {
    "id": "otago-museum",
@@ -2717,7 +2875,8 @@ details[open] summary{margin-bottom:9px}
    "note": "自然史與太平洋文化收藏。",
    "lat": -45.865635,
    "lng": 170.510758,
-   "img": "images/see-haka.jpg"
+   "img": "images/see-haka.jpg",
+   "bookable": false
   },
   {
    "id": "shag-point",
@@ -2732,7 +2891,8 @@ details[open] summary{margin-bottom:9px}
    "note": "紐西蘭海狗（fur seal）常態棲息地，路邊就能看。",
    "lat": -45.460913,
    "lng": 170.814786,
-   "img": "images/kea.jpg"
+   "img": "images/kea.jpg",
+   "bookable": false
   },
   {
    "id": "katiki-point",
@@ -2748,7 +2908,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.365618,
    "lng": 170.851394,
    "geo_approx": "Moeraki Lighthouse",
-   "img": "images/hoiho.jpg"
+   "img": "images/hoiho.jpg",
+   "bookable": false
   },
   {
    "id": "moeraki-boulders",
@@ -2762,7 +2923,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 6,000 萬年前海底沉積形成的球狀結核；毛利傳說則說那是 Āraiteuru 獨木舟翻覆後散落的葫蘆與地瓜籃。⚠️ 退潮時才走得到、也才好看——出發前查當天潮汐表。",
    "lat": -45.345173,
    "lng": 170.826245,
-   "img": "images/moeraki.jpg"
+   "img": "images/moeraki.jpg",
+   "bookable": false
   },
   {
    "id": "fleurs-place",
@@ -2777,7 +2939,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -45.360012,
    "lng": 170.854685,
    "geo_approx": "Haven Street Moeraki",
-   "img": "images/katiki.jpg"
+   "img": "images/katiki.jpg",
+   "bookable": false
   },
   {
    "id": "riverstone-kitchen",
@@ -2796,7 +2959,9 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.939197,
    "lng": 171.096176,
    "geo_approx": "Glenavy Hilderthorpe Road",
-   "img": "images/pounamu.jpg"
+   "img": "images/pounamu.jpg",
+   "bk": "Riverstone Kitchen Oamaru",
+   "bookable": true
   },
   {
    "id": "steampunk-hq",
@@ -2814,7 +2979,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 會噴火會叫的機械雕塑。⚠️ 10/07 要在 15:30 前到。參觀約 45–60 分鐘，不用預約，現場買票。就在維多利亞街區旁邊。",
    "lat": -45.102318,
    "lng": 170.970886,
-   "img": "images/steampunk.jpg"
+   "img": "images/steampunk.jpg",
+   "bk": "Steampunk HQ Oamaru",
+   "bookable": true
   },
   {
    "id": "oamaru-victorian",
@@ -2829,7 +2996,8 @@ details[open] summary{margin-bottom:9px}
    "note": "用當地白色石灰岩（Oamaru stone）蓋的整片 1880 年代街區，紐西蘭保存最完整的。",
    "lat": -45.103561,
    "lng": 170.970408,
-   "img": "images/oamaru.jpg"
+   "img": "images/oamaru.jpg",
+   "bookable": false
   },
   {
    "id": "blue-penguin-colony",
@@ -2847,7 +3015,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 世界最小的企鵝。⚠️ 全程禁止使用相機與任何攝影錄影裝置，也禁止使用會發光的螢幕（含手機）——完全不能拍照，事先讓四個人知道。另因禽流感防疫，入場前需過洗腳消毒站。",
    "lat": -45.110276,
    "lng": 170.980178,
-   "img": "images/blue-penguin.jpg"
+   "img": "images/blue-penguin.jpg",
+   "bk": "Oamaru blue penguin colony",
+   "bookable": true
   },
   {
    "id": "whitestone-cheese",
@@ -2861,7 +3031,8 @@ details[open] summary{margin-bottom:9px}
    "note": "在地起司廠，有門市與品嚐。",
    "lat": -45.093369,
    "lng": 170.975825,
-   "img": "images/food-lamington.jpg"
+   "img": "images/food-lamington.jpg",
+   "bookable": false
   },
   {
    "id": "elephant-rocks",
@@ -2876,7 +3047,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 約 2,500 萬年前的海底石灰岩巨石群，《納尼亞傳奇》取景地。與 Takiroa、Vanished World 是同一套地質故事，可串成同日主題。",
    "lat": -44.894204,
    "lng": 170.655827,
-   "img": "images/elephant-rocks.jpg"
+   "img": "images/elephant-rocks.jpg",
+   "bookable": false
   },
   {
    "id": "takiroa-rock-art",
@@ -2893,7 +3065,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 位在一條從山到海的 ara tawhito（古道）上，是毛利先民的庇護與補給處。現場要求尊重 kaitiakitanga（守護），什麼都不要拿走。⚠️ 有落石與雨天濕滑風險。",
    "lat": -44.842898,
    "lng": 170.644912,
-   "img": "images/maori-carving.jpg"
+   "img": "images/maori-carving.jpg",
+   "bookable": false
   },
   {
    "id": "vanished-world",
@@ -2908,7 +3081,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.908725,
    "lng": 170.840118,
    "geo_approx": "Duntroon Otago",
-   "img": "images/see-vanished.jpg"
+   "img": "images/see-vanished.jpg",
+   "bookable": false
   },
   {
    "id": "waitaki-dam",
@@ -2922,7 +3096,8 @@ details[open] summary{margin-bottom:9px}
    "note": "1934 年完工，紐西蘭最後一座完全用人力（不用重機具）建造的水壩。",
    "lat": -44.68896,
    "lng": 170.426633,
-   "img": "images/lindis.jpg"
+   "img": "images/lindis.jpg",
+   "bookable": false
   },
   {
    "id": "te-ana-rock-art",
@@ -2939,7 +3114,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -44.39712,
    "lng": 171.254288,
    "geo_approx": "George Street Timaru",
-   "img": "images/pounamu.jpg"
+   "img": "images/pounamu.jpg",
+   "bookable": false
   },
   {
    "id": "akaroa",
@@ -2953,7 +3129,8 @@ details[open] summary{margin-bottom:9px}
    "note": "法國移民建立的港灣小鎮，可賞 Hector's dolphin。⚠️ 10/08 若照原行程走會太趕（純開車 7 小時以上）——建議改到 10/09 早上，或直接砍掉。",
    "lat": -43.804317,
    "lng": 172.967833,
-   "img": "images/akaroa-town.jpg"
+   "img": "images/akaroa-town.jpg",
+   "bookable": false
   },
   {
    "id": "riverside-market",
@@ -2967,7 +3144,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 南島最好的市集，一棟樓裡幾十個攤位，從越南河粉到西班牙 tapas 都有。午餐直接在這裡解決，四個人各吃各的。",
    "lat": -43.533915,
    "lng": 172.634002,
-   "img": "images/see-riverside.jpg"
+   "img": "images/see-riverside.jpg",
+   "bookable": false
   },
   {
    "id": "cardboard-cathedral",
@@ -2982,7 +3160,8 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 2011 地震後由日本建築師坂茂設計、用紙管蓋的臨時大教堂。",
    "lat": -43.532296,
    "lng": 172.643059,
-   "img": "images/see-cardboard.jpg"
+   "img": "images/see-cardboard.jpg",
+   "bookable": false
   },
   {
    "id": "185-chairs",
@@ -2998,7 +3177,8 @@ details[open] summary{margin-bottom:9px}
    "lat": -43.530946,
    "lng": 172.642651,
    "geo_approx": "Latimer Square Christchurch",
-   "img": "images/see-185chairs.jpg"
+   "img": "images/see-185chairs.jpg",
+   "bookable": false
   },
   {
    "id": "chch-botanic",
@@ -3013,7 +3193,8 @@ details[open] summary{margin-bottom:9px}
    "note": "市中心的大片綠地，雅芳河穿過。",
    "lat": -43.530261,
    "lng": 172.620564,
-   "img": "images/christchurch.jpg"
+   "img": "images/christchurch.jpg",
+   "bookable": false
   },
   {
    "id": "punting-avon",
@@ -3028,7 +3209,10 @@ details[open] summary{margin-bottom:9px}
    "note": "由撐篙人推著船遊河，很悠閒。出發點在 Antigua Boat Sheds。",
    "lat": -43.53389,
    "lng": 172.627953,
-   "img": "images/do-punting.jpg"
+   "img": "images/do-punting.jpg",
+   "url": "https://punting.co.nz/",
+   "bk": "Christchurch punting Avon",
+   "bookable": true
   },
   {
    "id": "chch-tram",
@@ -3043,7 +3227,10 @@ details[open] summary{margin-bottom:9px}
    "note": "繞市中心一圈，可隨上隨下。",
    "lat": -43.530884,
    "lng": 172.635682,
-   "img": "images/chch-tram.jpg"
+   "img": "images/chch-tram.jpg",
+   "url": "https://christchurchattractions.nz/",
+   "bk": "Christchurch tram",
+   "bookable": true
   },
   {
    "id": "quake-city",
@@ -3057,7 +3244,9 @@ details[open] summary{margin-bottom:9px}
    "note": "2011 地震的紀錄與倖存者口述，理解這座城市為什麼長成現在的樣子。",
    "lat": -43.528708,
    "lng": 172.633394,
-   "img": "images/see-cardboard.jpg"
+   "img": "images/see-cardboard.jpg",
+   "bk": "Quake City Christchurch",
+   "bookable": false
   },
   {
    "id": "sky-tower",
@@ -3071,7 +3260,9 @@ details[open] summary{margin-bottom:9px}
    "note": "南半球最高建築，328 公尺。觀景台看得到兩片海。",
    "lat": -36.848463,
    "lng": 174.762183,
-   "img": "images/see-skytower.jpg"
+   "img": "images/see-skytower.jpg",
+   "bk": "Auckland Sky Tower",
+   "bookable": false
   },
   {
    "id": "auckland-museum",
@@ -3086,7 +3277,9 @@ details[open] summary{margin-bottom:9px}
    "note": "★ 如果整趟只挑一個博物館，選這個。紐西蘭最好的毛利文化與自然史收藏，每天有含 haka 的毛利文化表演。前面 13 天看的都是南島的自然風景，這裡是唯一能系統性理解毛利文化的地方。",
    "lat": -36.860756,
    "lng": 174.77781,
-   "img": "images/see-aklmuseum.jpg"
+   "img": "images/see-aklmuseum.jpg",
+   "bk": "Auckland Museum Maori show",
+   "bookable": false
   },
   {
    "id": "devonport",
@@ -3101,7 +3294,8 @@ details[open] summary{margin-bottom:9px}
    "note": "搭渡輪到對岸小鎮，爬上維多利亞山看天際線。",
    "lat": -36.829731,
    "lng": 174.797538,
-   "img": "images/see-devonport.jpg"
+   "img": "images/see-devonport.jpg",
+   "bookable": false
   },
   {
    "id": "ponsonby",
@@ -3115,7 +3309,8 @@ details[open] summary{margin-bottom:9px}
    "note": "最後一餐與伴手禮的最佳區域。Whittaker's 巧克力、mānuka 蜂蜜在超市買比機場便宜很多。",
    "lat": -36.858639,
    "lng": 174.750776,
-   "img": "images/food-flatwhite.jpg"
+   "img": "images/food-flatwhite.jpg",
+   "bookable": false
   },
   {
    "id": "commercial-bay",
@@ -3129,7 +3324,8 @@ details[open] summary{margin-bottom:9px}
    "note": "市中心的購物與餐飲複合體，離渡輪碼頭很近。",
    "lat": -36.843805,
    "lng": 174.766265,
-   "img": "images/see-skytower.jpg"
+   "img": "images/see-skytower.jpg",
+   "bookable": false
   }
  ],
  "routes": [
@@ -3421,6 +3617,13 @@ details[open] summary{margin-bottom:9px}
     var q = p.addr ? p.name + ' ' + p.addr : (p.q || p.name + ' New Zealand');
     return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
   }
+  function bookUrls(p) {
+    var q = encodeURIComponent(p.bk || (p.name + ' ' + (p.town || 'New Zealand')));
+    return {
+      klook: 'https://www.klook.com/zh-TW/search/?query=' + q,
+      kkday: 'https://www.kkday.com/zh-tw/product/productlist?keyword=' + q
+    };
+  }
   function dayLabel(p) {
     var d = dayByNum[p.day];
     return d ? 'D' + String(p.day).padStart(2, '0') + ' · ' + d.date : '';
@@ -3605,8 +3808,21 @@ details[open] summary{margin-bottom:9px}
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
       '<a class="b-map" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">📍 Google Maps</a>' +
-      (p.url ? '<a class="b-url" href="' + esc(p.url) + '" target="_blank" rel="noopener">官網</a>' : '') +
+      (p.url && !p.bookable ? '<a class="b-url" href="' + esc(p.url) +
+        '" target="_blank" rel="noopener">官網</a>' : '') +
       '</div>';
+
+    if (p.bookable && p.flag !== 'closed') {
+      var b = bookUrls(p);
+      h += '<div class="pl-book"><span class="bk-l">訂位／購票</span><div class="bk-row">' +
+        (p.url ? '<a class="bk bk-off" href="' + esc(p.url) +
+          '" target="_blank" rel="noopener">🏛 官網<em>直接訂最準</em></a>' : '') +
+        '<a class="bk bk-3p" href="' + b.klook + '" target="_blank" rel="noopener">' +
+          'Klook<em>搜尋</em></a>' +
+        '<a class="bk bk-3p" href="' + b.kkday + '" target="_blank" rel="noopener">' +
+          'KKday<em>搜尋</em></a>' +
+        '</div></div>';
+    }
     return h;
   }
 
@@ -3935,6 +4151,125 @@ details[open] summary{margin-bottom:9px}
     var id = btn ? btn.dataset.opt : r.options[0].id;
     var o = r.options.filter(function (x) { return x.id === id; })[0];
     if (o) window.nzDrawOption(r.day, o);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   紐幣 → 台幣：自動在頁面上所有 NZ$ 旁邊補上台幣估算
+   匯率放在 places.json 的 meta.fx，改一處全站生效
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var RATE = 18.9, ASOF = '';
+  var el = document.getElementById('places-data');
+  if (el) {
+    try {
+      var fx = JSON.parse(el.textContent).meta.fx || {};
+      if (fx.nzd_twd) RATE = fx.nzd_twd;
+      if (fx.asof) ASOF = fx.asof;
+    } catch (e) {}
+  }
+
+  /* 依金額級距取整，避免出現 NT$10,387 這種假精確 */
+  function round(n) {
+    if (n < 1000) return Math.round(n / 10) * 10;
+    if (n < 20000) return Math.round(n / 100) * 100;
+    if (n < 100000) return Math.round(n / 500) * 500;
+    return Math.round(n / 1000) * 1000;
+  }
+  function fmt(n) { return round(n).toLocaleString('en-US'); }
+  function num(s) { return parseFloat(String(s).replace(/,/g, '')); }
+
+  // NZ$549 / NZD $795 / NZD 219 / $25 / NZ$40–50
+  var RE = /(?:NZ\$|NZD\s*\$?\s*|(?<![A-Za-z])\$)(\d[\d,]*(?:\.\d+)?)(\s*[–—~-]\s*(\d[\d,]*(?:\.\d+)?))?/g;
+
+  var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, NOSCRIPT: 1, CODE: 1 };
+
+  function convert(root) {
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || n.nodeValue.indexOf('$') < 0) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        while (p && p !== root.parentNode) {
+          if (p.nodeType === 1) {
+            if (SKIP[p.tagName]) return NodeFilter.FILTER_REJECT;
+            if (p.classList && p.classList.contains('twd')) return NodeFilter.FILTER_REJECT;
+            if (p.dataset && p.dataset.twd) return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var todo = [], n;
+    while ((n = walker.nextNode())) todo.push(n);
+
+    todo.forEach(function (node) {
+      var text = node.nodeValue;
+      RE.lastIndex = 0;
+      if (!RE.test(text)) return;
+      RE.lastIndex = 0;
+      var frag = document.createDocumentFragment(), last = 0, m;
+      while ((m = RE.exec(text))) {
+        frag.appendChild(document.createTextNode(text.slice(last, m.index + m[0].length)));
+        var lo = num(m[1]);
+        var txt = isNaN(lo) ? '' :
+          (m[3] ? '（約 NT$' + fmt(lo * RATE) + '–' + fmt(num(m[3]) * RATE) + '）'
+                : '（約 NT$' + fmt(lo * RATE) + '）');
+        if (txt) {
+          var span = document.createElement('span');
+          span.className = 'twd';
+          span.textContent = txt;
+          frag.appendChild(span);
+        }
+        last = m.index + m[0].length;
+      }
+      frag.appendChild(document.createTextNode(text.slice(last)));
+      if (node.parentNode) {
+        if (node.parentNode.nodeType === 1) node.parentNode.dataset.twd = '1';
+        node.parentNode.replaceChild(frag, node);
+      }
+    });
+  }
+
+  window.nzTWD = { convert: convert, rate: RATE, asof: ASOF };
+
+  function runAll() { convert(document.body); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runAll);
+  } else { runAll(); }
+
+  /* 卡片、方案、popup 是動態產生的，內容變動後要再掃一次 */
+  var pending = null;
+  var mo = new MutationObserver(function () {
+    clearTimeout(pending);
+    pending = setTimeout(runAll, 120);
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+
+  /* 頁尾補上訂位連結與匯率說明 */
+  document.addEventListener('DOMContentLoaded', function () {
+    var f = document.querySelector('footer .wrap');
+    if (!f) return;
+    if (document.querySelector('.pl-book')) {
+      var b = document.createElement('p');
+      b.style.cssText = 'margin:10px 0 0;font-size:.78rem;color:#5F7583';
+      b.innerHTML = '卡片上的 <b>官網</b> 是實際查證過的官方網址，' +
+        '<b>建議優先從官網訂</b>——價格通常一樣或更便宜，天候取消與改期也直接跟業者談。' +
+        '<b>Klook／KKday 是「用關鍵字搜尋」的連結，不是特定商品頁</b>：' +
+        '這兩個平台不一定有賣、賣的方案內容也可能與官網不同，請自行比對。';
+      b.dataset.twd = '1';
+      f.appendChild(b);
+    }
+    if (!ASOF) return;
+    var p = document.createElement('p');
+    p.style.cssText = 'margin:10px 0 0;font-size:.78rem;color:#5F7583';
+    p.innerHTML = '台幣金額為自動換算的<b>粗估值</b>（1 NZD ≈ ' + RATE +
+      ' TWD，查詢於 ' + ASOF + '），僅供感受量級；' +
+      '<b>實際以刷卡當日匯率與銀行手續費為準</b>。';
+    p.dataset.twd = '1';
+    f.appendChild(p);
   });
 })();
 

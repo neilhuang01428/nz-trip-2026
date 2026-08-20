@@ -559,6 +559,31 @@ details[open] summary{margin-bottom:9px}
   .optcap{text-align:left;font-size:.72rem}
 }
 
+/* ── 台幣換算 ── */
+.twd{color:var(--ink-soft);font-size:.86em;font-weight:400;white-space:nowrap;
+  font-variant-numeric:tabular-nums;letter-spacing:0}
+.pl-price .twd,.cand-p .twd{display:block;font-size:.9em;margin-top:1px}
+th .twd,.pop-h .twd{display:none}
+.dark .twd{color:#8FA3B0}
+
+/* ── 卡片的訂位／購票列 ── */
+.pl-book{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+.pl.has-img .pl-book{margin:11px 18px 0}
+.bk-l{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  color:var(--ink-soft);margin-bottom:7px}
+.bk-row{display:flex;gap:7px;flex-wrap:wrap}
+.bk{display:inline-flex;flex-direction:column;align-items:center;gap:1px;
+  padding:7px 13px;border-radius:8px;text-decoration:none;font-size:.79rem;font-weight:650;
+  line-height:1.2;min-height:42px;justify-content:center;border:1px solid transparent}
+.bk em{font-style:normal;font-size:.62rem;font-weight:400;opacity:.75}
+.bk-off{background:var(--pounamu);color:#fff}
+.bk-3p{border-color:var(--line);color:var(--ink-2);background:var(--card)}
+.bk-3p:hover{border-color:var(--pukaki);color:var(--pukaki-dk)}
+.bk-off:hover{filter:brightness(1.1)}
+@media(max-width:600px){
+  .bk{flex:1;min-width:88px;padding:8px 10px;min-height:46px}
+}
+
 </style>
 <style>
 /* 打包清單：可勾選，狀態存在本機 */
@@ -1038,6 +1063,13 @@ details[open] summary{margin-bottom:9px}
     var q = p.addr ? p.name + ' ' + p.addr : (p.q || p.name + ' New Zealand');
     return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
   }
+  function bookUrls(p) {
+    var q = encodeURIComponent(p.bk || (p.name + ' ' + (p.town || 'New Zealand')));
+    return {
+      klook: 'https://www.klook.com/zh-TW/search/?query=' + q,
+      kkday: 'https://www.kkday.com/zh-tw/product/productlist?keyword=' + q
+    };
+  }
   function dayLabel(p) {
     var d = dayByNum[p.day];
     return d ? 'D' + String(p.day).padStart(2, '0') + ' · ' + d.date : '';
@@ -1222,8 +1254,21 @@ details[open] summary{margin-bottom:9px}
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
       '<a class="b-map" href="' + gmapUrl(p) + '" target="_blank" rel="noopener">📍 Google Maps</a>' +
-      (p.url ? '<a class="b-url" href="' + esc(p.url) + '" target="_blank" rel="noopener">官網</a>' : '') +
+      (p.url && !p.bookable ? '<a class="b-url" href="' + esc(p.url) +
+        '" target="_blank" rel="noopener">官網</a>' : '') +
       '</div>';
+
+    if (p.bookable && p.flag !== 'closed') {
+      var b = bookUrls(p);
+      h += '<div class="pl-book"><span class="bk-l">訂位／購票</span><div class="bk-row">' +
+        (p.url ? '<a class="bk bk-off" href="' + esc(p.url) +
+          '" target="_blank" rel="noopener">🏛 官網<em>直接訂最準</em></a>' : '') +
+        '<a class="bk bk-3p" href="' + b.klook + '" target="_blank" rel="noopener">' +
+          'Klook<em>搜尋</em></a>' +
+        '<a class="bk bk-3p" href="' + b.kkday + '" target="_blank" rel="noopener">' +
+          'KKday<em>搜尋</em></a>' +
+        '</div></div>';
+    }
     return h;
   }
 
@@ -1552,6 +1597,125 @@ details[open] summary{margin-bottom:9px}
     var id = btn ? btn.dataset.opt : r.options[0].id;
     var o = r.options.filter(function (x) { return x.id === id; })[0];
     if (o) window.nzDrawOption(r.day, o);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   紐幣 → 台幣：自動在頁面上所有 NZ$ 旁邊補上台幣估算
+   匯率放在 places.json 的 meta.fx，改一處全站生效
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var RATE = 18.9, ASOF = '';
+  var el = document.getElementById('places-data');
+  if (el) {
+    try {
+      var fx = JSON.parse(el.textContent).meta.fx || {};
+      if (fx.nzd_twd) RATE = fx.nzd_twd;
+      if (fx.asof) ASOF = fx.asof;
+    } catch (e) {}
+  }
+
+  /* 依金額級距取整，避免出現 NT$10,387 這種假精確 */
+  function round(n) {
+    if (n < 1000) return Math.round(n / 10) * 10;
+    if (n < 20000) return Math.round(n / 100) * 100;
+    if (n < 100000) return Math.round(n / 500) * 500;
+    return Math.round(n / 1000) * 1000;
+  }
+  function fmt(n) { return round(n).toLocaleString('en-US'); }
+  function num(s) { return parseFloat(String(s).replace(/,/g, '')); }
+
+  // NZ$549 / NZD $795 / NZD 219 / $25 / NZ$40–50
+  var RE = /(?:NZ\$|NZD\s*\$?\s*|(?<![A-Za-z])\$)(\d[\d,]*(?:\.\d+)?)(\s*[–—~-]\s*(\d[\d,]*(?:\.\d+)?))?/g;
+
+  var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, NOSCRIPT: 1, CODE: 1 };
+
+  function convert(root) {
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || n.nodeValue.indexOf('$') < 0) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        while (p && p !== root.parentNode) {
+          if (p.nodeType === 1) {
+            if (SKIP[p.tagName]) return NodeFilter.FILTER_REJECT;
+            if (p.classList && p.classList.contains('twd')) return NodeFilter.FILTER_REJECT;
+            if (p.dataset && p.dataset.twd) return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var todo = [], n;
+    while ((n = walker.nextNode())) todo.push(n);
+
+    todo.forEach(function (node) {
+      var text = node.nodeValue;
+      RE.lastIndex = 0;
+      if (!RE.test(text)) return;
+      RE.lastIndex = 0;
+      var frag = document.createDocumentFragment(), last = 0, m;
+      while ((m = RE.exec(text))) {
+        frag.appendChild(document.createTextNode(text.slice(last, m.index + m[0].length)));
+        var lo = num(m[1]);
+        var txt = isNaN(lo) ? '' :
+          (m[3] ? '（約 NT$' + fmt(lo * RATE) + '–' + fmt(num(m[3]) * RATE) + '）'
+                : '（約 NT$' + fmt(lo * RATE) + '）');
+        if (txt) {
+          var span = document.createElement('span');
+          span.className = 'twd';
+          span.textContent = txt;
+          frag.appendChild(span);
+        }
+        last = m.index + m[0].length;
+      }
+      frag.appendChild(document.createTextNode(text.slice(last)));
+      if (node.parentNode) {
+        if (node.parentNode.nodeType === 1) node.parentNode.dataset.twd = '1';
+        node.parentNode.replaceChild(frag, node);
+      }
+    });
+  }
+
+  window.nzTWD = { convert: convert, rate: RATE, asof: ASOF };
+
+  function runAll() { convert(document.body); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runAll);
+  } else { runAll(); }
+
+  /* 卡片、方案、popup 是動態產生的，內容變動後要再掃一次 */
+  var pending = null;
+  var mo = new MutationObserver(function () {
+    clearTimeout(pending);
+    pending = setTimeout(runAll, 120);
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+
+  /* 頁尾補上訂位連結與匯率說明 */
+  document.addEventListener('DOMContentLoaded', function () {
+    var f = document.querySelector('footer .wrap');
+    if (!f) return;
+    if (document.querySelector('.pl-book')) {
+      var b = document.createElement('p');
+      b.style.cssText = 'margin:10px 0 0;font-size:.78rem;color:#5F7583';
+      b.innerHTML = '卡片上的 <b>官網</b> 是實際查證過的官方網址，' +
+        '<b>建議優先從官網訂</b>——價格通常一樣或更便宜，天候取消與改期也直接跟業者談。' +
+        '<b>Klook／KKday 是「用關鍵字搜尋」的連結，不是特定商品頁</b>：' +
+        '這兩個平台不一定有賣、賣的方案內容也可能與官網不同，請自行比對。';
+      b.dataset.twd = '1';
+      f.appendChild(b);
+    }
+    if (!ASOF) return;
+    var p = document.createElement('p');
+    p.style.cssText = 'margin:10px 0 0;font-size:.78rem;color:#5F7583';
+    p.innerHTML = '台幣金額為自動換算的<b>粗估值</b>（1 NZD ≈ ' + RATE +
+      ' TWD，查詢於 ' + ASOF + '），僅供感受量級；' +
+      '<b>實際以刷卡當日匯率與銀行手續費為準</b>。';
+    p.dataset.twd = '1';
+    f.appendChild(p);
   });
 })();
 
