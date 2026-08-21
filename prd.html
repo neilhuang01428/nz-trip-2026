@@ -1566,7 +1566,9 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
   }
   /* 把命中的字詞包成 <mark>，text 會先被跳脫 */
   function hl(text) {
-    var t = esc(text);
+    // 內文允許 <b>：先整段跳脫，再把 <b> 放回來。
+    // 直接不跳脫會有 XSS 風險，完全跳脫則會把 <b> 印成文字。
+    var t = esc(text).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
     var ts = terms();
     if (!ts.length) return t;
     ts.forEach(function (k) {
