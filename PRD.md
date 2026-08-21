@@ -490,6 +490,10 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
 | **`scroll-snap` 會把捲動位置吸回去** | 讓「按箭頭捲動」看起來沒作用 |
 | **多個 agent 改同一個檔案** | 後寫的會蓋掉先寫的。要嘛排隊，要嘛用 worktree |
 | **AI 改寫文案會順手改壞事實** | 一定要寫驗證器擋，不要相信「我有注意保留」 |
+| **搜尋引擎會整批擋掉你** | 這輪四個 agent 同時撞牆：Google／Bing／DDG／Yandex／Startpage／Mojeek／Ecosia／Brave 全部 CAPTCHA 或 403，Tripadvisor／Viator／Klook 整站 403。**是出口 IP 被反爬蟲擋，不是查詢技巧問題。**能通的替代路徑：業者官網內嵌的 `schema.org` AggregateRating、聚合站頁面內嵌的 JSON（例如 wanderlog 的 `__MOBX_STATE__` 直接帶 Google 的 `rating`／`numRatings`／`permanentlyClosed`）、地區性評論站 |
+| **AI 給的數字要驗「像不像真的」** | 請外部 AI 代查評分時，它回的評論數 **66% 是 50 的倍數**（實際解析頁面拿到的只有 3%）——統計上不可能，代表是估算值。星等倒是準。**處理方式：實測優先、外部 AI 只補空缺並標記為估算，畫面上顯示「約 2,400」** |
+| **同一個地點會被兩個 agent 各收一次** | 分區蒐集時邊界地點（例如同時在去程與回程路上的小鎮）會重複。用「同名 ＋ 座標 350 公尺內」自動抓，但名稱包含關係要加長度門檻，否則「Glenorchy」會誤判成「Glenorchy Lagoon Scenic Walkway」的重複 |
+| **座標抽查要用「到所屬城鎮的距離」** | 這輪抓到兩個偏 12 公里的（一個落在鎮中心而不是實際景點）。門檻設 45 公里會留下橫跨大區域的真實案例（例如卡特林斯本身就橫跨 60 公里），那些要人工判斷 |
 
 ---
 
