@@ -145,3 +145,35 @@
 | `images/wanaka-tree.jpg` | That Wanaka Tree, New Zealand.jpg | Kate Branch | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:That_Wanaka_Tree,_New_Zealand.jpg) |
 | `images/wine-bannockburn.jpg` | Bannockburn (1), Central Otago.jpg | AnnWoolliams | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Bannockburn_(1),_Central_Otago.jpg) |
 | `images/wine-tasting.jpg` | Wine Tasting (26142992561).jpg | Paul Balfe | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Wine_Tasting_(26142992561).jpg) |
+
+| `images/barkers-geraldine.jpg` | Barker's Foodstore & Eatery | 使用者提供 | 未確認 | — |
+| `images/cardrona-distillery.jpg` | Cardrona Distillery | 使用者提供 | 未確認 | — |
+| `images/cinema-paradiso-wanaka.jpg` | Cinema Paradiso | 使用者提供 | 未確認 | — |
+| `images/dorothy-browns-cinema.jpg` | Dorothy Browns Cinema, Bar & Bookstore | 使用者提供 | 未確認 | — |
+| `images/fiordland-cinema.jpg` | Fiordland Cinema — Ata Whenua / Shadowland | 使用者提供 | 未確認 | — |
+| `images/glenorchy-lagoon-walkway.jpg` | Glenorchy Lagoon Scenic Walkway | 使用者提供 | 未確認 | — |
+| `images/glentanner-cafe.jpg` | Tasman Delta Cafe, Glentanner Park Centre | 使用者提供 | 未確認 | — |
+| `images/governors-bush.jpg` | Governors Bush Walk | 使用者提供 | 未確認 | — |
+| `images/greedy-cow-tekapo.jpg` | The Greedy Cow Cafe | 使用者提供 | 未確認 | — |
+| `images/hermitage-guided-hikes.jpg` | Hermitage Guided Hikes | 使用者提供 | 未確認 | — |
+| `images/high-country-salmon.jpg` | High Country Salmon | 使用者提供 | 未確認 | — |
+| `images/hillary-cafe.jpg` | Sir Edmund Hillary Café & Bar | 使用者提供 | 未確認 | — |
+| `images/hot-tubs-omarama.jpg` | Hot Tubs Omarama | 使用者提供 | 未確認 | — |
+| `images/lost-gypsy-gallery.jpg` | The Lost Gypsy Gallery | 使用者提供 | 未確認 | — |
+| `images/moeraki-tavern.jpg` | Moeraki Tavern | 使用者提供 | 未確認 | — |
+| `images/mrs-jones-fruit-stall.jpg` | Jones Family Fruit Stall (Mrs Jones' Fruit Stall) | 使用者提供 | 未確認 | — |
+| `images/mrs-woollys-general-store.jpg` | Mrs Woolly's General Store | 使用者提供 | 未確認 | — |
+| `images/nz-alpine-lavender.jpg` | NZ Alpine Lavender | 使用者提供 | 未確認 | — |
+| `images/onsen-hot-pools.jpg` | Onsen Hot Pools | 使用者提供 | 未確認 | — |
+| `images/pio-pio-restaurant.jpg` | Pio Pio Restaurant (Milford Sound Lodge) | 使用者提供 | 未確認 | — |
+| `images/poppies-cafe-twizel.jpg` | Poppies Café & Restaurant | 使用者提供 | 未確認 | — |
+| `images/provisions-arrowtown.jpg` | Provisions of Arrowtown | 使用者提供 | 未確認 | — |
+| `images/public-italian-kitchen.jpg` | Public Italian Kitchen | 使用者提供 | 未確認 | — |
+| `images/red-tarns.jpg` | Red Tarns Track | 使用者提供 | 未確認 | — |
+| `images/star-and-garter.jpg` | Star & Garter Restaurant | 使用者提供 | 未確認 | — |
+| `images/te-unua-museum.jpg` | Te Unua Museum of Southland (前 Southland Museum & Art Gallery) | 使用者提供 | 未確認 | — |
+| `images/the-fat-duck.jpg` | The Fat Duck | 使用者提供 | 未確認 | — |
+| `images/tlv-tekapo.jpg` | TLV Restaurant & Bar | 使用者提供 | 未確認 | — |
+| `images/tumu-toka-curioscape.jpg` | Tumu Toka Curioscape | 使用者提供 | 未確認 | — |
+| `images/white-horse-hill.jpg` | White Horse Hill Campground & Car Park | 使用者提供 | 未確認 | — |
+| `images/wrinkly-rams.jpg` | The Wrinkly Rams | 使用者提供 | 未確認 | — |
