@@ -46,6 +46,10 @@ def scan(txt, where):
         bad.append(f"{where}:b未配對")
 for p in d['places']:
     scan(p.get('note'), p['id'] + '.note')
+    for i, f in enumerate(p.get('facts') or []):
+        scan(f.get('v'), p['id'] + f'.facts[{i}]')
+    for i, w in enumerate(p.get('warn') or []):
+        scan(w, p['id'] + f'.warn[{i}]')
     dp = p.get('deep') or {}
     scan(dp.get('lead'), p['id'] + '.lead')
     for i, x in enumerate(dp.get('paras', [])): scan(x, f"{p['id']}.p{i}")
@@ -55,6 +59,20 @@ for x in c['cards']:
     for i, y in enumerate(x.get('paras', [])): scan(y, f"{x['id']}.p{i}")
 for e in t['entries']:
     for k in ('zh', 'when', 'note', 'zhsound'): scan(e.get(k), f"{e['id']}.{k}")
+# 資料裡不該出現 HTML 實體字：渲染時 hl() 會再跳脫一次，
+# 畫面上就會印出字面的「&amp;」。要寫 & 就直接寫 &。
+ent = []
+for f in ("data/places.json", "data/talk.json", "data/culture.json"):
+    try:
+        raw = open(f, encoding="utf-8").read()
+    except FileNotFoundError:
+        continue
+    for e in ("&amp;", "&lt;", "&gt;", "&quot;", "&nbsp;"):
+        if e in raw:
+            ent.append(f"{f}:{e}×{raw.count(e)}")
+if ent:
+    print("  ⚠ 資料裡有 HTML 實體字（會被印成字面）:", ent); ok = False
+
 if bad: print("  ⚠ 標籤問題:", bad[:10]); ok = False
 print()
 for f in sorted(glob.glob("*.html")):

@@ -346,6 +346,26 @@ details[open] summary{margin-bottom:9px}
 .t-unv{background:rgba(51,69,79,.1);color:var(--slate)}
 .pl-price{font-family:var(--mono);font-size:.79rem;color:var(--pounamu);font-weight:700;margin-bottom:5px}
 .pl-hours{font-size:.79rem;color:var(--ink-soft);margin-bottom:7px}
+/* 結構化事實表：標籤窄欄＋內容，比一整段文字好掃 */
+.pl-facts{margin:11px 0 0;border-top:1px solid var(--line-2)}
+.pl-facts > div{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:7px 0;
+  border-bottom:1px solid var(--line-2);font-size:.83rem;align-items:baseline}
+.pl-facts dt{font-family:var(--mono);font-size:.71rem;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7}
+.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65}
+.pl-facts dd b{color:var(--ink);font-weight:650}
+@media(max-width:420px){
+  .pl-facts > div{grid-template-columns:1fr;gap:1px;padding:8px 0}
+}
+
+/* 警語：會害你當天出事的那幾件，跟一般說明分開 */
+.pl-warn{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.pl-warn li{font-size:.83rem;line-height:1.7;color:var(--ink-2);
+  background:rgba(190,59,43,.055);border-left:3px solid var(--rata);
+  padding:9px 13px;border-radius:0 9px 9px 0}
+.pl-warn li::before{content:'⚠ ';color:var(--rata);font-weight:700}
+.pl-warn li b{color:var(--ink);font-weight:650}
+
 .pl-note{font-size:.87rem;color:var(--ink-2);line-height:1.68;margin:0 0 12px;flex:1}
 .pl-btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
 .pl-btns a,.pl-btns button{font:inherit;font-size:.77rem;font-weight:650;padding:6px 12px;
@@ -2045,12 +2065,37 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://all.accor.com/hotel/7485/index.en.shtml",
    "hours": "入住 14:00 起 · 退房 11:00",
    "flag": "ok",
-   "note": "<b>這間住兩次</b>：9/25 落地當晚，回程 <b>10/09 再住一晚</b>，10/10 搭 CI54 20:30 回台北。走路到<b>國際航廈約 390 公尺、5 分鐘</b>（OSRM 步行路線實算；官網只寫 “a short walk”，沒給分鐘數），<b>飯店沒有機場接駁車</b>——不需要，走過去就到。國內線航廈遠一點，約 1 公里、13 分鐘。⚠️ <b>官網目前公告：因機場園區施工，飯店無法提供停車位</b>，門口車道只能上下車，要停車得自己去訂 Auckland Airport 官方停車場（aucklandairport.co.nz/airport-parking）——如果那兩晚手上有租車，這件事一定要先安排。早餐（含在房價）在 <b>THIRTEEN50 Kitchen & Bar</b> 自助式，官網沒公布時段；趕時間的話官網說可以在 bar 拿熱飲、柳橙汁和可頌走人。有健身房、<b>沒有泳池</b>。官網沒有寫是不是 24 小時櫃檯，深夜抵達前建議先問。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "這間住兩次：<b>9/25 落地當晚</b>與 <b>10/09 回程</b>再一晚。走到國際航廈只有 390 公尺、5 分鐘，不需要接駁車。",
    "bookable": false,
    "img": "images/stay-novotel-akl.jpg",
    "nights": [
     2,
     16
+   ],
+   "facts": [
+    {
+     "k": "走到航廈",
+     "v": "國際線 390m／5 分（OSRM 實算，官網只寫 “a short walk”）；國內線約 1km／13 分"
+    },
+    {
+     "k": "早餐",
+     "v": "含在房價，THIRTEEN50 Kitchen & Bar 自助式（官網未公布時段）"
+    },
+    {
+     "k": "趕時間",
+     "v": "官網說可在 bar 拿熱飲、柳橙汁與可頌帶走"
+    },
+    {
+     "k": "設施",
+     "v": "健身房；沒有泳池"
+    },
+    {
+     "k": "櫃檯",
+     "v": "官網未寫是否 24 小時，深夜抵達前先問"
+    }
+   ],
+   "warn": [
+    "<b>目前沒有停車位。</b>官網公告機場園區施工期間飯店無法提供停車，門口車道只能上下車。那兩晚手上有租車的話，要自己另訂 Auckland Airport 官方停車場（aucklandairport.co.nz/airport-parking）。"
    ]
   },
   {
@@ -2499,12 +2544,37 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://www.mantralaketekapo.nz/",
    "hours": "入住 14:00 起 · 退房 10:00",
    "flag": "warn",
-   "note": "⚠️ <b>櫃檯不是 24 小時</b>：訂房平台寫每天 09:00–17:30，晚於這個時間到要先打 <b>+64 3 680 6888</b> 講一聲——<b>官網自己完全沒公布這段</b>，所以更該先問清楚。這天要從奧克蘭飛基督城再開 3 小時過來，9 月底南島天黑早，很容易卡到。房間是 fully self-contained：<b>全套廚房＋洗衣機</b>，浴室地暖、客廳瓦斯壁爐（初春夜裡會結冰，保暖沒問題；官網查不到有沒有電熱毯）。<b>免費停車，附獨立車庫</b>。館內<b>沒有餐廳、沒有早餐</b>，官網自己建議走去鎮上吃。走路到 Church of the Good Shepherd 約 810 公尺／11 分鐘、到 <b>Four Square 超市（22 Rapuwai Lane）約 1.3 公里／18 分鐘</b>（OSRM 步行路線實算——比官網說的「走 6 分鐘到鎮上」遠不少，晚上要買菜請算進去）。不收寵物。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "全套廚房＋洗衣機的公寓，浴室地暖、客廳瓦斯壁爐。<b>館內沒有餐廳也沒有早餐</b>，官網自己建議走去鎮上吃。",
    "bookable": false,
    "nights": [
     3
    ],
-   "img": "images/stay-mantra-tekapo.jpg"
+   "img": "images/stay-mantra-tekapo.jpg",
+   "facts": [
+    {
+     "k": "停車",
+     "v": "免費，附獨立車庫"
+    },
+    {
+     "k": "房內",
+     "v": "全套廚房＋洗衣機、浴室地暖、瓦斯壁爐（官網查不到有沒有電熱毯）"
+    },
+    {
+     "k": "走到教堂",
+     "v": "Church of the Good Shepherd 810m／11 分"
+    },
+    {
+     "k": "走到超市",
+     "v": "Four Square（22 Rapuwai Lane）1.3km／18 分——比官網說的「走 6 分鐘到鎮上」遠不少"
+    },
+    {
+     "k": "寵物",
+     "v": "不收"
+    }
+   ],
+   "warn": [
+    "<b>櫃檯不是 24 小時。</b>訂房平台寫每天 09:00–17:30，官網完全沒公布這段。這天要從奧克蘭飛基督城再開 3 小時過來，9 月底南島天黑早很容易卡到——晚於這個時間到要先打 <b>+64 3 680 6888</b>。"
+   ]
   },
   {
    "id": "greedy-cow-tekapo",
@@ -2696,11 +2766,36 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://hermitage.co.nz/stay/hermitage-hotel",
    "hours": "入住 15:00 起 · 退房 10:00",
    "flag": "star",
-   "note": "訂的是 <b>Bed & Breakfast Package</b>，早餐和 Alpine Dinner 都在同一棟樓的 <b>Alpine Restaurant</b>：<b>晚餐自助餐每天 17:00–20:30</b>（你們訂 18:00 入座）、<b>早餐自助餐 7:30–10:00、不用訂位</b>。這兩晚是整趟唯一不用煩惱吃飯的日子——但只含早晚餐，<b>午餐要自己解決</b>（村裡吃什麼看「The Hermitage Hotel」那張餐廳卡）。<b>停車免費</b>。Wi-Fi 免費但官網自己就寫「limited、可能很慢」，園區內有 4G 但訊號會飄。⚠️ <b>村裡沒有超市也沒有便利商店</b>，最近的商店在 66 公里外的 Twizel；村內加油站是自助刷卡的，進村前先加滿比較保險。官網查不到櫃檯是否 24 小時值班。飯店本身被洪水沖垮又被大火燒掉的故事，寫在餐廳那張卡裡。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "含早晚餐，都在同一棟樓的 Alpine Restaurant。<b>這兩晚是整趟唯一不用煩惱吃飯的日子</b>——但只含早晚餐，午餐要自己解決。",
    "bookable": false,
    "img": "images/stay-hermitage.jpg",
    "nights": [
     4
+   ],
+   "facts": [
+    {
+     "k": "晚餐",
+     "v": "Alpine Restaurant 自助餐 17:00–20:30（你們訂 18:00 入座），不用訂位"
+    },
+    {
+     "k": "早餐",
+     "v": "自助餐 7:30–10:00，不用訂位"
+    },
+    {
+     "k": "停車",
+     "v": "免費"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費，但官網自己寫「limited、可能很慢」；園區有 4G 但訊號會飄"
+    },
+    {
+     "k": "櫃檯",
+     "v": "官網查不到是否 24 小時值班"
+    }
+   ],
+   "warn": [
+    "<b>村裡沒有超市也沒有便利商店</b>，最近的商店在 66 公里外的 Twizel。村內加油站是自助刷卡的，<b>進村前先把油加滿</b>。"
    ]
   },
   {
@@ -3486,12 +3581,38 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://hermitage.co.nz/stay/mt-cook-motels",
    "hours": "入住 15:00 起 · 退房 10:00",
    "flag": "warn",
-   "note": "⚠️ <b>不要開到 motel 門口才發現沒人</b>：官網寫 <b>5–9 月的 check-in 在 Hermitage 主樓辦</b>（10–4 月才在 Mt Cook Lodge），你們 9/28 落在 5–9 月這段，先到 Hermitage 報到再開下來。<b>官網另一頁卻寫「一律到 Mt Cook Lodge 報到」，兩頁打架</b>，出發前請照訂房確認信或直接問飯店。⚠️ <b>早餐和 Alpine Dinner 都要走回 Hermitage 主樓吃</b>（官網明講 B&B／DB&B 房客一律在 Hermitage 用餐），官網說距離約 800 公尺，OSRM 步行路線實算 <b>1.1 公里、約 15 分鐘</b>；<b>官方接駁車 10/1 才開始跑</b>，你們這幾天沒有，只能走路或自己開車過去——9/28 晚上 18:00 吃完自助餐走回來天已經全黑而且很冷，<b>帶頭燈或手電筒</b>。房內有<b>完整廚房、客廳和戶外露臺</b>，停車免費、Wi-Fi 免費但很慢。<b>Motel 房型看不到 Aoraki 主峰</b>（官網自己標注的）。隔壁 50 公尺的 Mt Cook Lodge 有 Chamois Bar & Grill，但<b>官網寫明 2026/05/09–10/31 整段公休</b>，你們那兩晚吃不到——不過反正含晚餐，影響不大。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "房內有完整廚房、客廳和戶外露臺。一樣含早晚餐，<b>但要走回 Hermitage 主樓吃</b>。",
    "bookable": false,
    "nights": [
     5
    ],
-   "img": "images/stay-mtcook-motels.jpg"
+   "img": "images/stay-mtcook-motels.jpg",
+   "facts": [
+    {
+     "k": "停車",
+     "v": "免費"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費但很慢"
+    },
+    {
+     "k": "房內",
+     "v": "完整廚房、客廳、戶外露臺"
+    },
+    {
+     "k": "視野",
+     "v": "Motel 房型看不到 Aoraki 主峰（官網自己標注的）"
+    },
+    {
+     "k": "Chamois Bar",
+     "v": "隔壁 50 公尺的 Mt Cook Lodge 有，但 <b>2026/05/09–10/31 整段公休</b>，那兩晚吃不到——反正含晚餐，影響不大"
+    }
+   ],
+   "warn": [
+    "<b>不要直接開到 motel 門口。</b>官網寫 5–9 月的 check-in 在 Hermitage 主樓辦（10–4 月才在 Mt Cook Lodge），9/28 落在這一段。但官網另一頁又寫「一律到 Mt Cook Lodge 報到」，<b>兩頁打架</b>——照訂房確認信，或直接問飯店。",
+    "<b>吃飯要走回 Hermitage 主樓。</b>官網說約 800 公尺，OSRM 步行實算 <b>1.1 公里／15 分鐘</b>，而且<b>官方接駁車 10/1 才開始跑</b>。18:00 吃完自助餐走回來天已經全黑而且很冷——<b>帶頭燈或手電筒</b>。"
+   ]
   },
   {
    "id": "glide-omarama",
@@ -3902,12 +4023,34 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://gcrc.co.nz/",
    "hours": "入住 14:00 起 · 退房 10:00",
    "flag": "warn",
-   "note": "⚠️ <b>沒有 24 小時櫃檯，是屋主本人親自接待</b>。訂房平台上的業者政策寫「<b>預計 21:30 之後才到，請事先 email 聯絡</b>」——官網完全沒提這件事，所以更該主動寄信到 <b>info@gcrc.co.nz</b> 或打 <b>+64 3 443 9399</b> 報預計抵達時間。⚠️ <b>房型差很多</b>：Chalets 有小廚房＋洗衣機＋免費洗衣粉；<b>Lodge Rooms 沒有廚房</b>（只有茶包咖啡），但<b>含歐陸式早餐</b>——訂的是哪一種先確認，會決定那晚要不要出門吃。免費專屬停車位、免費 Wi-Fi、房內有暖爐。<b>走路進鎮上要 1.6 公里／約 22 分鐘，到 New World 超市 1.9 公里／26 分鐘</b>（OSRM 步行實算，跟官網說的「走 20 分鐘到湖邊」對得上）；<b>開車進鎮中心只要 3 分鐘</b>，所以這裡實務上是「開車型」住宿，晚餐別想用走的。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "屋主本人親自接待的小型住宿。開車進 Wanaka 鎮中心只要 3 分鐘，<b>實務上是「開車型」住宿，晚餐別想用走的</b>。",
    "bookable": false,
    "nights": [
     6
    ],
-   "img": "images/stay-golfcourse-wanaka.jpg"
+   "img": "images/stay-golfcourse-wanaka.jpg",
+   "facts": [
+    {
+     "k": "停車",
+     "v": "免費專屬車位"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費；房內有暖爐"
+    },
+    {
+     "k": "走到鎮上",
+     "v": "1.6km／約 22 分；New World 超市 1.9km／26 分"
+    },
+    {
+     "k": "開車",
+     "v": "進鎮中心 3 分鐘"
+    }
+   ],
+   "warn": [
+    "<b>沒有 24 小時櫃檯，是屋主本人接待。</b>業者政策寫「預計 21:30 之後才到，請事先 email 聯絡」，官網完全沒提這件事——主動寄 <b>info@gcrc.co.nz</b> 或打 <b>+64 3 443 9399</b> 報預計抵達時間。",
+    "<b>兩種房型差很多。</b>Chalets 有小廚房＋洗衣機＋免費洗衣粉；Lodge Rooms 沒有廚房（只有茶包咖啡）但<b>含歐陸式早餐</b>。訂的是哪一種，會決定那晚要不要出門吃。"
+   ]
   },
   {
    "id": "cardrona-distillery",
@@ -4385,14 +4528,44 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://www.bellavista.co.nz/our-motels/queenstown",
    "hours": "入住 15:00 起 · 退房 10:00 · 櫃檯每天 08:30–17:00",
    "flag": "star",
-   "note": "<b>整趟唯一連住 3 晚的地方</b>（9/30–10/03）。<b>停車免費、不用預約</b>——官網寫 “Free off-street parking”「車位很多」，皇后鎮市區路邊停車要錢又難找，住 3 晚等於省一大筆，這是選這間最大的好處（只有 <b>Type 2 電動車充電樁需要事先預約</b>，開燃油車不用管）。走路到市中心 690 公尺／9 分鐘、<b>到 FreshChoice 超市只要 400 公尺／5 分鐘</b>（OSRM 步行實算）——住 3 晚可以買菜自己煮。有<b>客用洗衣間</b>（官網沒寫是不是投幣，可以先問），房內是 kitchenette；⚠️ <b>Budget／Compact Studio 的小廚房沒有水槽</b>，要真正能煮要訂 Full Kitchen Studio 以上。Wi-Fi 免費不限流量。⚠️ <b>官網整站查不到「早餐」</b>，判斷不供早餐（少數訂房平台寫有 continental breakfast，與官網不符，別當真）。櫃檯只開到 17:00，但官網說<b>入住當天和非上班時間都有 self check-in</b>，做法寫在訂房確認信裡——先把那封信找出來。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "整趟唯一連住 3 晚的地方。<b>停車免費、不用預約</b>——皇后鎮市區路邊停車要錢又難找，住 3 晚等於省一大筆，這是選這間最大的好處。",
    "bookable": false,
    "nights": [
     7,
     8,
     9
    ],
-   "img": "images/stay-bella-vista-qt.jpg"
+   "img": "images/stay-bella-vista-qt.jpg",
+   "facts": [
+    {
+     "k": "停車",
+     "v": "免費戶外車位，官網寫「車位很多」（只有 Type 2 電動車充電樁要預約）"
+    },
+    {
+     "k": "走到市中心",
+     "v": "690m／9 分"
+    },
+    {
+     "k": "走到超市",
+     "v": "FreshChoice 只要 400m／5 分——住 3 晚可以買菜自己煮"
+    },
+    {
+     "k": "洗衣",
+     "v": "有客用洗衣間（官網沒寫是不是投幣）"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費不限流量"
+    },
+    {
+     "k": "櫃檯",
+     "v": "每天 08:30–17:00；入住當天與非上班時間有 self check-in，做法寫在訂房確認信裡"
+    }
+   ],
+   "warn": [
+    "<b>Budget／Compact Studio 的小廚房沒有水槽</b>，要真正能煮，房型要訂到 Full Kitchen Studio 以上。",
+    "<b>不供早餐。</b>官網整站查不到「早餐」；少數訂房平台寫有 continental breakfast，與官網不符，別當真。"
+   ]
   },
   {
    "id": "onsen-hot-pools",
@@ -5149,13 +5322,39 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://www.lakesideteanau.co.nz/",
    "hours": "入住 14:00 起 · 退房 10:00（訂房平台資料，官網沒公布）",
    "flag": "warn",
-   "note": "住 2 晚（10/03–10/05），中間那天要跑米爾福德峽灣。<b>最實用的一點：RealNZ 的巴士站（85 Lakefront Drive）就在同一條路上，走路 590 公尺／約 8 分鐘</b>（OSRM 步行實算）——10/04 早上 09:50 那班車不用開車也不用找停車位。⚠️ <b>官網沒有公布櫃檯開放時間，也沒寫晚到怎麼辦</b>，訂房平台上兩種說法互相矛盾（一說 08:00–20:00、一說 08:00–19:00），等於沒有可信答案：<b>務必先寄信 stay@lakesideteanau.co.nz 或打 +64 3 249 7435 / 0800 452 537 問清楚 10/03 那晚幾點前要到</b>，隔天一早要趕車，當晚找不到人會很麻煩。免費停車、免費不限流量 Wi-Fi、房內有暖氣和<b>做飯設備</b>；⚠️ <b>洗衣是共用洗衣間，不是每間房都有洗衣機</b>。<b>沒有早餐</b>（只有茶包和濾壓壺咖啡）。走路到鎮上約 5 分鐘、到 FreshChoice 超市（5 Milford Crescent）980 公尺／13 分鐘——<b>去峽灣的路上 120 公里沒有商店</b>，前一晚就在這裡把水和乾糧買好。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "住 2 晚，中間那天跑米爾福德峽灣。最實用的一點：<b>RealNZ 的巴士站就在同一條路上，走路 590 公尺／8 分鐘</b>——10/04 早上 09:50 那班車不用開車、也不用找停車位。",
    "bookable": false,
    "nights": [
     10,
     11
    ],
-   "img": "images/stay-lakeside-teanau.jpg"
+   "img": "images/stay-lakeside-teanau.jpg",
+   "facts": [
+    {
+     "k": "停車",
+     "v": "免費"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費不限流量；房內有暖氣與做飯設備"
+    },
+    {
+     "k": "洗衣",
+     "v": "共用洗衣間，不是每間房都有洗衣機"
+    },
+    {
+     "k": "早餐",
+     "v": "沒有，只有茶包與濾壓壺咖啡"
+    },
+    {
+     "k": "走到鎮上",
+     "v": "約 5 分；FreshChoice 超市（5 Milford Crescent）980m／13 分"
+    }
+   ],
+   "warn": [
+    "<b>櫃檯時間查不到可信答案。</b>官網沒公布，訂房平台兩種說法互相矛盾（一說 08:00–20:00、一說 08:00–19:00）。隔天一早要趕車，當晚找不到人會很麻煩——先寄 <b>stay@lakesideteanau.co.nz</b> 或打 <b>+64 3 249 7435</b> 問清楚 10/03 那晚幾點前要到。",
+    "<b>去峽灣的路上 120 公里沒有商店</b>，水和乾糧前一晚就在這裡買好。"
+   ]
   },
   {
    "id": "cruise-milford",
@@ -5976,12 +6175,37 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://www.goldenleafapartments.co.nz/",
    "hours": "入住 13:00 起 · 退房 10:00",
    "flag": "warn",
-   "note": "⚠️ <b>這天最容易晚到</b>——蒂阿瑙開過來再繞去 Bluff，回到 Invercargill 常常已經傍晚。官網<b>沒有公布櫃檯關門時間</b>（只寫租車／接送的服務時間 09:30–21:30），訂房平台則寫 10:00–21:30、超過要先聯絡：<b>出發前直接打 03 218 7212 或 0273344944、或寄 stay@gla.co.nz</b> 告知預計到達時間、確認怎麼拿鑰匙。屋主是在地的 Jan & John Strachan 夫婦。房內<b>都有廚房</b>（Unit 1–3 兩房型是正規電爐＋冰箱冷凍庫；Unit 4–7 是小烤爐＋微波爐＋小冰箱），<b>客用洗衣機和烘乾機免費</b>，還有曬衣繩——這是整趟少數能好好洗衣服的一晚。<b>免費停車，多數有頂遮蓋</b>；免費 Wi-Fi；<b>不供早餐</b>。走路到 i-SITE 遊客中心 910 公尺／12 分鐘、到 Esk Street 商店區的 Woolworths 約 1.5 公里／20 分鐘（OSRM 步行實算——官網一頁寫「走 5 分鐘到市中心」、另一頁寫「距市中心 800 公尺」，兩個都偏樂觀）。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "屋主是在地的 Jan & John Strachan 夫婦。<b>客用洗衣機和烘乾機免費，還有曬衣繩——這是整趟少數能好好洗衣服的一晚。</b>",
    "bookable": false,
    "nights": [
     12
    ],
-   "img": "images/stay-golden-leaf-inv.jpg"
+   "img": "images/stay-golden-leaf-inv.jpg",
+   "facts": [
+    {
+     "k": "廚房",
+     "v": "Unit 1–3（兩房型）是正規電爐＋冰箱冷凍庫；Unit 4–7 是小烤爐＋微波爐＋小冰箱"
+    },
+    {
+     "k": "洗衣",
+     "v": "客用洗衣機與烘乾機<b>免費</b>，還有曬衣繩"
+    },
+    {
+     "k": "停車",
+     "v": "免費，多數有頂遮蓋"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費；不供早餐"
+    },
+    {
+     "k": "走到市區",
+     "v": "i-SITE 遊客中心 910m／12 分；Woolworths（Esk Street）約 1.5km／20 分——官網寫的「走 5 分鐘到市中心」偏樂觀"
+    }
+   ],
+   "warn": [
+    "<b>這天最容易晚到</b>——蒂阿瑙開過來再繞去 Bluff，回到 Invercargill 常常已經傍晚。官網沒公布櫃檯關門時間，訂房平台寫 10:00–21:30、超過要先聯絡。出發前直接打 <b>03 218 7212</b> 或寄 <b>stay@gla.co.nz</b> 告知預計到達時間、確認怎麼拿鑰匙。"
+   ]
   },
   {
    "id": "albatross-centre",
@@ -6613,7 +6837,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://ebb-dunedin.co.nz/",
    "hours": "入住 15:00 起 · 退房 11:00 · 櫃檯 07:00–23:00（23:00 後到要先聯絡）",
    "flag": "star",
-   "note": "⚠️ <b>只收成人</b>（adults only，不接受兒童、沒有嬰兒床）。櫃檯 07:00–23:00，官網說可以 24 小時入住，但<b>超過 23:00 抵達一定要先聯絡拿進入方式</b>。⚠️ <b>附設的 Ebb-Kitchen 每天 06:45 開，只開到「下午中段」</b>（官網原文 mid afternoon，沒給確切時間），<b>晚上不供餐</b>——那頓晚餐要自己出門。好消息是走出去就有：走路到八角廣場 The Octagon 560 公尺／8 分鐘、到 New World 超市 500 公尺／7 分鐘、到但尼丁火車站 970 公尺／13 分鐘（OSRM 步行實算）。附近常被提到的晚餐選擇有 Bacchus Wine Bar（The Octagon 樓上，週日休）、Etrusco at the Savoy（義大利菜，8A Moray Place）、Two Chefs Bistro（121 Stuart Street）——<b>營業時間都是第三方資料，當天先查或先訂位</b>。⚠️ <b>停車要錢</b>：現場 18 個車位、每晚 NZ$25，<b>車高上限 2.38 公尺</b>，開露營車或高頂廂型車進不去。Wi-Fi 免費。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "2021 年落成的設計旅館，走出門就是市中心。<b>只收成人</b>（不接受兒童、沒有嬰兒床）。",
    "deep": {
     "lead": "這間旅館的名字叫「退潮」，因為它蓋在一片已經被填掉的潮間灘地上。",
     "paras": [
@@ -6629,6 +6853,24 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/stay-ebb-dunedin.jpg",
    "nights": [
     13
+   ],
+   "facts": [
+    {
+     "k": "櫃檯",
+     "v": "07:00–23:00。官網說可 24 小時入住，但超過 23:00 抵達一定要先聯絡拿進入方式"
+    },
+    {
+     "k": "走到市區",
+     "v": "The Octagon 560m／8 分；New World 500m／7 分；但尼丁火車站 970m／13 分"
+    },
+    {
+     "k": "Wi-Fi",
+     "v": "免費"
+    }
+   ],
+   "warn": [
+    "<b>晚餐要自己出門。</b>附設的 Ebb-Kitchen 每天 06:45 開，只開到「下午中段」（官網原文 mid afternoon，沒給確切時間），晚上不供餐。附近常被提到的有 Bacchus Wine Bar（週日休）、Etrusco at the Savoy、Two Chefs Bistro——營業時間都是第三方資料，當天先查或先訂位。",
+    "<b>停車要錢：</b>現場 18 個車位、每晚 NZ$25，<b>車高上限 2.38 公尺</b>，高頂廂型車進不去。"
    ]
   },
   {
@@ -6981,7 +7223,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://www.oldconfectionery.co.nz/",
    "hours": "官網沒公布入住／退房時間（訂房平台寫 14:00 / 10:00，非官方）",
    "flag": "ok",
-   "note": "<b>完全自助入住，現場沒有人</b>：大門是電子密碼鎖，<b>密碼會在入住前用 email 寄給你</b>——所以晚到不是問題，但<b>出發前務必確認那封 email 有收到</b>（寄信 info@oldconfectionery.co.nz 或打 +64 21 022 10093）。整棟只有 <b>2 套公寓</b>（樓下 Heritage、樓上有海景的 Sea View），兩套都有<b>完整廚房</b>（大烤箱、洗碗機、冰箱冷凍庫）和<b>洗衣設備</b>。戶外停車位有感應照明，Wi-Fi 免費。<b>不供早餐</b>，改成線上直接訂房送在地 Whitestone 起司和餅乾——所以早餐要前一天先買好。走路到維多利亞舊城區（Harbour／Tyne Street 那一帶）560 公尺／8 分鐘、到 Woolworths 超市 700 公尺／9 分鐘、<b>到藍企鵝棲息地 1.5 公里／約 20 分鐘</b>（OSRM 步行實算；看完企鵝天已經黑，走回來要帶燈，或乾脆開車）。⚠️ <b>官網沒有公布入住／退房的鐘點時間</b>，訂房那天順便問一下。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "完全自助入住，現場沒有人：<b>大門是電子密碼鎖，密碼會在入住前用 email 寄給你</b>。所以晚到不是問題。整棟只有 2 套公寓。",
    "deep": {
     "lead": "這棟樓的第一任屋主，名錄上先登記成水果商，三年後改登記成賣魚的。",
     "paras": [
@@ -6996,7 +7238,32 @@ input:focus-visible,[tabindex]:focus-visible{
    "nights": [
     14
    ],
-   "img": "images/stay-old-confectionery.jpg"
+   "img": "images/stay-old-confectionery.jpg",
+   "facts": [
+    {
+     "k": "房型",
+     "v": "樓下 Heritage、樓上 Sea View（有海景）。兩套都有完整廚房（大烤箱、洗碗機、冰箱冷凍庫）與洗衣設備"
+    },
+    {
+     "k": "停車",
+     "v": "戶外車位，有感應照明；Wi-Fi 免費"
+    },
+    {
+     "k": "早餐",
+     "v": "不供應。官網直訂會送在地 Whitestone 起司與餅乾——早餐要前一天先買好"
+    },
+    {
+     "k": "走到舊城區",
+     "v": "維多利亞舊城區（Harbour／Tyne Street）560m／8 分；Woolworths 700m／9 分"
+    },
+    {
+     "k": "走到企鵝棲息地",
+     "v": "1.5km／約 20 分。看完企鵝天已經黑，走回來要帶燈，或乾脆開車"
+    }
+   ],
+   "warn": [
+    "<b>出發前務必確認密碼那封 email 有收到</b>（<b>info@oldconfectionery.co.nz</b>／+64 21 022 10093）。官網也沒有公布入住／退房的鐘點時間，訂房那天順便一起問。"
+   ]
   },
   {
    "id": "akaroa-dolphins",
@@ -7272,11 +7539,32 @@ input:focus-visible,[tabindex]:focus-visible{
    "url": "https://all.accor.com/hotel/A542/index.en.shtml",
    "hours": "入住 14:00 起 · 退房 11:00 · 24 小時櫃檯",
    "flag": "star",
-   "note": "官網直接寫死「<b>2 Minute walk to Christchurch Airport terminal</b>」，OSRM 步行實算 300 公尺／4 分鐘——就在航廈門外，10/09 一早飛奧克蘭完全不用算接駁時間，這是整趟最省事的一晚。<b>有 24 小時櫃檯</b>（官網明講），晚到不用擔心。含早餐，餐廳是頂樓的 <b>Food Exchange</b>，天氣好看得到南阿爾卑斯山（官網沒公布供餐時段）。有健身房、<b>沒有泳池</b>。⚠️ <b>停車要另外付費</b>，用的是機場的停車格（官網沒公布金額，訂房平台寫每天 NZ$30，非官方數字）——當天要還租車的話，先確認還車地點和步行動線。開車到基督城市中心 10.4 公里／約 17 分鐘（OSRM 實算），官網說搭大眾運輸 15 分鐘內可到。（查證 2026/08/23 · 以官網最新為準）",
+   "note": "官網直接寫死「2 Minute walk to terminal」，OSRM 實算 300 公尺／4 分鐘。<b>10/09 一早飛奧克蘭完全不用算接駁時間——這是整趟最省事的一晚。</b>",
    "bookable": false,
    "img": "images/stay-novotel-chc.jpg",
    "nights": [
     15
+   ],
+   "facts": [
+    {
+     "k": "櫃檯",
+     "v": "<b>24 小時</b>（官網明講），晚到不用擔心"
+    },
+    {
+     "k": "早餐",
+     "v": "含在房價，餐廳是頂樓的 Food Exchange，天氣好看得到南阿爾卑斯山（官網沒公布時段）"
+    },
+    {
+     "k": "設施",
+     "v": "健身房；沒有泳池"
+    },
+    {
+     "k": "到市中心",
+     "v": "開車 10.4km／約 17 分；官網說搭大眾運輸 15 分鐘內可到"
+    }
+   ],
+   "warn": [
+    "<b>停車要另外付費</b>，用的是機場的停車格（官網沒公布金額，訂房平台寫每天 NZ$30，非官方數字）。當天要還租車的話，先確認還車地點和步行動線。"
    ]
   },
   {
@@ -11684,6 +11972,22 @@ input:focus-visible,[tabindex]:focus-visible{
     if (p.price) h += '<div class="pl-price">' + esc(p.price) + '</div>';
     if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
     if (p.note) h += '<p class="pl-note">' + hl(p.note) + '</p>';
+
+    // facts：結構化的實用資訊（停車、早餐、走到超市…）。
+    // 住宿卡尤其需要——把它們塞回 note 會變成一大坨字，掃不到重點。
+    if (p.facts && p.facts.length) {
+      h += '<dl class="pl-facts">';
+      p.facts.forEach(function (f) {
+        h += '<div><dt>' + esc(f.k) + '</dt><dd>' + hl(f.v) + '</dd></div>';
+      });
+      h += '</dl>';
+    }
+    // warn：會害你當天出事的那幾件，單獨拉出來標紅
+    if (p.warn && p.warn.length) {
+      h += '<ul class="pl-warn">';
+      p.warn.forEach(function (w) { h += '<li>' + hl(w) + '</li>'; });
+      h += '</ul>';
+    }
 
     if (p.deep && p.deep.lead) {
       var did = 'deep-' + p.id;

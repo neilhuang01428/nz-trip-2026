@@ -421,6 +421,22 @@
     if (p.hours) h += '<div class="pl-hours">🕐 ' + esc(p.hours) + '</div>';
     if (p.note) h += '<p class="pl-note">' + hl(p.note) + '</p>';
 
+    // facts：結構化的實用資訊（停車、早餐、走到超市…）。
+    // 住宿卡尤其需要——把它們塞回 note 會變成一大坨字，掃不到重點。
+    if (p.facts && p.facts.length) {
+      h += '<dl class="pl-facts">';
+      p.facts.forEach(function (f) {
+        h += '<div><dt>' + esc(f.k) + '</dt><dd>' + hl(f.v) + '</dd></div>';
+      });
+      h += '</dl>';
+    }
+    // warn：會害你當天出事的那幾件，單獨拉出來標紅
+    if (p.warn && p.warn.length) {
+      h += '<ul class="pl-warn">';
+      p.warn.forEach(function (w) { h += '<li>' + hl(w) + '</li>'; });
+      h += '</ul>';
+    }
+
     if (p.deep && p.deep.lead) {
       var did = 'deep-' + p.id;
       h += '<button type="button" class="pl-more" data-deep="' + did + '" aria-expanded="false" ' +

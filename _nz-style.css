@@ -331,6 +331,26 @@ details[open] summary{margin-bottom:9px}
 .t-unv{background:rgba(51,69,79,.1);color:var(--slate)}
 .pl-price{font-family:var(--mono);font-size:.79rem;color:var(--pounamu);font-weight:700;margin-bottom:5px}
 .pl-hours{font-size:.79rem;color:var(--ink-soft);margin-bottom:7px}
+/* 結構化事實表：標籤窄欄＋內容，比一整段文字好掃 */
+.pl-facts{margin:11px 0 0;border-top:1px solid var(--line-2)}
+.pl-facts > div{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:7px 0;
+  border-bottom:1px solid var(--line-2);font-size:.83rem;align-items:baseline}
+.pl-facts dt{font-family:var(--mono);font-size:.71rem;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7}
+.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65}
+.pl-facts dd b{color:var(--ink);font-weight:650}
+@media(max-width:420px){
+  .pl-facts > div{grid-template-columns:1fr;gap:1px;padding:8px 0}
+}
+
+/* 警語：會害你當天出事的那幾件，跟一般說明分開 */
+.pl-warn{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.pl-warn li{font-size:.83rem;line-height:1.7;color:var(--ink-2);
+  background:rgba(190,59,43,.055);border-left:3px solid var(--rata);
+  padding:9px 13px;border-radius:0 9px 9px 0}
+.pl-warn li::before{content:'⚠ ';color:var(--rata);font-weight:700}
+.pl-warn li b{color:var(--ink);font-weight:650}
+
 .pl-note{font-size:.87rem;color:var(--ink-2);line-height:1.68;margin:0 0 12px;flex:1}
 .pl-btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
 .pl-btns a,.pl-btns button{font:inherit;font-size:.77rem;font-weight:650;padding:6px 12px;
