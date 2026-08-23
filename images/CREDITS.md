@@ -1,6 +1,6 @@
 # 圖片來源與授權
 
-共 137 張，全部取自 Wikimedia Commons。使用時請保留原作者署名與授權標示。
+共 140 張，全部取自 Wikimedia Commons。使用時請保留原作者署名與授權標示。
 
 | 檔案 | 原始標題 | 作者 | 授權 | 來源頁 |
 |---|---|---|---|---|
@@ -17,6 +17,7 @@
 | `images/bushy-beach.jpg` | Bushy Beach on a foggy day.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bushy_Beach_on_a_foggy_day.jpg) |
 | `images/canterbury-museum-popup.jpg` | Canterbury Museum 01.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Canterbury_Museum_01.jpg) |
 | `images/cardrona.jpg` | Hotel Cardrona New Zealand.jpg | Kate Branch | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Hotel_Cardrona_New_Zealand.jpg) |
+| `images/cardrona-bra-fence.jpg` | Cardrona Bra Fence July 2025.jpg | Orangesclub | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Cardrona_Bra_Fence_July_2025.jpg) |
 | `images/cathedral-caves.jpg` | Jeskyně Cathedral Caves - panoramio.jpg | Pavel Špindler | CC BY 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Jeskyn%C4%9B_Cathedral_Caves_-_panoramio.jpg) |
 | `images/chch-art-gallery.jpg` | Christchurch Art Gallery, Christchurch, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Christchurch_Art_Gallery,_Christchurch,_New_Zealand.jpg) |
 | `images/chch-cathedral-square.jpg` | Christ Church Cathedral roof in 2014.jpg | Jocelyn Kinghorn from Christchurch, New Zealand | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Christ_Church_Cathedral_roof_in_2014.jpg) |
@@ -25,13 +26,13 @@
 | `images/cromwell.jpg` | Giant Fruit Sculpture - Cromwell, New Zealand (32883069321).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Giant_Fruit_Sculpture_-_Cromwell,_New_Zealand_(32883069321).jpg) |
 | `images/crown-range.jpg` | View From Crown Range Road (4678902022).jpg | edwin.11 | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:View_From_Crown_Range_Road_(4678902022).jpg) |
 | `images/croydon-aviation.jpg` | NZ140315 Croydon Dragon Rapide.jpg | Oren Rozen | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:NZ140315_Croydon_Dragon_Rapide.jpg) |
+| `images/deer-park-heights.jpg` | Breath Taking (6568665785).jpg | Michael Coghlan from Adelaide, Australia | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Breath_Taking_(6568665785).jpg) |
 | `images/do-bungy.jpg` | Bungy jumping from the Kawarau Bridge near Queenstown 1988 (10805217116).jpg | Archives New Zealand from New Zealand | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_(10805217116).jpg) |
 | `images/do-earnslaw.jpg` | TSS Earnslaw. At Walter Peak. (26383024475).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:TSS_Earnslaw._At_Walter_Peak._(26383024475).jpg) |
 | `images/do-gondola.jpg` | Skyline Queenstown Gondola.jpg | Skyline Enterprises NZ | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Skyline_Queenstown_Gondola.jpg) |
 | `images/do-jetboat.jpg` | Ya gota do this ! Shotover Jet. Queenstown NZ (23724021264).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Ya_gota_do_this_!_Shotover_Jet._Queenstown_NZ_(23724021264).jpg) |
 | `images/do-punting.jpg` | Punting on the Avon - Christchurch, NZ - DSC01026.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Punting_on_the_Avon_-_Christchurch,_NZ_-_DSC01026.jpg) |
 | `images/do-speights.jpg` | Speight's Brewery - Dunedin, NZ - DSC04601.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Speight%27s_Brewery_-_Dunedin,_NZ_-_DSC04601.jpg) |
-| `images/do-walterpeak.jpg` | 瓦尔特峰高原牧场 Walter Peak High Country Farm - panoramio.jpg | wanghongliu | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:%E7%93%A6%E5%B0%94%E7%89%B9%E5%B3%B0%E9%AB%98%E5%8E%9F%E7%89%A7%E5%9C%BA_Walter_Peak_High_Country_Farm_-_panoramio.jpg) |
 | `images/doc-mtcook-visitor.jpg` | Mount Cook Information Centre (31291393631).jpg | Tony Hisgett from Birmingham, UK | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mount_Cook_Information_Centre_(31291393631).jpg) |
 | `images/doc-trap.jpg` | DOC 200 Trap on Pigeon Island.jpg | Kimberley Collins | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:DOC_200_Trap_on_Pigeon_Island.jpg) |
 | `images/dunedin-station.jpg` | 00 1513 Dunedin (New Zealand) - Railway Station.jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_1513_Dunedin_(New_Zealand)_-_Railway_Station.jpg) |
@@ -138,6 +139,7 @@
 | `images/tekapo-church.jpg` | Church of the Good Shepherd, Lake Tekapo, New Zealand 03.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Church_of_the_Good_Shepherd,_Lake_Tekapo,_New_Zealand_03.jpg) |
 | `images/tekapo-milkyway.jpg` | Milky way galaxy, lake Tekapo, stargazing view 3.jpg | Sky_xe | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Milky_way_galaxy,_lake_Tekapo,_stargazing_view_3.jpg) |
 | `images/tekapo-pano.jpg` | Lake Tekapo from Mt John Observatory.jpg | joka2000 | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Tekapo_from_Mt_John_Observatory.jpg) |
+| `images/tunnel-beach.jpg` | Cliffs around Tunnel Beach.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Cliffs_around_Tunnel_Beach.jpg) |
 | `images/turanga.jpg` | Children's section of Tūranga Central Library in Christchurch, New Zealand.jpg | Isaac Freeman | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Children%27s_section_of_T%C5%ABranga_Central_Library_in_Christchurch,_New_Zealand.jpg) |
 | `images/waipapa-point-lighthouse.jpg` | Waipapa Point Lighthouse4.jpg | russellstreet | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Waipapa_Point_Lighthouse4.jpg) |
 | `images/wanaka-tree.jpg` | That Wanaka Tree, New Zealand.jpg | Kate Branch | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:That_Wanaka_Tree,_New_Zealand.jpg) |

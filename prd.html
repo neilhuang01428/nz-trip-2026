@@ -1162,7 +1162,7 @@ input:focus-visible,[tabindex]:focus-visible{
 <div id="prog"></div>
 <header class="topbar"><div class="inner">
 <a class="logo" href="index.html">南島 <em>2026</em></a>
-<span class="pagename"></span>
+<span class="pagename">架構說明</span>
 <nav aria-label="分頁導覽">
 <span class="navlbl" aria-hidden="true">分頁</span>
 <div class="navtrack">
@@ -1171,7 +1171,7 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="eat.html"><span class="ic" aria-hidden="true">🍽</span><span class="tx">吃的</span></a>
 <a href="book.html"><span class="ic" aria-hidden="true">🎟</span><span class="tx">需預約</span></a>
 <a href="skydive.html"><span class="ic" aria-hidden="true">🪂</span><span class="tx">跳傘</span></a>
-<a href="glacier.html"><span class="ic" aria-hidden="true">🚁</span><span class="tx">冰川</span></a>
+<a href="mtcook.html"><span class="ic" aria-hidden="true">🥾</span><span class="tx">健行</span></a>
 <a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
 <a href="talk.html"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
 <a href="prepare.html"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
@@ -1230,7 +1230,7 @@ input:focus-visible,[tabindex]:focus-visible{
 └── *.html                 產出（不要手改）</code></pre>
 <h3 id="1-3-build-的運作方式">1.3 build 的運作方式</h3>
 <p><code>_build.py</code> 把樣板裡的佔位標記換成實際內容：</p>
-<div class="tw"><table><thead><tr><th>標記</th><th>換成什麼</th></tr></thead><tbody><tr><td><code>&lt;!--NZCSS--&gt;</code></td><td><code>_nz-style.css</code> 全文，包在 <code>&lt;style&gt;</code> 裡</td></tr><tr><td><code>&lt;!--NZJS--&gt;</code></td><td><code>assets/app.js</code> 全文，包在 <code>&lt;script&gt;</code> 裡</td></tr><tr><td><code>&lt;!--PLACES--&gt;</code></td><td><code>data/places.json</code>，包在 <code>&lt;script type=&quot;application/json&quot;&gt;</code> 裡</td></tr><tr><td><code>&lt;!--CULTURE--&gt;</code></td><td><code>data/culture.json</code></td></tr><tr><td><code>&lt;!--TALK--&gt;</code></td><td><code>data/talk.json</code></td></tr><tr><td><code>&lt;!--ROUTESGEO--&gt;</code></td><td><code>data/routes-geo.json</code></td></tr><tr><td><code>&lt;!--NAV--&gt;</code></td><td>桌機頂部導覽列（自動標出目前頁）</td></tr><tr><td><code>&lt;!--TABBAR--&gt;</code></td><td>手機底部分頁列 ＋「更多」選單</td></tr><tr><td><code>&lt;!--LEAFLET--&gt;</code></td><td>Leaflet 的 CDN 標籤（含 SRI）</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>標記</th><th>換成什麼</th></tr></thead><tbody><tr><td><code>&lt;!--NZCSS--&gt;</code></td><td><code>_nz-style.css</code> 全文，包在 <code>&lt;style&gt;</code> 裡</td></tr><tr><td><code>&lt;!--NZJS--&gt;</code></td><td><code>assets/app.js</code> 全文，包在 <code>&lt;script&gt;</code> 裡</td></tr><tr><td><code>&lt;!--PLACES--&gt;</code></td><td><code>data/places.json</code>，包在 <code>&lt;script type=&quot;application/json&quot;&gt;</code> 裡</td></tr><tr><td><code>&lt;!--CULTURE--&gt;</code></td><td><code>data/culture.json</code></td></tr><tr><td><code>&lt;!--TALK--&gt;</code></td><td><code>data/talk.json</code>（可以放在<strong>任何</strong>分頁，不只會話頁）</td></tr><tr><td><code>&lt;!--ROUTESGEO--&gt;</code></td><td><code>data/routes-geo.json</code></td></tr><tr><td><code>&lt;!--NAV--&gt;</code></td><td>桌機頂部導覽列（自動標出目前頁）</td></tr><tr><td><code>&lt;!--TABBAR--&gt;</code></td><td>手機底部分頁列 ＋「更多」選單</td></tr><tr><td><code>&lt;!--LEAFLET--&gt;</code></td><td>Leaflet 的 CDN 標籤（含 SRI）</td></tr></tbody></table></div>
 <p>指令：<code>python3 _build.py</code>（全部）或 <code>python3 _build.py _src/eat.html</code>（單頁） <strong>改完一定要跑 <code>python3 _check.py</code></strong>，它會查 id 重複、內文標籤、缺圖、未替換的標記、孤兒圖片、無授權記錄的圖片。</p>
 <h3 id="1-4-外部依賴-全部免金鑰">1.4 外部依賴（全部免金鑰）</h3>
 <div class="tw"><table><thead><tr><th>用途</th><th>服務</th><th>注意事項</th></tr></thead><tbody><tr><td>地圖</td><td>Leaflet 1.9.4 + OpenStreetMap 圖磚</td><td>必須標示 OSM 貢獻者；不可大量下載圖磚</td></tr><tr><td>導航連結</td><td>Google Maps URLs API</td><td>不需金鑰。<code>/maps/search/?api=1&amp;query=</code> 與 <code>/maps/dir/?api=1&amp;origin=&amp;destination=&amp;waypoints=</code></td></tr><tr><td>座標補齊</td><td>Nominatim</td><td><strong>1 秒 1 次</strong>，要帶自訂 User-Agent，限定國別</td></tr><tr><td>道路幾何</td><td>OSRM demo server</td><td>build 時跑一次存成 JSON，執行時完全不依賴</td></tr><tr><td>發音</td><td>瀏覽器內建 SpeechSynthesis</td><td>離線可用，不需金鑰</td></tr><tr><td>圖片</td><td>Wikimedia Commons</td><td>只用 CC0／CC BY／CC BY-SA，作者與授權要記進 <code>credits.json</code></td></tr></tbody></table></div>
@@ -1263,7 +1263,11 @@ input:focus-visible,[tabindex]:focus-visible{
       &quot;id&quot;: &quot;fergburger&quot;,              // kebab-case，全站唯一
       &quot;name&quot;: &quot;Fergburger&quot;,            // 官方名稱（當地語言）
       &quot;zh&quot;: &quot;皇后鎮排隊漢堡&quot;,           // 中文名或一句話定位
-      &quot;cat&quot;: &quot;eat&quot;,                    // 對應 meta.cats
+      &quot;cat&quot;: &quot;eat&quot;,                    // 對應 meta.cats（一個地點只有一個「家」）
+      &quot;also&quot;: [&quot;mtcook&quot;],              // 可選。把這個地點「借放」到別的分頁，
+                                       // 但不改變它原本的分類與計數。
+                                       // 例：胡克谷步道本質是 sight，但也要出現在健行頁。
+                                       // 分頁端寫 &lt;div id=&quot;app&quot; data-cat=&quot;mtcook&quot;&gt;
       &quot;day&quot;: 8,                        // 對應 meta.days 的 d
       &quot;town&quot;: &quot;Queenstown&quot;,
       &quot;lat&quot;: -45.0311, &quot;lng&quot;: 168.6612,
@@ -1337,8 +1341,14 @@ input:focus-visible,[tabindex]:focus-visible{
 <hr>
 <h2 id="3-分頁架構">3. 分頁架構</h2>
 <div class="tw"><table><thead><tr><th>分頁</th><th>內容</th><th>資料來源</th></tr></thead><tbody><tr><td><strong>總覽</strong></td><td>封面、分頁入口、全部地點的總地圖、幾個先知道的重點</td><td>places.json</td></tr><tr><td><strong>景點</strong></td><td>分類 <code>sight</code> 的卡片 ＋ 地圖 ＋ 篩選 ＋ 搜尋</td><td>places.json</td></tr><tr><td><strong>吃的</strong></td><td>分類 <code>eat</code>，特別標公休日與季節</td><td>places.json</td></tr><tr><td><strong>需預約</strong></td><td>分類 <code>book</code>，標出「一定要先訂」的</td><td>places.json</td></tr><tr><td><strong>重頭戲</strong>（可 0–N 頁）</td><td>這趟最重要的活動，各自獨立成頁，含廠商比較、天候備案</td><td>places.json ＋ 樣板內容</td></tr><tr><td><strong>文化與背景</strong></td><td>讓體驗加分的知識卡片</td><td>culture.json</td></tr><tr><td><strong>開口講</strong></td><td>當地語言、地名發音、路上的標語、實用會話，可朗讀</td><td>talk.json</td></tr><tr><td><strong>行前注意</strong></td><td>天氣、穿什麼、打包清單（可勾選）、開車規則、入境</td><td>樣板內容</td></tr><tr><td><strong>行程安排</strong></td><td>逐日一覽 ＋ 有選擇的日子的方案切換 ＋ 路線圖</td><td>places.json 的 routes</td></tr></tbody></table></div>
+<h3 id="3-1-兩個-借用-機制-讓內容不必複製兩份">3.1 兩個「借用」機制（讓內容不必複製兩份）</h3>
+<p>同一份資料常常同時屬於兩個分頁。與其複製，不如借用——<strong>資料只有一份，出現在多處</strong>：</p>
+<div class="tw"><table><thead><tr><th>機制</th><th>寫在哪</th><th>作用</th></tr></thead><tbody><tr><td><code>also: [&quot;&lt;page&gt;&quot;]</code></td><td><code>places.json</code> 的地點物件</td><td>把地點借到別的分頁的地圖與清單，<strong>不改變它的 <code>cat</code> 與計數</strong></td></tr><tr><td><code>data-cat=&quot;a,b&quot;</code></td><td>分頁的 <code>&lt;div id=&quot;app&quot;&gt;</code></td><td>一個分頁可以同時收多個分類</td></tr><tr><td><code>data-ids=&quot;id1,id2&quot;</code></td><td>分頁的 <code>&lt;div id=&quot;app&quot;&gt;</code></td><td>直接指定要顯示哪幾個地點（最精準，但要手動維護）</td></tr><tr><td><code>data-secs=&quot;x,y&quot;</code></td><td>分頁的 <code>&lt;div id=&quot;talk&quot;&gt;</code></td><td>只渲染 <code>talk.json</code> 裡指定 sec 的會話卡，<strong>把會話嵌進主題頁</strong></td></tr></tbody></table></div>
+<p>實例：跳傘頁在頁面中段嵌了 <code>&lt;div id=&quot;talk&quot; data-secs=&quot;book,sdme,sdgear,sdcmd,sdafter&quot;&gt;</code>， 讓「教練會喊什麼」那幾組會話卡直接出現在跳傘的脈絡裡，而不是叫讀者跳去會話頁自己找。</p>
+<p><strong>設計原則：主題頁負責「怎麼決定、怎麼做」，共用資料負責「事實」。</strong> 不要為了讓某頁好看就把事實複製一份——複製的那份一定會過期。</p>
+<hr>
 <p><strong>分頁數量可以增減</strong>，但這幾件事建議保留：</p>
-<ol><li><strong>主題分頁 ＋ 地圖 ＋ 日期篩選</strong>這組合是核心</li><li><strong>行程頁放方案比較</strong>，不要把選擇藏在文字裡</li><li><strong>行前頁</strong>是實用價值最高的一頁，不要省</li><li><strong>重頭戲獨立成頁</strong>——最貴、最看天氣的活動值得一整頁講清楚</li></ol>
+<ol><li><strong>主題分頁 ＋ 地圖 ＋ 日期篩選</strong>這組合是核心</li><li><strong>行程頁放方案比較</strong>，不要把選擇藏在文字裡</li><li><strong>行前頁</strong>是實用價值最高的一頁，不要省</li><li><strong>重頭戲獨立成頁</strong>——最貴、最看天氣的活動值得一整頁講清楚</li><li><strong>改案了不要刪舊頁</strong>——把舊的研究頁留著、在最上面加一個「最後定案」的總結框、 並從導覽列拿掉（<code>_build.py</code> 的 <code>PAGES</code> 移除該筆即可，檔案照樣會被 build）。 決策過程本身就是資產：下次有人問「為什麼不去 X」，答案已經寫好了</li></ol>
 <hr>
 <h2 id="4-核心功能">4. 核心功能</h2>
 <div class="tw"><table><thead><tr><th>功能</th><th>說明</th></tr></thead><tbody><tr><td><strong>日期篩選</strong></td><td>選某一天，只留那天路線上的地點。選了會顯示那天的行程摘要</td></tr><tr><td><strong>條件篩選</strong></td><td>必去／要預約／免費／隱藏已歇業</td></tr><tr><td><strong>關鍵字搜尋</strong></td><td>多關鍵字 AND，命中反白，比對範圍含展開後的內文</td></tr><tr><td><strong>清單／地圖切換</strong></td><td>手機是全螢幕地圖面板，桌機是上下並排</td></tr><tr><td><strong>卡片 ↔ 地圖雙向連動</strong></td><td>點卡片的「在地圖上」會捲到地圖並開 popup；點 pin 會反白卡片</td></tr><tr><td><strong>卡片展開</strong></td><td>「知道了會不一樣」的深度知識，沒特別可講就不顯示這一塊</td></tr><tr><td><strong>外幣自動換算</strong></td><td>內文出現當地幣別時，自動在旁邊加上母語幣別估算</td></tr><tr><td><strong>訂位連結</strong></td><td>官網 ／ 第三方平台（Klook、KKday…）分開列</td></tr><tr><td><strong>發音朗讀</strong></td><td>用瀏覽器內建語音，離線可用；另附真人發音的外部連結</td></tr><tr><td><strong>打包清單</strong></td><td>可勾選，狀態存在 localStorage</td></tr><tr><td><strong>路線圖</strong></td><td>build 時用 OSRM 算好道路幾何，執行時不依賴外部 API</td></tr></tbody></table></div>
@@ -1486,7 +1496,7 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
 <div class="sheet" id="more-sheet" data-sheet hidden>
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
-<a href="glacier.html"><span>🚁</span>冰川</a>
+<a href="mtcook.html"><span>🥾</span>健行</a>
 <a href="culture.html"><span>🗿</span>文化</a>
 <a href="talk.html"><span>💬</span>會話</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
@@ -1511,9 +1521,20 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
   var root = document.getElementById('app');
   if (!root) return;
 
-  var PAGE_CAT = root.dataset.cat || '';            // '' = 全部
+  // data-cat 可以寫成 "glacier" 或 "sight,book" 多個分類。
+  // 另外，一個地點可以用 also:["mtcook"] 借放到別的分頁，
+  // 而不必離開它原本的分類（例如胡克谷步道本質是景點，但也要出現在健行頁）。
+  var PAGE_CATS = (root.dataset.cat || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
+  var PAGE_IDS = (root.dataset.ids || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
   var pool = DB.places.filter(function (p) {
-    return (!PAGE_CAT || p.cat === PAGE_CAT) && p.lat && p.lng;
+    if (!p.lat || !p.lng) return false;
+    if (PAGE_IDS.length) return PAGE_IDS.indexOf(p.id) >= 0;
+    if (!PAGE_CATS.length) return true;
+    return PAGE_CATS.some(function (c) {
+      return p.cat === c || (p.also || []).indexOf(c) >= 0;
+    });
   }).sort(function (a, b) { return (a.day || 0) - (b.day || 0); });
 
   /* ── 狀態 ── */
@@ -2560,6 +2581,13 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
   var DB = JSON.parse(raw.textContent);
   var SECS = DB.meta.secs || {};
   var LIST = DB.entries || [];
+  // 會話卡片也可以嵌在別的分頁上（例如跳傘頁只放跳傘那幾組）。
+  // 在容器寫 data-secs="skydive,book" 就只渲染那幾個 sec。
+  var ONLY = (root.dataset.secs || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
+  if (ONLY.length) {
+    LIST = LIST.filter(function (e) { return ONLY.indexOf(e.sec) >= 0; });
+  }
 
   function esc(s) {
     return String(s == null ? '' : s)

@@ -1171,13 +1171,43 @@ input:focus-visible,[tabindex]:focus-visible{
 .mx .d{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em}
 .mx .t{font-weight:700;font-size:1rem;margin:3px 0 6px;color:var(--ink)}
 .mx p{font-size:.82rem;margin:0;color:var(--ink-2);line-height:1.6}
+
+/* 最後定案的總結框（2026/08/23 加註） */
+.fin{border:2px solid var(--pounamu);border-radius:16px;overflow:hidden;
+  background:var(--card);box-shadow:0 0 0 6px rgba(31,91,78,.07),var(--shadow-lg)}
+.fin-h{background:var(--pounamu);color:#fff;padding:18px 26px 20px}
+.fin-b{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+  background:var(--kowhai);color:#3A2A05;padding:3px 11px;border-radius:20px;font-weight:700}
+.fin-h h2{margin:10px 0 0;color:#fff;font-size:clamp(1.35rem,3.4vw,1.9rem);line-height:1.3}
+.fin-h h2 b{color:var(--kowhai)}
+.fin-bd{padding:24px 26px 26px}
+.fin-bd > p{font-size:.93rem;line-height:1.85;margin:0 0 12px}
+.fin-sw{display:grid;grid-template-columns:1fr 46px 1fr;align-items:stretch;
+  gap:0;margin:20px 0 22px}
+.fin-x,.fin-y{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--paper)}
+.fin-x{opacity:.68}
+.fin-x .t{text-decoration:line-through;text-decoration-thickness:1px}
+.fin-y{border-color:var(--pounamu);background:rgba(31,91,78,.05)}
+.fin-x .k,.fin-y .k{font-family:var(--mono);font-size:.67rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.fin-x .t,.fin-y .t{font-weight:700;font-size:1rem;color:var(--ink);line-height:1.4}
+.fin-x .d,.fin-y .d{font-size:.83rem;color:var(--ink-2);margin-top:6px;line-height:1.6}
+.fin-a{display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--pounamu)}
+.fin-cta{display:inline-block;background:var(--pounamu);color:#fff;text-decoration:none;
+  padding:12px 24px;border-radius:30px;font-weight:700;font-size:.93rem;transition:.25s}
+.fin-cta:hover{background:var(--ink);transform:translateY(-2px)}
+@media(max-width:700px){
+  .fin-sw{grid-template-columns:1fr}
+  .fin-a{padding:10px 0;transform:rotate(90deg)}
+  .fin-h,.fin-bd{padding-left:18px;padding-right:18px}
+}
 </style>
 </head>
 <body>
 <div id="prog"></div>
 <header class="topbar"><div class="inner">
 <a class="logo" href="index.html">南島 <em>2026</em></a>
-<span class="pagename">冰川</span>
+<span class="pagename">冰川（存查）</span>
 <nav aria-label="分頁導覽">
 <span class="navlbl" aria-hidden="true">分頁</span>
 <div class="navtrack">
@@ -1186,7 +1216,7 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="eat.html"><span class="ic" aria-hidden="true">🍽</span><span class="tx">吃的</span></a>
 <a href="book.html"><span class="ic" aria-hidden="true">🎟</span><span class="tx">需預約</span></a>
 <a href="skydive.html"><span class="ic" aria-hidden="true">🪂</span><span class="tx">跳傘</span></a>
-<a href="glacier.html" class="on" aria-current="page"><span class="ic" aria-hidden="true">🚁</span><span class="tx">冰川</span></a>
+<a href="mtcook.html"><span class="ic" aria-hidden="true">🥾</span><span class="tx">健行</span></a>
 <a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
 <a href="talk.html"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
 <a href="prepare.html"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
@@ -1199,11 +1229,45 @@ input:focus-visible,[tabindex]:focus-visible{
     <div class="eyebrow">Highlight · Glacier Heli-Hike</div>
     <h1>走上冰川<span class="mao">Haupapa — 塔斯曼冰川的毛利名</span></h1>
     <p class="lede">路線完全沒經過西海岸，Franz Josef 和 Fox 都不在上面。但<strong>Mt Cook 有真正的直升機冰川健行</strong>，9/28 剛好排得進去。</p>
-    <div class="hero-meta"><span>🚁 4 人全員</span><span>📅 2026/09/28</span><span>🧊 塔斯曼冰川</span><span>💰 NZ$899／人</span></div>
+    <div class="hero-meta"><span style="background:rgba(229,178,60,.9);color:#3A2A05;border-color:rgba(229,178,60,.9);font-weight:700">📌 已改案 · 見下方</span><span>🚁 4 人全員</span><span>📅 2026/09/28</span><span>🧊 塔斯曼冰川</span><span>💰 NZ$899／人</span></div>
   </div>
   <div class="scroll-cue">↓</div>
 </div>
 <div class="rule-niho"></div>
+
+<!-- ══════════ 最後定案（2026/08/23 加註） ══════════ -->
+<section id="final" style="padding-top:34px;padding-bottom:0">
+  <div class="wrap">
+    <div class="fin">
+      <div class="fin-h">
+        <span class="fin-b">FINAL · 2026/08/23</span>
+        <h2>最後定案：<b>不上冰川，改成庫克山健行</b></h2>
+      </div>
+      <div class="fin-bd">
+        <p><b>同行者最後選擇在庫克山健行——看得到冰川，但不會走到冰川上。</b>
+          所以下面這整份研究裡的 <b>The Adventurer 直升機冰川健行（NZ$899／人）沒有要訂</b>，
+          9/28 早上改成走步道。</p>
+        <p><b>這一頁完整保留、一個字都沒刪</b>，因為它記錄的是「我們為什麼曾經想這樣做、又比較過哪些選項」——
+          三家業者的查證、西海岸繞路的算法、天候備案的邏輯，之後如果有人想重開這個題目，
+          這些功課不用重做。</p>
+        <div class="fin-sw">
+          <div class="fin-x">
+            <div class="k">已取消</div>
+            <div class="t">🚁 The Adventurer 直升機冰川健行</div>
+            <div class="d">NZ$899／人 · 四人共 NZ$3,596 · 冰上 2 小時</div>
+          </div>
+          <div class="fin-a" aria-hidden="true">→</div>
+          <div class="fin-y">
+            <div class="k">改成</div>
+            <div class="t">🥾 Aoraki／Mt Cook 步道健行</div>
+            <div class="d">步道免費 · 不用訂 · 一天看得到 Hooker、Mueller、Tasman 三條冰川</div>
+          </div>
+        </div>
+        <a class="fin-cta" href="mtcook.html">去看庫克山健行怎麼安排　→</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section style="padding-bottom:6px">
   <div class="wrap">
@@ -1665,12 +1729,12 @@ input:focus-visible,[tabindex]:focus-visible{
 <a class="" href="eat.html"><span class="ic">🍽</span>吃的</a>
 <a class="" href="book.html"><span class="ic">🎟</span>需預約</a>
 <a class="" href="itinerary.html"><span class="ic">🗓</span>行程</a>
-<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class="on"><span class="ic">☰</span>更多</button>
+<button type="button" data-more aria-expanded="false" aria-controls="more-sheet" class=""><span class="ic">☰</span>更多</button>
 </div></nav>
 <div class="sheet" id="more-sheet" data-sheet hidden>
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
-<a href="glacier.html" class="on"><span>🚁</span>冰川</a>
+<a href="mtcook.html"><span>🥾</span>健行</a>
 <a href="culture.html"><span>🗿</span>文化</a>
 <a href="talk.html"><span>💬</span>會話</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
@@ -1680,7 +1744,7 @@ input:focus-visible,[tabindex]:focus-visible{
  "meta": {
   "trip": "紐西蘭南島環島 2026",
   "dates": "2026-09-24 – 2026-10-11",
-  "verified": "2026-08-20",
+  "verified": "2026-08-20（庫克山一帶與新增地點 2026-08-23 複查）",
   "note": "單一資料源。所有分頁與地圖都由這份檔案產生。改這裡，全站跟著改。",
   "cats": {
    "sight": {
@@ -1704,7 +1768,7 @@ input:focus-visible,[tabindex]:focus-visible{
     "page": "skydive"
    },
    "glacier": {
-    "label": "冰川健行",
+    "label": "冰川健行（已改案）",
     "color": "#5B4AA8",
     "page": "glacier"
    }
@@ -2478,9 +2542,9 @@ input:focus-visible,[tabindex]:focus-visible{
    "q": "Hermitage Hotel Aoraki Mount Cook",
    "flag": "ok",
    "book": true,
-   "price": "約 NZ$219（10/01 起新價）",
-   "hours": "9 月班次 9:00 / 10:45 / 12:30 / 14:15 · 全程 2h45（湖上 60 分）",
-   "note": "完全不能飛時的地面備案。報到在 Hermitage 飯店活動中心，Blue Lakes 停車場後還要走 1.5 公里／25 分鐘。9 月適用的是上一季票價。",
+   "price": "成人（15 歲以上）NZ$209 起 · 兒童（4–14 歲）NZ$95 起 · 家庭票 2 大 2 小 NZ$549 起",
+   "hours": "9:15 / 11:15 / 13:15（官網標示為當季班次）· 全程 2h45（湖上約 60 分）",
+   "note": "<b>不上冰川，但摸得到冰。</b>官網 FAQ 直接寫明：條件允許時嚮導會從湖裡撈起冰川冰，讓客人親手摸到壓縮了數百年的老冰——這是這趟最接近「碰到冰川」的方式。報到在 Hermitage 飯店一樓 Activities Desk，<b>出發前 30 分鐘</b>要到；到 Blue Lakes 停車場之後還要自己走 <b>1.5 公里／25 分鐘</b>才到湖邊碼頭（業者要求所有人都走得動）。⚠️ 冬季停駛，<b>2026 年 8 月 24 日才復航</b>，9/28 是復航後第五週。天候取消可改時段或全額退款；浮冰的多寡與大小是自然現象，業者明說<b>不保證看得到</b>。（價格與班次查證 2026/08/23 · 以官網最新為準）",
    "lat": -43.733163,
    "lng": 170.093722,
    "geo_approx": "The Hermitage Mount Cook",
@@ -2495,7 +2559,8 @@ input:focus-visible,[tabindex]:focus-visible{
      "你搭船繞的浮冰就是這樣來的：冰川末端一路後退進自己融出來的湖裡，再整塊整塊崩下來。NIWA 估計 1990 年代以來平均一年退約 180 公尺。"
     ],
     "tips": [
-     "浮冰的位置與大小每天都不一樣，看得到什麼很靠運氣——這是自然現象，不是安排好的節目。"
+     "浮冰的位置與大小每天都不一樣，看得到什麼很靠運氣——這是自然現象，不是安排好的節目。",
+     "家庭票只能電話或 email 訂，線上訂不到。"
     ]
    },
    "g": {
@@ -2505,7 +2570,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
     "n": 231,
     "note": "同日直查 Google 為 4.6/245（Gemini 另查到 4.7 分／約 820 則）"
-   }
+   },
+   "also": [
+    "hike"
+   ]
   },
   {
    "id": "hermitage-planetarium",
@@ -2829,7 +2897,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "n": 1515,
     "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    },
-   "img": "images/doc-mtcook-visitor.jpg"
+   "img": "images/doc-mtcook-visitor.jpg",
+   "also": [
+    "hike"
+   ]
   },
   {
    "id": "hillary-centre",
@@ -2873,9 +2944,9 @@ input:focus-visible,[tabindex]:focus-visible{
    "town": "Mt Cook",
    "q": "Hooker Valley Track White Horse Hill Aoraki",
    "flag": "star",
-   "hours": "來回約 10 公里 · 3 小時",
+   "hours": "來回 10 公里 · DOC 標示 3 小時（從村裡出發再加 1 小時）",
    "url": "https://www.doc.govt.nz/",
-   "note": "★ 起點 White Horse Hill 停車場。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。第二吊橋 2026 年 7 月換新，全長 189 公尺（媒體稱是全紐最長，DOC 官方新聞稿本身未如此宣稱）。⚠️ DOC 警告冬末背陰處結冰極滑，建議帶冰爪與登山杖。",
+   "note": "★ 起點 White Horse Hill 停車場。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。<b>第二吊橋 2026 年 7 月換新，全長 189 公尺</b>，DOC 官方頁面現在自己寫明「是紐西蘭最長的吊橋」（查證 2026/08/23）。⚠️ DOC 警告背陰處會結冰、非常滑，冬季建議帶<b>微尖冰爪</b>與登山杖；⚠️ 湖水約 3°C，不要下水、不要爬浮冰。步道路線本身是刻意避開雪崩區設計的，<b>不要離開步道</b>。",
    "lat": -43.720689,
    "lng": 170.095521,
    "geo_approx": "Hooker Valley",
@@ -2899,7 +2970,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
     "n": 6141,
     "note": "內嵌 Google 欄位；同日直查 Google 地圖為 4.8/6247，數字一致"
-   }
+   },
+   "also": [
+    "hike"
+   ]
   },
   {
    "id": "kea-point",
@@ -2934,7 +3008,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
     "n": 536,
     "note": "同日直查 Google 地圖為 4.7/542（Gemini 另查到 4.8 分／約 1400 則）"
-   }
+   },
+   "also": [
+    "hike"
+   ]
   },
   {
    "id": "mtcook-village",
@@ -2995,7 +3072,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "n": 287,
     "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    },
-   "img": "images/sealy-tarns.jpg"
+   "img": "images/sealy-tarns.jpg",
+   "also": [
+    "hike"
+   ]
   },
   {
    "id": "tasman-glacier-view",
@@ -3006,11 +3086,11 @@ input:focus-visible,[tabindex]:focus-visible{
    "town": "Mt Cook",
    "q": "Tasman Glacier View Track Aoraki Mount Cook",
    "flag": "ok",
-   "hours": "爬約 20 分鐘階梯",
-   "note": "開車到 Tasman Valley 停車場，上稜線俯瞰塔斯曼冰河湖與浮冰。同一個停車場往另一邊走幾分鐘就是 <b>Blue Lakes</b>——⚠️ 但它現在是綠的，展開看 DOC 自己怎麼說。",
-   "lat": -43.573631,
-   "lng": 170.227868,
-   "geo_approx": "Tasman Glacier",
+   "hours": "觀景台 40 分鐘來回 · 爬升 100 公尺",
+   "note": "開車到 Blue Lakes 停車場，沿階梯上稜線俯瞰塔斯曼冰河湖與浮冰。DOC 標示<b>來回 40 分鐘、爬升 100 公尺</b>。同一個停車場往另一邊走幾分鐘就是 <b>Blue Lakes</b>——⚠️ 但它現在是綠的，展開看 DOC 自己怎麼說。想走到<b>湖邊</b>而不是只在稜線上看，要走另一條 Tasman Lake Track。",
+   "lat": -43.6893,
+   "lng": 170.169,
+   "geo_approx": "Tasman Glacier View 觀景台（Blue Lakes 停車場上方稜線）",
    "img": "images/see-tasmanvalley.jpg",
    "bookable": false,
    "deep": {
@@ -3028,7 +3108,162 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/list/geoCategory/1594533/top-things-to-do-and-attractions-in-aoraki-mount-cook-national-park-te-wahipounamu",
     "n": 1605,
     "note": "這是上方觀景台本體；湖邊另一個獨立地標 Tasman Glacier View near the lake 為 4.9/201，Blue Lakes 本身只有 4.1/55"
-   }
+   },
+   "also": [
+    "hike"
+   ]
+  },
+  {
+   "id": "white-horse-hill",
+   "name": "White Horse Hill Campground & Car Park",
+   "zh": "所有步道的總站",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "White Horse Hill Campground Aoraki Mount Cook",
+   "addr": "Hooker Valley Road 底，Aoraki/Mount Cook 7999",
+   "flag": "star",
+   "price": "停車 NZ$2.50／半小時、NZ$25／天（20 分鐘內免費）",
+   "hours": "24 小時開放 · 距村子開車 5 分鐘",
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/hooker-valley-track/",
+   "note": "Hooker Valley、Kea Point、Sealy Tarns、Mueller Hut <b>四條步道都從這裡出發</b>，9/28 那天你們大概會來這裡兩次。⚠️ <b>停車要先付費再走</b>：DOC 收 NZ$2.50／半小時、單日上限 NZ$25，繳費機<b>只收信用卡與金融卡，不收現金</b>，停 20 分鐘以內免費。走胡克谷來回至少 3 小時，等於一定會付到單日上限。⚠️ 跨夜停放算兩天（NZ$50）。有無障礙廁所、有桌椅的避難所、以及可以直接喝的處理過飲用水——<b>出發前在這裡上廁所、裝水</b>，步道上下一間廁所在第二吊橋之後 15 分鐘。",
+   "lat": -43.718229,
+   "lng": 170.092894,
+   "geo_approx": "White Horse Hill Campground (OSM)",
+   "bookable": false
+  },
+  {
+   "id": "tasman-lake-track",
+   "name": "Tasman Lake Track",
+   "zh": "走到冰河湖水邊",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "Tasman Lake Track Aoraki Mount Cook",
+   "price": "免費",
+   "hours": "來回 50 分鐘–1 小時 · 幾乎沒有爬升",
+   "flag": "ok",
+   "img": "images/tasman-lake.jpg",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/globalassets/documents/parks-and-recreation/tracks-and-walks/canterbury/walking-and-cycling-tracks-in-aoraki-mt-cook.pdf",
+   "note": "和 Tasman Glacier View 是<b>同一個 Blue Lakes 停車場的兩條不同路</b>：一條上稜線俯瞰，這一條幾乎平走到<b>塔斯曼冰河湖的水邊</b>。在 Blue Lakes 避難所之後往右岔出去，再往右還有一條通到塔斯曼河的源頭。路線穿過冰川以前的舊終磧，沿途看得到植物一段一段長回來的過程。⚠️ DOC 寫明冬天湖面會結冰——<b>結冰的湖面不能走</b>，冰可能隨時破。",
+   "lat": -43.6875,
+   "lng": 170.1755,
+   "geo_approx": "塔斯曼冰河湖南端觀景點（依 OSM 湖形推估）"
+  },
+  {
+   "id": "red-tarns",
+   "name": "Red Tarns Track",
+   "zh": "村子後面那面陡坡",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "Red Tarns Track Aoraki Mount Cook",
+   "price": "免費",
+   "hours": "來回約 2 小時 · 爬升 300 公尺",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/globalassets/documents/parks-and-recreation/tracks-and-walks/canterbury/walking-and-cycling-tracks-in-aoraki-mt-cook.pdf",
+   "note": "<b>唯一一條不用開車、走出旅館就能爬的展望步道。</b>從村裡的公共避難所下坡過 Black Birch Stream 的橋，然後一路陡上，全程有階梯。DOC 標示爬升 300 公尺、來回 2 小時。頂上是村子、胡克谷與 Aoraki 的全景，而且是<b>從對面看</b>——前面那幾條步道都是走進山裡，這條是退出來看整個盤子。池子的名字來自水裡的紅色水草。DOC 說夏天這裡是看日落的好地方。",
+   "lat": -43.74287,
+   "lng": 170.098605,
+   "geo_approx": "Red Tarns Track（OSM 步道中點）"
+  },
+  {
+   "id": "governors-bush",
+   "name": "Governors Bush Walk",
+   "zh": "下雨天的那一條",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "Governors Bush Walk Aoraki Mount Cook",
+   "price": "免費",
+   "hours": "環狀來回 1 小時 · 爬升 100 公尺",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/globalassets/documents/parks-and-recreation/tracks-and-walks/canterbury/walking-and-cycling-tracks-in-aoraki-mt-cook.pdf",
+   "note": "整座國家公園幾乎沒有森林——這裡是少數幾片 <b>tawai／銀山毛櫸</b>原始林之一。起點一樣在村裡的公共避難所，緩坡爬到一個看得到 Wakefield 稜線與 Aoraki 的展望點。可以接 <b>Bowen Bush Walk</b>（10 分鐘環狀，在加油機對面）連成一條自然步道。<b>DOC 直接把它寫成「天氣不好時可以走的有遮蔽路線」</b>——9/28 如果是雨天或大風，這條和遊客中心就是那天的 B 計畫。",
+   "lat": -43.741305,
+   "lng": 170.09592,
+   "geo_approx": "Governors Bush Track（OSM）"
+  },
+  {
+   "id": "glencoe-walk",
+   "name": "Glencoe Walk",
+   "zh": "三十分鐘的黃昏",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "Glencoe Walk Aoraki Mount Cook",
+   "price": "免費",
+   "hours": "來回 30 分鐘 · 爬升 40 公尺",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/globalassets/documents/parks-and-recreation/tracks-and-walks/canterbury/walking-and-cycling-tracks-in-aoraki-mt-cook.pdf",
+   "note": "起點就在 <b>Hermitage 飯店後面</b>，之字形穿過 tōtara 林，爬到飯店上方水塔旁的展望點，正對 Hooker 冰川的白冰與 Aoraki。DOC 建議<b>日出或日落</b>來，那時候光線會在山面上跑。9/28 日落 19:44、20:11 之後就需要頭燈——晚餐前剛好塞得下這 30 分鐘。",
+   "lat": -43.733748,
+   "lng": 170.091376,
+   "geo_approx": "Glencoe Walk（OSM）"
+  },
+  {
+   "id": "mueller-hut-route",
+   "name": "Mueller Hut Route",
+   "zh": "⚠️ 這條不要排",
+   "cat": "sight",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "Mueller Hut Route Aoraki Mount Cook",
+   "price": "免費（住小屋要另外訂）",
+   "hours": "單程 3–5 小時 · 爬升 1,000 公尺",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/sealy-tarns-track/",
+   "note": "⚠️ <b>放在這裡是為了叫你們不要去。</b>它接在 Sealy Tarns 之上，美照最多、看起來最像「終極目標」，但 DOC 的分級是 <b>route（無成形路徑）</b>：夏天 12–2 月中等健行經驗可行；<b>6–8 月需要冰斧、冰爪、路線判讀與雪崩裝備的登山能力</b>。而 9 月底正好卡在中間——雪還在、又開始融，是最不穩定的時候。DOC 官方寫明這一帶 <b>3 月到 11 月都可能有雪與冰</b>。同樣看 Aoraki，Sealy Tarns 停在半路就好。",
+   "lat": -43.721107,
+   "lng": 170.064599,
+   "geo_approx": "Mueller Hut（OSM）"
+  },
+  {
+   "id": "hermitage-guided-hikes",
+   "name": "Hermitage Guided Hikes",
+   "zh": "要嚮導帶的話走這個",
+   "cat": "book",
+   "day": 5,
+   "town": "Mt Cook",
+   "also": [
+    "hike"
+   ],
+   "q": "The Hermitage Hotel Aoraki Mount Cook",
+   "addr": "報到在 Hermitage 飯店 Activities Desk",
+   "flag": "ok",
+   "book": true,
+   "bookable": true,
+   "price": "半日成人 NZ$175／兒童 NZ$105 · Tasman Valley 觀景 NZ$120 · Red Tarns NZ$199 · Sealy Tarns 全日 NZ$239（含午餐）",
+   "hours": "半日 8:30 與 13:00 · Tasman Valley 10:00 與 14:30 · Sealy Tarns 9:00",
+   "url": "https://www.hermitage.co.nz/experience/guided-hikes/",
+   "bk": "Mount Cook guided walk",
+   "note": "Hermitage 飯店自營的嚮導健行，<b>導覽季 9/1–5/31，9/28 在季內</b>。<b>有英語與日語雙語嚮導</b>，全程講解地質、動植物與登山史——這是自己走拿不到的東西。只能 <b>email 訂位，沒有線上訂</b>。DOC 若封閉某條步道，業者會改帶別條。⚠️ <b>官網資訊有落差</b>：胡克谷那段仍寫「因第二吊橋封閉，改成只走到第一吊橋」，但 DOC 官方頁面已寫明新橋 2026 年 7 月啟用、全線可走到冰河湖。看起來是業者頁面沒更新——<b>寫 email 訂位時直接問「現在走到哪裡」</b>。（查證 2026/08/23 · 以官方最新公告為準）",
+   "lat": -43.733163,
+   "lng": 170.093722,
+   "geo_approx": "The Hermitage Mount Cook"
   },
   {
    "id": "glide-omarama",
@@ -3131,7 +3366,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "flag": "ok",
    "bookable": false,
    "url": "https://www.highcountrysalmon.co.nz/",
-   "note": "養殖網箱直接架在水面上，走上浮橋看得到魚，旁邊小店賣生魚片、煙燻鮭魚和熱食。<b>在 Twizel 往 Omarama 的 SH8 路邊，不用繞路</b>。4.3 分不算高，多半是嫌人多、價格偏高，魚本身評價還是好的。",
+   "note": "養殖網箱直接架在冰川運河的水面上，走上浮橋看得到底下的魚。<b>官網寫「Free fish feeding available」——飼料免費，可以直接站在浮橋上餵國王鮭（Chinook）</b>，這是不用花錢的部分，帶小孩的話這裡的 CP 值最高。旁邊的 <b>Logans Floating Restaurant 是紐西蘭唯一的水上浮動餐廳</b>，賣生魚片、壽司、鮭魚排；想自己釣的話另有付費釣魚體驗（提供裝備，釣到的帶走）。<b>在 Twizel 往 Omarama 的 SH8 路邊、市區南邊 3 公里，完全不用繞路</b>。4.3 分不算高，多半是嫌人多、價格偏高，魚本身評價還是好的。（查證 2026/08/23 · 以官網最新為準）",
    "g": {
     "r": 4.3,
     "asof": "2026/08",
@@ -3139,7 +3374,8 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/place/details/205727/high-country-salmon",
     "n": 5931,
     "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
-   }
+   },
+   "hours": "Logans 浮動餐廳 10:00–19:00（單點供應到 18:30）；魚舖與熟食店 09:00–17:30；遊客活動 10:00–17:00；全年只有聖誕節休（查證 2026/08/23 · 以官網最新為準）"
   },
   {
    "id": "poppies-cafe-twizel",
@@ -3850,6 +4086,34 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/lakes-district-museum.jpg"
   },
   {
+   "id": "cardrona-bra-fence",
+   "name": "Cardrona Bra Fence",
+   "zh": "掛滿內衣的募款鐵絲網（Bradrona）",
+   "cat": "sight",
+   "day": 7,
+   "town": "Cardrona",
+   "lat": -44.860432,
+   "lng": 169.022169,
+   "geo_approx": "英文維基百科標註座標（與 OSM 的 Cardrona Bra Fence 節點相符）",
+   "q": "Cardrona Bra Fence New Zealand",
+   "addr": "Cardrona Valley Road，Cardrona Distillery 旁",
+   "price": "免費（現場有粉紅色捐款箱，收入捐給紐西蘭乳癌基金會）",
+   "flag": "info",
+   "bookable": false,
+   "img": "images/cardrona-bra-fence.jpg",
+   "note": "<b>只有 D07 走 Crown Range Road 翻山過去才會經過</b>——走 SH6 經 Cromwell 的主線碰不到。就在 <b>Cardrona Distillery 隔壁、直線約 150 公尺</b>，離 Cardrona Hotel 也只有 3 分鐘車程，等於這三個點可以一次解決。停車拍照 5 分鐘的事，免費。現場立著一根粉紅色柱子和捐款箱，錢給紐西蘭乳癌基金會（NZ Breast Cancer Foundation），當地人把這裡叫 <b>Bradrona</b>。⚠️ 它現在在私人車道旁邊，沒有正式停車場，路肩停車請注意來車。",
+   "deep": {
+    "lead": "它被官方拆過一次，是「搬家」才活下來的",
+    "paras": [
+     "1998 年聖誕節到 1999 年新年之間，有人在 Cardrona Valley Road 邊的鐵絲網上掛了 <b>4 件內衣</b>，沒人知道為什麼。上了媒體之後越掛越多，2000 年 10 月到 200 件、2006 年初接近 800 件。當地有人覺得有趣，也有人覺得丟臉、還說會讓駕駛分心。<b>2006 年 4 月 28 日，議會查出這段鐵絲網其實立在公有道路保留地上，就以「交通危害兼有礙觀瞻」為由下令清空。</b>",
+     "2014 年 11 月，當地導遊 Kelly Spaans 和伴侶 Sean Colbourne 出面接手，<b>把鐵絲網從公路旁往內搬約 100 公尺，移到自己的私人車道上</b>——剛好離開議會管得到的範圍。2015 年 3 月立起粉紅告示牌和捐款箱，轉型成替紐西蘭乳癌基金會募款；到 2024 年 6 月累計約 NZ$18 萬。隔壁 Cardrona Distillery 也跟著出了粉紅琴酒，還有一支叫 The Reid 的單一麥芽伏特加，長期每瓶捐 NZ$5。（史料來源：英文維基百科，引 Stuff、One News、Otago Daily Times 等報導）"
+    ],
+    "tips": [
+     "捐款箱是現場投入式的，想捐先備一點現金零錢。"
+    ]
+   }
+  },
+  {
    "id": "onsen-hot-pools",
    "name": "Onsen Hot Pools",
    "zh": "",
@@ -3857,12 +4121,11 @@ input:focus-visible,[tabindex]:focus-visible{
    "day": 8,
    "town": "Queenstown",
    "q": "Onsen Hot Pools Queenstown New Zealand",
-   "flag": "unverified",
+   "flag": "ok",
    "book": true,
-   "note": "私人溫泉包廂，可開窗看峽谷。⚠️ 本輪未取得官方 2026 價格。",
+   "note": "私人溫泉包廂，屋頂可開闔，正對 Shotover River 峽谷。<b>價格是算「一池」不是算人頭</b>：Original Onsen 泡 60 分鐘，1 人 NZ$122、2 人 NZ$180、3 人 NZ$225、4 人 NZ$260，四個人分攤下來一人 NZ$65。⚠️ <b>官網同一頁的價目表和 FAQ 數字對不上</b>——價目表寫 1 人 $122／2 人 $180，FAQ 卻寫 1 人 $117／2 人 $175。差不多，但下訂前請以結帳頁面顯示的金額為準。小孩規定要注意：未滿 5 歲一律不能進池；5–11 歲每人 NZ$30 且<b>只能訂 16:45 以前的場次</b>，傍晚之後限 12 歲以上。官網說訂位已開放到 2027/01/31，而且是即時系統，別人取消的時段會直接變回可訂——訂不到就多刷幾次或加候補（Waitlist）。（查證 2026/08/23 · 以官網最新為準）",
    "lat": -44.980995,
    "lng": 168.685428,
-   "img": "images/do-walterpeak.jpg",
    "url": "https://onsen.co.nz/",
    "bk": "Queenstown Onsen hot pools",
    "bookable": true,
@@ -3881,7 +4144,8 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://www.google.com/maps?q=Onsen%20Hot%20Pools%20Queenstown%20New%20Zealand&output=embed",
     "n": 4309,
     "note": "Google 條目名為「Onsen Hot Pools & Day Spa」。"
-   }
+   },
+   "price": "整池計價、不是每人：Original Onsen 泡湯 60 分鐘，1 人 NZ$122、2 人 NZ$180、3 人 NZ$225、4 人 NZ$260；5–11 歲小孩每人 NZ$30"
   },
   {
    "id": "shotover-jet",
@@ -4396,6 +4660,40 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://www.google.com/maps?q=Skydive%20Wanaka%20Airport%20New%20Zealand&output=embed",
     "n": 715,
     "note": "（Gemini 另查到 4.9 分／約 2800 則）"
+   }
+  },
+  {
+   "id": "deer-park-heights",
+   "name": "Deer Park Heights",
+   "zh": "開自己的車上去的私人鹿場",
+   "cat": "book",
+   "day": 9,
+   "town": "Queenstown",
+   "lat": -45.038994,
+   "lng": 168.693657,
+   "geo_approx": "官網公布的新入口 GPS（deerparkheights.co.nz）",
+   "q": "Deer Park Heights Queenstown New Zealand",
+   "addr": "Peninsula Road 上約 4 公里處，Kelvin Heights, Queenstown",
+   "price": "NZ$75／台車（最多 8 座，不是按人算）；想餵動物另外要一枚 NZ$2 硬幣",
+   "hours": "每天 08:00–18:00，單次進出（出去了就不能再進來）",
+   "flag": "ok",
+   "book": true,
+   "bookable": false,
+   "url": "https://deerparkheights.co.nz/",
+   "img": "images/deer-park-heights.jpg",
+   "note": "從皇后鎮市區開 13 公里、約 17 分鐘（OSRM 實算）就到入口，開自己的車一路往上，官網寫園區高出皇后鎮 550 公尺，看整個 Whakatipu 盆地和 The Remarkables。<b>收費是「一台車 NZ$75」不是一個人</b>，最多 8 座、露營車也算，08:00–18:00 之間進出各一次。想待 1 小時或待一整天都可以，時間自己抓。⚠️ <b>訂位方式已經改了，網路上舊影片講的「訂完拿大門密碼」不再適用</b>：現在線上訂位要填車牌，大門是車牌辨識自動開，所以<b>租車的人要等拿到車、知道車牌號碼才訂得了</b>。每天限 80 台車，官網是即時庫存，顯示 SOLD OUT 就是真的沒了（官網明說不要打電話問）；訂位提前 30 天開放。⚠️ 山路下雪會封園，官網首頁有 Road Status 即時燈號（OPEN／ON HOLD／CLOSED），出發當天先看一眼。只能官網訂，園區禁止旅行團、Uber、計程車、商業攝影，Klook／KKday 上不會有。10/01 和 10/02 兩個機動日排哪天都行。（查證 2026/08/23 · 以官網最新為準）",
+   "deep": {
+    "lead": "官網寫得很清楚：有角的動物一律不准餵",
+    "paras": [
+     "可以餵的是<b>山羊、驢子、騾、迷你馬、庫尼庫尼豬（牠們有名字，叫 Button 和 Ginger）、駱馬和羊駝</b>。飼料要用園區裡的綠色機台買，<b>只吃 NZ$2 硬幣</b>——山上沒得換零錢，出發前先準備。餵的時候把飼料丟到牠們腳邊，不要用手遞：官網說有些動物看不到鼻子前面，容易把手指當成食物。",
+     "反過來，<b>高地牛、紅鹿和公鹿（stag）官網標的是「不要靠近、不要餵」</b>，跟不少影片給人的印象不一樣。園區裡還有喜馬拉雅塔爾羊和一群約 100 頭的黇鹿，牠們很怕人，要在草叢裡仔細找才看得到。",
+     "《魔戒》的部分主要是《雙塔奇謀》：洛汗難民逃往聖盔谷的路線、Hama 被座狼斥候殺掉的那面石牆、勒苟拉斯出手救人殺座狼，園區裡都立了 LOTR 01–07 的綠色標示牌可以按圖索驥。《王者再臨》走出亡者之道、看到海盜船那一幕也在這裡。此外還有《金鋼狼》《Pete's Dragon》，以及 1988 年迪士尼《The Rescue》留下的一座假韓國村布景。"
+    ],
+    "tips": [
+     "有一段路叫 <b>Hard Antler Block</b>，規定全程不准下車，現場有告示牌，看到就乖乖待在車上。",
+     "全園禁止走路或騎腳踏車進入，也不能帶寵物——就是要「開車進去」的地方。",
+     "進場前先確認油夠，官網特別提醒這件事。"
+    ]
    }
   },
   {
@@ -5480,7 +5778,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "flag": "warn",
    "bookable": false,
    "url": "https://www.cathedralcaves.co.nz/",
-   "note": "兩條海蝕洞加起來 200 公尺長、最高 30 公尺，是卡特林斯的招牌。<b>⚠️ 但它冬天關門：官網首頁寫「Closed for Winter，10 月中重開」，當地觀光局 catlins.org.nz 講得更保守，說通常關到 10 月底</b>——你們 10/6 到，兩種說法都指向還沒開，行前一定要看官網首頁當天的公告。就算開了也只有<b>退潮前後那 2 小時</b>能進去，停車場車位很少、拖車不能進。",
+   "note": "兩條海蝕洞加起來 200 公尺長、最高 30 公尺，是卡特林斯的招牌。<b>⚠️ 但它冬天關門：官網首頁 2026/08 查的時候還掛著「Closed for Winter，10 月中重開」</b>，當地觀光局 catlins.org.nz 講得更保守，說通常關到 10 月底——你們 10/06 到，兩種說法都指向還沒開，行前一定要看官網首頁當天的公告。就算開了，<b>官網 FAQ 直接寫「開放時段變動很大，請在要去的當天看官網首頁」</b>：能不能進去由潮汐、天氣、湧浪一起決定，只有退潮前後那 2 小時左右進得去，而且<b>2026 年的實際時段官網不會提早公告，寫信問也是同樣答案</b>——沒辦法先排進行程表，只能當天決定。位置在 Papatowai 南邊 15 公里、從大馬路再轉進去 2 公里；停車場到海灘還要走 1 公里的森林步道（一路下坡，回程要爬）。停車位很少、拖車不能進，只收卡不收現金。（查證 2026/08/23 · 以官網最新為準）",
    "g": {
     "r": 4.5,
     "asof": "2026/08",
@@ -5904,6 +6202,38 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/waipapa-point-lighthouse.jpg"
   },
   {
+   "id": "tunnel-beach",
+   "name": "Tunnel Beach Walk",
+   "zh": "手鑿隧道通到的隱密海灘",
+   "cat": "sight",
+   "day": 13,
+   "town": "Dunedin",
+   "lat": -45.917425,
+   "lng": 170.452327,
+   "geo_approx": "Tunnel Beach Road 停車場（Nominatim／OpenStreetMap）",
+   "q": "Tunnel Beach Dunedin New Zealand",
+   "addr": "Tunnel Beach Road（從 Blackhead Road 轉進去），Dunedin",
+   "price": "免費（DCC 管理的停車場也免費）",
+   "hours": "停車場 9–3 月 08:00–21:00、4–8 月 09:00–17:00（DOC）。10/06 屬 9 月以後那一檔，晚上 21:00 關門，車留過夜會被鎖在裡面甚至拖吊",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/otago/places/dunedin-area/things-to-do/tunnel-beach-walk/",
+   "img": "images/tunnel-beach.jpg",
+   "note": "★ <b>幾乎不用繞路</b>：OSRM 實算 Gore→但尼丁直達是 152 公里／2 小時 08 分，中途彎進 Tunnel Beach 再進市區是 156 公里／2 小時 17 分——<b>只多 4 公里、9 分鐘車程</b>（步道另外算）。從但尼丁市區過去也只有 7 公里／11 分鐘。步道來回 2.6 公里、DOC 抓 1 小時，去程從海拔 150 公尺一路下坡，回程才是重點（一直爬上來）。走到底有一條 1870 年代人工鑿出來的隧道，72 級階梯下去就是那片被砂岩崖圍住的海灘。⚠️ <b>漲潮或浪大時海灘會被淹，DOC 明講不安全、沒有救生員，海裡有離岸流不建議下水</b>；隧道裡光線只靠自然採光、天花板低、階梯滑、沒有扶手。⚠️ 這條步道 2024/10 被暴雨坍方封了整整一年，2025/11/14 才重新開放。DOC 說第二階段工程要等夏季旺季過後再做，<b>「施工期間步道可能分段封閉」</b>——2026/08 查的時候 DOC 頁面沒有封閉公告，但出發前務必再看一次那一頁有沒有 alert。（查證 2026/08/23 · 以 DOC 最新公告為準）",
+   "deep": {
+    "lead": "「Cargill 的女兒在這裡溺死」是假的",
+    "paras": [
+     "隧道是 1870 年代但尼丁政治人物 <b>John Cargill</b>（城市創建者 William Cargill 船長的兒子）叫人挖的，目的是讓家人有一條下到私人海灘的路。流傳很廣的版本說他有女兒在這片海灘溺斃、隧道是為了紀念——<b>《Otago Daily Times》查過，這個故事沒有根據</b>。隧道本體是純手工鑿的，牆上到現在還看得到工具痕；原本只是斜坡，1983 年對外開放時才加上水泥階梯。",
+     "崖頂那片看起來像雜草的低矮植被叫 <b>coastal turf</b>（海岸草氈），是演化來扛強風鹽霧的植物群落。DOC 提到裡面有幾種蛾<b>因為風太大飛不起來，乾脆演化成用跳的</b>。步道封閉那一年，這片草氈明顯復原了——所以現在 DOC 一直請人不要離開碎石步道。"
+    ],
+    "tips": [
+     "體力不想拚的話，<b>停車場到第一個觀景台來回只有 600 公尺、10 分鐘</b>，海蝕拱門在那裡就看得到了。",
+     "傍晚去要算好時間：停車場 21:00 上鎖，車被鎖在裡面要打 (03) 477 4000 找 DCC。",
+     "Tunnel Beach Road 路邊禁止停車，會被拖吊；停車場滿了就先去別的地方繞一圈再回來。"
+    ]
+   }
+  },
+  {
    "id": "blue-penguin-colony",
    "name": "Ōamaru Blue Penguin Colony",
    "zh": "藍企鵝歸巢",
@@ -6306,8 +6636,8 @@ input:focus-visible,[tabindex]:focus-visible{
    "town": "Duntroon",
    "q": "Elephant Rocks Duntroon New Zealand",
    "flag": "star",
-   "price": "免費",
-   "note": "★ 約 2,500 萬年前的海底石灰岩巨石群，《納尼亞傳奇》取景地。與 Takiroa、Vanished World 是同一套地質故事，可串成同日主題。",
+   "price": "免費入場（Waitaki 官方觀光網站寫 entry by donation，現場有樂捐箱）",
+   "note": "★ 約 2,500 萬年前的海底石灰岩巨石群（Otekaike 石灰岩層），屬於 Waitaki Whitestone 聯合國教科文組織世界地質公園。<b>《納尼亞傳奇：獅子·女巫·魔衣櫥》（2005）把這片草坡改成阿斯蘭的營地</b>（來源：Te Ara 紐西蘭百科）。石頭大的十公尺、小的一公尺，散在約 200 公尺見方的緩坡上。⚠️ <b>這裡是私人牧場、羊會在旁邊吃草</b>：停車彎就在 Island Cliff-Duntroon Road 對面，走 2–5 分鐘進去，現場有公廁；地面凹凸不平、下雨會滑，穿好走的鞋、照現場告示走。與 Takiroa 岩畫、Vanished World 是同一套地質故事，可串成同日主題。（查證 2026/08/23 · 以官方最新為準）",
    "lat": -44.894204,
    "lng": 170.655827,
    "img": "images/elephant-rocks.jpg",
@@ -7058,55 +7388,58 @@ input:focus-visible,[tabindex]:focus-visible{
   {
    "day": 5,
    "title": "Mt Cook 整天怎麼安排",
-   "note": "上午已排冰川直升機健行。天氣是唯一變數。",
+   "note": "已定案走步道，不上冰川。步道不用訂也不會被取消，所以這三案不是「訂了哪個」，是<b>當天早上看天空決定走哪一套</b>。",
    "options": [
     {
      "id": "d5a",
-     "label": "主案",
-     "name": "直升機冰川健行 ＋ Hooker Valley",
-     "meta": "冰川 3 小時 ＋ 步道 3 小時",
+     "label": "天氣好",
+     "name": "兩條冰川，一天走完",
+     "meta": "步道約 13 公里 · 爬升極少",
      "rec": true,
-     "desc": "08:45 The Adventurer（3 小時）→ 回村午餐 → 13:30 Hooker Valley Track（來回 3 小時）→ 18:30 motel 晚餐。",
+     "desc": "09:00 Hooker Valley Track 走到冰河湖（來回 3 小時）→ 12:30 回村吃午餐 → 14:30 開車 20 分鐘到 Tasman Valley，走觀景台（40 分）＋ 湖邊步道（1 小時）→ 18:45 想加碼就走 Glencoe Walk 看黃昏。",
      "main": [
-      "adventurer-helihike",
-      "hooker-valley"
+      "hooker-valley",
+      "tasman-glacier-view",
+      "tasman-lake-track"
      ],
      "alt": [
-      "hillary-centre",
+      "glacier-explorers",
+      "glencoe-walk",
       "kea-point"
      ]
     },
     {
      "id": "d5b",
-     "label": "降級",
-     "name": "飛得上去但不夠久",
-     "meta": "45 分鐘空中行程",
-     "desc": "改訂 Glacier Highlights（$649）或 Ultimate Alpine（$549），一樣有冰川降落，下午照走 Hooker Valley。",
+     "label": "天氣普通",
+     "name": "縮短版：走一半就折返",
+     "meta": "步道約 5 公里 · 半天",
+     "desc": "胡克谷只走到第二吊橋就折返（來回約 1.5 小時），一樣看得到 Mueller 冰河湖與 Mt Sefton。下午改成 Kea Point（1 小時）＋ DOC 遊客中心。",
      "main": [
-      "glacier-highlights",
-      "ultimate-alpine",
-      "hooker-valley"
+      "hooker-valley",
+      "kea-point",
+      "doc-mtcook-visitor"
      ],
      "alt": [
-      "tasman-taster",
-      "kea-point"
+      "tasman-glacier-view",
+      "glencoe-walk",
+      "white-horse-hill"
      ]
     },
     {
      "id": "d5c",
-     "label": "不能飛",
-     "name": "完全落地的一天",
-     "meta": "步道 ＋ 遊船 ＋ 室內",
-     "desc": "Glacier Explorers 冰河湖遊船（9 月有 4 班）＋ Hooker Valley ＋ Hillary Alpine Centre。",
+     "label": "天氣很差",
+     "name": "進林子與室內",
+     "meta": "有遮蔽 · 全部走得回來",
+     "desc": "Governors Bush ＋ Bowen Bush（有樹遮蔽，共約 1 小時）→ DOC 遊客中心 → Hillary 高山中心與天象館。真的整天下雨就當休息日，9/29 早上出發去 Wanaka 之前還有一次機會。",
      "main": [
-      "glacier-explorers",
-      "hooker-valley",
+      "governors-bush",
+      "doc-mtcook-visitor",
       "hillary-centre"
      ],
      "alt": [
-      "tasman-glacier-view",
-      "kea-point",
-      "mtcook-village"
+      "hermitage-planetarium",
+      "mtcook-village",
+      "glacier-explorers"
      ]
     }
    ]
@@ -7183,7 +7516,8 @@ input:focus-visible,[tabindex]:focus-visible{
      ],
      "alt": [
       "kawarau-bungy",
-      "fergbaker"
+      "fergbaker",
+      "deer-park-heights"
      ]
     },
     {
@@ -7197,7 +7531,8 @@ input:focus-visible,[tabindex]:focus-visible{
      ],
      "alt": [
       "mt-difficulty",
-      "domaine-thomson"
+      "domaine-thomson",
+      "deer-park-heights"
      ]
     }
    ]
@@ -7222,7 +7557,8 @@ input:focus-visible,[tabindex]:focus-visible{
       "baldwin-street",
       "speights",
       "larnach-castle",
-      "albatross-centre"
+      "albatross-centre",
+      "tunnel-beach"
      ]
     },
     {
@@ -7237,7 +7573,8 @@ input:focus-visible,[tabindex]:focus-visible{
      ],
      "alt": [
       "dunedin-station",
-      "baldwin-street"
+      "baldwin-street",
+      "tunnel-beach"
      ]
     }
    ]
@@ -7319,9 +7656,20 @@ input:focus-visible,[tabindex]:focus-visible{
   var root = document.getElementById('app');
   if (!root) return;
 
-  var PAGE_CAT = root.dataset.cat || '';            // '' = 全部
+  // data-cat 可以寫成 "glacier" 或 "sight,book" 多個分類。
+  // 另外，一個地點可以用 also:["mtcook"] 借放到別的分頁，
+  // 而不必離開它原本的分類（例如胡克谷步道本質是景點，但也要出現在健行頁）。
+  var PAGE_CATS = (root.dataset.cat || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
+  var PAGE_IDS = (root.dataset.ids || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
   var pool = DB.places.filter(function (p) {
-    return (!PAGE_CAT || p.cat === PAGE_CAT) && p.lat && p.lng;
+    if (!p.lat || !p.lng) return false;
+    if (PAGE_IDS.length) return PAGE_IDS.indexOf(p.id) >= 0;
+    if (!PAGE_CATS.length) return true;
+    return PAGE_CATS.some(function (c) {
+      return p.cat === c || (p.also || []).indexOf(c) >= 0;
+    });
   }).sort(function (a, b) { return (a.day || 0) - (b.day || 0); });
 
   /* ── 狀態 ── */
@@ -8368,6 +8716,13 @@ input:focus-visible,[tabindex]:focus-visible{
   var DB = JSON.parse(raw.textContent);
   var SECS = DB.meta.secs || {};
   var LIST = DB.entries || [];
+  // 會話卡片也可以嵌在別的分頁上（例如跳傘頁只放跳傘那幾組）。
+  // 在容器寫 data-secs="skydive,book" 就只渲染那幾個 sec。
+  var ONLY = (root.dataset.secs || '').split(',')
+    .map(function (s) { return s.trim(); }).filter(Boolean);
+  if (ONLY.length) {
+    LIST = LIST.filter(function (e) { return ONLY.indexOf(e.sec) >= 0; });
+  }
 
   function esc(s) {
     return String(s == null ? '' : s)
