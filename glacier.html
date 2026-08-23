@@ -1771,6 +1771,11 @@ input:focus-visible,[tabindex]:focus-visible{
     "label": "冰川健行（已改案）",
     "color": "#5B4AA8",
     "page": "glacier"
+   },
+   "stay": {
+    "label": "住宿",
+    "color": "#9E3A6B",
+    "page": "itinerary"
    }
   },
   "days": [
@@ -1779,27 +1784,27 @@ input:focus-visible,[tabindex]:focus-visible{
     "date": "09/24",
     "wd": "四",
     "title": "台北 → 奧克蘭",
-    "leg": "CI53 23:55 TPE"
+    "leg": "CI53 23:55 TPE 起飛"
    },
    {
     "d": 2,
     "date": "09/25",
     "wd": "五",
     "title": "抵達奧克蘭",
-    "leg": "18:00 落地 AKL"
+    "leg": "CI53 18:00 落地 AKL · 宿機場旁"
    },
    {
     "d": 3,
     "date": "09/26",
     "wd": "六",
     "title": "奧克蘭 → 基督城 → Fairlie → 蒂卡波湖",
-    "leg": "飛 1h25 ＋ 開 3h"
+    "leg": "NZ0531 10:00 AKL→11:25 CHC ＋ 開 3h"
    },
    {
     "d": 4,
     "date": "09/27",
     "wd": "日",
-    "title": "Tekapo → 普卡基湖 → Mt Cook",
+    "title": "Tekapo → 普卡基湖 → Peter's Lookout → Mt Cook",
     "leg": "約 1h20"
    },
    {
@@ -1821,7 +1826,7 @@ input:focus-visible,[tabindex]:focus-visible{
     "date": "09/30",
     "wd": "三",
     "title": "Wanaka → Cromwell → Arrowtown → 皇后鎮",
-    "leg": "約 1h50"
+    "leg": "約 1h50 · 皇后鎮連住 3 晚"
    },
    {
     "d": 8,
@@ -1842,21 +1847,21 @@ input:focus-visible,[tabindex]:focus-visible{
     "date": "10/03",
     "wd": "六",
     "title": "皇后鎮 → 蒂阿瑙",
-    "leg": "約 2h10 · 170km"
+    "leg": "約 2h10 · 170km · 蒂阿瑙住 2 晚"
    },
    {
     "d": 11,
     "date": "10/04",
     "wd": "日",
     "title": "蒂阿瑙 → 米爾福德峽灣 → 蒂阿瑙",
-    "leg": "單程 2h · 來回 240km"
+    "leg": "09:50 RealNZ 巴士 · 當天來回"
    },
    {
     "d": 12,
     "date": "10/05",
     "wd": "一",
-    "title": "蒂阿瑙 → Invercargill → Bluff",
-    "leg": "約 2h30"
+    "title": "蒂阿瑙 → Invercargill → Bluff → Invercargill",
+    "leg": "約 2h30 ＋ Bluff 來回"
    },
    {
     "d": 13,
@@ -1869,29 +1874,29 @@ input:focus-visible,[tabindex]:focus-visible{
     "d": 14,
     "date": "10/07",
     "wd": "三",
-    "title": "但尼丁 → 摩拉基 → Oamaru",
+    "title": "但尼丁 → Shag Point → Katiki Point → 摩拉基 → Oamaru",
     "leg": "約 1h50"
    },
    {
     "d": 15,
     "date": "10/08",
     "wd": "四",
-    "title": "Oamaru → Waitaki 內陸 → 基督城",
+    "title": "Oamaru → Waitaki 內陸 → Timaru → Akaroa → 基督城",
     "leg": "4h55–7h14（看方案）"
    },
    {
     "d": 16,
     "date": "10/09",
     "wd": "五",
-    "title": "基督城 → 飛奧克蘭",
-    "leg": "飛 1h25"
+    "title": "基督城市區 → 飛奧克蘭",
+    "leg": "NZ0566 18:10 CHC→19:35 AKL"
    },
    {
     "d": 17,
     "date": "10/10",
     "wd": "六",
-    "title": "奧克蘭 → CI54 返台",
-    "leg": "20:30 起飛"
+    "title": "奧克蘭市區 → CI54 返台",
+    "leg": "CI54 20:30 AKL 起飛（10/11 05:45 抵台）"
    }
   ],
   "fx": {
@@ -1901,6 +1906,24 @@ input:focus-visible,[tabindex]:focus-visible{
   }
  },
  "places": [
+  {
+   "id": "stay-novotel-akl",
+   "name": "Novotel Auckland Airport",
+   "zh": "貼著國際航廈的過夜飯店",
+   "cat": "stay",
+   "day": 2,
+   "town": "Auckland Airport",
+   "lat": -37.0040424,
+   "lng": 174.7832731,
+   "addr": "35 Tom Pearce Drive, Auckland Airport, Auckland 2022",
+   "q": "Novotel Auckland Airport",
+   "url": "https://all.accor.com/hotel/7485/index.en.shtml",
+   "hours": "入住 14:00 起 · 退房 11:00",
+   "flag": "ok",
+   "note": "<b>這間住兩次</b>：9/25 落地當晚，回程 <b>10/09 再住一晚</b>，10/10 搭 CI54 20:30 回台北。走路到<b>國際航廈約 390 公尺、5 分鐘</b>（OSRM 步行路線實算；官網只寫 “a short walk”，沒給分鐘數），<b>飯店沒有機場接駁車</b>——不需要，走過去就到。國內線航廈遠一點，約 1 公里、13 分鐘。⚠️ <b>官網目前公告：因機場園區施工，飯店無法提供停車位</b>，門口車道只能上下車，要停車得自己去訂 Auckland Airport 官方停車場（aucklandairport.co.nz/airport-parking）——如果那兩晚手上有租車，這件事一定要先安排。早餐（含在房價）在 <b>THIRTEEN50 Kitchen &amp; Bar</b> 自助式，官網沒公布時段；趕時間的話官網說可以在 bar 拿熱飲、柳橙汁和可頌走人。有健身房、<b>沒有泳池</b>。官網沒有寫是不是 24 小時櫃檯，深夜抵達前建議先問。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false,
+   "img": "images/stay-novotel-akl.jpg"
+  },
   {
    "id": "dsp-crater",
    "name": "Crater Experience",
@@ -2334,6 +2357,23 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/takapo-regional-park.jpg"
   },
   {
+   "id": "stay-mantra-tekapo",
+   "name": "Mantra Lake Tekapo",
+   "zh": "有全套廚房和洗衣機的公寓",
+   "cat": "stay",
+   "day": 3,
+   "town": "Lake Tekapo",
+   "lat": -44.0065326,
+   "lng": 170.4856135,
+   "addr": "1 Beauchamp Place, Lake Tekapo 7945",
+   "q": "Mantra Lake Tekapo",
+   "url": "https://www.mantralaketekapo.nz/",
+   "hours": "入住 14:00 起 · 退房 10:00",
+   "flag": "warn",
+   "note": "⚠️ <b>櫃檯不是 24 小時</b>：訂房平台寫每天 09:00–17:30，晚於這個時間到要先打 <b>+64 3 680 6888</b> 講一聲——<b>官網自己完全沒公布這段</b>，所以更該先問清楚。這天要從奧克蘭飛基督城再開 3 小時過來，9 月底南島天黑早，很容易卡到。房間是 fully self-contained：<b>全套廚房＋洗衣機</b>，浴室地暖、客廳瓦斯壁爐（初春夜裡會結冰，保暖沒問題；官網查不到有沒有電熱毯）。<b>免費停車，附獨立車庫</b>。館內<b>沒有餐廳、沒有早餐</b>，官網自己建議走去鎮上吃。走路到 Church of the Good Shepherd 約 810 公尺／11 分鐘、到 <b>Four Square 超市（22 Rapuwai Lane）約 1.3 公里／18 分鐘</b>（OSRM 步行路線實算——比官網說的「走 6 分鐘到鎮上」遠不少，晚上要買菜請算進去）。不收寵物。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
+  },
+  {
    "id": "greedy-cow-tekapo",
    "name": "The Greedy Cow Cafe",
    "zh": "Tekapo 鎮上早餐咖啡館",
@@ -2507,6 +2547,25 @@ input:focus-visible,[tabindex]:focus-visible{
     "n": 555,
     "note": "Google 地圖 Skydive Mount Cook（Pukaki 機場），2026-08-21 讀取"
    }
+  },
+  {
+   "id": "stay-hermitage",
+   "name": "The Hermitage Hotel",
+   "zh": "村裡唯一的大飯店，含早晚餐",
+   "cat": "stay",
+   "day": 4,
+   "town": "Mt Cook",
+   "lat": -43.733163,
+   "lng": 170.093722,
+   "geo_approx": "The Hermitage Mount Cook",
+   "addr": "Aoraki/Mount Cook Village 7946（官網沒給門牌，SH80 底進村後右轉即達）",
+   "q": "The Hermitage Hotel Aoraki Mount Cook",
+   "url": "https://hermitage.co.nz/stay/hermitage-hotel",
+   "hours": "入住 15:00 起 · 退房 10:00",
+   "flag": "star",
+   "note": "訂的是 <b>Bed &amp; Breakfast Package</b>，早餐和 Alpine Dinner 都在同一棟樓的 <b>Alpine Restaurant</b>：<b>晚餐自助餐每天 17:00–20:30</b>（你們訂 18:00 入座）、<b>早餐自助餐 7:30–10:00、不用訂位</b>。這兩晚是整趟唯一不用煩惱吃飯的日子——但只含早晚餐，<b>午餐要自己解決</b>（村裡吃什麼看「The Hermitage Hotel」那張餐廳卡）。<b>停車免費</b>。Wi-Fi 免費但官網自己就寫「limited、可能很慢」，園區內有 4G 但訊號會飄。⚠️ <b>村裡沒有超市也沒有便利商店</b>，最近的商店在 66 公里外的 Twizel；村內加油站是自助刷卡的，進村前先加滿比較保險。官網查不到櫃檯是否 24 小時值班。飯店本身被洪水沖垮又被大火燒掉的故事，寫在餐廳那張卡裡。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false,
+   "img": "images/stay-hermitage.jpg"
   },
   {
    "id": "big-sky-stargazing",
@@ -3277,6 +3336,24 @@ input:focus-visible,[tabindex]:focus-visible{
    "img": "images/hermitage-guided-hikes.jpg"
   },
   {
+   "id": "stay-mtcook-motels",
+   "name": "Mt Cook Motels",
+   "zh": "下村的公寓式 motel，一樣含早晚餐",
+   "cat": "stay",
+   "day": 5,
+   "town": "Mt Cook",
+   "lat": -43.7365114,
+   "lng": 170.0991745,
+   "geo_approx": "Mt Cook Lodge & Motels, lower Aoraki Village",
+   "addr": "Aoraki/Mount Cook Village 下村（官網沒給門牌，緊鄰 Mt Cook Lodge）",
+   "q": "Mt Cook Lodge and Motels Aoraki Mount Cook Village",
+   "url": "https://hermitage.co.nz/stay/mt-cook-motels",
+   "hours": "入住 15:00 起 · 退房 10:00",
+   "flag": "warn",
+   "note": "⚠️ <b>不要開到 motel 門口才發現沒人</b>：官網寫 <b>5–9 月的 check-in 在 Hermitage 主樓辦</b>（10–4 月才在 Mt Cook Lodge），你們 9/28 落在 5–9 月這段，先到 Hermitage 報到再開下來。<b>官網另一頁卻寫「一律到 Mt Cook Lodge 報到」，兩頁打架</b>，出發前請照訂房確認信或直接問飯店。⚠️ <b>早餐和 Alpine Dinner 都要走回 Hermitage 主樓吃</b>（官網明講 B&amp;B／DB&amp;B 房客一律在 Hermitage 用餐），官網說距離約 800 公尺，OSRM 步行路線實算 <b>1.1 公里、約 15 分鐘</b>；<b>官方接駁車 10/1 才開始跑</b>，你們這幾天沒有，只能走路或自己開車過去——9/28 晚上 18:00 吃完自助餐走回來天已經全黑而且很冷，<b>帶頭燈或手電筒</b>。房內有<b>完整廚房、客廳和戶外露臺</b>，停車免費、Wi-Fi 免費但很慢。<b>Motel 房型看不到 Aoraki 主峰</b>（官網自己標注的）。隔壁 50 公尺的 Mt Cook Lodge 有 Chamois Bar &amp; Grill，但<b>官網寫明 2026/05/09–10/31 整段公休</b>，你們那兩晚吃不到——不過反正含晚餐，影響不大。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
+  },
+  {
    "id": "glide-omarama",
    "name": "Glide Omarama",
    "zh": "（已永久歇業）Omarama 滑翔機",
@@ -3670,6 +3747,23 @@ input:focus-visible,[tabindex]:focus-visible{
     "n": 6996,
     "note": "Google 條目名已改為「Wānaka Willow Tree」。"
    }
+  },
+  {
+   "id": "stay-golfcourse-wanaka",
+   "name": "Golfcourse Road Chalets and Lodge",
+   "zh": "球場旁的小木屋，屋主親自迎賓",
+   "cat": "stay",
+   "day": 6,
+   "town": "Wanaka",
+   "lat": -44.7043464,
+   "lng": 169.1401627,
+   "addr": "44 Golf Course Road, Wanaka 9305",
+   "q": "Golfcourse Road Chalets and Lodge Wanaka",
+   "url": "https://gcrc.co.nz/",
+   "hours": "入住 14:00 起 · 退房 10:00",
+   "flag": "warn",
+   "note": "⚠️ <b>沒有 24 小時櫃檯，是屋主本人親自接待</b>。訂房平台上的業者政策寫「<b>預計 21:30 之後才到，請事先 email 聯絡</b>」——官網完全沒提這件事，所以更該主動寄信到 <b>info@gcrc.co.nz</b> 或打 <b>+64 3 443 9399</b> 報預計抵達時間。⚠️ <b>房型差很多</b>：Chalets 有小廚房＋洗衣機＋免費洗衣粉；<b>Lodge Rooms 沒有廚房</b>（只有茶包咖啡），但<b>含歐陸式早餐</b>——訂的是哪一種先確認，會決定那晚要不要出門吃。免費專屬停車位、免費 Wi-Fi、房內有暖爐。<b>走路進鎮上要 1.6 公里／約 22 分鐘，到 New World 超市 1.9 公里／26 分鐘</b>（OSRM 步行實算，跟官網說的「走 20 分鐘到湖邊」對得上）；<b>開車進鎮中心只要 3 分鐘</b>，所以這裡實務上是「開車型」住宿，晚餐別想用走的。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
   },
   {
    "id": "cardrona-distillery",
@@ -4132,6 +4226,23 @@ input:focus-visible,[tabindex]:focus-visible{
      "捐款箱是現場投入式的，想捐先備一點現金零錢。"
     ]
    }
+  },
+  {
+   "id": "stay-bella-vista-qt",
+   "name": "Bella Vista Queenstown",
+   "zh": "皇后鎮住 3 晚的基地，車位免費",
+   "cat": "stay",
+   "day": 7,
+   "town": "Queenstown",
+   "lat": -45.0268952,
+   "lng": 168.6597933,
+   "addr": "36 Robins Road, Queenstown 9300",
+   "q": "Bella Vista Queenstown Robins Road",
+   "url": "https://www.bellavista.co.nz/our-motels/queenstown",
+   "hours": "入住 15:00 起 · 退房 10:00 · 櫃檯每天 08:30–17:00",
+   "flag": "star",
+   "note": "<b>整趟唯一連住 3 晚的地方</b>（9/30–10/03）。<b>停車免費、不用預約</b>——官網寫 “Free off-street parking”「車位很多」，皇后鎮市區路邊停車要錢又難找，住 3 晚等於省一大筆，這是選這間最大的好處（只有 <b>Type 2 電動車充電樁需要事先預約</b>，開燃油車不用管）。走路到市中心 690 公尺／9 分鐘、<b>到 FreshChoice 超市只要 400 公尺／5 分鐘</b>（OSRM 步行實算）——住 3 晚可以買菜自己煮。有<b>客用洗衣間</b>（官網沒寫是不是投幣，可以先問），房內是 kitchenette；⚠️ <b>Budget／Compact Studio 的小廚房沒有水槽</b>，要真正能煮要訂 Full Kitchen Studio 以上。Wi-Fi 免費不限流量。⚠️ <b>官網整站查不到「早餐」</b>，判斷不供早餐（少數訂房平台寫有 continental breakfast，與官網不符，別當真）。櫃檯只開到 17:00，但官網說<b>入住當天和非上班時間都有 self check-in</b>，做法寫在訂房確認信裡——先把那封信找出來。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
   },
   {
    "id": "onsen-hot-pools",
@@ -4875,6 +4986,23 @@ input:focus-visible,[tabindex]:focus-visible{
    }
   },
   {
+   "id": "stay-lakeside-teanau",
+   "name": "Lakeside Motel and Apartments",
+   "zh": "離峽灣巴士站走路 8 分鐘的湖邊 motel",
+   "cat": "stay",
+   "day": 10,
+   "town": "Te Anau",
+   "lat": -45.4213449,
+   "lng": 167.7162517,
+   "addr": "36 Lakefront Drive, Te Anau 9600",
+   "q": "Lakeside Motel and Apartments Te Anau",
+   "url": "https://www.lakesideteanau.co.nz/",
+   "hours": "入住 14:00 起 · 退房 10:00（訂房平台資料，官網沒公布）",
+   "flag": "warn",
+   "note": "住 2 晚（10/03–10/05），中間那天要跑米爾福德峽灣。<b>最實用的一點：RealNZ 的巴士站（85 Lakefront Drive）就在同一條路上，走路 590 公尺／約 8 分鐘</b>（OSRM 步行實算）——10/04 早上 09:50 那班車不用開車也不用找停車位。⚠️ <b>官網沒有公布櫃檯開放時間，也沒寫晚到怎麼辦</b>，訂房平台上兩種說法互相矛盾（一說 08:00–20:00、一說 08:00–19:00），等於沒有可信答案：<b>務必先寄信 stay@lakesideteanau.co.nz 或打 +64 3 249 7435 / 0800 452 537 問清楚 10/03 那晚幾點前要到</b>，隔天一早要趕車，當晚找不到人會很麻煩。免費停車、免費不限流量 Wi-Fi、房內有暖氣和<b>做飯設備</b>；⚠️ <b>洗衣是共用洗衣間，不是每間房都有洗衣機</b>。<b>沒有早餐</b>（只有茶包和濾壓壺咖啡）。走路到鎮上約 5 分鐘、到 FreshChoice 超市（5 Milford Crescent）980 公尺／13 分鐘——<b>去峽灣的路上 120 公里沒有商店</b>，前一晚就在這裡把水和乾糧買好。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
+  },
+  {
    "id": "cruise-milford",
    "name": "Cruise Milford",
    "zh": "峽灣遊船（班次最密）",
@@ -5313,6 +5441,38 @@ input:focus-visible,[tabindex]:focus-visible{
    }
   },
   {
+   "id": "milford-signature-cruise",
+   "name": "Milford Sound Signature Cruise（RealNZ）",
+   "zh": "訂好的那班峽灣遊輪",
+   "cat": "book",
+   "day": 11,
+   "town": "Milford Sound",
+   "lat": -44.6682006,
+   "lng": 167.9269783,
+   "addr": "上車：RealNZ Visitor Centre, 85 Lakefront Drive, Te Anau｜報到：Milford Sound Visitor Terminal",
+   "q": "Milford Sound Visitor Terminal",
+   "url": "https://www.realnz.com/en/experiences/day-cruises/milford-sound-signature-cruise/",
+   "hours": "碼頭出發 10:30 / 13:00 / 15:25 · 航程最長 2 小時（官網寫 1.5–2 小時，看天氣和動物）",
+   "price": "遊輪單買 成人 from NZ$175｜蒂阿瑙出發的一日行程 from NZ$249（官網起價，實際以訂位確認信為準）",
+   "flag": "star",
+   "book": true,
+   "bk": "Milford Sound cruise",
+   "note": "10/04 <b>09:50 從 RealNZ 蒂阿瑙遊客中心（85 Lakefront Drive）</b>發車，這是官網公告的正式班次之一（其他班 07:45／10:10／10:50）。⚠️ <b>不提供飯店接送，只在遊客中心集合</b>。單程官網寫 2–3 小時（FAQ 另寫「約 3 小時，含休息與拍照停靠」），<b>官網沒有公布幾點回到蒂阿瑙</b>，粗估傍晚 17:30–19:00，以現場公告為準。跑 Signature 的船是 <b>Milford Haven</b>（有屋頂甲板，最多 180 人）或 <b>Milford Mariner</b>（仿老式帆船 scow，最多 120 人，有風時會升帆）——Mariner 只跑 10:30 和 13:00 兩班。⚠️ <b>船票不含正餐</b>，船上有咖啡吧和現做輕食櫃可以買；<b>蒂阿瑙到峽灣 120 公里沒有商店</b>，上車前先買好。導覽是<b>船上真人 nature guide ＋ RealNZ App 的多語語音導覽</b>（要先下載，官網沒有公布語言清單，有沒有中文請自己確認）。<b>下雨照跑</b>——官網 FAQ 直說「我們歡迎大雨，因為會跑出上百條瀑布」，真正會取消的是強風和大雪封路。自己要改期或退票<b>至少提前 24 小時</b>通知。碼頭報到規則是「提前 20 分鐘到 Milford Sound Visitor Terminal」，但你們搭他們的巴士直接進場，這條主要是自駕才用得到。（查證 2026/08/23 · 以官網最新為準）",
+   "deep": {
+    "lead": "10 月初還在官方定義的雪崩季裡——這條路是全紐西蘭少數會被直升機丟炸藥「先把雪打下來」的公路。",
+    "paras": [
+     "NZTA 官方說法是：SH94 的雪崩季<b>通常從 6 月到 10 月</b>，管制範圍從蒂阿瑙北方 91 公里處的 Falls Creek 一路到隧道另一側的 The Chasm，總共 17 公里。他們用三級燈號管：LOW（開放）、MODERATE（開放但隨時可能關）、HIGH（封路）。也就是說 <b>10/04 雖然是季末，仍然在管制期間內</b>，臨時封路或延誤都有可能——出發前一晚查一次即時路況（milfordroad.co.nz 或問蒂阿瑙 i-SITE）最實在。",
+     "隧道端則是另一種延誤：DOC 官方寫明 Homer Tunnel 在旺季用<b>紅綠燈單線輪流通行，最長會等 20 分鐘</b>。這件事影響的是回程時間，不是你們搭不搭得到船——巴士司機比你們清楚，真的塞到就是晚點回蒂阿瑙。"
+    ],
+    "tips": [
+     "官網完全沒提暈船。峽灣內幾乎不晃，會晃的是開到 Tasman Sea 出海口那一小段（官網把它寫成賣點：「fiord 與 ocean 相遇」）；容易暈的人可以先備藥。",
+     "船票和巴士的取消條款是「至少 24 小時前」，比 Premium／Business Class 的 48 小時寬鬆——但公司因天候取消時怎麼賠，官網條款只寫「保留取消權利」，沒有細節。"
+    ]
+   },
+   "bookable": true,
+   "img": "images/milford-signature-cruise.jpg"
+  },
+  {
    "id": "batch-cafe",
    "name": "The Batch Café",
    "zh": "",
@@ -5646,6 +5806,23 @@ input:focus-visible,[tabindex]:focus-visible{
     "approx": true,
     "n": 1400
    }
+  },
+  {
+   "id": "stay-golden-leaf-inv",
+   "name": "Golden Leaf Apartments",
+   "zh": "在地夫妻經營的公寓，洗衣免費",
+   "cat": "stay",
+   "day": 12,
+   "town": "Invercargill",
+   "lat": -46.4050996,
+   "lng": 168.3493357,
+   "addr": "15 Thomson Street, Avenal, Invercargill 9810",
+   "q": "Golden Leaf Apartments Invercargill",
+   "url": "https://www.goldenleafapartments.co.nz/",
+   "hours": "入住 13:00 起 · 退房 10:00",
+   "flag": "warn",
+   "note": "⚠️ <b>這天最容易晚到</b>——蒂阿瑙開過來再繞去 Bluff，回到 Invercargill 常常已經傍晚。官網<b>沒有公布櫃檯關門時間</b>（只寫租車／接送的服務時間 09:30–21:30），訂房平台則寫 10:00–21:30、超過要先聯絡：<b>出發前直接打 03 218 7212 或 0273344944、或寄 stay@gla.co.nz</b> 告知預計到達時間、確認怎麼拿鑰匙。屋主是在地的 Jan &amp; John Strachan 夫婦。房內<b>都有廚房</b>（Unit 1–3 兩房型是正規電爐＋冰箱冷凍庫；Unit 4–7 是小烤爐＋微波爐＋小冰箱），<b>客用洗衣機和烘乾機免費</b>，還有曬衣繩——這是整趟少數能好好洗衣服的一晚。<b>免費停車，多數有頂遮蓋</b>；免費 Wi-Fi；<b>不供早餐</b>。走路到 i-SITE 遊客中心 910 公尺／12 分鐘、到 Esk Street 商店區的 Woolworths 約 1.5 公里／20 分鐘（OSRM 步行實算——官網一頁寫「走 5 分鐘到市中心」、另一頁寫「距市中心 800 公尺」，兩個都偏樂觀）。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false
   },
   {
    "id": "albatross-centre",
@@ -6264,6 +6441,35 @@ input:focus-visible,[tabindex]:focus-visible{
    }
   },
   {
+   "id": "stay-ebb-dunedin",
+   "name": "Ebb-Dunedin",
+   "zh": "得過建築獎的設計旅館（只收成人）",
+   "cat": "stay",
+   "day": 13,
+   "town": "Dunedin",
+   "lat": -45.8696124,
+   "lng": 170.5042318,
+   "addr": "82 Filleul Street, Dunedin 9016",
+   "q": "Ebb Dunedin 82 Filleul Street",
+   "url": "https://ebb-dunedin.co.nz/",
+   "hours": "入住 15:00 起 · 退房 11:00 · 櫃檯 07:00–23:00（23:00 後到要先聯絡）",
+   "flag": "star",
+   "note": "⚠️ <b>只收成人</b>（adults only，不接受兒童、沒有嬰兒床）。櫃檯 07:00–23:00，官網說可以 24 小時入住，但<b>超過 23:00 抵達一定要先聯絡拿進入方式</b>。⚠️ <b>附設的 Ebb-Kitchen 每天 06:45 開，只開到「下午中段」</b>（官網原文 mid afternoon，沒給確切時間），<b>晚上不供餐</b>——那頓晚餐要自己出門。好消息是走出去就有：走路到八角廣場 The Octagon 560 公尺／8 分鐘、到 New World 超市 500 公尺／7 分鐘、到但尼丁火車站 970 公尺／13 分鐘（OSRM 步行實算）。附近常被提到的晚餐選擇有 Bacchus Wine Bar（The Octagon 樓上，週日休）、Etrusco at the Savoy（義大利菜，8A Moray Place）、Two Chefs Bistro（121 Stuart Street）——<b>營業時間都是第三方資料，當天先查或先訂位</b>。⚠️ <b>停車要錢</b>：現場 18 個車位、每晚 NZ$25，<b>車高上限 2.38 公尺</b>，開露營車或高頂廂型車進不去。Wi-Fi 免費。（查證 2026/08/23 · 以官網最新為準）",
+   "deep": {
+    "lead": "這間旅館的名字叫「退潮」，因為它蓋在一片已經被填掉的潮間灘地上。",
+    "paras": [
+     "Ebb 不是老屋改建，是 2021 年 4 月 1 日才開幕的<b>全新建築</b>，28 間房，由但尼丁在地的 Cazemier 家族和 Otherplaces 在 2017 年買地開發、Gary Todd Architecture 設計。取名 Ebb（退潮）是因為<b>這塊地在歷史上曾是奧塔哥港的潮間灘地邊緣</b>——退潮時灘地露出來，玻里尼西亞獨木舟就是在這種時候最先靠岸的。今天你站的地方是填出來的陸地，名字是它唯一留下的線索。",
+     "外牆那面畫是重點：長 <b>20 公尺、橫跨三層樓</b>，由但尼丁藝術家 <b>Simon Kaan</b> 創作，畫的是獨木舟從奧塔哥港口駛進來的畫面。這棟樓拿過 2021 年 Best Design Awards 銅獎，以及紐西蘭建築師協會（NZIA）的 Southern Architecture Award 和 <b>Sir Miles Warren Award for Commercial Architecture</b>。"
+    ],
+    "tips": [
+     "Ebb-Kitchen 對外開放，不是只有房客能吃——早上 06:45 就開，適合當天要一早往北開的節奏。",
+     "官網沒有明說早餐有沒有含在房價裡，訂房時順手問一下。"
+    ]
+   },
+   "bookable": false,
+   "img": "images/stay-ebb-dunedin.jpg"
+  },
+  {
    "id": "blue-penguin-colony",
    "name": "Ōamaru Blue Penguin Colony",
    "zh": "藍企鵝歸巢",
@@ -6600,6 +6806,33 @@ input:focus-visible,[tabindex]:focus-visible{
    }
   },
   {
+   "id": "stay-old-confectionery",
+   "name": "The Old Confectionery",
+   "zh": "1879 年糖果店改成的自助式公寓",
+   "cat": "stay",
+   "day": 14,
+   "town": "Oamaru",
+   "lat": -45.1032223,
+   "lng": 170.9680729,
+   "addr": "26 Tees Street, South Hill, Oamaru 9400",
+   "q": "The Old Confectionery 26 Tees Street Oamaru",
+   "url": "https://www.oldconfectionery.co.nz/",
+   "hours": "官網沒公布入住／退房時間（訂房平台寫 14:00 / 10:00，非官方）",
+   "flag": "ok",
+   "note": "<b>完全自助入住，現場沒有人</b>：大門是電子密碼鎖，<b>密碼會在入住前用 email 寄給你</b>——所以晚到不是問題，但<b>出發前務必確認那封 email 有收到</b>（寄信 info@oldconfectionery.co.nz 或打 +64 21 022 10093）。整棟只有 <b>2 套公寓</b>（樓下 Heritage、樓上有海景的 Sea View），兩套都有<b>完整廚房</b>（大烤箱、洗碗機、冰箱冷凍庫）和<b>洗衣設備</b>。戶外停車位有感應照明，Wi-Fi 免費。<b>不供早餐</b>，改成線上直接訂房送在地 Whitestone 起司和餅乾——所以早餐要前一天先買好。走路到維多利亞舊城區（Harbour／Tyne Street 那一帶）560 公尺／8 分鐘、到 Woolworths 超市 700 公尺／9 分鐘、<b>到藍企鵝棲息地 1.5 公里／約 20 分鐘</b>（OSRM 步行實算；看完企鵝天已經黑，走回來要帶燈，或乾脆開車）。⚠️ <b>官網沒有公布入住／退房的鐘點時間</b>，訂房那天順便問一下。（查證 2026/08/23 · 以官網最新為準）",
+   "deep": {
+    "lead": "這棟樓的第一任屋主，名錄上先登記成水果商，三年後改登記成賣魚的。",
+    "paras": [
+     "它本來叫 <b>Marshall Building</b>，1879 年由 Henry William Marshall 蓋起來，建築師是當年 Oamaru 最強的事務所之一 <b>Forrester and Lemon</b>，用當地開採的<b>奧馬魯石灰岩</b>蓋成兩層樓的新古典主義商業建築——樓下兩間店面、樓上辦公室。Marshall 本人 1880 年的商業名錄登記是水果商，1883、1885 年變成魚販，一間自己開、一間出租。",
+     "之後幾十年這裡輪流住過雜貨商、菸草商、水管工、錫匠，還有一段<b>糖果商</b>時期——當時叫 <b>Rice's Confectionery</b>，今天旅館的名字就是從這裡來的。2016 年之前它是<b>屋頂漏水、牆面發霉的廢棄空屋</b>，只拿來堆雜物；Katrina 和 David Menzies 那年把它買下來當成一個挑戰，花了比預估多一倍的錢和時間，保住原本的推拉窗、雕花簷板和石柱，同時補上雙層玻璃、隔熱和耐震補強，<b>2020 年 7 月</b>才對外開放住宿。"
+    ],
+    "tips": [
+     "Tees Street 這一段落在 Heritage New Zealand 的「Oamaru Historic Area」（登錄編號 7064）範圍內，不過查不到這棟樓有單獨列名。"
+    ]
+   },
+   "bookable": false
+  },
+  {
    "id": "akaroa-dolphins",
    "name": "Akaroa Dolphins",
    "zh": "阿卡羅阿賞海豚遊船",
@@ -6858,6 +7091,24 @@ input:focus-visible,[tabindex]:focus-visible{
     "approx": true,
     "n": 350
    }
+  },
+  {
+   "id": "stay-novotel-chc",
+   "name": "Novotel Christchurch Airport",
+   "zh": "走路 2 分鐘到航廈",
+   "cat": "stay",
+   "day": 15,
+   "town": "Christchurch",
+   "lat": -43.4881128,
+   "lng": 172.5420843,
+   "addr": "30 Durey Road, Christchurch Airport, Christchurch 8053",
+   "q": "Novotel Christchurch Airport",
+   "url": "https://all.accor.com/hotel/A542/index.en.shtml",
+   "hours": "入住 14:00 起 · 退房 11:00 · 24 小時櫃檯",
+   "flag": "star",
+   "note": "官網直接寫死「<b>2 Minute walk to Christchurch Airport terminal</b>」，OSRM 步行實算 300 公尺／4 分鐘——就在航廈門外，10/09 一早飛奧克蘭完全不用算接駁時間，這是整趟最省事的一晚。<b>有 24 小時櫃檯</b>（官網明講），晚到不用擔心。含早餐，餐廳是頂樓的 <b>Food Exchange</b>，天氣好看得到南阿爾卑斯山（官網沒公布供餐時段）。有健身房、<b>沒有泳池</b>。⚠️ <b>停車要另外付費</b>，用的是機場的停車格（官網沒公布金額，訂房平台寫每天 NZ$30，非官方數字）——當天要還租車的話，先確認還車地點和步行動線。開車到基督城市中心 10.4 公里／約 17 分鐘（OSRM 實算），官網說搭大眾運輸 15 分鐘內可到。（查證 2026/08/23 · 以官網最新為準）",
+   "bookable": false,
+   "img": "images/stay-novotel-chc.jpg"
   },
   {
    "id": "chch-tram",

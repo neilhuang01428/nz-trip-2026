@@ -183,3 +183,9 @@
 | `images/mtcook-alpine-salmon.jpg` | Mt Cook Alpine Salmon Shop | 使用者提供 | 未確認 | — |
 
 | `images/doc-mtcook-visitor.jpg` | Aoraki/Mount Cook National Park Visitor Centre | 使用者提供 | 未確認 | — |
+
+| `images/stay-novotel-akl.jpg` | File:New Hotel On Stilts At Auckland Airport.jpg | Ingolfson | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:New_Hotel_On_Stilts_At_Auckland_Airport.jpg) |
+| `images/stay-hermitage.jpg` | File:隐士酒店 The Hermitage Hotel - panoramio.jpg | wanghongliu | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:%E9%9A%90%E5%A3%AB%E9%85%92%E5%BA%97_The_Hermitage_Hotel_-_panoramio.jpg) |
+| `images/stay-ebb-dunedin.jpg` | File:Ebb-Dunedin.jpg | DrThneed | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Ebb-Dunedin.jpg) |
+| `images/stay-novotel-chc.jpg` | File:Novotel Christchurch Airport 821.jpg | Schwede66 | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Novotel_Christchurch_Airport_821.jpg) |
+| `images/milford-signature-cruise.jpg` | File:MV Milford Haven Milford Sound.NZ (9963621614).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg) |

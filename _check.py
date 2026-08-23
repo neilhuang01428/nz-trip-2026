@@ -28,7 +28,10 @@ for i in range(len(P)):
         # 雖然一個包含另一個，但是兩個不同的東西
         short, long_ = sorted((na, nb), key=len)
         similar = (na == nb) or (short in long_ and len(short) / len(long_) >= 0.7)
-        if similar and \
+        # 同一棟建築可以同時是「住宿」和「餐廳」——例如 The Hermitage
+        # 既是飯店（cat: stay）也是村裡的用餐點（cat: eat）。這種不算重複。
+        same_building_ok = {a["cat"], b["cat"]} == {"stay", "eat"}
+        if similar and not same_building_ok and \
            math.dist((a["lat"], a["lng"]), (b["lat"], b["lng"])) * 111 < 0.35:
             dups.append(f"{a['id']} vs {b['id']}（{a['name'][:30]}）")
 if dups:

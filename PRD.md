@@ -117,8 +117,12 @@
     "cats": {
       "sight":   { "label": "景點",       "color": "#1B7A93", "page": "sights" },
       "eat":     { "label": "吃的",       "color": "#B4791F", "page": "eat" },
-      "book":    { "label": "需預約體驗", "color": "#1E5B4E", "page": "book" }
-      // 可以再加自訂分類，例如本站的 skydive / glacier 是「重頭戲」獨立成頁
+      "book":    { "label": "需預約體驗", "color": "#1E5B4E", "page": "book" },
+      "stay":    { "label": "住宿",       "color": "#9E3A6B", "page": "itinerary" }
+      // 可以再加自訂分類，例如本站的 skydive / glacier 是「重頭戲」獨立成頁。
+      // stay 沒有自己的分頁，而是掛在行程頁的「每一晚睡哪裡」那一節
+      // （<div id="app" data-cat="stay">），因為住宿本來就是行程的一部分。
+      // 住宿卡最實用的欄位是 hours：入住／退房時間 ＋ 櫃檯開到幾點。
     },
     "days": [
       { "d": 1, "date": "09/24", "wd": "四",

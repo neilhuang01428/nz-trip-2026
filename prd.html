@@ -1247,8 +1247,12 @@ input:focus-visible,[tabindex]:focus-visible{
     &quot;cats&quot;: {
       &quot;sight&quot;:   { &quot;label&quot;: &quot;景點&quot;,       &quot;color&quot;: &quot;#1B7A93&quot;, &quot;page&quot;: &quot;sights&quot; },
       &quot;eat&quot;:     { &quot;label&quot;: &quot;吃的&quot;,       &quot;color&quot;: &quot;#B4791F&quot;, &quot;page&quot;: &quot;eat&quot; },
-      &quot;book&quot;:    { &quot;label&quot;: &quot;需預約體驗&quot;, &quot;color&quot;: &quot;#1E5B4E&quot;, &quot;page&quot;: &quot;book&quot; }
-      // 可以再加自訂分類，例如本站的 skydive / glacier 是「重頭戲」獨立成頁
+      &quot;book&quot;:    { &quot;label&quot;: &quot;需預約體驗&quot;, &quot;color&quot;: &quot;#1E5B4E&quot;, &quot;page&quot;: &quot;book&quot; },
+      &quot;stay&quot;:    { &quot;label&quot;: &quot;住宿&quot;,       &quot;color&quot;: &quot;#9E3A6B&quot;, &quot;page&quot;: &quot;itinerary&quot; }
+      // 可以再加自訂分類，例如本站的 skydive / glacier 是「重頭戲」獨立成頁。
+      // stay 沒有自己的分頁，而是掛在行程頁的「每一晚睡哪裡」那一節
+      // （&lt;div id=&quot;app&quot; data-cat=&quot;stay&quot;&gt;），因為住宿本來就是行程的一部分。
+      // 住宿卡最實用的欄位是 hours：入住／退房時間 ＋ 櫃檯開到幾點。
     },
     &quot;days&quot;: [
       { &quot;d&quot;: 1, &quot;date&quot;: &quot;09/24&quot;, &quot;wd&quot;: &quot;四&quot;,

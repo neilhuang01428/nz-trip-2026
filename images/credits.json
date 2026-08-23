@@ -1195,5 +1195,40 @@
   "lic": "使用者提供",
   "artist": "使用者提供（未確認原始作者）",
   "page": ""
+ },
+ "stay-novotel-akl": {
+  "file": "images/stay-novotel-akl.jpg",
+  "title": "File:New Hotel On Stilts At Auckland Airport.jpg",
+  "lic": "Public domain",
+  "artist": "Ingolfson",
+  "page": "https://commons.wikimedia.org/wiki/File:New_Hotel_On_Stilts_At_Auckland_Airport.jpg"
+ },
+ "stay-hermitage": {
+  "file": "images/stay-hermitage.jpg",
+  "title": "File:隐士酒店 The Hermitage Hotel - panoramio.jpg",
+  "lic": "CC BY-SA 3.0",
+  "artist": "wanghongliu",
+  "page": "https://commons.wikimedia.org/wiki/File:%E9%9A%90%E5%A3%AB%E9%85%92%E5%BA%97_The_Hermitage_Hotel_-_panoramio.jpg"
+ },
+ "stay-ebb-dunedin": {
+  "file": "images/stay-ebb-dunedin.jpg",
+  "title": "File:Ebb-Dunedin.jpg",
+  "lic": "CC BY-SA 3.0",
+  "artist": "DrThneed",
+  "page": "https://commons.wikimedia.org/wiki/File:Ebb-Dunedin.jpg"
+ },
+ "stay-novotel-chc": {
+  "file": "images/stay-novotel-chc.jpg",
+  "title": "File:Novotel Christchurch Airport 821.jpg",
+  "lic": "CC BY-SA 4.0",
+  "artist": "Schwede66",
+  "page": "https://commons.wikimedia.org/wiki/File:Novotel_Christchurch_Airport_821.jpg"
+ },
+ "milford-signature-cruise": {
+  "file": "images/milford-signature-cruise.jpg",
+  "title": "File:MV Milford Haven Milford Sound.NZ (9963621614).jpg",
+  "lic": "CC0",
+  "artist": "Bernard Spragg. NZ from Christchurch, New Zealand",
+  "page": "https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg"
  }
 }
