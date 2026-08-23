@@ -189,3 +189,10 @@
 | `images/stay-ebb-dunedin.jpg` | File:Ebb-Dunedin.jpg | DrThneed | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Ebb-Dunedin.jpg) |
 | `images/stay-novotel-chc.jpg` | File:Novotel Christchurch Airport 821.jpg | Schwede66 | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Novotel_Christchurch_Airport_821.jpg) |
 | `images/milford-signature-cruise.jpg` | File:MV Milford Haven Milford Sound.NZ (9963621614).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg) |
+| `images/stay-bella-vista-qt.jpg` | Bella Vista Queenstown | 使用者提供 | 未確認 | — |
+| `images/stay-golden-leaf-inv.jpg` | Golden Leaf Apartments | 使用者提供 | 未確認 | — |
+| `images/stay-golfcourse-wanaka.jpg` | Golfcourse Road Chalets and Lodge | 使用者提供 | 未確認 | — |
+| `images/stay-lakeside-teanau.jpg` | Lakeside Motel and Apartments | 使用者提供 | 未確認 | — |
+| `images/stay-mantra-tekapo.jpg` | Mantra Lake Tekapo | 使用者提供 | 未確認 | — |
+| `images/stay-mtcook-motels.jpg` | Mt Cook Motels | 使用者提供 | 未確認 | — |
+| `images/stay-old-confectionery.jpg` | The Old Confectionery | 使用者提供 | 未確認 | — |

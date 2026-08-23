@@ -11,7 +11,7 @@
 <!--LEAFLET-->
 <!--NZCSS-->
 <style>
-.dayline{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
+.dayline{display:grid;grid-template-columns:72px 1fr auto auto;gap:12px;align-items:center;
   padding:13px 16px;border-top:1px solid var(--line-2);font-size:.92rem}
 .dayline:first-child{border-top:0}
 .dayline .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);line-height:1.25}
@@ -20,14 +20,29 @@
 .dayline .t small{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
 .dayline .g{font-family:var(--mono);font-size:.75rem;color:var(--pukaki-dk);background:var(--ice);
   padding:4px 10px;border-radius:14px;white-space:nowrap;text-align:center}
+/* 當晚住哪裡：點下去捲到底下那張住宿卡 */
+.dayline .bed{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:650;
+  color:#7E2E55;background:rgba(158,58,107,.10);border:1px solid rgba(158,58,107,.28);
+  padding:4px 11px;border-radius:14px;white-space:nowrap;cursor:pointer;
+  font-family:inherit;line-height:1.5;transition:.18s}
+.dayline .bed:hover{background:rgba(158,58,107,.2);transform:translateY(-1px)}
+.dayline .bed:focus-visible{outline:2px solid #9E3A6B;outline-offset:2px}
+.dayline .bed .ic{font-size:.86rem}
+.dayline .bed .cont{font-weight:400;opacity:.75}
+.dayline .bed-none{font-size:.74rem;color:var(--ink-soft);white-space:nowrap;padding:4px 2px}
 .dayline.has{background:linear-gradient(90deg,rgba(229,178,60,.10),transparent)}
 .dayline.has .t::after{content:' ▸ 要選一個';font-size:.72rem;color:#8A6416;font-weight:700}
 .daytable{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   box-shadow:var(--shadow);margin:18px 0}
 a.dayline,.dayline a{text-decoration:none;color:inherit}
+@media(max-width:900px){
+  .dayline{grid-template-columns:72px 1fr auto}
+  .dayline .bed,.dayline .bed-none{grid-column:2/-1;justify-self:start;margin-top:4px}
+}
 @media(max-width:600px){
   .dayline{grid-template-columns:56px 1fr;gap:10px;padding:12px 14px}
   .dayline .g{grid-column:2;justify-self:start;margin-top:3px}
+  .dayline .bed,.dayline .bed-none{grid-column:2;margin-top:5px}
 }
 </style>
 </head>
@@ -187,18 +202,57 @@ a.dayline,.dayline a{text-decoration:none;color:inherit}
   var DB = JSON.parse(d.textContent);
   var withOpts = {};
   (DB.routes || []).forEach(function (r) { withOpts[r.day] = true; });
+
+  // 每一天當晚睡哪裡：由住宿卡的 nights 陣列反查（連住會涵蓋多天）
+  var bedOf = {};
+  DB.places.forEach(function (p) {
+    if (p.cat !== 'stay') return;
+    (p.nights || [p.day]).forEach(function (d) { bedOf[d] = p; });
+  });
+  var noStay = (DB.meta.no_stay_note) || {};
+
+  function esc(t) {
+    return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
   var html = '';
   DB.meta.days.forEach(function (x) {
     var has = withOpts[x.d];
+    var b = bedOf[x.d];
+    var bed;
+    if (b) {
+      // 連住的第 2 晚之後標「續住」，才看得出哪天要搬行李
+      var nights = b.nights || [b.day];
+      var idx = nights.indexOf(x.d);
+      var cont = idx > 0 && nights[idx - 1] === x.d - 1;
+      bed = '<button type="button" class="bed" data-bed="' + esc(b.id) +
+        '" title="點一下跳到這間的卡片">' +
+        '<span class="ic" aria-hidden="true">' + (cont ? '🛏' : '🛎') + '</span>' +
+        esc(b.name) + (cont ? '<span class="cont"> · 續住</span>' : '') + '</button>';
+    } else {
+      bed = '<span class="bed-none">' + esc(noStay[x.d] || '—') + '</span>';
+    }
     var inner =
       '<div class="n"><b>D' + String(x.d).padStart(2, '0') + '</b>' + x.date + ' · ' + x.wd + '</div>' +
       '<div class="t">' + x.title + '</div>' +
+      bed +
       '<div class="g">' + x.leg + '</div>';
     html += has
       ? '<a class="dayline has" href="#day' + x.d + '">' + inner + '</a>'
       : '<div class="dayline">' + inner + '</div>';
   });
   el.innerHTML = html;
+
+  // 點住宿標籤 → 捲到底下那張卡並標亮（外層可能是 <a href="#dayN">，要擋掉冒泡）
+  el.querySelectorAll('[data-bed]').forEach(function (btn) {
+    btn.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (window.nzGoToPlace) window.nzGoToPlace(btn.dataset.bed);
+    });
+  });
 })();
 </script>
 <!--NZJS-->

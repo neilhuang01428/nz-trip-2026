@@ -2034,6 +2034,29 @@ https://neilhuang01428.github.io/nz-trip-2026/prd.html
     }
   }
 
+  /* 讓頁面上「別的區塊」能跳到某張地點卡（例如行程頁的全程一覽，
+     每一天標著當晚的住宿，點下去要捲到那張卡）。
+     先清掉篩選條件，否則目標卡片可能正被日期／條件濾掉而不存在。 */
+  window.nzGoToPlace = function (id) {
+    var exists = pool.some(function (p) { return p.id === id; });
+    if (!exists) return false;
+    if (state.q || state.days.size || state.flags.size) {
+      state.q = ''; state.days.clear(); state.flags.clear();
+      if (input) { input.value = ''; }
+      if (clearBtn) clearBtn.hidden = true;
+      if (sw) sw.classList.remove('has');
+      bar.querySelectorAll('.fchip').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+      });
+      render();
+    }
+    if (isMobile() && state.view === 'map') setView('list');
+    focusPlace(id, true);          // true＝捲到卡片，不是捲到地圖
+    var card = document.getElementById('pl-' + id);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return true;
+  };
+
   render();
   setView(isMobile() ? 'list' : 'both');
   window.addEventListener('resize', function () {

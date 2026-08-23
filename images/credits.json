@@ -1230,5 +1230,54 @@
   "lic": "CC0",
   "artist": "Bernard Spragg. NZ from Christchurch, New Zealand",
   "page": "https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg"
+ },
+ "stay-bella-vista-qt": {
+  "file": "images/stay-bella-vista-qt.jpg",
+  "title": "Bella Vista Queenstown",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-golden-leaf-inv": {
+  "file": "images/stay-golden-leaf-inv.jpg",
+  "title": "Golden Leaf Apartments",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-golfcourse-wanaka": {
+  "file": "images/stay-golfcourse-wanaka.jpg",
+  "title": "Golfcourse Road Chalets and Lodge",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-lakeside-teanau": {
+  "file": "images/stay-lakeside-teanau.jpg",
+  "title": "Lakeside Motel and Apartments",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-mantra-tekapo": {
+  "file": "images/stay-mantra-tekapo.jpg",
+  "title": "Mantra Lake Tekapo",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-mtcook-motels": {
+  "file": "images/stay-mtcook-motels.jpg",
+  "title": "Mt Cook Motels",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
+ },
+ "stay-old-confectionery": {
+  "file": "images/stay-old-confectionery.jpg",
+  "title": "The Old Confectionery",
+  "lic": "使用者提供",
+  "artist": "使用者提供（未確認原始作者）",
+  "page": ""
  }
 }
