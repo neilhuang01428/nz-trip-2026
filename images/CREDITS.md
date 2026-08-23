@@ -177,3 +177,5 @@
 | `images/tumu-toka-curioscape.jpg` | Tumu Toka Curioscape | 使用者提供 | 未確認 | — |
 | `images/white-horse-hill.jpg` | White Horse Hill Campground & Car Park | 使用者提供 | 未確認 | — |
 | `images/wrinkly-rams.jpg` | The Wrinkly Rams | 使用者提供 | 未確認 | — |
+
+| `images/mtcook-alpine-salmon.jpg` | Mt Cook Alpine Salmon Shop | 使用者提供 | 未確認 | — |
