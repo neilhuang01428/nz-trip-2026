@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>開口講 · 南島環島 2026</title>
+<meta name="description" content="紐西蘭南島用得到的毛利語招呼、地名怎麼念、路上的標語、實用會話——每一條都可以按下去聽。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--NZCSS-->
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<div class="hero" style="min-height:56vh">
+  <div class="hero-bg" style="background-image:url('images/see-haka.jpg');background-position:50% 40%"></div>
+  <div class="hero-in">
+    <div class="eyebrow">Say It · Kōrero</div>
+    <h1>開口講<span class="mao">Kia ora — 你好</span></h1>
+    <p class="lede">會講一句當地話，對方的表情會不一樣。
+      這頁把 250 條<strong>真的用得到的</strong>整理起來——<strong>每一條都可以按下去聽怎麼念</strong>。</p>
+    <div class="hero-meta">
+      <span>🗿 毛利語</span><span>📍 地名</span><span>🛣 路上的字</span><span>💬 實用會話</span>
+    </div>
+  </div>
+  <div class="scroll-cue">↓</div>
+</div>
+<div class="rule-niho"></div>
+
+<section style="padding-top:30px;padding-bottom:8px">
+  <div class="wrap">
+    <div class="sec-k">How To Use</div>
+    <h2>這頁怎麼用</h2>
+    <p class="lead">不用背。<strong>出發前挑幾句聽熟，其他的當場搜尋就好。</strong>
+      每一條都有三層：原文、<b>音節切分</b>（大寫是重音）、<b>中文近似音</b>。
+      按左邊的 🔊 立刻聽；想聽<b>真人</b>發音，就點卡片下面的連結。</p>
+
+    <div class="grid g3" style="margin-top:22px">
+      <div class="card" style="border-top:4px solid var(--pounamu)">
+        <h4>🔊 卡片上的喇叭：立刻聽</h4>
+        <p style="font-size:.9rem;margin-bottom:0">用<b>你手機／電腦內建的朗讀功能</b>，
+          不連外部服務也不用網路，<b>飛機上、南島沒訊號的路上一樣能聽</b>。
+          缺點是機器音只能唸個八九成像。</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--pukaki)">
+        <h4>📖 毛利語：點連結聽真人</h4>
+        <p style="font-size:.9rem;margin-bottom:0">每張毛利語卡片下面都有一個連結，
+          直接連到 <a href="https://maoridictionary.co.nz/" target="_blank" rel="noopener">Te Aka 毛利語辭典</a>——
+          那裡是<b>母語者的真人錄音</b>，比任何合成語音都準。進去按播放就好。</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--kowhai)">
+        <h4>🌐 英語：點連結開 Google 翻譯</h4>
+        <p style="font-size:.9rem;margin-bottom:0">英語卡片下面的連結會<b>幫你把整句填好</b>，
+          Google 翻譯頁面一開就能按播放。<b>毛利語沒有走這條路</b>，
+          因為 Google 翻譯雖然翻得出來，<b>卻沒有毛利語的發音功能</b>。</p>
+      </div>
+    </div>
+
+    <div class="note tip" style="margin-top:20px">
+      <span class="h">🇳🇿 一句話心法</span>
+      <p style="margin-bottom:0">紐西蘭人<b>不會因為你念錯而不高興，只會因為你願意講而開心</b>。
+        毛利語現在是官方語言之一，連完全不會講的紐西蘭人日常也會說 <b>Kia ora</b>、<b>Ka kite</b>。
+        講錯沒關係，講了才是重點。</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:6px">
+  <div class="wrap">
+    <div id="talk"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">毛利語詞彙與拼法以
+      <a href="https://maoridictionary.co.nz/" target="_blank" rel="noopener">Te Aka Māori Dictionary</a>、
+      <a href="https://www.tetaurawhiri.govt.nz/" target="_blank" rel="noopener">Te Taura Whiri i te Reo Māori（毛利語委員會）</a>
+      與 <a href="https://teara.govt.nz/" target="_blank" rel="noopener">Te Ara</a> 為準；
+      地名以 <a href="https://gazetteer.linz.govt.nz/" target="_blank" rel="noopener">紐西蘭官方地名資料庫（LINZ）</a>
+      的法定名稱為準，語意參考
+      <a href="https://www.kahurumanu.co.nz/atlas" target="_blank" rel="noopener">Kā Huru Manu（Ngāi Tahu 地名地圖）</a>。
+      道路標誌與規則以 <a href="https://www.nzta.govt.nz/" target="_blank" rel="noopener">NZTA Waka Kotahi</a>、
+      步道標示以 <a href="https://www.doc.govt.nz/" target="_blank" rel="noopener">DOC</a>、
+      入境規定以 <a href="https://www.mpi.govt.nz/" target="_blank" rel="noopener">MPI</a> 官方頁面為準，查證日 <b>2026/08</b>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      涉及毛利語與毛利文化的部分力求準確與尊重，<b>來源不一致或有爭議的說法一律標明，不當成定論</b>。
+      照片取自 Wikimedia Commons，作者與授權見 <a href="images/CREDITS.md">images/CREDITS.md</a>。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--TALK-->
+<!--NZJS-->
+</body>
+</html>

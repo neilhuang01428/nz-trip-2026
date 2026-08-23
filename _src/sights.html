@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>景點 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--LEAFLET-->
+<!--NZCSS-->
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<section style="padding-top:30px;padding-bottom:8px">
+  <div class="wrap">
+    <div class="sec-k">Sights</div>
+    <h2>景點</h2>
+    <p class="lead">路線上 104 個景點，可以用<b>日期</b>或<b>條件</b>篩選。點卡片的「🗺 在地圖上」會跳到地圖，點地圖上的 pin 會反白對應的卡片。</p>
+    <div class="note tip">
+      <span class="h">📱 手機用法</span>
+      <p style="margin-bottom:0">上方可以切換「清單／地圖」。想找「今天附近有什麼」，
+        先按日期篩選再切到地圖最快。標 <b>★ 必去</b> 的是我認為不去可惜的。</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:4px">
+  <div class="wrap">
+    <div class="fhint" style="display:flex;gap:11px;align-items:flex-start;
+      background:var(--ice);border:1px solid var(--line);border-left:4px solid var(--pukaki);
+      border-radius:12px;padding:12px 15px;margin:20px 0 -4px">
+      <span style="font-size:1.15rem;line-height:1.3;flex:none" aria-hidden="true">🗓</span>
+      <p style="margin:0;font-size:.88rem;line-height:1.65;color:var(--ink-2)">
+        <b>下面的日期，是照我們這趟 17 天的行程排的。</b>
+        點某一天，清單和地圖就<b>只留那天路線上會經過的地方</b>——那天附近有哪些景點值得停。
+        不用自己對著地圖想「這個順不順路」，也可以先<b>不選</b>，直接看全部。</p>
+    </div>
+    <div id="app" data-cat="sight"></div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">價格、營業時間與營運狀態均取自<b>官方網站</b>，查證日 <b>2026/08/20</b>（庫克山健行、冰河湖遊船與 2026/08/23 新增的地點另註當日查證）。
+      餐廳與小型景點變動很快，<b>出發前一週請再確認一次</b>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      地圖圖磚 &copy; OpenStreetMap 貢獻者。「📍概略」標記表示地圖上是鄰近地標的推算位置，
+      導航請按卡片上的 <b>Google Maps</b> 按鈕（那個是用店名精確搜尋）。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--PLACES-->
+<!--NZJS-->
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>行前注意事項 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--NZCSS-->
+<style>
+/* 打包清單：可勾選，狀態存在本機 */
+.packlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:20px 0}
+.packgrp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  box-shadow:var(--shadow)}
+.packgrp h4{margin:0 0 10px;font-size:.98rem;display:flex;align-items:center;gap:8px}
+.packgrp ul{list-style:none;margin:0;padding:0}
+.packgrp li{margin:0}
+.packgrp label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer;
+  font-size:.9rem;line-height:1.55;color:var(--ink-2);border-top:1px solid var(--line-2);min-height:40px}
+.packgrp li:first-child label{border-top:0}
+.packgrp input{width:19px;height:19px;margin:2px 0 0;flex:none;accent-color:var(--pounamu);cursor:pointer}
+.packgrp input:checked + span{color:var(--ink-soft);text-decoration:line-through}
+.packgrp b{color:var(--ink)}
+.packbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.packbar .pct{font-family:var(--mono);font-size:.82rem;color:var(--pounamu);font-weight:700}
+.packbar button{font:inherit;font-size:.8rem;padding:7px 14px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-2);min-height:38px}
+
+/* 溫度表 */
+.temps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:20px 0}
+.temp{background:var(--card);padding:15px 14px;text-align:center}
+.temp .pl{font-size:.86rem;font-weight:700;color:var(--ink);margin-bottom:5px}
+.temp .rg{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--pukaki-dk);
+  font-variant-numeric:tabular-nums}
+.temp .rk{font-size:.74rem;color:var(--ink-soft);margin-top:3px}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<section style="padding-top:30px;padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k">Before You Go</div>
+    <h2>行前注意事項</h2>
+    <p class="lead">出發前該知道的、該帶的、該先做的。<b>打包清單可以直接在手機上勾</b>，
+      勾選狀態會記在你自己的瀏覽器裡。</p>
+  </div>
+</section>
+
+<!-- ══════ 三件先知道 ══════ -->
+<section style="padding-top:14px">
+  <div class="wrap">
+    <div class="sec-k rv">Read This First</div>
+    <h2 class="rv">三件一定要先知道的事</h2>
+    <p class="lead rv">都不是壞消息，但<strong>沒先講，同行者到現場會失望或手忙腳亂</strong>。</p>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="card rv" style="border-top:4px solid var(--kowhai)">
+        <h4>🌕 前四晚是滿月</h4>
+        <p style="font-size:.9rem"><b>2026/09/27 凌晨 04:49（紐西蘭時間）是滿月。</b>
+          9/26–9/29 這四晚，Tekapo 的月面照度是 <b>99%、100%、98%、93%</b>，而且月亮幾乎整夜都在天上。</p>
+        <p style="font-size:.9rem;margin-bottom:0">我們正好在全世界最大的暗空保護區裡，卻碰到全年最亮的月相。
+          <b>銀河會被月光洗掉</b>——把期待改成「用望遠鏡看月面環形山」，那其實更震撼。</p>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--pukaki)">
+        <h4>🕐 9/27 凌晨時鐘跳一小時</h4>
+        <p style="font-size:.9rem">紐西蘭夏令時間在<b>九月最後一個星期日</b>開始——正好是 <b>2026/09/27</b>，
+          凌晨 2:00 直接跳到 3:00。</p>
+        <p style="font-size:.9rem;margin-bottom:0">那晚<b>少睡一小時</b>。手機會自己調，
+          <strong>但車上時鐘、手錶、鬧鐘要自己改</strong>。好處是之後每天天黑晚一小時。</p>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--rata)">
+        <h4>❄️ Milford 公路還在雪崩季</h4>
+        <p style="font-size:.9rem">NZTA 把 <b>6 月到 10 月</b>定為 Milford Road（SH94）的雪崩季，
+          我們 <b>10/04</b> 還在期間內。</p>
+        <p style="font-size:.9rem;margin-bottom:0">而且 <b>6–11 月「可能需要車上備雪鏈」</b>，
+          無視「須裝雪鏈」告示牌繼續開，<strong>警方可開罰 NZ$750</strong>。租車時要確認。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 天氣 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Weather</div>
+    <h2 class="rv">天氣：一天之內可以有四季</h2>
+    <p class="lead rv">南島 9 月底到 10 月初是<strong>冬末轉初春</strong>。
+      關鍵不是「冷不冷」，是<strong>「一天之內溫差有多大」</strong>——
+      麥肯錫盆地早上可能接近 0°C，中午出太陽又能到 15°C 以上。</p>
+
+    <div class="temps rv">
+      <div class="temp"><div class="pl">Tekapo / Mt Cook</div><div class="rg">-2 – 14°C</div>
+        <div class="rk">高山盆地 · 溫差最大</div></div>
+      <div class="temp"><div class="pl">Wanaka / 皇后鎮</div><div class="rg">2 – 16°C</div>
+        <div class="rk">內陸湖區 · 日照強</div></div>
+      <div class="temp"><div class="pl">Te Anau / Milford</div><div class="rg">3 – 14°C</div>
+        <div class="rk">峽灣 · 一年下 200 天雨</div></div>
+      <div class="temp"><div class="pl">Invercargill / Bluff</div><div class="rg">4 – 13°C</div>
+        <div class="rk">最南 · 風非常大</div></div>
+      <div class="temp"><div class="pl">但尼丁 / Oamaru</div><div class="rg">5 – 15°C</div>
+        <div class="rk">東岸 · 相對溫和</div></div>
+      <div class="temp"><div class="pl">基督城 / 奧克蘭</div><div class="rg">6 – 18°C</div>
+        <div class="rk">最舒服的兩站</div></div>
+    </div>
+    <p class="rv" style="font-size:.85rem;color:var(--ink-soft)">
+      ※ 上表是這個季節的<b>一般範圍</b>，供打包參考，<b>不是預報</b>。
+      實際請在出發前一週查 <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>（紐西蘭官方氣象）。</p>
+
+    <div class="note warn rv">
+      <span class="h">☀️ 紫外線是真的會曬傷</span>
+      <p style="margin-bottom:0"><strong>紐西蘭上空的臭氧層較薄，紫外線強度明顯高於同緯度地區。</strong>
+        加上冰川與殘雪會反射，<b>庫克山健行那天沒擦防曬一定曬傷</b>——
+        DOC 官方也寫明這一帶「任何季節都可能嚴重曬傷」。
+        高係數防曬、太陽眼鏡、帽子不是選配。</p>
+    </div>
+
+    <div class="grid g2" style="margin-top:24px">
+      <div class="card rv">
+        <h4>🧅 穿什麼：洋蔥式三層</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>底層</b>：發熱衣或羊毛底層 ×2（排汗，不要純棉）</li>
+          <li><b>中層</b>：刷毛或輕羽絨（保暖，可脫）</li>
+          <li><b>外層</b>：<strong>硬殼防水防風外套</strong>——不是防潑水，是真的防水</li>
+          <li><b>下半身</b>：快乾長褲 ×2（牛仔褲濕了不會乾）＋ 雨褲</li>
+          <li><b>配件</b>：手套、毛帽、脖圍——Mt Cook 早晚接近 0°C</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>👟 鞋子</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>防水登山鞋</b>：Hooker Valley Track 有濕滑路段，DOC 警告冬末背陰處會結冰</li>
+          <li><b>綁緊的運動鞋</b>：跳傘要穿，<b>不能穿涼鞋、拖鞋、靴子</b></li>
+          <li>⚠️ <b>改成庫克山健行之後，鞋子與冰爪要自己準備</b>——
+            原本直升機冰川健行是業者全套提供，現在沒有人幫你出裝備了。
+            見<a href="mtcook.html">庫克山健行頁</a>。</li>
+          <li><b>入境前把鞋底泥土刷乾淨</b>——生物安全檢查會看</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 打包清單 ══════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-k rv">Packing</div>
+    <h2 class="rv">打包清單</h2>
+    <p class="lead rv">按著勾。<b>粗體的是這趟特別需要、平常旅行不會帶的。</b></p>
+    <div class="packbar rv">
+      <span class="pct" id="packpct">0%</span>
+      <button type="button" id="packreset">清除全部勾選</button>
+      <span style="font-size:.8rem;color:var(--ink-soft)">勾選只存在你自己的手機／瀏覽器，不會同步給別人</span>
+    </div>
+
+    <div class="packlist" id="packlist">
+      <div class="packgrp"><h4>🧥 衣物</h4><ul>
+        <li><label><input type="checkbox"><span><b>硬殼防水防風外套</b></span></label></li>
+        <li><label><input type="checkbox"><span>保暖中層（刷毛／輕羽絨）</span></label></li>
+        <li><label><input type="checkbox"><span>發熱衣或羊毛底層 ×2</span></label></li>
+        <li><label><input type="checkbox"><span>快乾長褲 ×2</span></label></li>
+        <li><label><input type="checkbox"><span><b>雨褲</b>（Milford 一年下 200 天雨）</span></label></li>
+        <li><label><input type="checkbox"><span><b>手套、毛帽、脖圍</b></span></label></li>
+        <li><label><input type="checkbox"><span>換洗衣物（小鎮不一定有洗衣機）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>👟 鞋與裝備</h4><ul>
+        <li><label><input type="checkbox"><span><b>防水登山鞋</b>（鞋底先刷乾淨）</span></label></li>
+        <li><label><input type="checkbox"><span><b>綁緊的運動鞋</b>（跳傘用）</span></label></li>
+        <li><label><input type="checkbox"><span><b>微尖冰爪／microspikes</b>（DOC 對胡克谷冬季的具體建議，要自備）</span></label></li>
+        <li><label><input type="checkbox"><span><b>登山杖</b>（DOC 一併建議，結冰時比冰爪更常用到）</span></label></li>
+        <li><label><input type="checkbox"><span>小背包（步道用）</span></label></li>
+        <li><label><input type="checkbox"><span>保溫瓶</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>☀️ 防曬與健康</h4><ul>
+        <li><label><input type="checkbox"><span><b>高係數防曬</b>（高山紫外線＋雪面反射）</span></label></li>
+        <li><label><input type="checkbox"><span><b>太陽眼鏡</b>（不是選配）</span></label></li>
+        <li><label><input type="checkbox"><span>護唇膏、乳液（極乾燥）</span></label></li>
+        <li><label><input type="checkbox"><span>常備藥（小鎮藥局關得早）</span></label></li>
+        <li><label><input type="checkbox"><span><b>暈車藥</b>（Crown Range、Akaroa 山路彎多）</span></label></li>
+        <li><label><input type="checkbox"><span>個人處方藥＋英文藥單</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🚗 自駕相關</h4><ul>
+        <li><label><input type="checkbox"><span><b>台灣駕照＋英文譯本或國際駕照</b></span></label></li>
+        <li><label><input type="checkbox"><span>車用手機架</span></label></li>
+        <li><label><input type="checkbox"><span>車充＋充電線 ×2</span></label></li>
+        <li><label><input type="checkbox"><span>租車確認信（印出來一份）</span></label></li>
+        <li><label><input type="checkbox"><span>離線地圖（南島很多路段沒訊號）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🔌 電子與證件</h4><ul>
+        <li><label><input type="checkbox"><span><b>轉接頭（紐西蘭是澳規八字腳 Type I）</b></span></label></li>
+        <li><label><input type="checkbox"><span>行動電源（隨身，不可託運）</span></label></li>
+        <li><label><input type="checkbox"><span>eSIM 或漫遊方案</span></label></li>
+        <li><label><input type="checkbox"><span>護照（效期六個月以上）＋ <b>NZeTA</b></span></label></li>
+        <li><label><input type="checkbox"><span>旅遊保險（含冒險活動！見下）</span></label></li>
+        <li><label><input type="checkbox"><span>相機＋備用電池（低溫耗電快）</span></label></li>
+      </ul></div>
+
+      <div class="packgrp"><h4>🎒 其他</h4><ul>
+        <li><label><input type="checkbox"><span>環保購物袋（紐西蘭全面禁塑膠袋）</span></label></li>
+        <li><label><input type="checkbox"><span>盥洗用品（motel 不一定提供牙刷）</span></label></li>
+        <li><label><input type="checkbox"><span>洗衣袋、夾鏈袋</span></label></li>
+        <li><label><input type="checkbox"><span>零食（車程長，小鎮補給有限）</span></label></li>
+        <li><label><input type="checkbox"><span>眼罩耳塞（機上）</span></label></li>
+      </ul></div>
+    </div>
+
+    <div class="note warn rv">
+      <span class="h">⚠️ 旅遊保險：確認有保「冒險活動」</span>
+      <p style="margin-bottom:0">我們要<b>跳傘</b>，另外可能加購<b>冰河湖遊船</b>與其他冒險活動。
+        （直升機冰川健行已<a href="mtcook.html">改成庫克山步道健行</a>，但保單還是要看清楚。）
+        <strong>很多旅遊平安險的條款會把跳傘、高空彈跳、直升機活動列為除外責任。</strong>
+        買之前一定要看清楚，或加保冒險活動附加條款。
+        紐西蘭的 ACC 制度會給予意外傷害的基本補償，<b>但不涵蓋你回台灣後的費用與旅程取消損失</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 入境 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Arrival</div>
+    <h2 class="rv">入境紐西蘭：生物安全是玩真的</h2>
+    <p class="lead rv">紐西蘭的生物安全是<strong>嚴格責任</strong>——MPI 官網白紙黑字寫著：
+      忘記、不小心、不知道規則、不曉得行李裡有什麼，<strong>全都不是理由</strong>。
+      沒申報被查到就是 <b>NZD 400 當場開罰</b>。</p>
+
+    <div class="note warn rv" style="margin-top:18px">
+      <span class="h">📱 已經沒有紙本入境卡了</span>
+      <p style="margin-bottom:0">現在改用 <b>NZTD</b>（New Zealand Traveller Declaration）線上申報，
+        飛機上不再發紙卡。官網 <b>travellerdeclaration.govt.nz</b> 或下載 NZTD App，
+        <strong>完全免費</strong>（會跟你收費的代填網站都是詐騙）。
+        <b>每人一份，小孩嬰兒也要</b>。最早出發前 24 小時可送出，
+        最晚要在走到護照查驗台之前完成。申報綁在護照上，過關掃護照就帶出來，不用印。
+        填錯可以用 email 收到的 reference number 修改，<b>過了查驗台就改不了</b>。</p>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card rv" style="border-top:4px solid var(--rata)">
+        <h4>❌ 直接不要帶（申報也沒用）</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>所有豬肉製品</b>——豬肉乾、豬肉鬆、香腸、火腿。
+            MPI 明文「No pork products」，<strong>一律禁止，沒有申報後放行這回事</strong></li>
+          <li><b>新鮮蔬菜水果</b>——一律禁</li>
+          <li><b>非紐西蘭產的蜂蜜</b>與蜂產品</li>
+          <li><b>黑枸杞</b>、<b>木耳銀耳</b>等木生菌類</li>
+          <li>含火腿、肉鬆的月餅（雲腿、廣式肉月餅）</li>
+        </ul>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--pounamu)">
+        <h4>✅ 申報後通常可以過</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>茶葉</b>（商業包裝原封，每項 2 kg 內）</li>
+          <li><b>去殼堅果</b>、<b>乾香菇</b></li>
+          <li><b>鳳梨酥、太陽餅</b>等餅乾糖果</li>
+          <li><b>含整顆蛋黃的月餅</b>——條件是商業包裝原封、<b>不含肉</b>、不需冷藏，上限 10 kg。
+            所以蛋黃酥、蓮蓉蛋黃月餅可以</li>
+          <li><b>牛肉乾／牛肉鬆</b>有機會過（台灣在 MPI 的口蹄疫非疫區名單上），
+            但要商業包裝原封、標明製造國、不需冷藏，限 1 kg</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card rv" style="border-top:4px solid var(--kowhai)">
+        <h4>🥾 登山鞋是最多人栽跟頭的一項</h4>
+        <p style="font-size:.9rem">MPI 規定<b>所有登山鞋、運動鞋，以及任何在市區以外穿過的鞋子</b>
+          都要申報。帳篷、露營用品、背包、釣具、腳踏車同理。</p>
+        <p style="font-size:.9rem;margin-bottom:0"><strong>出國前就把鞋底溝槽用刷子刷乾淨、晾乾。</strong>
+          官員可能拿去消毒再還你（通常幾分鐘）。太髒又沒申報，就是罰 NZD 400。
+          一般在市區穿的球鞋、皮鞋不用申報。</p>
+      </div>
+      <div class="card rv" style="border-top:4px solid var(--pukaki)">
+        <h4>💊 藥品：處方藥與中藥</h4>
+        <ul style="font-size:.9rem;margin-bottom:0">
+          <li>處方藥：帶處方箋影本或醫師英文證明、<b>保持原包裝</b>、<b>不超過三個月用量</b></li>
+          <li>含 <b>pseudoephedrine（假麻黃鹼）</b>的感冒藥屬管制藥品，必須申報、放隨身行李、<b>不能幫別人帶</b></li>
+          <li><b>中藥一定要申報</b>（歸在 herbal medicines 與動物產品）。
+            西洋參、石斛等受 CITES 管制，沒文件可能直接沒收</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card rv">
+        <h4>💵 現金與免稅額</h4>
+        <ul style="font-size:.9rem;margin-bottom:0">
+          <li><b>每人帶 NZ$10,000 以上</b>（或等值外幣）要填 Border Cash Report，有繁體中文版。
+            以<b>個人實際攜帶</b>計算，不是全家加總</li>
+          <li>「現金」定義很寬：紙鈔、旅行支票、支票、匯票都算。
+            沒申報最高 <b>3 個月徒刑＋罰款 NZ$10,000</b>，現金可能被扣押</li>
+          <li>免稅額<b>每人 NZ$700</b>，Customs 明文<strong>四個人不能合併計算</strong>——
+            一件 NZ$2,000 的東西不能算成四人份</li>
+          <li>酒：每人 4.5 公升葡萄酒或啤酒 ＋ 3 瓶烈酒（每瓶 1.125 公升內）；菸 50 支。要滿 17 歲</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🧾 兩個常見的誤會</h4>
+        <p style="font-size:.9rem"><strong>紐西蘭沒有觀光客退稅。</strong>
+          海關官網原文：<b>「You can't get GST refunds on items you purchased in New Zealand」</b>。
+          <b>不要去機場找退稅櫃檯</b>，那是澳洲和歐洲才有的制度。</p>
+          <p style="font-size:.9rem;margin-bottom:0"><strong>申報不等於不能帶。</strong>
+          申報後被沒收，最多損失那樣東西；沒申報被抓到，是罰款。
+          不確定的一律申報，這是整趟最能幫你省錢的動作。
+          出發前把 <b>NZeTA</b>（電子旅行授權）也一併辦好，不要拖到機場。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 開車 ══════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-k rv">Driving</div>
+    <h2 class="rv">開車：跟台灣不一樣的地方</h2>
+
+    <div class="grid g2">
+      <div class="rv">
+        <h3>🌉 單線橋：紐西蘭獨有的路權規則</h3>
+        <p style="font-size:.93rem">南島有非常多<b>單線橋</b>，一次只能一個方向通過。規則很簡單但看錯就會對撞：</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>看到的標誌</th><th>意思</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag t-red">🔴 紅色圓形</span></td><td><strong>你要讓對向先過</strong></td></tr>
+              <tr><td><span class="tag t-blue">🔵 藍色長方形</span></td><td>對向該讓你，<b>但仍要減速確認橋上沒車</b></td></tr>
+              <tr><td><span class="tag t-gold">🟡 黃色菱形</span></td><td>前方有單線橋的預告</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.9rem"><b>只看顏色和形狀就好。</b>
+          網路上流傳「看箭頭大小判斷誰先過」，但 <b>NZTA 官方只定義顏色與形狀</b>，
+          <strong>箭頭那個說法方向常常被講反</strong>——記錯會迎面對撞，
+          所以<b>紅圓＝我讓、藍長方形＝我先過</b>，只記這一條。
+          <b>藍牌也要減速確認橋上沒車</b>：對向可能沒看牌。</p>
+
+        <h3 style="margin-top:26px">🚐 4 人租箱型車</h3>
+        <ul style="font-size:.93rem;margin-bottom:0">
+          <li><b>多半是柴油車</b> → 要繳 <b>Road User Charges（RUC）</b>。以 GO Rentals 為例是用每天 <b>NZ$3 的固定日費</b>涵蓋，不是還車時按里程結算。<b>租不同家要先問。</b></li>
+          <li><b>汽油車不用繳 RUC</b>（在加油時繳燃油稅）。柴油車擋風玻璃上有實體 RUC 標籤，別撕。</li>
+          <li><b>保險</b>：標準方案通常保留高額自負額。<b>建議加購降低自負額</b>——南島碎石路多，擋風玻璃被石頭打到是最常見的理賠。加購保費通常不可退。</li>
+          <li><b>年齡</b>：8 人座最低駕駛年齡多為 21 歲。</li>
+          <li><b>異地還車費</b>各家官網多半不公告，訂車時要單獨問。我們基督城進出，理論上沒這筆。</li>
+        </ul>
+      </div>
+
+      <div class="rv">
+        <h3>❄️ 雪鏈與路況</h3>
+        <ul style="font-size:.93rem">
+          <li><b>Milford Road（SH94）6–11 月「可能需要車上備雪鏈」</b>——租車時明確要求，並確認合約允許在該路段使用。</li>
+          <li>雪鏈告示牌在三處：<b>Te Anau 北 1 km、Knobs Flat（北 65 km）、Milford Sound 東 5 km</b>。</li>
+          <li><strong>無視「須裝雪鏈」告示牌繼續開，警方可罰 NZ$750。</strong></li>
+          <li><b>Crown Range Road</b> 由 QLDC 管轄，2026 年起也執行雪鏈規定，同樣罰 NZ$750。</li>
+        </ul>
+
+        <div class="note warn" style="margin-top:16px">
+          <span class="h">🔍 查路況：兩個地方都要看</span>
+          <p style="margin-bottom:0">
+            <b><a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA Journey Planner</a></b>
+            ——官方，有即時交通攝影機可以直接目視路面。<br>
+            <strong>但 NZTA 只管國道。</strong>官方明確要求：路線若包含地方道路（例如 <b>Crown Range Road</b>），
+            要另外查
+            <a href="https://www.qldc.govt.nz/services/transport-and-parking/winter-road-reports" target="_blank" rel="noopener">QLDC 冬季路況頁</a>。
+            這句話在 Journey Planner 頁面上重複出現了五次，代表官方很在意。</p>
+        </div>
+
+        <h3 style="margin-top:26px">🍷 酒駕</h3>
+        <p style="font-size:.93rem">紐西蘭交通部規定：<strong>20 歲以上上限為呼氣每公升 250 微克、血液每 100 毫升 50 毫克</strong>；
+          <b>未滿 20 歲是零酒精</b>。超過即違法。</p>
+        <p style="font-size:.93rem;margin-bottom:0"><b>這是「非零上限」，不是滴酒不沾</b>——法律允許少量飲酒後駕車。
+          但<strong>個人代謝差異大，沒有可靠方法在現場估算</strong>。
+          我們會去三家酒莊品飲，<b>先講好指定駕駛</b>。指定駕駛可以只聞不喝、或請酒莊給吐酒杯，這在酒莊完全正常。</p>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">⛽ 加油與其他</span>
+      <p style="margin-bottom:0">
+        · <b>91 vs 95</b>：一般租車加 91；柴油車加 Diesel，<strong>千萬不要加錯</strong>。<br>
+        · <b>偏遠路段加油站間距很大</b>：Te Anau→Milford（120 km 只有一個且不保證營運）、卡特林斯。
+          養成習慣：<strong>油表過半就找機會加</strong>。<b>10/03 在 Te Anau 一定要加滿。</b><br>
+        · <b>靠左行駛、右駕。</b>頭幾小時最容易犯的錯是<b>轉彎後跑到右線</b>與<b>雨刷當方向燈打</b>。<br>
+        · <b>限速 100 是上限不是目標。</b>後面有車就找 slow vehicle bay 讓車，這是當地禮節。<br>
+        · <b>羊、牛可能在路上。</b>山區隨時可能遇到趕羊群，慢慢等。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 錢與生活 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Money & Daily Life</div>
+    <h2 class="rv">錢、網路、生活</h2>
+    <div class="grid g2">
+      <div class="card rv">
+        <h4>💳 付錢</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>幾乎全部刷卡</b>，小鎮咖啡館也能刷。現金幾乎用不到。</li>
+          <li><b>刷卡附加費約 1–3%</b>，會標在櫃檯或帳單上。
+            紐西蘭曾在 2025 年提案禁收這筆錢，<b>但法案卡在國會沒通過</b>；
+            而且草案本來就把<b>外國發行的卡排除在外</b>，我們的卡不受保護。</li>
+          <li><b>EFTPOS 我們用不到</b>——那是紐西蘭本地的支付軌道，
+            要有紐西蘭銀行帳戶的卡才能跑，外國卡刷不了。看到只寫 EFTPOS 的機器就直接刷信用卡。</li>
+          <li><b>紐西蘭沒有小費文化</b>，不用給。</li>
+          <li>菜單價格<b>已含 15% GST</b>，看到多少付多少。
+            <b>而且紐西蘭沒有觀光客退稅</b>，機場不用找退稅櫃檯。</li>
+          <li>⚠️ <b>9/28（一）是這段期間唯一的國定假日</b>（南坎特伯里紀念日，
+            已用 employment.govt.nz 官方表確認），那天我們正好在庫克山一帶。
+            <b>但「假日加收 15%」這件事查不到實據</b>——沿線店家官網都沒明文，
+            Geraldine 的 Barker's 官網反而明講「大部分國定假日照常且不加收假日附加費」。
+            <b>看到店門口的告示再確認就好，不用預設會被加價。</b>
+            另外蒂卡波與庫克山所在的 Mackenzie 區實際上有沒有放這天，官網也查不到。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>📶 網路與訊號</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li>主要城鎮訊號良好，<b>但山區與峽灣大段沒訊號</b>。</li>
+          <li><b>出發前先下載離線地圖</b>（Google Maps 可下載區域）。</li>
+          <li>Milford Road、Crown Range、卡特林斯都會斷訊。</li>
+          <li>住宿多半有 Wi-Fi，但偏遠地區可能很慢或有流量上限。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🛒 超市</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li>三大超市：<b>New World</b>（中高價）、<b>Woolworths</b>（原 Countdown）、<b>PAK'nSAVE</b>（最便宜）。</li>
+          <li><b>小鎮超市關得早</b>（常 19:00–20:00），Mt Cook、Te Anau 更早。</li>
+          <li>省錢作法：<b>午餐買超市三明治在路上吃，晚餐才上餐廳。</b></li>
+          <li>伴手禮（<b>Whittaker's 巧克力、mānuka 蜂蜜</b>）在超市買最划算，別在機場買。</li>
+          <li>⚠️ <b>買酒被要求看證件時，紐西蘭只認三種：護照、紐西蘭駕照、Kiwi Access Card。</b>
+            <strong>台灣駕照和國際駕照都不算</strong>——要去酒莊或買酒，<b>帶護照</b>。</li>
+          <li><b>一定要自備購物袋。</b>紐西蘭 2019 年禁一次性塑膠袋，2023 年連裝蔬果的散裝袋也禁了，
+            超市什麼袋子都不給。PAK'nSAVE 還要<b>自己裝袋</b>。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h4>🕐 營業時間的心理準備</h4>
+        <ul style="font-size:.92rem;margin-bottom:0">
+          <li><b>南島小鎮餐廳普遍很早關</b>——很多廚房 20:00 就最後點餐。</li>
+          <li><b>週一、週二是最常公休的兩天。</b></li>
+          <li>景點多半 <b>16:00–17:00 就關</b>。</li>
+          <li>一句話：<strong>在紐西蘭，「晚上再說」通常等於「沒有了」。</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">🆘 緊急聯絡</span>
+      <p style="margin-bottom:0">
+        <b>紐西蘭緊急電話：111</b>（警消救護共用）<br>
+        <b>非緊急報警：105</b>　·　<b>路況查詢：0800 4 HIGHWAYS（0800 44 44 49）</b><br>
+        <b>駐紐西蘭台北經濟文化辦事處（威靈頓）急難救助行動電話</b>：出發前請自行至外交部網站查詢最新號碼並存進手機。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">道路規則、雪鏈規定、酒駕上限均取自 <b>NZTA / 紐西蘭交通部</b>官方資料，查證日 <b>2026/08/20</b>。
+      溫度範圍是季節性參考值，<b>不是預報</b>——出發前請查
+      <a href="https://www.metservice.com/" target="_blank" rel="noopener">MetService</a>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">打包清單的勾選狀態儲存在你自己瀏覽器的 localStorage，不會上傳。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<script>
+/* 打包清單：勾選狀態存 localStorage */
+(function () {
+  var KEY = 'nz2026-pack';
+  var list = document.getElementById('packlist');
+  if (!list) return;
+  var boxes = [].slice.call(list.querySelectorAll('input[type=checkbox]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  function label(b) { return (b.parentNode.textContent || '').trim().slice(0, 40); }
+  function pct() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('packpct').textContent =
+      Math.round(n / boxes.length * 100) + '%　(' + n + '/' + boxes.length + ')';
+  }
+  boxes.forEach(function (b) {
+    var k = label(b);
+    if (saved[k]) b.checked = true;
+    b.addEventListener('change', function () {
+      saved[k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      pct();
+    });
+  });
+  pct();
+  document.getElementById('packreset').onclick = function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    pct();
+  };
+})();
+</script>
+<!--NZJS-->
+</body>
+</html>

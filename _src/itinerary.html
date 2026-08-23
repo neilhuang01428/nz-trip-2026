@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>行程安排 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--LEAFLET-->
+<!--NZCSS-->
+<style>
+.dayline{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
+  padding:13px 16px;border-top:1px solid var(--line-2);font-size:.92rem}
+.dayline:first-child{border-top:0}
+.dayline .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);line-height:1.25}
+.dayline .n b{display:block;font-size:1.05rem;color:var(--pounamu);font-variant-numeric:lining-nums}
+.dayline .t{color:var(--ink);font-weight:600}
+.dayline .t small{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.dayline .g{font-family:var(--mono);font-size:.75rem;color:var(--pukaki-dk);background:var(--ice);
+  padding:4px 10px;border-radius:14px;white-space:nowrap;text-align:center}
+.dayline.has{background:linear-gradient(90deg,rgba(229,178,60,.10),transparent)}
+.dayline.has .t::after{content:' ▸ 要選一個';font-size:.72rem;color:#8A6416;font-weight:700}
+.daytable{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow);margin:18px 0}
+a.dayline,.dayline a{text-decoration:none;color:inherit}
+@media(max-width:600px){
+  .dayline{grid-template-columns:56px 1fr;gap:10px;padding:12px 14px}
+  .dayline .g{grid-column:2;justify-self:start;margin-top:3px}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<section style="padding-top:30px;padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k">Itinerary</div>
+    <h2>行程安排</h2>
+    <p class="lead">17 天裡，<strong>有 12 天路線是固定的，開過去就對了</strong>。
+      只有 <strong>5 天需要我們一起決定</strong>：那天要走哪條路、或那一整天要怎麼安排。
+      這頁就是把那 5 天的選項攤開來比。</p>
+  </div>
+</section>
+
+<!-- ══════ 全程路線圖 ══════ -->
+<section style="padding-top:10px;padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k rv">The Route</div>
+    <h2 class="rv">全程路線</h2>
+    <p class="lead rv">每一段用不同顏色畫出來，<b>是真實道路，不是直線連點</b>——
+      幾何由 OSRM 依實際路網計算。點線段會顯示那一段的公里數與純開車時間；
+      大圓點是過夜的地方。</p>
+    <div class="routemap" id="routemap"></div>
+    <p style="font-size:.78rem;color:var(--ink-soft);margin-top:9px">
+      🔵 D03 基督城→Tekapo　🟢 D04 →Mt Cook　🟠 D06 →Wanaka　🔴 D07 →皇后鎮　🟣 D10 →Te Anau
+      …依序循環。<b>Milford 那段是當天來回。</b></p>
+  </div>
+</section>
+
+<!-- ══════ 全程一覽 ══════ -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-k rv">Overview</div>
+    <h2 class="rv">全程一覽</h2>
+    <p class="lead rv">車程是<b>不停車的概估值</b>。紐西蘭官方 NZTA 自己也註明：路線與時間是「指示性」建議，不是保證。
+      <b>南島的路多半是雙線道、彎、限速 100 但實際開不到，請一律往上抓 20–30%。</b></p>
+    <div class="daytable rv" id="daytable"></div>
+    <div class="note tip rv">
+      <span class="h">💡 怎麼用這頁</span>
+      <p style="margin-bottom:0">上表標「<b>▸ 要選一個</b>」的那 5 天，往下捲就會看到選項。
+        <b>點不同的方案卡，下面的地圖路線和景點清單會跟著換</b>，可以直接比較。
+        每個方案底下有一顆按了就能導航的 <b>Google Maps</b> 按鈕。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 方案比較 ══════ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Choose Your Route</div>
+    <h2 class="rv">這 5 天有不只一種安排</h2>
+    <p class="lead rv">每一天下面有 2–3 張方案卡，<strong>點一下就會切換</strong>，
+      地圖上的路線、沿途會經過哪些地方都跟著變，可以邊看邊討論。<br>
+      <strong>其中 10/08 那天不是「可以選」，是「非改不可」</strong>——照原本排的，
+      光開車就 7 小時以上。</p>
+    <div id="itin"></div>
+  </div>
+</section>
+
+<!-- ══════ 固定不動的部分 ══════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-k rv">Fixed</div>
+    <h2 class="rv">不能動的三件事</h2>
+    <div class="grid g3">
+      <div class="card rv">
+        <h4>🏨 9/28 Mt Cook 住宿</h4>
+        <p style="font-size:.9rem;margin-bottom:0">已訂含早晚餐的 motel。<b>所以 Mt Cook 那幾天只需要解決午餐。</b>
+          村裡商店選擇極少，建議前一天在 Twizel／Tekapo 買好補給。</p>
+      </div>
+      <div class="card rv">
+        <h4>✈️ 進出點</h4>
+        <p style="font-size:.9rem;margin-bottom:0">基督城進、基督城出（10/09 飛奧克蘭）。
+          <b>租車不用付異地還車費</b>，但訂車時仍要單獨確認。</p>
+      </div>
+      <div class="card rv">
+        <h4>🪂🥾 兩個重頭戲</h4>
+        <p style="font-size:.9rem;margin-bottom:0">跳傘排 <b>10/01 早上</b>（皇后鎮 NZONE，鎮上集合），
+          <b>9/28 整天留給<a href="mtcook.html">庫克山健行</a></b>。
+          跳傘看天氣、要備案日；健行不用訂也不會被取消，天氣差就改走短的那幾條。</p>
+      </div>
+    </div>
+
+    <div class="note warn rv">
+      <span class="h">⚠️ 跳傘改到 10/01 之後，備案只剩一天</span>
+      <p><b>10/02（五）是唯一的補跳日</b>——10/03 就往蒂阿瑙走，之後路線再也不經過任何跳傘場。
+        建議 10/01 訂當天最早的時段，10/02 真的要補就換去 Skydive Wānaka
+        （皇后鎮有接駁，<b>換場等於多換一次天氣</b>）。
+        如果 9/26 晚上看預報覺得這兩天都不妙，隔天經過 Lake Pukaki 時就先跳掉。</p>
+      <p style="margin-bottom:0">✅ 附帶的好消息：跳傘移走、冰川健行又
+        <a href="mtcook.html">改成庫克山步道健行</a>之後，
+        <b>9/29 早上完全沒有活動綁著它</b>。步道不用訂、不會被業者取消，
+        9/28 真的整天壞天氣，9/29 出發去 Wanaka 之前還能補走一段。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">車程為概估，<b>以當日路況為準</b>。
+      出發前每天早上請查
+      <a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA Journey Planner</a>；
+      <b>Crown Range Road 不是國道，NZTA 查不到</b>，要看
+      <a href="https://www.qldc.govt.nz/services/transport-and-parking/winter-road-reports" target="_blank" rel="noopener">QLDC 冬季路況頁</a>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">導航按鈕使用 Google 官方 Maps URLs，不需要 API key，手機上會直接開啟 Google Maps App。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--PLACES-->
+<!--ROUTESGEO-->
+<script>
+/* 全程一覽表：由 places.json 的 meta.days 產生 */
+(function () {
+  var el = document.getElementById('daytable');
+  var d = document.getElementById('places-data');
+  if (!el || !d) return;
+  var DB = JSON.parse(d.textContent);
+  var withOpts = {};
+  (DB.routes || []).forEach(function (r) { withOpts[r.day] = true; });
+  var html = '';
+  DB.meta.days.forEach(function (x) {
+    var has = withOpts[x.d];
+    var inner =
+      '<div class="n"><b>D' + String(x.d).padStart(2, '0') + '</b>' + x.date + ' · ' + x.wd + '</div>' +
+      '<div class="t">' + x.title + '</div>' +
+      '<div class="g">' + x.leg + '</div>';
+    html += has
+      ? '<a class="dayline has" href="#day' + x.d + '">' + inner + '</a>'
+      : '<div class="dayline">' + inner + '</div>';
+  });
+  el.innerHTML = html;
+})();
+</script>
+<!--NZJS-->
+</body>
+</html>

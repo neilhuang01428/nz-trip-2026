@@ -1,0 +1,7 @@
+# 工作檔，不進版控
+_inbox/           # 接圖前的原檔暫存（處理完會轉成 images/*.jpg）
+__pycache__/
+_t.html           # 注入量測腳本用的暫存頁
+_p*.html
+.DS_Store
+scratchpad

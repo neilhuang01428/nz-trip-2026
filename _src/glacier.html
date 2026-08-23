@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>冰川健行 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--LEAFLET-->
+<!--NZCSS-->
+<style>
+/* ── 本頁專用 ── */
+.op{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);margin:26px 0;background:var(--card)}
+.op .ph{position:relative;min-height:320px;background-size:cover;background-position:center}
+.op .ph .rib{position:absolute;top:16px;left:0;background:var(--kowhai);color:#3A2A05;
+  font-size:.73rem;font-weight:700;padding:5px 14px 5px 16px;border-radius:0 20px 20px 0;letter-spacing:.04em}
+.op .ph .rib.alt{background:var(--slate);color:#fff}
+.op .ph .rib.no{background:var(--rata);color:#fff}
+.op .bd{padding:26px 28px}
+.op .bd h3{margin-top:0}
+.op .kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.87rem;margin:14px 0}
+.op .kv dt{color:var(--ink-soft);white-space:nowrap}
+.op .kv dd{margin:0;color:var(--ink)}
+@media(max-width:760px){.op{grid-template-columns:1fr}.op .ph{min-height:210px}}
+
+/* 兩案對決 */
+.vs{display:grid;grid-template-columns:1fr 62px 1fr;gap:0;align-items:stretch;margin:30px 0}
+.vs .side{border:1px solid var(--line);border-radius:14px;padding:24px;background:var(--card)}
+.vs .side.win{border-color:var(--kowhai);border-width:2px;
+  box-shadow:0 0 0 5px rgba(229,178,60,.12),var(--shadow)}
+.vs .side h4{margin-top:0;font-size:1.12rem;font-family:var(--serif);font-weight:700}
+.vs .mid{display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+  font-size:1.5rem;font-style:italic;color:var(--ink-soft)}
+.vs ul{font-size:.88rem;margin:12px 0 0 18px}
+.vs .verdict{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:.88rem;font-weight:650;color:var(--pounamu)}
+.vs .side:not(.win) .verdict{color:var(--rata)}
+@media(max-width:760px){.vs{grid-template-columns:1fr}.vs .mid{padding:12px 0}}
+
+/* 剖面圖 */
+.section-fig{background:var(--night-2);border-radius:14px;padding:26px 22px;margin:24px 0;
+  position:relative;overflow:hidden}
+.section-fig svg{width:100%;height:auto;display:block}
+
+/* 階梯圖 */
+.steps-alt{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;margin:22px 0}
+.steps-alt .r{background:var(--card);padding:14px 18px;display:grid;
+  grid-template-columns:120px 1fr auto;gap:16px;align-items:center;font-size:.9rem}
+.steps-alt .r .n{font-family:var(--mono);font-size:.78rem;color:var(--pukaki-dk);font-weight:700}
+.steps-alt .r .p{font-family:var(--mono);font-weight:700;color:var(--ink);white-space:nowrap}
+.steps-alt .r.top{background:linear-gradient(90deg,rgba(229,178,60,.13),var(--card))}
+@media(max-width:600px){.steps-alt .r{grid-template-columns:1fr;gap:4px}}
+
+.matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:22px 0}
+.mx{border-radius:12px;padding:16px 15px;border:1px solid var(--line);background:var(--card);
+  position:relative;overflow:hidden}
+.mx::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c,var(--pukaki))}
+.mx .d{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em}
+.mx .t{font-weight:700;font-size:1rem;margin:3px 0 6px;color:var(--ink)}
+.mx p{font-size:.82rem;margin:0;color:var(--ink-2);line-height:1.6}
+
+/* 最後定案的總結框（2026/08/23 加註） */
+.fin{border:2px solid var(--pounamu);border-radius:16px;overflow:hidden;
+  background:var(--card);box-shadow:0 0 0 6px rgba(31,91,78,.07),var(--shadow-lg)}
+.fin-h{background:var(--pounamu);color:#fff;padding:18px 26px 20px}
+.fin-b{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+  background:var(--kowhai);color:#3A2A05;padding:3px 11px;border-radius:20px;font-weight:700}
+.fin-h h2{margin:10px 0 0;color:#fff;font-size:clamp(1.35rem,3.4vw,1.9rem);line-height:1.3}
+.fin-h h2 b{color:var(--kowhai)}
+.fin-bd{padding:24px 26px 26px}
+.fin-bd > p{font-size:.93rem;line-height:1.85;margin:0 0 12px}
+.fin-sw{display:grid;grid-template-columns:1fr 46px 1fr;align-items:stretch;
+  gap:0;margin:20px 0 22px}
+.fin-x,.fin-y{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--paper)}
+.fin-x{opacity:.68}
+.fin-x .t{text-decoration:line-through;text-decoration-thickness:1px}
+.fin-y{border-color:var(--pounamu);background:rgba(31,91,78,.05)}
+.fin-x .k,.fin-y .k{font-family:var(--mono);font-size:.67rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.fin-x .t,.fin-y .t{font-weight:700;font-size:1rem;color:var(--ink);line-height:1.4}
+.fin-x .d,.fin-y .d{font-size:.83rem;color:var(--ink-2);margin-top:6px;line-height:1.6}
+.fin-a{display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--pounamu)}
+.fin-cta{display:inline-block;background:var(--pounamu);color:#fff;text-decoration:none;
+  padding:12px 24px;border-radius:30px;font-weight:700;font-size:.93rem;transition:.25s}
+.fin-cta:hover{background:var(--ink);transform:translateY(-2px)}
+@media(max-width:700px){
+  .fin-sw{grid-template-columns:1fr}
+  .fin-a{padding:10px 0;transform:rotate(90deg)}
+  .fin-h,.fin-bd{padding-left:18px;padding-right:18px}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('images/helihike3.jpg');background-position:72% center"></div>
+  <div class="hero-in">
+    <div class="eyebrow">Highlight · Glacier Heli-Hike</div>
+    <h1>走上冰川<span class="mao">Haupapa — 塔斯曼冰川的毛利名</span></h1>
+    <p class="lede">路線完全沒經過西海岸，Franz Josef 和 Fox 都不在上面。但<strong>Mt Cook 有真正的直升機冰川健行</strong>，9/28 剛好排得進去。</p>
+    <div class="hero-meta"><span style="background:rgba(229,178,60,.9);color:#3A2A05;border-color:rgba(229,178,60,.9);font-weight:700">📌 已改案 · 見下方</span><span>🚁 4 人全員</span><span>📅 2026/09/28</span><span>🧊 塔斯曼冰川</span><span>💰 NZ$899／人</span></div>
+  </div>
+  <div class="scroll-cue">↓</div>
+</div>
+<div class="rule-niho"></div>
+
+<!-- ══════════ 最後定案（2026/08/23 加註） ══════════ -->
+<section id="final" style="padding-top:34px;padding-bottom:0">
+  <div class="wrap">
+    <div class="fin">
+      <div class="fin-h">
+        <span class="fin-b">FINAL · 2026/08/23</span>
+        <h2>最後定案：<b>不上冰川，改成庫克山健行</b></h2>
+      </div>
+      <div class="fin-bd">
+        <p><b>同行者最後選擇在庫克山健行——看得到冰川，但不會走到冰川上。</b>
+          所以下面這整份研究裡的 <b>The Adventurer 直升機冰川健行（NZ$899／人）沒有要訂</b>，
+          9/28 早上改成走步道。</p>
+        <p><b>這一頁完整保留、一個字都沒刪</b>，因為它記錄的是「我們為什麼曾經想這樣做、又比較過哪些選項」——
+          三家業者的查證、西海岸繞路的算法、天候備案的邏輯，之後如果有人想重開這個題目，
+          這些功課不用重做。</p>
+        <div class="fin-sw">
+          <div class="fin-x">
+            <div class="k">已取消</div>
+            <div class="t">🚁 The Adventurer 直升機冰川健行</div>
+            <div class="d">NZ$899／人 · 四人共 NZ$3,596 · 冰上 2 小時</div>
+          </div>
+          <div class="fin-a" aria-hidden="true">→</div>
+          <div class="fin-y">
+            <div class="k">改成</div>
+            <div class="t">🥾 Aoraki／Mt Cook 步道健行</div>
+            <div class="d">步道免費 · 不用訂 · 一天看得到 Hooker、Mueller、Tasman 三條冰川</div>
+          </div>
+        </div>
+        <a class="fin-cta" href="mtcook.html">去看庫克山健行怎麼安排　→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k rv">On the Map</div>
+    <h2 class="rv">冰川行程的起降點</h2>
+    <p class="lead rv">紫色 pin，全部集中在 <b>Aoraki Mt Cook 機場</b>（就在你們住的村子旁邊）。從 heli-hike 到雪地降落到冰河湖遊船，都在同一區。</p>
+    <div id="app" data-cat="glacier"></div>
+  </div>
+</section>
+
+<!-- ══════════ 結論 ══════════ -->
+<section id="pick">
+  <div class="wrap">
+    <div class="sec-k rv">The Verdict</div>
+    <h2 class="rv">結論：不要繞西海岸，就在 Mt Cook 跳上冰川</h2>
+    <p class="lead rv">研究這題的時候，我原本以為答案是「必須繞去 Franz Josef」。
+      查完之後結論反過來了：<strong>Mt Cook 有一個真正的 heli-hike，價格一樣、時間更短、完全不用動你們的行程。</strong></p>
+
+    <div class="grid g3" style="margin-top:30px">
+      <div class="card rv">
+        <div style="font-size:1.9rem;line-height:1">✅</div>
+        <h4>Mt Cook 真的有 heli-hike</h4>
+        <p style="font-size:.9rem">不是只有「雪地降落拍照」。
+          <strong>The Adventurer：Tasman Glacier Heli Hike</strong>，直升機把你放到冰川偏遠處，
+          穿冰爪走 <b>2 小時</b>，全程 3 小時。<b>NZ$899／人</b>。</p>
+      </div>
+      <div class="card rv">
+        <div style="font-size:1.9rem;line-height:1">⏱</div>
+        <h4>9/28 完美塞得進去</h4>
+        <p style="font-size:.9rem">出發時間 <b>8:45am 與 10:45am</b>，起降點在
+          <b>Aoraki Mt Cook 機場（SH80）</b>，就在你們住的村子旁邊。
+          中午前結束，下午還能走 Hooker Valley Track，晚上回 motel 吃晚餐。</p>
+      </div>
+      <div class="card rv">
+        <div style="font-size:1.9rem;line-height:1">👥</div>
+        <h4>最低成團人數剛好是 4 人</h4>
+        <p style="font-size:.9rem">官方成行門檻 <b>4 人</b>。
+          你們四個人<strong>自己就湊成一團</strong>，不用等別人、不會被併團取消。
+          這在淡季（9 月底）是很實在的優勢。</p>
+      </div>
+    </div>
+
+    <div class="note plan rv" style="margin-top:28px">
+      <span class="h">一句話版本</span>
+      <p><strong>9/28 早上 8:45，Aoraki Mt Cook 機場，The Adventurer，四個人 NZ$3,596。</strong>
+      天氣不好就往後推到 9/29 早上（離開 Mt Cook 前）。
+      再不行就降級成 45 分鐘的滑雪飛機／直升機冰川降落，或是塔斯曼冰河湖遊船。</p>
+    </div>
+
+    <figure class="figwide rv">
+      <img src="images/tasman-lake.jpg" alt="塔斯曼冰川與末端冰河湖">
+      <figcaption>塔斯曼冰川（Haupapa）與它末端的冰河湖。全長 23 公里，是紐西蘭最長、最大的冰川。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ 先搞懂：冰川行程有幾種 ══════════ -->
+<section class="tint" id="types">
+  <div class="wrap">
+    <div class="sec-k rv">Know the Difference</div>
+    <h2 class="rv">先分清楚：四種「冰川行程」差很多</h2>
+    <p class="lead rv">旅行社網頁常把這些混在一起賣，但體驗天差地遠。
+      <strong>你們要的是第 ③ 種。</strong>其他三種是備案，不是替代品。</p>
+
+    <div class="steps-alt rv">
+      <div class="r">
+        <div class="n">① 冰河湖遊船</div>
+        <div>坐船在冰川<b>末端的湖上</b>看漂浮的冰山。不上冰、不用飛。<br>
+          <small>Glacier Explorers · 全程 2 小時 45 分，湖上 60 分鐘</small></div>
+        <div class="p">約 NZ$219</div>
+      </div>
+      <div class="r">
+        <div class="n">② 雪地降落</div>
+        <div>直升機或滑雪飛機飛上去，<b>降落在雪地上待 10–15 分鐘</b>拍照，然後飛回來。<br>
+          <small>Glacier Highlights · 45 分鐘，含 10–15 分鐘冰川降落</small></div>
+        <div class="p">NZ$649</div>
+      </div>
+      <div class="r top">
+        <div class="n">③ 直升機健行 ★</div>
+        <div><strong>直升機把你放到冰川上，穿冰爪、跟嚮導走進冰隙與冰洞之間，走 2 小時。</strong><br>
+          <small>The Adventurer · 全程 3 小時，冰上 2 小時 —— <b>你們要的就是這個</b></small></div>
+        <div class="p">NZ$899</div>
+      </div>
+      <div class="r">
+        <div class="n">④ 冰攀 / 滑雪</div>
+        <div>再上一階：拿冰斧爬冰壁，或直接滑下 23 公里的冰川。<br>
+          <small>The Cool Climber 冰攀 NZ$1,250／人；Ski the Tasman 六小時，<b>雪季 7–9 月</b></small></div>
+        <div class="p">NZ$1,250 起</div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:26px">
+      <figure class="rv" style="margin:0">
+        <img src="images/helihike1.jpg" alt="直升機把健行團體送上冰川">
+        <figcaption>③ 直升機健行：飛機放下你，人走進去</figcaption>
+      </figure>
+      <figure class="rv" style="margin:0">
+        <img src="images/tasman-boat.jpg" alt="塔斯曼冰河湖上的遊船穿過浮冰">
+        <figcaption>① 冰河湖遊船：在湖面看冰山，不上冰</figcaption>
+      </figure>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 一個很多人踩到的坑</span>
+      <p>訂 Mt Cook 的「helicopter glacier tour」，大部分賣的是<strong>第 ② 種：雪地降落</strong>——
+      飛上去、下機拍 10 分鐘照片、飛回來。<b>不是走在冰川上。</b>
+      要走進冰隙裡的，關鍵字是 <code>heli hike</code> 或這個特定產品名 <strong>The Adventurer</strong>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 兩案對決 ══════════ -->
+<section id="decision">
+  <div class="wrap">
+    <div class="sec-k rv">The Big Call</div>
+    <h2 class="rv">要不要為了冰川繞去西海岸？</h2>
+    <p class="lead rv">這是這份文件裡唯一真正需要「決定」的事。西海岸的 Franz Josef／Fox
+      是紐西蘭最有名的冰川健行地點，但你們的路線完全不經過。我把兩案攤開比。</p>
+
+    <div class="vs">
+      <div class="side win rv">
+        <div class="tag t-gold">建議採用</div>
+        <h4>A 案 · 留在 Mt Cook</h4>
+        <ul>
+          <li><b>不動行程一分一秒</b>，9/28 本來就是 Mt Cook 整天</li>
+          <li>NZ$899／人，冰上 <b>2 小時</b>，全程 3 小時</li>
+          <li>起降點 Aoraki Mt Cook 機場，<b>離 motel 開車幾分鐘</b></li>
+          <li>走的是<b>紐西蘭最長的冰川</b>（23 公里）</li>
+          <li>備案日就在隔天 9/29 早上，同一個機場</li>
+          <li>同一集團在 Lake Pukaki 也做跳傘（我們的提前跳保險）</li>
+          <li>下午還有時間走 Hooker Valley Track</li>
+        </ul>
+        <div class="verdict">✓ 零行程成本、零住宿成本、備案就在隔天</div>
+      </div>
+      <div class="mid rv">vs</div>
+      <div class="side rv">
+        <h4>B 案 · 繞 Haast Pass 去西海岸</h4>
+        <ul>
+          <li><b>要從 Wanaka 走 SH6 翻 Haast Pass</b>，單趟就是大半天</li>
+          <li>至少<b>多插 2 天</b>（去 1 天、活動 1 天、回程還要再算）</li>
+          <li>要多訂 Franz Josef 或 Fox 的住宿</li>
+          <li>Franz Josef 官方<b>自己建議「至少停留兩天」</b>才有成行機率</li>
+          <li>西海岸雨量極大，<b>有旅遊紀錄回報取消率約一半</b>（非官方數字）</li>
+          <li>整條後段行程（皇后鎮、峽灣、南地、東岸）全部要往後擠</li>
+          <li>價格沒有比較便宜：Franz Josef 同樣 NZ$899</li>
+        </ul>
+        <div class="verdict">✗ 多花 2 天以上，換到同價格但更高取消風險的行程</div>
+      </div>
+    </div>
+
+    <div class="note warn rv">
+      <span class="h">⚠️ 如果同行者堅持要去西海岸，這是必須先知道的</span>
+      <p><b>Franz Josef Glacier Guides 官方自己寫：建議在該地區至少停留兩天</b>，
+      因為 heli-hike 需要連續 4 小時的天氣空窗。<b>單日繞路去、當天飛不了，就是白跑。</b>
+      而你們的行程後面接著皇后鎮、Milford Sound、南地、但尼丁——每一站都已經排定，往後推的代價很大。</p>
+      <p style="margin-bottom:0">另外要注意：<b>Fox 冰川的「從山谷走上去」路線在 2019 年之後已經關閉</b>，
+      現在 Fox 也只剩直升機接駁一種方式。所以西海岸並沒有「不用搭直升機的便宜選項」。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 廠商 ══════════ -->
+<section class="tint" id="operators">
+  <div class="wrap">
+    <div class="sec-k rv">The Operators</div>
+    <h2 class="rv">三家能做 heli-hike 的公司，全部查過</h2>
+    <p class="lead rv">價格為 NZD 含 GST，查證於 <strong>2026/08/20</strong>，以各官網最新公告為準。</p>
+
+    <!-- Mt Cook -->
+    <div class="op rv">
+      <div class="ph" style="background-image:url('images/tasman-glacier.jpg')">
+        <div class="rib">① 建議採用 · 9/28</div>
+      </div>
+      <div class="bd">
+        <h3 style="margin-top:0">Mount Cook Ski Planes &amp; Helicopters<br>
+          <small style="font-weight:400;color:var(--ink-soft)">The Adventurer：Tasman Glacier Heli Hike</small></h3>
+        <dl class="kv">
+          <dt>價格</dt><dd><strong>NZ$899／人</strong>（成人與 9–16 歲同價）<br>
+            <small style="color:var(--rata)">官網標示此價效期至 <b>2026/09/30</b>——你們 9/28 剛好在期限內</small></dd>
+          <dt>時長</dt><dd>全程最多 3 小時，<b>冰上最多 2 小時</b></dd>
+          <dt>出發時間</dt><dd>8:45am、10:45am</dd>
+          <dt>地點</dt><dd>Aoraki Mt Cook Airport（Mount Cook Road, SH80）</dd>
+          <dt>門檻</dt><dd>最低 9 歲（9–16 歲需成人陪同）· 體能要求「低／中」· 無需經驗<br>
+            單人體重上限 <b>116 kg</b></dd>
+          <dt>成團人數</dt><dd><strong>最少 4 人</strong>——你們自己就成團</dd>
+          <dt>裝備</dt><dd>冰爪／雪鞋、登山靴襪、登山杖、防水外套與雨褲<b>全部由業者提供</b></dd>
+          <dt>聯絡</dt><dd>+64 3 430 8026 · fly@mtcookskiplanes.com</dd>
+        </dl>
+        <p style="font-size:.85rem;color:var(--rata);margin:0"><b>天候判斷：</b>官方明言<b>起飛前 10 分鐘</b>才做最終天候檢查。
+          取消退款須於報到時間前 <b>48 小時</b>提出（INFLITE 集團條款）。</p>
+      </div>
+    </div>
+
+    <!-- Franz Josef -->
+    <div class="op rv">
+      <div class="ph" style="background-image:url('images/franz-josef.jpg')">
+        <div class="rib alt">② 不在路線上</div>
+      </div>
+      <div class="bd">
+        <h3 style="margin-top:0">Franz Josef Glacier Guides<br>
+          <small style="font-weight:400;color:var(--ink-soft)">Glacier Heli Hike</small></h3>
+        <dl class="kv">
+          <dt>價格</dt><dd><strong>NZ$899／人</strong>（成人與兒童同價，效期至 2027/09/30）</dd>
+          <dt>時長</dt><dd>報到到結束最多 4 小時，<b>冰上最多 2.5 小時</b></dd>
+          <dt>出發時間</dt><dd>夏季 7:30am、10:00am、12:30pm（需提前 15 分鐘報到）</dd>
+          <dt>門檻</dt><dd>最低 10 歲 · 身高 ≥137 cm · 體重 35–115 kg · 需合理體能與敏捷度<br>
+            懷孕超過 12 週不可參加</dd>
+          <dt>裝備</dt><dd>冰爪、安全帶、頭盔、防水外套褲、登山靴襪、登山杖、帽子手套<b>全含</b></dd>
+        </dl>
+        <p style="font-size:.85rem;color:var(--pounamu);margin:0 0 6px"><b>天候取消：</b>官方明文——
+          只要條件不安全就取消，<b>所有天候取消一律全額退款</b>（不是記點、不是抵用券）。</p>
+        <p style="font-size:.85rem;color:var(--rata);margin:0"><b>但：</b>官方自己建議
+          <b>在 Franz Josef 至少停留兩天</b>以提高成行機率。</p>
+      </div>
+    </div>
+
+    <!-- Fox -->
+    <div class="op rv">
+      <div class="ph" style="background-image:url('images/helihike4.jpg')">
+        <div class="rib alt">③ 不在路線上</div>
+      </div>
+      <div class="bd">
+        <h3 style="margin-top:0">Fox Glacier Guiding<br>
+          <small style="font-weight:400;color:var(--ink-soft)">Flying Fox Heli Hike 等三級產品</small></h3>
+        <dl class="kv">
+          <dt>Fox Glacier Express</dt><dd>NZ$695／人 · 全程最多 2 小時 · 冰上約 1 小時 · 體能要求低</dd>
+          <dt>Flying Fox Heli Hike</dt><dd><strong>NZ$795／人</strong> · <b>冰上最多 3 小時</b> · 最低 9 歲</dd>
+          <dt>Extreme Fox 全日</dt><dd>NZ$1,044／人 · 全程最多 8 小時 · <b>冰上最多 7 小時</b> · 最低 13 歲</dd>
+          <dt>4 人成人試算</dt><dd>Flying Fox 約 <b>NZ$3,180</b>（官網家庭優惠 $2,860 是 2 大 2 小，你們不適用）</dd>
+          <dt>訂位</dt><dd>secure.foxguides.co.nz 或 0800 111 600 / +64 3 751 0825</dd>
+        </dl>
+        <p style="font-size:.85rem;color:var(--rata);margin:0"><b>注意：</b>Fox 的 heli-hike 頁面
+          <b>完全沒有公告天候取消／退款政策</b>，必須另外去訂位系統或打電話問。
+          另外 Fox 的冰川通行<b>只剩直升機一種方式</b>（每趟兩次接駁），2019 年之後山谷步道路線已關閉。</p>
+      </div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 為什麼三家價格都在 NZ$795–899？</span>
+      <p>因為成本結構一樣：<b>直升機航程 ＋ 高山嚮導 ＋ 全套冰上裝備</b>，
+      而且都受同一套民航與國家公園規範。<strong>價格不是差異點，「你人在哪裡」才是。</strong>
+      既然三家價格差不多、體驗也接近，<b>選離你最近的那一個就對了。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 那天會發生什麼 ══════════ -->
+<section id="day">
+  <div class="wrap">
+    <div class="sec-k rv">On the Ice</div>
+    <h2 class="rv">冰上兩小時，實際上在做什麼</h2>
+    <p class="lead rv">不是走在平坦的雪地上拍照。塔斯曼冰川是一條<strong>還在移動的、23 公里長的冰河</strong>，
+      表面全是冰隙（crevasse）、冰塔（serac）和藍色的冰洞。嚮導會帶你走進那些縫隙之間。</p>
+
+    <div class="grid g3" style="margin-top:26px">
+      <figure class="rv" style="margin:0">
+        <img src="images/helihike6.jpg" alt="健行團體在冰川的冰隙之間行走" style="height:230px;object-fit:cover">
+        <figcaption>穿冰爪走在冰隙之間</figcaption>
+      </figure>
+      <figure class="rv" style="margin:0">
+        <img src="images/fox-icecave.jpg" alt="冰川末端的藍色冰洞與冰隙" style="height:230px;object-fit:cover">
+        <figcaption>冰的藍色是因為冰太密實，把紅光吸光了</figcaption>
+      </figure>
+      <figure class="rv" style="margin:0">
+        <img src="images/franz-seracs.jpg" alt="冰川上巨大的冰塔群" style="height:230px;object-fit:cover">
+        <figcaption>冰塔（serac）——冰川斷裂形成的巨大冰塊</figcaption>
+      </figure>
+    </div>
+
+    <div class="grid g2" style="margin-top:30px">
+      <div class="rv">
+        <h3>體能到底要多好？</h3>
+        <p>官方寫「<b>低／中</b>」，而且<b>不需要任何經驗</b>。真正的要求是：
+          <strong>能穿著冰爪在不平的冰面上走兩小時</strong>。
+          冰爪會咬進冰裡，走法跟平地不太一樣——步伐要重、要踩實。前十分鐘會不習慣，之後就順了。</p>
+        <p>不是登山，沒有長距離爬升。嚮導的節奏是「走一段、停下來講解、拍照、再走」。
+          <b>四個人一團的好處是嚮導可以完全配合你們的速度。</b></p>
+      </div>
+      <div class="rv">
+        <h3>9 月底的冰川，會比較差嗎？</h3>
+        <p>不會，甚至可能更好。<b>9 月底還是南島的冬末初春，冰川上的雪況與冰況比盛夏穩定</b>，
+          而且遊客少很多。真正的變數是<strong>天氣，不是季節</strong>。</p>
+        <div class="note tip" style="margin-top:14px">
+          <span class="h">順帶一提</span>
+          <p style="font-size:.9rem;margin-bottom:0">同一家的 <b>Ski the Tasman</b>（滑下 23 公里冰川）
+            <strong>雪季是 7 月到 9 月</strong>——你們 9/28 剛好卡在季末最後幾天。
+            四人團 NZ$6,999／團（最多 5 人）、6 小時、含午餐。<b>如果團裡有人會滑雪，這是很難得的窗口。</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 費用 ══════════ -->
+<section class="tint" id="money">
+  <div class="wrap">
+    <div class="sec-k rv">The Bill</div>
+    <h2 class="rv">4 個人要花多少</h2>
+
+    <div class="tw rv">
+      <table>
+        <thead><tr><th>方案</th><th>單人</th><th>4 人合計</th><th>時長</th></tr></thead>
+        <tbody>
+          <tr class="pick"><td><strong>The Adventurer 冰川健行</strong></td><td>NZ$899</td><td>NZ$3,596</td><td>3 小時（冰上 2 小時）</td></tr>
+          <tr><td>Glacier Highlights 冰川降落<small>（備案）</small></td><td>NZ$649</td><td>NZ$2,596</td><td>45 分鐘（冰上 10–15 分）</td></tr>
+          <tr><td>Ultimate Alpine 滑雪飛機＋直升機<small>（備案）</small></td><td>NZ$549</td><td>NZ$2,196</td><td>45 分鐘</td></tr>
+          <tr><td>Tasman Taster 高山降落<small>（備案）</small></td><td>NZ$379</td><td>NZ$1,516</td><td>25 分鐘</td></tr>
+          <tr><td>Glacier Explorers 冰河湖遊船<small>（不用飛）</small></td><td>約 NZ$219</td><td>約 NZ$876</td><td>2 小時 45 分</td></tr>
+          <tr><td>The Cool Climber 冰攀<small>（升級）</small></td><td>NZ$1,250</td><td>NZ$5,000</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rv"><small>※ Glacier Explorers 的 NZ$219 是官方公告「2026/10/01 起」的新價，
+      <b>9/28 適用的是上一季價格，以官網為準</b>。</small></p>
+
+    <div class="note rv">
+      <span class="h">📊 跟跳傘一起看的總帳</span>
+      <p>如果兩個活動都照建議走：<br>
+      <b>跳傘 15,000 ft（$549，NZONE）＋ 冰川健行（$899）= NZ$1,448／人 → 4 人 NZ$5,792</b><br>
+      再加跳傘的 Ultimate Combo 影音（$379／人）→ 4 人共 <b>NZ$7,308</b>。</p>
+      <p style="margin-bottom:0">這是整趟旅程裡<strong>最大的一筆自費活動支出</strong>，
+      建議<b>先讓四個人對這個數字有共識，再去訂位</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 備案 ══════════ -->
+<section class="dark" id="weather">
+  <div class="wrap">
+    <div class="sec-k rv">Plan B</div>
+    <h2 class="rv">天氣不好怎麼辦</h2>
+    <p class="lead rv" style="color:#A9BDC9">冰川健行比跳傘更難搞，因為它需要
+      <strong>連續好幾個小時的穩定天氣</strong>——直升機要能飛上去，還要能飛下來。
+      而且<b>你們只有 Mt Cook 這一站有機會</b>，離開之後整條路線都沒有冰川了。</p>
+
+    <div class="matrix" style="margin-top:26px">
+      <div class="mx rv" style="--c:var(--kowhai)">
+        <div class="d">09 / 28 週一</div>
+        <div class="t">主場 ★</div>
+        <p>8:45am 第一場。早班次天氣最穩，萬一延誤，同一天還有 10:45am 那班可以遞補。</p>
+      </div>
+      <div class="mx rv" style="--c:var(--pukaki)">
+        <div class="d">09 / 29 週二</div>
+        <div class="t">備案 1</div>
+        <p>離開 Mt Cook 往 Wanaka 那天早上。跑完 8:45am 那場，中午出發還來得及。<b>唯一的補救日。</b></p>
+      </div>
+      <div class="mx rv" style="--c:var(--tussock)">
+        <div class="d">同日降級</div>
+        <div class="t">備案 2</div>
+        <p>飛得上去但不夠久 → 改 45 分鐘的 <b>Glacier Highlights</b>（$649）或 <b>Ultimate Alpine</b>（$549）。</p>
+      </div>
+      <div class="mx rv" style="--c:var(--pounamu)">
+        <div class="d">完全不能飛</div>
+        <div class="t">地面方案</div>
+        <p><b>Glacier Explorers</b> 冰河湖遊船（約 $219，9 月有 9:00／10:45／12:30／14:15 四班）
+          ＋ <b>Hooker Valley Track</b> 步行看冰河湖。</p>
+      </div>
+    </div>
+
+    <div class="note warn rv" style="background:rgba(190,59,43,.12);border-color:var(--rata)">
+      <span class="h" style="color:#fff">✅ 9/29 現在完全屬於冰川健行</span>
+      <p style="margin-bottom:0">跳傘原本也把 9/29 當備案日，兩個活動要搶。
+        <strong>跳傘已經改到 10/01 皇后鎮</strong>，所以 <b>9/29 早上不用再讓給誰</b>——
+        冰川健行過了 Mt Cook 就沒了。詳見<a href="skydive.html">第二份文件</a>。</p>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 一個提高成功率的小動作</span>
+      <p>訂位時<strong>直接訂 9/28 的 8:45am 那場，並在備註寫明 9/29 早上是你們的備案日</strong>。
+        山區天氣通常早上最穩定，午後對流雲一起來就飛不了。
+        <b>另外：INFLITE 集團條款是「48 小時前取消免費」，所以 9/26 晚上就要看好天氣預報做決定。</b></p>
+    </div>
+
+    <figure class="rv">
+      <img src="images/franz-heli-village.jpg" alt="停在冰川村的直升機">
+      <figcaption>起飛前 10 分鐘才做最終天候檢查——這是山區直升機作業的常態，不是廠商不負責</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ 行動 ══════════ -->
+<section id="todo">
+  <div class="wrap-narrow">
+    <div class="sec-k rv">Next Steps</div>
+    <h2 class="rv">現在要做什麼</h2>
+
+    <div class="note plan rv">
+      <span class="h">立刻可以做</span>
+      <ol style="margin-bottom:0">
+        <li><b>四人確認體重都在 116 kg 以下</b>（這是 The Adventurer 的硬限制）。</li>
+        <li><b>確認大家都能穿冰爪連續走兩小時。</b>不需要體力很好，但膝蓋、腳踝有舊傷的話要先講。</li>
+        <li><b>對 NZ$899／人這個數字取得共識。</b>四人合計 NZ$3,596，這是整趟最大單筆。</li>
+        <li>如果團裡有人會滑雪，順便討論 <b>Ski the Tasman</b>（9 月是雪季最後）。</li>
+      </ol>
+    </div>
+
+    <div class="note rv">
+      <span class="h">訂位（建議出發前 4–6 週）</span>
+      <ol style="margin-bottom:0">
+        <li>上 <a href="https://www.mtcookskiplanes.com/adventure/" target="_blank" rel="noopener">mtcookskiplanes.com/adventure</a>
+          找 <b>The Adventurer</b>，訂 <b>9/28 的 8:45am</b>。</li>
+        <li>寄信到 <code>fly@mtcookskiplanes.com</code>：四人同組、9/29 早上為備案日、
+          並詢問天候降級時能否改成 Glacier Highlights 並退差額。</li>
+        <li><b>順便問價格</b>——官網標示 NZ$899 效期至 2026/09/30，訂位時請確認 9/28 適用此價。</li>
+        <li>跳傘已改到皇后鎮 NZONE（不同集團），<b>要分開訂、分開問</b>。</li>
+      </ol>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">當天早上</span>
+      <p style="margin-bottom:0">Aoraki Mt Cook 機場就在 SH80 上、離村子幾分鐘。
+        8:45 的場次建議 <b>8:15 前到</b>。裝備全部業者提供，<b>你只要帶：太陽眼鏡、防曬、手套、帽子、相機</b>。
+        冰川反射的紫外線非常強，<b>沒防曬會曬傷</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 待查 ══════════ -->
+<section class="tint" id="unknown">
+  <div class="wrap-narrow">
+    <div class="sec-k rv">Honest Gaps</div>
+    <h2 class="rv">這些我查不到，訂位時要自己問</h2>
+    <ul class="styled rv" style="list-style:none;padding:0">
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>The Adventurer 在 2026/10 之後的價格</b>——官網只寫「效期至 2026/09/30」，之後沒公告。
+        你們 9/28 在期限內，但<b>還是請對方書面確認</b>。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>天候取消時能否「降級改成 Glacier Highlights 並退差額」</b>——官方沒有公告這種彈性作法，是我推測的合理備案。<b>必須先問。</b></li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Mt Cook heli-hike 在 9 月底的實際取消率</b>——查無任何官方或可信統計。
+        西海岸「約 50% 取消率」的說法出自個人部落格，<b>不是官方數字，也不能套用到 Mt Cook</b>
+        （Mt Cook 在山脈東側，雨量遠低於西海岸）。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Fox Glacier Guiding 的天候取消與退款政策</b>——heli-hike 頁面完全沒公告。</li>
+      <li style="border-bottom:1px solid var(--line-2);padding:9px 0">
+        <b>Glacier Explorers 在 2026/09 的確切票價</b>——官方只公告 10/01 起的新價（成人 NZ$219）。</li>
+      <li style="padding:9px 0">
+        <b>9/28 當天塔斯曼冰川是否有可進入的冰洞</b>——冰洞每年位置與安全性都不同，
+        官方寫「視雪／冰況決定」。<b>這是驚喜，不是保證。</b></li>
+    </ul>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">價格、時長、門檻、條款均取自各公司<b>官方網站</b>，查證日 <b>2026/08/20</b>。
+      冒險活動的價格與政策變動頻繁，<b>訂位前請以官網最新公告為準</b>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      地圖圖磚 &copy; OpenStreetMap 貢獻者。照片來源見
+      <a href="images/CREDITS.md">images/CREDITS.md</a>。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--PLACES-->
+<!--NZJS-->
+</body>
+</html>

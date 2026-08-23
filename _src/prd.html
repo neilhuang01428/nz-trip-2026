@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>架構說明 PRD · 南島環島 2026</title>
+<meta name="description" content="這個旅程規劃網站的完整架構說明：資料結構、產生流程、設計系統、內容品質規則，以及可以直接貼給 AI 的提示詞。要規劃下一趟旅行時，把這份文件給 AI 讀。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--NZCSS-->
+<style>
+/* PRD 是長文件，用比一般分頁窄的欄寬與更清楚的層級 */
+.prd{max-width:840px;margin:0 auto;padding:0 24px}
+.prd h1{font-family:var(--serif);font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.15;
+  margin:6px 0 18px;color:var(--ink);text-wrap:balance}
+.prd h2{font-family:var(--serif);font-size:clamp(1.35rem,3.4vw,1.8rem);
+  margin:44px 0 14px;padding-bottom:9px;border-bottom:2px solid var(--pounamu);color:var(--ink)}
+.prd h3{font-size:1.12rem;margin:28px 0 10px;color:var(--pounamu);font-weight:700}
+.prd h4{font-size:1rem;margin:20px 0 8px;color:var(--ink)}
+.prd p{margin:0 0 13px;line-height:1.82;color:var(--ink-2)}
+.prd strong{color:var(--ink)}
+.prd ul,.prd ol{margin:0 0 15px;padding-left:24px}
+.prd li{margin-bottom:7px;line-height:1.78;color:var(--ink-2)}
+.prd li strong{color:var(--ink)}
+.prd hr{border:0;border-top:1px dashed var(--line);margin:34px 0}
+.prd blockquote{margin:0 0 18px;padding:14px 18px;background:var(--ice);
+  border-left:4px solid var(--pukaki);border-radius:0 12px 12px 0;
+  font-size:.93rem;line-height:1.8;color:var(--ink-2)}
+.prd blockquote strong{color:var(--ink)}
+.prd code{font-family:var(--mono);font-size:.86em;background:var(--paper-2);
+  padding:2px 6px;border-radius:5px;color:#8C3B2E;word-break:break-word}
+.prd pre.code{background:var(--night);color:#D8E4EA;border-radius:12px;
+  padding:16px 18px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.7;
+  box-shadow:var(--shadow)}
+.prd pre.code code{background:none;padding:0;color:inherit;font-size:1em;white-space:pre}
+.prd pre.code[data-lang]::before{content:attr(data-lang);display:block;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#6E8894;margin-bottom:9px}
+.prd .tw{margin:0 0 20px}
+.prd table td,.prd table th{font-size:.87rem}
+.prd a{color:var(--pukaki-dk);text-decoration:underline;text-underline-offset:2px}
+.prd h2:first-of-type{margin-top:20px}
+
+.prd-toc{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:16px 20px;margin:0 0 30px;box-shadow:var(--shadow)}
+.prd-toc b{display:block;font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);color:var(--ink-soft);margin-bottom:10px}
+.prd-toc ol{margin:0;padding-left:20px;columns:2;column-gap:26px}
+.prd-toc li{margin-bottom:5px;font-size:.88rem;break-inside:avoid}
+@media(max-width:620px){.prd-toc ol{columns:1}.prd{padding:0 18px}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<section style="padding-top:28px;padding-bottom:4px">
+  <div class="prd">
+    <div class="sec-k">Product Requirements</div>
+    <div class="note tip" style="margin:14px 0 26px">
+      <span class="h">🤖 如果你是 AI，讀這裡就對了</span>
+      <p style="margin-bottom:0">這份文件說明<b>整個網站怎麼運作</b>——資料結構、產生流程、
+        設計系統、內容品質規則。要照這個架構規劃另一趟旅行時，
+        <b>先讀完，再看第 8 節把該問的問題一次問完</b>，最後第 9 節有可以直接複製的提示詞。
+        純文字版在 <a href="PRD.md">PRD.md</a>。</p>
+    </div>
+
+    <div class="prd-toc" id="prd-toc"><b>目錄</b><ol></ol></div>
+
+    <!--PRDBODY-->
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">這份 PRD 與網站一起維護。
+      純文字版：<a href="PRD.md">PRD.md</a>（給 AI 讀比較省事）。
+      <a href="index.html">回到行程網站</a>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      架構可自由沿用。實際內容（地點、查證結果、照片授權）僅適用於 2026 年這趟紐西蘭南島行程。</p>
+  </div>
+</footer>
+
+<script>
+/* 目錄直接從文件裡的 h2 產生，錨點永遠不會跟內容對不上 */
+(function () {
+  var ol = document.querySelector('#prd-toc ol');
+  var hs = document.querySelectorAll('.prd h2[id]');
+  if (!ol || !hs.length) { var t = document.getElementById('prd-toc'); if (t) t.hidden = true; return; }
+  Array.prototype.forEach.call(hs, function (h) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    // 去掉標題前面的編號與括號補述，目錄才好掃
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '').replace(/（[^）]*）\s*$/, '');
+    li.appendChild(a); ol.appendChild(li);
+  });
+})();
+</script>
+<!--TABBAR-->
+<!--NZJS-->
+</body>
+</html>

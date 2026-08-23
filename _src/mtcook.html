@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>庫克山健行 · 南島環島 2026</title>
+<meta name="description" content="9/28 定案：不上冰川，改在 Aoraki／Mt Cook 走步道看冰川。六條步道比較、一天怎麼排、9 月底腳下會不會結冰、停車費與規矩。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--LEAFLET-->
+<!--NZCSS-->
+<style>
+/* ── 本頁專用 ── */
+
+/* 定案對照：before / after */
+.swap{display:grid;grid-template-columns:1fr 54px 1fr;align-items:stretch;margin:26px 0}
+.swap .s{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--card)}
+.swap .s.old{opacity:.72}
+.swap .s.old h4{text-decoration:line-through;text-decoration-thickness:1px;color:var(--ink-soft)}
+.swap .s.new{border-color:var(--pounamu);border-width:2px;
+  box-shadow:0 0 0 5px rgba(31,91,78,.10),var(--shadow)}
+.swap .s h4{margin-top:0;font-family:var(--serif);font-size:1.16rem;font-weight:700}
+.swap .s .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+.swap .s ul{font-size:.88rem;margin:12px 0 0 18px;line-height:1.75}
+.swap .arw{display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:var(--pounamu)}
+@media(max-width:760px){.swap{grid-template-columns:1fr}.swap .arw{padding:12px 0;transform:rotate(90deg)}}
+
+/* 四種距離 */
+.dist{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:26px 0}
+.dcard{border:1px solid var(--line);border-radius:13px;background:var(--card);
+  padding:0 0 18px;overflow:hidden;position:relative}
+.dcard .top{background:var(--c,var(--pukaki));color:#fff;padding:12px 16px 11px}
+.dcard .top .n{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;opacity:.85}
+.dcard .top .t{font-weight:700;font-size:1.02rem;margin-top:2px}
+.dcard .bd{padding:14px 16px 0}
+.dcard .bd p{font-size:.85rem;margin:0 0 8px;line-height:1.65}
+.dcard .kv{font-family:var(--mono);font-size:.74rem;color:var(--ink-soft);
+  border-top:1px dashed var(--line);padding-top:9px;margin-top:10px}
+.dcard .kv b{color:var(--ink)}
+
+/* 剖面圖容器 */
+.prof{background:var(--night-2);border-radius:14px;padding:24px 18px 18px;margin:24px 0;
+  overflow-x:auto}
+.prof svg{display:block;min-width:600px;width:100%;height:auto}
+.prof .cap{color:#8FA3B0;font-size:.78rem;margin:12px 2px 0;line-height:1.6}
+.prof .cap b{color:#DCE7EE}
+
+/* 步道對照表 */
+table.trk{width:100%;border-collapse:collapse;font-size:.86rem;min-width:660px}
+table.trk th{background:var(--ice);text-align:left;padding:11px 13px;font-size:.76rem;
+  letter-spacing:.04em;color:var(--pukaki-dk);border-bottom:1px solid var(--line);white-space:nowrap}
+table.trk td{padding:11px 13px;border-bottom:1px solid var(--line-2);vertical-align:top}
+table.trk tr:last-child td{border-bottom:0}
+table.trk td.nm{font-weight:650;color:var(--ink);white-space:nowrap}
+table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+
+/* 一天的時間軸 */
+.plan{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;margin:20px 0}
+.plan .r{background:var(--card);padding:13px 17px;display:grid;
+  grid-template-columns:98px 1fr;gap:16px;align-items:baseline;font-size:.89rem}
+.plan .r .h{font-family:var(--mono);font-weight:700;color:var(--pukaki-dk);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.plan .r.key{background:linear-gradient(90deg,rgba(31,91,78,.10),var(--card))}
+.plan .r.key .h{color:var(--pounamu)}
+.plan .r b{color:var(--ink)}
+@media(max-width:600px){.plan .r{grid-template-columns:1fr;gap:3px}}
+
+/* 條件燈號 */
+.cond{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:22px 0}
+.cd{border-radius:12px;padding:15px 16px;border:1px solid var(--line);background:var(--card)}
+.cd .lv{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  padding:2px 9px;border-radius:20px;margin-bottom:7px;font-weight:700}
+.cd .lv.hi{background:rgba(190,59,43,.12);color:#8C2A1E}
+.cd .lv.md{background:rgba(229,178,60,.18);color:#7A5510}
+.cd .lv.lo{background:rgba(31,91,78,.12);color:var(--pounamu)}
+.cd h4{margin:0 0 5px;font-size:.98rem}
+.cd p{font-size:.84rem;margin:0;line-height:1.65}
+/* 這一節放在 .dark 區塊裡，燈號要另外調亮才讀得到 */
+.dark .cd{background:var(--night-2);border-color:rgba(255,255,255,.09)}
+.dark .cd h4{color:#fff}
+.dark .cd .lv.hi{background:rgba(228,112,95,.22);color:#F3B4A9}
+.dark .cd .lv.md{background:rgba(229,178,60,.20);color:#F0D08A}
+.dark .cd .lv.lo{background:rgba(59,138,117,.24);color:#9BD9C5}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('images/hooker-lake.jpg');background-position:52% center"></div>
+  <div class="hero-in">
+    <div class="eyebrow">Decided · Aoraki Day Walks</div>
+    <h1>庫克山健行<span class="mao">Aoraki — 雲之穿刺者</span></h1>
+    <p class="lede">最後定案：<strong>不上冰川，改成在庫克山走步道看冰川。</strong>
+      一天之內看得到三條冰川、走得到一座 1970 年代還不存在的冰河湖，
+      而且<strong>不用訂、不怕被取消、四個人一毛錢都不用先付</strong>。</p>
+    <div class="hero-meta">
+      <span>🥾 4 人全員</span><span>📅 2026/09/28</span>
+      <span>🧊 看得到三條冰川</span><span>💰 步道免費</span>
+    </div>
+  </div>
+  <div class="scroll-cue">↓</div>
+</div>
+<div class="rule-niho"></div>
+
+<!-- ══════════ 定案 ══════════ -->
+<section id="decided" style="padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k rv">The Decision</div>
+    <h2 class="rv">定案：把「走在冰上」換成「看著冰走」</h2>
+    <p class="lead rv">同行者最後選的是<strong>在庫克山健行</strong>——看得到冰川，但不會踩到冰川上。
+      這一頁就是為這個決定做的：走哪幾條、幾點出門、腳下會不會結冰、要準備什麼。
+      原本那頁的冰川研究<a href="glacier.html">整份留著</a>，當作「我們為什麼曾經想這樣做」的紀錄。</p>
+
+    <div class="swap rv">
+      <div class="s old">
+        <div class="k">原本的方案</div>
+        <h4>🚁 The Adventurer 直升機冰川健行</h4>
+        <ul>
+          <li>NZ$899／人，四人共 <b>NZ$3,596</b></li>
+          <li>全程 3 小時，其中冰上 2 小時</li>
+          <li>起飛前 <b>10 分鐘</b>才做最終天候判斷</li>
+          <li>取消退款要在報到前 48 小時提出</li>
+          <li>需要事先訂位、湊滿 4 人才成團</li>
+        </ul>
+      </div>
+      <div class="arw" aria-hidden="true">→</div>
+      <div class="s new">
+        <div class="k">最後定案</div>
+        <h4>🥾 Aoraki／Mt Cook 步道健行</h4>
+        <ul>
+          <li>步道<b>全部免費</b>，只要付停車費</li>
+          <li>時間自己控制，走多久都可以</li>
+          <li><b>不需要預約、不會被業者取消</b></li>
+          <li>天氣不好可以改走短的、林子裡的那條</li>
+          <li>看得到 Hooker、Mueller、Tasman <b>三條冰川</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note plan rv">
+      <span class="h">✅ 這個決定連帶解決了三件事</span>
+      <ul style="margin-bottom:0">
+        <li><b>9/28 不再是「等電話」的一天。</b>原本要等到起飛前 10 分鐘才知道飛不飛，
+          整個早上不能安排別的事。現在早上七點看天空就能決定走哪一條。</li>
+        <li><b>9/29 早上不用再留成備案日。</b>原本冰川健行過了 Mt Cook 就沒有第二次機會，
+          所以 9/29 早上被綁著。現在 9/29 可以照原計畫從容開去 Wanaka，
+          真的還想走就順路再走 30 分鐘的 <b>Glencoe Walk</b>。</li>
+        <li><b>省下 NZ$3,596。</b>就算全部拿去加購遊船（NZ$209／人）和嚮導健行（NZ$175／人），
+          四個人也只花掉一半不到。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 地圖 ══════════ -->
+<section style="padding-top:14px;padding-bottom:6px">
+  <div class="wrap">
+    <div class="sec-k rv">On the Map</div>
+    <h2 class="rv">這一天會用到的 13 個點</h2>
+    <p class="lead rv">全部集中在兩個地方：<b>村子 ＋ Hooker Valley Road 底的停車場</b>（走路可到的那幾條），
+      以及開車 20 分鐘外的 <b>Tasman Valley</b>（看塔斯曼冰川那幾條）。
+      點卡片可以展開細節、一鍵開 Google Maps 導航。</p>
+    <div id="app" data-cat="hike"></div>
+  </div>
+</section>
+
+<!-- ══════════ 核心觀念 ══════════ -->
+<section class="tint" id="distance">
+  <div class="wrap">
+    <div class="sec-k rv">The Counter-Intuitive Bit</div>
+    <h2 class="rv">反直覺的地方：站上冰川，其實看不到冰川</h2>
+    <p class="lead rv">先講一件出發前想清楚會比較舒服的事。
+      <strong>人在冰川上的時候，視野裡只有腳邊那幾公尺的藍冰和裂隙。</strong>
+      塔斯曼冰川有 22 公里長、3 公里寬——那個「長」跟「寬」，
+      只有<b>退開、站到高處</b>才看得到。</p>
+    <p class="lead rv">所以「看冰川」不是一個非黑即白的選項，而是<b>一把距離的尺</b>。
+      直升機健行是最近的那一格，但不是資訊量最大的那一格。這是四格的樣子：</p>
+
+    <div class="dist rv">
+      <div class="dcard" style="--c:#1B7A93">
+        <div class="top"><div class="n">DISTANCE 01</div><div class="t">稜線上俯瞰</div></div>
+        <div class="bd">
+          <p>爬 100 公尺上舊冰磧牆，一次看完塔斯曼冰河湖、浮冰、和它後面整條谷。
+            <b>視野最寬的一格。</b></p>
+          <div class="kv">Tasman Glacier View Track<br><b>40 分鐘</b>來回 · 免費</div>
+        </div>
+      </div>
+      <div class="dcard" style="--c:#1E5B4E">
+        <div class="top"><div class="n">DISTANCE 02</div><div class="t">走到湖邊</div></div>
+        <div class="bd">
+          <p>順著谷底一路走到冰川末端融出來的湖。看得到冰、看得到冰崩下來的痕跡，
+            <b>而且是用兩條腿慢慢逼近的</b>。</p>
+          <div class="kv">Hooker Valley Track<br><b>3 小時</b>來回 · 免費</div>
+        </div>
+      </div>
+      <div class="dcard" style="--c:#B4791F">
+        <div class="top"><div class="n">DISTANCE 03</div><div class="t">爬到上面看</div></div>
+        <div class="bd">
+          <p>2,200 階直接拉高 600 公尺，把整條胡克谷和穆勒冰川壓在腳下。
+            <b>最累，也最像明信片。</b></p>
+          <div class="kv">Sealy Tarns Track<br><b>3–4 小時</b>來回 · 免費</div>
+        </div>
+      </div>
+      <div class="dcard" style="--c:#5B4AA8">
+        <div class="top"><div class="n">DISTANCE 04</div><div class="t">伸手摸到</div></div>
+        <div class="bd">
+          <p>搭船進浮冰之間。業者官網 FAQ 寫明：條件允許時嚮導會撈冰上船，
+            <b>讓你親手摸到壓了數百年的老冰</b>。</p>
+          <div class="kv">Glacier Explorers<br><b>2h45</b> · NZ$209／人 · 要訂</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 一句話</span>
+      <p style="margin-bottom:0"><b>直升機健行給的是「觸感」，步道給的是「尺度」，遊船兩個各給一半。</b>
+        既然決定不上冰川，那就把尺度和觸感都拿到——<b>白天走步道，另外花 NZ$209 搭一趟船去摸冰</b>，
+        比原本 NZ$899 的方案便宜，而且不用賭那 10 分鐘的天候判斷。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 剖面圖 ══════════ -->
+<section id="profile">
+  <div class="wrap">
+    <div class="sec-k rv">Hooker Valley in Section</div>
+    <h2 class="rv">主菜：胡克谷步道，10 公里、3 小時、爬升只有 80 公尺</h2>
+    <p class="lead rv">這條是整個國家公園最有名的一條，理由很單純：
+      <b>10 公里裡只爬 80 公尺</b>，卻能一路走到 Aoraki 正腳下的冰河湖。
+      不是「輕鬆的入門款」，是<b>本來就是這一帶最好的一條</b>。</p>
+
+    <div class="prof rv">
+      <svg viewBox="0 0 760 210" role="img"
+           aria-label="胡克谷步道剖面圖：從 White Horse Hill 停車場出發，經過三座吊橋，5 公里後抵達 Hooker 冰河湖">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16222E"/><stop offset="1" stop-color="#101A24"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="760" height="210" fill="url(#sky)"/>
+
+        <!-- 山形（右側 Aoraki） -->
+        <path d="M600 150 L668 44 L700 78 L730 30 L760 92 L760 150 Z" fill="#22323F"/>
+        <path d="M668 44 L684 60 L700 78 L690 84 L676 66 Z" fill="#E9F1F6" opacity=".85"/>
+        <path d="M730 30 L744 58 L760 92 L760 60 Z" fill="#E9F1F6" opacity=".7"/>
+
+        <!-- 谷底地形線 -->
+        <path d="M40 152 C140 150 200 146 260 143 C330 140 400 136 470 132 C520 129 560 127 596 126"
+              fill="none" stroke="#4E6C7E" stroke-width="2.5"/>
+        <!-- 冰河湖 -->
+        <path d="M596 126 L660 126 L660 133 L596 133 Z" fill="#2F6E8A"/>
+        <ellipse cx="616" cy="129" rx="7" ry="2.4" fill="#CFE6F0"/>
+        <ellipse cx="640" cy="130" rx="5" ry="2" fill="#CFE6F0"/>
+
+        <!-- 吊橋 -->
+        <g stroke="#E5B23C" stroke-width="1.6" fill="none">
+          <path d="M148 143 Q166 152 184 143"/>
+          <path d="M300 133 Q330 145 360 133"/>
+          <path d="M520 122 Q536 130 552 122"/>
+        </g>
+        <g fill="#E5B23C">
+          <rect x="146" y="139" width="3" height="9"/><rect x="183" y="139" width="3" height="9"/>
+          <rect x="298" y="129" width="3" height="9"/><rect x="359" y="129" width="3" height="9"/>
+          <rect x="518" y="118" width="3" height="9"/><rect x="551" y="118" width="3" height="9"/>
+        </g>
+
+        <!-- 節點 -->
+        <g fill="#8FA3B0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10.5">
+          <circle cx="40" cy="152" r="4.5" fill="#3E9DB8"/>
+          <text x="30" y="172">0 km</text>
+          <text x="16" y="186" fill="#DCE7EE">停車場</text>
+
+          <circle cx="166" cy="147" r="4" fill="#E5B23C"/>
+          <text x="140" y="172">1.0 km</text>
+          <text x="132" y="186" fill="#DCE7EE">第一吊橋</text>
+
+          <circle cx="330" cy="139" r="4" fill="#E5B23C"/>
+          <text x="304" y="172">2.5 km</text>
+          <text x="288" y="186" fill="#DCE7EE">第二吊橋 189m</text>
+
+          <circle cx="452" cy="133" r="3.5" fill="#6B8494"/>
+          <text x="416" y="172">＋15 分</text>
+          <text x="436" y="186" fill="#DCE7EE">廁所</text>
+
+          <circle cx="536" cy="126" r="4" fill="#E5B23C"/>
+          <text x="504" y="186" fill="#DCE7EE">第三吊橋</text>
+
+          <circle cx="596" cy="126" r="5" fill="#CFE6F0"/>
+          <text x="576" y="172">5.0 km</text>
+          <text x="566" y="186" fill="#DCE7EE">Hooker 冰河湖</text>
+        </g>
+
+        <!-- 時間軸 -->
+        <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#6E8492">
+          <text x="86" y="112">15 分</text>
+          <text x="232" y="104">30 分</text>
+          <text x="452" y="96">45 分</text>
+        </g>
+        <g stroke="#3A4C59" stroke-width="1" stroke-dasharray="3 3">
+          <path d="M40 122 L166 118"/><path d="M166 114 L330 108"/><path d="M330 104 L596 100"/>
+        </g>
+
+        <!-- 爬升標記 -->
+        <g stroke="#4E6C7E" stroke-width="1" stroke-dasharray="2 3">
+          <path d="M596 126 L596 152"/><path d="M40 152 L596 152"/>
+        </g>
+        <text x="270" y="205" font-family="ui-monospace,SFMono-Regular,Menlo,monospace"
+              font-size="10" fill="#6E8492">全程爬升約 80 公尺 · 幾乎是平的</text>
+      </svg>
+      <p class="cap">DOC 官方分段時間：停車場→第一吊橋 <b>15 分／1 km</b>、→第二吊橋 <b>30 分／1.5 km</b>、
+        →冰河湖 <b>45 分／2.5 km</b>，單程 1.5 小時、來回 3 小時。
+        從村子走過來要再加 1 小時。
+        <b>DOC 只公布這三段的距離</b>，圖上「廁所」與「第三吊橋」的位置是依官方描述推的
+        （廁所在第二吊橋之後 15 分鐘），不是量出來的。<b>第二吊橋 2026 年 7 月才換新，全長 189 公尺，
+        DOC 官方頁面寫明它是紐西蘭最長的吊橋</b>——你們會在它啟用兩個月後走上去。
+        （查證 2026/08/23 · 以 DOC 最新公告為準）</p>
+    </div>
+
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card rv">
+        <div style="font-size:1.8rem;line-height:1">🌊</div>
+        <h4>終點那座湖，1970 年代還不存在</h4>
+        <p style="font-size:.9rem;margin-bottom:0">Hooker Lake 是冰川退縮後才積出來的：
+          1990 年只有 1.2 公里長，2013 年已經 2.3 公里。
+          <b>你走到的終點，每年都還在往後退。</b></p>
+      </div>
+      <div class="card rv">
+        <div style="font-size:1.8rem;line-height:1">🧭</div>
+        <h4>DOC 說最好的時間是清晨</h4>
+        <p style="font-size:.9rem;margin-bottom:0">官方文字寫得很直白：
+          <b>天亮那一刻第一道光爬過南阿爾卑斯山</b>，而且人最少。
+          9/28 日出 <b>07:16</b>，走到湖邊剛好接住上午的光。</p>
+      </div>
+      <div class="card rv">
+        <div style="font-size:1.8rem;line-height:1">🚻</div>
+        <h4>廁所只有兩個地方</h4>
+        <p style="font-size:.9rem;margin-bottom:0">起點的 White Horse Hill 有無障礙廁所與飲用水，
+          步道上唯一一間在<b>第二吊橋之後 15 分鐘</b>。
+          DOC 的建議就一句：<b>出發前先上</b>。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 步道總表 ══════════ -->
+<section class="tint" id="tracks">
+  <div class="wrap">
+    <div class="sec-k rv">All the Options</div>
+    <h2 class="rv">九條步道攤開比：哪一條看得到哪一條冰川</h2>
+    <p class="lead rv">時間與爬升全部取自 <b>DOC 官方步道頁與官方步道手冊</b>（查證 2026/08/23）。
+      「看得到什麼」那一欄是這張表真正的重點——
+      <b>這幾條看的不是同一條冰川</b>，選錯就看不到你想看的那條。</p>
+
+    <div class="tw rv">
+      <table class="trk">
+        <thead>
+          <tr><th>步道</th><th>時間</th><th>爬升</th><th>看得到什麼</th><th>9 月底風險</th></tr>
+        </thead>
+        <tbody>
+          <tr class="pick">
+            <td class="nm">Hooker Valley Track</td>
+            <td class="mn">3 hr 來回</td><td class="mn">80 m</td>
+            <td><b>Hooker 冰川</b>與冰河湖、Mueller 冰河湖、Mt Sefton</td>
+            <td>背陰處結冰、風大</td>
+          </tr>
+          <tr class="pick">
+            <td class="nm">Tasman Glacier View</td>
+            <td class="mn">40 min 來回</td><td class="mn">100 m</td>
+            <td><b>Tasman 冰川</b>與冰河湖、浮冰、谷頭群峰</td>
+            <td>低（階梯短）</td>
+          </tr>
+          <tr>
+            <td class="nm">Kea Point Track</td>
+            <td class="mn">1 hr（從停車場）<br>2 hr（從村裡）</td><td class="mn">180 m／3 km</td>
+            <td><b>Mueller 冰川</b>與冰磧牆、Mt Sefton、The Footstool</td>
+            <td>低</td>
+          </tr>
+          <tr>
+            <td class="nm">Tasman Lake Track</td>
+            <td class="mn">50–60 min 來回</td><td class="mn">幾乎沒有</td>
+            <td>走到<b>塔斯曼冰河湖水邊</b>、塔斯曼河源頭</td>
+            <td>湖面可能還結著冰</td>
+          </tr>
+          <tr>
+            <td class="nm">Sealy Tarns Track</td>
+            <td class="mn">3–4 hr 來回</td><td class="mn">600 m／2,200 階</td>
+            <td>整條胡克谷俯瞰、Mueller 湖、Aoraki 全身</td>
+            <td><b>高</b>：上半段常有殘雪結冰</td>
+          </tr>
+          <tr>
+            <td class="nm">Red Tarns Track</td>
+            <td class="mn">2 hr 來回</td><td class="mn">300 m</td>
+            <td>從對面看整個村子、胡克谷與 Aoraki</td>
+            <td>中：陡、階梯多</td>
+          </tr>
+          <tr>
+            <td class="nm">Governors Bush Walk</td>
+            <td class="mn">1 hr 環狀</td><td class="mn">100 m</td>
+            <td>銀山毛櫸原始林、Wakefield 稜線展望</td>
+            <td><b>低</b>：有遮蔽，壞天氣首選</td>
+          </tr>
+          <tr>
+            <td class="nm">Glencoe Walk</td>
+            <td class="mn">30 min 來回</td><td class="mn">40 m</td>
+            <td>Hooker 冰川的白冰、Aoraki，日出日落最好</td>
+            <td>低</td>
+          </tr>
+          <tr>
+            <td class="nm">Bowen Bush Walk</td>
+            <td class="mn">10 min 環狀</td><td class="mn">幾乎沒有</td>
+            <td>tōtara 與山地芹松林，可接 Governors Bush</td>
+            <td>低</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.8rem;color:var(--ink-soft);margin-top:-4px">
+      ★ 標黃底的兩條是建議的主軸：<b>一條走進谷底看 Hooker，一條開車過去看 Tasman</b>，
+      加起來不到四小時，卻涵蓋兩條完全不同的冰川。</p>
+
+    <div class="note warn rv">
+      <span class="h">⚠️ 有一條看起來很棒，但這次不要碰：Mueller Hut Route</span>
+      <p style="margin-bottom:0">它接在 Sealy Tarns 之上，網路美照最多。
+        但 DOC 的分級是 <b>route（無成形路徑）</b>，單程 3–5 小時、<b>爬升 1,000 公尺</b>；
+        官方寫明夏天（12–2 月）中等健行經驗可行，
+        <b>冬天（6–8 月）需要冰斧、冰爪、路線判讀與雪崩裝備的登山能力</b>。
+        9 月底正好卡在中間——雪還在、又開始融，是最不穩定的時候。
+        <b>同樣看 Aoraki，Sealy Tarns 停在半路就好。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 一天怎麼排 ══════════ -->
+<section id="oneday">
+  <div class="wrap">
+    <div class="sec-k rv">The Day</div>
+    <h2 class="rv">9/28 一天怎麼排</h2>
+    <p class="lead rv">住宿含早晚餐，<strong>整天只要解決午餐一頓</strong>——
+      而村裡那天幾乎只剩 Sir Edmund Hillary Café &amp; Bar（每天 10:00–15:30）穩定營業。
+      所以時間表是繞著「早上走長的、中午回村吃、下午走短的」排的。</p>
+
+    <div class="plan rv">
+      <div class="r"><span class="h">07:16</span><span>日出。<b>不用真的爬起來看</b>，但這是「今天天氣到底行不行」最準的一眼。</span></div>
+      <div class="r"><span class="h">08:00</span><span>吃 motel 的早餐，順便看窗外。裝水、上廁所。</span></div>
+      <div class="r key"><span class="h">08:30</span><span><b>開車 5 分鐘到 White Horse Hill 停車場</b>，先繳停車費（只收卡）。
+        路過<b>遊客中心</b>時先看門口的步道狀況板（08:30 開門）。</span></div>
+      <div class="r key"><span class="h">09:00</span><span><b>走 Hooker Valley Track。</b>單程 1.5 小時到冰河湖，
+        在湖邊待 20–30 分鐘，回程 1.5 小時。</span></div>
+      <div class="r"><span class="h">12:30</span><span>回村裡吃午餐。<b>Hillary Café 只開到 15:30、點心供應到 15:00</b>，別拖。</span></div>
+      <div class="r"><span class="h">13:30</span><span>休息／逛 <b>DOC 遊客中心</b>（免費，有登山史與冰川展示）。腳如果還行就繼續。</span></div>
+      <div class="r key"><span class="h">14:30</span><span><b>開車 20 分鐘到 Tasman Valley</b>，走 Tasman Glacier View（40 分鐘）
+        ＋ Tasman Lake Track（1 小時）。<b>這是今天唯一看得到塔斯曼冰川的機會。</b></span></div>
+      <div class="r"><span class="h">17:00</span><span>回村。天還亮著。</span></div>
+      <div class="r"><span class="h">18:45</span><span>晚餐前如果還有力氣，走 <b>Glencoe Walk</b>（30 分鐘，就在 Hermitage 後面）看黃昏光打在 Aoraki 上。</span></div>
+      <div class="r"><span class="h">19:44</span><span>日落。<b>20:11 之後就需要頭燈了</b>（民用曙暮光結束）。</span></div>
+    </div>
+
+    <div class="grid g3" style="margin-top:24px">
+      <div class="card rv" style="border-left:4px solid var(--pounamu)">
+        <h4>☀️ 天氣好：照上面走</h4>
+        <p style="font-size:.9rem;margin-bottom:0">早上 Hooker、下午 Tasman。
+          <b>兩條冰川、一天走完，總步行約 13 公里但幾乎沒有爬升。</b>
+          下午想再爬一段的話可以改成 Sealy Tarns，但那要一整個下午。</p>
+      </div>
+      <div class="card rv" style="border-left:4px solid var(--kowhai)">
+        <h4>🌥 天氣普通：縮短</h4>
+        <p style="font-size:.9rem;margin-bottom:0">胡克谷<b>走到第二吊橋就折返</b>（來回約 1.5 小時），
+          一樣看得到 Mueller 冰河湖與 Mt Sefton。
+          下午改成 Kea Point（1 小時）＋ 遊客中心。</p>
+      </div>
+      <div class="card rv" style="border-left:4px solid var(--rata)">
+        <h4>🌧 天氣很差：進林子</h4>
+        <p style="font-size:.9rem;margin-bottom:0"><b>Governors Bush ＋ Bowen Bush</b>（有樹遮蔽，共約 1 小時）、
+          DOC 遊客中心、Hillary 高山中心與天象館。
+          真的整天下雨，這一天就當休息日——<b>9/29 早上出發去 Wanaka 前還有一個機會</b>。</p>
+      </div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">💡 想加碼的話，優先順序是這樣</span>
+      <ol style="margin-bottom:0">
+        <li><b>Glacier Explorers 遊船（NZ$209／人）</b>——唯一能親手摸到冰的方式，
+          而且是紐西蘭唯一的冰河湖遊船。班次 9:15／11:15／13:15，
+          <b>報到要提前 30 分鐘</b>，到停車場後還要自己走 1.5 公里／25 分鐘才到碼頭。
+          排 13:15 那班的話，早上的胡克谷就要提早到 08:30 出發。</li>
+        <li><b>Hermitage 嚮導健行（半日 NZ$175／人）</b>——如果想有人講解地質與登山史，
+          或是希望有人幫忙看天氣與路況。<b>有日語嚮導</b>，導覽季 9/1–5/31，
+          <b>只能 email 訂位</b>。</li>
+        <li><b>Big Sky 觀星</b>——⚠️ 9/26–29 是滿月，官方自己建議選新月前後。可以跳過。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 9 月底的地面條件 ══════════ -->
+<section class="dark" id="conditions">
+  <div class="wrap">
+    <div class="sec-k rv">Ground Truth</div>
+    <h2 class="rv">9 月底，腳下到底是什麼狀況</h2>
+    <p class="lead rv">這是整頁最實用的一節。
+      9 月底的 Aoraki 不是夏天也不是冬天，是<strong>「雪還在但開始融」的那段</strong>——
+      步道會通，但背陰處會結冰。以下每一條都來自 DOC 官方警語。</p>
+
+    <div class="cond rv">
+      <div class="cd">
+        <span class="lv md">中度</span>
+        <h4>🧊 背陰處結冰</h4>
+        <p>DOC 對胡克谷的原話：<b>「背陰處會變得非常冰、極度濕滑，冬季建議使用微尖冰爪與登山杖。」</b>
+          清晨與樹蔭下最明顯，太陽出來會好轉。</p>
+      </div>
+      <div class="cd">
+        <span class="lv hi">高</span>
+        <h4>❄️ Sealy Tarns 上半段殘雪</h4>
+        <p>DOC 在 Sealy Tarns 那頁的原話：<b>「冬季這條步道可能極度結冰，
+          要上到池邊可能需要冰斧與冰爪，並且可能存在雪崩風險。」</b>
+          再往上接的 Mueller Hut 路線，官方則寫明 <b>3 月到 11 月都可能有雪與冰</b>。
+          DOC 自己給的建議就一句：<b>先到遊客中心問當天狀況。</b></p>
+      </div>
+      <div class="cd">
+        <span class="lv md">中度</span>
+        <h4>🏔 雪崩</h4>
+        <p>DOC：<b>雪崩在這座公園一年四季都可能發生，春季（9–11 月）是最常見的季節之一。</b>
+          好消息是胡克谷步道<b>本來就是為了避開雪崩區設計的</b>——
+          代價是<b>絕對不要離開步道</b>。</p>
+      </div>
+      <div class="cd">
+        <span class="lv md">中度</span>
+        <h4>🛣 SH80 可能因雪封閉</h4>
+        <p>DOC 明說 <b>6–9 月可能因降雪限制進出</b>，而 SH80 是條死路，
+          進出都只有這 55 公里。出發那天早上查一次公路狀況。</p>
+      </div>
+      <div class="cd">
+        <span class="lv hi">高</span>
+        <h4>🌪 天氣說變就變</h4>
+        <p>DOC：<b>「一年任何時候都可能遇到強風、大雨、大雪與劇烈溫度變化。」</b>
+          9 月 Mt Cook 村的平均高溫約 8°C、低溫約 1°C，月雨量約 276 mm。
+          <span style="opacity:.75">（氣候平均值取自第三方氣候站彙整，非官方預報）</span></p>
+      </div>
+      <div class="cd">
+        <span class="lv lo">低但致命</span>
+        <h4>🥶 不要下水、不要爬浮冰</h4>
+        <p>DOC：湖水<b>約 3°C，會迅速造成失溫</b>；結冰的湖面可能隨時破；
+          <b>浮冰不穩定、會突然翻面</b>。這幾條沒有例外。</p>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <span class="h">🎒 因為改成健行，裝備清單要跟著改</span>
+      <ul style="margin-bottom:0">
+        <li><b>原本靴子與冰爪業者會提供，現在要自己想辦法。</b>
+          最低限度是<b>抓地力好的健行鞋／登山鞋</b>——不要穿平底球鞋走結冰的碎石路。</li>
+        <li><b>微尖冰爪（microspikes）</b>：DOC 對胡克谷冬季的具體建議。
+          台灣不好買、紐西蘭戶外用品店（Twizel／Tekapo 都太小，基督城才有）有賣。
+          <b>如果不想買，就把行程壓在太陽出來之後、不要走 Sealy Tarns。</b></li>
+        <li><b>登山杖</b>：DOC 一併建議，結冰時比冰爪還常派上用場。</li>
+        <li><b>防風外層一定要帶著走</b>：湖邊的風是直接掠過冰面吹過來的，體感比村裡低很多。</li>
+        <li><b>高係數防曬</b>：高山紫外線強，雪面又反射。DOC 明說「任何季節都可能嚴重曬傷」。</li>
+        <li><b>自己的水</b>：起點有處理過的飲用水可以裝，步道上沒有補水點。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 錢 ══════════ -->
+<section id="money">
+  <div class="wrap">
+    <div class="sec-k rv">The Bill</div>
+    <h2 class="rv">4 個人實際要花多少</h2>
+    <p class="lead rv">健行本身<strong>免費</strong>，唯一的固定支出是停車費。
+      下面把「什麼都不加購」到「全部加滿」都算給你們看。</p>
+
+    <div class="stats rv" style="margin:24px 0">
+      <div class="stat"><div class="n">$25</div><div class="l">整天停車（單日上限）</div></div>
+      <div class="stat"><div class="n" style="font-size:1.9rem">免費</div><div class="l">九條步道全部</div></div>
+      <div class="stat"><div class="n">$836</div><div class="l">四人加購遊船</div></div>
+      <div class="stat"><div class="n">$3,596</div><div class="l">原方案（已取消）</div></div>
+    </div>
+
+    <div class="tw rv">
+      <table class="trk">
+        <thead><tr><th>方案</th><th>內容</th><th>4 人總額</th><th>跟原方案差多少</th></tr></thead>
+        <tbody>
+          <tr class="pick">
+            <td class="nm">純健行</td>
+            <td>Hooker ＋ Tasman View ＋ Tasman Lake ＋ Glencoe，只付停車費</td>
+            <td class="mn">NZ$25</td><td class="mn">省 NZ$3,571</td>
+          </tr>
+          <tr>
+            <td class="nm">健行 ＋ 遊船</td>
+            <td>上面全部 ＋ Glacier Explorers（NZ$209／人）</td>
+            <td class="mn">NZ$861</td><td class="mn">省 NZ$2,735</td>
+          </tr>
+          <tr>
+            <td class="nm">健行 ＋ 遊船 ＋ 嚮導</td>
+            <td>再加 Hermitage 半日嚮導健行（NZ$175／人）</td>
+            <td class="mn">NZ$1,561</td><td class="mn">省 NZ$2,035</td>
+          </tr>
+          <tr style="opacity:.65">
+            <td class="nm">🚁 原方案（已取消）</td>
+            <td>The Adventurer 直升機冰川健行 NZ$899／人</td>
+            <td class="mn">NZ$3,596</td><td class="mn">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.8rem;color:var(--ink-soft)">
+      停車費 NZ$2.50／半小時、單日上限 NZ$25、20 分鐘內免費、<b>機器只收卡不收現金</b>。
+      跨夜停放算兩天。價格查證 2026/08/23，以官方最新為準。</p>
+  </div>
+</section>
+
+<!-- ══════════ 規矩 ══════════ -->
+<section class="tint" id="rules">
+  <div class="wrap">
+    <div class="sec-k rv">House Rules</div>
+    <h2 class="rv">國家公園裡的規矩，有幾條是台灣沒有的</h2>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card rv">
+        <h4>🚁 無人機：等於全面禁止</h4>
+        <p style="font-size:.9rem;margin-bottom:0">DOC 寫得很硬：
+          <b>整座國家公園禁止休閒用無人機</b>，要飛必須申請許可，
+          而且「我們通常不會核准，也不建議你申請」。<b>帶去也不要拿出來。</b></p>
+      </div>
+      <div class="card rv">
+        <h4>🦜 Kea：絕對不要餵</h4>
+        <p style="font-size:.9rem;margin-bottom:0">世界上唯一的高山鸚鵡，野外估計只剩 1,000–5,000 隻。
+          聰明到會拆背包、咬雨刷和車門橡膠條。
+          <b>被餵過的 kea 會學會靠近車輛，然後在路上被輾死。</b>
+          東西別留車外、車窗關好。</p>
+      </div>
+      <div class="card rv">
+        <h4>🗑 垃圾要帶出國家公園</h4>
+        <p style="font-size:.9rem;margin-bottom:0">園區內垃圾桶很少。DOC 要求把垃圾帶到
+          Twizel／Tekapo／Fairlie 的回收站丟。
+          高山區的垃圾<b>可能永遠不會分解</b>，而且對 Ngāi Tahu 來說，
+          從 Aoraki 流下來的水是神聖的。</p>
+      </div>
+      <div class="card rv">
+        <h4>🚲 步道上不能騎車 · 🐕 不能帶狗 · 🔥 永久禁火</h4>
+        <p style="font-size:.9rem;margin-bottom:0">自行車只能走 Alps 2 Ocean 車道與已鋪設道路，
+          <b>所有健行步道禁止騎乘</b>。國家公園內禁止任何寵物，並且是<b>永久禁火</b>。</p>
+      </div>
+    </div>
+
+    <div class="note tip rv">
+      <span class="h">🗿 一件走之前知道會不一樣的事</span>
+      <p style="margin-bottom:0">胡克谷這一帶對 Ngāi Tahu 有 <b>Tōpuni</b> 地位——
+        字面意思是「披上一件象徵性的斗篷」，用來標記這塊地對部落的重要性。
+        對他們來說 <b>Aoraki 不是一座山，是一位祖先</b>：被南風凍成石頭的那位。
+        所以嚮導帶隊登頂時，通常會<b>停在離真正最高點約 50 公尺處，不踩上去</b>。
+        我們只是走谷底，但知道這件事之後，抬頭的感覺不太一樣。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 查不到 ══════════ -->
+<section id="unknown">
+  <div class="wrap">
+    <div class="sec-k rv">Honest Gaps</div>
+    <h2 class="rv">這些我查不到，要現場或當天才知道</h2>
+    <p class="lead rv">照慣例，把沒有官方依據的部分列出來，免得被當成定論。</p>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card rv" style="border-left:4px solid var(--rata)">
+        <h4>❓ 9/28 當天步道到底開不開</h4>
+        <p style="font-size:.9rem;margin-bottom:0">DOC 頁面在 2026/08/23 查證時<b>沒有任何封閉公告</b>，
+          胡克谷全線描述到冰河湖。但一場大雪或落石就會改變。
+          <b>唯一可靠的做法：出發當天早上到遊客中心門口看那面板子。</b>
+          電話 +64 3 435 1186。</p>
+      </div>
+      <div class="card rv" style="border-left:4px solid var(--kowhai)">
+        <h4>❓ 業者頁面與 DOC 對不上</h4>
+        <p style="font-size:.9rem;margin-bottom:0">Hermitage 嚮導健行頁面<b>到今天仍寫著</b>
+          「因第二吊橋封閉，胡克谷改成只走到第一吊橋」，
+          但 DOC 官方頁面已寫明新橋 2026 年 7 月啟用。
+          <b>看起來是業者沒更新</b>，但我無法確認——訂位時直接問。</p>
+      </div>
+      <div class="card rv" style="border-left:4px solid var(--slate)">
+        <h4>❓ Glacier Explorers 9 月的實際班次</h4>
+        <p style="font-size:.9rem;margin-bottom:0">官網目前列 9:15／11:15／13:15，
+          但標註是「當季班次」，會隨日照長短調整。
+          <b>9 月底日照正在變長，班次有可能再加。</b>訂位時確認。</p>
+      </div>
+      <div class="card rv" style="border-left:4px solid var(--pukaki)">
+        <h4>❓ 連 DOC 自己的數字都對不上</h4>
+        <p style="font-size:.9rem;margin-bottom:0">同一個機關，公園介紹頁寫「<b>19 座</b>超過 3,000 公尺的山峰」，
+          官方步道手冊寫「<b>21 座</b>」；塔斯曼冰川長度一邊寫 23 公里、一邊寫 22 公里。
+          <b>不是誰錯了，是不同版本的資料沒同步。</b>看到數字有出入時，不用太在意。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 收尾 ══════════ -->
+<section class="tint" id="wrap">
+  <div class="wrap wrap-narrow" style="text-align:center">
+    <div class="sec-k rv" style="justify-content:center">One More Thing</div>
+    <h2 class="rv">最後一句</h2>
+    <p class="lead rv" style="font-size:1.06rem">
+      直升機把你放上去，你會記得腳下的藍冰。<br>
+      走進谷裡，你會記得<strong>那座湖在四十年前還不存在</strong>。<br>
+      <strong>一個是照片，一個是尺度——後者比較難忘。</strong></p>
+    <p class="rv" style="font-size:.9rem;color:var(--ink-soft)">
+      想看當初為什麼會考慮直升機方案、三家業者怎麼比、西海岸為什麼不划算，
+      <a href="glacier.html">冰川那頁完整保留</a>。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px"><b>資料來源（官方優先）：</b>
+      <a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/hooker-valley-track/" target="_blank" rel="noopener">DOC 胡克谷步道頁</a>、
+      <a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/kea-point-track/" target="_blank" rel="noopener">Kea Point</a>、
+      <a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/things-to-do/tracks/sealy-tarns-track/" target="_blank" rel="noopener">Sealy Tarns</a>、
+      <a href="https://www.doc.govt.nz/globalassets/documents/parks-and-recreation/tracks-and-walks/canterbury/walking-and-cycling-tracks-in-aoraki-mt-cook.pdf" target="_blank" rel="noopener">DOC 官方步道手冊（PDF）</a>、
+      <a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/aoraki-mount-cook-national-park/" target="_blank" rel="noopener">DOC 國家公園頁</a>、
+      <a href="https://glacierexplorers.co.nz/" target="_blank" rel="noopener">Glacier Explorers 官網</a>、
+      <a href="https://www.hermitage.co.nz/experience/guided-hikes/" target="_blank" rel="noopener">Hermitage 嚮導健行</a>。
+      日出日落取自 sunrise-sunset.org（Mt Cook 村座標）。
+      <b>全部查證於 2026/08/23，以各單位官網最新公告為準。</b></p>
+    <p style="margin:0 0 10px">當天狀況查詢：
+      <a href="https://www.metservice.com/rural/localed-forecasts/aoraki-mt-cook" target="_blank" rel="noopener">MetService 山區預報</a>、
+      <a href="https://www.avalanche.net.nz/" target="_blank" rel="noopener">NZ Avalanche Advisory</a>、
+      <a href="https://www.journeys.nzta.govt.nz/journey-planner" target="_blank" rel="noopener">NZTA 公路狀況</a>。
+      現場最準的還是 <b>DOC 遊客中心門口那面步道狀況板</b>（+64 3 435 1186）。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      地圖圖磚 &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> 貢獻者．
+      地點資料源：<code>data/places.json</code>。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--PLACES-->
+<!--NZJS-->
+</body>
+</html>

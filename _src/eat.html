@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F5B4E">
+<title>吃的 · 南島環島 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<!--LEAFLET-->
+<!--NZCSS-->
+</head>
+<body>
+<div id="prog"></div>
+<!--NAV-->
+
+<section style="padding-top:30px;padding-bottom:8px">
+  <div class="wrap">
+    <div class="sec-k">Eat</div>
+    <h2>吃什麼</h2>
+    <p class="lead">19 家餐廳與店家。<b>特別注意公休日</b>——南島小鎮的餐廳週一、週二公休非常常見，而且晚上關得早。</p>
+    <div class="note warn">
+      <span class="h">⚠️ 三個已經確認的雷</span>
+      <p style="margin-bottom:0">
+        <b>Fleurs Place（Moeraki）已永久歇業</b>——中文旅遊資訊還在大推。<br>
+        <b>Old Mountaineers（Mt Cook）</b>官網時間表寫週一、週二公休，我們在的兩天都碰上。<br>
+        <b>Riverstone Kitchen</b> 週三沒有晚餐（已用其訂位系統實際班次驗證）。</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:4px">
+  <div class="wrap">
+    <div class="fhint" style="display:flex;gap:11px;align-items:flex-start;
+      background:var(--ice);border:1px solid var(--line);border-left:4px solid var(--pukaki);
+      border-radius:12px;padding:12px 15px;margin:20px 0 -4px">
+      <span style="font-size:1.15rem;line-height:1.3;flex:none" aria-hidden="true">🗓</span>
+      <p style="margin:0;font-size:.88rem;line-height:1.65;color:var(--ink-2)">
+        <b>下面的日期，是照我們這趟 17 天的行程排的。</b>
+        點某一天，清單和地圖就<b>只留那天路線上會經過的地方</b>——那天中午和晚上可以吃哪裡。
+        不用自己對著地圖想「這個順不順路」，也可以先<b>不選</b>，直接看全部。</p>
+    </div>
+    <div id="app" data-cat="eat"></div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-k rv">Must Eat</div>
+    <h2 class="rv">紐西蘭必吃：這個季節有什麼、沒什麼</h2>
+    <p class="lead rv">你們 9/26–10/10 這段期間的當季狀況。</p>
+    <div class="foods">
+      <div class="food rv"><span class="flag ok">當季 ✓</span><img src="images/food-whitebait.jpg" alt="白銀魚煎餅">
+        <div class="b"><h4>Whitebait Fritter</h4><p>白銀魚煎餅。<b>法定捕撈季 9/1–10/30，整趟都在季內。</b></p></div></div>
+      <div class="food rv"><span class="flag no">過季 ✗</span><img src="images/food-oyster.jpg" alt="Bluff 生蠔">
+        <div class="b"><h4>Bluff 生蠔</h4><p>產季 3–8 月，<b>10 月吃不到當季的</b>。2026 年產量還創低。</p></div></div>
+      <div class="food rv"><span class="flag ok">全年 ✓</span><img src="images/food-mussel.jpg" alt="綠唇貽貝">
+        <div class="b"><h4>綠唇貽貝</h4><p>紐西蘭獨有，殼緣一圈翠綠，比台灣的淡菜大很多。</p></div></div>
+      <div class="food rv"><span class="flag ok">全年 ✓</span><img src="images/food-hokeypokey.jpg" alt="Hokey pokey 冰淇淋">
+        <div class="b"><h4>Hokey Pokey 冰淇淋</h4><p>香草裡拌蜂巢焦糖脆粒，紐西蘭的國民口味。</p></div></div>
+      <div class="food rv"><span class="flag ok">全年 ✓</span><img src="images/food-flatwhite.jpg" alt="Flat white">
+        <div class="b"><h4>Flat White</h4><p>紐西蘭發明的咖啡，幾乎每家咖啡館都做得很好。</p></div></div>
+      <div class="food rv"><span class="flag ok">全年 ✓</span><img src="images/food-pavlova.jpg" alt="Pavlova">
+        <div class="b"><h4>Pavlova</h4><p>蛋白霜外脆內軟，紐澳為了發明權吵了一百年。</p></div></div>
+      <div class="food rv"><span class="flag ok">全年 ✓</span><img src="images/food-kumara.jpg" alt="Kūmara">
+        <div class="b"><h4>Kūmara</h4><p>毛利人帶來的甘藷。炸成薯條幾乎每家餐廳都有。</p></div></div>
+      <div class="food rv"><span class="flag no">非產季 ✗</span><img src="images/food-feijoa.jpg" alt="Feijoa">
+        <div class="b"><h4>Feijoa</h4><p>產季 3–6 月。但 feijoa 口味的汽水與冰淇淋全年都有。</p></div></div>
+    </div>
+    <div class="note">
+      <span class="h">🥧 肉派（meat pie）</span>
+      <p style="margin-bottom:0">紐西蘭的國民速食，加油站與麵包店都有。路線上最有名的兩家是
+        <b>Fairlie Bakehouse</b>（9/26 經過）與 <b>Invercargill 的 Fat Bastard Pies</b>（10/05）。
+        順帶一提：Mt Cook 那家 Old Mountaineers 的披薩餅皮與漢堡麵包，<b>就是 Fairlie Bakehouse 供應的</b>。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 10px">價格、營業時間與營運狀態均取自<b>官方網站</b>，查證日 <b>2026/08/20</b>（庫克山健行、冰河湖遊船與 2026/08/23 新增的地點另註當日查證）。
+      餐廳與小型景點變動很快，<b>出發前一週請再確認一次</b>。</p>
+    <p style="margin:0;font-size:.8rem;color:#5F7583">
+      地圖圖磚 &copy; OpenStreetMap 貢獻者。「📍概略」標記表示地圖上是鄰近地標的推算位置，
+      導航請按卡片上的 <b>Google Maps</b> 按鈕（那個是用店名精確搜尋）。</p>
+  </div>
+</footer>
+
+<!--TABBAR-->
+<!--PLACES-->
+<!--NZJS-->
+</body>
+</html>
