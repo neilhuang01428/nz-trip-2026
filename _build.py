@@ -8,6 +8,7 @@
   <!--PLACES-->       → data/places.json（inline 成 <script type="application/json">）
   <!--CULTURE-->      → data/culture.json（文化頁的卡片資料）
   <!--TALK-->         → data/talk.json（會話頁的詞條資料）
+  <!--APPS-->         → data/apps.json（App 分頁的卡片資料）
   <!--NAV:key-->      → 桌機頂部導覽列（key = 目前頁）
   <!--TABBAR:key-->   → 手機底部 tab bar ＋ 更多選單
   <!--LEAFLET-->      → Leaflet 的 CSS/JS CDN 標籤
@@ -30,6 +31,8 @@ PAGES = [
     ("mtcook",    "mtcook.html",    "健行",   "🥾", False),
     # glacier.html 仍然存在（保留為決策紀錄），但已從導覽列拿掉——
     # 冰川健行沒有要去了，入口改由 mtcook.html 與 index.html 連過去。
+    ("shop",      "shop.html",      "購物",   "🛍", False),
+    ("apps",      "apps.html",      "App",   "📱", False),
     ("culture",   "culture.html",   "文化",   "🗿", False),
     ("talk",      "talk.html",      "會話",   "💬", False),
     ("prepare",   "prepare.html",   "行前",   "🎒", False),
@@ -243,6 +246,11 @@ def build(src):
         html = html.replace(
             "<!--TALK-->",
             '<script id="talk-data" type="application/json">\n' + talk + '\n</script>')
+    if "<!--APPS-->" in html:
+        apps = open("data/apps.json", encoding="utf-8").read()
+        html = html.replace(
+            "<!--APPS-->",
+            '<script id="apps-data" type="application/json">\n' + apps + '\n</script>')
     if "<!--ROUTESGEO-->" in html:
         geo = open("data/routes-geo.json", encoding="utf-8").read()
         html = html.replace(

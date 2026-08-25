@@ -1,15 +1,19 @@
 # 圖片來源與授權
 
-共 140 張，全部取自 Wikimedia Commons。使用時請保留原作者署名與授權標示。
+共 189 張，全部取自 Wikimedia Commons。使用時請保留原作者署名與授權標示。
 
 | 檔案 | 原始標題 | 作者 | 授權 | 來源頁 |
 |---|---|---|---|---|
 | `images/akaroa-dolphins.jpg` | Hectors Dolphin near Akaroa.jpg | Scott Thompson | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Hectors_Dolphin_near_Akaroa.jpg) |
 | `images/akaroa-town.jpg` | The wharf Akaroa.NZ. (25653032490).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:The_wharf_Akaroa.NZ._(25653032490).jpg) |
+| `images/akl-dutyfree.jpg` | Auckland Airport International Section.jpg | Ingolfson | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Auckland_Airport_International_Section.jpg) |
 | `images/arrowtown.jpg` | 00 0352 Buildings in Arrowtown.jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_0352_Buildings_in_Arrowtown.jpg) |
 | `images/auckland-domain.jpg` | Auckland, the domain, veduta verso Auckland City Hospital.jpg | Francesco Bini | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Auckland,_the_domain,_veduta_verso_Auckland_City_Hospital.jpg) |
 | `images/baldwin.jpg` | Baldwin St Dunedin MRD.jpg | Mike Dickison | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Baldwin_St_Dunedin_MRD.jpg) |
+| `images/ballantynes.jpg` | Ballantynes Cashel Street 2013.jpg | Pear285 at English Wikipedia | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Ballantynes_Cashel_Street_2013.jpg) |
 | `images/bannockburn-sluicings.jpg` | Bannockburn Sluicings 4.jpg | Cbabs | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Bannockburn_Sluicings_4.jpg) |
+| `images/barkers-geraldine.jpg` | Barker's Foodstore & Eatery | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/barrys-bay-cheese.jpg` | Barrys Bay Cheese - Akaroa, NZ - DSC02739.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Barrys_Bay_Cheese_-_Akaroa,_NZ_-_DSC02739.jpg) |
 | `images/bennetts-bluff-lookout.jpg` | Mt Earnslaw from Bennetts Bluff lookout.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Mt_Earnslaw_from_Bennetts_Bluff_lookout.jpg) |
 | `images/blue-penguin.jpg` | Little Blue Penguin (Eudyptula minor), heading for the sea.jpg | Avenue | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Little_Blue_Penguin_(Eudyptula_minor),_heading_for_the_sea.jpg) |
 | `images/bluff.jpg` | Bluff Signpost.jpg | Karora | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bluff_Signpost.jpg) |
@@ -18,11 +22,15 @@
 | `images/canterbury-museum-popup.jpg` | Canterbury Museum 01.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Canterbury_Museum_01.jpg) |
 | `images/cardrona.jpg` | Hotel Cardrona New Zealand.jpg | Kate Branch | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Hotel_Cardrona_New_Zealand.jpg) |
 | `images/cardrona-bra-fence.jpg` | Cardrona Bra Fence July 2025.jpg | Orangesclub | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Cardrona_Bra_Fence_July_2025.jpg) |
+| `images/cardrona-distillery.jpg` | Cardrona Distillery | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/cathedral-caves.jpg` | Jeskyně Cathedral Caves - panoramio.jpg | Pavel Špindler | CC BY 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Jeskyn%C4%9B_Cathedral_Caves_-_panoramio.jpg) |
 | `images/chch-art-gallery.jpg` | Christchurch Art Gallery, Christchurch, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Christchurch_Art_Gallery,_Christchurch,_New_Zealand.jpg) |
+| `images/chch-arts-centre.jpg` | Christchurch Arts Centre - Christchurch, NZ - DSC01139.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Christchurch_Arts_Centre_-_Christchurch,_NZ_-_DSC01139.jpg) |
 | `images/chch-cathedral-square.jpg` | Christ Church Cathedral roof in 2014.jpg | Jocelyn Kinghorn from Christchurch, New Zealand | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Christ_Church_Cathedral_roof_in_2014.jpg) |
 | `images/chch-tram.jpg` | Christchurch Tram at Cathedral Square 01.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Christchurch_Tram_at_Cathedral_Square_01.jpg) |
+| `images/chemist-warehouse-dunedin.jpg` | Meridian Mall front entrance George Street, 22 Jun 2026.jpg | Andykatib | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Meridian_Mall_front_entrance_George_Street,_22_Jun_2026.jpg) |
 | `images/christchurch.jpg` | Footbridge to Christchurch Botanic Gardens, Christchurch, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Footbridge_to_Christchurch_Botanic_Gardens,_Christchurch,_New_Zealand.jpg) |
+| `images/cinema-paradiso-wanaka.jpg` | Cinema Paradiso | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/cromwell.jpg` | Giant Fruit Sculpture - Cromwell, New Zealand (32883069321).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Giant_Fruit_Sculpture_-_Cromwell,_New_Zealand_(32883069321).jpg) |
 | `images/crown-range.jpg` | View From Crown Range Road (4678902022).jpg | edwin.11 | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:View_From_Crown_Range_Road_(4678902022).jpg) |
 | `images/croydon-aviation.jpg` | NZ140315 Croydon Dragon Rapide.jpg | Oren Rozen | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:NZ140315_Croydon_Dragon_Rapide.jpg) |
@@ -33,12 +41,14 @@
 | `images/do-jetboat.jpg` | Ya gota do this ! Shotover Jet. Queenstown NZ (23724021264).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Ya_gota_do_this_!_Shotover_Jet._Queenstown_NZ_(23724021264).jpg) |
 | `images/do-punting.jpg` | Punting on the Avon - Christchurch, NZ - DSC01026.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Punting_on_the_Avon_-_Christchurch,_NZ_-_DSC01026.jpg) |
 | `images/do-speights.jpg` | Speight's Brewery - Dunedin, NZ - DSC04601.jpg | Daderot | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Speight%27s_Brewery_-_Dunedin,_NZ_-_DSC04601.jpg) |
-| `images/doc-mtcook-visitor.jpg` | Mount Cook Information Centre (31291393631).jpg | Tony Hisgett from Birmingham, UK | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mount_Cook_Information_Centre_(31291393631).jpg) |
+| `images/doc-mtcook-visitor.jpg` | Aoraki/Mount Cook National Park Visitor Centre | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/doc-trap.jpg` | DOC 200 Trap on Pigeon Island.jpg | Kimberley Collins | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:DOC_200_Trap_on_Pigeon_Island.jpg) |
+| `images/dorothy-browns-cinema.jpg` | Dorothy Browns Cinema, Bar & Bookstore | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/dunedin-station.jpg` | 00 1513 Dunedin (New Zealand) - Railway Station.jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_1513_Dunedin_(New_Zealand)_-_Railway_Station.jpg) |
 | `images/eastern-southland-gallery.jpg` | The Old Public Library (Gore).jpg | Mrs Puff | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:The_Old_Public_Library_(Gore).jpg) |
 | `images/elephant-rocks.jpg` | Elephant Rocks MRD 01.jpg | Mike Dickison | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Elephant_Rocks_MRD_01.jpg) |
 | `images/fiord-blackcoral.jpg` | Black coral at Milford Sound Underwater Observatory.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Black_coral_at_Milford_Sound_Underwater_Observatory.jpg) |
+| `images/fiordland-cinema.jpg` | Fiordland Cinema — Ata Whenua / Shadowland | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/food-beerflight.jpg` | Beer Flight.jpg | Wanderstheworld | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Beer_Flight.jpg) |
 | `images/food-feijoa.jpg` | Acca sellowiana Fruit MHNT Fronton.jpg | Didier Descouens | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Acca_sellowiana_Fruit_MHNT_Fronton.jpg) |
 | `images/food-flatwhite.jpg` | Flat white coffee with pretty feather pattern.jpg | GeorgeMichaelFarewell | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Flat_white_coffee_with_pretty_feather_pattern.jpg) |
@@ -59,16 +69,24 @@
 (Original text: Uploader.) | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Franz_Josef_Glacier_Ice_Seracs.jpg) |
 | `images/geraldine-vintage-museum.jpg` | Tractors, Geraldine (4236469637).jpg | Mr Thinktank from Nottingham, England | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Tractors,_Geraldine_(4236469637).jpg) |
 | `images/giants-house.jpg` | Giants House Akaroa (3).jpg | Bernard Spragg. NZ | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Giants_House_Akaroa_(3).jpg) |
+| `images/glenorchy-lagoon-walkway.jpg` | Glenorchy Lagoon Scenic Walkway | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/glentanner-cafe.jpg` | Tasman Delta Cafe, Glentanner Park Centre | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/governors-bush.jpg` | Governors Bush Walk | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/greedy-cow-tekapo.jpg` | The Greedy Cow Cafe | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/helihike1.jpg` | FGG Fox-glacier-heli-hike-group-helicopter 01.jpg | Fox Glacier Guiding | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:FGG_Fox-glacier-heli-hike-group-helicopter_01.jpg) |
 | `images/helihike3.jpg` | FGG Fox-glacier-heli-hike-group-helicopter 03.jpg | Fox Glacier Guiding | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:FGG_Fox-glacier-heli-hike-group-helicopter_03.jpg) |
 | `images/helihike4.jpg` | FGG Fox-glacier-heli-hike-group-helicopter 04.jpg | Fox Glacier Guiding | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:FGG_Fox-glacier-heli-hike-group-helicopter_04.jpg) |
 | `images/helihike6.jpg` | FGG Fox-glacier-heli-hike-group-helicopter 06.jpg | Fox Glacier Guiding | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:FGG_Fox-glacier-heli-hike-group-helicopter_06.jpg) |
+| `images/hermitage-guided-hikes.jpg` | Hermitage Guided Hikes | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/hermitage-planetarium.jpg` | 隐士酒店 The Hermitage Hotel - panoramio.jpg | wanghongliu | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:%E9%9A%90%E5%A3%AB%E9%85%92%E5%BA%97_The_Hermitage_Hotel_-_panoramio.jpg) |
+| `images/high-country-salmon.jpg` | High Country Salmon | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/highlands-motorsport-park.jpg` | Highlands Motorsport Park.jpg | Pedeyk | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Highlands_Motorsport_Park.jpg) |
+| `images/hillary-cafe.jpg` | Sir Edmund Hillary Café & Bar | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/hoiho.jpg` | Yellow-eyed penguin (Megadyptes antipodes); April 2016.jpg | Bernard Spragg. NZ | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Yellow-eyed_penguin_(Megadyptes_antipodes);_April_2016.jpg) |
 | `images/homer-tunnel.jpg` | 00 1365 New Zealand - Homer Tunnel (Milford Sound).jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_1365_New_Zealand_-_Homer_Tunnel_(Milford_Sound).jpg) |
 | `images/hooker-lake.jpg` | Hooker Lake, Aoraki - Mount Cook National Park, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Hooker_Lake,_Aoraki_-_Mount_Cook_National_Park,_New_Zealand.jpg) |
 | `images/hooker-track.jpg` | Hooker Valley Track, Mount Cook, New Zealand.jpg | Bonito Coquito | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Hooker_Valley_Track,_Mount_Cook,_New_Zealand.jpg) |
+| `images/hot-tubs-omarama.jpg` | Hot Tubs Omarama | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/invercargill.jpg` | Downtown Invercargill, Southland, New Zealand - Flickr - PhillipC.jpg | Phillip Capper from Wellington, New Zealand | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Downtown_Invercargill,_Southland,_New_Zealand_-_Flickr_-_PhillipC.jpg) |
 | `images/katiki.jpg` | Katiki Lighthouse 115.JPG | Schwede66 | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Katiki_Lighthouse_115.JPG) |
 | `images/kea.jpg` | Kea. New Zealand Alpine Parrot. (Nestor notabilis) (9112326315).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Kea._New_Zealand_Alpine_Parrot._(Nestor_notabilis)_(9112326315).jpg) |
@@ -80,23 +98,35 @@
 | `images/lakes-district-museum.jpg` | Arrowtown Lakes District Museum.jpg | Wildman NZ | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Arrowtown_Lakes_District_Museum.jpg) |
 | `images/larnach.jpg` | Larnach Castle, Dunedin, New Zealand.jpg | Diego Delso | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Larnach_Castle,_Dunedin,_New_Zealand.jpg) |
 | `images/lindis.jpg` | Lindis Pass, Otago, New Zealand.jpg | Charlie Mitchell | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lindis_Pass,_Otago,_New_Zealand.jpg) |
+| `images/lost-gypsy-gallery.jpg` | The Lost Gypsy Gallery | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/maori-carving.jpg` | 00 2587 Māori-wood carving.jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_2587_M%C4%81ori-wood_carving.jpg) |
 | `images/mclean-falls.jpg` | McLean Falls.jpg | Karora | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:McLean_Falls.jpg) |
 | `images/milford.jpg` | Milford Sound in Fiordland National Park 01.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Milford_Sound_in_Fiordland_National_Park_01.jpg) |
+| `images/milford-signature-cruise.jpg` | File:MV Milford Haven Milford Sound.NZ (9963621614).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg) |
 | `images/mirror-lakes.jpg` | Mirror Lakes in Fiordland National Park 05.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mirror_Lakes_in_Fiordland_National_Park_05.jpg) |
 | `images/moeraki.jpg` | 00 1669 Moeraki Boulders on Koekohe Bay (New Zealand, Otago Region).jpg | W. Bulach | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:00_1669_Moeraki_Boulders_on_Koekohe_Bay_(New_Zealand,_Otago_Region).jpg) |
+| `images/moeraki-tavern.jpg` | Moeraki Tavern | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/monkey-creek.jpg` | Monkey Creek in Fiordland National Park (4687610355).jpg | edwin.11 | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Monkey_Creek_in_Fiordland_National_Park_(4687610355).jpg) |
 | `images/mount-eden.jpg` | Mount Eden crater with Auckland CBD and Rangitoto skyline.jpg | Avenue | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mount_Eden_crater_with_Auckland_CBD_and_Rangitoto_skyline.jpg) |
+| `images/mrs-jones-fruit-stall.jpg` | Jones Family Fruit Stall (Mrs Jones' Fruit Stall) | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/mrs-woollys-general-store.jpg` | Mrs Woolly's General Store | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/mt-iron-track.jpg` | Southern Alps From Mount Iron.jpg | Jason Pratt | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Southern_Alps_From_Mount_Iron.jpg) |
 | `images/mtcook.jpg` | Aoraki - Mt Cook, Aoraki - Mount Cook National Park, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Aoraki_-_Mt_Cook,_Aoraki_-_Mount_Cook_National_Park,_New_Zealand.jpg) |
+| `images/mtcook-alpine-salmon.jpg` | Mt Cook Alpine Salmon Shop | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/mtcook-village.jpg` | Mount Cook Village, Aoraki - Mount Cook National Park, New Zealand.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mount_Cook_Village,_Aoraki_-_Mount_Cook_National_Park,_New_Zealand.jpg) |
 | `images/mtjohn.jpg` | Mt John Observatory (fig716 wj7c9850a).jpg | Maki Yanagimachi | CC BY 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Mt_John_Observatory_(fig716_wj7c9850a).jpg) |
 | `images/nttm-wanaka.jpg` | Collection of classic British and European cars and fire trucks at Wanaka Transport and Toy Museum.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Collection_of_classic_British_and_European_cars_and_fire_trucks_at_Wanaka_Transport_and_Toy_Museum.jpg) |
 | `images/nugget-point.jpg` | Nugget Point. Catlins NZ (52138279257).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Nugget_Point._Catlins_NZ_(52138279257).jpg) |
+| `images/nz-alpine-lavender.jpg` | NZ Alpine Lavender | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/nz-maritime-museum.jpg` | Catamaran Maritime Museum Auckland (31940218841).jpg | Tony Hisgett from Birmingham, UK | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Catamaran_Maritime_Museum_Auckland_(31940218841).jpg) |
 | `images/oamaru.jpg` | Habour St Oamaru NZ. (52101976304).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Habour_St_Oamaru_NZ._(52101976304).jpg) |
 | `images/oi-manawa.jpg` | Canterbury Earthquake National Memorial, Christchurch City, New Zealand 04.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Canterbury_Earthquake_National_Memorial,_Christchurch_City,_New_Zealand_04.jpg) |
+| `images/onsen-hot-pools.jpg` | Onsen Hot Pools | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/pio-pio-restaurant.jpg` | Pio Pio Restaurant (Milford Sound Lodge) | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/poppies-cafe-twizel.jpg` | Poppies Café & Restaurant | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/pounamu.jpg` | Pounamu pendant.jpg | Andrew Sullivan | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Pounamu_pendant.jpg) |
+| `images/provisions-arrowtown.jpg` | Provisions of Arrowtown | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/public-italian-kitchen.jpg` | Public Italian Kitchen | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/pukaki.jpg` | Lake Pukaki 21.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Pukaki_21.jpg) |
 | `images/pukaki-hero.jpg` | Lake Pukaki & Aoraki Mount Cook 01.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Pukaki_%26_Aoraki_Mount_Cook_01.jpg) |
 | `images/purakaunui-falls.jpg` | Purakaunui Falls In Caitlins New Zealand.jpg | Mark Oliver Dittrich. Released into public domain on his behalf. | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Purakaunui_Falls_In_Caitlins_New_Zealand.jpg) |
@@ -104,6 +134,7 @@
 | `images/queenstown.jpg` | Queenstown. Lake Wakatipu. (50854629786).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Queenstown._Lake_Wakatipu._(50854629786).jpg) |
 | `images/queenstown-gardens.jpg` | Queenstown Gardens, New Zealand (11).JPG | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Queenstown_Gardens,_New_Zealand_(11).JPG) |
 | `images/queenstown-hill-walk.jpg` | Queenstown-Hill-and-Arthurs-Point.jpg | Andre Chalmers | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Queenstown-Hill-and-Arthurs-Point.jpg) |
+| `images/red-tarns.jpg` | Red Tarns Track | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/roaring-bay-hide.jpg` | Yellow eyed penguin - panoramio.jpg | Annette Teng | CC BY 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Yellow_eyed_penguin_-_panoramio.jpg) |
 | `images/roys-peak.jpg` | Roys Peak Mountain near Lake Wanaka.jpg | Julrob Photography | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Roys_Peak_Mountain_near_Lake_Wanaka.jpg) |
 | `images/sealy-tarns.jpg` | Larger of the Sealy Tarns with Huddleston Glacier in the background.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Larger_of_the_Sealy_Tarns_with_Huddleston_Glacier_in_the_background.jpg) |
@@ -129,70 +160,38 @@
 | `images/skydive2.jpg` | Skydive Tandem jump.jpg | SkydivePhoto | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Skydive_Tandem_jump.jpg) |
 | `images/slope-point.jpg` | Slope Point Sign.jpg | Karora | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Slope_Point_Sign.jpg) |
 | `images/south-canterbury-museum.jpg` | Pearse aeroplane replica, South Canterbury Museum-1.jpg | Karora | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pearse_aeroplane_replica,_South_Canterbury_Museum-1.jpg) |
+| `images/star-and-garter.jpg` | Star & Garter Restaurant | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-bella-vista-qt.jpg` | Bella Vista Queenstown | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-ebb-dunedin.jpg` | File:Ebb-Dunedin.jpg | DrThneed | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Ebb-Dunedin.jpg) |
+| `images/stay-golden-leaf-inv.jpg` | Golden Leaf Apartments | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-golfcourse-wanaka.jpg` | Golfcourse Road Chalets and Lodge | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-hermitage.jpg` | File:隐士酒店 The Hermitage Hotel - panoramio.jpg | wanghongliu | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:%E9%9A%90%E5%A3%AB%E9%85%92%E5%BA%97_The_Hermitage_Hotel_-_panoramio.jpg) |
+| `images/stay-lakeside-teanau.jpg` | Lakeside Motel and Apartments | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-mantra-tekapo.jpg` | Mantra Lake Tekapo | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-mtcook-motels.jpg` | Mt Cook Motels | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/stay-novotel-akl.jpg` | File:New Hotel On Stilts At Auckland Airport.jpg | Ingolfson | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:New_Hotel_On_Stilts_At_Auckland_Airport.jpg) |
+| `images/stay-novotel-chc.jpg` | File:Novotel Christchurch Airport 821.jpg | Schwede66 | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Novotel_Christchurch_Airport_821.jpg) |
+| `images/stay-old-confectionery.jpg` | The Old Confectionery | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/steampunk.jpg` | Steampunk Oamaru.jpg | Reinhard Dietrich | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Steampunk_Oamaru.jpg) |
 | `images/stirling-falls.jpg` | The Stirling Falls Milford Sound NZ (24616963480).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:The_Stirling_Falls_Milford_Sound_NZ_(24616963480).jpg) |
 | `images/takapo-regional-park.jpg` | Lake Tekapo - panoramio.jpg | ogwen | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Tekapo_-_panoramio.jpg) |
 | `images/tasman-boat.jpg` | Tour boat among the icebergs on Tasman Lake.jpg | Avenue | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Tour_boat_among_the_icebergs_on_Tasman_Lake.jpg) |
 | `images/tasman-glacier.jpg` | Tasman Glacier LC0251.jpg | Jörg Hempel | CC BY-SA 3.0 de | [Commons](https://commons.wikimedia.org/wiki/File:Tasman_Glacier_LC0251.jpg) |
 | `images/tasman-lake.jpg` | Tasman Lake and Tasman Glacier.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Tasman_Lake_and_Tasman_Glacier.jpg) |
+| `images/te-huia-queenstown.jpg` | Eichardt's Hotel 642.jpg | Adamina | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Eichardt%27s_Hotel_642.jpg) |
+| `images/te-unua-museum.jpg` | Te Unua Museum of Southland (前 Southland Museum & Art Gallery) | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/teanau.jpg` | Lake Te Anau 06.jpg | Krzysztof Golik | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Te_Anau_06.jpg) |
 | `images/tekapo-church.jpg` | Church of the Good Shepherd, Lake Tekapo, New Zealand 03.jpg | Michal Klajban | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Church_of_the_Good_Shepherd,_Lake_Tekapo,_New_Zealand_03.jpg) |
 | `images/tekapo-milkyway.jpg` | Milky way galaxy, lake Tekapo, stargazing view 3.jpg | Sky_xe | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Milky_way_galaxy,_lake_Tekapo,_stargazing_view_3.jpg) |
 | `images/tekapo-pano.jpg` | Lake Tekapo from Mt John Observatory.jpg | joka2000 | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Lake_Tekapo_from_Mt_John_Observatory.jpg) |
+| `images/the-fat-duck.jpg` | The Fat Duck | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/tlv-tekapo.jpg` | TLV Restaurant & Bar | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
+| `images/tumu-toka-curioscape.jpg` | Tumu Toka Curioscape | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/tunnel-beach.jpg` | Cliffs around Tunnel Beach.jpg | Pseudopanax at English Wikipedia | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Cliffs_around_Tunnel_Beach.jpg) |
 | `images/turanga.jpg` | Children's section of Tūranga Central Library in Christchurch, New Zealand.jpg | Isaac Freeman | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Children%27s_section_of_T%C5%ABranga_Central_Library_in_Christchurch,_New_Zealand.jpg) |
 | `images/waipapa-point-lighthouse.jpg` | Waipapa Point Lighthouse4.jpg | russellstreet | CC BY-SA 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Waipapa_Point_Lighthouse4.jpg) |
 | `images/wanaka-tree.jpg` | That Wanaka Tree, New Zealand.jpg | Kate Branch | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:That_Wanaka_Tree,_New_Zealand.jpg) |
+| `images/white-horse-hill.jpg` | White Horse Hill Campground & Car Park | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |
 | `images/wine-bannockburn.jpg` | Bannockburn (1), Central Otago.jpg | AnnWoolliams | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Bannockburn_(1),_Central_Otago.jpg) |
 | `images/wine-tasting.jpg` | Wine Tasting (26142992561).jpg | Paul Balfe | CC BY 2.0 | [Commons](https://commons.wikimedia.org/wiki/File:Wine_Tasting_(26142992561).jpg) |
-
-| `images/barkers-geraldine.jpg` | Barker's Foodstore & Eatery | 使用者提供 | 未確認 | — |
-| `images/cardrona-distillery.jpg` | Cardrona Distillery | 使用者提供 | 未確認 | — |
-| `images/cinema-paradiso-wanaka.jpg` | Cinema Paradiso | 使用者提供 | 未確認 | — |
-| `images/dorothy-browns-cinema.jpg` | Dorothy Browns Cinema, Bar & Bookstore | 使用者提供 | 未確認 | — |
-| `images/fiordland-cinema.jpg` | Fiordland Cinema — Ata Whenua / Shadowland | 使用者提供 | 未確認 | — |
-| `images/glenorchy-lagoon-walkway.jpg` | Glenorchy Lagoon Scenic Walkway | 使用者提供 | 未確認 | — |
-| `images/glentanner-cafe.jpg` | Tasman Delta Cafe, Glentanner Park Centre | 使用者提供 | 未確認 | — |
-| `images/governors-bush.jpg` | Governors Bush Walk | 使用者提供 | 未確認 | — |
-| `images/greedy-cow-tekapo.jpg` | The Greedy Cow Cafe | 使用者提供 | 未確認 | — |
-| `images/hermitage-guided-hikes.jpg` | Hermitage Guided Hikes | 使用者提供 | 未確認 | — |
-| `images/high-country-salmon.jpg` | High Country Salmon | 使用者提供 | 未確認 | — |
-| `images/hillary-cafe.jpg` | Sir Edmund Hillary Café & Bar | 使用者提供 | 未確認 | — |
-| `images/hot-tubs-omarama.jpg` | Hot Tubs Omarama | 使用者提供 | 未確認 | — |
-| `images/lost-gypsy-gallery.jpg` | The Lost Gypsy Gallery | 使用者提供 | 未確認 | — |
-| `images/moeraki-tavern.jpg` | Moeraki Tavern | 使用者提供 | 未確認 | — |
-| `images/mrs-jones-fruit-stall.jpg` | Jones Family Fruit Stall (Mrs Jones' Fruit Stall) | 使用者提供 | 未確認 | — |
-| `images/mrs-woollys-general-store.jpg` | Mrs Woolly's General Store | 使用者提供 | 未確認 | — |
-| `images/nz-alpine-lavender.jpg` | NZ Alpine Lavender | 使用者提供 | 未確認 | — |
-| `images/onsen-hot-pools.jpg` | Onsen Hot Pools | 使用者提供 | 未確認 | — |
-| `images/pio-pio-restaurant.jpg` | Pio Pio Restaurant (Milford Sound Lodge) | 使用者提供 | 未確認 | — |
-| `images/poppies-cafe-twizel.jpg` | Poppies Café & Restaurant | 使用者提供 | 未確認 | — |
-| `images/provisions-arrowtown.jpg` | Provisions of Arrowtown | 使用者提供 | 未確認 | — |
-| `images/public-italian-kitchen.jpg` | Public Italian Kitchen | 使用者提供 | 未確認 | — |
-| `images/red-tarns.jpg` | Red Tarns Track | 使用者提供 | 未確認 | — |
-| `images/star-and-garter.jpg` | Star & Garter Restaurant | 使用者提供 | 未確認 | — |
-| `images/te-unua-museum.jpg` | Te Unua Museum of Southland (前 Southland Museum & Art Gallery) | 使用者提供 | 未確認 | — |
-| `images/the-fat-duck.jpg` | The Fat Duck | 使用者提供 | 未確認 | — |
-| `images/tlv-tekapo.jpg` | TLV Restaurant & Bar | 使用者提供 | 未確認 | — |
-| `images/tumu-toka-curioscape.jpg` | Tumu Toka Curioscape | 使用者提供 | 未確認 | — |
-| `images/white-horse-hill.jpg` | White Horse Hill Campground & Car Park | 使用者提供 | 未確認 | — |
-| `images/wrinkly-rams.jpg` | The Wrinkly Rams | 使用者提供 | 未確認 | — |
-
-| `images/mtcook-alpine-salmon.jpg` | Mt Cook Alpine Salmon Shop | 使用者提供 | 未確認 | — |
-
-| `images/mtcook-alpine-salmon.jpg` | Mt Cook Alpine Salmon Shop | 使用者提供 | 未確認 | — |
-
-| `images/doc-mtcook-visitor.jpg` | Aoraki/Mount Cook National Park Visitor Centre | 使用者提供 | 未確認 | — |
-
-| `images/stay-novotel-akl.jpg` | File:New Hotel On Stilts At Auckland Airport.jpg | Ingolfson | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:New_Hotel_On_Stilts_At_Auckland_Airport.jpg) |
-| `images/stay-hermitage.jpg` | File:隐士酒店 The Hermitage Hotel - panoramio.jpg | wanghongliu | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:%E9%9A%90%E5%A3%AB%E9%85%92%E5%BA%97_The_Hermitage_Hotel_-_panoramio.jpg) |
-| `images/stay-ebb-dunedin.jpg` | File:Ebb-Dunedin.jpg | DrThneed | CC BY-SA 3.0 | [Commons](https://commons.wikimedia.org/wiki/File:Ebb-Dunedin.jpg) |
-| `images/stay-novotel-chc.jpg` | File:Novotel Christchurch Airport 821.jpg | Schwede66 | CC BY-SA 4.0 | [Commons](https://commons.wikimedia.org/wiki/File:Novotel_Christchurch_Airport_821.jpg) |
-| `images/milford-signature-cruise.jpg` | File:MV Milford Haven Milford Sound.NZ (9963621614).jpg | Bernard Spragg. NZ from Christchurch, New Zealand | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:MV_Milford_Haven_Milford_Sound.NZ_(9963621614).jpg) |
-| `images/stay-bella-vista-qt.jpg` | Bella Vista Queenstown | 使用者提供 | 未確認 | — |
-| `images/stay-golden-leaf-inv.jpg` | Golden Leaf Apartments | 使用者提供 | 未確認 | — |
-| `images/stay-golfcourse-wanaka.jpg` | Golfcourse Road Chalets and Lodge | 使用者提供 | 未確認 | — |
-| `images/stay-lakeside-teanau.jpg` | Lakeside Motel and Apartments | 使用者提供 | 未確認 | — |
-| `images/stay-mantra-tekapo.jpg` | Mantra Lake Tekapo | 使用者提供 | 未確認 | — |
-| `images/stay-mtcook-motels.jpg` | Mt Cook Motels | 使用者提供 | 未確認 | — |
-| `images/stay-old-confectionery.jpg` | The Old Confectionery | 使用者提供 | 未確認 | — |
+| `images/wrinkly-rams.jpg` | The Wrinkly Rams | 使用者提供（未確認原始作者） | 使用者提供 | [Commons]() |

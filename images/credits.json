@@ -1279,5 +1279,47 @@
   "lic": "使用者提供",
   "artist": "使用者提供（未確認原始作者）",
   "page": ""
+ },
+ "ballantynes": {
+  "file": "images/ballantynes.jpg",
+  "title": "Ballantynes Cashel Street 2013.jpg",
+  "lic": "CC0",
+  "artist": "Pear285 at English Wikipedia",
+  "page": "https://commons.wikimedia.org/wiki/File:Ballantynes_Cashel_Street_2013.jpg"
+ },
+ "chemist-warehouse-dunedin": {
+  "file": "images/chemist-warehouse-dunedin.jpg",
+  "title": "Meridian Mall front entrance George Street, 22 Jun 2026.jpg",
+  "lic": "CC0",
+  "artist": "Andykatib",
+  "page": "https://commons.wikimedia.org/wiki/File:Meridian_Mall_front_entrance_George_Street,_22_Jun_2026.jpg"
+ },
+ "barrys-bay-cheese": {
+  "file": "images/barrys-bay-cheese.jpg",
+  "title": "Barrys Bay Cheese - Akaroa, NZ - DSC02739.jpg",
+  "lic": "CC0",
+  "artist": "Daderot",
+  "page": "https://commons.wikimedia.org/wiki/File:Barrys_Bay_Cheese_-_Akaroa,_NZ_-_DSC02739.jpg"
+ },
+ "chch-arts-centre": {
+  "file": "images/chch-arts-centre.jpg",
+  "title": "Christchurch Arts Centre - Christchurch, NZ - DSC01139.jpg",
+  "lic": "CC0",
+  "artist": "Daderot",
+  "page": "https://commons.wikimedia.org/wiki/File:Christchurch_Arts_Centre_-_Christchurch,_NZ_-_DSC01139.jpg"
+ },
+ "akl-dutyfree": {
+  "file": "images/akl-dutyfree.jpg",
+  "title": "Auckland Airport International Section.jpg",
+  "lic": "Public domain",
+  "artist": "Ingolfson",
+  "page": "https://commons.wikimedia.org/wiki/File:Auckland_Airport_International_Section.jpg"
+ },
+ "te-huia-queenstown": {
+  "file": "images/te-huia-queenstown.jpg",
+  "title": "Eichardt's Hotel 642.jpg",
+  "lic": "CC BY 2.0",
+  "artist": "Adamina",
+  "page": "https://commons.wikimedia.org/wiki/File:Eichardt%27s_Hotel_642.jpg"
  }
 }

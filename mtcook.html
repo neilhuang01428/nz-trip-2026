@@ -353,7 +353,7 @@ details[open] summary{margin-bottom:9px}
   border-bottom:1px solid var(--line-2);font-size:.83rem;align-items:baseline}
 .pl-facts dt{font-family:var(--mono);font-size:.71rem;color:var(--ink-soft);
   letter-spacing:.02em;line-height:1.7}
-.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65}
+.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65;overflow-wrap:anywhere;word-break:break-word}
 .pl-facts dd b{color:var(--ink);font-weight:650}
 @media(max-width:420px){
   .pl-facts > div{grid-template-columns:1fr;gap:1px;padding:8px 0}
@@ -745,6 +745,38 @@ th .twd,.pop-h .twd{display:none}
   .pl-more .dm-cta{padding:6px 11px 6px 12px;font-size:.76rem}
   .pl-deep p{font-size:.91rem}
 }
+
+/* ── 購物卡的「推薦好物清單」──────────────────────────────
+   跟深度知識用同一顆展開鈕的行為，但整組換成湖藍色，
+   讓「這家店賣什麼」跟「知道了會不一樣」在同一張卡上分得開。
+   文字寫「推薦好物清單 N 項」而不是只放圖示——
+   使用者回報過好幾次「不知道這個可以點」。 */
+.pl-more.is-buy{background:linear-gradient(180deg,#E8F4F8,#DCEDF4);border-color:#B6D9E5}
+.pl-more.is-buy .dm-ic{margin-top:0}
+.pl-more.is-buy .dm-t{color:#175C72;white-space:normal}
+.pl-more.is-buy .dm-t small{display:inline-block;margin-left:7px;padding:1px 7px;
+  border-radius:999px;background:#fff;border:1px solid #B6D9E5;
+  font-family:var(--mono);font-size:.7rem;font-weight:600;color:#2C7E97;
+  font-variant-numeric:lining-nums tabular-nums}
+.pl-more.is-buy .dm-cta{background:#2C7E97}
+.pl-more.is-buy:hover{background:linear-gradient(180deg,#DDEEF5,#CDE5EF);
+  border-color:#8FC6D8}
+.pl-more.is-buy:focus-visible{outline-color:var(--pukaki)}
+.pl-more.is-buy.open{background:linear-gradient(180deg,#D7EAF2,#C8E2EC);
+  border-color:var(--pukaki)}
+.pl-more.is-buy.open .dm-cta{background:#175C72}
+.pl-deep.is-buy{border-left-color:var(--pukaki);background:#F6FBFD}
+
+.buylist{list-style:none;margin:0;padding:0}
+.buylist li{padding:10px 0;border-bottom:1px dashed var(--line)}
+.buylist li:first-child{padding-top:0}
+.buylist li:last-child{padding-bottom:0;border-bottom:0}
+.buylist .bh{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.buylist .bn{font-weight:650;color:var(--ink);font-size:.9rem;line-height:1.5}
+.buylist .bp{flex:none;font-family:var(--mono);font-size:.76rem;color:#175C72;
+  background:#E8F4F8;border:1px solid #B6D9E5;border-radius:999px;padding:2px 9px;
+  font-variant-numeric:lining-nums tabular-nums}
+.buylist p{margin:4px 0 0;font-size:.85rem;line-height:1.7;color:var(--ink-2)}
 
 /* ── 文化知識卡 ── */
 .cul-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;margin:20px 0}
@@ -1139,6 +1171,73 @@ input:focus-visible,[tabindex]:focus-visible{
 .prdnote a{color:var(--pukaki-lt);text-decoration:underline;text-underline-offset:2px;
   margin:0 2px}
 
+/* ═══ App 分頁 ══════════════════════════════════════════════
+   卡片結構跟地點卡（.pl）同一套語彙，但沒有地圖與日期。
+   icon 用 CSS 畫的字母色塊——App Store 的原始圖示有版權，
+   這站的規矩是只放本地、可標示授權的圖。
+   ══════════════════════════════════════════════════════════ */
+.ap-bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;
+  background:var(--ice-2);border:1px solid var(--line);border-radius:13px;
+  padding:11px 13px;margin:18px 0 0}
+.ap-bl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);flex:none}
+.ap-chips{display:flex;flex-wrap:wrap;gap:7px}
+.ap-must{margin-left:auto}
+.ap-must[aria-pressed="true"]{background:var(--tussock);border-color:var(--tussock)}
+.ap-count{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);
+  margin:11px 0 0;font-variant-numeric:lining-nums tabular-nums}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+  gap:18px;margin:14px 0 0}
+.ap{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:17px 19px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ap.is-must{border-color:#E0C98A;box-shadow:0 2px 14px rgba(197,150,40,.13)}
+
+.ap-top{display:flex;align-items:center;gap:13px;margin-bottom:11px}
+.ap-tile{flex:none;width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:1.5rem;font-weight:700;color:#fff;
+  background:linear-gradient(150deg,hsl(var(--h) 58% 52%),hsl(var(--h) 62% 38%));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 6px rgba(11,22,32,.16);
+  text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.ap-name{min-width:0}
+.ap-name h3{margin:0;font-size:1.06rem;line-height:1.3;letter-spacing:-.01em}
+.ap-name p{margin:3px 0 0;font-size:.83rem;line-height:1.5;color:var(--ink-soft)}
+
+.ap-tag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:20px;
+  font-family:var(--mono);letter-spacing:.02em;border:1px solid transparent}
+.ap-tag.free{background:#E4F1EA;color:#1E5B4E;border-color:#BFDCCF}
+.ap-tag.paid{background:#F6ECD8;color:#8C6A22;border-color:#E3D0A6}
+
+.ap .pl-note{flex:1 1 auto}
+.ap-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--line-2)}
+.ap-dl{flex:1 1 200px;display:flex;align-items:center;gap:11px;
+  min-height:52px;padding:9px 15px;border-radius:12px;text-decoration:none;
+  background:linear-gradient(180deg,#22303C,#131E28);color:#fff;
+  border:1px solid #0A121A;box-shadow:0 2px 7px rgba(11,22,32,.24);
+  transition:transform .16s,box-shadow .16s,filter .16s}
+.ap-dl .ic::before{content:'\1F4F2';font-size:1.25rem;line-height:1}
+.ap-dl .tx{display:flex;flex-direction:column;line-height:1.3;font-weight:650;font-size:.92rem}
+.ap-dl .tx em{font-style:normal;font-weight:400;font-size:.72rem;color:#9DB6C4;margin-top:2px}
+.ap-dl:hover{filter:brightness(1.14);box-shadow:0 4px 12px rgba(11,22,32,.3)}
+.ap-dl:active{transform:scale(.985)}
+.ap-dl:focus-visible{outline:2px solid var(--pukaki);outline-offset:2px}
+.ap-dl.is-off{background:var(--paper-2);color:var(--ink-soft);border:1px dashed var(--line);
+  box-shadow:none;font-size:.85rem;flex-direction:column;align-items:flex-start;
+  justify-content:center;gap:2px}
+.ap-dl.is-off em{font-style:normal;font-size:.75rem;color:var(--ink-soft)}
+.ap-web{flex:none;display:inline-flex;align-items:center;padding:0 16px;min-height:52px;
+  border-radius:12px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink-2);text-decoration:none;font-size:.85rem;font-weight:600}
+.ap-web:hover{border-color:var(--pukaki);color:var(--pukaki-dk);background:var(--ice-2)}
+
+@media(max-width:600px){
+  .ap-grid{grid-template-columns:1fr;gap:15px}
+  .ap{padding:15px 16px 16px}
+  .ap-must{margin-left:0}
+  .ap-tile{width:48px;height:48px;font-size:1.32rem;border-radius:12px}
+}
+
 </style>
 <style>
 /* ── 本頁專用 ── */
@@ -1232,6 +1331,8 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
 <a href="book.html"><span class="ic" aria-hidden="true">🎟</span><span class="tx">需預約</span></a>
 <a href="skydive.html"><span class="ic" aria-hidden="true">🪂</span><span class="tx">跳傘</span></a>
 <a href="mtcook.html" class="on" aria-current="page"><span class="ic" aria-hidden="true">🥾</span><span class="tx">健行</span></a>
+<a href="shop.html"><span class="ic" aria-hidden="true">🛍</span><span class="tx">購物</span></a>
+<a href="apps.html"><span class="ic" aria-hidden="true">📱</span><span class="tx">App</span></a>
 <a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
 <a href="talk.html"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
 <a href="prepare.html"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
@@ -1894,6 +1995,8 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
 <a href="mtcook.html" class="on"><span>🥾</span>健行</a>
+<a href="shop.html"><span>🛍</span>購物</a>
+<a href="apps.html"><span>📱</span>App</a>
 <a href="culture.html"><span>🗿</span>文化</a>
 <a href="talk.html"><span>💬</span>會話</a>
 <a href="prepare.html"><span>🎒</span>行前</a>
@@ -1935,6 +2038,11 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "label": "住宿",
     "color": "#9E3A6B",
     "page": "itinerary"
+   },
+   "shop": {
+    "label": "購物",
+    "color": "#5E7A2E",
+    "page": "shop"
    }
   },
   "days": [
@@ -2286,7 +2394,26 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "n": 2001,
     "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    },
-   "img": "images/barkers-geraldine.jpg"
+   "img": "images/barkers-geraldine.jpg",
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "果醬與水果糖漿",
+     "d": "店裡有免費試吃台，全部試過再決定。Barker's 1969 年就從 Geraldine 起家，超市裡到處看得到的牌子，來源頭買有意思一點。"
+    },
+    {
+     "n": "醬料（chutney、relish）",
+     "d": "配肉配起司的酸甜醬，台灣少見。玻璃罐重，記得算行李。"
+    }
+   ],
+   "facts": [
+    {
+     "k": "順路",
+     "v": "隔壁就是 <b>The Geraldine Cheese Company</b>（原本的 Talbot Forest Cheese），兩家一起解決。"
+    }
+   ]
   },
   {
    "id": "fairlie-bakehouse",
@@ -4122,7 +4249,23 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://www.google.com/maps?q=Domaine%20Thomson%20Wines%20Cromwell%20New%20Zealand&output=embed",
     "n": 77,
     "note": "Google 條目名為「Domaine-Thomson Wines Cellar Door」。"
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "中奧塔哥黑皮諾",
+     "d": "中奧塔哥是全世界最南、海拔最高的產區之一，<b>約八成種的是黑皮諾</b>。零售大約 NZ$39 起跳。"
+    },
+    {
+     "n": "帶酒回台灣",
+     "d": "每人免稅 <b>1.5 公升</b>（大約兩瓶）。<b>玻璃瓶一定要託運</b>，隨身行李帶不上去。超過 1.5 公升到 5 公升可以走紅線報稅。"
+    }
+   ],
+   "warn": [
+    "<b>酒莊有沒有代寄海外或提供適合上飛機的包裝，我查不到。</b>想買多一點的話，現場直接問 shipping。"
+   ]
   },
   {
    "id": "highlands-motorsport-park",
@@ -4210,7 +4353,23 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://www.google.com/maps?q=Mrs+Jones+Fruit+Stall+Cromwell+New+Zealand&output=embed",
     "n": 1360
    },
-   "img": "images/mrs-jones-fruit-stall.jpg"
+   "img": "images/mrs-jones-fruit-stall.jpg",
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "果乾、堅果、糖果",
+     "d": "這些全年都有，好帶、好送。"
+    },
+    {
+     "n": "真果冰淇淋",
+     "d": "用自家水果現打的，當場吃。"
+    }
+   ],
+   "warn": [
+    "⚠️ <b>9 月底不是水果季。</b>中奧塔哥的核果（櫻桃、杏桃、水蜜桃）產季大約是 12 月到 3 月，<b>我們 09/30 經過時買不到當季鮮果</b>。果乾、堅果、冰淇淋應該還有，但鮮果品項別抱期待——這點我查不到店家自己對 9 月備貨的說明。"
+   ]
   },
   {
    "id": "provisions-arrowtown",
@@ -4302,7 +4461,38 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://www.google.com/maps/search/?api=1&query=Buckingham+Street+Arrowtown+New+Zealand",
     "approx": true,
     "n": 3500
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "Te Huia（38 號）",
+     "d": "原本的 Untouched World 箭鎮店，負鼠毛混美麗諾針織。"
+    },
+    {
+     "n": "Arrowtown Stonework（32 號）",
+     "d": "三代綠玉雕刻工作室，看得到師傅在雕。"
+    },
+    {
+     "n": "WoolPress Arrowtown",
+     "d": "一家店裡同時有 Icebreaker、Earth Sea Sky、Merinomink、Native World。"
+    },
+    {
+     "n": "The Remarkable Sweet Shop（27 號）",
+     "d": "每天 09:00–17:30。老派糖果店，秤重賣。"
+    },
+    {
+     "n": "Nadene Milne Gallery、Arrowtown Gallery",
+     "d": "前者代理 Shane Cotton、Judy Millar 這類當代藝術家，後者是中奧塔哥的風景畫。看得起也買不起，但值得進去。"
+    }
+   ],
+   "facts": [
+    {
+     "k": "為什麼在這買",
+     "v": "箭鎮老街<b>沒有任何連鎖大店</b>，全是獨立店家。同樣的東西在皇后鎮買，人多、停車難、價格也不會比較好。"
+    }
+   ]
   },
   {
    "id": "bannockburn-sluicings",
@@ -4419,7 +4609,23 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "src": "google",
     "url": "https://www.google.com/maps?q=Cromwell%20Heritage%20Precinct%20New%20Zealand&output=embed",
     "n": 2455
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "老屋裡的藝廊",
+     "d": "OCTA Art Gallery（在 The Belfast Store 裡）、Hullabaloo Art Space 都在這一區，賣中奧塔哥在地畫家的作品。"
+    },
+    {
+     "n": "薰衣草製品與二手雜貨",
+     "d": "精緻程度不一，當散步順手挑。免費停車、有廁所與咖啡店。"
+    }
+   ],
+   "warn": [
+    "<b>Cromwell 的農夫市集是 11 月到 3 月、每週日</b>，我們 09/30 是週三又在季節之外，<b>碰不到</b>。老街區的店本身照常開。"
+   ]
   },
   {
    "id": "crown-range",
@@ -6544,7 +6750,23 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://www.google.com/maps/search/?api=1&query=Hokonui+Moonshine+Museum+Gore+New+Zealand",
     "approx": true,
     "n": 180
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "Old Hokonui 威士忌",
+     "d": "當年私釀傳統的復刻。<b>算進台灣入境每人 1.5 公升的酒類免稅額度</b>裡。"
+    },
+    {
+     "n": "博物館周邊",
+     "d": "Gore 遊客中心是它的前台，訂票與賣周邊都在那裡。"
+    }
+   ],
+   "warn": [
+    "⚠️ <b>館名已經改成 Old Hokonui Museum & Distillery</b>，地址 16 Hokonui Drive。官方時間：<b>週一至週五 09:00–17:00、週六 10:00–14:00、週日與國定假日休</b>。我們 10/06 到 Gore 是週二，有開。"
+   ]
   },
   {
    "id": "lost-gypsy-gallery",
@@ -7165,7 +7387,31 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://wanderlog.com/list/geoCategory/1594420/top-things-to-do-and-attractions-in-oamaru",
     "n": 1070,
     "note": "Google 商家名稱是「Oamaru's Heritage Precinct」，即 Victorian Precinct 整個街區的 Google 商家頁。"
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "Slightly Foxed（11 Tyne St）",
+     "d": "舊書店，紐西蘭地方史與初版書。"
+    },
+    {
+     "n": "Michael O'Brien Bookbinder（7 Tyne St）",
+     "d": "手工裝幀工作室，開了二十幾年。"
+    },
+    {
+     "n": "Grainstore Gallery（Tyne St）",
+     "d": "老穀倉改的藝廊。<b>確切門牌與營業時間我查不到官方出處。</b>"
+    },
+    {
+     "n": "Steampunk HQ（1 Itchen St）",
+     "d": "每天 10:00–16:00，最後入場 15:30。裡面有小賣部。"
+    }
+   ],
+   "warn": [
+    "⚠️ <b>老街區的店傍晚收得很早</b>，紐西蘭官方觀光網站自己就這樣寫，而且各家時間不一。<b>下午三四點以後去很可能撲空</b>，安排在白天。"
+   ]
   },
   {
    "id": "shag-point",
@@ -7658,7 +7904,20 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://wanderlog.com/list/geoCategory/105871/best-things-to-do-and-attractions-in-christchurch",
     "n": 7407,
     "note": "Google 評分，經 wanderlog 頁面內嵌資料查得（同頁另列 TripAdvisor 4.7／277）"
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "在地生產者的攤位",
+     "d": "這裡不只是美食街，也有賣蜂蜜、起司、烘焙、熟食的生產者攤位。<b>買東西的攤位跟吃飯的攤位開的時間不一樣</b>：整棟每天 07:30 開門，各攤週日到週三 10:00–20:00、週四到週六 10:00–21:00。"
+    },
+    {
+     "n": "當場吃掉的東西",
+     "d": "要帶回台灣的生鮮、肉類、乳製品有檢疫問題，<b>在這裡吃掉最省事</b>。"
+    }
+   ]
   },
   {
    "id": "185-chairs",
@@ -7940,7 +8199,23 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "url": "https://wanderlog.com/list/geoCategory/1642292/best-shopping-and-stores-in-auckland-central",
     "n": 6309,
     "note": "Google 評分，經 wanderlog 頁面內嵌資料查得"
-   }
+   },
+   "also": [
+    "shop"
+   ],
+   "buy": [
+    {
+     "n": "紐西蘭設計師品牌",
+     "d": "這裡是奧克蘭市中心最集中的一區。<b>Kiri Nathan</b>（2023 年第一位在紐西蘭時裝週開場的毛利設計師）的店據說在這裡——這一條我只查到觀光媒體的說法，<b>沒有從商場官方目錄確認</b>，到現場看指示牌。"
+    },
+    {
+     "n": "Britomart 一帶",
+     "d": "走路就到，老倉庫改的街區，Karen Walker、Huffer、Allbirds、Zambesi、Deadly Ponies 都在這一帶。"
+    }
+   ],
+   "warn": [
+    "⚠️ <b>Smith & Caughey's 已經永久歇業。</b>皇后大街上那家 1880 年的老百貨 <b>2025 年 6 月 15 日</b>結束營業（原訂 7 月底，後來提前），98 人失業，建物已掛牌出售。中文旅遊資訊還在推薦它。"
+   ]
   },
   {
    "id": "ponsonby",
@@ -8140,6 +8415,731 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     "n": 21184,
     "note": "Google 評分（經 wanderlog 頁面查得，頁面標示來源為 Google review）"
    }
+  },
+  {
+   "id": "paknsave-queenstown",
+   "name": "PAK'nSAVE Queenstown",
+   "zh": "伴手禮買最便宜的地方",
+   "cat": "shop",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "PAK'nSAVE Queenstown Frankton New Zealand",
+   "addr": "302 Hawthorne Drive, Frankton, Queenstown 9300",
+   "hours": "每天 07:00–22:00",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.paknsave.co.nz/south-island/otago-and-southland/queenstown",
+   "note": "★ <b>要省錢就是來超市。</b>麥蘆卡蜂蜜、Whittaker's 巧克力這些伴手禮，超市價格常常是紀念品店與機場免稅店的一半。PAK'nSAVE 是紐西蘭三大超市裡走無裝潢倉庫路線的那家，紙箱要自己拿、東西要自己裝。這家在 Frankton，離機場與 Remarkables Park 都近，<b>皇后鎮住三晚，找一天順路來掃貨最合理</b>。",
+   "buy": [
+    {
+     "n": "麥蘆卡蜂蜜 UMF 10+ 250g",
+     "p": "約 NZ$14",
+     "d": "送禮最實際的等級。同一罐在機場免稅店與紀念品店常常要兩倍以上。<b>認 UMF 標章</b>，不要買寫「Active」「Bio-Active」「K-Factor」的——那些不是官方認證。"
+    },
+    {
+     "n": "Whittaker's 巧克力磚 250g",
+     "p": "NZ$6.4–8.5",
+     "d": "2026 年漲價後各家差很多：曾在 PAK'nSAVE 看到 NZ$6.39，New World 要 NZ$8.49。挑 <b>L&P</b> 和 <b>Hokey Pokey</b> 這兩個紐西蘭限定口味，台灣買不到。"
+    },
+    {
+     "n": "L&P 汽水",
+     "d": "Lemon & Paeroa，紐西蘭的國民汽水，Whittaker's 那款巧克力就是這個味道。買鋁罐比玻璃瓶好帶。"
+    },
+    {
+     "n": "Kūmara 洋芋片、feijoa 口味的零食",
+     "d": "kūmara 是毛利人帶來的甘藷，feijoa 是紐西蘭人從小吃到大的水果。兩個台灣都幾乎買不到，重量輕，塞行李縫剛好。"
+    },
+    {
+     "n": "Pic's 花生醬",
+     "d": "紐西蘭 Nelson 烘的，好吃。但要知道<b>花生本身是澳洲產的</b>——當好吃的食物買可以，當「紐西蘭土產」買就名不副實。"
+    }
+   ],
+   "facts": [
+    {
+     "k": "怎麼分",
+     "v": "<b>PAK'nSAVE</b> 最便宜、最陽春；<b>New World</b> 貴一點但東西齊、小鎮也有；<b>Woolworths</b>（就是以前的 Countdown，2025 年 12 月招牌全換完了）中間值。"
+    },
+    {
+     "k": "袋子",
+     "v": "紐西蘭超市<b>不提供免費塑膠袋</b>，環保袋要買。買一個帆布袋當伴手禮也不錯。"
+    }
+   ],
+   "lat": -45.01091,
+   "lng": 168.749159
+  },
+  {
+   "id": "te-huia-queenstown",
+   "name": "Te Huia Queenstown",
+   "zh": "原本的 Untouched World 皇后鎮店",
+   "cat": "shop",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "Te Huia Queenstown Eichardts Building The Mall",
+   "addr": "Eichardt's Building, 1 The Mall, Queenstown 9300",
+   "hours": "每天 10:00–20:00",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://tehuianz.com/pages/store-locations",
+   "note": "賣紐西蘭最貴的那一種羊毛衣：<b>負鼠毛混美麗諾</b>——輕、暖、不扎人、不太起球。中文旅遊資訊都寫「皇后鎮的 Untouched World」，但那個名字已經不對了。",
+   "warn": [
+    "<b>這家店已經改名成 Te Huia。</b>皇后鎮和箭鎮這兩家原本的 Untouched World 門市都改了品牌，官網自己寫「Untouched World Queenstown is now Te Huia Queenstown」。改名的日期與原因，官網沒說。",
+    "想買 <b>Untouched World 本尊</b>的話，皇后鎮已經沒有了——最近的直營店是 <b>Wānaka 的 35 Helwick Street</b>（09/29 那天會經過），再來是基督城。"
+   ],
+   "buy": [
+    {
+     "n": "負鼠毛混美麗諾毛衣／圍巾",
+     "d": "紐西蘭獨有的材質。負鼠毛是空心的，同樣厚度比純羊毛暖，而且不會像羊毛那樣扎皮膚。Untouched World 把自家的配方叫 Ecopossum。"
+    },
+    {
+     "n": "美麗諾底層衣（base layer）",
+     "d": "南島早晚溫差大，這趟真的用得到。羊毛底層衣連穿幾天也不太有味道，比化纖的舒服。"
+    },
+    {
+     "n": "負鼠毛手套、帽子",
+     "d": "小件、好帶、不佔行李，送人剛好。"
+    }
+   ],
+   "facts": [
+    {
+     "k": "負鼠是什麼",
+     "v": "從澳洲引進的外來種害獸，紐西蘭現在估計有 <b>4,500 萬隻</b>，啃原生林、吃鳥蛋。毛料是撲殺作業的副產品——買負鼠製品在紐西蘭是被當成保育行為看的，跟一般的皮草觀感完全不同。"
+    }
+   ],
+   "lat": -45.032215,
+   "lng": 168.661028,
+   "geo_approx": "The Mall（Eichardt's 大樓）街段位置",
+   "img": "images/te-huia-queenstown.jpg"
+  },
+  {
+   "id": "te-huia-arrowtown",
+   "name": "Te Huia Arrowtown",
+   "zh": "箭鎮老街上的羊毛衣店",
+   "cat": "shop",
+   "day": 7,
+   "town": "Arrowtown",
+   "q": "Te Huia Arrowtown 38 Buckingham Street",
+   "addr": "38 Buckingham Street, Arrowtown 9302",
+   "hours": "每天 09:00–18:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://tehuianz.com/pages/store-locations",
+   "note": "跟皇后鎮那家同一個品牌（也是原本的 Untouched World），開在箭鎮老街上。<b>09/30 逛箭鎮那天順路</b>，人比皇后鎮少很多，慢慢試穿比較不趕。",
+   "buy": [
+    {
+     "n": "負鼠毛混美麗諾針織",
+     "d": "跟皇后鎮店同一批貨。差別在這裡逛起來比較安靜。"
+    }
+   ],
+   "lat": -44.938578,
+   "lng": 168.832114
+  },
+  {
+   "id": "woolpress-arrowtown",
+   "name": "WoolPress Arrowtown",
+   "zh": "一次比較好幾個羊毛品牌",
+   "cat": "shop",
+   "day": 7,
+   "town": "Arrowtown",
+   "q": "WoolPress Arrowtown Buckingham Street New Zealand",
+   "addr": "Buckingham Street, Arrowtown（門牌查不到）",
+   "flag": "info",
+   "bookable": false,
+   "note": "箭鎮官方觀光網站列出的店，賣紐西蘭製針織、皮件與戶外服，<b>同一家店裡同時有 Icebreaker、Earth Sea Sky、Merinomink、Native World</b>——想比較不同牌子的美麗諾，這裡一次看得完，不必跑好幾家。",
+   "warn": [
+    "<b>門牌號碼與營業時間我查不到官方出處</b>，只確認得到它在 Buckingham Street 上。箭鎮老街不長，走過去就看得到。"
+   ],
+   "buy": [
+    {
+     "n": "Icebreaker 美麗諾",
+     "d": "紐西蘭起家的牌子，<b>但現在是美國 VF 集團的</b>，羊毛還是紐澳的，衣服在中國上海的廠縫製（官網上就有那間廠的介紹頁）。買它是買設計與羊毛，不是買「紐西蘭製造」。"
+    },
+    {
+     "n": "Merinomink、Native World",
+     "d": "負鼠毛混美麗諾的兩個牌子，價位比 Untouched World 親民。"
+    },
+    {
+     "n": "Earth Sea Sky",
+     "d": "基督城的戶外服品牌，紐西蘭在地做的登山衣。"
+    }
+   ],
+   "lat": -44.938604,
+   "lng": 168.832216
+  },
+  {
+   "id": "arrowtown-stonework",
+   "name": "Arrowtown Stonework",
+   "zh": "看得到師傅在雕的綠玉店",
+   "cat": "shop",
+   "day": 7,
+   "town": "Arrowtown",
+   "q": "Arrowtown Stonework 32 Buckingham Street Arrowtown",
+   "addr": "32 Buckingham Street, Arrowtown",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.arrowtownstonework.co.nz/",
+   "note": "★ 想買綠玉（pounamu），這家是這趟路線上最有把握的一間。<b>家族三代從 1985 年雕到現在，工作室有一面窗，可以站在外面看師傅動手</b>——這件事本身就是驗證：看得到人在雕，就不太可能是整批進口的成品。官網寫主雕師是 Ngāti Kahungunu 的後裔。",
+   "buy": [
+    {
+     "n": "綠玉墜子（小件、簡單造型）",
+     "p": "多數在 NZ$75–150",
+     "d": "紐西蘭綠玉店的入門價帶大致如此。太便宜的（幾十塊紐幣以下）要多問一句石頭哪裡來的。"
+    },
+    {
+     "n": "Hei matau（魚鉤）",
+     "d": "象徵豐足、力量與<b>水路平安</b>。要開很多山路與坐峽灣船的這趟，送這個算應景。"
+    },
+    {
+     "n": "Pikorua（雙絞）",
+     "d": "兩條線纏在一起又分開又相遇，代表兩個人或兩種文化永遠連著。送伴侶或好友最常見的款。"
+    },
+    {
+     "n": "Koru（新芽）",
+     "d": "銀蕨還沒展開的嫩芽，代表新生與成長。"
+    }
+   ],
+   "facts": [
+    {
+     "k": "誰的石頭",
+     "v": "《Ngāi Tahu (Pounamu Vesting) Act 1997》把南島境內<b>天然狀態的綠玉全部歸 Ngāi Tahu 部落所有</b>（Arahura 河流域另歸 Mahera Incorporation）。所以真的紐西蘭綠玉，來源一定經過部落的管道。"
+    },
+    {
+     "k": "怎麼問",
+     "v": "直接問<b>「Is this New Zealand pounamu?」</b>。法律上，店家可以把進口的玉叫 greenstone，但<b>不能叫 New Zealand greenstone／New Zealand jade</b>。所以招牌只寫 greenstone 的，值得多問一句。"
+    },
+    {
+     "k": "帶得回台灣嗎",
+     "v": "可以。紐西蘭海關的出口禁令只管<b>原石</b>（單一批次 5 公斤以上要部長核准），<b>已經雕好的首飾、擺件明文不受限制</b>。實際被判刑的案例都是想帶十幾二十公斤原石出境的。"
+    }
+   ],
+   "lat": -44.938555,
+   "lng": 168.831875
+  },
+  {
+   "id": "qt-craft-market",
+   "name": "Creative Queenstown Arts & Crafts Market",
+   "zh": "湖邊的手作市集，只有週六",
+   "cat": "shop",
+   "day": 10,
+   "town": "Queenstown",
+   "q": "Earnslaw Park Queenstown lakefront market",
+   "addr": "Earnslaw Park, 皇后鎮湖濱",
+   "hours": "每週六 09:30–15:30（5–10 月時段；11–4 月是 09:00–16:30）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.queenstownmarket.nz/",
+   "note": "★ 約 45 個攤位，規定要<b>南島在地創作者本人</b>來擺：陶藝、首飾、針織、綠玉雕刻、版畫、皮件。想買「不是紀念品店那種」的東西，這裡最有機會。全年每週六都有，不受季節影響。",
+   "warn": [
+    "<b>只有週六。</b>這趟碰得到的唯一一個週六是 <b>10/03，也就是要開去蒂阿瑙的那天早上</b>。市集 09:30 才開，蒂阿瑙車程約 2 小時 10 分——想逛就得接受當天晚點出發，或者乾脆放棄。這個取捨要先講好。"
+   ],
+   "buy": [
+    {
+     "n": "在地雕刻師的綠玉／骨雕",
+     "d": "跟店面比，這裡常常是雕的人自己站在攤子後面，可以直接問石頭哪裡來的。"
+    },
+    {
+     "n": "手織羊毛小物",
+     "d": "帽子、襪子、手套這類。價格通常比店面便宜，但款式看當天誰來擺。"
+    },
+    {
+     "n": "在地攝影與版畫",
+     "d": "捲起來就能帶走，比買一件羊毛衣好塞行李。"
+    }
+   ],
+   "lat": -45.032768,
+   "lng": 168.658701,
+   "geo_approx": "Earnslaw Park 湖濱公園"
+  },
+  {
+   "id": "macpac-queenstown",
+   "name": "Macpac Queenstown",
+   "zh": "紐西蘭本土的戶外用品牌",
+   "cat": "shop",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "Macpac Queenstown 44 Beach Street New Zealand",
+   "addr": "44 Beach Street, Queenstown 9300",
+   "hours": "每天 09:30–21:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.macpac.co.nz/store?id=4808",
+   "note": "1973 年在基督城起家的戶外品牌，紐西蘭人自己會買的那種。<b>開到晚上九點</b>，吃完晚餐還逛得到。官網長年有一區 end of season clearance，但<b>「九月底十月初剛好是冬季出清」這件事我查不到官方檔期</b>，到現場看有沒有折扣區比較實在。",
+   "buy": [
+    {
+     "n": "羽絨外套、刷毛中層",
+     "d": "南島九月底還很冷。與其在台灣先買，不如到這裡看有沒有出清。"
+    },
+    {
+     "n": "美麗諾底層衣",
+     "d": "比 Icebreaker 便宜一截，實用度差不多。"
+    },
+    {
+     "n": "防水外套",
+     "d": "米爾福德峽灣一年下雨超過 180 天。真的會用到。"
+    }
+   ],
+   "lat": -45.032369,
+   "lng": 168.659313
+  },
+  {
+   "id": "kathmandu-queenstown",
+   "name": "Kathmandu Queenstown",
+   "zh": "紐澳到處都有的戶外連鎖",
+   "cat": "shop",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "Kathmandu Queenstown Beach Street Rees Street",
+   "addr": "Mountaineer Retail Building, Beach St 與 Rees St 路口, Queenstown 9300",
+   "flag": "info",
+   "bookable": false,
+   "url": "https://www.kathmandu.co.nz/pages/store-location/kathmandu-queenstown",
+   "note": "1987 年在紐西蘭創立、現在紐澳到處都有的戶外連鎖。<b>它幾乎一年到頭都在打折</b>，所以看到「原價 NZ$399 特價 NZ$159」不用太興奮，那是常態定價方式，比較各家實付金額比較實在。皇后鎮另外還有一家在 Five Mile（Frankton）。",
+   "warn": [
+    "<b>官方店面頁沒有寫營業時間。</b>第三方目錄寫週日到週二 10:00–18:00、週三到週六 10:00–19:00，但我沒有官方出處，只能當參考。"
+   ],
+   "buy": [
+    {
+     "n": "打折的羽絨與雨衣",
+     "d": "折扣季買才划算，原價買不如在台灣買。"
+    },
+    {
+     "n": "行李收納袋、壓縮袋",
+     "d": "回程要塞羊毛衣的時候會慶幸有買。"
+    }
+   ],
+   "lat": -45.031572,
+   "lng": 168.660421,
+   "geo_approx": "Beach Street 街段位置"
+  },
+  {
+   "id": "chemist-warehouse-qt",
+   "name": "Chemist Warehouse Queenstown",
+   "zh": "保健品與藥妝的大賣場",
+   "cat": "shop",
+   "day": 8,
+   "town": "Queenstown",
+   "q": "Chemist Warehouse Queenstown 32 Rees Street",
+   "addr": "32 Rees Street, Queenstown 9300",
+   "hours": "每天 08:00–22:00",
+   "flag": "warn",
+   "bookable": false,
+   "note": "綿羊油、魚油、葡萄糖胺、蜂膠這類保健品，紐西蘭人自己就是在這種店買。開到晚上十點，行程再滿也擠得出時間。<b>但它的「特價」標籤有前科，看清楚再買。</b>",
+   "warn": [
+    "⚠️ <b>Consumer NZ（紐西蘭消費者文教基金會）2023 年 12 月點名過它的價格標示</b>：有商品貼著螢光粉紅的「Stop Paying Too Much」特價標，但底下的常態售價<b>根本是同一個數字</b>（例：某款保健粉標 $29.99「特價」，原本就賣 $29.99）。",
+    "⚠️ 還有一種寫法是「本店獨賣，比建議售價省了 X 元」——<b>但那個商品別家根本沒賣，所謂的建議售價無從比較</b>。看到大字折扣先看實付金額，不要看省了多少。"
+   ],
+   "buy": [
+    {
+     "n": "綿羊油／綿羊霜",
+     "d": "紐西蘭做給觀光客買的品項之一。<b>先知道再買</b>：這類產品的需求幾乎全部來自亞洲遊客與外銷，紐西蘭人自己不太用。Alpine Silk 之類的牌子確實是紐西蘭製，但別把它想成「當地人的日常保養品」。"
+    },
+    {
+     "n": "深海魚油、葡萄糖胺",
+     "d": "價格通常比台灣便宜。<b>紐西蘭的保健食品沒有上市前審查</b>——Medsafe 官網自己寫「There is no pre-approval process for dietary supplements」，責任在廠商。選大廠、看清楚成分。"
+    },
+    {
+     "n": "蜂膠（Comvita、Manuka Health）",
+     "d": "Comvita 是紐西蘭老牌，有 MPI 的出口商登記與風險管理計畫。含片、噴劑大約 NZ$9–70 都有。"
+    },
+    {
+     "n": "鹿茸產品",
+     "d": "⚠️ 兩個問題：<b>證據很弱</b>——《紐西蘭醫學期刊》的系統性回顧結論是「現有的宣稱並非建立在嚴謹的人體試驗上」；<b>而且很可能帶不回台灣</b>，鹿茸被列在動物產品類，詳見下面「帶得回台灣嗎」那一節。"
+    }
+   ],
+   "lat": -45.032022,
+   "lng": 168.659159
+  },
+  {
+   "id": "chemist-warehouse-dunedin",
+   "name": "Chemist Warehouse Dunedin",
+   "zh": "但尼丁市中心的同一家連鎖",
+   "cat": "shop",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Chemist Warehouse Dunedin Meridian Mall George Street",
+   "addr": "285 George Street, Dunedin 9016（Meridian Mall 內）",
+   "hours": "約 08:00–20:00（來自商場目錄，非官方頁）",
+   "flag": "info",
+   "bookable": false,
+   "note": "在 George Street 的 Meridian Mall 裡，跟逛市中心順路。品項與注意事項跟皇后鎮那家一樣（<b>特價標籤要看清楚</b>）。<b>但尼丁這家的走道比皇后鎮寬鬆很多</b>，要慢慢挑保健品的話在這裡挑比較舒服。",
+   "warn": [
+    "Chemist Warehouse 官網的門市查詢頁會擋自動抓取，<b>上面的地址與時間來自商場官方目錄與紐西蘭醫療院所目錄 Healthpoint，不是連鎖本身的頁面</b>。基督城與皇后鎮的分店可以確認；<b>Invercargill 查不到分店</b>，Timaru 只查得到地圖標記、沒有可靠的地址與時間。"
+   ],
+   "buy": [
+    {
+     "n": "跟皇后鎮店同一批",
+     "d": "綿羊油、魚油、葡萄糖胺、蜂膠。<b>兩家都逛的話，記得比一下同一款的價格</b>——連鎖店也會有分店價差。"
+    }
+   ],
+   "lat": -45.870197,
+   "lng": 170.505584,
+   "img": "images/chemist-warehouse-dunedin.jpg"
+  },
+  {
+   "id": "ocho-dunedin",
+   "name": "OCHO",
+   "zh": "但尼丁自己救回來的巧克力廠",
+   "cat": "shop",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "OCHO chocolate 10 Roberts Street Dunedin",
+   "addr": "10 Roberts Street, Dunedin Central 9016",
+   "hours": "週一至週六 10:00–14:00（週日休）",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://ocho.co.nz/",
+   "note": "★ 2017 年吉百利關掉但尼丁工廠時，全市三千多人集資把這間小巧克力廠留了下來。<b>從可可豆做到巧克力片（bean to bar）</b>，可以參加導覽看製程。買一片這裡的巧克力，跟在超市買 Whittaker's 是兩件事——這片有故事可以講。",
+   "warn": [
+    "<b>營業時間只有四小時（10:00–14:00），而且週日不開。</b>要排在上午，別留到下午才想到。",
+    "官網寫週一到週六，某些第三方頁面寫週二到週六——<b>兩邊對不起來</b>。我們 10/06–10/08 在但尼丁是週二到週四，兩種說法下都有開，所以不影響，但要專程跑一趟的話先打電話問。",
+    "這間店 2024 年差點清算收掉：董事會提案自願清算，股東會需要 75% 同意，<b>結果只有 70.69%，提案沒過，店才活下來</b>。所以它現在還在，不是理所當然的事。"
+   ],
+   "buy": [
+    {
+     "n": "單一產地巧克力片",
+     "d": "太平洋島國的可可豆為主。買幾片不同產地的排在一起送人，比買一大盒有意思。"
+    },
+    {
+     "n": "導覽行程（CHOCtagon）",
+     "d": "官網可以先訂。看完再買，會知道自己在買什麼。"
+    }
+   ],
+   "lat": -45.881925,
+   "lng": 170.505857
+  },
+  {
+   "id": "uw-outlet-dunedin",
+   "name": "Untouched World Outlet Dunedin",
+   "zh": "紐西蘭製羊毛衣的過季店",
+   "cat": "shop",
+   "day": 13,
+   "town": "Dunedin",
+   "q": "Untouched World Dunedin George Street outlet",
+   "addr": "Shop 26-28/251 George Street, Dunedin",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.untouchedworld.com/en-us/pages/stores",
+   "note": "★ Untouched World 全紐西蘭只有<b>兩家 outlet</b>，一家在基督城，另一家就是這裡，而且就在但尼丁市中心的 George Street 上。這個牌子<b>九成四的衣服是在紐西蘭做的</b>（多半在基督城自家的工作間），跟大部分掛著紐西蘭名字、在海外生產的品牌不一樣。過季店賣的是上一季、樣品與 B 級品。",
+   "warn": [
+    "<b>營業時間官網沒寫。</b>官方門市頁只列地址不列時間。George Street 是市中心主街，一般店家大約 09:00–17:30，但這是推測不是查證。"
+   ],
+   "buy": [
+    {
+     "n": "上一季的負鼠毛混美麗諾針織",
+     "d": "正價店一件動輒好幾百紐幣，過季店是這趟最有機會用合理價格買到<b>真的紐西蘭製</b>羊毛衣的地方。"
+    },
+    {
+     "n": "樣品與 B 級品（seconds）",
+     "d": "多半是小瑕疵或尺寸零碼。要試穿、要翻標籤，但價差很大。"
+    }
+   ],
+   "lat": -45.870712,
+   "lng": 170.505249
+  },
+  {
+   "id": "uw-outlet-chch",
+   "name": "Untouched World Outlet Christchurch",
+   "zh": "離機場很近的過季店",
+   "cat": "shop",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Untouched World outlet 8A Homersham Place Burnside Christchurch",
+   "addr": "8A Homersham Place, Burnside, Christchurch",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.untouchedworld.com/en-us/pages/stores",
+   "note": "★ 另一家 outlet，在 Burnside——<b>離基督城機場開車只要幾分鐘</b>。10/08 晚上住機場旁邊的 Novotel、10/09 下午才飛奧克蘭，這家店的位置對這趟行程幾乎是量身訂做的。品牌自己的清倉活動打過<b>到七折以上（up to 70% off）</b>的折扣。",
+   "warn": [
+    "<b>營業時間官網沒寫。</b>而且 outlet 有時候是配合清倉檔期才開長時間，出發前打電話問一下比較保險。",
+    "同一個品牌在基督城另有 <b>155 Roydvale Avenue</b> 的旗艦店（正價，隔壁就是他們的工作間）。第三方目錄寫每天 09:00–16:00，但官網沒列時間。"
+   ],
+   "buy": [
+    {
+     "n": "Ecopossum 系列",
+     "d": "品牌自己的負鼠毛混美麗諾配方。過季價買最划算。"
+    },
+    {
+     "n": "紐西蘭製的針織外套",
+     "d": "翻標籤看 Made in New Zealand。這是少數真的做得到這件事的牌子。"
+    }
+   ],
+   "lat": -43.491675,
+   "lng": 172.564509,
+   "geo_approx": "Homersham Place 街段位置"
+  },
+  {
+   "id": "ballantynes",
+   "name": "Ballantynes",
+   "zh": "基督城 1854 年的老百貨",
+   "cat": "shop",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "Ballantynes 142 Cashel Street Christchurch",
+   "addr": "142 Cashel Street, Cashel Street Mall, Christchurch 8011",
+   "hours": "週一至週五 09:30–17:30，週六 09:30–17:00，週日與國定假日 10:00–17:00",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.ballantynes.co.nz/christchurch-store.html",
+   "note": "基督城的老派百貨，1854 年開到現在，地震後還在原地。想在一個屋簷下把紐西蘭品牌看完（羊毛、保養品、廚房用品、伴手禮）就來這裡。<b>10/09 那天在市區，是週五，正常營業到 17:30，但我們 18:10 的飛機，實際上午買完就要走。</b>",
+   "buy": [
+    {
+     "n": "紐西蘭設計師品牌",
+     "d": "Karen Walker、Deadly Ponies 這類牌子在這裡看得到，不必跑奧克蘭。"
+    },
+    {
+     "n": "羊毛寢具與毛毯",
+     "d": "體積大，要先算行李。真的想買，考慮請店家寄——<b>店家自己安排寄到海外的話可以免 15% GST</b>（詳見下面退稅那一節）。"
+    }
+   ],
+   "lat": -43.533579,
+   "lng": 172.636124,
+   "img": "images/ballantynes.jpg"
+  },
+  {
+   "id": "chch-arts-centre",
+   "name": "The Arts Centre Te Matatiki Toi Ora",
+   "zh": "老校舍裡的工作室與市集",
+   "cat": "shop",
+   "day": 16,
+   "town": "Christchurch",
+   "q": "The Arts Centre Christchurch Worcester Boulevard",
+   "addr": "2 Worcester Boulevard, Christchurch Central",
+   "hours": "每天 10:00–17:00（各家店自訂時間；耶誕節與 Good Friday 休）",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://www.artscentre.org.nz/",
+   "note": "哥德式的老大學校舍，地震後修了十幾年，現在裡面是工藝工作室、藝廊與小店。<b>買東西之外，這地方本身就值得走一圈。</b>",
+   "warn": [
+    "這裡<b>每週五 17:00–21:30 有 City Night Market</b>，週六有 Seekers Mākete 市集。我們 10/09 剛好是週五——<b>但 18:10 就要飛奧克蘭，夜市趕不上</b>。寫在這裡是免得看到「週五有夜市」空歡喜一場。"
+   ],
+   "buy": [
+    {
+     "n": "駐點工藝家的作品",
+     "d": "陶、玻璃、織品都有。各家工作室時間不一，中午前後最保險。"
+    }
+   ],
+   "lat": -43.531561,
+   "lng": 172.629101,
+   "img": "images/chch-arts-centre.jpg"
+  },
+  {
+   "id": "geraldine-cheese",
+   "name": "The Geraldine Cheese Company",
+   "zh": "原本叫 Talbot Forest Cheese",
+   "cat": "shop",
+   "day": 3,
+   "town": "Geraldine",
+   "q": "Geraldine Cheese Company Talbot Street Geraldine New Zealand",
+   "addr": "76 Talbot Street, Geraldine 7930（Four Peaks Plaza 內）",
+   "hours": "每天 08:30–17:30",
+   "flag": "warn",
+   "bookable": false,
+   "note": "得過獎的手工起司店，可以試吃，還有自己做的太妃軟糖。<b>就在 Barker's 果醬店旁邊</b>——09/26 從基督城開往蒂卡波、在 Geraldine 停午餐時，兩家一起解決。",
+   "warn": [
+    "⚠️ <b>店名已經換了。</b>創辦人把「Talbot Forest Cheese」這個品牌連同 Temuka 的廠賣給了 Synlait，然後回到 Geraldine 用新品牌 <b>The Geraldine Cheese Company</b> 重新開始。中文與英文旅遊資訊很多還在寫舊名，<b>找店要找新名字</b>。",
+    "地址與營業時間來自南坎特伯里的地區商家目錄，<b>不是店家自己的官網</b>。到現場以門口告示為準。"
+   ],
+   "buy": [
+    {
+     "n": "現切手工起司",
+     "d": "可以試吃再決定。買真空包裝的比較好帶——但<b>起司要不要帶回台灣，先看下面檢疫那一節</b>。"
+    },
+    {
+     "n": "手工太妃軟糖（fudge）",
+     "d": "不是乳製品檢疫的重災區，好帶、好送。"
+    }
+   ],
+   "lat": -44.092846,
+   "lng": 171.244959
+  },
+  {
+   "id": "barrys-bay-cheese",
+   "name": "Barrys Bay Cheese",
+   "zh": "去 Akaroa 路上的起司廠",
+   "cat": "shop",
+   "day": 15,
+   "town": "Banks Peninsula",
+   "q": "Barrys Bay Cheese Duvauchelle Akaroa New Zealand",
+   "addr": "5807 Christchurch-Akaroa Road, Duvauchelle, Akaroa 7582",
+   "hours": "每天 09:00–17:00（耶誕節休）",
+   "flag": "ok",
+   "bookable": false,
+   "url": "https://barrysbaycheese.co.nz/",
+   "note": "從基督城開往 Akaroa 的路邊，1895 年就在做起司的老廠。<b>10/08 那天會經過</b>，停下來試吃、上個廁所、看一下海灣，剛好。",
+   "buy": [
+    {
+     "n": "切達與藍紋",
+     "d": "現場可以試吃再挑。"
+    },
+    {
+     "n": "當天現做的 fresh curd",
+     "d": "起司凝乳，只有做起司的地方買得到，當零食吃。當天吃完，不用煩惱檢疫。"
+    }
+   ],
+   "lat": -43.760813,
+   "lng": 172.91183,
+   "geo_approx": "Barrys Bay 一帶（SH75 路邊）",
+   "img": "images/barrys-bay-cheese.jpg"
+  },
+  {
+   "id": "whitestone-factory-shop",
+   "name": "Whitestone Cheese Factory Shop",
+   "zh": "工廠直營門市（不是那家餐廳）",
+   "cat": "shop",
+   "day": 14,
+   "town": "Oamaru",
+   "q": "Whitestone Cheese 3 Torridge Street Oamaru New Zealand",
+   "addr": "3 Torridge Street, Oamaru 9400",
+   "hours": "週一至週五 09:00–17:00，週末 10:00–16:00",
+   "flag": "star",
+   "bookable": false,
+   "url": "https://www.whitestonecheese.com/pages/cheese-shop",
+   "note": "★ Oamaru 自己的手工起司廠，1987 年開始做。<b>注意這裡有兩個地址，很多人跑錯</b>：Torridge Street 這間是<b>工廠直營門市</b>（買起司），Thames Highway 469 號那間是他們 2023 年把老茶室改成的<b>餐廳兼熟食店</b>（吃飯）。要買整塊帶走就來 Torridge Street。",
+   "buy": [
+    {
+     "n": "Windsor Blue（藍紋）",
+     "d": "他們最有名的一款，拿過很多獎。"
+    },
+    {
+     "n": "蠟封的切達",
+     "d": "蠟封的耐放，比軟質起司好帶。"
+    },
+    {
+     "n": "試吃盤",
+     "d": "門市可以試，挑完再買，不用賭。"
+    }
+   ],
+   "lat": -45.093375,
+   "lng": 170.976296
+  },
+  {
+   "id": "slightly-foxed-oamaru",
+   "name": "Slightly Foxed Secondhand Books",
+   "zh": "白石老街上的舊書店",
+   "cat": "shop",
+   "day": 14,
+   "town": "Oamaru",
+   "q": "Slightly Foxed Secondhand Books Tyne Street Oamaru",
+   "addr": "11 Tyne Street, Oamaru（維多利亞老街區）",
+   "flag": "info",
+   "bookable": false,
+   "note": "Oamaru 白石老街區裡的舊書店，專門收紐西蘭地方史、初版書，還有釣魚、狩獵、登山這類主題。<b>旁邊 7 號是 Michael O'Brien 手工裝幀工作室</b>，做了二十幾年的手工書，兩家一起逛。買一本講南島地方史的舊書，比買一個鑰匙圈值得帶回家。",
+   "warn": [
+    "<b>營業時間查不到官方出處。</b>而且老街區普遍有「傍晚很早就收」的狀況，官方觀光網站自己也這樣寫。<b>下午三四點以後去可能撲空</b>，10/07 傍晚看藍企鵝之前的空檔最順。"
+   ],
+   "buy": [
+    {
+     "n": "紐西蘭地方史舊書",
+     "d": "在台灣完全找不到的東西。"
+    },
+    {
+     "n": "手工裝幀的本子（隔壁）",
+     "d": "Michael O'Brien 的工作室是真的在做書，不是賣紀念品。"
+    }
+   ],
+   "lat": -45.103281,
+   "lng": 170.970088
+  },
+  {
+   "id": "simply-nz-teanau",
+   "name": "Simply New Zealand Te Anau",
+   "zh": "蒂阿瑙的紐西蘭禮品店",
+   "cat": "shop",
+   "day": 10,
+   "town": "Te Anau",
+   "q": "Simply New Zealand Te Anau Town Centre",
+   "addr": "Town Centre 與 Te Anau Terrace 路口, Te Anau",
+   "hours": "每天 09:00–18:00",
+   "flag": "ok",
+   "bookable": false,
+   "note": "1965 年開到現在的紐西蘭禮品店，拿過紐西蘭觀光局的 Qualmark 零售商認證。<b>先說實話：蒂阿瑙的購物選擇非常少</b>——查下來就是幾家禮品／羊毛店（這家、Luxmore Souvenirs、Kowhai Gifts、Silver Fern Gallery）加上超市，沒有什麼設計小店。<b>把它當成「峽灣行程中間補個伴手禮」的地方就好，不要期待逛街。</b>",
+   "buy": [
+    {
+     "n": "羊毛與羊皮小物",
+     "d": "手套、拖鞋、坐墊這類。"
+    },
+    {
+     "n": "紐西蘭藝術家的小型作品",
+     "d": "店齡六十年，選品比一般紀念品店有標準一些。"
+    }
+   ],
+   "lat": -45.409885,
+   "lng": 167.706972,
+   "geo_approx": "Te Anau Terrace 街段位置"
+  },
+  {
+   "id": "hermitage-retail",
+   "name": "Hermitage Retail Centre",
+   "zh": "庫克山村唯一的店",
+   "cat": "shop",
+   "day": 5,
+   "town": "Mt Cook",
+   "q": "Hermitage Retail Centre Aoraki Mount Cook Village",
+   "addr": "The Hermitage Hotel, Aoraki／Mount Cook Village",
+   "flag": "info",
+   "bookable": false,
+   "url": "https://www.hermitage.co.nz/experience/hermitage-retail-centre",
+   "note": "庫克山村裡就這一家像樣的店，賣戶外服、紀念品、少量零食飲料。<b>村子裡沒有超市</b>，忘了帶的東西只能在這裡買，價格自然是山上的價格。旁邊 Sir Edmund Hillary Alpine Centre 也有一個小賣部，有人形容它「就是個小博物館加小賣部加放映室」。",
+   "warn": [
+    "<b>營業時間我查不到官方出處。</b>山區店家會依季節與住房率調整，到飯店櫃檯問最準。",
+    "把這裡當<b>補漏洞</b>用，不要當購物行程。真的想買東西留到皇后鎮或但尼丁。"
+   ],
+   "buy": [
+    {
+     "n": "Aoraki／Mt Cook 的紀念品",
+     "d": "地名紀念品的意義就在「你真的到過那裡」，這點在別處買不到。"
+    },
+    {
+     "n": "忘記帶的登山襪、手套",
+     "d": "10/28 走胡克谷的前一晚才發現沒帶的，這裡有。"
+    }
+   ],
+   "lat": -43.733163,
+   "lng": 170.093722,
+   "geo_approx": "就在 The Hermitage 飯店裡，用飯店座標"
+  },
+  {
+   "id": "akl-dutyfree",
+   "name": "Auckland Airport Duty Free",
+   "zh": "回程最後一站，先搞清楚什麼才真的便宜",
+   "cat": "shop",
+   "day": 17,
+   "town": "Auckland Airport",
+   "q": "Auckland Airport international departures duty free",
+   "addr": "奧克蘭機場國際線出境（過安檢後）",
+   "hours": "取貨點 04:30–01:00",
+   "flag": "warn",
+   "bookable": false,
+   "url": "https://themall.aucklandairport.co.nz/en/intl-duty-free",
+   "note": "回台灣的最後一個買東西的機會。<b>但「免稅店比較便宜」這句話只對一半</b>——真正省的是酒、菸、香水這類本來就被課重稅的東西；蜂蜜、羊毛製品、一般紀念品在機場買通常沒有比較便宜，有時候還更貴。",
+   "warn": [
+    "⚠️ <b>經營者換人了。</b>現在是 Lagardère 的 <b>Aelia Duty Free</b>（2025 年 7 月起接手出境與入境兩邊）。中文部落格還在寫的「The Loop」<b>已經不是奧克蘭機場的免稅店了</b>。",
+    "⚠️ <b>基督城買不到。</b>10/09 的 CHC→AKL 是<b>國內線</b>，碰不到國際線免稅店，也沒有取貨點。要買免稅只能 10/10 在奧克蘭買。",
+    "⚠️ <b>國內線那段不要帶大瓶液體。</b>奧克蘭機場寫明國內線安檢<b>不讓沒封口的液體通過</b>；轉機時還要再過一次安檢，超過 100ml 又沒有免稅店防拆袋的，當場沒收。所以酒與大罐蜂蜜<b>不要在基督城買了帶上飛機</b>，全部留到奧克蘭、或是託運。",
+    "⚠️ 真實比價（紐西蘭媒體 2023 年做的）：1 公升傑克丹尼在機場免稅 <b>NZ$54</b>、市區酒專 NZ$70，<b>這個有省</b>；但某款 100ml 香水在 Chemist Warehouse 比免稅店<b>便宜約 NZ$30</b>。連 Whittaker's 巧克力、雷朋眼鏡這種本來就沒有重稅的東西，免稅店根本沒有折扣可言。"
+   ],
+   "buy": [
+    {
+     "n": "酒",
+     "p": "台灣入境每人限 1.5 公升",
+     "d": "真的有價差。<b>但台灣海關的免稅上限是每人 1.5 公升</b>（2025/01/25 起從 1 公升調高的，舊資訊還在寫 1 公升）。超過到 5 公升可以走紅線報稅，沒申報被抓到會沒收加罰。"
+    },
+    {
+     "n": "香水、化妝品",
+     "d": "看情況。上面那個例子就是免稅店比市區貴。有想買的先在市區記下價格再比。"
+    },
+    {
+     "n": "線上預訂、登機前取貨",
+     "d": "The Mall 官網可以<b>提前最多 6 個月、最晚起飛前 24 小時</b>下單（3C 產品要 48 小時），過完安檢在 Collection Point 取，<b>最晚起飛前 60 分鐘要領走</b>。沒查到最低消費門檻。"
+    },
+    {
+     "n": "麥蘆卡蜂蜜",
+     "d": "❌ <b>不建議在這裡買。</b>超市 250g UMF 10+ 約 NZ$14，機場動輒 NZ$20 以上。這一項在超市買就好。"
+    }
+   ],
+   "lat": -37.006086,
+   "lng": 174.783225,
+   "geo_approx": "奧克蘭機場國際航廈",
+   "img": "images/akl-dutyfree.jpg"
   }
  ],
  "routes": [
@@ -8469,6 +9469,9 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
       (p.g && p.g.r ? p.g.r + '星 高評價' : ''),
               d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
+              (p.buy || []).map(function (b) {
+                return [b.n, b.d, b.p].filter(Boolean).join(' ');
+              }).join(' '),
               (CATS[p.cat] || {}).label,
               'D' + String(p.day).padStart(2, '0'),
               (dayByNum[p.day] || {}).date]
@@ -8849,6 +9852,26 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
         h += '</ul>';
       }
       h += '</div>';
+    }
+
+    /* buy：可展開的推薦好物清單。購物卡專用。
+       跟 deep 用同一套展開／收合行為（data-deep），但顏色換成湖藍，
+       讓「這家店賣什麼」跟「知道了會不一樣」在視覺上分得開。 */
+    if (p.buy && p.buy.length) {
+      var bid = 'buy-' + p.id;
+      h += '<button type="button" class="pl-more is-buy" data-deep="' + bid + '" ' +
+        'aria-expanded="false" aria-controls="' + bid + '">' +
+        '<span class="dm-ic">🛍</span>' +
+        '<span class="dm-t">推薦好物清單<small>' + p.buy.length + ' 項</small></span>' +
+        '<span class="dm-cta"><span class="dm-lb">展開</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></span></button>' +
+        '<div class="pl-deep is-buy" id="' + bid + '" hidden><ul class="buylist">';
+      p.buy.forEach(function (b) {
+        h += '<li><div class="bh"><span class="bn">' + hl(b.n) + '</span>' +
+          (b.p ? '<span class="bp">' + hl(b.p) + '</span>' : '') + '</div>' +
+          (b.d ? '<p>' + hl(b.d) + '</p>' : '') + '</li>';
+      });
+      h += '</ul></div>';
     }
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
@@ -10014,6 +11037,158 @@ table.trk td.mn{font-family:var(--mono);font-size:.8rem;white-space:nowrap;
     }, 480);
   }, 700);
   try { localStorage.setItem('nz-scroll-hint', '1'); } catch (e) {}
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   App 分頁：把 data/apps.json 渲染成卡片
+   只在有 #apps 容器的頁面跑。圖示不抓 App Store 的原始 icon
+   （那是有版權的），改用 CSS 畫的字母色塊。
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var dataEl = document.getElementById('apps-data');
+  var root = document.getElementById('apps');
+  if (!dataEl || !root) return;
+  var DB = JSON.parse(dataEl.textContent);
+  var CATS = DB.cats || {};
+  var APPS = DB.apps || [];
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function rich(s) {           // 內文只允許 <b>
+    return esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+  }
+
+  var state = { cat: '', must: false };
+
+  /* 沒有 icon 圖檔，就用名字第一個字母 ＋ 一個穩定的色相。
+     同一個 id 永遠得到同一個顏色（雜湊），不會每次 build 就換。 */
+  function tint(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 360;
+    return h;
+  }
+  function tileHtml(a) {
+    var h = tint(a.id);
+    var ch = (a.abbr || a.name || '?').trim().charAt(0).toUpperCase();
+    return '<span class="ap-tile" aria-hidden="true" style="' +
+      '--h:' + h + '">' + esc(ch) + '</span>';
+  }
+
+  function cardHtml(a) {
+    var h = '<div class="ap-top">' + tileHtml(a) +
+      '<div class="ap-name"><h3>' + esc(a.name) + '</h3>' +
+      (a.zh ? '<p>' + esc(a.zh) + '</p>' : '') + '</div></div>';
+
+    var tags = '';
+    if (a.must) tags += '<span class="pl-tag t-star">★ 重點下載</span>';
+    if (CATS[a.cat]) tags += '<span class="pl-tag t-day">' + esc(CATS[a.cat]) + '</span>';
+    if (a.free === true) tags += '<span class="ap-tag free">免費</span>';
+    else if (a.free === false) tags += '<span class="ap-tag paid">付費</span>';
+    if (a.tw_store === 'no') tags += '<span class="pl-tag t-warn">⚠ 台灣商店裝不到</span>';
+    else if (a.tw_store === 'unknown') tags += '<span class="pl-tag t-unv">台灣商店未確認</span>';
+    if (tags) h += '<div class="pl-tags">' + tags + '</div>';
+
+    if (a.what) h += '<p class="pl-note">' + rich(a.what) + '</p>';
+
+    var facts = [];
+    if (a.when) facts.push(['這趟', a.when]);
+    if (a.offline) facts.push(['離線', a.offline]);
+    if (a.iap) facts.push(['內購', a.iap]);
+    if (a.dev) facts.push(['開發者', a.dev]);
+    if (a.tw_store_note) facts.push(['台灣裝', a.tw_store_note]);
+    if (facts.length) {
+      h += '<dl class="pl-facts">';
+      facts.forEach(function (f) {
+        h += '<div><dt>' + esc(f[0]) + '</dt><dd>' + rich(f[1]) + '</dd></div>';
+      });
+      h += '</dl>';
+    }
+    if (a.gotchas && a.gotchas.length) {
+      h += '<ul class="pl-warn">';
+      a.gotchas.forEach(function (g) { h += '<li>' + rich(g) + '</li>'; });
+      h += '</ul>';
+    }
+
+    h += '<div class="ap-btns">';
+    if (a.ios_url) {
+      h += '<a class="ap-dl" href="' + esc(a.ios_url) + '" target="_blank" rel="noopener">' +
+        '<span class="ic" aria-hidden="true"></span>' +
+        '<span class="tx">App Store 下載<em>點了直接開 App Store</em></span></a>';
+    } else {
+      h += '<span class="ap-dl is-off">查不到官方 App Store 連結' +
+        '<em>請在 App Store 自己搜尋店名，別裝到山寨版</em></span>';
+    }
+    if (a.web) h += '<a class="ap-web" href="' + esc(a.web) +
+      '" target="_blank" rel="noopener">官網</a>';
+    h += '</div>';
+    return h;
+  }
+
+  /* ── 篩選列 ── */
+  var bar = document.createElement('div');
+  bar.className = 'ap-bar';
+  var chips = [['', '全部']];
+  Object.keys(CATS).forEach(function (k) {
+    if (APPS.some(function (a) { return a.cat === k; })) chips.push([k, CATS[k]]);
+  });
+  var barHtml = '<span class="ap-bl">看哪一類</span><div class="ap-chips" role="group">';
+  chips.forEach(function (c) {
+    barHtml += '<button type="button" class="fchip" data-cat="' + esc(c[0]) + '" ' +
+      'aria-pressed="' + (c[0] === '' ? 'true' : 'false') + '">' + esc(c[1]) + '</button>';
+  });
+  barHtml += '</div><button type="button" class="fchip ap-must" data-must ' +
+    'aria-pressed="false">★ 只看重點下載</button>';
+  bar.innerHTML = barHtml;
+  root.appendChild(bar);
+
+  var count = document.createElement('p');
+  count.className = 'ap-count';
+  root.appendChild(count);
+
+  var grid = document.createElement('div');
+  grid.className = 'ap-grid';
+  root.appendChild(grid);
+
+  function render() {
+    var list = APPS.filter(function (a) {
+      if (state.cat && a.cat !== state.cat) return false;
+      if (state.must && !a.must) return false;
+      return true;
+    });
+    count.textContent = (state.cat || state.must)
+      ? '顯示 ' + list.length + ' / ' + APPS.length + ' 支'
+      : APPS.length + ' 支 App';
+    grid.innerHTML = '';
+    list.forEach(function (a) {
+      var card = document.createElement('article');
+      card.className = 'ap' + (a.must ? ' is-must' : '');
+      card.id = 'app-' + a.id;
+      card.innerHTML = cardHtml(a);
+      grid.appendChild(card);
+    });
+    if (!list.length) grid.innerHTML = '<div class="empty">這個條件下沒有 App。</div>';
+  }
+
+  bar.querySelectorAll('[data-cat]').forEach(function (b) {
+    b.onclick = function () {
+      state.cat = b.dataset.cat;
+      bar.querySelectorAll('[data-cat]').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+      render();
+    };
+  });
+  var mb = bar.querySelector('[data-must]');
+  mb.onclick = function () {
+    state.must = !state.must;
+    mb.setAttribute('aria-pressed', String(state.must));
+    render();
+  };
+  render();
 })();
 
 </script>

@@ -1,0 +1,484 @@
+{
+ "verified": "2026/08/25",
+ "cats": {
+  "drive": "開車上路",
+  "entry": "入境與簽證",
+  "weather": "天氣與極光",
+  "stay": "住宿與營地",
+  "eat": "吃飯省錢",
+  "misc": "其他"
+ },
+ "apps": [
+  {
+   "id": "nztd",
+   "name": "NZTD",
+   "zh": "紐西蘭入境申報（Traveller Declaration）",
+   "cat": "entry",
+   "must": true,
+   "dev": "Ministry of Business, Innovation and Employment（App Store 掛名開發者；官方說明此系統由 NZ Customs Service／NZCS 與 MBIE 共同管理營運，屬紐西蘭政府官方 App）",
+   "ios_url": "https://apps.apple.com/nz/app/nztd/id1668684467",
+   "ios_id": "1668684467",
+   "free": true,
+   "iap": "無，申報本身免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息，評分 4.8（467 則）",
+   "what": "數位版入境卡，取代以前紙本 Passenger Arrival Card，掃護照、填旅遊史、申報攜帶物品，通關前完成即可",
+   "when": "出發前把 App 裝好；最早可以在<b>抵達紐西蘭前 24 小時</b>開始填。我們 09/25 落地奧克蘭，所以 09/24 台北起飛前就可以填了。",
+   "gotchas": [
+    "最晚要在通關前完成。太早填、行程有變動的話，記得回去更新。",
+    "10/09 的基督城→奧克蘭是<b>國內線</b>，不用再填一次。NZTD 只管入境紐西蘭那一次。"
+   ],
+   "offline": "App 有離線模式，可以在飛機上沒有網路時先填寫內容，落地或有訊號時再送出",
+   "src": [
+    "https://apps.apple.com/nz/app/nztd/id1668684467",
+    "https://www.travellerdeclaration.govt.nz/completing-your-declaration/",
+    "https://www.customs.govt.nz/customs-information-and-legislation/new-zealand-traveller-declaration"
+   ],
+   "web": "https://www.travellerdeclaration.govt.nz/"
+  },
+  {
+   "id": "nzeta",
+   "name": "NZeTA",
+   "zh": "紐西蘭電子旅行授權／簽證申請",
+   "cat": "entry",
+   "must": true,
+   "dev": "Ministry of Business, Innovation and Employment（Immigration New Zealand 官方 App）",
+   "ios_url": "https://apps.apple.com/nz/app/nzeta/id1470900142",
+   "ios_id": "1470900142",
+   "free": true,
+   "iap": "申請要付費：<b>用 App 申請 NZ$17、用官網申請 NZ$23</b>，另外強制加收 IVL <b>NZ$100</b>（2024/10/01 起從 NZ$35 調漲）。App 下載本身免費。",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息，評分 4.8（166 則）",
+   "what": "台灣護照屬於紐西蘭「免簽證」國家名單，但仍要事先申請 NZeTA 電子旅行授權才能登機／入境，App 可以掃護照、掃信用卡快速完成申請並一次幫全家人（最多 10 人）申請",
+   "when": "出發前就要辦好（建議至少提前幾天，官方建議不要卡在出發前一刻才辦），一次申請可覆蓋這趟全部同行者",
+   "gotchas": [
+    "不要透過非官方代辦網站申請，價格常常比官方貴很多",
+    "NZeTA 效期 2 年（或到護照到期為止，以先到者為準），跟入境當次申報用的 NZTD 是兩件不同的事，不要搞混"
+   ],
+   "src": [
+    "https://apps.apple.com/nz/app/nzeta/id1470900142",
+    "https://www.immigration.govt.nz/visas/new-zealand-electronic-travel-authority-nzeta/",
+    "https://www.immigration.govt.nz/about-us/media-centre/news-notifications/requesting-a-new-zealand-electronic-travel-authority"
+   ],
+   "web": "https://www.immigration.govt.nz/visas/new-zealand-electronic-travel-authority-nzeta/"
+  },
+  {
+   "id": "gaspy",
+   "name": "Gaspy",
+   "zh": "找附近最便宜的油價",
+   "cat": "drive",
+   "must": true,
+   "dev": "Hwem（Gaspy 開發團隊，紐西蘭本地公司，非官方機構）",
+   "ios_url": "https://apps.apple.com/nz/app/gaspy/id1157169797",
+   "ios_id": "1157169797",
+   "free": true,
+   "iap": "有：Gaspy Gold 訂閱（實測 TW 商店顯示每月 NT$30），加值功能例如更詳細分析，基本查油價功能免費",
+   "tw_store": "yes",
+   "tw_store_note": "可正常載入、可下載，沒有地區限制訊息",
+   "what": "靠車主回報油價，顯示附近加油站的即時油價排名，開多久車就能省多少錢一目了然",
+   "when": "全程 17 天自駕加油時，尤其是要決定「這裡加還是撐到下一個鎮」的時候",
+   "gotchas": [
+    "資料是使用者回報，偏遠路段（例如南島西海岸）站點少、回報頻率低，價格可能沒那麼即時",
+    "官方說明資料涵蓋紐西蘭與英國，不是全球通用"
+   ],
+   "offline": "查價功能需要網路；沒訊號時看不到即時資料，建議出發前在有訊號處先查好路線沿途油價",
+   "src": [
+    "https://apps.apple.com/nz/app/gaspy/id1157169797",
+    "https://www.gaspy.nz/",
+    "https://www.moneyhub.co.nz/gaspy-review.html"
+   ],
+   "web": "https://www.gaspy.nz/"
+  },
+  {
+   "id": "google_maps",
+   "name": "Google Maps",
+   "zh": "離線地圖——沒訊號路段唯一能用的導航",
+   "cat": "drive",
+   "must": true,
+   "dev": "Google",
+   "ios_url": "https://apps.apple.com/tw/app/google-maps/id585027354",
+   "ios_id": "585027354",
+   "free": true,
+   "iap": "App 本身免費；TW 商店有出現與 Google 服務相關的購買項目選單，跟離線地圖這個功能本身無關，離線地圖下載免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，繁中「Google 地圖」介面，沒有地區限制訊息",
+   "what": "可以把整個南島（或分區）地圖下載到手機裡，離線狀態下仍能定位、規劃路線、看路名，是全程唯一能扛住沒訊號路段的導航方案",
+   "when": "出發前用飯店 Wi-Fi 先下載南島（尤其 Milford Road、Haast Pass、Lewis Pass 沿線）的離線地圖區塊；沒訊號時當主要導航用",
+   "gotchas": [
+    "離線地圖不含即時路況、也不能語音搜尋地點，只能靠地圖上已標記的資訊",
+    "離線地圖有效期限（通常下載後可用一段時間），出發前建議重新更新一次，不要用出發前很久下載的舊版",
+    "離線模式無法算即時路線變更（例如封路改道），純粹是靜態地圖＋定位"
+   ],
+   "offline": "官方支援離線地圖下載，是這趟南島無訊號路段最主要的離線導航依靠",
+   "src": [
+    "https://apps.apple.com/tw/app/google-maps/id585027354"
+   ],
+   "abbr": "G"
+  },
+  {
+   "id": "parkmate",
+   "name": "ParkMate",
+   "zh": "市區停車繳費、手機延長停車",
+   "cat": "drive",
+   "must": true,
+   "dev": "Advam Pty Ltd（受紐西蘭多個市議會委託營運的官方合作停車繳費系統，非市議會自建）",
+   "ios_url": "https://apps.apple.com/nz/app/parkmate-nz/id950420961",
+   "ios_id": "950420961",
+   "free": true,
+   "iap": "無 App 內購，停車費用是實際停車消費（依現場費率收）",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "用手機開始／結束停車計時繳費，不用找零錢、不用回車上放停車單，執法人員直接用系統查你有沒有繳",
+   "when": "行程中進 Queenstown、Christchurch、Dunedin 市區路邊停車格時（這幾個城市確認有用 ParkMate）",
+   "gotchas": [
+    "涵蓋城市有限，鄉鎮小地方不一定適用，出發前建議先確認要停的地點是不是 ParkMate 收費區",
+    "查不到 Wanaka 是否也在服務範圍內，出發前建議現場確認"
+   ],
+   "src": [
+    "https://apps.apple.com/nz/app/parkmate-nz/id950420961",
+    "https://www.parkmate.co.nz/about-us"
+   ],
+   "web": "https://www.parkmate.co.nz/"
+  },
+  {
+   "id": "waze",
+   "name": "Waze",
+   "zh": "導航、有警察與路況回報",
+   "cat": "drive",
+   "must": true,
+   "dev": "Waze Inc.（Google 旗下）",
+   "ios_url": "https://apps.apple.com/tw/app/waze-navigation-live-traffic/id323229106",
+   "ios_id": "323229106",
+   "free": true,
+   "iap": "無。Waze 官方公開表示不打算推出付費去廣告版，靠廣告營利",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店 本來就有完整上架，非地區限定 App",
+   "what": "導航＋即時路況，社群回報測速照相、警察、事故、路障位置，跟 Google Maps 互補",
+   "when": "全程開車時當第二導航參考，尤其山區彎道多、路況多變的路段",
+   "gotchas": [
+    "紐西蘭鄉間資料回報密度不如大城市，郊區路況即時性有限",
+    "沒有網路訊號就無法導航（不像 Google Maps 可下載離線地圖）"
+   ],
+   "offline": "不支援離線地圖，沒訊號的路段（Milford Road、Haast Pass 等）完全無法用，需靠 Google Maps 離線地圖或紙本地圖",
+   "src": [
+    "https://apps.apple.com/tw/app/waze-navigation-live-traffic/id323229106",
+    "https://www.team-bhp.com/news/waze-remain-free-ads-wont-offer-ad-free-version"
+   ]
+  },
+  {
+   "id": "nz_road_conditions",
+   "name": "NZ Road Conditions",
+   "zh": "公路封閉、施工、路況攝影機",
+   "cat": "drive",
+   "must": false,
+   "dev": "Alexander Bayshev（第三方個人開發者；App 內資料引用紐西蘭官方 Waka Kotahi／NZTA Traffic and Travel API，但 App 本身不是 NZTA 官方出品）",
+   "ios_url": "https://apps.apple.com/nz/app/new-zealand-road-conditions/id6746121841",
+   "ios_id": "6746121841",
+   "free": true,
+   "iap": "官方頁面未見付費項目",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "地圖上顯示封路、事故、施工、路況攝影機畫面等資訊，來源是 NZTA 官方資料",
+   "when": "每天出發前查一下當天要走的公路（尤其 Milford Road、Haast Pass、Lewis Pass 這類容易因落石、雪崩、天候封閉的路段）有沒有封閉或施工",
+   "gotchas": [
+    "這不是 NZTA／Waka Kotahi 官方自己做的 App，官方沒有推出對應的消費者端 App，只有網站 journeys.nzta.govt.nz；建議把這支當輔助查詢，重大決策前以官方網站公告為準"
+   ],
+   "src": [
+    "https://apps.apple.com/nz/app/new-zealand-road-conditions/id6746121841",
+    "https://www.journeys.nzta.govt.nz/highway-conditions"
+   ],
+   "web": "https://www.journeys.nzta.govt.nz/highway-conditions",
+   "abbr": "R"
+  },
+  {
+   "id": "metservice",
+   "name": "MetService",
+   "zh": "紐西蘭官方氣象",
+   "cat": "weather",
+   "must": true,
+   "dev": "Meteorological Service of New Zealand Limited（紐西蘭官方氣象局）",
+   "ios_url": "https://apps.apple.com/nz/app/metservice/id525900888",
+   "ios_id": "525900888",
+   "free": true,
+   "iap": "有：去廣告訂閱（TW 商店實測顯示 NT$30/月 或 NT$390/年），基本預報功能免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，繁中介面，沒有地區限制訊息",
+   "what": "紐西蘭官方天氣預報，含惡劣天氣警特報（紅色警報會推播）、降雨雷達、3000 多個地點的預報，開車前看沿路天氣、看要不要延後出發很準",
+   "when": "每天出發前看當天／隔天路況相關天氣，尤其進 Milford Sound、Fiordland、Aoraki/Mt Cook 這類容易因天氣封路或影響能見度的路段前",
+   "gotchas": [
+    "市區介面偶爾會被廣告版位干擾（可付費去除）"
+   ],
+   "offline": "需要網路更新預報；建議每天有訊號時先查好未來 1-2 天預報再上路",
+   "src": [
+    "https://apps.apple.com/nz/app/metservice/id525900888",
+    "https://about.metservice.com/metservice-nz-weather-app"
+   ],
+   "web": "https://www.metservice.com/"
+  },
+  {
+   "id": "aurora_alerts",
+   "name": "AuroraWatch",
+   "zh": "極光通知推播（下面有但書）",
+   "cat": "weather",
+   "must": false,
+   "dev": "Gilby Shepherd（第三方個人開發者，非紐西蘭官方機構）",
+   "ios_url": "https://apps.apple.com/nz/app/aurora-watch-nz-aurora-alerts/id6745201637",
+   "ios_id": "6745201637",
+   "free": true,
+   "iap": "有：Pro 訂閱（實測 TW 商店顯示 US$2.99/週、US$4.99/月、US$29.99/年三種方案），基本功能免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "極光通知 App，可設定 Kp 值門檻主動推播提醒",
+   "when": "如果想要「達到某個強度就自動推播」而不是自己手動開 App 查，可以裝這支輔助",
+   "gotchas": [
+    "⚠️ 推翻原始說法：這支 App 目前 App Store 上的實際名稱與描述是「AuroraWatch: Aurora Alerts」，官方文案寫的是『全球極光預報／北極光追蹤』，服務對象是全世界追極光的人（含冰島、北歐等），並非紐西蘭專屬 App；雖然開發者的推廣網站 aurorawatchnz.com 以「Aurora Watch NZ」名義在導流到這支 App，但 App Store 上看到的定位是通用型，跟必查清單裡『紐西蘭在地極光 App』的預期有落差",
+    "有訂閱付費牆（週／月／年三種方案），核心提醒功能可能需要付費才能用全，跟必查清單裡的『Aurora（Kp 指數）』功能高度重疊，兩支擇一裝即可，沒必要兩支都裝"
+   ],
+   "offline": "需要網路才能接收推播與更新資料",
+   "src": [
+    "https://apps.apple.com/nz/app/aurora-watch-nz-aurora-alerts/id6745201637",
+    "https://apps.apple.com/tw/app/aurora-watch-nz-aurora-alerts/id6745201637",
+    "https://aurorawatchnz.com/"
+   ],
+   "abbr": "A"
+  },
+  {
+   "id": "aurora",
+   "name": "My Aurora Forecast",
+   "zh": "極光 Kp 指數與機率預測",
+   "cat": "weather",
+   "must": false,
+   "dev": "JRustonApps B.V.（第三方，非紐西蘭官方，資料引用 NOAA／NASA 太空天氣資料）",
+   "ios_url": "https://apps.apple.com/nz/app/my-aurora-forecast-alerts/id1073082439",
+   "ios_id": "1073082439",
+   "free": true,
+   "iap": "無，官方說明「完全免費、沒有內購」",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息，評分 4.8（2873 則）",
+   "what": "顯示即時 Kp 指數、依所在地估算看到極光的機率、未來幾小時到幾天的預測，也能看雲層覆蓋狀況",
+   "when": "晚上在南部暗夜區域過夜時（例如特卡波湖 Tekapo／麥肯齊盆地一帶暗空保護區、但尼丁以南），睡前查一下 Kp 值決定要不要半夜起來看",
+   "gotchas": [
+    "能不能真的看到極光還是要看雲層與月光，Kp 值高不保證看得到",
+    "南島緯度不算極高，通常要 Kp 5（G1）以上才比較有機會看到"
+   ],
+   "offline": "需要網路更新最新 Kp 值與雲層資料，沒訊號時看不到即時資訊",
+   "src": [
+    "https://apps.apple.com/nz/app/my-aurora-forecast-alerts/id1073082439"
+   ],
+   "abbr": "A"
+  },
+  {
+   "id": "campermate",
+   "name": "CamperMate",
+   "zh": "找營地、公廁、倒垃圾、水源、免費 Wi-Fi",
+   "cat": "stay",
+   "must": true,
+   "dev": "Outdoria Pty Ltd（現在 App Store 上架名稱已改為「CamperMate Australia & NZ」）",
+   "ios_url": "https://apps.apple.com/nz/app/campermate-australia-nz/id465040067",
+   "ios_id": "465040067",
+   "free": true,
+   "iap": "官方頁面未見明確付費升級項目，主要功能免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，繁中介面，沒有地區限制訊息",
+   "what": "在地圖上標出公廁、免費／付費營地、倒污水站、加水站、免費 Wi-Fi、超市、加油站位置，開車路上臨時要找廁所或水源很實用，不只給露營車用",
+   "when": "全程每天找過夜點、路上臨時找廁所或垃圾桶時；即使不是開露營車，公廁與免費 Wi-Fi 資訊一樣用得到",
+   "gotchas": [
+    "App 名稱在 2024 年前後從單純「CamperMate」改成「CamperMate Australia & NZ」，網路上有些教學連結還是舊名，實際下載認 developer Outdoria/CamperMate 即可",
+    "資料仰賴使用者更新，部分偏遠點位可能過時，建議抵達前再核對一次"
+   ],
+   "offline": "官方宣稱支援離線地圖，建議出發前用 Wi-Fi 先把南島地圖區塊下載好，沒訊號時仍可查點位",
+   "src": [
+    "https://apps.apple.com/nz/app/campermate-australia-nz/id465040067",
+    "https://campermate.com/en/blog/post/getaway-guides/nz/new-campermate-app-for-ios-faster-smarter-easier-travel"
+   ],
+   "web": "https://campermate.com/"
+  },
+  {
+   "id": "first_table",
+   "name": "First Table",
+   "zh": "訂當晚第一桌，餐點五折",
+   "cat": "eat",
+   "must": false,
+   "dev": "First Table（紐西蘭本地餐飲訂位新創，非官方機構）",
+   "ios_url": "https://apps.apple.com/nz/app/first-table/id1599994101",
+   "ios_id": "1599994101",
+   "free": true,
+   "iap": "訂位需付訂位費（第三方資料顯示常見約 NZD 10 元／每筆訂位，不分人數），之後餐點現場結帳打 5 折",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，繁中介面「免費」下載，沒有地區限制訊息",
+   "what": "訂當晚該餐廳「第一桌」（通常是最早的用餐時段），先付一筆訂位費，之後現場餐點打 5 折，適合想省錢又想吃像樣一點的晚餐",
+   "when": "想在 Queenstown、Wanaka、Christchurch 等有較多餐廳選擇的城鎮吃晚餐時，先查查當天有沒有合適的第一桌",
+   "gotchas": [
+    "只能訂最早的用餐時段，通常偏早（例如 17:00-18:00），不一定符合行程安排",
+    "餐廳選擇集中在較大城鎮，小地方不一定有",
+    "訂位費不同來源數字略有出入（約 NZD 10-15），實際以下單當下顯示為準"
+   ],
+   "src": [
+    "https://apps.apple.com/nz/app/first-table/id1599994101",
+    "https://www.moneyhub.co.nz/first-table-guide.html"
+   ],
+   "web": "https://www.firsttable.co.nz/",
+   "abbr": "F"
+  },
+  {
+   "id": "air_nz",
+   "name": "Air New Zealand",
+   "zh": "紐航：登機證與航班動態",
+   "cat": "misc",
+   "must": true,
+   "dev": "Air New Zealand（官方航空公司）",
+   "ios_url": "https://apps.apple.com/nz/app/air-nz/id304851207",
+   "ios_id": "304851207",
+   "free": true,
+   "iap": "無，機票費用另外在購票時支付，App 本身免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息，評分 4.7（985 則）",
+   "what": "管理機票（改位、加行李）、線上報到、手機登機證（可加入 Apple Wallet）、查詢航班即時動態",
+   "when": "去程／回程與奧克蘭轉機時的登機證與航班動態查詢；若行程中有搭紐航境內線（例如南北島間銜接航班）也會用到",
+   "gotchas": [
+    "需要 iOS 16.0 以上"
+   ],
+   "offline": "登機證加入 Apple Wallet 後離線可用，其餘查詢功能需要網路",
+   "src": [
+    "https://apps.apple.com/nz/app/air-nz/id304851207"
+   ],
+   "web": "https://www.airnewzealand.co.nz/",
+   "abbr": "A"
+  },
+  {
+   "id": "airshare",
+   "name": "AirShare",
+   "zh": "無人機飛行空域查詢與申請",
+   "cat": "misc",
+   "must": false,
+   "dev": "AirShare Ltd（由 Airways New Zealand、UAVNZ 與紐西蘭民航局 CAA 共同支持的官方無人機空域平台）",
+   "ios_url": "https://apps.apple.com/nz/app/airshare-new-zealand-uav-hub/id1455453643",
+   "ios_id": "1455453643",
+   "free": true,
+   "iap": "官方頁面未見付費項目，基本查詢與申請功能免費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，繁中介面，沒有地區限制訊息",
+   "what": "顯示紐西蘭空域限制地圖（機場管制區、國家公園限飛區等），可以線上申請進入管制空域的許可、記錄飛行紀錄",
+   "when": "只有帶空拍機的人需要，出發前先查好行程沿路（尤其 Milford Sound、Aoraki/Mt Cook 國家公園）哪裡限飛、哪裡要先申請",
+   "gotchas": [
+    "紐西蘭國家公園（DOC 管理地）對空拍機飛行另有自己的規定，AirShare 主要處理「空域」不等於「土地管理單位」的許可，兩邊都要查",
+    "商業拍攝與休閒飛行規則不同"
+   ],
+   "offline": "查詢空域地圖需要網路；建議在有訊號時先查好當天要飛的地點再出發",
+   "src": [
+    "https://apps.apple.com/nz/app/airshare-new-zealand-uav-hub/id1455453643",
+    "https://airshare.co.nz/about-us/",
+    "https://spark.mwm.ai/us/apps/airshare-nz-drone-hub/1455453643"
+   ],
+   "web": "https://airshare.co.nz/"
+  },
+  {
+   "id": "airalo",
+   "name": "Airalo",
+   "zh": "買紐西蘭 eSIM 上網",
+   "cat": "misc",
+   "must": false,
+   "dev": "Airalo",
+   "ios_url": "https://apps.apple.com/tw/app/airalo-esim-travel-internet/id1475911720",
+   "ios_id": "1475911720",
+   "free": true,
+   "iap": "有：App 內購買各地 eSIM 上網方案（紐西蘭方案依流量／天數計價，官網標示最低約 USD 4 起）",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "App 內直接購買、安裝、管理紐西蘭當地 eSIM 數據方案，不用到當地才找電信門市辦卡",
+   "when": "出發前先買好，落地奧克蘭轉機或抵達南島後就有當地數據可用（撐起 Google Maps／CamperMate 等需要連網查資料的功能）",
+   "gotchas": [
+    "⚠️ 有 eSIM 不代表 Milford Road、Haast Pass 這類沒有基地台覆蓋的路段會有訊號——eSIM 解決的是「有訊號時换當地便宜資費」的問題，不是「訊號覆蓋」的問題，兩者不要搞混",
+    "需要手機支援 eSIM（iPhone XS 之後機型大多支援）且已解鎖"
+   ],
+   "src": [
+    "https://apps.apple.com/tw/app/airalo-esim-travel-internet/id1475911720",
+    "https://www.airalo.com/new-zealand-esim"
+   ],
+   "web": "https://www.airalo.com/new-zealand-esim"
+  },
+  {
+   "id": "geonet_quake",
+   "name": "GeoNet Quake",
+   "zh": "地震與火山警報",
+   "cat": "misc",
+   "must": false,
+   "dev": "GeoNet（由 GNS Science 主導，與 Natural Hazards Commission Toka Tū Ake、LINZ、NEMA 等機構合作營運的官方地震監測系統；App Store 掛名法人為 New Zealand Institute for Earth Science Limited，即 GNS Science 相關法人）",
+   "ios_url": "https://apps.apple.com/nz/app/geonet-quake/id533054360",
+   "ios_id": "533054360",
+   "free": true,
+   "iap": "官方頁面未見付費項目",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "依所在地與地震強度自訂通知門檻，地震發生後幾分鐘內推播提醒，也有火山警戒公告",
+   "when": "全程放著背景執行即可，南島（尤其阿爾卑斯斷層 Alpine Fault 一帶、皇后鎮周邊）地震活動不算少見，當作安全備援",
+   "gotchas": [],
+   "offline": "需要網路接收推播；地震當下如果剛好沒訊號就不會即時收到通知",
+   "src": [
+    "https://apps.apple.com/nz/app/geonet-quake/id533054360",
+    "https://www.geonet.org.nz/about"
+   ],
+   "web": "https://www.geonet.org.nz/",
+   "abbr": "G"
+  },
+  {
+   "id": "tracks_nz",
+   "name": "Tracks NZ",
+   "zh": "DOC 步道／山屋資訊查詢",
+   "cat": "misc",
+   "must": false,
+   "dev": "第三方開發者（App Store 上顯示為個人開發者，非 DOC 官方自製，但資料取自 DOC 公開步道／山屋資料與 LINZ 地形圖）",
+   "ios_url": "https://apps.apple.com/nz/app/tracks-nz/id1488245855",
+   "ios_id": "1488245855",
+   "free": true,
+   "iap": "官方頁面未見付費項目",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，沒有地區限制訊息",
+   "what": "整合 DOC 管理的步道、山屋、營地資訊，附 NZ TOPO 地形圖，適合查半日健行路線的難度、距離、路況說明",
+   "when": "如果行程中安排 Hooker Valley Track、Routeburn Track 部分路段這類健行時，出發前查路況與地圖",
+   "gotchas": [
+    "不是 DOC 官方自己做的 App，DOC 本身沒有推出對應的官方消費者 App，最權威的資訊還是要以 doc.govt.nz 網站公告（尤其步道關閉、天氣警示）為準，這支只是輔助查詢工具"
+   ],
+   "offline": "官方說明地圖以外的資料（步道說明、山屋資訊）可離線查看，地圖圖磚需要事先載入",
+   "src": [
+    "https://apps.apple.com/nz/app/tracks-nz/id1488245855",
+    "https://www.doc.govt.nz/parks-and-recreation/"
+   ],
+   "web": "https://www.doc.govt.nz/",
+   "abbr": "T"
+  },
+  {
+   "id": "uber",
+   "name": "Uber",
+   "zh": "叫車，不想自駕時的代步",
+   "cat": "misc",
+   "must": false,
+   "dev": "Uber Technologies, Inc.",
+   "ios_url": "https://apps.apple.com/tw/app/uber/id368677368",
+   "ios_id": "368677368",
+   "free": true,
+   "iap": "無，車資是實際搭乘消費",
+   "tw_store": "yes",
+   "tw_store_note": "台灣商店正常載入，「優步」繁中介面，沒有地區限制訊息",
+   "what": "叫車服務，2018 年起在皇后鎮上線，目前也涵蓋基督城等主要城市",
+   "when": "在 Queenstown、Christchurch 這類有服務的城市想喝酒吃晚餐、不想開車，或奧克蘭轉機往返機場市區時",
+   "gotchas": [
+    "涵蓋範圍限於較大城市，Te Anau、Wanaka 這類小鎮很可能沒有 Uber 服務，出發前建議先查當地是否有覆蓋，備案是當地計程車"
+   ],
+   "src": [
+    "https://apps.apple.com/tw/app/uber/id368677368",
+    "https://www.uber.com/nz/en/newsroom/queenstown"
+   ]
+  }
+ ],
+ "notes": {
+  "nzeta_vs_nztd": "這兩個是完全不同的東西，很多人搞混：① NZeTA（電子旅行授權）是『能不能登機、能不能入境』的資格，台灣護照屬於免簽證國家，但仍要事先申請 NZeTA 才能入境，效期 2 年（或到護照到期為止，以先到者為準），出發前申請一次就好，不用每次入境重辦；費用是 App 申請 NZD 17／網站申請 NZD 23，另外一定要付 IVL（國際旅客保育及旅遊稅）NZD 100（2024 年 10 月 1 日起從 NZD 35 調漲為 NZD 100），IVL 是每次申請 NZeTA 或簽證時一併收取、不可退費。② NZTD（New Zealand Traveller Declaration）是『這一趟入境要申報什麼』的每次入境都要填的電子入境卡，取代以前紙本的 Passenger Arrival Card，最早可以在出發前 24 小時內開始填（如果中途有轉機且會出關取行李、離開機場，時間點要以離開轉機點飛往紐西蘭的那段航班起飛前 24 小時起算），要在通關前完成，是免費的。簡單說：NZeTA 只辦一次（管 2 年），NZTD 每趟旅程都要填一次。",
+  "offline_reality": "南島很多路段完全沒有訊號，這不是網路好壞問題而是根本沒基地台：Haast 一帶過去是長達約 244 公里的訊號死角（Fox Glacier 到 Lake Hawea 之間），Haast 市區裝了訊號站後也只涵蓋鎮上與 SH6 沿線約 3 公里；從 Te Anau 往 Milford Sound 這段路一離開 Te Anau 就沒訊號，一路到 Milford Sound 附近訊號也很有限，要開回 Te Anau 才會恢復。因此：Google Maps 的離線地圖一定要在出發前（用飯店 Wi-Fi）先把南島地圖區塊下載好，而且沿路建議把 Milford Road、Haast Pass、Lewis Pass 這幾段特別確認有涵蓋到；CamperMate 的離線地圖功能也建議先下載；NZTD 有離線模式可以在飛機上先填好內容，有網路時再送出；靠即時資料運作的 App（Waze、MetService 更新預報、Gaspy 查即時油價、極光類 App）在這些死角路段基本上都用不了，只能仰賴出發前查好的資訊或紙本備案。eSIM（例如 Airalo）能解決的是『有訊號時換便宜當地資費』，不能解決『這段路根本沒基地台』的問題。"
+ },
+ "unknown": [
+  "MetService App 內購去廣告訂閱的實際幣別與精確定價：TW 商店頁面顯示為 NT$30/月、NT$390/年，但未找到官方文件明確列出定價幣別／依地區調整的說明，僅供參考，實際以下單當下顯示為準",
+  "First Table 訂位費確切金額：不同來源（MoneyHub 等）數字在 NZD 10-15 之間略有出入，找不到官方單一定價頁面明確固定金額，可能依餐廳／時段浮動，實際以下單當下顯示為準",
+  "ParkMate 是否涵蓋 Wanaka：查到 Queenstown、Christchurch、Dunedin 等城市有支援，但沒查到 Wanaka 是否也在服務範圍內，建議出發前現場或於 App 內確認",
+  "AuroraWatch: Aurora Alerts（id6745201637）的開發者背景與其推廣網站 aurorawatchnz.com 之間的確切關係：App Store 上開發者顯示為個人（Gilby Shepherd），與網站宣稱『我做了 Aurora Watch NZ』的敘述無法完全對得上開發者身分細節，只能確認兩者目前指向同一個 App Store ID，且該 App 目前定位是全球通用型，不是紐西蘭專屬"
+ ]
+}

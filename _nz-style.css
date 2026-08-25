@@ -337,7 +337,7 @@ details[open] summary{margin-bottom:9px}
   border-bottom:1px solid var(--line-2);font-size:.83rem;align-items:baseline}
 .pl-facts dt{font-family:var(--mono);font-size:.71rem;color:var(--ink-soft);
   letter-spacing:.02em;line-height:1.7}
-.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65}
+.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65;overflow-wrap:anywhere;word-break:break-word}
 .pl-facts dd b{color:var(--ink);font-weight:650}
 @media(max-width:420px){
   .pl-facts > div{grid-template-columns:1fr;gap:1px;padding:8px 0}
@@ -729,6 +729,38 @@ th .twd,.pop-h .twd{display:none}
   .pl-more .dm-cta{padding:6px 11px 6px 12px;font-size:.76rem}
   .pl-deep p{font-size:.91rem}
 }
+
+/* ── 購物卡的「推薦好物清單」──────────────────────────────
+   跟深度知識用同一顆展開鈕的行為，但整組換成湖藍色，
+   讓「這家店賣什麼」跟「知道了會不一樣」在同一張卡上分得開。
+   文字寫「推薦好物清單 N 項」而不是只放圖示——
+   使用者回報過好幾次「不知道這個可以點」。 */
+.pl-more.is-buy{background:linear-gradient(180deg,#E8F4F8,#DCEDF4);border-color:#B6D9E5}
+.pl-more.is-buy .dm-ic{margin-top:0}
+.pl-more.is-buy .dm-t{color:#175C72;white-space:normal}
+.pl-more.is-buy .dm-t small{display:inline-block;margin-left:7px;padding:1px 7px;
+  border-radius:999px;background:#fff;border:1px solid #B6D9E5;
+  font-family:var(--mono);font-size:.7rem;font-weight:600;color:#2C7E97;
+  font-variant-numeric:lining-nums tabular-nums}
+.pl-more.is-buy .dm-cta{background:#2C7E97}
+.pl-more.is-buy:hover{background:linear-gradient(180deg,#DDEEF5,#CDE5EF);
+  border-color:#8FC6D8}
+.pl-more.is-buy:focus-visible{outline-color:var(--pukaki)}
+.pl-more.is-buy.open{background:linear-gradient(180deg,#D7EAF2,#C8E2EC);
+  border-color:var(--pukaki)}
+.pl-more.is-buy.open .dm-cta{background:#175C72}
+.pl-deep.is-buy{border-left-color:var(--pukaki);background:#F6FBFD}
+
+.buylist{list-style:none;margin:0;padding:0}
+.buylist li{padding:10px 0;border-bottom:1px dashed var(--line)}
+.buylist li:first-child{padding-top:0}
+.buylist li:last-child{padding-bottom:0;border-bottom:0}
+.buylist .bh{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.buylist .bn{font-weight:650;color:var(--ink);font-size:.9rem;line-height:1.5}
+.buylist .bp{flex:none;font-family:var(--mono);font-size:.76rem;color:#175C72;
+  background:#E8F4F8;border:1px solid #B6D9E5;border-radius:999px;padding:2px 9px;
+  font-variant-numeric:lining-nums tabular-nums}
+.buylist p{margin:4px 0 0;font-size:.85rem;line-height:1.7;color:var(--ink-2)}
 
 /* ── 文化知識卡 ── */
 .cul-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;margin:20px 0}
@@ -1122,3 +1154,70 @@ input:focus-visible,[tabindex]:focus-visible{
 .prdnote b{color:#B8C9D3}
 .prdnote a{color:var(--pukaki-lt);text-decoration:underline;text-underline-offset:2px;
   margin:0 2px}
+
+/* ═══ App 分頁 ══════════════════════════════════════════════
+   卡片結構跟地點卡（.pl）同一套語彙，但沒有地圖與日期。
+   icon 用 CSS 畫的字母色塊——App Store 的原始圖示有版權，
+   這站的規矩是只放本地、可標示授權的圖。
+   ══════════════════════════════════════════════════════════ */
+.ap-bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;
+  background:var(--ice-2);border:1px solid var(--line);border-radius:13px;
+  padding:11px 13px;margin:18px 0 0}
+.ap-bl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);flex:none}
+.ap-chips{display:flex;flex-wrap:wrap;gap:7px}
+.ap-must{margin-left:auto}
+.ap-must[aria-pressed="true"]{background:var(--tussock);border-color:var(--tussock)}
+.ap-count{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);
+  margin:11px 0 0;font-variant-numeric:lining-nums tabular-nums}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+  gap:18px;margin:14px 0 0}
+.ap{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:17px 19px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ap.is-must{border-color:#E0C98A;box-shadow:0 2px 14px rgba(197,150,40,.13)}
+
+.ap-top{display:flex;align-items:center;gap:13px;margin-bottom:11px}
+.ap-tile{flex:none;width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:1.5rem;font-weight:700;color:#fff;
+  background:linear-gradient(150deg,hsl(var(--h) 58% 52%),hsl(var(--h) 62% 38%));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 6px rgba(11,22,32,.16);
+  text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.ap-name{min-width:0}
+.ap-name h3{margin:0;font-size:1.06rem;line-height:1.3;letter-spacing:-.01em}
+.ap-name p{margin:3px 0 0;font-size:.83rem;line-height:1.5;color:var(--ink-soft)}
+
+.ap-tag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:20px;
+  font-family:var(--mono);letter-spacing:.02em;border:1px solid transparent}
+.ap-tag.free{background:#E4F1EA;color:#1E5B4E;border-color:#BFDCCF}
+.ap-tag.paid{background:#F6ECD8;color:#8C6A22;border-color:#E3D0A6}
+
+.ap .pl-note{flex:1 1 auto}
+.ap-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--line-2)}
+.ap-dl{flex:1 1 200px;display:flex;align-items:center;gap:11px;
+  min-height:52px;padding:9px 15px;border-radius:12px;text-decoration:none;
+  background:linear-gradient(180deg,#22303C,#131E28);color:#fff;
+  border:1px solid #0A121A;box-shadow:0 2px 7px rgba(11,22,32,.24);
+  transition:transform .16s,box-shadow .16s,filter .16s}
+.ap-dl .ic::before{content:'\1F4F2';font-size:1.25rem;line-height:1}
+.ap-dl .tx{display:flex;flex-direction:column;line-height:1.3;font-weight:650;font-size:.92rem}
+.ap-dl .tx em{font-style:normal;font-weight:400;font-size:.72rem;color:#9DB6C4;margin-top:2px}
+.ap-dl:hover{filter:brightness(1.14);box-shadow:0 4px 12px rgba(11,22,32,.3)}
+.ap-dl:active{transform:scale(.985)}
+.ap-dl:focus-visible{outline:2px solid var(--pukaki);outline-offset:2px}
+.ap-dl.is-off{background:var(--paper-2);color:var(--ink-soft);border:1px dashed var(--line);
+  box-shadow:none;font-size:.85rem;flex-direction:column;align-items:flex-start;
+  justify-content:center;gap:2px}
+.ap-dl.is-off em{font-style:normal;font-size:.75rem;color:var(--ink-soft)}
+.ap-web{flex:none;display:inline-flex;align-items:center;padding:0 16px;min-height:52px;
+  border-radius:12px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink-2);text-decoration:none;font-size:.85rem;font-weight:600}
+.ap-web:hover{border-color:var(--pukaki);color:var(--pukaki-dk);background:var(--ice-2)}
+
+@media(max-width:600px){
+  .ap-grid{grid-template-columns:1fr;gap:15px}
+  .ap{padding:15px 16px 16px}
+  .ap-must{margin-left:0}
+  .ap-tile{width:48px;height:48px;font-size:1.32rem;border-radius:12px}
+}

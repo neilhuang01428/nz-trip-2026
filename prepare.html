@@ -348,7 +348,7 @@ details[open] summary{margin-bottom:9px}
   border-bottom:1px solid var(--line-2);font-size:.83rem;align-items:baseline}
 .pl-facts dt{font-family:var(--mono);font-size:.71rem;color:var(--ink-soft);
   letter-spacing:.02em;line-height:1.7}
-.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65}
+.pl-facts dd{margin:0;color:var(--ink-2);line-height:1.65;overflow-wrap:anywhere;word-break:break-word}
 .pl-facts dd b{color:var(--ink);font-weight:650}
 @media(max-width:420px){
   .pl-facts > div{grid-template-columns:1fr;gap:1px;padding:8px 0}
@@ -740,6 +740,38 @@ th .twd,.pop-h .twd{display:none}
   .pl-more .dm-cta{padding:6px 11px 6px 12px;font-size:.76rem}
   .pl-deep p{font-size:.91rem}
 }
+
+/* ── 購物卡的「推薦好物清單」──────────────────────────────
+   跟深度知識用同一顆展開鈕的行為，但整組換成湖藍色，
+   讓「這家店賣什麼」跟「知道了會不一樣」在同一張卡上分得開。
+   文字寫「推薦好物清單 N 項」而不是只放圖示——
+   使用者回報過好幾次「不知道這個可以點」。 */
+.pl-more.is-buy{background:linear-gradient(180deg,#E8F4F8,#DCEDF4);border-color:#B6D9E5}
+.pl-more.is-buy .dm-ic{margin-top:0}
+.pl-more.is-buy .dm-t{color:#175C72;white-space:normal}
+.pl-more.is-buy .dm-t small{display:inline-block;margin-left:7px;padding:1px 7px;
+  border-radius:999px;background:#fff;border:1px solid #B6D9E5;
+  font-family:var(--mono);font-size:.7rem;font-weight:600;color:#2C7E97;
+  font-variant-numeric:lining-nums tabular-nums}
+.pl-more.is-buy .dm-cta{background:#2C7E97}
+.pl-more.is-buy:hover{background:linear-gradient(180deg,#DDEEF5,#CDE5EF);
+  border-color:#8FC6D8}
+.pl-more.is-buy:focus-visible{outline-color:var(--pukaki)}
+.pl-more.is-buy.open{background:linear-gradient(180deg,#D7EAF2,#C8E2EC);
+  border-color:var(--pukaki)}
+.pl-more.is-buy.open .dm-cta{background:#175C72}
+.pl-deep.is-buy{border-left-color:var(--pukaki);background:#F6FBFD}
+
+.buylist{list-style:none;margin:0;padding:0}
+.buylist li{padding:10px 0;border-bottom:1px dashed var(--line)}
+.buylist li:first-child{padding-top:0}
+.buylist li:last-child{padding-bottom:0;border-bottom:0}
+.buylist .bh{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.buylist .bn{font-weight:650;color:var(--ink);font-size:.9rem;line-height:1.5}
+.buylist .bp{flex:none;font-family:var(--mono);font-size:.76rem;color:#175C72;
+  background:#E8F4F8;border:1px solid #B6D9E5;border-radius:999px;padding:2px 9px;
+  font-variant-numeric:lining-nums tabular-nums}
+.buylist p{margin:4px 0 0;font-size:.85rem;line-height:1.7;color:var(--ink-2)}
 
 /* ── 文化知識卡 ── */
 .cul-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;margin:20px 0}
@@ -1134,6 +1166,73 @@ input:focus-visible,[tabindex]:focus-visible{
 .prdnote a{color:var(--pukaki-lt);text-decoration:underline;text-underline-offset:2px;
   margin:0 2px}
 
+/* ═══ App 分頁 ══════════════════════════════════════════════
+   卡片結構跟地點卡（.pl）同一套語彙，但沒有地圖與日期。
+   icon 用 CSS 畫的字母色塊——App Store 的原始圖示有版權，
+   這站的規矩是只放本地、可標示授權的圖。
+   ══════════════════════════════════════════════════════════ */
+.ap-bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;
+  background:var(--ice-2);border:1px solid var(--line);border-radius:13px;
+  padding:11px 13px;margin:18px 0 0}
+.ap-bl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);flex:none}
+.ap-chips{display:flex;flex-wrap:wrap;gap:7px}
+.ap-must{margin-left:auto}
+.ap-must[aria-pressed="true"]{background:var(--tussock);border-color:var(--tussock)}
+.ap-count{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);
+  margin:11px 0 0;font-variant-numeric:lining-nums tabular-nums}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+  gap:18px;margin:14px 0 0}
+.ap{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:17px 19px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ap.is-must{border-color:#E0C98A;box-shadow:0 2px 14px rgba(197,150,40,.13)}
+
+.ap-top{display:flex;align-items:center;gap:13px;margin-bottom:11px}
+.ap-tile{flex:none;width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:1.5rem;font-weight:700;color:#fff;
+  background:linear-gradient(150deg,hsl(var(--h) 58% 52%),hsl(var(--h) 62% 38%));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 6px rgba(11,22,32,.16);
+  text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.ap-name{min-width:0}
+.ap-name h3{margin:0;font-size:1.06rem;line-height:1.3;letter-spacing:-.01em}
+.ap-name p{margin:3px 0 0;font-size:.83rem;line-height:1.5;color:var(--ink-soft)}
+
+.ap-tag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:20px;
+  font-family:var(--mono);letter-spacing:.02em;border:1px solid transparent}
+.ap-tag.free{background:#E4F1EA;color:#1E5B4E;border-color:#BFDCCF}
+.ap-tag.paid{background:#F6ECD8;color:#8C6A22;border-color:#E3D0A6}
+
+.ap .pl-note{flex:1 1 auto}
+.ap-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--line-2)}
+.ap-dl{flex:1 1 200px;display:flex;align-items:center;gap:11px;
+  min-height:52px;padding:9px 15px;border-radius:12px;text-decoration:none;
+  background:linear-gradient(180deg,#22303C,#131E28);color:#fff;
+  border:1px solid #0A121A;box-shadow:0 2px 7px rgba(11,22,32,.24);
+  transition:transform .16s,box-shadow .16s,filter .16s}
+.ap-dl .ic::before{content:'\1F4F2';font-size:1.25rem;line-height:1}
+.ap-dl .tx{display:flex;flex-direction:column;line-height:1.3;font-weight:650;font-size:.92rem}
+.ap-dl .tx em{font-style:normal;font-weight:400;font-size:.72rem;color:#9DB6C4;margin-top:2px}
+.ap-dl:hover{filter:brightness(1.14);box-shadow:0 4px 12px rgba(11,22,32,.3)}
+.ap-dl:active{transform:scale(.985)}
+.ap-dl:focus-visible{outline:2px solid var(--pukaki);outline-offset:2px}
+.ap-dl.is-off{background:var(--paper-2);color:var(--ink-soft);border:1px dashed var(--line);
+  box-shadow:none;font-size:.85rem;flex-direction:column;align-items:flex-start;
+  justify-content:center;gap:2px}
+.ap-dl.is-off em{font-style:normal;font-size:.75rem;color:var(--ink-soft)}
+.ap-web{flex:none;display:inline-flex;align-items:center;padding:0 16px;min-height:52px;
+  border-radius:12px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink-2);text-decoration:none;font-size:.85rem;font-weight:600}
+.ap-web:hover{border-color:var(--pukaki);color:var(--pukaki-dk);background:var(--ice-2)}
+
+@media(max-width:600px){
+  .ap-grid{grid-template-columns:1fr;gap:15px}
+  .ap{padding:15px 16px 16px}
+  .ap-must{margin-left:0}
+  .ap-tile{width:48px;height:48px;font-size:1.32rem;border-radius:12px}
+}
+
 </style>
 <style>
 /* 打包清單：可勾選，狀態存在本機 */
@@ -1178,6 +1277,8 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="book.html"><span class="ic" aria-hidden="true">🎟</span><span class="tx">需預約</span></a>
 <a href="skydive.html"><span class="ic" aria-hidden="true">🪂</span><span class="tx">跳傘</span></a>
 <a href="mtcook.html"><span class="ic" aria-hidden="true">🥾</span><span class="tx">健行</span></a>
+<a href="shop.html"><span class="ic" aria-hidden="true">🛍</span><span class="tx">購物</span></a>
+<a href="apps.html"><span class="ic" aria-hidden="true">📱</span><span class="tx">App</span></a>
 <a href="culture.html"><span class="ic" aria-hidden="true">🗿</span><span class="tx">文化</span></a>
 <a href="talk.html"><span class="ic" aria-hidden="true">💬</span><span class="tx">會話</span></a>
 <a href="prepare.html" class="on" aria-current="page"><span class="ic" aria-hidden="true">🎒</span><span class="tx">行前</span></a>
@@ -1624,6 +1725,8 @@ input:focus-visible,[tabindex]:focus-visible{
 <a href="index.html"><span>🏔</span>總覽</a>
 <a href="skydive.html"><span>🪂</span>跳傘</a>
 <a href="mtcook.html"><span>🥾</span>健行</a>
+<a href="shop.html"><span>🛍</span>購物</a>
+<a href="apps.html"><span>📱</span>App</a>
 <a href="culture.html"><span>🗿</span>文化</a>
 <a href="talk.html"><span>💬</span>會話</a>
 <a href="prepare.html" class="on"><span>🎒</span>行前</a>
@@ -1736,6 +1839,9 @@ input:focus-visible,[tabindex]:focus-visible{
     p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
       (p.g && p.g.r ? p.g.r + '星 高評價' : ''),
               d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
+              (p.buy || []).map(function (b) {
+                return [b.n, b.d, b.p].filter(Boolean).join(' ');
+              }).join(' '),
               (CATS[p.cat] || {}).label,
               'D' + String(p.day).padStart(2, '0'),
               (dayByNum[p.day] || {}).date]
@@ -2116,6 +2222,26 @@ input:focus-visible,[tabindex]:focus-visible{
         h += '</ul>';
       }
       h += '</div>';
+    }
+
+    /* buy：可展開的推薦好物清單。購物卡專用。
+       跟 deep 用同一套展開／收合行為（data-deep），但顏色換成湖藍，
+       讓「這家店賣什麼」跟「知道了會不一樣」在視覺上分得開。 */
+    if (p.buy && p.buy.length) {
+      var bid = 'buy-' + p.id;
+      h += '<button type="button" class="pl-more is-buy" data-deep="' + bid + '" ' +
+        'aria-expanded="false" aria-controls="' + bid + '">' +
+        '<span class="dm-ic">🛍</span>' +
+        '<span class="dm-t">推薦好物清單<small>' + p.buy.length + ' 項</small></span>' +
+        '<span class="dm-cta"><span class="dm-lb">展開</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></span></button>' +
+        '<div class="pl-deep is-buy" id="' + bid + '" hidden><ul class="buylist">';
+      p.buy.forEach(function (b) {
+        h += '<li><div class="bh"><span class="bn">' + hl(b.n) + '</span>' +
+          (b.p ? '<span class="bp">' + hl(b.p) + '</span>' : '') + '</div>' +
+          (b.d ? '<p>' + hl(b.d) + '</p>' : '') + '</li>';
+      });
+      h += '</ul></div>';
     }
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
@@ -3281,6 +3407,158 @@ input:focus-visible,[tabindex]:focus-visible{
     }, 480);
   }, 700);
   try { localStorage.setItem('nz-scroll-hint', '1'); } catch (e) {}
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   App 分頁：把 data/apps.json 渲染成卡片
+   只在有 #apps 容器的頁面跑。圖示不抓 App Store 的原始 icon
+   （那是有版權的），改用 CSS 畫的字母色塊。
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var dataEl = document.getElementById('apps-data');
+  var root = document.getElementById('apps');
+  if (!dataEl || !root) return;
+  var DB = JSON.parse(dataEl.textContent);
+  var CATS = DB.cats || {};
+  var APPS = DB.apps || [];
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function rich(s) {           // 內文只允許 <b>
+    return esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+  }
+
+  var state = { cat: '', must: false };
+
+  /* 沒有 icon 圖檔，就用名字第一個字母 ＋ 一個穩定的色相。
+     同一個 id 永遠得到同一個顏色（雜湊），不會每次 build 就換。 */
+  function tint(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 360;
+    return h;
+  }
+  function tileHtml(a) {
+    var h = tint(a.id);
+    var ch = (a.abbr || a.name || '?').trim().charAt(0).toUpperCase();
+    return '<span class="ap-tile" aria-hidden="true" style="' +
+      '--h:' + h + '">' + esc(ch) + '</span>';
+  }
+
+  function cardHtml(a) {
+    var h = '<div class="ap-top">' + tileHtml(a) +
+      '<div class="ap-name"><h3>' + esc(a.name) + '</h3>' +
+      (a.zh ? '<p>' + esc(a.zh) + '</p>' : '') + '</div></div>';
+
+    var tags = '';
+    if (a.must) tags += '<span class="pl-tag t-star">★ 重點下載</span>';
+    if (CATS[a.cat]) tags += '<span class="pl-tag t-day">' + esc(CATS[a.cat]) + '</span>';
+    if (a.free === true) tags += '<span class="ap-tag free">免費</span>';
+    else if (a.free === false) tags += '<span class="ap-tag paid">付費</span>';
+    if (a.tw_store === 'no') tags += '<span class="pl-tag t-warn">⚠ 台灣商店裝不到</span>';
+    else if (a.tw_store === 'unknown') tags += '<span class="pl-tag t-unv">台灣商店未確認</span>';
+    if (tags) h += '<div class="pl-tags">' + tags + '</div>';
+
+    if (a.what) h += '<p class="pl-note">' + rich(a.what) + '</p>';
+
+    var facts = [];
+    if (a.when) facts.push(['這趟', a.when]);
+    if (a.offline) facts.push(['離線', a.offline]);
+    if (a.iap) facts.push(['內購', a.iap]);
+    if (a.dev) facts.push(['開發者', a.dev]);
+    if (a.tw_store_note) facts.push(['台灣裝', a.tw_store_note]);
+    if (facts.length) {
+      h += '<dl class="pl-facts">';
+      facts.forEach(function (f) {
+        h += '<div><dt>' + esc(f[0]) + '</dt><dd>' + rich(f[1]) + '</dd></div>';
+      });
+      h += '</dl>';
+    }
+    if (a.gotchas && a.gotchas.length) {
+      h += '<ul class="pl-warn">';
+      a.gotchas.forEach(function (g) { h += '<li>' + rich(g) + '</li>'; });
+      h += '</ul>';
+    }
+
+    h += '<div class="ap-btns">';
+    if (a.ios_url) {
+      h += '<a class="ap-dl" href="' + esc(a.ios_url) + '" target="_blank" rel="noopener">' +
+        '<span class="ic" aria-hidden="true"></span>' +
+        '<span class="tx">App Store 下載<em>點了直接開 App Store</em></span></a>';
+    } else {
+      h += '<span class="ap-dl is-off">查不到官方 App Store 連結' +
+        '<em>請在 App Store 自己搜尋店名，別裝到山寨版</em></span>';
+    }
+    if (a.web) h += '<a class="ap-web" href="' + esc(a.web) +
+      '" target="_blank" rel="noopener">官網</a>';
+    h += '</div>';
+    return h;
+  }
+
+  /* ── 篩選列 ── */
+  var bar = document.createElement('div');
+  bar.className = 'ap-bar';
+  var chips = [['', '全部']];
+  Object.keys(CATS).forEach(function (k) {
+    if (APPS.some(function (a) { return a.cat === k; })) chips.push([k, CATS[k]]);
+  });
+  var barHtml = '<span class="ap-bl">看哪一類</span><div class="ap-chips" role="group">';
+  chips.forEach(function (c) {
+    barHtml += '<button type="button" class="fchip" data-cat="' + esc(c[0]) + '" ' +
+      'aria-pressed="' + (c[0] === '' ? 'true' : 'false') + '">' + esc(c[1]) + '</button>';
+  });
+  barHtml += '</div><button type="button" class="fchip ap-must" data-must ' +
+    'aria-pressed="false">★ 只看重點下載</button>';
+  bar.innerHTML = barHtml;
+  root.appendChild(bar);
+
+  var count = document.createElement('p');
+  count.className = 'ap-count';
+  root.appendChild(count);
+
+  var grid = document.createElement('div');
+  grid.className = 'ap-grid';
+  root.appendChild(grid);
+
+  function render() {
+    var list = APPS.filter(function (a) {
+      if (state.cat && a.cat !== state.cat) return false;
+      if (state.must && !a.must) return false;
+      return true;
+    });
+    count.textContent = (state.cat || state.must)
+      ? '顯示 ' + list.length + ' / ' + APPS.length + ' 支'
+      : APPS.length + ' 支 App';
+    grid.innerHTML = '';
+    list.forEach(function (a) {
+      var card = document.createElement('article');
+      card.className = 'ap' + (a.must ? ' is-must' : '');
+      card.id = 'app-' + a.id;
+      card.innerHTML = cardHtml(a);
+      grid.appendChild(card);
+    });
+    if (!list.length) grid.innerHTML = '<div class="empty">這個條件下沒有 App。</div>';
+  }
+
+  bar.querySelectorAll('[data-cat]').forEach(function (b) {
+    b.onclick = function () {
+      state.cat = b.dataset.cat;
+      bar.querySelectorAll('[data-cat]').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+      render();
+    };
+  });
+  var mb = bar.querySelector('[data-must]');
+  mb.onclick = function () {
+    state.must = !state.must;
+    mb.setAttribute('aria-pressed', String(state.must));
+    render();
+  };
+  render();
 })();
 
 </script>

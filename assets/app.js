@@ -72,6 +72,9 @@
     p._hay = [p.name, p.zh, p.town, p.note, p.price, p.hours, p.addr, p.bk,
       (p.g && p.g.r ? p.g.r + '星 高評價' : ''),
               d.lead, (d.paras || []).join(' '), (d.tips || []).join(' '),
+              (p.buy || []).map(function (b) {
+                return [b.n, b.d, b.p].filter(Boolean).join(' ');
+              }).join(' '),
               (CATS[p.cat] || {}).label,
               'D' + String(p.day).padStart(2, '0'),
               (dayByNum[p.day] || {}).date]
@@ -452,6 +455,26 @@
         h += '</ul>';
       }
       h += '</div>';
+    }
+
+    /* buy：可展開的推薦好物清單。購物卡專用。
+       跟 deep 用同一套展開／收合行為（data-deep），但顏色換成湖藍，
+       讓「這家店賣什麼」跟「知道了會不一樣」在視覺上分得開。 */
+    if (p.buy && p.buy.length) {
+      var bid = 'buy-' + p.id;
+      h += '<button type="button" class="pl-more is-buy" data-deep="' + bid + '" ' +
+        'aria-expanded="false" aria-controls="' + bid + '">' +
+        '<span class="dm-ic">🛍</span>' +
+        '<span class="dm-t">推薦好物清單<small>' + p.buy.length + ' 項</small></span>' +
+        '<span class="dm-cta"><span class="dm-lb">展開</span>' +
+        '<span class="dm-a" aria-hidden="true">▾</span></span></button>' +
+        '<div class="pl-deep is-buy" id="' + bid + '" hidden><ul class="buylist">';
+      p.buy.forEach(function (b) {
+        h += '<li><div class="bh"><span class="bn">' + hl(b.n) + '</span>' +
+          (b.p ? '<span class="bp">' + hl(b.p) + '</span>' : '') + '</div>' +
+          (b.d ? '<p>' + hl(b.d) + '</p>' : '') + '</li>';
+      });
+      h += '</ul></div>';
     }
     h += '<div class="pl-btns">' +
       '<button type="button" class="b-loc" data-focus="' + p.id + '">🗺 在地圖上</button>' +
@@ -1617,4 +1640,156 @@
     }, 480);
   }, 700);
   try { localStorage.setItem('nz-scroll-hint', '1'); } catch (e) {}
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   App 分頁：把 data/apps.json 渲染成卡片
+   只在有 #apps 容器的頁面跑。圖示不抓 App Store 的原始 icon
+   （那是有版權的），改用 CSS 畫的字母色塊。
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var dataEl = document.getElementById('apps-data');
+  var root = document.getElementById('apps');
+  if (!dataEl || !root) return;
+  var DB = JSON.parse(dataEl.textContent);
+  var CATS = DB.cats || {};
+  var APPS = DB.apps || [];
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function rich(s) {           // 內文只允許 <b>
+    return esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+  }
+
+  var state = { cat: '', must: false };
+
+  /* 沒有 icon 圖檔，就用名字第一個字母 ＋ 一個穩定的色相。
+     同一個 id 永遠得到同一個顏色（雜湊），不會每次 build 就換。 */
+  function tint(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 360;
+    return h;
+  }
+  function tileHtml(a) {
+    var h = tint(a.id);
+    var ch = (a.abbr || a.name || '?').trim().charAt(0).toUpperCase();
+    return '<span class="ap-tile" aria-hidden="true" style="' +
+      '--h:' + h + '">' + esc(ch) + '</span>';
+  }
+
+  function cardHtml(a) {
+    var h = '<div class="ap-top">' + tileHtml(a) +
+      '<div class="ap-name"><h3>' + esc(a.name) + '</h3>' +
+      (a.zh ? '<p>' + esc(a.zh) + '</p>' : '') + '</div></div>';
+
+    var tags = '';
+    if (a.must) tags += '<span class="pl-tag t-star">★ 重點下載</span>';
+    if (CATS[a.cat]) tags += '<span class="pl-tag t-day">' + esc(CATS[a.cat]) + '</span>';
+    if (a.free === true) tags += '<span class="ap-tag free">免費</span>';
+    else if (a.free === false) tags += '<span class="ap-tag paid">付費</span>';
+    if (a.tw_store === 'no') tags += '<span class="pl-tag t-warn">⚠ 台灣商店裝不到</span>';
+    else if (a.tw_store === 'unknown') tags += '<span class="pl-tag t-unv">台灣商店未確認</span>';
+    if (tags) h += '<div class="pl-tags">' + tags + '</div>';
+
+    if (a.what) h += '<p class="pl-note">' + rich(a.what) + '</p>';
+
+    var facts = [];
+    if (a.when) facts.push(['這趟', a.when]);
+    if (a.offline) facts.push(['離線', a.offline]);
+    if (a.iap) facts.push(['內購', a.iap]);
+    if (a.dev) facts.push(['開發者', a.dev]);
+    if (a.tw_store_note) facts.push(['台灣裝', a.tw_store_note]);
+    if (facts.length) {
+      h += '<dl class="pl-facts">';
+      facts.forEach(function (f) {
+        h += '<div><dt>' + esc(f[0]) + '</dt><dd>' + rich(f[1]) + '</dd></div>';
+      });
+      h += '</dl>';
+    }
+    if (a.gotchas && a.gotchas.length) {
+      h += '<ul class="pl-warn">';
+      a.gotchas.forEach(function (g) { h += '<li>' + rich(g) + '</li>'; });
+      h += '</ul>';
+    }
+
+    h += '<div class="ap-btns">';
+    if (a.ios_url) {
+      h += '<a class="ap-dl" href="' + esc(a.ios_url) + '" target="_blank" rel="noopener">' +
+        '<span class="ic" aria-hidden="true"></span>' +
+        '<span class="tx">App Store 下載<em>點了直接開 App Store</em></span></a>';
+    } else {
+      h += '<span class="ap-dl is-off">查不到官方 App Store 連結' +
+        '<em>請在 App Store 自己搜尋店名，別裝到山寨版</em></span>';
+    }
+    if (a.web) h += '<a class="ap-web" href="' + esc(a.web) +
+      '" target="_blank" rel="noopener">官網</a>';
+    h += '</div>';
+    return h;
+  }
+
+  /* ── 篩選列 ── */
+  var bar = document.createElement('div');
+  bar.className = 'ap-bar';
+  var chips = [['', '全部']];
+  Object.keys(CATS).forEach(function (k) {
+    if (APPS.some(function (a) { return a.cat === k; })) chips.push([k, CATS[k]]);
+  });
+  var barHtml = '<span class="ap-bl">看哪一類</span><div class="ap-chips" role="group">';
+  chips.forEach(function (c) {
+    barHtml += '<button type="button" class="fchip" data-cat="' + esc(c[0]) + '" ' +
+      'aria-pressed="' + (c[0] === '' ? 'true' : 'false') + '">' + esc(c[1]) + '</button>';
+  });
+  barHtml += '</div><button type="button" class="fchip ap-must" data-must ' +
+    'aria-pressed="false">★ 只看重點下載</button>';
+  bar.innerHTML = barHtml;
+  root.appendChild(bar);
+
+  var count = document.createElement('p');
+  count.className = 'ap-count';
+  root.appendChild(count);
+
+  var grid = document.createElement('div');
+  grid.className = 'ap-grid';
+  root.appendChild(grid);
+
+  function render() {
+    var list = APPS.filter(function (a) {
+      if (state.cat && a.cat !== state.cat) return false;
+      if (state.must && !a.must) return false;
+      return true;
+    });
+    count.textContent = (state.cat || state.must)
+      ? '顯示 ' + list.length + ' / ' + APPS.length + ' 支'
+      : APPS.length + ' 支 App';
+    grid.innerHTML = '';
+    list.forEach(function (a) {
+      var card = document.createElement('article');
+      card.className = 'ap' + (a.must ? ' is-must' : '');
+      card.id = 'app-' + a.id;
+      card.innerHTML = cardHtml(a);
+      grid.appendChild(card);
+    });
+    if (!list.length) grid.innerHTML = '<div class="empty">這個條件下沒有 App。</div>';
+  }
+
+  bar.querySelectorAll('[data-cat]').forEach(function (b) {
+    b.onclick = function () {
+      state.cat = b.dataset.cat;
+      bar.querySelectorAll('[data-cat]').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+      render();
+    };
+  });
+  var mb = bar.querySelector('[data-must]');
+  mb.onclick = function () {
+    state.must = !state.must;
+    mb.setAttribute('aria-pressed', String(state.must));
+    render();
+  };
+  render();
 })();
