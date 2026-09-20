@@ -61,8 +61,9 @@ LEGS = [
 
 # ── 有方案的日子：每個方案的實際行車路線 ──
 OPTS = {
+ "d8b":  ["queenstown","edith-cavell-bridge","moke-lake","queenstown"],
  "d9a":  ["queenstown","glenorchy","queenstown"],
- "d9b":  ["queenstown","kawarau-bungy","queenstown"],
+ "d9c":  ["queenstown","kawarau-bungy","queenstown"],
  "d13a": ["invercargill","gore","dunedin"],
  "d13b": ["invercargill","curio-bay","nugget-point","dunedin"],
  "d15a": ["oamaru","duntroon","waitaki-dam","timaru","christchurch"],
