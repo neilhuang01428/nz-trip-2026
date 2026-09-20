@@ -11,38 +11,38 @@
 <!--LEAFLET-->
 <!--NZCSS-->
 <style>
-.dayline{display:grid;grid-template-columns:72px 1fr auto auto;gap:12px;align-items:center;
+.itinrow{display:grid;grid-template-columns:72px 1fr auto auto;gap:12px;align-items:center;
   padding:13px 16px;border-top:1px solid var(--line-2);font-size:.92rem}
-.dayline:first-child{border-top:0}
-.dayline .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);line-height:1.25}
-.dayline .n b{display:block;font-size:1.05rem;color:var(--pounamu);font-variant-numeric:lining-nums}
-.dayline .t{color:var(--ink);font-weight:600}
-.dayline .t small{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
-.dayline .g{font-family:var(--mono);font-size:.75rem;color:var(--pukaki-dk);background:var(--ice);
+.itinrow:first-child{border-top:0}
+.itinrow .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);line-height:1.25}
+.itinrow .n b{display:block;font-size:1.05rem;color:var(--pounamu);font-variant-numeric:lining-nums}
+.itinrow .t{color:var(--ink);font-weight:600}
+.itinrow .t small{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.itinrow .g{font-family:var(--mono);font-size:.75rem;color:var(--pukaki-dk);background:var(--ice);
   padding:4px 10px;border-radius:14px;white-space:nowrap;text-align:center}
 /* 當晚住哪裡：點下去捲到底下那張住宿卡 */
-.dayline .bed{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:650;
+.itinrow .bed{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:650;
   color:#7E2E55;background:rgba(158,58,107,.10);border:1px solid rgba(158,58,107,.28);
   padding:4px 11px;border-radius:14px;white-space:nowrap;cursor:pointer;
   font-family:inherit;line-height:1.5;transition:.18s}
-.dayline .bed:hover{background:rgba(158,58,107,.2);transform:translateY(-1px)}
-.dayline .bed:focus-visible{outline:2px solid #9E3A6B;outline-offset:2px}
-.dayline .bed .ic{font-size:.86rem}
-.dayline .bed .cont{font-weight:400;opacity:.75}
-.dayline .bed-none{font-size:.74rem;color:var(--ink-soft);white-space:nowrap;padding:4px 2px}
-.dayline.has{background:linear-gradient(90deg,rgba(229,178,60,.10),transparent)}
-.dayline.has .t::after{content:' ▸ 要選一個';font-size:.72rem;color:#8A6416;font-weight:700}
+.itinrow .bed:hover{background:rgba(158,58,107,.2);transform:translateY(-1px)}
+.itinrow .bed:focus-visible{outline:2px solid #9E3A6B;outline-offset:2px}
+.itinrow .bed .ic{font-size:.86rem}
+.itinrow .bed .cont{font-weight:400;opacity:.75}
+.itinrow .bed-none{font-size:.74rem;color:var(--ink-soft);white-space:nowrap;padding:4px 2px}
+.itinrow.has{background:linear-gradient(90deg,rgba(229,178,60,.10),transparent)}
+.itinrow.has .t::after{content:' ▸ 要選一個';font-size:.72rem;color:#8A6416;font-weight:700}
 .daytable{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   box-shadow:var(--shadow);margin:18px 0}
-a.dayline,.dayline a{text-decoration:none;color:inherit}
+a.itinrow,.itinrow a{text-decoration:none;color:inherit}
 @media(max-width:900px){
-  .dayline{grid-template-columns:72px 1fr auto}
-  .dayline .bed,.dayline .bed-none{grid-column:2/-1;justify-self:start;margin-top:4px}
+  .itinrow{grid-template-columns:72px 1fr auto}
+  .itinrow .bed,.itinrow .bed-none{grid-column:2/-1;justify-self:start;margin-top:4px}
 }
 @media(max-width:600px){
-  .dayline{grid-template-columns:56px 1fr;gap:10px;padding:12px 14px}
-  .dayline .g{grid-column:2;justify-self:start;margin-top:3px}
-  .dayline .bed,.dayline .bed-none{grid-column:2;margin-top:5px}
+  .itinrow{grid-template-columns:56px 1fr;gap:10px;padding:12px 14px}
+  .itinrow .g{grid-column:2;justify-self:start;margin-top:3px;white-space:normal;text-align:left}
+  .itinrow .bed,.itinrow .bed-none{grid-column:2;margin-top:5px}
 }
 </style>
 </head>
@@ -261,8 +261,8 @@ a.dayline,.dayline a{text-decoration:none;color:inherit}
       bed +
       '<div class="g">' + x.leg + '</div>';
     html += has
-      ? '<a class="dayline has" href="#day' + x.d + '">' + inner + '</a>'
-      : '<div class="dayline">' + inner + '</div>';
+      ? '<a class="itinrow has" href="#day' + x.d + '">' + inner + '</a>'
+      : '<div class="itinrow">' + inner + '</div>';
   });
   el.innerHTML = html;
 

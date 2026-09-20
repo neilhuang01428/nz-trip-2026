@@ -190,18 +190,64 @@
   var dayline = el('div', 'dayline');
   dayline.hidden = true;
 
+  /* 這一區只收某幾個分類時（例如行程頁的住宿區），選了日期常常只剩一兩張卡。
+     不講清楚會讓人以為「那天只有這些地方」——所以把差額直接寫出來。 */
+  var BLOCK_LABEL = PAGE_IDS.length ? '指定的幾個地點'
+    : (PAGE_CATS.map(function (c) { return (CATS[c] || {}).label || c; })
+        .filter(Boolean).join('、'));
+  var RESTRICTED = !!(PAGE_IDS.length || PAGE_CATS.length);
+  function dayTotal(d) {
+    var n = 0;
+    DB.places.forEach(function (p) { if (p.day === d) n++; });
+    return n;
+  }
+  /* 那一晚睡哪裡：住宿卡的 nights 會涵蓋連住的每一天 */
+  var bedOf = {};
+  DB.places.forEach(function (p) {
+    if (p.cat !== 'stay') return;
+    (p.nights || [p.day]).forEach(function (d) { bedOf[d] = p; });
+  });
+  var NO_STAY = (DB.meta && DB.meta.no_stay_note) || {};
+
+  function bedHtml(d) {
+    var b = bedOf[d];
+    if (b) {
+      // 連住的第 2 晚之後，卡片是掛在入住那天的——不講會以為「這天沒住宿」
+      var nights = b.nights || [b.day];
+      var first = nights[0];
+      var cont = d !== first
+        ? '<span class="cont"> · 續住（卡片在 D' + String(first).padStart(2, '0') + '）</span>'
+        : '';
+      return '<span class="dl-bed" title="當晚住這裡">' + (d !== first ? '🛏 ' : '🛎 ') +
+        esc(b.name) + (b.town ? ' · ' + esc(b.town) : '') + cont + '</span>';
+    }
+    return NO_STAY[d] ? '<span class="dl-bed none">🛏 ' + esc(NO_STAY[d]) + '</span>' : '';
+  }
+
   function renderDayline() {
     var ds = Array.from(state.days).sort(function (a, b) { return a - b; });
     if (!ds.length) { dayline.hidden = true; dayline.innerHTML = ''; return; }
     dayline.hidden = false;
     dayline.innerHTML = ds.map(function (d) {
       var i = dayByNum[d] || {};
+      var here = pool.filter(function (p) { return p.day === d; }).length;
+      var all = dayTotal(d);
+      var hint = '';
+      if (RESTRICTED && all > here) {
+        hint = '<span class="dl-note">這一區只列<b>' + esc(BLOCK_LABEL || '部分分類') +
+          '</b>，所以這天只有 <b>' + here + '</b> 個；' +
+          'D' + String(d).padStart(2, '0') + ' 這天全站共有 <b>' + all +
+          '</b> 個地點，其餘在別的分頁與' +
+          '<a href="index.html">總覽地圖</a>。</span>';
+      }
       return '<div class="dl-row">' +
         '<span class="dl-d">D' + String(d).padStart(2, '0') + '</span>' +
         '<span class="dl-date">' + esc(i.date || '') +
         (i.wd ? '（' + esc(i.wd) + '）' : '') + '</span>' +
         '<span class="dl-t">' + esc(i.title || '') + '</span>' +
         (i.leg ? '<span class="dl-leg">' + esc(i.leg) + '</span>' : '') +
+        bedHtml(d) +
+        hint +
         '</div>';
     }).join('') +
       '<a class="dl-more" href="itinerary.html">看完整行程與路線圖 →</a>';
