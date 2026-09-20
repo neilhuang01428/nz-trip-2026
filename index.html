@@ -1021,6 +1021,14 @@ body.mapmode .totop{display:none!important}
 .dl-t{font-weight:700;color:var(--ink);min-width:0}
 .dl-leg{font-size:.79rem;color:var(--ink-soft);font-family:var(--mono);
   background:var(--paper-2);border-radius:6px;padding:2px 8px}
+.grid-end{grid-column:1/-1;text-align:center;font-size:.82rem;color:var(--ink-soft);
+  padding:14px 0 4px}
+.grid-end[hidden]{display:none}
+/* 地圖還沒初始化前，先佔位，不要讓版面跳動 */
+.mapbox.is-idle{background:
+  linear-gradient(180deg,var(--ice),var(--paper-2));
+  display:flex;align-items:center;justify-content:center}
+.mapbox.is-idle::after{content:'🗺 地圖準備中…';font-size:.85rem;color:var(--ink-soft)}
 .dl-bed{font-size:.79rem;font-weight:650;color:#7E2E55;background:rgba(158,58,107,.10);
   border:1px solid rgba(158,58,107,.26);border-radius:14px;padding:2px 9px;line-height:1.7}
 .dl-bed .cont{font-weight:400;opacity:.75}
@@ -11593,6 +11601,7 @@ input:focus-visible,[tabindex]:focus-visible{
     // 不靠捲動定位，所以不會有捲過頭、地圖上半被切掉的問題。
     var mapMode = (v === 'map' && isMobile());
     document.body.classList.toggle('mapmode', mapMode);
+    if (v === 'map') ensureMap();
     if (v === 'map' && map) {
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { map.invalidateSize(); });
@@ -11618,9 +11627,13 @@ input:focus-visible,[tabindex]:focus-visible{
   root.appendChild(dayline);
   root.appendChild(grid);
 
-  /* ── Leaflet ── */
-  var map = null, markers = {}, layer = null;
-  if (window.L) {
+  /* ── Leaflet ──
+     地圖不在載入時就建。一開頁就建圖＝馬上要拉圖磚、建幾百個 pin，
+     首屏會卡住；而且很多人進來只看清單。改成「真的要看地圖時才建」：
+     地圖捲進畫面、切到地圖模式、或從卡片點「在地圖上」時才初始化。 */
+  var map = null, markers = {}, layer = null, lastList = [];
+  function ensureMap() {
+    if (map || !window.L) return map;
     map = L.map('map', { scrollWheelZoom: false, tap: true });
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -11628,6 +11641,9 @@ input:focus-visible,[tabindex]:focus-visible{
     }).addTo(map);
     map.on('click', function () { clearHot(); });
     layer = L.layerGroup().addTo(map);
+    mapWrap.classList.remove('is-idle');
+    syncMap(lastList);
+    return map;
   }
 
   function pinIcon(p) {
@@ -11668,6 +11684,8 @@ input:focus-visible,[tabindex]:focus-visible{
 
   function focusPlace(id, fromMap) {
     clearHot();
+    if (!fromMap) ensureMap();
+    ensureCard(id);                      // 卡片可能還在「未渲染」的批次裡
     var card = document.getElementById('pl-' + id);
     var m = markers[id];
     if (m) {
@@ -11766,6 +11784,16 @@ input:focus-visible,[tabindex]:focus-visible{
       (g.n ? '，' + g.n + ' 則評論' : '') + '</span></div>';
   }
 
+  /* 圖片：頁面載的是 images/t/*.webp（640px），原圖只當不支援 WebP 時的後備。
+     原圖平均 316 KB、縮圖平均 35 KB——這是整站最有感的一項優化。 */
+  function picture(src, alt, cls) {
+    var thumb = src.replace(/^images\//, 'images/t/').replace(/\.jpg$/i, '.webp');
+    return '<picture' + (cls ? ' class="' + cls + '"' : '') + '>' +
+      '<source type="image/webp" srcset="' + esc(thumb) + '">' +
+      '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async">' +
+      '</picture>';
+  }
+
   /* ── 卡片 ── */
   function cardHtml(p) {
     var c = (CATS[p.cat] || {}).color || '#3E9DB8';
@@ -11778,8 +11806,7 @@ input:focus-visible,[tabindex]:focus-visible{
     if (p.book) tags += '<span class="pl-tag t-book">要預約</span>';
     if (p.geo_approx) tags += '<span class="pl-tag t-unv" title="地圖上是概略位置，導航請用 Google Maps 按鈕">📍概略</span>';
 
-    var h = p.img ? '<div class="pl-img"><img src="' + esc(p.img) + '" alt="' +
-      esc(p.zh || p.name) + '" loading="lazy" decoding="async"></div>' : '';
+    var h = p.img ? '<div class="pl-img">' + picture(p.img, p.zh || p.name) + '</div>' : '';
     h += '<div class="pl-top"><span class="pl-dot" style="background:' + c + '"></span>' +
       '<h3>' + hl(p.name) + (p.zh ? '<small>' + hl(p.zh) + '</small>' : '') + '</h3></div>';
     if (tags) h += '<div class="pl-tags">' + tags + '</div>';
@@ -11861,6 +11888,85 @@ input:focus-visible,[tabindex]:focus-visible{
     return h;
   }
 
+  /* ── 分批渲染 ──
+     310 張卡一次塞進 DOM，手機上要卡好幾秒。先畫 BATCH 張，
+     捲到底部的哨兵元素時再畫下一批；搜尋或跳轉要用到後面的卡片時，
+     ensureCard() 會把該卡之前的批次補畫完。 */
+  var BATCH = 24;
+  var shown = [];           // 目前畫面上這一輪的完整清單
+  var cursor = 0;
+  var sentinel = el('div', 'grid-end');
+  var moreIO = null;
+
+  function bindCard(card) {
+    card.querySelectorAll('[data-focus]').forEach(function (b) {
+      b.onclick = function () { focusPlace(b.dataset.focus, false); };
+    });
+    card.querySelectorAll('[data-deep]').forEach(function (b) {
+      b.onclick = function () {
+        var box = document.getElementById(b.dataset.deep);
+        if (!box) return;
+        var open = box.hidden;
+        box.hidden = !open;
+        b.setAttribute('aria-expanded', open);
+        b.classList.toggle('open', open);
+        var lb = b.querySelector('.dm-lb');
+        if (lb) lb.textContent = open ? '收合' : '展開';
+        b.classList.remove('hint');          // 使用者已經知道能點了
+      };
+    });
+  }
+
+  function renderBatch(n) {
+    var end = Math.min(shown.length, cursor + (n || BATCH));
+    var frag = document.createDocumentFragment();
+    for (; cursor < end; cursor++) {
+      var p = shown[cursor];
+      var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
+        (p.img ? ' has-img' : '') +
+        (p.bookable && p.flag !== 'closed' ? ' has-book' : ''), cardHtml(p));
+      card.id = 'pl-' + p.id;
+      bindCard(card);
+      frag.appendChild(card);
+    }
+    grid.insertBefore(frag, sentinel);
+    if (cursor >= shown.length) {
+      sentinel.hidden = true;
+      if (moreIO) moreIO.disconnect();
+    } else {
+      sentinel.hidden = false;
+      sentinel.textContent = '還有 ' + (shown.length - cursor) + ' 個，繼續往下捲…';
+      if (!moreIO && 'IntersectionObserver' in window) {
+        moreIO = new IntersectionObserver(function (es) {
+          if (es.some(function (e) { return e.isIntersecting; })) renderBatch();
+        }, { rootMargin: '600px 0px' });
+      }
+      if (moreIO) moreIO.observe(sentinel);
+      // 螢幕很高（或這一批不夠長）時，哨兵可能一直留在畫面內——
+      // IntersectionObserver 只在「進出」時通知，不會再叫第二次。
+      // 所以每畫完一批就自己看一眼，還看得到就再畫一批。
+      setTimeout(fillWhileVisible, 30);
+    }
+    hintFirst(grid);
+  }
+
+  function fillWhileVisible() {
+    if (cursor >= shown.length || sentinel.hidden) return;
+    var r = sentinel.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    if (r.top < vh + 600) renderBatch();      // renderBatch 會再排下一次檢查
+  }
+
+  /* 目標卡片還沒被畫出來時，把它之前的批次一次補完 */
+  function ensureCard(id) {
+    if (document.getElementById('pl-' + id)) return true;
+    var i = -1;
+    for (var k = 0; k < shown.length; k++) if (shown[k].id === id) { i = k; break; }
+    if (i < 0) return false;
+    renderBatch(i - cursor + 1);
+    return true;
+  }
+
   /* ── 渲染 ── */
   function render() {
     var list = pool.filter(pass);
@@ -11870,6 +11976,11 @@ input:focus-visible,[tabindex]:focus-visible{
       : list.length + ' 個地點';
 
     grid.innerHTML = '';
+    grid.appendChild(sentinel);
+    sentinel.hidden = true;
+    if (moreIO) moreIO.disconnect();
+    shown = list; cursor = 0;
+    lastList = list;
     if (!list.length) {
       var e = el('div', 'empty',
         (state.q ? '找不到「<b>' + esc(state.q) + '</b>」相關的地點。<br>' : '沒有符合條件的地點。<br>') +
@@ -11884,38 +11995,21 @@ input:focus-visible,[tabindex]:focus-visible{
         render();
       };
     }
-    list.forEach(function (p) {
-      var card = el('article', 'pl' + (p.flag === 'closed' ? ' is-closed' : '') +
-        (p.img ? ' has-img' : '') +
-        (p.bookable && p.flag !== 'closed' ? ' has-book' : ''), cardHtml(p));
-      card.id = 'pl-' + p.id;
-      grid.appendChild(card);
-    });
-    grid.querySelectorAll('[data-focus]').forEach(function (b) {
-      b.onclick = function () { focusPlace(b.dataset.focus, false); };
-    });
-    grid.querySelectorAll('[data-deep]').forEach(function (b) {
-      b.onclick = function () {
-        var box = document.getElementById(b.dataset.deep);
-        if (!box) return;
-        var open = box.hidden;
-        box.hidden = !open;
-        b.setAttribute('aria-expanded', open);
-        b.classList.toggle('open', open);
-        var lb = b.querySelector('.dm-lb');
-        if (lb) lb.textContent = open ? '收合' : '展開';
-        b.classList.remove('hint');          // 使用者已經知道能點了
-      };
-    });
+    renderBatch();                       // 先畫前面幾張，其餘捲到再說
 
-    hintFirst(grid);
+    syncMap(list);
+  }
 
+  /* 地圖上的 pin。popup 的 HTML 不先組——一次組三百段字串很貴，
+     Leaflet 支援傳函式進去，點到哪個 pin 才組哪一段。 */
+  function syncMap(list) {
     if (!map) return;
     layer.clearLayers(); markers = {};
     var pts = [];
     list.forEach(function (p) {
       var m = L.marker([p.lat, p.lng], { icon: pinIcon(p), title: p.name })
-        .bindPopup(popupHtml(p), { closeButton: true, autoPanPadding: [24, 24] });
+        .bindPopup(function () { return popupHtml(p); },
+          { closeButton: true, autoPanPadding: [24, 24] });
       m.on('click', function () { focusPlace(p.id, true); });
       m.addTo(layer);
       markers[p.id] = m;
@@ -11954,6 +12048,24 @@ input:focus-visible,[tabindex]:focus-visible{
 
   render();
   setView(isMobile() ? 'list' : 'both');
+  /* 地圖延後初始化：先讓卡片畫出來，地圖稍後再補。
+     手機的清單模式地圖是隱藏的，就真的等到切過去或點「在地圖上」才建；
+     桌機地圖就在畫面上，所以捲到它就建，並加一個 idle 後備，
+     免得 IntersectionObserver 因為任何原因沒送事件，地圖就永遠不出現。 */
+  mapWrap.classList.add('is-idle');
+  if ('IntersectionObserver' in window) {
+    var mapIO = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) {
+        mapIO.disconnect();
+        ensureMap();
+      }
+    }, { rootMargin: '400px 0px' });
+    mapIO.observe(mapWrap);
+  }
+  if (!isMobile()) {
+    var idle = window.requestIdleCallback || function (f) { return setTimeout(f, 700); };
+    idle(function () { ensureMap(); }, { timeout: 1500 });
+  }
   window.addEventListener('resize', function () {
     if (!isMobile() && state.view !== 'both') setView('both');
     if (isMobile() && state.view === 'both') setView('list');
@@ -12452,8 +12564,10 @@ input:focus-visible,[tabindex]:focus-visible{
       var art = document.createElement('article');
       art.className = 'cul' + (c.img ? ' has-img' : '');
       var h = c.img
-        ? '<div class="cul-img"><img src="images/' + esc(c.img) + '.jpg" alt="' +
-          esc(c.title) + '" loading="lazy" decoding="async"></div>' : '';
+        ? '<div class="cul-img"><picture>' +
+          '<source type="image/webp" srcset="images/t/' + esc(c.img) + '.webp">' +
+          '<img src="images/' + esc(c.img) + '.jpg" alt="' + esc(c.title) +
+          '" loading="lazy" decoding="async"></picture></div>' : '';
       h += '<div class="cul-b">' +
         '<span class="cul-cat" style="background:' + meta.color + '1f;color:' + meta.color + '">' +
         meta.icon + ' ' + esc(meta.label) + '</span>' +

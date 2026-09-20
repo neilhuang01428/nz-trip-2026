@@ -219,6 +219,29 @@ def tabbar(cur):
     return "\n".join(rows)
 
 
+IMG_TAG = _re.compile(r'<img\b([^>]*?)src="images/([^"/]+)\.jpg"([^>]*?)>', _re.I)
+
+
+def webpify(html):
+    """樣板裡的 <img src="images/x.jpg"> 自動包成 <picture>，先給 640px 的 WebP。
+
+    原圖平均 316 KB、縮圖 35 KB。原圖留著當後備（也是授權來源），
+    支援 WebP 的瀏覽器只會下載縮圖。縮圖由 _thumbs.py 產生。
+    """
+    def sub(m):
+        pre, name, post = m.group(1), m.group(2), m.group(3)
+        if not os.path.exists(f"images/t/{name}.webp"):
+            return m.group(0)
+        attrs = pre + post
+        if "loading=" not in attrs:
+            post += ' loading="lazy"'
+        if "decoding=" not in attrs:
+            post += ' decoding="async"'
+        return (f'<picture><source type="image/webp" srcset="images/t/{name}.webp">'
+                f'<img{pre}src="images/{name}.jpg"{post}></picture>')
+    return IMG_TAG.sub(sub, html)
+
+
 def build(src):
     out = os.path.basename(src)
     key = out.replace(".html", "")
@@ -267,6 +290,7 @@ def build(src):
         html = html.replace("</footer>", extra + "</footer>", 1)
     html = html.replace("<!--NAV-->", topnav(key))
     html = html.replace("<!--TABBAR-->", tabbar(key))
+    html = webpify(html)
 
     open(out, "w", encoding="utf-8").write(html)
     return out, os.path.getsize(out)

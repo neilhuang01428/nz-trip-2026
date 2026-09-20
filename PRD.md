@@ -63,6 +63,7 @@
 │   ├── *.jpg              照片（全部本地化，不外連）
 │   ├── credits.json       每張圖的作者與授權
 │   └── CREDITS.md         人類可讀的授權表
+├── _thumbs.py             產生 images/t/*.webp（640px 縮圖，網頁實際載的就是它）
 ├── _geocode.py            用 Nominatim 補地點座標
 ├── _routes.py             用 OSRM 算路線幾何
 ├── _merge_*.py            把研究 agent 的產出併回資料源
@@ -87,6 +88,12 @@
 | `<!--LEAFLET-->` | Leaflet 的 CDN 標籤（含 SRI） |
 
 指令：`python3 _build.py`（全部）或 `python3 _build.py _src/eat.html`（單頁）
+
+**build 時還會做一件事：把 `<img src="images/x.jpg">` 自動包成 `<picture>`**，
+優先給 `images/t/x.webp`（640px 縮圖），原圖留著當後備。縮圖由
+`python3 _thumbs.py` 產生（需要 `brew install webp`）——**加了新照片就要跑一次**，
+`_check.py` 會檢查有沒有漏。原圖平均 316 KB、縮圖平均 35 KB，
+整站實際載入量從 58 MB 降到 6.5 MB。
 **改完一定要跑 `python3 _check.py`**，它會查 id 重複、內文標籤、缺圖、未替換的標記、孤兒圖片、無授權記錄的圖片。
 
 ### 1.4 外部依賴（全部免金鑰）
@@ -336,6 +343,9 @@
 | **發音朗讀** | 用瀏覽器內建語音，離線可用；另附真人發音的外部連結 |
 | **打包清單** | 可勾選，狀態存在 localStorage |
 | **路線圖** | build 時用 OSRM 算好道路幾何，執行時不依賴外部 API |
+| **分批渲染** | 卡片先畫 24 張，捲到底部再畫下一批；三百張卡一次塞進 DOM 手機會卡好幾秒 |
+| **地圖延後初始化** | 進頁面不建地圖——捲到地圖、切到地圖模式、或點「在地圖上」才建。popup 的 HTML 也是點到才組 |
+| **WebP 縮圖** | 卡片載 640px 的 WebP，原圖只當後備。景點頁圖片從 35 MB 降到 4 MB |
 
 ---
 

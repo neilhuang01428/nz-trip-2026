@@ -119,6 +119,20 @@ for f in sorted(glob.glob("*.html")):
     if miss: fl.append("缺圖:" + ",".join(miss))
     if fl: ok = False
     print(f"  {f:16} {'⚠ ' + ' | '.join(fl) if fl else '✓'}")
+# 縮圖：頁面載的是 images/t/*.webp，原圖只當後備。少一張就會有人載到 1500px 原圖。
+thumbs = {os.path.basename(x)[:-5] for x in glob.glob("images/t/*.webp")}
+jpgs = {os.path.basename(x)[:-4] for x in glob.glob("images/*.jpg")}
+nothumb = sorted(jpgs - thumbs)
+if nothumb:
+    print(f"  ⚠ 這些圖沒有 640px 縮圖（跑 python3 _thumbs.py）: {nothumb[:6]}"); ok = False
+orphan_thumb = sorted(thumbs - jpgs)
+if orphan_thumb:
+    print(f"  ⚠ images/t/ 有原圖已不存在的縮圖: {orphan_thumb[:6]}")
+jpg_bytes = sum(os.path.getsize(x) for x in glob.glob("images/*.jpg"))
+webp_bytes = sum(os.path.getsize(x) for x in glob.glob("images/t/*.webp"))
+print(f"縮圖 {len(thumbs)} / {len(jpgs)} 張｜原圖 {jpg_bytes/1024/1024:.1f} MB → "
+      f"實際載 {webp_bytes/1024/1024:.1f} MB")
+
 imgs = {os.path.basename(x) for x in glob.glob("images/*.jpg")}
 html = " ".join(open(f, encoding="utf-8").read() for f in glob.glob("*.html"))
 unused = sorted(n for n in imgs if n.removesuffix('.jpg') not in html)
