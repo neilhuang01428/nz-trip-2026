@@ -1700,7 +1700,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "name": "Astro Café",
    "zh": "",
    "cat": "eat",
-   "day": 3,
+   "day": 4,
    "town": "Lake Tekapo",
    "q": "Astro Cafe Mount John Lake Tekapo",
    "flag": "ok",
@@ -1718,7 +1718,25 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/place/details/791056/astro-cafe",
     "n": 1278,
     "note": "標示 From Google；restaurantguru 同期列 Google 4.2/1294 可交叉印證（Gemini 另查到 4.6 分／約 1250 則）"
-   }
+   },
+   "facts": [
+    {
+     "k": "咖啡廳",
+     "v": "每天 10:00–15:00，關門前 15 分鐘最後點餐（官網）"
+    },
+    {
+     "k": "上山道路",
+     "v": "每天 10:00–16:00，<b>每車 NZ$14</b>，閘口只收刷卡"
+    },
+    {
+     "k": "時間差",
+     "v": "<b>咖啡廳 15:00 就關，道路 16:00 才關</b>——想喝咖啡別壓線上山"
+    },
+    {
+     "k": "天氣不好",
+     "v": "會臨時關閉，改開山下的 Dark Sky Diner（09:00 起）"
+    }
+   ]
   },
   {
    "id": "barkers-geraldine",
@@ -1769,13 +1787,13 @@ input:focus-visible,[tabindex]:focus-visible{
   {
    "id": "fairlie-bakehouse",
    "name": "Fairlie Bakehouse",
-   "zh": "",
+   "zh": "全紐最紅的肉派店",
    "cat": "eat",
    "day": 3,
    "town": "Fairlie",
    "q": "Fairlie Bakehouse Fairlie New Zealand",
    "flag": "star",
-   "note": "全紐最有名的肉派店之一。Mt Cook 的 Old Mountaineers 連披薩餅皮與漢堡麵包都跟它進貨。",
+   "note": "全紐最有名的肉派店之一。Mt Cook 的 Old Mountaineers 連披薩餅皮與漢堡麵包都跟它進貨。<b>賣最好的是豬五花配蘋果醬、上面壓一塊脆皮的那款</b>，另外有鮭魚培根、鹿肉蔓越莓。<b>官網寫每天 06:00 就開、16:30 關</b>——09/26 從基督城開過來，中午前後到剛好；這也是進 Mackenzie 盆地前最後一個像樣的補給點。",
    "lat": -44.09862,
    "lng": 170.829453,
    "img": "images/food-lamington.jpg",
@@ -1797,7 +1815,11 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/place/details/513085/fairlie-bakehouse",
     "n": 6590,
     "note": "該頁評分區塊標示 From Google（同頁 TripAdvisor 為 4.7/942，未採用）"
-   }
+   },
+   "addr": "74 Main Street, Fairlie 7925",
+   "hours": "每天 06:00–16:30（官網；只有 12/25、12/26 休）",
+   "url": "https://www.fairliebakehouse.co.nz/",
+   "price": "肉派約 NZ$9 起"
   },
   {
    "id": "kohan",
@@ -1807,8 +1829,8 @@ input:focus-visible,[tabindex]:focus-visible{
    "day": 3,
    "town": "Lake Tekapo",
    "q": "Kohan Restaurant Lake Tekapo",
-   "flag": "unverified",
-   "note": "當地名店，以生魚丼與定食聞名。⚠️ 本輪未取得官方營業時間，訂位前請自行確認。",
+   "flag": "warn",
+   "note": "湖畔的日本料理，用當地鮭魚做的生魚丼是招牌，也有便當式的 Bento。⚠️ <b>很難訂、位子少</b>，多個來源都說要先訂（+64 3 680 6688）。⚠️ <b>營業時間官網沒有公布</b>，上面寫的是第三方資料庫的一致說法，以現場為準。09/26 當晚吃或 09/27 中午吃都可以，但<b>09/27 中午要趕去 Mt Cook，午餐時段只開到 14:00</b>，別排太滿。",
    "lat": -44.004697,
    "lng": 170.478393,
    "img": "images/food-wines.jpg",
@@ -1820,7 +1842,10 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/place/details/436866/kohan-restaurant",
     "n": 1867,
     "note": "同頁 businessStatus=OPERATIONAL，仍在營業；TripAdvisor 為 4.5/1397"
-   }
+   },
+   "addr": "6 Rapuwai Lane, Lake Tekapo 7945",
+   "hours": "午餐 11:30–14:00 · 晚餐 18:00–20:30（第三方餐廳資料庫的一致說法，官網沒有公布）",
+   "price": "丼飯／定食約 NZ$25–40"
   },
   {
    "id": "tlv-tekapo",
@@ -1920,7 +1945,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "town": "Lake Tekapo",
    "q": "Church of the Good Shepherd Lake Tekapo",
    "flag": "star",
-   "note": "1935 年建成，紀念麥肯錫地區拓荒者。祭壇後方一整片落地窗正對湖與山。旁邊有牧羊犬銅像。",
+   "note": "1935 年建成，紀念麥肯錫地區拓荒者。祭壇後方一整片落地窗正對湖與山。旁邊有牧羊犬銅像。⚠️ <b>教堂內部禁止攝影</b>——官網明講，因為會干擾禮拜。而且<b>內部不是隨時開</b>：要有志工導覽員在才進得去，官網寫大約週三到週日 10:00–15:00，<b>而且不保證</b>。",
    "lat": -44.003347,
    "lng": 170.482468,
    "img": "images/tekapo-church.jpg",
@@ -1944,7 +1969,13 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://wanderlog.com/place/details/37086/the-church-of-the-good-shepherd",
     "n": 6410,
     "note": "標示 From Google；同頁 TripAdvisor 4.3/2147"
-   }
+   },
+   "hours": "教堂外與湖邊全天可看 · 內部只在有志工導覽員時開放，約週三–週日 10:00–15:00（官網寫不保證）",
+   "url": "https://www.churchofthegoodshepherd.org.nz/visit",
+   "warn": [
+    "<b>09/26 傍晚到的時候（日落 18:39）只看得到外觀與湖景</b>，這也是最好拍的時段；想進去看室內，要 <b>09/27（日）早上</b>去碰運氣——但那天下午 16:00–17:15 是主日禮拜時間，那段不開放參觀。",
+    "這是<b>還在使用的教堂</b>，不是景點建築：裡面不要拍照、講話小聲、婚紗與商業攝影要申請許可。"
+   ]
   },
   {
    "id": "lake-tekapo",
@@ -1982,7 +2013,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "name": "Ōtehīwai Mount John Observatory",
    "zh": "Mt John 天文台",
    "cat": "sight",
-   "day": 3,
+   "day": 4,
    "town": "Lake Tekapo",
    "q": "Mount John Observatory Lake Tekapo",
    "flag": "ok",
@@ -2075,7 +2106,7 @@ input:focus-visible,[tabindex]:focus-visible{
     },
     {
      "k": "走到超市",
-     "v": "Four Square（22 Rapuwai Lane）1.3km／18 分——比官網說的「走 6 分鐘到鎮上」遠不少"
+     "v": "Four Square（22 Rapuwai Lane）1.3km／18 分，<b>每天 07:00–20:00</b>——比官網說的「走 6 分鐘到鎮上」遠不少"
     },
     {
      "k": "寵物",
@@ -2083,7 +2114,8 @@ input:focus-visible,[tabindex]:focus-visible{
     }
    ],
    "warn": [
-    "<b>櫃檯不是 24 小時。</b>訂房平台寫每天 09:00–17:30，官網完全沒公布這段。這天要從奧克蘭飛基督城再開 3 小時過來，9 月底南島天黑早很容易卡到——晚於這個時間到要先打 <b>+64 3 680 6888</b>。"
+    "<b>櫃檯不是 24 小時。</b>訂房平台寫每天 09:00–17:30，官網完全沒公布這段。這天要從奧克蘭飛基督城再開 3 小時過來，9 月底南島天黑早很容易卡到——晚於這個時間到要先打 <b>+64 3 680 6888</b>。",
+    "<b>09/26 的時間要算一下</b>：基督城 11:30 領車，路上要停 Rolleston 補給、Geraldine 吃東西、Fairlie 買派，<b>櫃檯 17:30 關、日落 18:39</b>。想在湖邊拍到夕陽，Geraldine 與 Fairlie 兩站合計不要超過 1.5 小時。"
    ]
   },
   {
@@ -2137,7 +2169,21 @@ input:focus-visible,[tabindex]:focus-visible{
     "n": 3886,
     "note": "經 Wanderlog 取得（該站頁面內嵌 Google 的評分與評論數）"
    },
-   "img": "images/mtcook-alpine-salmon.jpg"
+   "img": "images/mtcook-alpine-salmon.jpg",
+   "facts": [
+    {
+     "k": "位置",
+     "v": "就在 <b>Lake Pukaki Lookout</b> 那個大停車場旁，廁所也在這裡"
+    },
+    {
+     "k": "吃什麼",
+     "v": "現切生魚片（一盒約 NZ$15–25），站在湖邊吃"
+    },
+    {
+     "k": "時間",
+     "v": "每天 09:30–16:00（官網註明看天候）"
+    }
+   ]
   },
   {
    "id": "lake-pukaki",
@@ -2200,14 +2246,14 @@ input:focus-visible,[tabindex]:focus-visible{
   },
   {
    "id": "peters-lookout",
-   "name": "Peter's Lookout",
-   "zh": "",
+   "name": "Tapataia Mahaka / Peter's Lookout",
+   "zh": "普卡基湖最經典的那個角度",
    "cat": "sight",
    "day": 4,
    "town": "SH80",
    "q": "Peters Lookout Lake Pukaki New Zealand",
    "flag": "star",
-   "note": "SH80 上的無名觀景點，普卡基湖＋Aoraki 同框的經典角度。沒有大招牌，要用 Google Maps 定位。",
+   "note": "★ SH80 上的觀景點，普卡基湖＋Aoraki 同框的經典角度。<b>現在的正式名字是 Tapataia Mahaka</b>——這個名字是 Ngāi Tahu 贈予的，紀念湖邊原本的 mahinga kai（採食）聚落。2018 年核准、2020 年底完工的整建把停車場正式化、<b>加了廁所</b>，並新增走到湖邊的步道與解說牌。",
    "lat": -44.088993,
    "lng": 170.135856,
    "geo_approx": "Peters Lookout",
@@ -2230,7 +2276,24 @@ input:focus-visible,[tabindex]:focus-visible{
     "url": "https://www.google.com/maps/place/?q=place_id:ChIJhbK3F_kCK20RItinQVazLiM",
     "n": 147,
     "note": "Google 地圖 Peter's Lookout，2026-08-21 讀取（Gemini 另查到 4.8 分／約 2200 則）"
-   }
+   },
+   "facts": [
+    {
+     "k": "設施",
+     "v": "正式停車場＋<b>廁所</b>＋走到湖邊的步道＋解說牌（2020 年底完工）"
+    },
+    {
+     "k": "名字",
+     "v": "Tapataia Mahaka 是 Ngāi Tahu 贈名，Google 地圖上寫「Tapataia Mahaka Peter's Lookout」"
+    },
+    {
+     "k": "順路嗎",
+     "v": "就在 SH80 往 Mt Cook 的路上，<b>完全不用繞</b>"
+    }
+   ],
+   "src": [
+    "https://www.boffamiskell.co.nz/projects/tapataia-mahaka-peters-lookout-lake-pukaki"
+   ]
   },
   {
    "id": "skydive-mtcook",
@@ -2751,9 +2814,9 @@ input:focus-visible,[tabindex]:focus-visible{
    "town": "Mt Cook",
    "q": "Hooker Valley Track White Horse Hill Aoraki",
    "flag": "star",
-   "hours": "來回 10 公里 · DOC 標示 3 小時（從村裡出發再加 1 小時）",
+   "hours": "來回 10 公里 · DOC 標示 3 小時 · 實際含拍照抓 4 小時",
    "url": "https://www.doc.govt.nz/",
-   "note": "★ 起點 White Horse Hill 停車場。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。<b>第二吊橋 2026 年 7 月換新，全長 189 公尺</b>，DOC 官方頁面現在自己寫明「是紐西蘭最長的吊橋」（查證 2026/08/23）。⚠️ DOC 警告背陰處會結冰、非常滑，冬季建議帶<b>微尖冰爪</b>與登山杖；⚠️ 湖水約 3°C，不要下水、不要爬浮冰。步道路線本身是刻意避開雪崩區設計的，<b>不要離開步道</b>。",
+   "note": "★ 起點 White Horse Hill 停車場。<b>DOC 標示來回 3 小時，但沿路吊橋與雪山一路都想停下來拍，實際抓 4 小時比較準</b>（從村裡走到登山口再加 1 小時）。三段：→第一吊橋 1km/15分、→第二吊橋 1.5km/30分、→Hooker 冰河湖 2.5km/45分。<b>第二吊橋 2026 年 7 月換新，全長 189 公尺</b>，DOC 官方頁面現在自己寫明「是紐西蘭最長的吊橋」（查證 2026/08/23）。⚠️ DOC 警告背陰處會結冰、非常滑，冬季建議帶<b>微尖冰爪</b>與登山杖；⚠️ 湖水約 3°C，不要下水、不要爬浮冰。步道路線本身是刻意避開雪崩區設計的，<b>不要離開步道</b>。",
    "lat": -43.720689,
    "lng": 170.095521,
    "geo_approx": "Hooker Valley",
@@ -8671,7 +8734,7 @@ input:focus-visible,[tabindex]:focus-visible{
    "name": "Aotea Gifts Lake Tekapo",
    "zh": "Tekapo 湖邊的紐西蘭禮品店",
    "cat": "shop",
-   "day": 3,
+   "day": 4,
    "town": "Lake Tekapo",
    "lat": -44.0046,
    "lng": 170.47809,
@@ -10757,6 +10820,82 @@ input:focus-visible,[tabindex]:focus-visible{
    "note": "南半球最大的遊艇港，<b>奧克蘭海港大橋就在正前方</b>。沿著 Westhaven Promenade 走可以一路接到 Wynyard Quarter 的餐廳區，從市中心走過去約 25 分鐘。黃昏光線最好。",
    "src": [
     "https://www.aucklandnz.com/"
+   ]
+  },
+  {
+   "id": "mt-john-south-summit",
+   "name": "Mt John South Summit Walkway",
+   "zh": "山頂咖啡廳旁的那段稜線",
+   "cat": "sight",
+   "day": 4,
+   "town": "Lake Tekapo",
+   "lat": -43.987,
+   "lng": 170.464,
+   "q": "Mount John Summit Circuit Track Lake Tekapo",
+   "price": "免費（但開車上山要付每車 NZ$14 的道路費）",
+   "flag": "ok",
+   "bookable": false,
+   "note": "開車上 Mt John 之後，把車停在 Astro Café 旁邊，沿著稜線往南走的那一段。<b>看得到 Tekapo 湖、Alexandrina 與整個 Mackenzie 盆地</b>，走的人比從湖邊爬上來的少很多。⚠️ <b>這不是 DOC 正式命名的步道</b>：官方只有 Tekapo Mt John Walkway 與山頂環線，「South Summit」是遊客與地圖上的叫法，多數人寫單趟 30–45 分鐘——<b>沒有官方時間，抓來回 1 小時比較保險</b>。",
+   "facts": [
+    {
+     "k": "起點",
+     "v": "Astro Café 旁的停車場"
+    },
+    {
+     "k": "時間",
+     "v": "單趟 30–45 分鐘（遊客說法，非官方）；山頂環線整圈另算 30–45 分"
+    },
+    {
+     "k": "注意",
+     "v": "稜線上<b>完全沒有遮蔽、風很大</b>，9 月底早上還會結霜"
+    },
+    {
+     "k": "道路",
+     "v": "上山道路 10:00–16:00，過了就下不來，回程時間要抓好"
+    }
+   ],
+   "geo_approx": "Mt John 山頂南側稜線的概略位置",
+   "src": [
+    "https://www.doc.govt.nz/parks-and-recreation/places-to-go/canterbury/places/lake-tekapo-area/things-to-do/lake-tekapo-town-tracks/",
+    "https://www.darkskyproject.co.nz/astro-cafe/"
+   ]
+  },
+  {
+   "id": "pukaki-campervan-parking",
+   "name": "Lake Pukaki Overnight Campervan Parking (The Pines)",
+   "zh": "湖南端的免費過夜停車場",
+   "cat": "sight",
+   "day": 4,
+   "town": "Pukaki",
+   "lat": -44.205,
+   "lng": 170.145,
+   "q": "Lake Pukaki Overnight Campervan Parking State Highway 8",
+   "price": "免費",
+   "flag": "info",
+   "bookable": false,
+   "note": "普卡基湖南端、SH8 旁的免費過夜區，官方名字是 <b>The Pines</b>，由 Mackenzie 區公所管理。⚠️ <b>只開放自帶衛浴的自走車（self-contained），而且只能停一晚</b>——我們是開一般轎車、當晚住 Hermitage，所以這裡對我們的用處是<b>白天停車看湖、上個乾式廁所</b>，不是過夜點。",
+   "facts": [
+    {
+     "k": "是什麼",
+     "v": "Mackenzie 區公所劃設的免費 freedom camping 區（The Pines）"
+    },
+    {
+     "k": "設施",
+     "v": "碎石分層停車、<b>乾式廁所</b>、垃圾桶；<b>沒有飲用水、沒有電</b>"
+    },
+    {
+     "k": "規定",
+     "v": "限自帶衛浴車輛、先到先停、<b>只能停一晚</b>"
+    },
+    {
+     "k": "位置",
+     "v": "湖南端 SH8 旁，靠近水力發電洩水道"
+    }
+   ],
+   "geo_approx": "普卡基湖南端 SH8 旁的概略位置",
+   "src": [
+    "https://www.mackenzie.govt.nz/services/parks-venues-and-recreation/camping",
+    "https://www.rankers.co.nz/experiences/6068-Lake_Pukaki_Overnight_Campervan_Parking_Southern_end_of_lake"
    ]
   }
  ],
